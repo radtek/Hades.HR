@@ -1,0 +1,2 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="WHC.Security.WCFLibrary.OUService" %>
+<%@ Assembly Name="WHC.Security.WCFLibrary" %>

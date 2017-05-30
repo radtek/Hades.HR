@@ -1,0 +1,380 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{24705EFE-34F6-4879-857C-A1278C3A7375}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Hades.HR.ClientDx</RootNamespace>
+    <AssemblyName>Hades.HR.ClientDx</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Accessibility" />
+    <Reference Include="Aspose.Cells">
+      <HintPath>..\..\Reference\Aspose.Cells.dll</HintPath>
+    </Reference>
+    <Reference Include="Aspose.Words">
+      <HintPath>..\..\Reference\Aspose.Words.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Images.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v15.1.Core, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Sparkline.v15.1.Core, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPrinting.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraTreeList.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DmProvider">
+      <HintPath>..\..\Reference\DmProvider.dll</HintPath>
+    </Reference>
+    <Reference Include="Hades.Attachment.ClientDx">
+      <HintPath>..\..\Reference\Hades.Attachment.ClientDx.dll</HintPath>
+    </Reference>
+    <Reference Include="Hades.ContactBook.ClientDx">
+      <HintPath>..\..\Reference\Hades.ContactBook.ClientDx.dll</HintPath>
+    </Reference>
+    <Reference Include="Hades.Dictionary.ClientDx">
+      <HintPath>..\..\Reference\Hades.Dictionary.ClientDx.dll</HintPath>
+    </Reference>
+    <Reference Include="Hades.Framework.BaseUIDx">
+      <HintPath>..\..\Reference\Hades.Framework.BaseUIDx.dll</HintPath>
+    </Reference>
+    <Reference Include="Hades.Framework.Commons">
+      <HintPath>..\..\Reference\Hades.Framework.Commons.dll</HintPath>
+    </Reference>
+    <Reference Include="Hades.Framework.ControlUtil">
+      <HintPath>..\..\Reference\Hades.Framework.ControlUtil.dll</HintPath>
+    </Reference>
+    <Reference Include="Hades.Pager.Entity">
+      <HintPath>..\..\Reference\Hades.Pager.Entity.dll</HintPath>
+    </Reference>
+    <Reference Include="Hades.Pager.WinControlDx">
+      <HintPath>..\..\Reference\Hades.Pager.WinControlDx.dll</HintPath>
+    </Reference>
+    <Reference Include="Hades.Security.ClientDx">
+      <HintPath>..\..\Reference\Hades.Security.ClientDx.dll</HintPath>
+    </Reference>
+    <Reference Include="Hades.StaffData.ClientDx">
+      <HintPath>..\..\Reference\Hades.StaffData.ClientDx.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\..\Reference\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=4.1.0.0, Culture=neutral, PublicKeyToken=e44a2bc38ed2c13c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Reference\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data">
+      <HintPath>..\..\Reference\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ObjectBuilder">
+      <HintPath>..\..\Reference\Microsoft.Practices.ObjectBuilder.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\Reference\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="SettingsProviderNet">
+      <HintPath>..\..\Reference\SettingsProviderNet.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationClient" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Hades.HR.Caller\Facade\IDepartmentService.cs">
+      <Link>Facade\IDepartmentService.cs</Link>
+    </Compile>
+    <Compile Include="..\hades.hr.caller\facade\IPositionService.cs">
+      <Link>Facade\IPositionService.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Caller\Facade\IStaffService.cs">
+      <Link>Facade\IStaffService.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Caller\ServiceCaller\DepartmentCaller.cs">
+      <Link>Caller\ServiceCaller\DepartmentCaller.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Caller\ServiceCaller\EndPointConfig.cs">
+      <Link>Caller\ServiceCaller\EndPointConfig.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Caller\ServiceCaller\PositionCaller.cs">
+      <Link>Caller\ServiceCaller\PositionCaller.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Caller\ServiceCaller\StaffCaller.cs">
+      <Link>Caller\ServiceCaller\StaffCaller.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Caller\WinformCaller\DepartmentCaller.cs">
+      <Link>Caller\WinformCaller\DepartmentCaller.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Caller\WinformCaller\PositionCaller.cs">
+      <Link>Caller\WinformCaller\PositionCaller.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Caller\WinformCaller\StaffCaller.cs">
+      <Link>Caller\WinformCaller\StaffCaller.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\BLL\Department.cs">
+      <Link>Biz\BLL\Department.cs</Link>
+    </Compile>
+    <Compile Include="..\hades.hr.core\bll\Position.cs">
+      <Link>Biz\BLL\Position.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\BLL\Staff.cs">
+      <Link>Biz\BLL\Staff.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Department.cs">
+      <Link>Biz\DAL\DALSQL\Department.cs</Link>
+    </Compile>
+    <Compile Include="..\hades.hr.core\dal\dalsql\Position.cs">
+      <Link>Biz\DAL\DALSQL\Position.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Staff.cs">
+      <Link>Biz\DAL\DALSQL\Staff.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\Entity\DepartmentInfo.cs">
+      <Link>Biz\Entity\DepartmentInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\hades.hr.core\entity\PositionInfo.cs">
+      <Link>Biz\Entity\PositionInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\Entity\StaffInfo.cs">
+      <Link>Biz\Entity\StaffInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\IDAL\IDepartment.cs">
+      <Link>Biz\IDAL\IDepartment.cs</Link>
+    </Compile>
+    <Compile Include="..\hades.hr.core\idal\IPosition.cs">
+      <Link>Biz\IDAL\IPosition.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\IDAL\IStaff.cs">
+      <Link>Biz\IDAL\IStaff.cs</Link>
+    </Compile>
+    <Compile Include="Control\DepartmentLookup.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\DepartmentLookup.Designer.cs">
+      <DependentUpon>DepartmentLookup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\DepartmentTreeGrid.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\DepartmentTreeGrid.Designer.cs">
+      <DependentUpon>DepartmentTreeGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\PositionTree.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\PositionTree.Designer.cs">
+      <DependentUpon>PositionTree.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\PositionLookup.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\PositionLookup.Designer.cs">
+      <DependentUpon>PositionLookup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FrmStaffView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FrmStaffView.Designer.cs">
+      <DependentUpon>FrmStaffView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FrmPositionView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FrmPositionView.Designer.cs">
+      <DependentUpon>FrmPositionView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FrmStaffOverview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FrmStaffOverview.Designer.cs">
+      <DependentUpon>FrmStaffOverview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FrmDepartmentView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FrmDepartmentView.Designer.cs">
+      <DependentUpon>FrmDepartmentView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\FrmDepartment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FrmDepartment.Designer.cs">
+      <DependentUpon>FrmDepartment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FrmDepartmentEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FrmDepartmentEdit.Designer.cs">
+      <DependentUpon>FrmDepartmentEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FrmPositionEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FrmPositionEdit.Designer.cs">
+      <DependentUpon>FrmPositionEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FrmStaffEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FrmStaffEdit.Designer.cs">
+      <DependentUpon>FrmStaffEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FrmPosition.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FrmPosition.Designer.cs">
+      <DependentUpon>FrmPosition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FrmStaff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FrmStaff.Designer.cs">
+      <DependentUpon>FrmStaff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Util\ControlUtil.cs" />
+    <Compile Include="Util\DepartmentType.cs" />
+    <Compile Include="Util\ExtensionMethod.cs" />
+    <EmbeddedResource Include="Control\DepartmentLookup.resx">
+      <DependentUpon>DepartmentLookup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\DepartmentTreeGrid.resx">
+      <DependentUpon>DepartmentTreeGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\PositionLookup.resx">
+      <DependentUpon>PositionLookup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\PositionTree.resx">
+      <DependentUpon>PositionTree.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FrmDepartment.resx">
+      <DependentUpon>FrmDepartment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FrmDepartmentEdit.resx">
+      <DependentUpon>FrmDepartmentEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FrmDepartmentView.resx">
+      <DependentUpon>FrmDepartmentView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FrmPosition.resx">
+      <DependentUpon>FrmPosition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FrmPositionEdit.resx">
+      <DependentUpon>FrmPositionEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FrmPositionView.resx">
+      <DependentUpon>FrmPositionView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FrmStaff.resx">
+      <DependentUpon>FrmStaff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FrmStaffEdit.resx">
+      <DependentUpon>FrmStaffEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FrmStaffOverview.resx">
+      <DependentUpon>FrmStaffOverview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FrmStaffView.resx">
+      <DependentUpon>FrmStaffView.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\DataSources\Hades.HR.Entity.DepartmentInfo.datasource" />
+    <None Include="Properties\DataSources\Hades.HR.Entity.PositionInfo.datasource" />
+    <None Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
