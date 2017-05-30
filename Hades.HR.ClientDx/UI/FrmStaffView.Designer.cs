@@ -1,4 +1,4 @@
-﻿namespace Hades.HR.ClientDx
+﻿namespace Hades.HR.UI
 {
     partial class FrmStaffView
     {
@@ -30,6 +30,24 @@
         {
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.txtEnabled = new DevExpress.XtraEditors.TextEdit();
+            this.txtDuty = new DevExpress.XtraEditors.TextEdit();
+            this.txtTitles = new DevExpress.XtraEditors.TextEdit();
+            this.txtJobType = new DevExpress.XtraEditors.TextEdit();
+            this.txtWorkingDate = new DevExpress.XtraEditors.TextEdit();
+            this.txtChildStatus = new DevExpress.XtraEditors.TextEdit();
+            this.txtMarriage = new DevExpress.XtraEditors.TextEdit();
+            this.txtDegree = new DevExpress.XtraEditors.TextEdit();
+            this.txtEducation = new DevExpress.XtraEditors.TextEdit();
+            this.txtPartyDate = new DevExpress.XtraEditors.TextEdit();
+            this.txtPolitical = new DevExpress.XtraEditors.TextEdit();
+            this.txtNationality = new DevExpress.XtraEditors.TextEdit();
+            this.txtBirthday = new DevExpress.XtraEditors.TextEdit();
+            this.txtNativePlace = new DevExpress.XtraEditors.TextEdit();
+            this.txtGender = new DevExpress.XtraEditors.TextEdit();
+            this.txtCompany = new DevExpress.XtraEditors.TextEdit();
+            this.txtPosition = new DevExpress.XtraEditors.TextEdit();
+            this.txtDepartment = new DevExpress.XtraEditors.TextEdit();
             this.txtIntroduce = new DevExpress.XtraEditors.MemoEdit();
             this.txtRemark = new DevExpress.XtraEditors.MemoEdit();
             this.txtQQ = new DevExpress.XtraEditors.TextEdit();
@@ -51,47 +69,47 @@
             this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem23 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtDepartment = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlItem22 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtPosition = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlItem20 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtCompany = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlItem24 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtGender = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlItem27 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtNativePlace = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlItem28 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtBirthday = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlItem29 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtNationality = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlItem30 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtPolitical = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtPartyDate = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtEducation = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtDegree = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlItem13 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtMarriage = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlItem12 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtChildStatus = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlItem19 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtWorkingDate = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlItem15 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtJobType = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlItem16 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtTitles = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlItem14 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtDuty = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlItem21 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtEnabled = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlItem17 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.picPrint)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEnabled.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDuty.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTitles.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtJobType.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtWorkingDate.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtChildStatus.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMarriage.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDegree.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEducation.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPartyDate.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPolitical.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNationality.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtBirthday.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNativePlace.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtGender.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCompany.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPosition.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDepartment.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIntroduce.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRemark.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtQQ.Properties)).BeginInit();
@@ -113,41 +131,23 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem23)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDepartment.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem22)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPosition.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem20)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCompany.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem24)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtGender.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem27)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtNativePlace.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem28)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtBirthday.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem29)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtNationality.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem30)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPolitical.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPartyDate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtEducation.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDegree.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMarriage.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtChildStatus.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem19)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtWorkingDate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtJobType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTitles.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDuty.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem21)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtEnabled.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).BeginInit();
             this.SuspendLayout();
             // 
@@ -221,10 +221,173 @@
             this.layoutControl1.TabIndex = 7;
             this.layoutControl1.Text = "layoutControl1";
             // 
+            // txtEnabled
+            // 
+            this.txtEnabled.Location = new System.Drawing.Point(87, 376);
+            this.txtEnabled.Name = "txtEnabled";
+            this.txtEnabled.Properties.ReadOnly = true;
+            this.txtEnabled.Size = new System.Drawing.Size(651, 20);
+            this.txtEnabled.StyleController = this.layoutControl1;
+            this.txtEnabled.TabIndex = 66;
+            // 
+            // txtDuty
+            // 
+            this.txtDuty.Location = new System.Drawing.Point(452, 252);
+            this.txtDuty.Name = "txtDuty";
+            this.txtDuty.Properties.ReadOnly = true;
+            this.txtDuty.Size = new System.Drawing.Size(286, 20);
+            this.txtDuty.StyleController = this.layoutControl1;
+            this.txtDuty.TabIndex = 65;
+            // 
+            // txtTitles
+            // 
+            this.txtTitles.Location = new System.Drawing.Point(87, 252);
+            this.txtTitles.Name = "txtTitles";
+            this.txtTitles.Properties.ReadOnly = true;
+            this.txtTitles.Size = new System.Drawing.Size(286, 20);
+            this.txtTitles.StyleController = this.layoutControl1;
+            this.txtTitles.TabIndex = 64;
+            // 
+            // txtJobType
+            // 
+            this.txtJobType.Location = new System.Drawing.Point(452, 228);
+            this.txtJobType.Name = "txtJobType";
+            this.txtJobType.Properties.ReadOnly = true;
+            this.txtJobType.Size = new System.Drawing.Size(286, 20);
+            this.txtJobType.StyleController = this.layoutControl1;
+            this.txtJobType.TabIndex = 63;
+            // 
+            // txtWorkingDate
+            // 
+            this.txtWorkingDate.Location = new System.Drawing.Point(87, 228);
+            this.txtWorkingDate.Name = "txtWorkingDate";
+            this.txtWorkingDate.Properties.ReadOnly = true;
+            this.txtWorkingDate.Size = new System.Drawing.Size(286, 20);
+            this.txtWorkingDate.StyleController = this.layoutControl1;
+            this.txtWorkingDate.TabIndex = 62;
+            // 
+            // txtChildStatus
+            // 
+            this.txtChildStatus.Location = new System.Drawing.Point(452, 204);
+            this.txtChildStatus.Name = "txtChildStatus";
+            this.txtChildStatus.Properties.ReadOnly = true;
+            this.txtChildStatus.Size = new System.Drawing.Size(286, 20);
+            this.txtChildStatus.StyleController = this.layoutControl1;
+            this.txtChildStatus.TabIndex = 61;
+            // 
+            // txtMarriage
+            // 
+            this.txtMarriage.Location = new System.Drawing.Point(87, 204);
+            this.txtMarriage.Name = "txtMarriage";
+            this.txtMarriage.Properties.ReadOnly = true;
+            this.txtMarriage.Size = new System.Drawing.Size(286, 20);
+            this.txtMarriage.StyleController = this.layoutControl1;
+            this.txtMarriage.TabIndex = 60;
+            // 
+            // txtDegree
+            // 
+            this.txtDegree.Location = new System.Drawing.Point(452, 180);
+            this.txtDegree.Name = "txtDegree";
+            this.txtDegree.Properties.ReadOnly = true;
+            this.txtDegree.Size = new System.Drawing.Size(286, 20);
+            this.txtDegree.StyleController = this.layoutControl1;
+            this.txtDegree.TabIndex = 59;
+            // 
+            // txtEducation
+            // 
+            this.txtEducation.Location = new System.Drawing.Point(87, 180);
+            this.txtEducation.Name = "txtEducation";
+            this.txtEducation.Properties.ReadOnly = true;
+            this.txtEducation.Size = new System.Drawing.Size(286, 20);
+            this.txtEducation.StyleController = this.layoutControl1;
+            this.txtEducation.TabIndex = 58;
+            // 
+            // txtPartyDate
+            // 
+            this.txtPartyDate.Location = new System.Drawing.Point(452, 156);
+            this.txtPartyDate.Name = "txtPartyDate";
+            this.txtPartyDate.Properties.ReadOnly = true;
+            this.txtPartyDate.Size = new System.Drawing.Size(286, 20);
+            this.txtPartyDate.StyleController = this.layoutControl1;
+            this.txtPartyDate.TabIndex = 57;
+            // 
+            // txtPolitical
+            // 
+            this.txtPolitical.Location = new System.Drawing.Point(87, 156);
+            this.txtPolitical.Name = "txtPolitical";
+            this.txtPolitical.Properties.ReadOnly = true;
+            this.txtPolitical.Size = new System.Drawing.Size(286, 20);
+            this.txtPolitical.StyleController = this.layoutControl1;
+            this.txtPolitical.TabIndex = 56;
+            // 
+            // txtNationality
+            // 
+            this.txtNationality.Location = new System.Drawing.Point(634, 84);
+            this.txtNationality.Name = "txtNationality";
+            this.txtNationality.Properties.ReadOnly = true;
+            this.txtNationality.Size = new System.Drawing.Size(104, 20);
+            this.txtNationality.StyleController = this.layoutControl1;
+            this.txtNationality.TabIndex = 55;
+            // 
+            // txtBirthday
+            // 
+            this.txtBirthday.Location = new System.Drawing.Point(269, 84);
+            this.txtBirthday.Name = "txtBirthday";
+            this.txtBirthday.Properties.ReadOnly = true;
+            this.txtBirthday.Size = new System.Drawing.Size(104, 20);
+            this.txtBirthday.StyleController = this.layoutControl1;
+            this.txtBirthday.TabIndex = 54;
+            // 
+            // txtNativePlace
+            // 
+            this.txtNativePlace.Location = new System.Drawing.Point(452, 84);
+            this.txtNativePlace.Name = "txtNativePlace";
+            this.txtNativePlace.Properties.ReadOnly = true;
+            this.txtNativePlace.Size = new System.Drawing.Size(103, 20);
+            this.txtNativePlace.StyleController = this.layoutControl1;
+            this.txtNativePlace.TabIndex = 53;
+            // 
+            // txtGender
+            // 
+            this.txtGender.Location = new System.Drawing.Point(87, 84);
+            this.txtGender.Name = "txtGender";
+            this.txtGender.Properties.ReadOnly = true;
+            this.txtGender.Size = new System.Drawing.Size(103, 20);
+            this.txtGender.StyleController = this.layoutControl1;
+            this.txtGender.TabIndex = 52;
+            // 
+            // txtCompany
+            // 
+            this.txtCompany.Location = new System.Drawing.Point(87, 60);
+            this.txtCompany.Name = "txtCompany";
+            this.txtCompany.Properties.ReadOnly = true;
+            this.txtCompany.Size = new System.Drawing.Size(651, 20);
+            this.txtCompany.StyleController = this.layoutControl1;
+            this.txtCompany.TabIndex = 50;
+            // 
+            // txtPosition
+            // 
+            this.txtPosition.Location = new System.Drawing.Point(453, 36);
+            this.txtPosition.Name = "txtPosition";
+            this.txtPosition.Properties.ReadOnly = true;
+            this.txtPosition.Size = new System.Drawing.Size(285, 20);
+            this.txtPosition.StyleController = this.layoutControl1;
+            this.txtPosition.TabIndex = 49;
+            // 
+            // txtDepartment
+            // 
+            this.txtDepartment.Location = new System.Drawing.Point(87, 36);
+            this.txtDepartment.Name = "txtDepartment";
+            this.txtDepartment.Properties.ReadOnly = true;
+            this.txtDepartment.Size = new System.Drawing.Size(287, 20);
+            this.txtDepartment.StyleController = this.layoutControl1;
+            this.txtDepartment.TabIndex = 48;
+            // 
             // txtIntroduce
             // 
             this.txtIntroduce.Location = new System.Drawing.Point(87, 276);
             this.txtIntroduce.Name = "txtIntroduce";
+            this.txtIntroduce.Properties.ReadOnly = true;
             this.txtIntroduce.Size = new System.Drawing.Size(651, 40);
             this.txtIntroduce.StyleController = this.layoutControl1;
             this.txtIntroduce.TabIndex = 47;
@@ -233,6 +396,7 @@
             // 
             this.txtRemark.Location = new System.Drawing.Point(87, 320);
             this.txtRemark.Name = "txtRemark";
+            this.txtRemark.Properties.ReadOnly = true;
             this.txtRemark.Size = new System.Drawing.Size(651, 52);
             this.txtRemark.StyleController = this.layoutControl1;
             this.txtRemark.TabIndex = 46;
@@ -241,6 +405,7 @@
             // 
             this.txtQQ.Location = new System.Drawing.Point(452, 132);
             this.txtQQ.Name = "txtQQ";
+            this.txtQQ.Properties.ReadOnly = true;
             this.txtQQ.Size = new System.Drawing.Size(103, 20);
             this.txtQQ.StyleController = this.layoutControl1;
             this.txtQQ.TabIndex = 31;
@@ -249,6 +414,7 @@
             // 
             this.txtNumber.Location = new System.Drawing.Point(87, 12);
             this.txtNumber.Name = "txtNumber";
+            this.txtNumber.Properties.ReadOnly = true;
             this.txtNumber.Size = new System.Drawing.Size(287, 20);
             this.txtNumber.StyleController = this.layoutControl1;
             this.txtNumber.TabIndex = 1;
@@ -257,6 +423,7 @@
             // 
             this.txtName.Location = new System.Drawing.Point(453, 12);
             this.txtName.Name = "txtName";
+            this.txtName.Properties.ReadOnly = true;
             this.txtName.Size = new System.Drawing.Size(285, 20);
             this.txtName.StyleController = this.layoutControl1;
             this.txtName.TabIndex = 2;
@@ -265,6 +432,7 @@
             // 
             this.txtIdentityCard.Location = new System.Drawing.Point(87, 108);
             this.txtIdentityCard.Name = "txtIdentityCard";
+            this.txtIdentityCard.Properties.ReadOnly = true;
             this.txtIdentityCard.Size = new System.Drawing.Size(286, 20);
             this.txtIdentityCard.StyleController = this.layoutControl1;
             this.txtIdentityCard.TabIndex = 7;
@@ -273,6 +441,7 @@
             // 
             this.txtPhone.Location = new System.Drawing.Point(87, 132);
             this.txtPhone.Name = "txtPhone";
+            this.txtPhone.Properties.ReadOnly = true;
             this.txtPhone.Size = new System.Drawing.Size(103, 20);
             this.txtPhone.StyleController = this.layoutControl1;
             this.txtPhone.TabIndex = 8;
@@ -281,6 +450,7 @@
             // 
             this.txtOfficePhone.Location = new System.Drawing.Point(269, 132);
             this.txtOfficePhone.Name = "txtOfficePhone";
+            this.txtOfficePhone.Properties.ReadOnly = true;
             this.txtOfficePhone.Size = new System.Drawing.Size(104, 20);
             this.txtOfficePhone.StyleController = this.layoutControl1;
             this.txtOfficePhone.TabIndex = 9;
@@ -289,6 +459,7 @@
             // 
             this.txtEmail.Location = new System.Drawing.Point(634, 132);
             this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Properties.ReadOnly = true;
             this.txtEmail.Size = new System.Drawing.Size(104, 20);
             this.txtEmail.StyleController = this.layoutControl1;
             this.txtEmail.TabIndex = 10;
@@ -297,6 +468,7 @@
             // 
             this.txtHomeAddress.Location = new System.Drawing.Point(452, 108);
             this.txtHomeAddress.Name = "txtHomeAddress";
+            this.txtHomeAddress.Properties.ReadOnly = true;
             this.txtHomeAddress.Size = new System.Drawing.Size(286, 20);
             this.txtHomeAddress.StyleController = this.layoutControl1;
             this.txtHomeAddress.TabIndex = 11;
@@ -429,14 +601,6 @@
             this.layoutControlItem23.Text = "个人介绍";
             this.layoutControlItem23.TextSize = new System.Drawing.Size(72, 14);
             // 
-            // txtDepartment
-            // 
-            this.txtDepartment.Location = new System.Drawing.Point(87, 36);
-            this.txtDepartment.Name = "txtDepartment";
-            this.txtDepartment.Size = new System.Drawing.Size(287, 20);
-            this.txtDepartment.StyleController = this.layoutControl1;
-            this.txtDepartment.TabIndex = 48;
-            // 
             // layoutControlItem22
             // 
             this.layoutControlItem22.Control = this.txtDepartment;
@@ -445,14 +609,6 @@
             this.layoutControlItem22.Size = new System.Drawing.Size(366, 24);
             this.layoutControlItem22.Text = "工作部门";
             this.layoutControlItem22.TextSize = new System.Drawing.Size(72, 14);
-            // 
-            // txtPosition
-            // 
-            this.txtPosition.Location = new System.Drawing.Point(453, 36);
-            this.txtPosition.Name = "txtPosition";
-            this.txtPosition.Size = new System.Drawing.Size(285, 20);
-            this.txtPosition.StyleController = this.layoutControl1;
-            this.txtPosition.TabIndex = 49;
             // 
             // layoutControlItem20
             // 
@@ -463,14 +619,6 @@
             this.layoutControlItem20.Text = "工作岗位";
             this.layoutControlItem20.TextSize = new System.Drawing.Size(72, 14);
             // 
-            // txtCompany
-            // 
-            this.txtCompany.Location = new System.Drawing.Point(87, 60);
-            this.txtCompany.Name = "txtCompany";
-            this.txtCompany.Size = new System.Drawing.Size(651, 20);
-            this.txtCompany.StyleController = this.layoutControl1;
-            this.txtCompany.TabIndex = 50;
-            // 
             // layoutControlItem24
             // 
             this.layoutControlItem24.Control = this.txtCompany;
@@ -479,14 +627,6 @@
             this.layoutControlItem24.Size = new System.Drawing.Size(730, 24);
             this.layoutControlItem24.Text = "所属公司";
             this.layoutControlItem24.TextSize = new System.Drawing.Size(72, 14);
-            // 
-            // txtGender
-            // 
-            this.txtGender.Location = new System.Drawing.Point(87, 84);
-            this.txtGender.Name = "txtGender";
-            this.txtGender.Size = new System.Drawing.Size(103, 20);
-            this.txtGender.StyleController = this.layoutControl1;
-            this.txtGender.TabIndex = 52;
             // 
             // layoutControlItem27
             // 
@@ -497,14 +637,6 @@
             this.layoutControlItem27.Text = "性别";
             this.layoutControlItem27.TextSize = new System.Drawing.Size(72, 14);
             // 
-            // txtNativePlace
-            // 
-            this.txtNativePlace.Location = new System.Drawing.Point(452, 84);
-            this.txtNativePlace.Name = "txtNativePlace";
-            this.txtNativePlace.Size = new System.Drawing.Size(103, 20);
-            this.txtNativePlace.StyleController = this.layoutControl1;
-            this.txtNativePlace.TabIndex = 53;
-            // 
             // layoutControlItem28
             // 
             this.layoutControlItem28.Control = this.txtNativePlace;
@@ -513,14 +645,6 @@
             this.layoutControlItem28.Size = new System.Drawing.Size(182, 24);
             this.layoutControlItem28.Text = "籍贯";
             this.layoutControlItem28.TextSize = new System.Drawing.Size(72, 14);
-            // 
-            // txtBirthday
-            // 
-            this.txtBirthday.Location = new System.Drawing.Point(269, 84);
-            this.txtBirthday.Name = "txtBirthday";
-            this.txtBirthday.Size = new System.Drawing.Size(104, 20);
-            this.txtBirthday.StyleController = this.layoutControl1;
-            this.txtBirthday.TabIndex = 54;
             // 
             // layoutControlItem29
             // 
@@ -531,14 +655,6 @@
             this.layoutControlItem29.Text = "出生日期";
             this.layoutControlItem29.TextSize = new System.Drawing.Size(72, 14);
             // 
-            // txtNationality
-            // 
-            this.txtNationality.Location = new System.Drawing.Point(634, 84);
-            this.txtNationality.Name = "txtNationality";
-            this.txtNationality.Size = new System.Drawing.Size(104, 20);
-            this.txtNationality.StyleController = this.layoutControl1;
-            this.txtNationality.TabIndex = 55;
-            // 
             // layoutControlItem30
             // 
             this.layoutControlItem30.Control = this.txtNationality;
@@ -547,14 +663,6 @@
             this.layoutControlItem30.Size = new System.Drawing.Size(183, 24);
             this.layoutControlItem30.Text = "民族";
             this.layoutControlItem30.TextSize = new System.Drawing.Size(72, 14);
-            // 
-            // txtPolitical
-            // 
-            this.txtPolitical.Location = new System.Drawing.Point(87, 156);
-            this.txtPolitical.Name = "txtPolitical";
-            this.txtPolitical.Size = new System.Drawing.Size(286, 20);
-            this.txtPolitical.StyleController = this.layoutControl1;
-            this.txtPolitical.TabIndex = 56;
             // 
             // layoutControlItem4
             // 
@@ -565,14 +673,6 @@
             this.layoutControlItem4.Text = "政治面貌";
             this.layoutControlItem4.TextSize = new System.Drawing.Size(72, 14);
             // 
-            // txtPartyDate
-            // 
-            this.txtPartyDate.Location = new System.Drawing.Point(452, 156);
-            this.txtPartyDate.Name = "txtPartyDate";
-            this.txtPartyDate.Size = new System.Drawing.Size(286, 20);
-            this.txtPartyDate.StyleController = this.layoutControl1;
-            this.txtPartyDate.TabIndex = 57;
-            // 
             // layoutControlItem5
             // 
             this.layoutControlItem5.Control = this.txtPartyDate;
@@ -581,14 +681,6 @@
             this.layoutControlItem5.Size = new System.Drawing.Size(365, 24);
             this.layoutControlItem5.Text = "入党日期";
             this.layoutControlItem5.TextSize = new System.Drawing.Size(72, 14);
-            // 
-            // txtEducation
-            // 
-            this.txtEducation.Location = new System.Drawing.Point(87, 180);
-            this.txtEducation.Name = "txtEducation";
-            this.txtEducation.Size = new System.Drawing.Size(286, 20);
-            this.txtEducation.StyleController = this.layoutControl1;
-            this.txtEducation.TabIndex = 58;
             // 
             // layoutControlItem6
             // 
@@ -599,14 +691,6 @@
             this.layoutControlItem6.Text = "学历";
             this.layoutControlItem6.TextSize = new System.Drawing.Size(72, 14);
             // 
-            // txtDegree
-            // 
-            this.txtDegree.Location = new System.Drawing.Point(452, 180);
-            this.txtDegree.Name = "txtDegree";
-            this.txtDegree.Size = new System.Drawing.Size(286, 20);
-            this.txtDegree.StyleController = this.layoutControl1;
-            this.txtDegree.TabIndex = 59;
-            // 
             // layoutControlItem13
             // 
             this.layoutControlItem13.Control = this.txtDegree;
@@ -615,14 +699,6 @@
             this.layoutControlItem13.Size = new System.Drawing.Size(365, 24);
             this.layoutControlItem13.Text = "学位";
             this.layoutControlItem13.TextSize = new System.Drawing.Size(72, 14);
-            // 
-            // txtMarriage
-            // 
-            this.txtMarriage.Location = new System.Drawing.Point(87, 204);
-            this.txtMarriage.Name = "txtMarriage";
-            this.txtMarriage.Size = new System.Drawing.Size(286, 20);
-            this.txtMarriage.StyleController = this.layoutControl1;
-            this.txtMarriage.TabIndex = 60;
             // 
             // layoutControlItem12
             // 
@@ -633,14 +709,6 @@
             this.layoutControlItem12.Text = "婚姻情况";
             this.layoutControlItem12.TextSize = new System.Drawing.Size(72, 14);
             // 
-            // txtChildStatus
-            // 
-            this.txtChildStatus.Location = new System.Drawing.Point(452, 204);
-            this.txtChildStatus.Name = "txtChildStatus";
-            this.txtChildStatus.Size = new System.Drawing.Size(286, 20);
-            this.txtChildStatus.StyleController = this.layoutControl1;
-            this.txtChildStatus.TabIndex = 61;
-            // 
             // layoutControlItem19
             // 
             this.layoutControlItem19.Control = this.txtChildStatus;
@@ -649,14 +717,6 @@
             this.layoutControlItem19.Size = new System.Drawing.Size(365, 24);
             this.layoutControlItem19.Text = "是否独生子女";
             this.layoutControlItem19.TextSize = new System.Drawing.Size(72, 14);
-            // 
-            // txtWorkingDate
-            // 
-            this.txtWorkingDate.Location = new System.Drawing.Point(87, 228);
-            this.txtWorkingDate.Name = "txtWorkingDate";
-            this.txtWorkingDate.Size = new System.Drawing.Size(286, 20);
-            this.txtWorkingDate.StyleController = this.layoutControl1;
-            this.txtWorkingDate.TabIndex = 62;
             // 
             // layoutControlItem15
             // 
@@ -667,14 +727,6 @@
             this.layoutControlItem15.Text = "参加工作时间";
             this.layoutControlItem15.TextSize = new System.Drawing.Size(72, 14);
             // 
-            // txtJobType
-            // 
-            this.txtJobType.Location = new System.Drawing.Point(452, 228);
-            this.txtJobType.Name = "txtJobType";
-            this.txtJobType.Size = new System.Drawing.Size(286, 20);
-            this.txtJobType.StyleController = this.layoutControl1;
-            this.txtJobType.TabIndex = 63;
-            // 
             // layoutControlItem16
             // 
             this.layoutControlItem16.Control = this.txtJobType;
@@ -683,14 +735,6 @@
             this.layoutControlItem16.Size = new System.Drawing.Size(365, 24);
             this.layoutControlItem16.Text = "工种";
             this.layoutControlItem16.TextSize = new System.Drawing.Size(72, 14);
-            // 
-            // txtTitles
-            // 
-            this.txtTitles.Location = new System.Drawing.Point(87, 252);
-            this.txtTitles.Name = "txtTitles";
-            this.txtTitles.Size = new System.Drawing.Size(286, 20);
-            this.txtTitles.StyleController = this.layoutControl1;
-            this.txtTitles.TabIndex = 64;
             // 
             // layoutControlItem14
             // 
@@ -701,14 +745,6 @@
             this.layoutControlItem14.Text = "职称";
             this.layoutControlItem14.TextSize = new System.Drawing.Size(72, 14);
             // 
-            // txtDuty
-            // 
-            this.txtDuty.Location = new System.Drawing.Point(452, 252);
-            this.txtDuty.Name = "txtDuty";
-            this.txtDuty.Size = new System.Drawing.Size(286, 20);
-            this.txtDuty.StyleController = this.layoutControl1;
-            this.txtDuty.TabIndex = 65;
-            // 
             // layoutControlItem21
             // 
             this.layoutControlItem21.Control = this.txtDuty;
@@ -717,14 +753,6 @@
             this.layoutControlItem21.Size = new System.Drawing.Size(365, 24);
             this.layoutControlItem21.Text = "职务";
             this.layoutControlItem21.TextSize = new System.Drawing.Size(72, 14);
-            // 
-            // txtEnabled
-            // 
-            this.txtEnabled.Location = new System.Drawing.Point(87, 376);
-            this.txtEnabled.Name = "txtEnabled";
-            this.txtEnabled.Size = new System.Drawing.Size(651, 20);
-            this.txtEnabled.StyleController = this.layoutControl1;
-            this.txtEnabled.TabIndex = 66;
             // 
             // layoutControlItem17
             // 
@@ -754,6 +782,24 @@
             this.groupControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtEnabled.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDuty.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTitles.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtJobType.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtWorkingDate.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtChildStatus.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMarriage.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDegree.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEducation.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPartyDate.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPolitical.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNationality.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtBirthday.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNativePlace.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtGender.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCompany.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPosition.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDepartment.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIntroduce.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRemark.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtQQ.Properties)).EndInit();
@@ -775,41 +821,23 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem23)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDepartment.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem22)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPosition.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem20)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCompany.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem24)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtGender.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem27)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtNativePlace.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem28)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtBirthday.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem29)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtNationality.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem30)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPolitical.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPartyDate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtEducation.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDegree.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMarriage.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtChildStatus.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem19)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtWorkingDate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtJobType.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTitles.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDuty.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem21)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtEnabled.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

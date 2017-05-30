@@ -82,9 +82,6 @@
     <Reference Include="Hades.Attachment.ClientDx">
       <HintPath>..\..\Reference\Hades.Attachment.ClientDx.dll</HintPath>
     </Reference>
-    <Reference Include="Hades.ContactBook.ClientDx">
-      <HintPath>..\..\Reference\Hades.ContactBook.ClientDx.dll</HintPath>
-    </Reference>
     <Reference Include="Hades.Dictionary.ClientDx">
       <HintPath>..\..\Reference\Hades.Dictionary.ClientDx.dll</HintPath>
     </Reference>
@@ -105,9 +102,6 @@
     </Reference>
     <Reference Include="Hades.Security.ClientDx">
       <HintPath>..\..\Reference\Hades.Security.ClientDx.dll</HintPath>
-    </Reference>
-    <Reference Include="Hades.StaffData.ClientDx">
-      <HintPath>..\..\Reference\Hades.StaffData.ClientDx.dll</HintPath>
     </Reference>
     <Reference Include="log4net">
       <HintPath>..\..\Reference\log4net.dll</HintPath>

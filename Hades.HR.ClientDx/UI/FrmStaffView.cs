@@ -17,7 +17,7 @@ using Hades.Framework.ControlUtil.Facade;
 using Hades.HR.Facade;
 using Hades.HR.Entity;
 
-namespace Hades.HR.ClientDx
+namespace Hades.HR.UI
 {
     /// <summary>
     /// 查看职员窗体
@@ -63,12 +63,24 @@ namespace Hades.HR.ClientDx
                     txtNumber.Text = info.Number;
                     txtName.Text = info.Name;
 
-                    //luDepartment.SetSelected(info.DepartmentId);
-                    //luCompany.SetSelected(info.CompanyId);
-                    //luPosition.SetSelected(info.PositionId);
+                    if (!string.IsNullOrEmpty(info.CompanyId))
+                    {
+                        var company = CallerFactory<IDepartmentService>.Instance.FindByID(info.CompanyId);
+                        txtCompany.Text = company.Name;
+                    }
+                    if (!string.IsNullOrEmpty(info.DepartmentId))
+                    {
+                        var dep = CallerFactory<IDepartmentService>.Instance.FindByID(info.DepartmentId);
+                        txtDepartment.Text = dep.Name;
+                    }
+                    if (!string.IsNullOrEmpty(info.PositionId))
+                    {
+                        var pos = CallerFactory<IPositionService>.Instance.FindByID(info.PositionId);
+                        txtPosition.Text = pos.Name;
+                    }
 
                     txtGender.Text = info.Gender;
-                    txtBirthday.Text = info.Birthday.ToString();
+                    txtBirthday.Text = info.Birthday.ToDateString();
                     txtNativePlace.Text = info.NativePlace;
                     txtNationality.Text = info.Nationality;
                     txtIdentityCard.Text = info.IdentityCard;
@@ -78,10 +90,10 @@ namespace Hades.HR.ClientDx
                     txtQQ.Text = info.QQ;
                     txtHomeAddress.Text = info.HomeAddress;
                     txtPolitical.Text = info.Political;
-                    txtPartyDate.Text = info.PartyDate.ToString();
+                    txtPartyDate.Text = info.PartyDate.ToDateString();
                     txtEducation.Text = info.Education;
                     txtDegree.Text = info.Degree;
-                    txtWorkingDate.Text = info.WorkingDate.ToString();
+                    txtWorkingDate.Text = info.WorkingDate.ToDateString();
                     txtMarriage.Text = info.Marriage;
                     txtChildStatus.Text = info.ChildStatus;
                     txtTitles.Text = info.Titles;
@@ -89,7 +101,7 @@ namespace Hades.HR.ClientDx
                     txtJobType.Text = info.JobType;
                     txtIntroduce.Text = info.Introduce;
                     txtRemark.Text = info.Remark;
-                    txtEnabled.EditValue = info.Enabled;
+                    txtEnabled.Text = info.Enabled == 1 ? "已启用" : "未启用";
                 }
                 //this.btnOK.Enabled = HasFunction("Staff/Edit");             
             }

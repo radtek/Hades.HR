@@ -28,12 +28,9 @@ namespace Hades.HR.UI
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmStaff));
             this.btnAddNew = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.btnExport = new DevExpress.XtraEditors.SimpleButton();
-            this.btnImport = new DevExpress.XtraEditors.SimpleButton();
             this.btnSearch = new DevExpress.XtraEditors.SimpleButton();
             this.txtNumber = new DevExpress.XtraEditors.TextEdit();
             this.txtName = new DevExpress.XtraEditors.TextEdit();
@@ -42,16 +39,15 @@ namespace Hades.HR.UI
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem12 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.wgvStaff = new Hades.Pager.WinControl.WinGridViewPager();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
+            this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtNumber.Properties)).BeginInit();
@@ -61,24 +57,23 @@ namespace Hades.HR.UI
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.groupControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnAddNew
             // 
             this.btnAddNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddNew.Location = new System.Drawing.Point(295, 67);
+            this.btnAddNew.Location = new System.Drawing.Point(24, 67);
             this.btnAddNew.Name = "btnAddNew";
-            this.btnAddNew.Size = new System.Drawing.Size(242, 22);
+            this.btnAddNew.Size = new System.Drawing.Size(253, 22);
             this.btnAddNew.StyleController = this.layoutControl1;
             this.btnAddNew.TabIndex = 15;
             this.btnAddNew.Text = "新建";
@@ -87,8 +82,6 @@ namespace Hades.HR.UI
             // layoutControl1
             // 
             this.layoutControl1.Controls.Add(this.btnAddNew);
-            this.layoutControl1.Controls.Add(this.btnExport);
-            this.layoutControl1.Controls.Add(this.btnImport);
             this.layoutControl1.Controls.Add(this.btnSearch);
             this.layoutControl1.Controls.Add(this.txtNumber);
             this.layoutControl1.Controls.Add(this.txtName);
@@ -102,34 +95,12 @@ namespace Hades.HR.UI
             this.layoutControl1.TabIndex = 12;
             this.layoutControl1.Text = "layoutControl1";
             // 
-            // btnExport
-            // 
-            this.btnExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExport.Location = new System.Drawing.Point(752, 67);
-            this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(218, 22);
-            this.btnExport.StyleController = this.layoutControl1;
-            this.btnExport.TabIndex = 15;
-            this.btnExport.Text = "导出";
-            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
-            // 
-            // btnImport
-            // 
-            this.btnImport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnImport.Location = new System.Drawing.Point(541, 67);
-            this.btnImport.Name = "btnImport";
-            this.btnImport.Size = new System.Drawing.Size(207, 22);
-            this.btnImport.StyleController = this.layoutControl1;
-            this.btnImport.TabIndex = 15;
-            this.btnImport.Text = "导入";
-            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
-            // 
             // btnSearch
             // 
             this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSearch.Location = new System.Drawing.Point(24, 67);
+            this.btnSearch.Location = new System.Drawing.Point(281, 67);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(267, 22);
+            this.btnSearch.Size = new System.Drawing.Size(284, 22);
             this.btnSearch.StyleController = this.layoutControl1;
             this.btnSearch.TabIndex = 14;
             this.btnSearch.Text = "查询";
@@ -139,23 +110,23 @@ namespace Hades.HR.UI
             // 
             this.txtNumber.Location = new System.Drawing.Point(63, 12);
             this.txtNumber.Name = "txtNumber";
-            this.txtNumber.Size = new System.Drawing.Size(242, 20);
+            this.txtNumber.Size = new System.Drawing.Size(215, 20);
             this.txtNumber.StyleController = this.layoutControl1;
             this.txtNumber.TabIndex = 1;
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(360, 12);
+            this.txtName.Location = new System.Drawing.Point(333, 12);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(283, 20);
+            this.txtName.Size = new System.Drawing.Size(246, 20);
             this.txtName.StyleController = this.layoutControl1;
             this.txtName.TabIndex = 2;
             // 
             // txtIdentityCard
             // 
-            this.txtIdentityCard.Location = new System.Drawing.Point(698, 12);
+            this.txtIdentityCard.Location = new System.Drawing.Point(634, 12);
             this.txtIdentityCard.Name = "txtIdentityCard";
-            this.txtIdentityCard.Size = new System.Drawing.Size(284, 20);
+            this.txtIdentityCard.Size = new System.Drawing.Size(348, 20);
             this.txtIdentityCard.StyleController = this.layoutControl1;
             this.txtIdentityCard.TabIndex = 4;
             // 
@@ -178,73 +149,45 @@ namespace Hades.HR.UI
             this.layoutControlItem1.Control = this.txtNumber;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(297, 24);
+            this.layoutControlItem1.Size = new System.Drawing.Size(270, 24);
             this.layoutControlItem1.Text = "工号";
             this.layoutControlItem1.TextSize = new System.Drawing.Size(48, 14);
             // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.txtName;
-            this.layoutControlItem2.Location = new System.Drawing.Point(297, 0);
+            this.layoutControlItem2.Location = new System.Drawing.Point(270, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(338, 24);
+            this.layoutControlItem2.Size = new System.Drawing.Size(301, 24);
             this.layoutControlItem2.Text = "姓名";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(48, 14);
             // 
             // layoutControlGroup2
             // 
             this.layoutControlGroup2.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem9,
             this.layoutControlItem10,
-            this.layoutControlItem11,
-            this.layoutControlItem12});
+            this.layoutControlItem9,
+            this.emptySpaceItem1});
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 24);
             this.layoutControlGroup2.Name = "layoutControlGroup2";
             this.layoutControlGroup2.Size = new System.Drawing.Size(974, 77);
             this.layoutControlGroup2.Text = "操作";
             // 
-            // layoutControlItem9
-            // 
-            this.layoutControlItem9.Control = this.btnSearch;
-            this.layoutControlItem9.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem9.Name = "layoutControlItem9";
-            this.layoutControlItem9.Size = new System.Drawing.Size(271, 34);
-            this.layoutControlItem9.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem9.TextVisible = false;
-            // 
             // layoutControlItem10
             // 
             this.layoutControlItem10.Control = this.btnAddNew;
-            this.layoutControlItem10.Location = new System.Drawing.Point(271, 0);
+            this.layoutControlItem10.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem10.Name = "layoutControlItem10";
-            this.layoutControlItem10.Size = new System.Drawing.Size(246, 34);
+            this.layoutControlItem10.Size = new System.Drawing.Size(257, 34);
             this.layoutControlItem10.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem10.TextVisible = false;
-            // 
-            // layoutControlItem11
-            // 
-            this.layoutControlItem11.Control = this.btnImport;
-            this.layoutControlItem11.Location = new System.Drawing.Point(517, 0);
-            this.layoutControlItem11.Name = "layoutControlItem11";
-            this.layoutControlItem11.Size = new System.Drawing.Size(211, 34);
-            this.layoutControlItem11.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem11.TextVisible = false;
-            // 
-            // layoutControlItem12
-            // 
-            this.layoutControlItem12.Control = this.btnExport;
-            this.layoutControlItem12.Location = new System.Drawing.Point(728, 0);
-            this.layoutControlItem12.Name = "layoutControlItem12";
-            this.layoutControlItem12.Size = new System.Drawing.Size(222, 34);
-            this.layoutControlItem12.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem12.TextVisible = false;
             // 
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.txtIdentityCard;
-            this.layoutControlItem4.Location = new System.Drawing.Point(635, 0);
+            this.layoutControlItem4.Location = new System.Drawing.Point(571, 0);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(339, 24);
+            this.layoutControlItem4.Size = new System.Drawing.Size(403, 24);
             this.layoutControlItem4.Text = "身份证号";
             this.layoutControlItem4.TextSize = new System.Drawing.Size(48, 14);
             // 
@@ -309,6 +252,23 @@ namespace Hades.HR.UI
             this.groupControl3.TabIndex = 2;
             this.groupControl3.Text = "职工列表";
             // 
+            // layoutControlItem9
+            // 
+            this.layoutControlItem9.Control = this.btnSearch;
+            this.layoutControlItem9.Location = new System.Drawing.Point(257, 0);
+            this.layoutControlItem9.Name = "layoutControlItem9";
+            this.layoutControlItem9.Size = new System.Drawing.Size(288, 34);
+            this.layoutControlItem9.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem9.TextVisible = false;
+            // 
+            // emptySpaceItem1
+            // 
+            this.emptySpaceItem1.AllowHotTrack = false;
+            this.emptySpaceItem1.Location = new System.Drawing.Point(545, 0);
+            this.emptySpaceItem1.Name = "emptySpaceItem1";
+            this.emptySpaceItem1.Size = new System.Drawing.Size(405, 34);
+            this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
+            // 
             // FrmStaff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -326,16 +286,15 @@ namespace Hades.HR.UI
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
             this.groupControl3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -344,8 +303,6 @@ namespace Hades.HR.UI
 
         private DevExpress.XtraEditors.SimpleButton btnSearch;
         private DevExpress.XtraEditors.SimpleButton btnAddNew;
-        private DevExpress.XtraEditors.SimpleButton btnImport;
-        private DevExpress.XtraEditors.SimpleButton btnExport;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private Hades.Pager.WinControl.WinGridViewPager wgvStaff;
 
@@ -363,12 +320,11 @@ namespace Hades.HR.UI
          private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;    
          private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;    
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup2;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem9;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem10;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem11;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem12;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private DevExpress.XtraEditors.GroupControl groupControl2;
         private DevExpress.XtraEditors.GroupControl groupControl3;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem9;
+        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
     }
 }

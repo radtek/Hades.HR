@@ -106,6 +106,30 @@ namespace Hades.HR.UI
             string where = condition.BuildConditionSql().Replace("Where", "");
             return where;
         }
+
+        /// <summary>
+        /// 查看职员
+        /// </summary>
+        private void ViewStaff()
+        {
+            string ID = this.wgvStaff.gridView1.GetFocusedRowCellDisplayText("Id");
+            
+            List<string> IDList = new List<string>();
+            for (int i = 0; i < this.wgvStaff.gridView1.RowCount; i++)
+            {
+                string strTemp = this.wgvStaff.GridView1.GetRowCellDisplayText(i, "Id");
+                IDList.Add(strTemp);
+            }
+
+            if (!string.IsNullOrEmpty(ID))
+            {
+                FrmStaffView dlg = new FrmStaffView();
+                dlg.ID = ID;
+                dlg.IDList = IDList;
+                dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
+                dlg.ShowDialog();
+            }
+        }
         #endregion //Function
 
         #region Method
@@ -130,15 +154,6 @@ namespace Hades.HR.UI
         private void depTree_DepartmentSelect(object sender, EventArgs e)
         {
             BindData();
-            //var dep = this.depTree.GetSelectedObject();
-            //if (dep == null)
-            //    return;
-
-            //var departments = CallerFactory<IDepartmentService>.Instance.FindWithChildren(dep.Id);
-
-            //var idList = departments.Select(r => r.Id).ToList();
-            //List<StaffInfo> list = CallerFactory<IStaffService>.Instance.FindByDepartments(idList);
-            //this.wgvStaff.DataSource = list;
         }
 
 
@@ -243,6 +258,26 @@ namespace Hades.HR.UI
             {
                 btnSearch_Click(null, null);
             }
+        }
+
+        /// <summary>
+        /// 双击列表
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void wgvStaff_OnGridViewMouseDoubleClick(object sender, EventArgs e)
+        {
+            ViewStaff();
+        }
+
+        /// <summary>
+        /// 菜单 - 查看
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void menuView_Click(object sender, EventArgs e)
+        {
+            ViewStaff();
         }
         #endregion //Event
     }

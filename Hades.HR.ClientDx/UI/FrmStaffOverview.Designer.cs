@@ -28,15 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmStaffOverview));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
             this.wgvStaff = new Hades.Pager.WinControl.WinGridViewPager();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.btnExport = new DevExpress.XtraEditors.SimpleButton();
-            this.btnImport = new DevExpress.XtraEditors.SimpleButton();
             this.btnSearch = new DevExpress.XtraEditors.SimpleButton();
             this.txtNumber = new DevExpress.XtraEditors.TextEdit();
             this.txtName = new DevExpress.XtraEditors.TextEdit();
@@ -46,12 +43,12 @@
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem12 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip();
+            this.menuView = new System.Windows.Forms.ToolStripMenuItem();
             this.depTree = new Hades.HR.UI.DepartmentTreeGrid();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.groupControl3.SuspendLayout();
@@ -67,11 +64,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -86,9 +83,8 @@
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(873, 536);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -96,9 +92,9 @@
             // 
             this.groupControl3.Controls.Add(this.wgvStaff);
             this.groupControl3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl3.Location = new System.Drawing.Point(203, 203);
+            this.groupControl3.Location = new System.Drawing.Point(203, 153);
             this.groupControl3.Name = "groupControl3";
-            this.groupControl3.Size = new System.Drawing.Size(667, 330);
+            this.groupControl3.Size = new System.Drawing.Size(667, 380);
             this.groupControl3.TabIndex = 3;
             this.groupControl3.Text = "职工列表";
             // 
@@ -119,8 +115,9 @@
             this.wgvStaff.ShowDeleteMenu = false;
             this.wgvStaff.ShowEditMenu = false;
             this.wgvStaff.ShowExportButton = false;
-            this.wgvStaff.Size = new System.Drawing.Size(663, 307);
+            this.wgvStaff.Size = new System.Drawing.Size(663, 357);
             this.wgvStaff.TabIndex = 11;
+            this.wgvStaff.OnGridViewMouseDoubleClick += new System.EventHandler(this.wgvStaff_OnGridViewMouseDoubleClick);
             // 
             // groupControl2
             // 
@@ -128,14 +125,12 @@
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl2.Location = new System.Drawing.Point(203, 3);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(667, 194);
+            this.groupControl2.Size = new System.Drawing.Size(667, 144);
             this.groupControl2.TabIndex = 2;
             this.groupControl2.Text = "查询";
             // 
             // layoutControl1
             // 
-            this.layoutControl1.Controls.Add(this.btnExport);
-            this.layoutControl1.Controls.Add(this.btnImport);
             this.layoutControl1.Controls.Add(this.btnSearch);
             this.layoutControl1.Controls.Add(this.txtNumber);
             this.layoutControl1.Controls.Add(this.txtName);
@@ -145,36 +140,16 @@
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(70, 185, 250, 350);
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(663, 171);
+            this.layoutControl1.Size = new System.Drawing.Size(663, 121);
             this.layoutControl1.TabIndex = 12;
             this.layoutControl1.Text = "layoutControl1";
-            // 
-            // btnExport
-            // 
-            this.btnExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExport.Location = new System.Drawing.Point(422, 67);
-            this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(217, 22);
-            this.btnExport.StyleController = this.layoutControl1;
-            this.btnExport.TabIndex = 15;
-            this.btnExport.Text = "导出";
-            // 
-            // btnImport
-            // 
-            this.btnImport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnImport.Location = new System.Drawing.Point(200, 67);
-            this.btnImport.Name = "btnImport";
-            this.btnImport.Size = new System.Drawing.Size(218, 22);
-            this.btnImport.StyleController = this.layoutControl1;
-            this.btnImport.TabIndex = 15;
-            this.btnImport.Text = "导入";
             // 
             // btnSearch
             // 
             this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSearch.Location = new System.Drawing.Point(24, 67);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(172, 22);
+            this.btnSearch.Size = new System.Drawing.Size(181, 22);
             this.btnSearch.StyleController = this.layoutControl1;
             this.btnSearch.TabIndex = 14;
             this.btnSearch.Text = "查询";
@@ -215,7 +190,7 @@
             this.layoutControlItem4});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(663, 171);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(663, 121);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem1
@@ -240,11 +215,10 @@
             // 
             this.layoutControlGroup2.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem9,
-            this.layoutControlItem11,
-            this.layoutControlItem12});
+            this.emptySpaceItem1});
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 24);
             this.layoutControlGroup2.Name = "layoutControlGroup2";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(643, 127);
+            this.layoutControlGroup2.Size = new System.Drawing.Size(643, 77);
             this.layoutControlGroup2.Text = "操作";
             // 
             // layoutControlItem9
@@ -252,27 +226,9 @@
             this.layoutControlItem9.Control = this.btnSearch;
             this.layoutControlItem9.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem9.Name = "layoutControlItem9";
-            this.layoutControlItem9.Size = new System.Drawing.Size(176, 84);
+            this.layoutControlItem9.Size = new System.Drawing.Size(185, 34);
             this.layoutControlItem9.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem9.TextVisible = false;
-            // 
-            // layoutControlItem11
-            // 
-            this.layoutControlItem11.Control = this.btnImport;
-            this.layoutControlItem11.Location = new System.Drawing.Point(176, 0);
-            this.layoutControlItem11.Name = "layoutControlItem11";
-            this.layoutControlItem11.Size = new System.Drawing.Size(222, 84);
-            this.layoutControlItem11.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem11.TextVisible = false;
-            // 
-            // layoutControlItem12
-            // 
-            this.layoutControlItem12.Control = this.btnExport;
-            this.layoutControlItem12.Location = new System.Drawing.Point(398, 0);
-            this.layoutControlItem12.Name = "layoutControlItem12";
-            this.layoutControlItem12.Size = new System.Drawing.Size(221, 84);
-            this.layoutControlItem12.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem12.TextVisible = false;
             // 
             // layoutControlItem4
             // 
@@ -294,6 +250,20 @@
             this.groupControl1.TabIndex = 1;
             this.groupControl1.Text = "部门列表";
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuView});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(101, 26);
+            // 
+            // menuView
+            // 
+            this.menuView.Name = "menuView";
+            this.menuView.Size = new System.Drawing.Size(100, 22);
+            this.menuView.Text = "查看";
+            this.menuView.Click += new System.EventHandler(this.menuView_Click);
+            // 
             // depTree
             // 
             this.depTree.DataSource = null;
@@ -309,10 +279,13 @@
             this.depTree.TabIndex = 0;
             this.depTree.DepartmentSelect += new System.EventHandler(this.depTree_DepartmentSelect);
             // 
-            // contextMenuStrip1
+            // emptySpaceItem1
             // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            this.emptySpaceItem1.AllowHotTrack = false;
+            this.emptySpaceItem1.Location = new System.Drawing.Point(185, 0);
+            this.emptySpaceItem1.Name = "emptySpaceItem1";
+            this.emptySpaceItem1.Size = new System.Drawing.Size(434, 34);
+            this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // FrmStaffOverview
             // 
@@ -337,11 +310,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
+            this.contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -353,8 +326,6 @@
         private DepartmentTreeGrid depTree;
         private DevExpress.XtraEditors.GroupControl groupControl2;
         private DevExpress.XtraLayout.LayoutControl layoutControl1;
-        private DevExpress.XtraEditors.SimpleButton btnExport;
-        private DevExpress.XtraEditors.SimpleButton btnImport;
         private DevExpress.XtraEditors.SimpleButton btnSearch;
         private DevExpress.XtraEditors.TextEdit txtNumber;
         private DevExpress.XtraEditors.TextEdit txtName;
@@ -364,11 +335,11 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup2;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem9;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem11;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem12;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         private DevExpress.XtraEditors.GroupControl groupControl3;
         private Pager.WinControl.WinGridViewPager wgvStaff;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem menuView;
+        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
     }
 }
