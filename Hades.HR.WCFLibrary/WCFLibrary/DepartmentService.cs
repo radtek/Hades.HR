@@ -19,13 +19,18 @@ namespace Hades.HR.WCFLibrary
 	/// </summary>
     public class DepartmentService : BaseLocalService<DepartmentInfo>, IDepartmentService
     {
+        #region Field
         private Department bll = null;
+        #endregion //Field
 
+        #region Constructor
         public DepartmentService() : base(BLLFactory<Department>.Instance)
         {
             bll = baseBLL as Department;
         }
+        #endregion //Constructor
 
+        #region Method
         public bool CheckDuplicate(DepartmentInfo entity, out string message)
         {
             throw new NotImplementedException();
@@ -40,28 +45,31 @@ namespace Hades.HR.WCFLibrary
             return bll.FindAll();
         }
 
+        /// <summary>
+        /// 查找部门列表
+        /// </summary>
+        /// <param name="deleted">删除标志</param>
+        /// <param name="enabled">启用标志</param>
+        /// <returns></returns>
         public List<DepartmentInfo> FindList(int deleted, int enabled)
         {
-            throw new NotImplementedException();
+            return bll.FindList(deleted, enabled);
         }
 
+        /// <summary>
+        /// 查找部门及其子部门
+        /// </summary>
+        /// <param name="id">部门ID</param>
+        /// <returns></returns>
         public List<DepartmentInfo> FindWithChildren(string id)
         {
-            throw new NotImplementedException();
+            return bll.FindWithChildren(id);
         }
 
         public bool MarkDelete(string id)
         {
             throw new NotImplementedException();
         }
-
-        ///// <summary>
-        ///// 根据名称查找对象(自定义接口使用范例)
-        ///// </summary>
-        //public List<DepartmentInfo> FindByName(string name)
-        //{
-        //    return bll.FindByName(name);
-        //}
-
+        #endregion //Method
     }
 }

@@ -86,6 +86,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="BaseData\TradeCorpService.svc" />
     <Content Include="BaseWcf\DictDataService.svc" />
     <Content Include="BaseWcf\DictTypeService.svc" />
     <Content Include="BaseWcf\FileUploadService.svc" />
@@ -96,12 +97,64 @@
     <Content Include="BaseWcf\RoleService.svc" />
     <Content Include="BaseWcf\SystemTypeService.svc" />
     <Content Include="BaseWcf\UserService.svc" />
+    <Content Include="Base\ACL\BlackIPService.svc" />
+    <Content Include="Base\ACL\FunctionService.svc" />
+    <Content Include="Base\ACL\LoginLogService.svc" />
+    <Content Include="Base\ACL\MenuService.svc" />
+    <Content Include="Base\ACL\OperationLogService.svc" />
+    <Content Include="Base\ACL\OperationLogSettingService.svc" />
+    <Content Include="Base\ACL\OUService.svc" />
+    <Content Include="Base\ACL\RoleDataService.svc" />
+    <Content Include="Base\ACL\RoleService.svc" />
+    <Content Include="Base\ACL\SystemTypeService.svc" />
+    <Content Include="Base\ACL\UserService.svc" />
+    <Content Include="Base\BS\FileUploadService.svc" />
+    <Content Include="Base\DataDict\AppChannelService.svc" />
+    <Content Include="Base\DataDict\CityService.svc" />
+    <Content Include="Base\DataDict\DictDataService.svc" />
+    <Content Include="Base\DataDict\DictTypeService.svc" />
+    <Content Include="Base\DataDict\DistrictService.svc" />
+    <Content Include="Base\DataDict\ProvinceService.svc" />
+    <Content Include="Base\DataDict\UserParameterService.svc" />
+    <Content Include="Base\Mail\MailAttachService.svc" />
+    <Content Include="Base\Mail\MailConfigService.svc" />
+    <Content Include="Base\Mail\MailDetailService.svc" />
+    <Content Include="Base\Mail\MailReceiveService.svc" />
+    <Content Include="Base\Mail\MailReceiveTaskService.svc" />
+    <Content Include="Base\Mail\MailSendHistoryService.svc" />
+    <Content Include="Base\Mail\MailSendService.svc" />
+    <Content Include="Base\Mail\MailUnifiedConfigService.svc" />
     <Content Include="HR\DepartmentService.svc" />
     <Content Include="HR\PositionService.svc" />
     <Content Include="HR\StaffService.svc" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="WorkFlow\AccreditUserService.svc" />
+    <Content Include="WorkFlow\AuditMessageService.svc" />
+    <Content Include="WorkFlow\MainUserControlService.svc" />
+    <Content Include="WorkFlow\OperatorInstanceService.svc" />
+    <Content Include="WorkFlow\OperatorService.svc" />
+    <Content Include="WorkFlow\SubWorkFlowService.svc" />
+    <Content Include="WorkFlow\TaskVarService.svc" />
+    <Content Include="WorkFlow\UserControlsLinkService.svc" />
+    <Content Include="WorkFlow\UserControlsService.svc" />
+    <Content Include="WorkFlow\WorkFlowAbnormalService.svc" />
+    <Content Include="WorkFlow\WorkFlowBackService.svc" />
+    <Content Include="WorkFlow\WorkFlowClassService.svc" />
+    <Content Include="WorkFlow\WorkFlowEventService.svc" />
+    <Content Include="WorkFlow\WorkFlowHelperService.svc" />
+    <Content Include="WorkFlow\WorkFlowInstanceService.svc" />
+    <Content Include="WorkFlow\WorkflowRuntimeService.svc" />
+    <Content Include="WorkFlow\WorkFlowService.svc" />
+    <Content Include="WorkFlow\WorkLinkService.svc" />
+    <Content Include="WorkFlow\WorkOutTimeService.svc" />
+    <Content Include="WorkFlow\WorkTaskCommandsService.svc" />
+    <Content Include="WorkFlow\WorkTaskControlsService.svc" />
+    <Content Include="WorkFlow\WorkTaskInsNextOperService.svc" />
+    <Content Include="WorkFlow\WorkTaskInstanceService.svc" />
+    <Content Include="WorkFlow\WorkTaskPowerService.svc" />
+    <Content Include="WorkFlow\WorkTaskService.svc" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -119,7 +172,10 @@
     <Content Include="HR\Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Base\Web.config" />
+    <Content Include="BaseData\Web.config" />
     <None Include="Properties\PublishProfiles\MisService.pubxml" />
+    <Content Include="WorkFlow\Web.config" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

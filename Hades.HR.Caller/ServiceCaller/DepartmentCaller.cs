@@ -20,50 +20,15 @@ namespace Hades.HR.ServiceCaller
 	/// </summary>
     public class DepartmentCaller : BaseWCFService<DepartmentInfo>, IDepartmentService
     {
+        #region Constructor
         public DepartmentCaller()  : base()
         {	
             this.configurationPath = EndPointConfig.WcfConfig; //WCF配置文件
             this.endpointConfigurationName = EndPointConfig.DepartmentService;
         }
+        #endregion //Constructor
 
-        public bool CheckDuplicate(DepartmentInfo entity, out string message)
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// 查找所有部门，不包含已删除
-        /// </summary>
-        /// <returns></returns>
-        public List<DepartmentInfo> FindAll()
-        {
-            List<DepartmentInfo> result = new List<DepartmentInfo>();
-
-            IDepartmentService service = CreateSubClient();
-            ICommunicationObject comm = service as ICommunicationObject;
-            comm.Using(client =>
-            {
-                result = service.FindAll();
-            });
-
-            return result;
-        }
-
-        public List<DepartmentInfo> FindList(int deleted, int enabled)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<DepartmentInfo> FindWithChildren(string id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool MarkDelete(string id)
-        {
-            throw new NotImplementedException();
-        }
-
+        #region Function
         /// <summary>
         /// 子类构造一个IChannel对象转换为基类接口，方便给基类进行调用通用的API
         /// </summary>
@@ -82,6 +47,77 @@ namespace Hades.HR.ServiceCaller
             CustomClientChannel<IDepartmentService> factory = new CustomClientChannel<IDepartmentService>(endpointConfigurationName, configurationPath);
             return factory.CreateChannel();
         }
+        #endregion //Function
+
+        #region Method
+        /// <summary>
+        /// 查找所有部门，不包含已删除
+        /// </summary>
+        /// <returns></returns>
+        public List<DepartmentInfo> FindAll()
+        {
+            List<DepartmentInfo> result = new List<DepartmentInfo>();
+
+            IDepartmentService service = CreateSubClient();
+            ICommunicationObject comm = service as ICommunicationObject;
+            comm.Using(client =>
+            {
+                result = service.FindAll();
+            });
+
+            return result;
+        }
+
+        /// <summary>
+        /// 查找部门列表
+        /// </summary>
+        /// <param name="deleted">删除标志</param>
+        /// <param name="enabled">启用标志</param>
+        /// <returns></returns>
+        public List<DepartmentInfo> FindList(int deleted, int enabled)
+        {
+            List<DepartmentInfo> result = new List<DepartmentInfo>();
+
+            IDepartmentService service = CreateSubClient();
+            ICommunicationObject comm = service as ICommunicationObject;
+            comm.Using(client =>
+            {
+                result = service.FindList(deleted, enabled);
+            });
+
+            return result;
+        }
+
+        /// <summary>
+        /// 查找部门及其子部门
+        /// </summary>
+        /// <param name="id">部门ID</param>
+        /// <returns></returns>
+        public List<DepartmentInfo> FindWithChildren(string id)
+        {
+            List<DepartmentInfo> result = new List<DepartmentInfo>();
+
+            IDepartmentService service = CreateSubClient();
+            ICommunicationObject comm = service as ICommunicationObject;
+            comm.Using(client =>
+            {
+                result = service.FindWithChildren(id);
+            });
+
+            return result;
+        }
+
+        public bool CheckDuplicate(DepartmentInfo entity, out string message)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool MarkDelete(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion //Method
 
         ///// <summary>
         ///// 根据名称查找对象(自定义接口使用范例)
