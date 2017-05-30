@@ -96,10 +96,12 @@
     <Content Include="BaseWcf\RoleService.svc" />
     <Content Include="BaseWcf\SystemTypeService.svc" />
     <Content Include="BaseWcf\UserService.svc" />
-    <Content Include="DepartmentService.svc" />
-    <Content Include="PositionService.svc" />
-    <Content Include="StaffService.svc" />
-    <Content Include="Web.config" />
+    <Content Include="HR\DepartmentService.svc" />
+    <Content Include="HR\PositionService.svc" />
+    <Content Include="HR\StaffService.svc" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -112,6 +114,12 @@
       <Project>{8CAF8604-3C17-4A9B-BDDD-E179250C9544}</Project>
       <Name>Hades.HR.WCFLibrary</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="HR\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\MisService.pubxml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

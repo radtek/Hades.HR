@@ -1,0 +1,2 @@
+<%@ ServiceHost Language="C#" Debug="true" Service="Hades.Dictionary.WCFLibrary.UserParameterService" %>
+<%@ Assembly Name="Hades.Dictionary.WCFLibrary" %>

@@ -13,7 +13,7 @@ namespace Hades.HR.ServiceCaller
         /// <summary>
         /// WCF配置文件路径
         /// </summary>
-        public const string WcfConfig = "WcfConfig.config";
+        public const string WcfConfig = "HRWcfConfig.config";
 
         public const string DepartmentService = "WSHttpBinding_IDepartmentService";
         public const string PositionService = "WSHttpBinding_IPositionService";

@@ -341,6 +341,7 @@
     <None Include="updateconfiguration.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="WcfConfig\HRWcfConfig.config" />
     <None Include="WcfConfig\WorkflowWcfConfig.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>

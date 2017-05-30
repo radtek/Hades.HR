@@ -44,7 +44,7 @@ namespace Hades.HR.UI
             var data = CallerFactory<IDictDataService>.Instance.GetDictListItemByCode("2001");
 
             ControlUtil.BindDictToCombo(this.cmbNationality, "2001");
-            ControlUtil.BindDictItems(this.cmbPolitical, "2002");
+            ControlUtil.BindDictToCombo(this.cmbPolitical, "2002");
 
             //ControlUtil.BindDictItems(this.cmbNationality, "民族");
             //ControlUtil.BindDictItems(this.cmbPolitical, "政治面貌");

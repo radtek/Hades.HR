@@ -31,9 +31,13 @@ namespace Hades.HR.WCFLibrary
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// 查找所有部门，不包含已删除
+        /// </summary>
+        /// <returns></returns>
         public List<DepartmentInfo> FindAll()
         {
-            throw new NotImplementedException();
+            return bll.FindAll();
         }
 
         public List<DepartmentInfo> FindList(int deleted, int enabled)

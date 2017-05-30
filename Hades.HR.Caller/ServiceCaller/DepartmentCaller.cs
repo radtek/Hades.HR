@@ -31,9 +31,22 @@ namespace Hades.HR.ServiceCaller
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// 查找所有部门，不包含已删除
+        /// </summary>
+        /// <returns></returns>
         public List<DepartmentInfo> FindAll()
         {
-            throw new NotImplementedException();
+            List<DepartmentInfo> result = new List<DepartmentInfo>();
+
+            IDepartmentService service = CreateSubClient();
+            ICommunicationObject comm = service as ICommunicationObject;
+            comm.Using(client =>
+            {
+                result = service.FindAll();
+            });
+
+            return result;
         }
 
         public List<DepartmentInfo> FindList(int deleted, int enabled)

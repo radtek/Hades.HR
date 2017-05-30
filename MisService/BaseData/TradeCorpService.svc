@@ -1,0 +1,2 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="Hades.BaseData.WCFLibrary.TradeCorpService" %>
+<%@ Assembly Name="Hades.BaseData.WCFLibrary" %>
