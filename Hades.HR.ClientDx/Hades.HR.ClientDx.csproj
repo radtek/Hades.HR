@@ -150,6 +150,9 @@
     <Compile Include="..\hades.hr.caller\facade\IPositionService.cs">
       <Link>Facade\IPositionService.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Caller\Facade\IStaffSalaryService.cs">
+      <Link>Facade\IStaffSalaryService.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Caller\Facade\IStaffService.cs">
       <Link>Facade\IStaffService.cs</Link>
     </Compile>
@@ -165,6 +168,9 @@
     <Compile Include="..\Hades.HR.Caller\ServiceCaller\StaffCaller.cs">
       <Link>Caller\ServiceCaller\StaffCaller.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Caller\ServiceCaller\StaffSalaryCaller.cs">
+      <Link>Caller\ServiceCaller\StaffSalaryCaller.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Caller\WinformCaller\DepartmentCaller.cs">
       <Link>Caller\WinformCaller\DepartmentCaller.cs</Link>
     </Compile>
@@ -173,6 +179,9 @@
     </Compile>
     <Compile Include="..\Hades.HR.Caller\WinformCaller\StaffCaller.cs">
       <Link>Caller\WinformCaller\StaffCaller.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Caller\WinformCaller\StaffSalaryCaller.cs">
+      <Link>Caller\WinformCaller\StaffSalaryCaller.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\BLL\Department.cs">
       <Link>Biz\BLL\Department.cs</Link>
@@ -183,6 +192,9 @@
     <Compile Include="..\Hades.HR.Core\BLL\Staff.cs">
       <Link>Biz\BLL\Staff.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Core\BLL\StaffSalary.cs">
+      <Link>Biz\BLL\StaffSalary.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Department.cs">
       <Link>Biz\DAL\DALSQL\Department.cs</Link>
     </Compile>
@@ -191,6 +203,9 @@
     </Compile>
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Staff.cs">
       <Link>Biz\DAL\DALSQL\Staff.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\DAL\DALSQL\StaffSalary.cs">
+      <Link>Biz\DAL\DALSQL\StaffSalary.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\Entity\DepartmentInfo.cs">
       <Link>Biz\Entity\DepartmentInfo.cs</Link>
@@ -201,6 +216,9 @@
     <Compile Include="..\Hades.HR.Core\Entity\StaffInfo.cs">
       <Link>Biz\Entity\StaffInfo.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Core\Entity\StaffSalaryInfo.cs">
+      <Link>Biz\Entity\StaffSalaryInfo.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Core\IDAL\IDepartment.cs">
       <Link>Biz\IDAL\IDepartment.cs</Link>
     </Compile>
@@ -209,6 +227,9 @@
     </Compile>
     <Compile Include="..\Hades.HR.Core\IDAL\IStaff.cs">
       <Link>Biz\IDAL\IStaff.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\IDAL\IStaffSalary.cs">
+      <Link>Biz\IDAL\IStaffSalary.cs</Link>
     </Compile>
     <Compile Include="Control\DepartmentLookup.cs">
       <SubType>UserControl</SubType>
@@ -233,6 +254,18 @@
     </Compile>
     <Compile Include="Control\PositionLookup.Designer.cs">
       <DependentUpon>PositionLookup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FrmEditStaffSalary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FrmEditStaffSalary.Designer.cs">
+      <DependentUpon>FrmEditStaffSalary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FrmStaffSalary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FrmStaffSalary.Designer.cs">
+      <DependentUpon>FrmStaffSalary.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\FrmStaffView.cs">
       <SubType>Form</SubType>

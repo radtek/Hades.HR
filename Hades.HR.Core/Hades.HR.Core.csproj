@@ -109,12 +109,16 @@
   <ItemGroup>
     <Compile Include="BLL\Department.cs" />
     <Compile Include="BLL\Staff.cs" />
+    <Compile Include="BLL\StaffSalary.cs" />
     <Compile Include="DAL\DALSQL\Department.cs" />
     <Compile Include="DAL\DALSQL\Staff.cs" />
+    <Compile Include="DAL\DALSQL\StaffSalary.cs" />
     <Compile Include="Entity\DepartmentInfo.cs" />
     <Compile Include="Entity\StaffInfo.cs" />
+    <Compile Include="Entity\StaffSalaryInfo.cs" />
     <Compile Include="IDAL\IDepartment.cs" />
     <Compile Include="IDAL\IStaff.cs" />
+    <Compile Include="IDAL\IStaffSalary.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BLL\Position.cs" />
     <Compile Include="DAL\DALSQL\Position.cs" />
