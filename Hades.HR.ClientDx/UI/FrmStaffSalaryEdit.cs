@@ -23,16 +23,20 @@ namespace Hades.HR.UI
     /// </summary>
     public partial class FrmStaffSalaryEdit : BaseEditForm
     {
-    	/// <summary>
+        #region Field
+        /// <summary>
         /// 创建一个临时对象，方便在附件管理中获取存在的GUID
         /// </summary>
-    	private StaffSalaryInfo tempInfo = new StaffSalaryInfo();
-    	
+        private StaffSalaryInfo tempInfo = new StaffSalaryInfo();
+        #endregion //Field
+
+        #region Constructor
         public FrmStaffSalaryEdit()
         {
             InitializeComponent();
         }
-                
+        #endregion //Constructor
+
         /// <summary>
         /// 实现控件输入检查的函数
         /// </summary>
@@ -52,8 +56,8 @@ namespace Hades.HR.UI
         /// </summary>
         private void InitDictItem()
         {
-			//初始化代码
-        }                        
+            //初始化代码
+        }
 
         /// <summary>
         /// 数据显示的函数
@@ -68,41 +72,29 @@ namespace Hades.HR.UI
                 StaffSalaryInfo info = CallerFactory<IStaffSalaryService>.Instance.FindByID(ID);
                 if (info != null)
                 {
-                	tempInfo = info;//重新给临时对象赋值，使之指向存在的记录对象
-                	
-	                   // txtFinanceDepartment.Text = info.FinanceDepartment.ToString();
-           	                    txtCardNumber.Text = info.CardNumber;
-                                   txtBaseSalary.Value = info.BaseSalary;
-                               txtBaseBonus.Value = info.BaseBonus;
-                               txtDepartmentBonus.Value = info.DepartmentBonus;
-                               txtReserveFund.Value = info.ReserveFund;
-                               txtInsurance.Value = info.Insurance;
-                         } 
+                    tempInfo = info;//重新给临时对象赋值，使之指向存在的记录对象
+
+                    // txtFinanceDepartment.Text = info.FinanceDepartment.ToString();
+                    txtCardNumber.Text = info.CardNumber;
+                    txtBaseSalary.Value = info.BaseSalary;
+                    txtBaseBonus.Value = info.BaseBonus;
+                    txtDepartmentBonus.Value = info.DepartmentBonus;
+                    txtReserveFund.Value = info.ReserveFund;
+                    txtInsurance.Value = info.Insurance;
+                }
                 #endregion
                 //this.btnOK.Enabled = HasFunction("StaffSalary/Edit");             
             }
             else
             {
-       
+
                 //this.btnOK.Enabled = Portal.gc.HasFunction("StaffSalary/Add");  
             }
-            
+
             //tempInfo在对象存在则为指定对象，新建则是全新的对象，但有一些初始化的GUID用于附件上传
             //SetAttachInfo(tempInfo);
         }
 
-        //private void SetAttachInfo(StaffSalaryInfo info)
-        //{
-        //    this.attachmentGUID.AttachmentGUID = info.AttachGUID;
-        //    this.attachmentGUID.userId = LoginUserInfo.Name;
-
-        //    string name = txtName.Text;
-        //    if (!string.IsNullOrEmpty(name))
-        //    {
-        //        string dir = string.Format("{0}", name);
-        //        this.attachmentGUID.Init(dir, tempInfo.ID, LoginUserInfo.Name);
-        //    }
-        //}
 
         public override void ClearScreen()
         {
@@ -116,15 +108,15 @@ namespace Hades.HR.UI
         /// <param name="info"></param>
         private void SetInfo(StaffSalaryInfo info)
         {
-	            //info.FinanceDepartment = txtFinanceDepartment.Text;
-       	            info.CardNumber = txtCardNumber.Text;
-                       info.BaseSalary = txtBaseSalary.Value;
-                       info.BaseBonus = txtBaseBonus.Value;
-                       info.DepartmentBonus = txtDepartmentBonus.Value;
-                       info.ReserveFund = txtReserveFund.Value;
-                       info.Insurance = txtInsurance.Value;
-               }
-         
+            //info.FinanceDepartment = txtFinanceDepartment.Text;
+            info.CardNumber = txtCardNumber.Text;
+            info.BaseSalary = txtBaseSalary.Value;
+            info.BaseBonus = txtBaseBonus.Value;
+            info.DepartmentBonus = txtDepartmentBonus.Value;
+            info.ReserveFund = txtReserveFund.Value;
+            info.Insurance = txtInsurance.Value;
+        }
+
         /// <summary>
         /// 新增状态下的数据保存
         /// </summary>
@@ -153,7 +145,7 @@ namespace Hades.HR.UI
                 MessageDxUtil.ShowError(ex.Message);
             }
             return false;
-        }                 
+        }
 
         /// <summary>
         /// 编辑状态下的数据保存
@@ -174,7 +166,7 @@ namespace Hades.HR.UI
                     if (succeed)
                     {
                         //可添加其他关联操作
-                       
+
                         return true;
                     }
                     #endregion
@@ -185,7 +177,7 @@ namespace Hades.HR.UI
                     MessageDxUtil.ShowError(ex.Message);
                 }
             }
-           return false;
+            return false;
         }
     }
 }
