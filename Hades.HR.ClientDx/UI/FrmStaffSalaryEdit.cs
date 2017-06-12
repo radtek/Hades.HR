@@ -18,14 +18,17 @@ using Hades.HR.Entity;
 
 namespace Hades.HR.UI
 {
-    public partial class FrmEditStaffSalary : BaseEditForm
+    /// <summary>
+    /// 编辑员工工资信息
+    /// </summary>
+    public partial class FrmStaffSalaryEdit : BaseEditForm
     {
     	/// <summary>
         /// 创建一个临时对象，方便在附件管理中获取存在的GUID
         /// </summary>
     	private StaffSalaryInfo tempInfo = new StaffSalaryInfo();
     	
-        public FrmEditStaffSalary()
+        public FrmStaffSalaryEdit()
         {
             InitializeComponent();
         }
@@ -67,7 +70,7 @@ namespace Hades.HR.UI
                 {
                 	tempInfo = info;//重新给临时对象赋值，使之指向存在的记录对象
                 	
-	                    txtFinanceDepartment.Text = info.FinanceDepartment.ToString();
+	                   // txtFinanceDepartment.Text = info.FinanceDepartment.ToString();
            	                    txtCardNumber.Text = info.CardNumber;
                                    txtBaseSalary.Value = info.BaseSalary;
                                txtBaseBonus.Value = info.BaseBonus;

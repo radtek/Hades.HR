@@ -34,13 +34,13 @@ namespace Hades.HR.WinformCaller
         /// <summary>
         /// 根据名称查找对象Asyn(自定义接口使用范例)
         /// </summary>
-        public async Task<List<DepartmentInfo>> FindAllAsync()
-        {
-            return await Task.Run(() =>
-            {
-                return bll.FindAll();
-            });
-        }
+        //public async Task<List<DepartmentInfo>> FindAllAsync()
+        //{
+        //    return await Task.Run(() =>
+        //    {
+        //        return bll.FindAll();
+        //    });
+        //}
 
         /// <summary>
         /// 查找所有部门，不包含已删除
@@ -78,9 +78,9 @@ namespace Hades.HR.WinformCaller
         /// <param name="entity">实体对象</param>
         /// <param name="message">错误消息</param>
         /// <returns></returns>
-        public bool CheckDuplicate(DepartmentInfo entity, out string message)
+        public bool CheckDuplicate(DepartmentInfo entity)
         {
-            return bll.CheckDuplicate(entity, out message);
+            return bll.CheckDuplicate(entity);
         }
 
         /// <summary>

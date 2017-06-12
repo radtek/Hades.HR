@@ -31,9 +31,9 @@ namespace Hades.HR.WCFLibrary
         #endregion //Constructor
 
         #region Method
-        public bool CheckDuplicate(DepartmentInfo entity, out string message)
+        public bool CheckDuplicate(DepartmentInfo entity)
         {
-            throw new NotImplementedException();
+            return bll.CheckDuplicate(entity);
         }
 
         /// <summary>

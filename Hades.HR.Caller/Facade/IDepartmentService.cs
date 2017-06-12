@@ -17,6 +17,7 @@ namespace Hades.HR.Facade
         /// 查找所有部门，不包含已删除
         /// </summary>
         /// <returns></returns>
+        [OperationContract]
         List<DepartmentInfo> FindAll();
 
         /// <summary>
@@ -25,6 +26,7 @@ namespace Hades.HR.Facade
         /// <param name="deleted">删除标志</param>
         /// <param name="enabled">启用标志</param>
         /// <returns></returns>
+        [OperationContract]
         List<DepartmentInfo> FindList(int deleted, int enabled);
 
         /// <summary>
@@ -32,21 +34,23 @@ namespace Hades.HR.Facade
         /// </summary>
         /// <param name="id">部门ID</param>
         /// <returns></returns>
+        [OperationContract]
         List<DepartmentInfo> FindWithChildren(string id);
 
         /// <summary>
         /// 检查重复
         /// </summary>
         /// <param name="entity">实体对象</param>
-        /// <param name="message">错误消息</param>
         /// <returns></returns>
-        bool CheckDuplicate(DepartmentInfo entity, out string message);
+        [OperationContract]
+        bool CheckDuplicate(DepartmentInfo entity);
 
         /// <summary>
         /// 标记删除
         /// </summary>
         /// <param name="id">ID</param>
         /// <returns></returns>
+        [OperationContract]
         bool MarkDelete(string id);
     }
 }

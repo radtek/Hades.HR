@@ -124,10 +124,10 @@ namespace Hades.HR.BLL
         /// 检查重复
         /// </summary>
         /// <param name="entity">实体对象</param>
-        /// <param name="message">错误消息</param>
         /// <returns></returns>
-        public bool CheckDuplicate(DepartmentInfo entity, out string message)
+        public bool CheckDuplicate(DepartmentInfo entity)
         {
+            string message = "";
             string sql = "";
             if (string.IsNullOrEmpty(entity.Id))
             {

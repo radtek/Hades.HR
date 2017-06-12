@@ -175,10 +175,10 @@ namespace Hades.HR.UI
             try
             {
                 string msg;
-                bool succeed = CallerFactory<IDepartmentService>.Instance.CheckDuplicate(info, out msg);
+                bool succeed = CallerFactory<IDepartmentService>.Instance.CheckDuplicate(info);
                 if (!succeed)
                 {
-                    MessageDxUtil.ShowWarning(msg);
+                    MessageDxUtil.ShowWarning("部门代码重复");
                     return false;
                 }
 
@@ -212,10 +212,10 @@ namespace Hades.HR.UI
                 try
                 {
                     string msg;
-                    bool succeed = CallerFactory<IDepartmentService>.Instance.CheckDuplicate(info, out msg);
+                    bool succeed = CallerFactory<IDepartmentService>.Instance.CheckDuplicate(info);
                     if (!succeed)
                     {
-                        MessageDxUtil.ShowWarning(msg);
+                        MessageDxUtil.ShowWarning("部门代码重复");
                         return false;
                     }
 

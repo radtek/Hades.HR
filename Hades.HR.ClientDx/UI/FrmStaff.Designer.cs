@@ -28,6 +28,7 @@ namespace Hades.HR.UI
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmStaff));
             this.btnAddNew = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
@@ -40,14 +41,14 @@ namespace Hades.HR.UI
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.wgvStaff = new Hades.Pager.WinControl.WinGridViewPager();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
-            this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtNumber.Properties)).BeginInit();
@@ -58,14 +59,14 @@ namespace Hades.HR.UI
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.groupControl3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnAddNew
@@ -182,6 +183,23 @@ namespace Hades.HR.UI
             this.layoutControlItem10.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem10.TextVisible = false;
             // 
+            // layoutControlItem9
+            // 
+            this.layoutControlItem9.Control = this.btnSearch;
+            this.layoutControlItem9.Location = new System.Drawing.Point(257, 0);
+            this.layoutControlItem9.Name = "layoutControlItem9";
+            this.layoutControlItem9.Size = new System.Drawing.Size(288, 34);
+            this.layoutControlItem9.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem9.TextVisible = false;
+            // 
+            // emptySpaceItem1
+            // 
+            this.emptySpaceItem1.AllowHotTrack = false;
+            this.emptySpaceItem1.Location = new System.Drawing.Point(545, 0);
+            this.emptySpaceItem1.Name = "emptySpaceItem1";
+            this.emptySpaceItem1.Size = new System.Drawing.Size(405, 34);
+            this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
+            // 
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.txtIdentityCard;
@@ -252,23 +270,6 @@ namespace Hades.HR.UI
             this.groupControl3.TabIndex = 2;
             this.groupControl3.Text = "职工列表";
             // 
-            // layoutControlItem9
-            // 
-            this.layoutControlItem9.Control = this.btnSearch;
-            this.layoutControlItem9.Location = new System.Drawing.Point(257, 0);
-            this.layoutControlItem9.Name = "layoutControlItem9";
-            this.layoutControlItem9.Size = new System.Drawing.Size(288, 34);
-            this.layoutControlItem9.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem9.TextVisible = false;
-            // 
-            // emptySpaceItem1
-            // 
-            this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(545, 0);
-            this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(405, 34);
-            this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
-            // 
             // FrmStaff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -287,14 +288,14 @@ namespace Hades.HR.UI
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
             this.groupControl3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -177,7 +177,7 @@ namespace Hades.HR.UI
 
             if (!string.IsNullOrEmpty(ID))
             {
-                FrmEditStaffSalary dlg = new FrmEditStaffSalary();
+                FrmStaffSalaryEdit dlg = new FrmStaffSalaryEdit();
                 dlg.ID = ID;
                 dlg.IDList = IDList;
                 dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
@@ -284,7 +284,7 @@ namespace Hades.HR.UI
         /// </summary>
         private void btnAddNew_Click(object sender, EventArgs e)
         {
-            FrmEditStaffSalary dlg = new FrmEditStaffSalary();
+            FrmStaffSalaryEdit dlg = new FrmStaffSalaryEdit();
             dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
             dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
             

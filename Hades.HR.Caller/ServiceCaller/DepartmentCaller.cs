@@ -15,9 +15,9 @@ using Hades.HR.Facade;
 
 namespace Hades.HR.ServiceCaller
 {
-	/// <summary>
-	/// 基于WCF服务的Facade接口实现类
-	/// </summary>
+    /// <summary>
+    /// 基于WCF服务的Facade接口实现类
+    /// </summary>
     public class DepartmentCaller : BaseWCFService<DepartmentInfo>, IDepartmentService
     {
         #region Constructor
@@ -107,9 +107,23 @@ namespace Hades.HR.ServiceCaller
             return result;
         }
 
-        public bool CheckDuplicate(DepartmentInfo entity, out string message)
+        /// <summary>
+        /// 检查重复
+        /// </summary>
+        /// <param name="entity">实体对象</param>
+        /// <returns></returns>
+        public bool CheckDuplicate(DepartmentInfo entity)
         {
-            throw new NotImplementedException();
+            bool result = false;
+
+            IDepartmentService service = CreateSubClient();
+            ICommunicationObject comm = service as ICommunicationObject;
+            comm.Using(client =>
+            {
+                result = service.CheckDuplicate(entity);
+            });
+
+            return result;
         }
 
         public bool MarkDelete(string id)
