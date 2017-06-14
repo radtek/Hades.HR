@@ -377,6 +377,9 @@
     <EmbeddedResource Include="UI\FrmDepartmentView.resx">
       <DependentUpon>FrmDepartmentView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\FrmStaffSalary.resx">
+      <DependentUpon>FrmStaffSalary.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmStaffSalaryEdit.resx">
       <DependentUpon>FrmStaffSalaryEdit.cs</DependentUpon>
     </EmbeddedResource>

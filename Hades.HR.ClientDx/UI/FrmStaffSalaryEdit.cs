@@ -37,6 +37,81 @@ namespace Hades.HR.UI
         }
         #endregion //Constructor
 
+        #region Function
+        /// <summary>
+        /// 初始化数据字典
+        /// </summary>
+        private void InitDictItem()
+        {
+            //初始化代码
+        }
+
+        /// <summary>
+        /// 编辑或者保存状态下取值函数
+        /// </summary>
+        /// <param name="info"></param>
+        private void SetInfo(StaffSalaryInfo info)
+        {
+            info.FinanceDepartment = this.luDepartment.GetSelectedId();
+            info.CardNumber = txtCardNumber.Text;
+            info.BaseSalary = txtBaseSalary.Value;
+            info.BaseBonus = txtBaseBonus.Value;
+            info.DepartmentBonus = txtDepartmentBonus.Value;
+            info.ReserveFund = txtReserveFund.Value;
+            info.Insurance = txtInsurance.Value;
+        }
+
+        /// <summary>
+        /// 保存数据
+        /// </summary>
+        /// <returns></returns>
+        private bool Save()
+        {
+            StaffSalaryInfo info = tempInfo;//必须使用存在的局部变量，因为部分信息可能被附件使用
+            SetInfo(info);
+
+            try
+            {
+                bool result = false;
+                var entity = CallerFactory<IStaffSalaryService>.Instance.FindByID(info.Id);
+                if (entity == null)
+                {
+                    result = CallerFactory<IStaffSalaryService>.Instance.Insert(info);
+                }
+                else
+                {
+                    result = CallerFactory<IStaffSalaryService>.Instance.Update(info, info.Id);
+                }
+
+                if (result)
+                {
+                    //可添加其他关联操作
+
+                    return true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                LogTextHelper.Error(ex);
+                MessageDxUtil.ShowError(ex.Message);
+            }
+            return false;
+        }
+
+        #endregion //Function
+
+        #region Method
+        /// <summary>
+        /// 窗体载入
+        /// </summary>
+        public override void FormOnLoad()
+        {
+            this.luDepartment.Init();
+
+            base.FormOnLoad();
+        }
+
         /// <summary>
         /// 实现控件输入检查的函数
         /// </summary>
@@ -49,14 +124,6 @@ namespace Hades.HR.UI
             #endregion
 
             return result;
-        }
-
-        /// <summary>
-        /// 初始化数据字典
-        /// </summary>
-        private void InitDictItem()
-        {
-            //初始化代码
         }
 
         /// <summary>
@@ -95,27 +162,12 @@ namespace Hades.HR.UI
             //SetAttachInfo(tempInfo);
         }
 
-
         public override void ClearScreen()
         {
             this.tempInfo = new StaffSalaryInfo();
             base.ClearScreen();
         }
 
-        /// <summary>
-        /// 编辑或者保存状态下取值函数
-        /// </summary>
-        /// <param name="info"></param>
-        private void SetInfo(StaffSalaryInfo info)
-        {
-            //info.FinanceDepartment = txtFinanceDepartment.Text;
-            info.CardNumber = txtCardNumber.Text;
-            info.BaseSalary = txtBaseSalary.Value;
-            info.BaseBonus = txtBaseBonus.Value;
-            info.DepartmentBonus = txtDepartmentBonus.Value;
-            info.ReserveFund = txtReserveFund.Value;
-            info.Insurance = txtInsurance.Value;
-        }
 
         /// <summary>
         /// 新增状态下的数据保存
@@ -123,27 +175,7 @@ namespace Hades.HR.UI
         /// <returns></returns>
         public override bool SaveAddNew()
         {
-            StaffSalaryInfo info = tempInfo;//必须使用存在的局部变量，因为部分信息可能被附件使用
-            SetInfo(info);
 
-            try
-            {
-                #region 新增数据
-
-                bool succeed = CallerFactory<IStaffSalaryService>.Instance.Insert(info);
-                if (succeed)
-                {
-                    //可添加其他关联操作
-
-                    return true;
-                }
-                #endregion
-            }
-            catch (Exception ex)
-            {
-                LogTextHelper.Error(ex);
-                MessageDxUtil.ShowError(ex.Message);
-            }
             return false;
         }
 
@@ -153,31 +185,8 @@ namespace Hades.HR.UI
         /// <returns></returns>
         public override bool SaveUpdated()
         {
-
-            StaffSalaryInfo info = CallerFactory<IStaffSalaryService>.Instance.FindByID(ID);
-            if (info != null)
-            {
-                SetInfo(info);
-
-                try
-                {
-                    #region 更新数据
-                    bool succeed = CallerFactory<IStaffSalaryService>.Instance.Update(info, info.Id);
-                    if (succeed)
-                    {
-                        //可添加其他关联操作
-
-                        return true;
-                    }
-                    #endregion
-                }
-                catch (Exception ex)
-                {
-                    LogTextHelper.Error(ex);
-                    MessageDxUtil.ShowError(ex.Message);
-                }
-            }
-            return false;
+            return Save();
         }
+        #endregion //Method
     }
 }

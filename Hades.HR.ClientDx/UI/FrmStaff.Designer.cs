@@ -49,6 +49,9 @@ namespace Hades.HR.UI
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
+            this.menuAdd = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuEditInfo = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuEditSalary = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtNumber.Properties)).BeginInit();
@@ -62,6 +65,7 @@ namespace Hades.HR.UI
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
@@ -221,18 +225,22 @@ namespace Hades.HR.UI
             this.wgvStaff.MinimumSize = new System.Drawing.Size(540, 0);
             this.wgvStaff.Name = "wgvStaff";
             this.wgvStaff.PrintTitle = "";
-            this.wgvStaff.ShowAddMenu = true;
+            this.wgvStaff.ShowAddMenu = false;
             this.wgvStaff.ShowCheckBox = false;
             this.wgvStaff.ShowDeleteMenu = false;
-            this.wgvStaff.ShowEditMenu = true;
+            this.wgvStaff.ShowEditMenu = false;
             this.wgvStaff.ShowExportButton = false;
             this.wgvStaff.Size = new System.Drawing.Size(994, 501);
             this.wgvStaff.TabIndex = 11;
             // 
             // contextMenuStrip1
             // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuAdd,
+            this.menuEditInfo,
+            this.menuEditSalary});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(149, 70);
             // 
             // tableLayoutPanel1
             // 
@@ -270,6 +278,24 @@ namespace Hades.HR.UI
             this.groupControl3.TabIndex = 2;
             this.groupControl3.Text = "职工列表";
             // 
+            // menuAdd
+            // 
+            this.menuAdd.Name = "menuAdd";
+            this.menuAdd.Size = new System.Drawing.Size(148, 22);
+            this.menuAdd.Text = "新增职员";
+            // 
+            // menuEditInfo
+            // 
+            this.menuEditInfo.Name = "menuEditInfo";
+            this.menuEditInfo.Size = new System.Drawing.Size(148, 22);
+            this.menuEditInfo.Text = "编辑职员信息";
+            // 
+            // menuEditSalary
+            // 
+            this.menuEditSalary.Name = "menuEditSalary";
+            this.menuEditSalary.Size = new System.Drawing.Size(148, 22);
+            this.menuEditSalary.Text = "编辑工资信息";
+            // 
             // FrmStaff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -277,7 +303,7 @@ namespace Hades.HR.UI
             this.ClientSize = new System.Drawing.Size(1004, 680);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "FrmStaff";
-            this.Text = "员工管理";
+            this.Text = "职员管理";
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtNumber.Properties)).EndInit();
@@ -291,6 +317,7 @@ namespace Hades.HR.UI
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
@@ -327,5 +354,8 @@ namespace Hades.HR.UI
         private DevExpress.XtraEditors.GroupControl groupControl3;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem9;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
+        private System.Windows.Forms.ToolStripMenuItem menuAdd;
+        private System.Windows.Forms.ToolStripMenuItem menuEditInfo;
+        private System.Windows.Forms.ToolStripMenuItem menuEditSalary;
     }
 }

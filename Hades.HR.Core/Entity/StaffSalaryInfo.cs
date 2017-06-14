@@ -16,8 +16,7 @@ namespace Hades.HR.Entity
         /// </summary>
         public StaffSalaryInfo()
         {
-            this.Id = System.Guid.NewGuid();
-            this.FinanceDepartment = System.Guid.NewGuid();
+            this.Id = System.Guid.NewGuid().ToString();
             this.BaseSalary = 0;
             this.BaseBonus = 0;
             this.DepartmentBonus = 0;
@@ -29,10 +28,10 @@ namespace Hades.HR.Entity
         #region Property Members
 
         [DataMember]
-        public virtual Guid Id { get; set; }
+        public virtual string Id { get; set; }
 
         [DataMember]
-        public virtual Guid FinanceDepartment { get; set; }
+        public virtual string FinanceDepartment { get; set; }
 
         [DataMember]
         public virtual string CardNumber { get; set; }

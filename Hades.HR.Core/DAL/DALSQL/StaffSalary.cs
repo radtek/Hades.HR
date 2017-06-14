@@ -43,8 +43,8 @@ namespace Hades.HR.DALSQL
             StaffSalaryInfo info = new StaffSalaryInfo();
             SmartDataReader reader = new SmartDataReader(dataReader);
 
-            info.Id = reader.GetGuid("Id");
-            info.FinanceDepartment = reader.GetGuid("FinanceDepartment");
+            info.Id = reader.GetString("Id");
+            info.FinanceDepartment = reader.GetString("FinanceDepartment");
             info.CardNumber = reader.GetString("CardNumber");
             info.BaseSalary = reader.GetDecimal("BaseSalary");
             info.BaseBonus = reader.GetDecimal("BaseBonus");
@@ -98,6 +98,5 @@ namespace Hades.HR.DALSQL
 
             return dict;
         }
-
     }
 }
