@@ -19,6 +19,9 @@ namespace Hades.HR.ServiceCaller
         public const string PositionService = "WSHttpBinding_IPositionService";
         public const string StaffService = "WSHttpBinding_IStaffService";
 
+        public const string ProductionLineService = "WSHttpBinding_IProductionLineService";
+        public const string WorkTeamService = "WSHttpBinding_IWorkTeamService";
+
         public const string StaffSalaryService = "WSHttpBinding_IStaffSalaryService";
     }
 }

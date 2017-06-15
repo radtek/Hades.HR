@@ -6,21 +6,19 @@ using Hades.Framework.ControlUtil;
 namespace Hades.HR.Entity
 {
     /// <summary>
-    /// StaffSalaryInfo
+    /// WorkTeamInfo
     /// </summary>
     [DataContract]
-    public class StaffSalaryInfo : BaseEntity
+    public class WorkTeamInfo : BaseEntity
     {
         /// <summary>
         /// 默认构造函数（需要初始化属性的在此处理）
         /// </summary>
-        public StaffSalaryInfo()
+        public WorkTeamInfo()
         {
-            this.BaseSalary = 0;
-            this.BaseBonus = 0;
-            this.DepartmentBonus = 0;
-            this.ReserveFund = 0;
-            this.Insurance = 0;
+            this.Id = System.Guid.NewGuid().ToString();
+            this.Deleted = 0;
+            this.Enabled = 0;
         }
 
         #region Property Members
@@ -29,25 +27,16 @@ namespace Hades.HR.Entity
         public virtual string Id { get; set; }
 
         [DataMember]
-        public virtual string FinanceDepartment { get; set; }
+        public virtual string Name { get; set; }
 
         [DataMember]
-        public virtual string CardNumber { get; set; }
+        public virtual string Number { get; set; }
 
         [DataMember]
-        public virtual decimal BaseSalary { get; set; }
+        public virtual string ProductionLineId { get; set; }
 
         [DataMember]
-        public virtual decimal BaseBonus { get; set; }
-
-        [DataMember]
-        public virtual decimal DepartmentBonus { get; set; }
-
-        [DataMember]
-        public virtual decimal ReserveFund { get; set; }
-
-        [DataMember]
-        public virtual decimal Insurance { get; set; }
+        public virtual string SortCode { get; set; }
 
         [DataMember]
         public virtual string Remark { get; set; }
@@ -69,6 +58,15 @@ namespace Hades.HR.Entity
 
         [DataMember]
         public virtual DateTime EditTime { get; set; }
+
+        [DataMember]
+        public virtual int Deleted { get; set; }
+
+        [DataMember]
+        public virtual int Enabled { get; set; }
+
+
         #endregion
+
     }
 }

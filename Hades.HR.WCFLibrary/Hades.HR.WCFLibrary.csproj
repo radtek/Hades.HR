@@ -113,14 +113,23 @@
     <Compile Include="..\Hades.HR.Caller\Facade\IDepartmentService.cs">
       <Link>Facade\IDepartmentService.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Caller\Facade\IProductionLineService.cs">
+      <Link>Facade\IProductionLineService.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Caller\Facade\IStaffSalaryService.cs">
       <Link>Facade\IStaffSalaryService.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Caller\Facade\IStaffService.cs">
       <Link>Facade\IStaffService.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Caller\Facade\IWorkTeamService.cs">
+      <Link>Facade\IWorkTeamService.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Core\BLL\Department.cs">
       <Link>Biz\BLL\Department.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\BLL\ProductionLine.cs">
+      <Link>Biz\BLL\ProductionLine.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\BLL\Staff.cs">
       <Link>Biz\BLL\Staff.cs</Link>
@@ -128,8 +137,14 @@
     <Compile Include="..\Hades.HR.Core\BLL\StaffSalary.cs">
       <Link>Biz\BLL\StaffSalary.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Core\BLL\WorkTeam.cs">
+      <Link>Biz\BLL\WorkTeam.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Department.cs">
       <Link>Biz\DAL\DALSQL\Department.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\DAL\DALSQL\ProductionLine.cs">
+      <Link>Biz\DAL\DALSQL\ProductionLine.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Staff.cs">
       <Link>Biz\DAL\DALSQL\Staff.cs</Link>
@@ -137,8 +152,14 @@
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\StaffSalary.cs">
       <Link>Biz\DAL\DALSQL\StaffSalary.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Core\DAL\DALSQL\WorkTeam.cs">
+      <Link>Biz\DAL\DALSQL\WorkTeam.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Core\Entity\DepartmentInfo.cs">
       <Link>Biz\Entity\DepartmentInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\Entity\ProductionLineInfo.cs">
+      <Link>Biz\Entity\ProductionLineInfo.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\Entity\StaffInfo.cs">
       <Link>Biz\Entity\StaffInfo.cs</Link>
@@ -146,14 +167,23 @@
     <Compile Include="..\Hades.HR.Core\Entity\StaffSalaryInfo.cs">
       <Link>Biz\Entity\StaffSalaryInfo.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Core\Entity\WorkTeamInfo.cs">
+      <Link>Biz\Entity\WorkTeamInfo.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Core\IDAL\IDepartment.cs">
       <Link>Biz\IDAL\IDepartment.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\IDAL\IProductionLine.cs">
+      <Link>Biz\IDAL\IProductionLine.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\IDAL\IStaff.cs">
       <Link>Biz\IDAL\IStaff.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\IDAL\IStaffSalary.cs">
       <Link>Biz\IDAL\IStaffSalary.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\IDAL\IWorkTeam.cs">
+      <Link>Biz\IDAL\IWorkTeam.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="..\Hades.HR.Caller\Facade\IPositionService.cs">
@@ -173,8 +203,10 @@
     </Compile>
     <Compile Include="WCFLibrary\DepartmentService.cs" />
     <Compile Include="WCFLibrary\PositionService.cs" />
+    <Compile Include="WCFLibrary\ProductionLineService.cs" />
     <Compile Include="WCFLibrary\StaffSalaryService.cs" />
     <Compile Include="WCFLibrary\StaffService.cs" />
+    <Compile Include="WCFLibrary\WorkTeamService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

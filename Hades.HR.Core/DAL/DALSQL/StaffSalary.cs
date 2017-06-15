@@ -51,6 +51,13 @@ namespace Hades.HR.DALSQL
             info.DepartmentBonus = reader.GetDecimal("DepartmentBonus");
             info.ReserveFund = reader.GetDecimal("ReserveFund");
             info.Insurance = reader.GetDecimal("Insurance");
+            info.Remark = reader.GetString("Remark");
+            info.Creator = reader.GetString("Creator");
+            info.CreatorId = reader.GetString("CreatorId");
+            info.CreateTime = reader.GetDateTime("CreateTime");
+            info.Editor = reader.GetString("Editor");
+            info.EditorId = reader.GetString("EditorId");
+            info.EditTime = reader.GetDateTime("EditTime");
 
             return info;
         }
@@ -73,6 +80,13 @@ namespace Hades.HR.DALSQL
             hash.Add("DepartmentBonus", info.DepartmentBonus);
             hash.Add("ReserveFund", info.ReserveFund);
             hash.Add("Insurance", info.Insurance);
+            hash.Add("Remark", info.Remark);
+            hash.Add("Creator", info.Creator);
+            hash.Add("CreatorId", info.CreatorId);
+            hash.Add("CreateTime", info.CreateTime);
+            hash.Add("Editor", info.Editor);
+            hash.Add("EditorId", info.EditorId);
+            hash.Add("EditTime", info.EditTime);
 
             return hash;
         }
@@ -94,6 +108,13 @@ namespace Hades.HR.DALSQL
             dict.Add("DepartmentBonus", "部门奖金");
             dict.Add("ReserveFund", "公积金");
             dict.Add("Insurance", "保险费");
+            dict.Add("Remark", "备注");
+            dict.Add("Creator", "");
+            dict.Add("CreatorId", "");
+            dict.Add("CreateTime", "");
+            dict.Add("Editor", "");
+            dict.Add("EditorId", "");
+            dict.Add("EditTime", "");
             #endregion
 
             return dict;

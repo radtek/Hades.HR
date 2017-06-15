@@ -46,12 +46,12 @@ namespace Hades.HR.UI
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.wgvStaff = new Hades.Pager.WinControl.WinGridViewPager();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
-            this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
             this.menuAdd = new System.Windows.Forms.ToolStripMenuItem();
             this.menuEditInfo = new System.Windows.Forms.ToolStripMenuItem();
             this.menuEditSalary = new System.Windows.Forms.ToolStripMenuItem();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtNumber.Properties)).BeginInit();
@@ -242,6 +242,24 @@ namespace Hades.HR.UI
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(149, 70);
             // 
+            // menuAdd
+            // 
+            this.menuAdd.Name = "menuAdd";
+            this.menuAdd.Size = new System.Drawing.Size(148, 22);
+            this.menuAdd.Text = "新增职员";
+            // 
+            // menuEditInfo
+            // 
+            this.menuEditInfo.Name = "menuEditInfo";
+            this.menuEditInfo.Size = new System.Drawing.Size(148, 22);
+            this.menuEditInfo.Text = "编辑职员信息";
+            // 
+            // menuEditSalary
+            // 
+            this.menuEditSalary.Name = "menuEditSalary";
+            this.menuEditSalary.Size = new System.Drawing.Size(148, 22);
+            this.menuEditSalary.Text = "编辑工资信息";
+            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
@@ -277,24 +295,6 @@ namespace Hades.HR.UI
             this.groupControl3.Size = new System.Drawing.Size(998, 524);
             this.groupControl3.TabIndex = 2;
             this.groupControl3.Text = "职工列表";
-            // 
-            // menuAdd
-            // 
-            this.menuAdd.Name = "menuAdd";
-            this.menuAdd.Size = new System.Drawing.Size(148, 22);
-            this.menuAdd.Text = "新增职员";
-            // 
-            // menuEditInfo
-            // 
-            this.menuEditInfo.Name = "menuEditInfo";
-            this.menuEditInfo.Size = new System.Drawing.Size(148, 22);
-            this.menuEditInfo.Text = "编辑职员信息";
-            // 
-            // menuEditSalary
-            // 
-            this.menuEditSalary.Name = "menuEditSalary";
-            this.menuEditSalary.Size = new System.Drawing.Size(148, 22);
-            this.menuEditSalary.Text = "编辑工资信息";
             // 
             // FrmStaff
             // 
