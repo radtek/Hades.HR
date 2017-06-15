@@ -63,6 +63,21 @@ namespace Hades.HR.UI
             this.wgvPosition.DataSource = positions;
             this.wgvPosition.PrintTitle = "岗位报表";            
         }
+
+        /// <summary>
+        /// 载入部门包含产线
+        /// </summary>
+        /// <param name="department"></param>
+        private void LoadProductionLines(DepartmentInfo department)
+        {
+            var lines = CallerFactory<IProductionLineService>.Instance.FindAll();
+
+            this.wgvProductionLine.DisplayColumns = "Name,Number,SortCode,Enabled";
+            this.wgvProductionLine.ColumnNameAlias = CallerFactory<IProductionLineService>.Instance.GetColumnNameAlias();
+
+            this.wgvProductionLine.DataSource = lines;
+            this.wgvProductionLine.PrintTitle = "产线报表";
+        }
         #endregion //Function
 
         #region Method
@@ -79,9 +94,9 @@ namespace Hades.HR.UI
             this.wgvPosition.ShowLineNumber = true;
             this.wgvPosition.BestFitColumnWith = true;
 
-            //         this.winGridViewPager1.OnStartExport += new EventHandler(winGridViewPager1_OnStartExport);
-            //         this.winGridViewPager1.OnEditSelected += new EventHandler(winGridViewPager1_OnEditSelected);
-            //         this.winGridViewPager1.OnAddNew += new EventHandler(winGridViewPager1_OnAddNew);
+            this.wgvProductionLine.AppendedMenu = this.contextMenuStrip2;
+            this.wgvProductionLine.ShowLineNumber = true;
+            this.wgvProductionLine.BestFitColumnWith = true;
             
 
             this.wgvPosition.gridView1.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(gridView1_CustomColumnDisplayText);
@@ -112,6 +127,8 @@ namespace Hades.HR.UI
                 this.txtDepartmentName.Text = department.Name;
                 this.txtDepartmentNumber.Text = department.Number;
                 LoadPositions(department);
+
+                LoadProductionLines(department);
             }
         }
 
@@ -205,6 +222,23 @@ namespace Hades.HR.UI
             LoadData();
         }
 
+        /// <summary>
+        /// 菜单 - 新增产线
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void menuAddLine_Click(object sender, EventArgs e)
+        {
+            FrmProductionLineEdit dlg = new FrmProductionLineEdit();
+            dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
+            dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
+
+            if (DialogResult.OK == dlg.ShowDialog())
+            {
+                LoadData();
+            }
+        }
+
         #region Grid Event
         void gridView1_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
         {
@@ -258,151 +292,9 @@ namespace Hades.HR.UI
             return where;
         }
         
-        /// <summary>
-        /// 绑定列表数据
-        /// </summary>
-        private void BindData()
-        {
-        	//entity
-            //this.winGridViewPager1.DisplayColumns = "DepartmentId,Name,Number,Quota,SortCode,Remark,Deleted,Enabled";
-            //this.winGridViewPager1.ColumnNameAlias = BLLFactory<Position>.Instance.GetColumnNameAlias();//字段列显示名称转义
-
-            //#region 添加别名解析
-
-            ////this.winGridViewPager1.AddColumnAlias("DepartmentId", "DepartmentId");
-            ////this.winGridViewPager1.AddColumnAlias("Name", "Name");
-            ////this.winGridViewPager1.AddColumnAlias("Number", "Number");
-            ////this.winGridViewPager1.AddColumnAlias("Quota", "Quota");
-            ////this.winGridViewPager1.AddColumnAlias("SortCode", "SortCode");
-            ////this.winGridViewPager1.AddColumnAlias("Remark", "Remark");
-            ////this.winGridViewPager1.AddColumnAlias("Deleted", "Deleted");
-            ////this.winGridViewPager1.AddColumnAlias("Enabled", "Enabled");
-
-            //#endregion
-
-            //string where = GetConditionSql();
-	           // List<PositionInfo> list = BLLFactory<Position>.Instance.FindWithPager(where, this.winGridViewPager1.PagerInfo);
-            //this.winGridViewPager1.DataSource = list;//new WHC.Pager.WinControl.SortableBindingList<PositionInfo>(list);
-            //    this.winGridViewPager1.PrintTitle = "Position报表";
-         }
-        
-   
-     
-		 		 		 		 		 		 		 		 		 		  		  		 		 
-        private string moduleName = "Position";
-        /// <summary>
-        /// 导入Excel的操作
-        /// </summary>          
-        private void btnImport_Click(object sender, EventArgs e)
-        {
-            string templateFile = string.Format("{0}-模板.xls", moduleName);
-            FrmImportExcelData dlg = new FrmImportExcelData();
-            dlg.SetTemplate(templateFile, System.IO.Path.Combine(Application.StartupPath, templateFile));
-            dlg.OnDataSave += new FrmImportExcelData.SaveDataHandler(ExcelData_OnDataSave);
-            dlg.OnRefreshData += new EventHandler(ExcelData_OnRefreshData);
-            dlg.ShowDialog();
-        }
-
-        void ExcelData_OnRefreshData(object sender, EventArgs e)
-        {
-            BindData();
-        } 
-        
-        bool ExcelData_OnDataSave(DataRow dr)
-        {
-            bool success = false;
-   //         bool converted = false;
-   //         DateTime dtDefault = Convert.ToDateTime("1900-01-01");
-   //         DateTime dt;
-   //         PositionInfo info = new PositionInfo();
-   //         info.Id = new Guid(GetRowData(dr, "Id"));
-   //           info.DepartmentId = GetRowData(dr, "DepartmentId").ToInt32();
-   //           info.Name = GetRowData(dr, "Name");
-   //           info.Number = GetRowData(dr, "Number");
-   //           info.Quota = GetRowData(dr, "Quota").ToInt32();
-   //           info.SortCode = GetRowData(dr, "SortCode");
-   //           info.Remark = GetRowData(dr, "Remark");
-   //           info.Creator = GetRowData(dr, "Creator");
-   //           info.CreatorId = GetRowData(dr, "CreatorId");
-  
-   //         string CreateTime = GetRowData(dr, "CreateTime");
-   //         if (!string.IsNullOrEmpty(CreateTime))
-   //         {
-			//	converted = DateTime.TryParse(CreateTime, out dt);
-   //             if (converted && dt > dtDefault)
-   //             {
-   //                 info.CreateTime = dt;
-   //             }
-			//}
-   //         else
-   //         {
-   //             info.CreateTime = DateTime.Now;
-   //         }
-
-   //            info.EditorId = GetRowData(dr, "EditorId");
-   //            info.Deleted = GetRowData(dr, "Deleted").ToInt32();
-   //           info.Enabled = GetRowData(dr, "Enabled").ToInt32();
-  
-   //         success = BLLFactory<Position>.Instance.Insert(info);
-             return success;
-        }
-
-        /// <summary>
-        /// 导出Excel的操作
-        /// </summary>
-        private void btnExport_Click(object sender, EventArgs e)
-        {
-            //string file = FileDialogHelper.SaveExcel(string.Format("{0}.xls", moduleName));
-            //if (!string.IsNullOrEmpty(file))
-            //{
-            //    string where = GetConditionSql();
-            //    List<PositionInfo> list = BLLFactory<Position>.Instance.Find(where);
-            //     DataTable dtNew = DataTableHelper.CreateTable("序号|int,Id,DepartmentId,Name,Number,Quota,SortCode,Remark,Creator,CreatorId,CreateTime,EditorId,Deleted,Enabled");
-            //    DataRow dr;
-            //    int j = 1;
-            //    for (int i = 0; i < list.Count; i++)
-            //    {
-            //        dr = dtNew.NewRow();
-            //        dr["序号"] = j++;
-            //        dr["Id"] = list[i].Id;
-            //         dr["DepartmentId"] = list[i].DepartmentId;
-            //         dr["Name"] = list[i].Name;
-            //         dr["Number"] = list[i].Number;
-            //         dr["Quota"] = list[i].Quota;
-            //         dr["SortCode"] = list[i].SortCode;
-            //         dr["Remark"] = list[i].Remark;
-            //         dr["Creator"] = list[i].Creator;
-            //         dr["CreatorId"] = list[i].CreatorId;
-            //         dr["CreateTime"] = list[i].CreateTime;
-            //          dr["EditorId"] = list[i].EditorId;
-            //          dr["Deleted"] = list[i].Deleted;
-            //         dr["Enabled"] = list[i].Enabled;
-            //         dtNew.Rows.Add(dr);
-            //    }
-
-            //    try
-            //    {
-            //        string error = "";
-            //        AsposeExcelTools.DataTableToExcel2(dtNew, file, out error);
-            //        if (!string.IsNullOrEmpty(error))
-            //        {
-            //            MessageDxUtil.ShowError(string.Format("导出Excel出现错误：{0}", error));
-            //        }
-            //        else
-            //        {
-            //            if (MessageDxUtil.ShowYesNoAndTips("导出成功，是否打开文件？") == System.Windows.Forms.DialogResult.Yes)
-            //            {
-            //                System.Diagnostics.Process.Start(file);
-            //            }
-            //        }
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        LogTextHelper.Error(ex);
-            //        MessageDxUtil.ShowError(ex.Message);
-            //    }
-            //}
-         }
+      
+    
+      
          
         private FrmAdvanceSearch dlg;
 

@@ -20,12 +20,23 @@ namespace Hades.HR.WCFLibrary
 	/// </summary>
     public class ProductionLineService : BaseLocalService<ProductionLineInfo>, IProductionLineService
     {
+        #region Field
         private ProductionLine bll = null;
+        #endregion //Field
 
+        #region Constructor
         public ProductionLineService() : base(BLLFactory<ProductionLine>.Instance)
         {
             bll = baseBLL as ProductionLine;
         }
+        #endregion //Constructor
+
+        #region Method
+        public List<ProductionLineInfo> FindAll()
+        {
+            return bll.FindAll();
+        }
+        #endregion //Method
 
         ///// <summary>
         ///// 根据名称查找对象(自定义接口使用范例)
@@ -43,7 +54,7 @@ namespace Hades.HR.WCFLibrary
         //   return await Task.Factory.StartNew(() =>
         //   {
         //       return bll.FindByName(name);
-	//   }
+        //   }
         //}
 
     }

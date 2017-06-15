@@ -27,5 +27,16 @@ namespace Hades.HR.WinformCaller
             bll = baseBLL as ProductionLine;
         }
         #endregion //Constructor
+
+        #region Method
+        /// <summary>
+        /// 查找所有产线，不包含已删除
+        /// </summary>
+        /// <returns></returns>
+        public List<ProductionLineInfo> FindAll()
+        {
+            return bll.FindAll();
+        }
+        #endregion //Method
     }
 }

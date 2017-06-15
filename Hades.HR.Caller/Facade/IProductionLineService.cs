@@ -13,6 +13,10 @@ namespace Hades.HR.Facade
     [ServiceContract]
     public interface IProductionLineService : IBaseService<ProductionLineInfo>
     {
-
+        /// <summary>
+        /// 查找所有产线，不包含已删除
+        /// </summary>
+        /// <returns></returns>
+        List<ProductionLineInfo> FindAll();
     }
 }

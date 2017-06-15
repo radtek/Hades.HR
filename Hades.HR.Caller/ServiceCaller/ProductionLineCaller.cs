@@ -46,6 +46,26 @@ namespace Hades.HR.ServiceCaller
             return factory.CreateChannel();
         }
 
+        #region Method
+        /// <summary>
+        /// 查找所有产线，不包含已删除
+        /// </summary>
+        /// <returns></returns>
+        public List<ProductionLineInfo> FindAll()
+        {
+            List<ProductionLineInfo> result = new List<ProductionLineInfo>();
+
+            IProductionLineService service = CreateSubClient();
+            ICommunicationObject comm = service as ICommunicationObject;
+            comm.Using(client =>
+            {
+                result = service.FindAll();
+            });
+
+            return result;
+        }
+        #endregion //Method
+
         ///// <summary>
         ///// 根据名称查找对象(自定义接口使用范例)
         ///// </summary>

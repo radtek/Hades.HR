@@ -175,11 +175,17 @@
     <Compile Include="..\hades.hr.caller\facade\IPositionService.cs">
       <Link>Facade\IPositionService.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Caller\Facade\IProductionLineService.cs">
+      <Link>Facade\IProductionLineService.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Caller\Facade\IStaffSalaryService.cs">
       <Link>Facade\IStaffSalaryService.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Caller\Facade\IStaffService.cs">
       <Link>Facade\IStaffService.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Caller\Facade\IWorkTeamService.cs">
+      <Link>Facade\IWorkTeamService.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Caller\ServiceCaller\DepartmentCaller.cs">
       <Link>Caller\ServiceCaller\DepartmentCaller.cs</Link>
@@ -190,11 +196,17 @@
     <Compile Include="..\Hades.HR.Caller\ServiceCaller\PositionCaller.cs">
       <Link>Caller\ServiceCaller\PositionCaller.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Caller\ServiceCaller\ProductionLineCaller.cs">
+      <Link>Caller\ServiceCaller\ProductionLineCaller.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Caller\ServiceCaller\StaffCaller.cs">
       <Link>Caller\ServiceCaller\StaffCaller.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Caller\ServiceCaller\StaffSalaryCaller.cs">
       <Link>Caller\ServiceCaller\StaffSalaryCaller.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Caller\ServiceCaller\WorkTeamCaller.cs">
+      <Link>Caller\ServiceCaller\WorkTeamCaller.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Caller\WinformCaller\DepartmentCaller.cs">
       <Link>Caller\WinformCaller\DepartmentCaller.cs</Link>
@@ -202,11 +214,17 @@
     <Compile Include="..\Hades.HR.Caller\WinformCaller\PositionCaller.cs">
       <Link>Caller\WinformCaller\PositionCaller.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Caller\WinformCaller\ProductionLineCaller.cs">
+      <Link>Caller\WinformCaller\ProductionLineCaller.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Caller\WinformCaller\StaffCaller.cs">
       <Link>Caller\WinformCaller\StaffCaller.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Caller\WinformCaller\StaffSalaryCaller.cs">
       <Link>Caller\WinformCaller\StaffSalaryCaller.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Caller\WinformCaller\WorkTeamCaller.cs">
+      <Link>Caller\WinformCaller\WorkTeamCaller.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\BLL\Department.cs">
       <Link>Biz\BLL\Department.cs</Link>
@@ -214,11 +232,17 @@
     <Compile Include="..\hades.hr.core\bll\Position.cs">
       <Link>Biz\BLL\Position.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Core\BLL\ProductionLine.cs">
+      <Link>Biz\BLL\ProductionLine.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Core\BLL\Staff.cs">
       <Link>Biz\BLL\Staff.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\BLL\StaffSalary.cs">
       <Link>Biz\BLL\StaffSalary.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\BLL\WorkTeam.cs">
+      <Link>Biz\BLL\WorkTeam.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Department.cs">
       <Link>Biz\DAL\DALSQL\Department.cs</Link>
@@ -226,11 +250,17 @@
     <Compile Include="..\hades.hr.core\dal\dalsql\Position.cs">
       <Link>Biz\DAL\DALSQL\Position.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Core\DAL\DALSQL\ProductionLine.cs">
+      <Link>Biz\DAL\DALSQL\ProductionLine.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Staff.cs">
       <Link>Biz\DAL\DALSQL\Staff.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\StaffSalary.cs">
       <Link>Biz\DAL\DALSQL\StaffSalary.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\DAL\DALSQL\WorkTeam.cs">
+      <Link>Biz\DAL\DALSQL\WorkTeam.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\Entity\DepartmentInfo.cs">
       <Link>Biz\Entity\DepartmentInfo.cs</Link>
@@ -238,11 +268,17 @@
     <Compile Include="..\hades.hr.core\entity\PositionInfo.cs">
       <Link>Biz\Entity\PositionInfo.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Core\Entity\ProductionLineInfo.cs">
+      <Link>Biz\Entity\ProductionLineInfo.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Core\Entity\StaffInfo.cs">
       <Link>Biz\Entity\StaffInfo.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\Entity\StaffSalaryInfo.cs">
       <Link>Biz\Entity\StaffSalaryInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\Entity\WorkTeamInfo.cs">
+      <Link>Biz\Entity\WorkTeamInfo.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\IDAL\IDepartment.cs">
       <Link>Biz\IDAL\IDepartment.cs</Link>
@@ -250,11 +286,17 @@
     <Compile Include="..\hades.hr.core\idal\IPosition.cs">
       <Link>Biz\IDAL\IPosition.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Core\IDAL\IProductionLine.cs">
+      <Link>Biz\IDAL\IProductionLine.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Core\IDAL\IStaff.cs">
       <Link>Biz\IDAL\IStaff.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\IDAL\IStaffSalary.cs">
       <Link>Biz\IDAL\IStaffSalary.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\IDAL\IWorkTeam.cs">
+      <Link>Biz\IDAL\IWorkTeam.cs</Link>
     </Compile>
     <Compile Include="Control\DepartmentLookup.cs">
       <SubType>UserControl</SubType>
@@ -279,6 +321,12 @@
     </Compile>
     <Compile Include="Control\PositionLookup.Designer.cs">
       <DependentUpon>PositionLookup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FrmProductionLineEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FrmProductionLineEdit.Designer.cs">
+      <DependentUpon>FrmProductionLineEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\FrmStaffSalaryEdit.cs">
       <SubType>Form</SubType>
@@ -376,6 +424,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmDepartmentView.resx">
       <DependentUpon>FrmDepartmentView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FrmProductionLineEdit.resx">
+      <DependentUpon>FrmProductionLineEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmStaffSalary.resx">
       <DependentUpon>FrmStaffSalary.cs</DependentUpon>
