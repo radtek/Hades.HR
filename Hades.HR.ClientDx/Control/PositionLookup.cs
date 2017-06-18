@@ -59,7 +59,7 @@ namespace Hades.HR.UI
         }
 
         /// <summary>
-        /// 获取当前选中部门ID
+        /// 获取当前选中岗位ID
         /// </summary>
         /// <returns></returns>
         public string GetSelectedId()

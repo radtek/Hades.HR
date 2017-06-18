@@ -322,6 +322,18 @@
     <Compile Include="Control\PositionLookup.Designer.cs">
       <DependentUpon>PositionLookup.cs</DependentUpon>
     </Compile>
+    <Compile Include="Control\ProductionLineLookup.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\ProductionLineLookup.Designer.cs">
+      <DependentUpon>ProductionLineLookup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FrmWorkTeamEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FrmWorkTeamEdit.Designer.cs">
+      <DependentUpon>FrmWorkTeamEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\FrmProductionLineEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -416,6 +428,9 @@
     <EmbeddedResource Include="Control\PositionTree.resx">
       <DependentUpon>PositionTree.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Control\ProductionLineLookup.resx">
+      <DependentUpon>ProductionLineLookup.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmDepartment.resx">
       <DependentUpon>FrmDepartment.cs</DependentUpon>
     </EmbeddedResource>
@@ -455,10 +470,14 @@
     <EmbeddedResource Include="UI\FrmStaffView.resx">
       <DependentUpon>FrmStaffView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\FrmWorkTeamEdit.resx">
+      <DependentUpon>FrmWorkTeamEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Hades.HR.Entity.DepartmentInfo.datasource" />
     <None Include="Properties\DataSources\Hades.HR.Entity.PositionInfo.datasource" />
+    <None Include="Properties\DataSources\Hades.HR.Entity.ProductionLineInfo.datasource" />
     <None Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

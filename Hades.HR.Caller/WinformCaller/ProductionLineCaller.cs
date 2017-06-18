@@ -37,6 +37,16 @@ namespace Hades.HR.WinformCaller
         {
             return bll.FindAll();
         }
+
+        /// <summary>
+        /// 按公司获取产线
+        /// </summary>
+        /// <param name="companyId">公司ID</param>
+        /// <returns></returns>
+        public List<ProductionLineInfo> FindByCompany(string companyId)
+        {
+            return bll.FindByCompany(companyId);
+        }
         #endregion //Method
     }
 }

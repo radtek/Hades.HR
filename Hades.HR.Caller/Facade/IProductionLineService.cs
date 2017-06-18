@@ -18,5 +18,12 @@ namespace Hades.HR.Facade
         /// </summary>
         /// <returns></returns>
         List<ProductionLineInfo> FindAll();
+
+        /// <summary>
+        /// 按公司获取产线
+        /// </summary>
+        /// <param name="companyId">公司ID</param>
+        /// <returns></returns>
+        List<ProductionLineInfo> FindByCompany(string companyId);
     }
 }

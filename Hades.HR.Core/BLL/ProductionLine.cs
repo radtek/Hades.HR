@@ -33,6 +33,17 @@ namespace Hades.HR.BLL
             string sql = "deleted=0";
             return base.Find(sql, "ORDER BY SortCode");
         }
+
+        /// <summary>
+        /// 按公司获取产线
+        /// </summary>
+        /// <param name="companyId">公司ID</param>
+        /// <returns></returns>
+        public List<ProductionLineInfo> FindByCompany(string companyId)
+        {
+            string sql = $"companyId='{companyId}' AND deleted=0";
+            return base.Find(sql, "ORDER BY SortCode");
+        }
         #endregion //Method
     }
 }

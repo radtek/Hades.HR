@@ -133,26 +133,11 @@ namespace Hades.HR.UI
         }
 
         /// <summary>
-        /// 新增数据操作
-        /// </summary>
-        private void btnAddNew_Click(object sender, EventArgs e)
-        {
-            FrmPositionEdit dlg = new FrmPositionEdit();
-            dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
-            dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
-
-            if (DialogResult.OK == dlg.ShowDialog())
-            {
-                LoadData();
-            }
-        }
-
-        /// <summary>
-        /// 菜单 - 查看
+        /// 菜单 - 查看岗位
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void menuView_Click(object sender, EventArgs e)
+        private void menuViewPosition_Click(object sender, EventArgs e)
         {
             string ID = this.wgvPosition.gridView1.GetFocusedRowCellDisplayText("Id");
             List<string> IDList = new List<string>();
@@ -173,11 +158,28 @@ namespace Hades.HR.UI
         }
 
         /// <summary>
-        /// 菜单 - 编辑
+        /// 菜单 - 新增岗位
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void menuEdit_Click(object sender, EventArgs e)
+        private void menuAddPosition_Click(object sender, EventArgs e)
+        {
+            FrmPositionEdit dlg = new FrmPositionEdit();
+            dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
+            dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
+
+            if (DialogResult.OK == dlg.ShowDialog())
+            {
+                LoadData();
+            }
+        }
+
+        /// <summary>
+        /// 菜单 - 编辑岗位
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void menuEditPosition_Click(object sender, EventArgs e)
         {
             string ID = this.wgvPosition.gridView1.GetFocusedRowCellDisplayText("Id");
             List<string> IDList = new List<string>();
@@ -203,11 +205,11 @@ namespace Hades.HR.UI
         }
 
         /// <summary>
-        /// 菜单 - 删除
+        /// 菜单 - 删除岗位
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void menuDelete_Click(object sender, EventArgs e)
+        private void menuDeletePosition_Click(object sender, EventArgs e)
         {
             string id = this.wgvPosition.gridView1.GetFocusedRowCellDisplayText("Id");
             if (string.IsNullOrEmpty(id))
@@ -217,7 +219,7 @@ namespace Hades.HR.UI
             {
                 return;
             }
-            
+
             CallerFactory<IPositionService>.Instance.MarkDelete(id);
             LoadData();
         }
@@ -238,6 +240,24 @@ namespace Hades.HR.UI
                 LoadData();
             }
         }
+
+        /// <summary>
+        /// 菜单 - 新增班组
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void menuAddTeam_Click(object sender, EventArgs e)
+        {
+            FrmWorkTeamEdit dlg = new FrmWorkTeamEdit();
+            dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
+            dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
+
+            if (DialogResult.OK == dlg.ShowDialog())
+            {
+                LoadData();
+            }
+        }
+
 
         #region Grid Event
         void gridView1_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
@@ -292,9 +312,6 @@ namespace Hades.HR.UI
             return where;
         }
         
-      
-    
-      
          
         private FrmAdvanceSearch dlg;
 

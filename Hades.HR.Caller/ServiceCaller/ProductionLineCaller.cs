@@ -64,6 +64,25 @@ namespace Hades.HR.ServiceCaller
 
             return result;
         }
+
+        /// <summary>
+        /// 按公司获取产线
+        /// </summary>
+        /// <param name="companyId">公司ID</param>
+        /// <returns></returns>
+        public List<ProductionLineInfo> FindByCompany(string companyId)
+        {
+            List<ProductionLineInfo> result = new List<ProductionLineInfo>();
+
+            IProductionLineService service = CreateSubClient();
+            ICommunicationObject comm = service as ICommunicationObject;
+            comm.Using(client =>
+            {
+                result = service.FindByCompany(companyId);
+            });
+
+            return result;
+        }
         #endregion //Method
 
         ///// <summary>
