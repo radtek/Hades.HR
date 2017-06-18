@@ -21,12 +21,15 @@ namespace Hades.HR.ServiceCaller
 	/// </summary>
     public class WorkTeamCaller : BaseWCFService<WorkTeamInfo>, IWorkTeamService
     {
+        #region Constructor
         public WorkTeamCaller()  : base()
         {	
             this.configurationPath = EndPointConfig.WcfConfig; //WCF配置文件
             this.endpointConfigurationName = EndPointConfig.WorkTeamService;
         }
+        #endregion //Constructor
 
+        #region Function
         /// <summary>
         /// 子类构造一个IChannel对象转换为基类接口，方便给基类进行调用通用的API
         /// </summary>
@@ -45,25 +48,28 @@ namespace Hades.HR.ServiceCaller
             CustomClientChannel<IWorkTeamService> factory = new CustomClientChannel<IWorkTeamService>(endpointConfigurationName, configurationPath);
             return factory.CreateChannel();
         }
+        #endregion //Function
 
-        ///// <summary>
-        ///// 根据名称查找对象(自定义接口使用范例)
-        ///// </summary>
-        //public List<WorkTeamInfo> FindByName(string name)
-        //{
-        //    List<WorkTeamInfo> result = new List<WorkTeamInfo>();
+        #region method
+        /// <summary>
+        /// 查找所有班组，不包含已删除
+        /// </summary>
+        /// <returns></returns>
+        public List<WorkTeamInfo> FindAll()
+        {
+            List<WorkTeamInfo> result = new List<WorkTeamInfo>();
 
-        //    IWorkTeamService service = CreateSubClient();
-        //    ICommunicationObject comm = service as ICommunicationObject;
-        //    comm.Using(client =>
-        //    {
-        //        result = service.FindByName(name);
-        //    });
+            IWorkTeamService service = CreateSubClient();
+            ICommunicationObject comm = service as ICommunicationObject;
+            comm.Using(client =>
+            {
+                result = service.FindAll();
+            });
 
-        //    return result;
-        //}
-
-
+            return result;
+        }
+        #endregion //Method
+        
         ///// <summary>
         ///// 根据名称查找对象Asyn(自定义接口使用范例)
         ///// </summary>

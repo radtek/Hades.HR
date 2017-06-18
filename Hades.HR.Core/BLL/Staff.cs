@@ -26,6 +26,16 @@ namespace Hades.HR.BLL
 
         #region Method
         /// <summary>
+        /// 查找所有职员，不包含已删除
+        /// </summary>
+        /// <returns></returns>
+        public List<StaffInfo> FindAll()
+        {
+            string sql = "deleted=0";
+            return base.Find(sql, "ORDER BY SortCode");
+        }
+
+        /// <summary>
         /// 查找某一部门员工
         /// </summary>
         /// <param name="departmentId">部门ID</param>

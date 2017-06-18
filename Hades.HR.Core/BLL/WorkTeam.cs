@@ -16,9 +16,23 @@ namespace Hades.HR.BLL
     /// </summary>
 	public class WorkTeam : BaseBLL<WorkTeamInfo>
     {
+        #region Constructor
         public WorkTeam() : base()
         {
             base.Init(this.GetType().FullName, System.Reflection.Assembly.GetExecutingAssembly().GetName().Name);
         }
+        #endregion //Constructor
+
+        #region Method
+        /// <summary>
+        /// 查找所有班组，不包含已删除
+        /// </summary>
+        /// <returns></returns>
+        public List<WorkTeamInfo> FindAll()
+        {
+            string sql = "deleted=0";
+            return base.Find(sql, "ORDER BY SortCode");
+        }
+        #endregion //Method
     }
 }

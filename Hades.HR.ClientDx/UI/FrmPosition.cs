@@ -78,6 +78,22 @@ namespace Hades.HR.UI
             this.wgvProductionLine.DataSource = lines;
             this.wgvProductionLine.PrintTitle = "产线报表";
         }
+
+        /// <summary>
+        /// 载入部门包含班组
+        /// </summary>
+        /// <param name="department"></param>
+        private void LoadWorkTeams(DepartmentInfo department)
+        {
+            var teams = CallerFactory<IWorkTeamService>.Instance.FindAll();
+
+            this.wgvWorkTeam.DisplayColumns = "Name,Number,SortCode,Enabled";
+            this.wgvWorkTeam.ColumnNameAlias = CallerFactory<IProductionLineService>.Instance.GetColumnNameAlias();
+
+            this.wgvWorkTeam.DataSource = teams;
+            this.wgvWorkTeam.PrintTitle = "班组报表";
+
+        }
         #endregion //Function
 
         #region Method
@@ -97,7 +113,10 @@ namespace Hades.HR.UI
             this.wgvProductionLine.AppendedMenu = this.contextMenuStrip2;
             this.wgvProductionLine.ShowLineNumber = true;
             this.wgvProductionLine.BestFitColumnWith = true;
-            
+
+            this.wgvWorkTeam.AppendedMenu = this.contextMenuStrip3;
+            this.wgvWorkTeam.ShowLineNumber = true;
+            this.wgvWorkTeam.BestFitColumnWith = true;
 
             this.wgvPosition.gridView1.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(gridView1_CustomColumnDisplayText);
         }
@@ -129,6 +148,8 @@ namespace Hades.HR.UI
                 LoadPositions(department);
 
                 LoadProductionLines(department);
+
+                LoadWorkTeams(department);
             }
         }
 

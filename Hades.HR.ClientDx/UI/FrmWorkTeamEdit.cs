@@ -51,12 +51,22 @@ namespace Hades.HR.UI
         {
             info.Name = txtName.Text;
             info.Number = txtNumber.Text;
-            info.ProductionLineId = txtProductionLineId.Text;
+            info.ProductionLineId = luProductionLine.GetSelectedId();
             info.SortCode = txtSortCode.Text;
             info.Remark = txtRemark.Text;
-            info.Enabled = Convert.ToInt32(txtEnabled.Value);
+            info.Enabled = Convert.ToInt32(cmbEnabled.EditValue);
         }
         #endregion //Function
+
+        #region Method
+        /// <summary>
+        /// 窗体载入
+        /// </summary>
+        public override void FormOnLoad()
+        {
+            this.luCompany.Init();
+            base.FormOnLoad();
+        }
 
         /// <summary>
         /// 实现控件输入检查的函数
@@ -65,20 +75,28 @@ namespace Hades.HR.UI
         public override bool CheckInput()
         {
             bool result = true;//默认是可以通过
-
-            #region MyRegion
+            
             if (this.txtName.Text.Trim().Length == 0)
             {
-                MessageDxUtil.ShowTips("请输入");
+                MessageDxUtil.ShowTips("请输入名称");
                 this.txtName.Focus();
                 result = false;
             }
-            #endregion
+            else if (string.IsNullOrEmpty(this.luProductionLine.GetSelectedId()))
+            {
+                MessageDxUtil.ShowTips("请选择所属生产线");
+                this.luProductionLine.Focus();
+                result = false;
+            }
 
             return result;
         }
 
-                              
+        public override void ClearScreen()
+        {
+            this.tempInfo = new WorkTeamInfo();
+            base.ClearScreen();
+        }
 
         /// <summary>
         /// 数据显示的函数
@@ -88,42 +106,32 @@ namespace Hades.HR.UI
             InitDictItem();//数据字典加载（公用）
 
             if (!string.IsNullOrEmpty(ID))
-            {
-                #region 显示信息
-                WorkTeamInfo info = BLLFactory<WorkTeam>.Instance.FindByID(ID);
+            { 
+                this.Text = "编辑班组";
+                WorkTeamInfo info = CallerFactory<IWorkTeamService>.Instance.FindByID(ID);
                 if (info != null)
                 {
-                	tempInfo = info;//重新给临时对象赋值，使之指向存在的记录对象
-                	
-	                    txtName.Text = info.Name;
-           	                    txtNumber.Text = info.Number;
-           	                    txtProductionLineId.Text = info.ProductionLineId;
-           	                    txtSortCode.Text = info.SortCode;
-           	                    txtRemark.Text = info.Remark;
-                                   txtEnabled.Value = info.Enabled;
-                         } 
-                #endregion
+                    tempInfo = info;//重新给临时对象赋值，使之指向存在的记录对象
+
+                    txtName.Text = info.Name;
+                    txtNumber.Text = info.Number;
+
+                    this.luProductionLine.SetSelected(info.ProductionLineId);
+                   
+                    txtSortCode.Text = info.SortCode;
+                    txtRemark.Text = info.Remark;
+                    cmbEnabled.EditValue = info.Enabled;
+                }
+                
                 //this.btnOK.Enabled = HasFunction("WorkTeam/Edit");             
             }
             else
             {
-      
+                this.Text = "新增班组";
                 //this.btnOK.Enabled = Portal.gc.HasFunction("WorkTeam/Add");  
             }
-            
-            //tempInfo在对象存在则为指定对象，新建则是全新的对象，但有一些初始化的GUID用于附件上传
-            //SetAttachInfo(tempInfo);
         }
 
-
-        public override void ClearScreen()
-        {
-            this.tempInfo = new WorkTeamInfo();
-            base.ClearScreen();
-        }
-
-  
-         
         /// <summary>
         /// 新增状态下的数据保存
         /// </summary>
@@ -137,7 +145,7 @@ namespace Hades.HR.UI
             {
                 #region 新增数据
 
-                bool succeed = BLLFactory<WorkTeam>.Instance.Insert(info);
+                bool succeed = CallerFactory<IWorkTeamService>.Instance.Insert(info);
                 if (succeed)
                 {
                     //可添加其他关联操作
@@ -152,7 +160,7 @@ namespace Hades.HR.UI
                 MessageDxUtil.ShowError(ex.Message);
             }
             return false;
-        }                 
+        }
 
         /// <summary>
         /// 编辑状态下的数据保存
@@ -186,5 +194,17 @@ namespace Hades.HR.UI
             }
            return false;
         }
+        #endregion //Method
+
+        #region Event
+        private void luCompany_DepartmentSelect(object sender, EventArgs e)
+        {
+            var depId = this.luCompany.GetSelectedId();
+            if (!string.IsNullOrEmpty(depId))
+            {
+                this.luProductionLine.Init(depId);
+            }
+        }
+        #endregion //Event
     }
 }

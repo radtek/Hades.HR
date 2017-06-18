@@ -16,9 +16,33 @@ namespace Hades.HR.BLL
     /// </summary>
 	public class StaffSalary : BaseBLL<StaffSalaryInfo>
     {
+        #region Constructor
         public StaffSalary() : base()
         {
             base.Init(this.GetType().FullName, System.Reflection.Assembly.GetExecutingAssembly().GetName().Name);
         }
+        #endregion //Constructor
+
+        #region Method
+        /// <summary>
+        /// 查找所有工资基本信息
+        /// </summary>
+        /// <returns></returns>
+        public List<StaffSalaryInfo> FindAll()
+        {
+            List<StaffSalaryInfo> data = new List<StaffSalaryInfo>();
+
+            Staff staffBll = new Staff();
+            staffBll.FindAll();
+
+            string sql = "deleted=0";
+            var salarys = base.Find(sql, "ORDER BY SortCode");
+
+
+
+            return data;
+
+        }
+        #endregion //Method
     }
 }

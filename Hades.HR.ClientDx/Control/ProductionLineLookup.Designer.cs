@@ -39,12 +39,20 @@
             // 
             this.luProductionLine.Dock = System.Windows.Forms.DockStyle.Fill;
             this.luProductionLine.Location = new System.Drawing.Point(0, 0);
+            this.luProductionLine.Margin = new System.Windows.Forms.Padding(4);
             this.luProductionLine.Name = "luProductionLine";
             this.luProductionLine.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.luProductionLine.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Id", "Id", 37, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Near),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "名称", 49, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Number", "编码", 62, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Enabled", "是否启用", 60, DevExpress.Utils.FormatType.Numeric, "", true, DevExpress.Utils.HorzAlignment.Far)});
             this.luProductionLine.Properties.DataSource = this.bsProductionLine;
+            this.luProductionLine.Properties.DisplayMember = "Name";
             this.luProductionLine.Properties.NullText = "请选择产线";
-            this.luProductionLine.Size = new System.Drawing.Size(217, 20);
+            this.luProductionLine.Properties.ValueMember = "Id";
+            this.luProductionLine.Size = new System.Drawing.Size(289, 24);
             this.luProductionLine.TabIndex = 0;
             // 
             // bsProductionLine
@@ -53,11 +61,12 @@
             // 
             // ProductionLineLookup
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.luProductionLine);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ProductionLineLookup";
-            this.Size = new System.Drawing.Size(217, 20);
+            this.Size = new System.Drawing.Size(289, 25);
             ((System.ComponentModel.ISupportInitialize)(this.luProductionLine.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsProductionLine)).EndInit();
             this.ResumeLayout(false);

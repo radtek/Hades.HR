@@ -39,6 +39,7 @@
             // 
             this.luPosition.Dock = System.Windows.Forms.DockStyle.Fill;
             this.luPosition.Location = new System.Drawing.Point(0, 0);
+            this.luPosition.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.luPosition.Name = "luPosition";
             this.luPosition.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
             this.luPosition.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -51,7 +52,7 @@
             this.luPosition.Properties.DisplayMember = "Name";
             this.luPosition.Properties.NullText = "请选择岗位";
             this.luPosition.Properties.ValueMember = "Id";
-            this.luPosition.Size = new System.Drawing.Size(229, 20);
+            this.luPosition.Size = new System.Drawing.Size(305, 24);
             this.luPosition.TabIndex = 0;
             // 
             // bsPosition
@@ -60,11 +61,12 @@
             // 
             // PositionLookup
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.luPosition);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "PositionLookup";
-            this.Size = new System.Drawing.Size(229, 20);
+            this.Size = new System.Drawing.Size(305, 25);
             ((System.ComponentModel.ISupportInitialize)(this.luPosition.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsPosition)).EndInit();
             this.ResumeLayout(false);

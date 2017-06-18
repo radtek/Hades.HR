@@ -13,6 +13,10 @@ namespace Hades.HR.Facade
     [ServiceContract]
     public interface IWorkTeamService : IBaseService<WorkTeamInfo>
     {
-
+        /// <summary>
+        /// 查找所有产线，不包含已删除
+        /// </summary>
+        /// <returns></returns>
+        List<WorkTeamInfo> FindAll();
     }
 }

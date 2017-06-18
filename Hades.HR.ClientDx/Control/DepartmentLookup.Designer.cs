@@ -44,6 +44,7 @@
             // 
             this.luDepartment.Dock = System.Windows.Forms.DockStyle.Fill;
             this.luDepartment.Location = new System.Drawing.Point(0, 0);
+            this.luDepartment.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.luDepartment.Name = "luDepartment";
             this.luDepartment.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
             this.luDepartment.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFit;
@@ -54,7 +55,7 @@
             this.luDepartment.Properties.NullText = "请选择部门";
             this.luDepartment.Properties.TreeList = this.treeListLookUpEdit1TreeList;
             this.luDepartment.Properties.ValueMember = "Id";
-            this.luDepartment.Size = new System.Drawing.Size(417, 20);
+            this.luDepartment.Size = new System.Drawing.Size(477, 24);
             this.luDepartment.TabIndex = 0;
             this.luDepartment.EditValueChanged += new System.EventHandler(this.luDepartment_EditValueChanged);
             // 
@@ -111,11 +112,12 @@
             // 
             // DepartmentLookup
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.luDepartment);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "DepartmentLookup";
-            this.Size = new System.Drawing.Size(417, 20);
+            this.Size = new System.Drawing.Size(477, 26);
             ((System.ComponentModel.ISupportInitialize)(this.luDepartment.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsDepartment)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.treeListLookUpEdit1TreeList)).EndInit();

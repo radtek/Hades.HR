@@ -27,5 +27,16 @@ namespace Hades.HR.WinformCaller
             bll = baseBLL as WorkTeam;
         }
         #endregion //Constructor
+
+        #region Method
+        /// <summary>
+        /// 查找所有班组，不包含已删除
+        /// </summary>
+        /// <returns></returns>
+        public List<WorkTeamInfo> FindAll()
+        {
+            return bll.FindAll();
+        }
+        #endregion //Method
     }
 }

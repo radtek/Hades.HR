@@ -20,20 +20,28 @@ namespace Hades.HR.WCFLibrary
 	/// </summary>
     public class WorkTeamService : BaseLocalService<WorkTeamInfo>, IWorkTeamService
     {
+        #region Field
         private WorkTeam bll = null;
+        #endregion //Field
 
+        #region Constructor
         public WorkTeamService() : base(BLLFactory<WorkTeam>.Instance)
         {
             bll = baseBLL as WorkTeam;
         }
+        #endregion //Constructor
 
-        ///// <summary>
-        ///// 根据名称查找对象(自定义接口使用范例)
-        ///// </summary>
-        //public List<WorkTeamInfo> FindByName(string name)
-        //{
-        //    return bll.FindByName(name);
-        //}
+        #region Method
+        /// <summary>
+        /// 查找所有班组，不包含已删除
+        /// </summary>
+        /// <returns></returns>
+        public List<WorkTeamInfo> FindAll()
+        {
+            return bll.FindAll();
+        }
+        #endregion //Method
+
 
         ///// <summary>
         ///// 根据名称查找对象(自定义接口使用范例)
@@ -43,7 +51,7 @@ namespace Hades.HR.WCFLibrary
         //   return await Task.Factory.StartNew(() =>
         //   {
         //       return bll.FindByName(name);
-	//   }
+        //   }
         //}
 
     }
