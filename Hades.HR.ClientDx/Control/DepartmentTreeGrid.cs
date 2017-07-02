@@ -23,6 +23,12 @@ namespace Hades.HR.UI
         private bool showContextMenu = true;
 
         /// <summary>
+        /// 显示菜单 - 新增
+        /// </summary>
+
+        private bool showMenuCreate = false;
+
+        /// <summary>
         /// 显示菜单 - 查看
         /// </summary>
         private bool showMenuView = false;
@@ -31,6 +37,11 @@ namespace Hades.HR.UI
         /// 显示菜单 - 编辑
         /// </summary>
         private bool showMenuEdit = false;
+
+        /// <summary>
+        /// 显示菜单 - 删除
+        /// </summary>
+        private bool showMenuDelete = false;
 
         /// <summary>
         /// 是否只显示名称列
@@ -94,7 +105,7 @@ namespace Hades.HR.UI
         {
             this.tlView.ExpandAll();
         }
-        
+
         /// <summary>
         /// 增加菜单
         /// </summary>
@@ -110,6 +121,12 @@ namespace Hades.HR.UI
 
         #region Delegate
         /// <summary>
+        /// 菜单新增事件
+        /// </summary>
+        [Description("菜单新增事件")]
+        public event EventHandler DepartmentCreate;
+
+        /// <summary>
         /// 菜单查看事件
         /// </summary>
         [Description("菜单查看事件")]
@@ -120,6 +137,12 @@ namespace Hades.HR.UI
         /// </summary>
         [Description("菜单编辑事件")]
         public event EventHandler DepartmentEdit;
+
+        /// <summary>
+        /// 菜单删除事件
+        /// </summary>
+        [Description("菜单删除事件")]
+        public event EventHandler DepartmentDelete;
 
         /// <summary>
         /// 部门选择事件
@@ -144,7 +167,10 @@ namespace Hades.HR.UI
                 //this.ContextMenuStrip = null;
             }
 
+            this.menuCreate.Visible = this.showMenuCreate;
+            this.menuView.Visible = this.showMenuView;
             this.menuEdit.Visible = this.showMenuEdit;
+            this.menuDelete.Visible = this.showMenuDelete;
 
             this.colNumber.Visible = !this.showNameOnly;
             this.colSortCode.Visible = !this.showNameOnly;
@@ -191,6 +217,16 @@ namespace Hades.HR.UI
         }
 
         /// <summary>
+        /// 菜单 - 新增
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void menuCreate_Click(object sender, EventArgs e)
+        {
+            DepartmentCreate?.Invoke(sender, e);
+        }
+
+        /// <summary>
         /// 菜单 - 查看
         /// </summary>
         /// <param name="sender"></param>
@@ -208,6 +244,26 @@ namespace Hades.HR.UI
         private void menuEdit_Click(object sender, EventArgs e)
         {
             DepartmentEdit?.Invoke(sender, e);
+        }
+
+        /// <summary>
+        /// 菜单 - 删除
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void menuDelete_Click(object sender, EventArgs e)
+        {
+            DepartmentDelete?.Invoke(sender, e);
+        }
+
+        /// <summary>
+        /// 双击控件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tlView_DoubleClick(object sender, EventArgs e)
+        {
+
         }
         #endregion //Event
 
@@ -248,6 +304,23 @@ namespace Hades.HR.UI
         }
 
         /// <summary>
+        /// 显示菜单 - 新增
+        /// </summary>
+        [Description("显示新增菜单"), Category("界面"), Browsable(true)]
+        public bool ShowMenuCreate
+        {
+            get
+            {
+                return showMenuCreate;
+            }
+
+            set
+            {
+                showMenuCreate = value;
+            }
+        }
+
+        /// <summary>
         /// 显示菜单 - 查看
         /// </summary>
         [Description("显示查看菜单"), Category("界面"), Browsable(true)]
@@ -277,6 +350,23 @@ namespace Hades.HR.UI
             set
             {
                 this.showMenuEdit = value;
+            }
+        }
+
+        /// <summary>
+        /// 显示菜单 - 删除
+        /// </summary>
+        [Description("显示删除菜单"), Category("界面"), Browsable(true)]
+        public bool ShowMenuDelete
+        {
+            get
+            {
+                return showMenuDelete;
+            }
+
+            set
+            {
+                showMenuDelete = value;
             }
         }
 
@@ -314,5 +404,6 @@ namespace Hades.HR.UI
             }
         }
         #endregion //Property
+
     }
 }

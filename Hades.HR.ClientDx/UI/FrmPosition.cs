@@ -45,7 +45,7 @@ namespace Hades.HR.UI
         /// </summary>
         private void LoadData()
         {
-            var departments = CallerFactory<IDepartmentService>.Instance.FindAll();
+            var departments = CallerFactory<IDepartmentService>.Instance.Find2("deleted=0", "ORDER BY SortCode");
             this.depTree.DataSource = departments;
         }
 
@@ -55,7 +55,7 @@ namespace Hades.HR.UI
         /// <param name="department"></param>
         private void LoadPositions(DepartmentInfo department)
         {
-            var positions = CallerFactory<IPositionService>.Instance.FindByDepartment(department.Id);
+            var positions = CallerFactory<IPositionService>.Instance.Find2(string.Format("departmentId='{0}'", department.Id), "ORDER BY SortCode");
 
             this.wgvPosition.DisplayColumns = "Name,Number,Quota,SortCode,Remark,Enabled";
             this.wgvPosition.ColumnNameAlias = CallerFactory<IPositionService>.Instance.GetColumnNameAlias();
@@ -332,9 +332,5 @@ namespace Hades.HR.UI
             string where = condition.BuildConditionSql().Replace("Where", "");
             return where;
         }
-        
-         
-        private FrmAdvanceSearch dlg;
-
     }
 }

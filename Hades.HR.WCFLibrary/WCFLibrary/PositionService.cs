@@ -19,32 +19,38 @@ namespace Hades.HR.WCFLibrary
 	/// </summary>
     public class PositionService : BaseLocalService<PositionInfo>, IPositionService
     {
+        #region Field
         private Position bll = null;
+        #endregion //Field
 
+        #region Constructor
         public PositionService() : base(BLLFactory<Position>.Instance)
         {
             bll = baseBLL as Position;
         }
+        #endregion //Constructor
 
-        public bool CheckDuplicate(PositionInfo entity, out string message)
+        #region Method
+        /// <summary>
+        /// 检查重复
+        /// </summary>
+        /// <param name="entity">实体对象</param>
+        /// <returns></returns>
+        public bool CheckDuplicate(PositionInfo entity)
         {
-            throw new NotImplementedException();
+            return bll.CheckDuplicate(entity);
         }
 
-        public List<PositionInfo> FindAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<PositionInfo> FindByDepartment(string departmentId)
-        {
-            throw new NotImplementedException();
-        }
-
+        /// <summary>
+        /// 标记删除
+        /// </summary>
+        /// <param name="id">ID</param>
+        /// <returns></returns>
         public bool MarkDelete(string id)
         {
-            throw new NotImplementedException();
+            return bll.MarkDelete(id);
         }
+        #endregion //Method
 
         ///// <summary>
         ///// 根据名称查找对象(自定义接口使用范例)

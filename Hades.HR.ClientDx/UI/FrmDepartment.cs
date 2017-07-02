@@ -17,7 +17,7 @@ using Hades.Pager.Entity;
 namespace Hades.HR.UI
 {
     /// <summary>
-    /// Department
+    /// 部门管理窗体
     /// </summary>	
     public partial class FrmDepartment : BaseDock
     {
@@ -42,9 +42,9 @@ namespace Hades.HR.UI
         /// <summary>
         /// 初始化数据
         /// </summary>
-        private void LoadData()
+        private async void LoadData()
         {
-            var departments = CallerFactory<IDepartmentService>.Instance.FindAll();
+            var departments = await CallerFactory<IDepartmentService>.Instance.Find2Asyn("deleted=0", "ORDER BY SortCode");
             this.depTree.DataSource = departments;
         }
         #endregion //Function
@@ -56,8 +56,6 @@ namespace Hades.HR.UI
         public override void FormOnLoad()
         {
             LoadData();
-
-            this.depTree.AppendMenu(this.contextMenuStrip1);
         }
         #endregion //Method
 
@@ -76,6 +74,23 @@ namespace Hades.HR.UI
         /// 新增数据操作
         /// </summary>
         private void btnAddNew_Click(object sender, EventArgs e)
+        {
+            FrmDepartmentEdit dlg = new FrmDepartmentEdit();
+            dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
+            dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
+
+            if (DialogResult.OK == dlg.ShowDialog())
+            {
+                LoadData();
+            }
+        }
+
+        /// <summary>
+        /// 新增部门
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void depTree_DepartmentCreate(object sender, EventArgs e)
         {
             FrmDepartmentEdit dlg = new FrmDepartmentEdit();
             dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
@@ -130,6 +145,26 @@ namespace Hades.HR.UI
                 dlg.InitFunction(LoginUserInfo, FunctionDict);
                 dlg.ShowDialog();
             }
+        }
+
+        /// <summary>
+        /// 删除部门
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void depTree_DepartmentDelete(object sender, EventArgs e)
+        {
+            string id = this.depTree.GetCurrentSelectId();
+            if (string.IsNullOrEmpty(id))
+                return;
+
+            if (MessageDxUtil.ShowYesNoAndTips("您确定删除选定的记录么？") == DialogResult.No)
+            {
+                return;
+            }
+
+            CallerFactory<IDepartmentService>.Instance.MarkDelete(id);
+            LoadData();
         }
 
         /// <summary>
@@ -278,7 +313,7 @@ namespace Hades.HR.UI
             string file = FileDialogHelper.SaveExcel(string.Format("{0}.xls", moduleName));
             if (!string.IsNullOrEmpty(file))
             {
-                List<DepartmentInfo> list = CallerFactory<IDepartmentService>.Instance.FindAll();
+                List<DepartmentInfo> list = CallerFactory<IDepartmentService>.Instance.Find2("deleted=0", "ORDER BY SortCode");
                 DataTable dtNew = DataTableHelper.CreateTable("序号|int,Id,PID,Number,Name,SortCode,Type,Address,InnerPhone,OuterPhone,Remark,CompanyId,CompanyName,FoundDate,CloseDate,Creator,CreatorId,CreateTime,EditorId,Deleted,Enabled");
                 DataRow dr;
                 int j = 1;

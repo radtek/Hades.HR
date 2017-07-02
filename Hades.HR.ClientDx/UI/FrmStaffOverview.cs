@@ -138,7 +138,7 @@ namespace Hades.HR.UI
         /// </summary>
         public override void FormOnLoad()
         {
-            this.depTree.DataSource = CallerFactory<IDepartmentService>.Instance.FindAll();
+            this.depTree.DataSource = CallerFactory<IDepartmentService>.Instance.Find2("deleted=0", "ORDER BY SortCode");
             this.depTree.Expand();
 
             BindData();

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using System.Threading.Tasks;
 
 using Hades.Framework.Commons;
 using Hades.Framework.ControlUtil;
@@ -31,31 +32,6 @@ namespace Hades.HR.WCFLibrary
         #endregion //Constructor
 
         #region Method
-        public bool CheckDuplicate(DepartmentInfo entity)
-        {
-            return bll.CheckDuplicate(entity);
-        }
-
-        /// <summary>
-        /// 查找所有部门，不包含已删除
-        /// </summary>
-        /// <returns></returns>
-        public List<DepartmentInfo> FindAll()
-        {
-            return bll.FindAll();
-        }
-
-        /// <summary>
-        /// 查找部门列表
-        /// </summary>
-        /// <param name="deleted">删除标志</param>
-        /// <param name="enabled">启用标志</param>
-        /// <returns></returns>
-        public List<DepartmentInfo> FindList(int deleted, int enabled)
-        {
-            return bll.FindList(deleted, enabled);
-        }
-
         /// <summary>
         /// 查找部门及其子部门
         /// </summary>
@@ -64,6 +40,27 @@ namespace Hades.HR.WCFLibrary
         public List<DepartmentInfo> FindWithChildren(string id)
         {
             return bll.FindWithChildren(id);
+        }
+
+        /// <summary>
+        /// 查找部门及其子部门
+        /// </summary>
+        /// <param name="id">部门ID</param>
+        /// <returns></returns>
+        [OperationContract]
+        public async Task<List<DepartmentInfo>> FindWithChildrenAsync(string id)
+        {
+            var task = Task.Factory.StartNew(() =>
+            {
+                return bll.FindWithChildren(id);
+            });
+
+            return await task;
+        }
+
+        public bool CheckDuplicate(DepartmentInfo entity)
+        {
+            return bll.CheckDuplicate(entity);
         }
 
         public bool MarkDelete(string id)

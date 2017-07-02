@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tlView = new DevExpress.XtraTreeList.TreeList();
             this.colId = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.colNumber = new DevExpress.XtraTreeList.Columns.TreeListColumn();
@@ -42,10 +43,12 @@
             this.colCloseDate = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.colDeleted = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.colEnabled = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.menuCreate = new System.Windows.Forms.ToolStripMenuItem();
             this.menuView = new System.Windows.Forms.ToolStripMenuItem();
             this.menuEdit = new System.Windows.Forms.ToolStripMenuItem();
-            this.bsDepartment = new System.Windows.Forms.BindingSource();
+            this.menuDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.bsDepartment = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.tlView)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bsDepartment)).BeginInit();
@@ -74,13 +77,15 @@
             this.tlView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlView.KeyFieldName = "Id";
             this.tlView.Location = new System.Drawing.Point(0, 0);
+            this.tlView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tlView.Name = "tlView";
             this.tlView.OptionsBehavior.Editable = false;
             this.tlView.ParentFieldName = "PID";
-            this.tlView.Size = new System.Drawing.Size(665, 387);
+            this.tlView.Size = new System.Drawing.Size(760, 498);
             this.tlView.TabIndex = 0;
             this.tlView.GetNodeDisplayValue += new DevExpress.XtraTreeList.GetNodeDisplayValueEventHandler(this.tlView_GetNodeDisplayValue);
             this.tlView.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.tlView_FocusedNodeChanged);
+            this.tlView.DoubleClick += new System.EventHandler(this.tlView_DoubleClick);
             // 
             // colId
             // 
@@ -196,25 +201,42 @@
             // 
             // contextMenuStrip1
             // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuView,
-            this.menuEdit});
+            this.menuCreate,
+            this.menuEdit,
+            this.menuDelete});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(139, 100);
+            // 
+            // menuCreate
+            // 
+            this.menuCreate.Name = "menuCreate";
+            this.menuCreate.Size = new System.Drawing.Size(138, 24);
+            this.menuCreate.Text = "新增部门";
+            this.menuCreate.Click += new System.EventHandler(this.menuCreate_Click);
             // 
             // menuView
             // 
             this.menuView.Name = "menuView";
-            this.menuView.Size = new System.Drawing.Size(152, 22);
-            this.menuView.Text = "查看";
+            this.menuView.Size = new System.Drawing.Size(138, 24);
+            this.menuView.Text = "查看部门";
             this.menuView.Click += new System.EventHandler(this.menuView_Click);
             // 
             // menuEdit
             // 
             this.menuEdit.Name = "menuEdit";
-            this.menuEdit.Size = new System.Drawing.Size(152, 22);
-            this.menuEdit.Text = "编辑";
+            this.menuEdit.Size = new System.Drawing.Size(138, 24);
+            this.menuEdit.Text = "编辑部门";
             this.menuEdit.Click += new System.EventHandler(this.menuEdit_Click);
+            // 
+            // menuDelete
+            // 
+            this.menuDelete.Name = "menuDelete";
+            this.menuDelete.Size = new System.Drawing.Size(138, 24);
+            this.menuDelete.Text = "删除部门";
+            this.menuDelete.Click += new System.EventHandler(this.menuDelete_Click);
             // 
             // bsDepartment
             // 
@@ -222,11 +244,12 @@
             // 
             // DepartmentTreeGrid
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tlView);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "DepartmentTreeGrid";
-            this.Size = new System.Drawing.Size(665, 387);
+            this.Size = new System.Drawing.Size(760, 498);
             this.Load += new System.EventHandler(this.DepartmentTreeGrid_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tlView)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
@@ -255,5 +278,7 @@
         private System.Windows.Forms.ToolStripMenuItem menuView;
         private System.Windows.Forms.ToolStripMenuItem menuEdit;
         private DevExpress.XtraTreeList.Columns.TreeListColumn colId;
+        private System.Windows.Forms.ToolStripMenuItem menuCreate;
+        private System.Windows.Forms.ToolStripMenuItem menuDelete;
     }
 }

@@ -5,6 +5,7 @@ using System.Text;
 using System.ServiceModel;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+using System.Threading.Tasks;
 
 using Hades.Framework.Commons;
 using Hades.Framework.ControlUtil;
@@ -51,44 +52,6 @@ namespace Hades.HR.ServiceCaller
 
         #region Method
         /// <summary>
-        /// 查找所有部门，不包含已删除
-        /// </summary>
-        /// <returns></returns>
-        public List<DepartmentInfo> FindAll()
-        {
-            List<DepartmentInfo> result = new List<DepartmentInfo>();
-
-            IDepartmentService service = CreateSubClient();
-            ICommunicationObject comm = service as ICommunicationObject;
-            comm.Using(client =>
-            {
-                result = service.FindAll();
-            });
-
-            return result;
-        }
-
-        /// <summary>
-        /// 查找部门列表
-        /// </summary>
-        /// <param name="deleted">删除标志</param>
-        /// <param name="enabled">启用标志</param>
-        /// <returns></returns>
-        public List<DepartmentInfo> FindList(int deleted, int enabled)
-        {
-            List<DepartmentInfo> result = new List<DepartmentInfo>();
-
-            IDepartmentService service = CreateSubClient();
-            ICommunicationObject comm = service as ICommunicationObject;
-            comm.Using(client =>
-            {
-                result = service.FindList(deleted, enabled);
-            });
-
-            return result;
-        }
-
-        /// <summary>
         /// 查找部门及其子部门
         /// </summary>
         /// <param name="id">部门ID</param>
@@ -105,6 +68,25 @@ namespace Hades.HR.ServiceCaller
             });
 
             return result;
+        }
+
+        /// <summary>
+        /// 查找部门及其子部门
+        /// </summary>
+        /// <param name="id">部门ID</param>
+        /// <returns></returns>
+        public Task<List<DepartmentInfo>> FindWithChildrenAsync(string id)
+        {
+            List<DepartmentInfo> result = new List<DepartmentInfo>();
+
+            IDepartmentService service = CreateSubClient();
+            ICommunicationObject comm = service as ICommunicationObject;
+            comm.Using(client =>
+            {
+                result = service.FindWithChildren(id);
+            });
+
+            return null;
         }
 
         /// <summary>
@@ -126,9 +108,23 @@ namespace Hades.HR.ServiceCaller
             return result;
         }
 
+        /// <summary>
+        /// 标记删除
+        /// </summary>
+        /// <param name="id">ID</param>
+        /// <returns></returns>
         public bool MarkDelete(string id)
         {
-            throw new NotImplementedException();
+            bool result = false;
+
+            IDepartmentService service = CreateSubClient();
+            ICommunicationObject comm = service as ICommunicationObject;
+            comm.Using(client =>
+            {
+                result = service.MarkDelete(id);
+            });
+
+            return result;
         }
 
         #endregion //Method

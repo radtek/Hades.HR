@@ -42,7 +42,7 @@ namespace Hades.HR.UI
         /// </summary>
         public void Init()
         {
-            var data = CallerFactory<IDepartmentService>.Instance.FindList(0, 1);
+            var data = CallerFactory<IDepartmentService>.Instance.Find2("deleted=0 AND enabled=1", "ORDER BY SortCode");
             if (this.onlyShowCompany)
             {
                 data = data.Where(r => r.Type == (int)DepartmentType.Group || r.Type == (int)DepartmentType.Company).ToList();

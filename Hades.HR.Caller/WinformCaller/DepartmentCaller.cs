@@ -43,26 +43,6 @@ namespace Hades.HR.WinformCaller
         //}
 
         /// <summary>
-        /// 查找所有部门，不包含已删除
-        /// </summary>
-        /// <returns></returns>
-        public List<DepartmentInfo> FindAll()
-        {
-            return bll.FindAll();
-        }
-
-        /// <summary>
-        /// 查找部门列表
-        /// </summary>
-        /// <param name="deleted">删除标志</param>
-        /// <param name="enabled">启用标志</param>
-        /// <returns></returns>
-        public List<DepartmentInfo> FindList(int deleted, int enabled)
-        {
-            return bll.FindList(deleted, enabled);
-        }
-
-        /// <summary>
         /// 查找部门及其子部门
         /// </summary>
         /// <param name="id">部门ID</param>
@@ -73,10 +53,23 @@ namespace Hades.HR.WinformCaller
         }
 
         /// <summary>
+        /// 查找部门及其子部门
+        /// </summary>
+        /// <param name="id">部门ID</param>
+        /// <returns></returns>
+        [OperationContract]
+        public async Task<List<DepartmentInfo>> FindWithChildrenAsync(string id)
+        {
+            return await Task.Factory.StartNew(() =>
+            {
+                return bll.FindWithChildren(id);
+            });
+        }
+
+        /// <summary>
         /// 检查重复
         /// </summary>
         /// <param name="entity">实体对象</param>
-        /// <param name="message">错误消息</param>
         /// <returns></returns>
         public bool CheckDuplicate(DepartmentInfo entity)
         {

@@ -223,7 +223,9 @@ namespace Hades.HR.UI
             this.depTree.Location = new System.Drawing.Point(2, 25);
             this.depTree.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.depTree.Name = "depTree";
-            this.depTree.ShowContextMenu = true;
+            this.depTree.ShowContextMenu = false;
+            this.depTree.ShowMenuCreate = false;
+            this.depTree.ShowMenuDelete = false;
             this.depTree.ShowMenuEdit = false;
             this.depTree.ShowMenuView = false;
             this.depTree.ShowNameOnly = true;

@@ -36,7 +36,7 @@ namespace Hades.HR.UI
         /// <param name="departmentId">所属部门ID</param>
         public void Init(string departmentId)
         {
-            var data = CallerFactory<IPositionService>.Instance.FindByDepartment(departmentId);
+            var data = CallerFactory<IPositionService>.Instance.Find2(string.Format("DepartmentId='{0}'", departmentId), "ORDER BY SortCode");
             this.bsPosition.DataSource = data;
         }
 

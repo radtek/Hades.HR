@@ -20,32 +20,15 @@ namespace Hades.HR.ServiceCaller
 	/// </summary>
     public class PositionCaller : BaseWCFService<PositionInfo>, IPositionService
     {
+        #region Constructor
         public PositionCaller()  : base()
         {	
             this.configurationPath = EndPointConfig.WcfConfig; //WCF配置文件
             this.endpointConfigurationName = EndPointConfig.PositionService;
         }
+        #endregion //Constructor
 
-        public bool CheckDuplicate(PositionInfo entity, out string message)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<PositionInfo> FindAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<PositionInfo> FindByDepartment(string departmentId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool MarkDelete(string id)
-        {
-            throw new NotImplementedException();
-        }
-
+        #region Function
         /// <summary>
         /// 子类构造一个IChannel对象转换为基类接口，方便给基类进行调用通用的API
         /// </summary>
@@ -64,6 +47,47 @@ namespace Hades.HR.ServiceCaller
             CustomClientChannel<IPositionService> factory = new CustomClientChannel<IPositionService>(endpointConfigurationName, configurationPath);
             return factory.CreateChannel();
         }
+        #endregion //Function
+
+        #region Method
+        /// <summary>
+        /// 检查重复
+        /// </summary>
+        /// <param name="entity">实体对象</param>
+        /// <returns></returns>
+        public bool CheckDuplicate(PositionInfo entity)
+        {
+            bool result = false;
+
+            IPositionService service = CreateSubClient();
+            ICommunicationObject comm = service as ICommunicationObject;
+            comm.Using(client =>
+            {
+                result = service.CheckDuplicate(entity);
+            });
+
+            return result;
+        }
+
+        /// <summary>
+        /// 标记删除
+        /// </summary>
+        /// <param name="id">ID</param>
+        /// <returns></returns>
+        public bool MarkDelete(string id)
+        {
+            bool result = false;
+
+            IPositionService service = CreateSubClient();
+            ICommunicationObject comm = service as ICommunicationObject;
+            comm.Using(client =>
+            {
+                result = service.MarkDelete(id);
+            });
+
+            return result;
+        }
+        #endregion //Method
 
         ///// <summary>
         ///// 根据名称查找对象(自定义接口使用范例)

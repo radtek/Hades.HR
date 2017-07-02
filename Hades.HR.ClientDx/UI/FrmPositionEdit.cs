@@ -157,14 +157,13 @@ namespace Hades.HR.UI
             info.CreatorId = this.LoginUserInfo.ID;
             info.CreateTime = DateTime.Now;
             info.Deleted = 0;
-
+                        
             try
             {
-                string msg;
-                bool succeed = CallerFactory<IPositionService>.Instance.CheckDuplicate(info, out msg);
+                bool succeed = CallerFactory<IPositionService>.Instance.CheckDuplicate(info);
                 if (!succeed)
                 {
-                    MessageDxUtil.ShowWarning(msg);
+                    MessageDxUtil.ShowWarning("岗位编码重复");
                     return false;
                 }
 
@@ -195,12 +194,11 @@ namespace Hades.HR.UI
                 SetInfo(info);
 
                 try
-                {
-                    string msg;
-                    bool succeed = CallerFactory<IPositionService>.Instance.CheckDuplicate(info, out msg);
+                { 
+                    bool succeed = CallerFactory<IPositionService>.Instance.CheckDuplicate(info);
                     if (!succeed)
                     {
-                        MessageDxUtil.ShowWarning(msg);
+                        MessageDxUtil.ShowWarning("岗位编码已存在");
                         return false;
                     }
 
