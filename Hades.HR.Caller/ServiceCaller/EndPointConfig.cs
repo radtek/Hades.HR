@@ -23,5 +23,7 @@ namespace Hades.HR.ServiceCaller
         public const string WorkTeamService = "WSHttpBinding_IWorkTeamService";
 
         public const string StaffSalaryService = "WSHttpBinding_IStaffSalaryService";
+
+        public const string StaffSalaryViewService = "WSHttpBinding_IStaffSalaryViewService";
     }
 }

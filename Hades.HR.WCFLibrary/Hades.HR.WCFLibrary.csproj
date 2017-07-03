@@ -119,6 +119,9 @@
     <Compile Include="..\Hades.HR.Caller\Facade\IStaffSalaryService.cs">
       <Link>Facade\IStaffSalaryService.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Caller\Facade\IStaffSalaryViewService.cs">
+      <Link>Facade\IStaffSalaryViewService.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Caller\Facade\IStaffService.cs">
       <Link>Facade\IStaffService.cs</Link>
     </Compile>
@@ -137,6 +140,9 @@
     <Compile Include="..\Hades.HR.Core\BLL\StaffSalary.cs">
       <Link>Biz\BLL\StaffSalary.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Core\BLL\StaffSalaryView.cs">
+      <Link>Biz\BLL\StaffSalaryView.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Core\BLL\WorkTeam.cs">
       <Link>Biz\BLL\WorkTeam.cs</Link>
     </Compile>
@@ -151,6 +157,9 @@
     </Compile>
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\StaffSalary.cs">
       <Link>Biz\DAL\DALSQL\StaffSalary.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\DAL\DALSQL\StaffSalaryView.cs">
+      <Link>Biz\DAL\DALSQL\StaffSalaryView.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\WorkTeam.cs">
       <Link>Biz\DAL\DALSQL\WorkTeam.cs</Link>
@@ -167,6 +176,9 @@
     <Compile Include="..\Hades.HR.Core\Entity\StaffSalaryInfo.cs">
       <Link>Biz\Entity\StaffSalaryInfo.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Core\Entity\StaffSalaryViewInfo.cs">
+      <Link>Biz\Entity\StaffSalaryViewInfo.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Core\Entity\WorkTeamInfo.cs">
       <Link>Biz\Entity\WorkTeamInfo.cs</Link>
     </Compile>
@@ -181,6 +193,9 @@
     </Compile>
     <Compile Include="..\Hades.HR.Core\IDAL\IStaffSalary.cs">
       <Link>Biz\IDAL\IStaffSalary.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\IDAL\IStaffSalaryView.cs">
+      <Link>Biz\IDAL\IStaffSalaryView.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\IDAL\IWorkTeam.cs">
       <Link>Biz\IDAL\IWorkTeam.cs</Link>
@@ -205,6 +220,7 @@
     <Compile Include="WCFLibrary\PositionService.cs" />
     <Compile Include="WCFLibrary\ProductionLineService.cs" />
     <Compile Include="WCFLibrary\StaffSalaryService.cs" />
+    <Compile Include="WCFLibrary\StaffSalaryViewService.cs" />
     <Compile Include="WCFLibrary\StaffService.cs" />
     <Compile Include="WCFLibrary\WorkTeamService.cs" />
   </ItemGroup>

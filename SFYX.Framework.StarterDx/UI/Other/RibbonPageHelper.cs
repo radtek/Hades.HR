@@ -6,6 +6,8 @@ using Hades.Framework.ControlUtil;
 using Hades.Framework.ControlUtil.Facade;
 using Hades.Security.Entity;
 using Hades.Security.Facade;
+using Hades.Workflow.Entity;
+using Hades.Workflow.Facade;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -22,8 +24,8 @@ namespace SFYX.Framework.Starter
     /// </summary>
     public class RibbonPageHelper
     {
-        private RibbonControl control=null;
-        private MainForm mainForm=null;
+        private RibbonControl control = null;
+        private MainForm mainForm = null;
 
         public RibbonPageHelper(MainForm mainForm, ref RibbonControl control)
         {
@@ -36,12 +38,12 @@ namespace SFYX.Framework.Starter
         /// </summary>
         public void ReInitPage()
         {
-            RibbonPage sysMana = control.Pages.GetPageByText("系统管理");            
+            RibbonPage sysMana = control.Pages.GetPageByText("系统管理");
             RibbonPage help = control.Pages.GetPageByText("帮助");
             control.BeginInit();
             control.Pages.Clear();
-            control.Pages.Insert(0,sysMana);
-            control.Pages.Insert(1,help);
+            control.Pages.Insert(0, sysMana);
+            control.Pages.Insert(1, help);
             control.EndInit();
         }
 
@@ -57,9 +59,9 @@ namespace SFYX.Framework.Starter
             #region 菜单系统信息获取
             try
             {
-               menuList = await CallerFactory<IMenuService>.Instance.GetTreeAsyn(Portal.gc.SystemType).TimeOut<List<MenuNodeInfo>>(Portal.gc.AsynTimeOut);
+                menuList = await CallerFactory<IMenuService>.Instance.GetTreeAsyn(Portal.gc.SystemType).TimeOut<List<MenuNodeInfo>>(Portal.gc.AsynTimeOut);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageDxUtil.ShowError(ex.Message);
             }
@@ -82,7 +84,7 @@ namespace SFYX.Framework.Starter
                 #region 防止系统管理和帮助重复,将一级菜单Page加进RibbonControl
                 if (!(firstInfo.Name.Trim().Equals("系统管理") || firstInfo.Name.Trim().Equals("帮助")))
                 {
-                    page =  new DevExpress.XtraBars.Ribbon.RibbonPage();
+                    page = new DevExpress.XtraBars.Ribbon.RibbonPage();
                     page.Text = firstInfo.Name;
                     page.Name = firstInfo.ID;
                     this.control.Pages.Insert(i++, page);
@@ -102,14 +104,14 @@ namespace SFYX.Framework.Starter
                     if (secondInfo.Children.Count == 0) continue;
 
                     //添加RibbonPageGroup（二级菜单）edit by xuyi 2016.2.16                    
-                    RibbonPageGroup group = page.Groups.GetGroupByText(secondInfo.Name);                   
+                    RibbonPageGroup group = page.Groups.GetGroupByText(secondInfo.Name);
 
                     #region 将Group加进Ribbon
                     if (group == null)
                     {
                         group = new RibbonPageGroup();
                         group.Text = secondInfo.Name;
-                        group.Name = secondInfo.ID;               
+                        group.Name = secondInfo.ID;
                         if (firstInfo.Name.Trim().Equals("系统管理") || firstInfo.Name.Trim().Equals("帮助"))
                         {
                             page.Groups.Insert(0, group);
@@ -123,16 +125,12 @@ namespace SFYX.Framework.Starter
                     {
                         group.ItemLinks.Clear();
                     }
-                    group.Tag =new StringBuilder().
+                    group.Tag = new StringBuilder().
                         Append(secondInfo.WinformType)
                         .Append("|")
                         .Append(secondInfo.SystemType_ID)
                         .Append("|")
-                        .Append(secondInfo.Data1)
-                        .Append(",")
-                        .Append(secondInfo.Data2)
-                        .Append(",")
-                        .Append(secondInfo.Data3).ToString();
+                        .Append(secondInfo.Data1).ToString();
                     group.CaptionButtonClick += Group_CaptionButtonClick;
                     #endregion
 
@@ -141,12 +139,15 @@ namespace SFYX.Framework.Starter
                     {
                         //如果没有菜单的权限，则跳过
                         if (!Portal.gc.HasFunction(thirdInfo.FunctionId)) continue;
-                       
+
+                        //如果是启动节点的话
+                        if (!await hasWorkFlow(thirdInfo)) continue;
+
                         //添加功能按钮（三级菜单）                       
                         group.ItemLinks.Add(initBarButtonItem(thirdInfo));
-                      
+
                     } //endof 三级
-                 
+
                     //如果是空组则删除
                     if (group.ItemLinks.Count == 0)
                     {
@@ -164,6 +165,31 @@ namespace SFYX.Framework.Starter
             control.EndInit();
         }
 
+        #region 判断登录人员是否有权限启动流程节点
+        private List<WorkTaskViewInfo> myStartWorkflows = null;
+        private async Task<bool> hasWorkFlow(MenuNodeInfo menuInfo)
+        {
+            //不是和流程启动有关的菜单
+            if (!menuInfo.WinformType.Contains("Hades.Workflow.UI.FrmStartWorkFlow")) return true;
+            bool result = true;
+            if (myStartWorkflows == null)
+            {
+                //当前登录用户可以使用的流程启动信息
+                myStartWorkflows = await CallerFactory<IWorkFlowService>.Instance.GetAllowStartWorkFlowsAsyn(Portal.gc.LoginUserInfo.ID)
+                        .TimeOut<List<WorkTaskViewInfo>>(20);
+            }
+            string[] paras = menuInfo.Data1.Split(new char[] { '※' });
+            if (paras.Length>=2)
+            {
+                result = myStartWorkflows.FindLast((w) => w.WorkFlowID == paras[0] && w.WorkTaskID == paras[1]) != null;
+            }
+            else
+            {
+                result = false;
+            }
+            return result;
+        }
+        #endregion
         /// <summary>
         /// 处理Group的弹出框
         /// </summary>
@@ -177,12 +203,12 @@ namespace SFYX.Framework.Starter
             if (string.IsNullOrEmpty(paras[0])) return;
             string[] typeInfo = paras[0].Split(new char[] { ',' });
             StringBuilder sb = new StringBuilder();
+            //paras[0]--winform类型，paras[1]--dll名称;paras[2]--额外参数类别
             sb.Append(typeInfo[0]).Append(",").Append(typeInfo[1]).Append(",1")
-                .Append("|").Append(paras[1]);           
-            string[] extParas = paras[2].Split(new char[] { ',' });
+                .Append("|").Append(paras[1]);
             //以对话框进行弹出
-            LoadPlugInForm(sb.ToString(),
-                           new BaseEntity() { Data1 = extParas[0], Data2 = extParas[1], Data3 = extParas[2] });
+            LoadPlugInForm(sb.ToString(), paras[2]);
+
         }
 
         /// <summary>
@@ -205,8 +231,7 @@ namespace SFYX.Framework.Starter
             {
                 if (button.Tag != null && !string.IsNullOrEmpty(button.Tag.ToString()))
                 {
-                    LoadPlugInForm(button.Tag.ToString(),
-                        new BaseEntity() { Data1 = node.Data1, Data2 = node.Data2, Data3 = node.Data3 });
+                    LoadPlugInForm(button.Tag.ToString(), node.Data1);
                 }
                 else
                 {
@@ -250,12 +275,12 @@ namespace SFYX.Framework.Starter
         /// <summary>
         /// 加载插件窗体
         /// </summary>
-        private void LoadPlugInForm(string typeName,BaseEntity extParam = null)
+        private void LoadPlugInForm(string typeName, string extParam = "")
         {
             try
             {
-                string[] para = typeName.Split(new char[] {'|'});
-                string[] itemArray = para[0].Split(new char[]{',',';'});
+                string[] para = typeName.Split(new char[] { '|' });
+                string[] itemArray = para[0].Split(new char[] { ',', ';' });
 
                 string type = itemArray[0].Trim(); //类型名
                 string filePath = itemArray[1].Trim();//必须是相对路径
@@ -265,7 +290,7 @@ namespace SFYX.Framework.Starter
                 bool isShowDialog = (showDialog == "1") || (showDialog == "dialog");
 
                 string dllFullPath = Path.Combine(Application.StartupPath, filePath);
-                
+
                 //edit by 2016.2.19
                 //修正因Assembly是当前正在执行的Assembly或因不能正常加载引起的问题
                 Assembly tempAssembly = null;
@@ -283,7 +308,7 @@ namespace SFYX.Framework.Starter
                     Type objType = tempAssembly.GetType(type);
                     if (objType != null)
                     {
-                        LoadMdiForm(this.mainForm, objType,para[1], isShowDialog,extParam);    
+                        LoadMdiForm(this.mainForm, objType, para[1], isShowDialog, extParam);
                     }
                 }
             }
@@ -301,7 +326,7 @@ namespace SFYX.Framework.Starter
         /// <param name="formType">待显示的窗体类型(xxxFrm,xxx.dll,1)</param>
         /// <param name="extParam">额外参数</param>
         /// <returns></returns>
-        public static Form LoadMdiForm(Form mainDialog, Type formType,string systemType, bool isShowDialog, BaseEntity extParam = null)
+        public static Form LoadMdiForm(Form mainDialog, Type formType, string systemType, bool isShowDialog, string extParam = "")
         {
             Form tableForm = null;
 
@@ -337,9 +362,9 @@ namespace SFYX.Framework.Starter
                         systemType);
 
                     //传递额外参数
-                    if (extParam != null)
+                    if (!string.IsNullOrEmpty(extParam))
                     {
-                        function.SetExtendParams(extParam.Data1, extParam.Data2, extParam.Data3);
+                        function.SetExtendParams(extParam.Split(new char[] { '※' }));
                     }
                 }
                 else
