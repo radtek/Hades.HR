@@ -53,15 +53,6 @@ namespace Hades.HR.Entity
         public virtual string Remark { get; set; }
 
         [DataMember]
-        public virtual string Creator { get; set; }
-
-        [DataMember]
-        public virtual string CreatorId { get; set; }
-
-        [DataMember]
-        public virtual DateTime CreateTime { get; set; }
-
-        [DataMember]
         public virtual string Editor { get; set; }
 
         [DataMember]

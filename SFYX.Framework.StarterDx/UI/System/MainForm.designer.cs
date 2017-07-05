@@ -81,6 +81,8 @@
             this.notifyMenu_About = new System.Windows.Forms.ToolStripMenuItem();
             this.notifyMenu_Exit = new System.Windows.Forms.ToolStripMenuItem();
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu();
+            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.btn_StaffSalary = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
@@ -123,10 +125,11 @@
             this.btn_DepartmentMan,
             this.btn_PositionMan,
             this.btn_StaffMan,
-            this.btn_StaffOv});
+            this.btn_StaffOv,
+            this.btn_StaffSalary});
             this.ribbonControl.LargeImages = this.imageCollection1;
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 8;
+            this.ribbonControl.MaxItemId = 9;
             this.ribbonControl.MiniToolbars.Add(this.ribbonMiniToolbar1);
             this.ribbonControl.MiniToolbars.Add(this.ribbonMiniToolbar2);
             this.ribbonControl.Name = "ribbonControl";
@@ -399,7 +402,8 @@
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup1});
+            this.ribbonPageGroup1,
+            this.ribbonPageGroup2});
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "人力资源管理";
             // 
@@ -527,6 +531,22 @@
             this.popupMenu1.Name = "popupMenu1";
             this.popupMenu1.Ribbon = this.ribbonControl;
             // 
+            // ribbonPageGroup2
+            // 
+            this.ribbonPageGroup2.ItemLinks.Add(this.btn_StaffSalary);
+            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
+            this.ribbonPageGroup2.Text = "工资数据";
+            // 
+            // btn_StaffSalary
+            // 
+            this.btn_StaffSalary.Caption = "工资基本信息";
+            this.btn_StaffSalary.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+            this.btn_StaffSalary.Glyph = ((System.Drawing.Image)(resources.GetObject("btn_StaffSalary.Glyph")));
+            this.btn_StaffSalary.Id = 8;
+            this.btn_StaffSalary.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btn_StaffSalary.LargeGlyph")));
+            this.btn_StaffSalary.Name = "btn_StaffSalary";
+            this.btn_StaffSalary.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_StaffSalary_ItemClick);
+            // 
             // MainForm
             // 
             this.AllowMdiBar = true;
@@ -613,6 +633,8 @@
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
         private DevExpress.XtraBars.BarButtonItem btn_StaffOv;
+        private DevExpress.XtraBars.BarButtonItem btn_StaffSalary;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
     }
 }
 

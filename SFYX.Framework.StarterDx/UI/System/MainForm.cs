@@ -482,5 +482,10 @@ namespace SFYX.Framework.Starter
         {
             ChildWinManagement.LoadMdiForm(this, typeof(Hades.HR.UI.FrmStaffOverview));
         }
+
+        private void btn_StaffSalary_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ChildWinManagement.LoadMdiForm(this, typeof(Hades.HR.UI.FrmStaffSalary));
+        }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmStaffOverview));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
@@ -43,12 +44,12 @@
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip();
-            this.menuView = new System.Windows.Forms.ToolStripMenuItem();
             this.depTree = new Hades.HR.UI.DepartmentTreeGrid();
-            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.menuView = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.groupControl3.SuspendLayout();
@@ -64,11 +65,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -230,6 +231,14 @@
             this.layoutControlItem9.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem9.TextVisible = false;
             // 
+            // emptySpaceItem1
+            // 
+            this.emptySpaceItem1.AllowHotTrack = false;
+            this.emptySpaceItem1.Location = new System.Drawing.Point(185, 0);
+            this.emptySpaceItem1.Name = "emptySpaceItem1";
+            this.emptySpaceItem1.Size = new System.Drawing.Size(434, 34);
+            this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
+            // 
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.txtIdentityCard;
@@ -250,6 +259,23 @@
             this.groupControl1.TabIndex = 1;
             this.groupControl1.Text = "部门列表";
             // 
+            // depTree
+            // 
+            this.depTree.DataSource = null;
+            this.depTree.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.depTree.EnableFocusCellStyle = true;
+            this.depTree.Location = new System.Drawing.Point(2, 21);
+            this.depTree.Name = "depTree";
+            this.depTree.ShowContextMenu = false;
+            this.depTree.ShowMenuCreate = false;
+            this.depTree.ShowMenuDelete = false;
+            this.depTree.ShowMenuEdit = false;
+            this.depTree.ShowMenuView = false;
+            this.depTree.ShowNameOnly = true;
+            this.depTree.Size = new System.Drawing.Size(190, 507);
+            this.depTree.TabIndex = 0;
+            this.depTree.DepartmentSelect += new System.EventHandler(this.depTree_DepartmentSelect);
+            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -263,29 +289,6 @@
             this.menuView.Size = new System.Drawing.Size(100, 22);
             this.menuView.Text = "查看";
             this.menuView.Click += new System.EventHandler(this.menuView_Click);
-            // 
-            // depTree
-            // 
-            this.depTree.DataSource = null;
-            this.depTree.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.depTree.EnableFocusCellStyle = true;
-            this.depTree.Location = new System.Drawing.Point(2, 21);
-            this.depTree.Name = "depTree";
-            this.depTree.ShowContextMenu = false;
-            this.depTree.ShowMenuEdit = false;
-            this.depTree.ShowMenuView = false;
-            this.depTree.ShowNameOnly = true;
-            this.depTree.Size = new System.Drawing.Size(190, 507);
-            this.depTree.TabIndex = 0;
-            this.depTree.DepartmentSelect += new System.EventHandler(this.depTree_DepartmentSelect);
-            // 
-            // emptySpaceItem1
-            // 
-            this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(185, 0);
-            this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(434, 34);
-            this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // FrmStaffOverview
             // 
@@ -310,11 +313,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.contextMenuStrip1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             this.ResumeLayout(false);
 
         }

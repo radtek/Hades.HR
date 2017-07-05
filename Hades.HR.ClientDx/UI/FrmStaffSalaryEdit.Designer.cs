@@ -29,7 +29,6 @@ namespace Hades.HR.UI
         private void InitializeComponent()
         {
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.luDepartment = new Hades.HR.UI.DepartmentLookup();
             this.txtCardNumber = new DevExpress.XtraEditors.TextEdit();
             this.txtBaseSalary = new DevExpress.XtraEditors.SpinEdit();
             this.txtBaseBonus = new DevExpress.XtraEditors.SpinEdit();
@@ -43,7 +42,10 @@ namespace Hades.HR.UI
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.luDepartment = new Hades.HR.UI.DepartmentLookup();
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.txtRemark = new DevExpress.XtraEditors.MemoEdit();
+            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.picPrint)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -61,35 +63,38 @@ namespace Hades.HR.UI
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtRemark.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(370, 203);
+            this.btnOK.Location = new System.Drawing.Point(370, 216);
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(469, 203);
+            this.btnCancel.Location = new System.Drawing.Point(469, 216);
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(283, 203);
+            this.btnAdd.Location = new System.Drawing.Point(283, 216);
             this.btnAdd.Visible = false;
             // 
             // dataNavigator1
             // 
-            this.dataNavigator1.Location = new System.Drawing.Point(12, 198);
+            this.dataNavigator1.Location = new System.Drawing.Point(12, 211);
             this.dataNavigator1.Size = new System.Drawing.Size(191, 30);
             // 
             // picPrint
             // 
-            this.picPrint.Location = new System.Drawing.Point(202, 200);
+            this.picPrint.Location = new System.Drawing.Point(202, 213);
             // 
             // layoutControl1
             // 
             this.layoutControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.layoutControl1.Controls.Add(this.txtRemark);
             this.layoutControl1.Controls.Add(this.luDepartment);
             this.layoutControl1.Controls.Add(this.txtCardNumber);
             this.layoutControl1.Controls.Add(this.txtBaseSalary);
@@ -100,24 +105,15 @@ namespace Hades.HR.UI
             this.layoutControl1.Location = new System.Drawing.Point(12, 8);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(537, 174);
+            this.layoutControl1.Size = new System.Drawing.Size(537, 187);
             this.layoutControl1.TabIndex = 6;
             this.layoutControl1.Text = "layoutControl1";
             // 
-            // luDepartment
-            // 
-            this.luDepartment.Location = new System.Drawing.Point(77, 14);
-            this.luDepartment.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.luDepartment.Name = "luDepartment";
-            this.luDepartment.OnlyShowCompany = false;
-            this.luDepartment.Size = new System.Drawing.Size(446, 24);
-            this.luDepartment.TabIndex = 8;
-            // 
             // txtCardNumber
             // 
-            this.txtCardNumber.Location = new System.Drawing.Point(77, 42);
+            this.txtCardNumber.Location = new System.Drawing.Point(63, 36);
             this.txtCardNumber.Name = "txtCardNumber";
-            this.txtCardNumber.Size = new System.Drawing.Size(446, 24);
+            this.txtCardNumber.Size = new System.Drawing.Size(462, 20);
             this.txtCardNumber.StyleController = this.layoutControl1;
             this.txtCardNumber.TabIndex = 2;
             // 
@@ -129,13 +125,13 @@ namespace Hades.HR.UI
             0,
             0});
             this.txtBaseSalary.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txtBaseSalary.Location = new System.Drawing.Point(77, 70);
+            this.txtBaseSalary.Location = new System.Drawing.Point(63, 60);
             this.txtBaseSalary.Name = "txtBaseSalary";
             this.txtBaseSalary.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.txtBaseSalary.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
             this.txtBaseSalary.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.txtBaseSalary.Size = new System.Drawing.Size(189, 24);
+            this.txtBaseSalary.Size = new System.Drawing.Size(203, 20);
             this.txtBaseSalary.StyleController = this.layoutControl1;
             this.txtBaseSalary.TabIndex = 3;
             // 
@@ -147,13 +143,13 @@ namespace Hades.HR.UI
             0,
             0});
             this.txtBaseBonus.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txtBaseBonus.Location = new System.Drawing.Point(333, 70);
+            this.txtBaseBonus.Location = new System.Drawing.Point(321, 60);
             this.txtBaseBonus.Name = "txtBaseBonus";
             this.txtBaseBonus.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.txtBaseBonus.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
             this.txtBaseBonus.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.txtBaseBonus.Size = new System.Drawing.Size(190, 24);
+            this.txtBaseBonus.Size = new System.Drawing.Size(204, 20);
             this.txtBaseBonus.StyleController = this.layoutControl1;
             this.txtBaseBonus.TabIndex = 4;
             // 
@@ -165,13 +161,13 @@ namespace Hades.HR.UI
             0,
             0});
             this.txtDepartmentBonus.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txtDepartmentBonus.Location = new System.Drawing.Point(77, 98);
+            this.txtDepartmentBonus.Location = new System.Drawing.Point(63, 84);
             this.txtDepartmentBonus.Name = "txtDepartmentBonus";
             this.txtDepartmentBonus.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.txtDepartmentBonus.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
             this.txtDepartmentBonus.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.txtDepartmentBonus.Size = new System.Drawing.Size(446, 24);
+            this.txtDepartmentBonus.Size = new System.Drawing.Size(462, 20);
             this.txtDepartmentBonus.StyleController = this.layoutControl1;
             this.txtDepartmentBonus.TabIndex = 5;
             // 
@@ -183,13 +179,13 @@ namespace Hades.HR.UI
             0,
             0});
             this.txtReserveFund.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txtReserveFund.Location = new System.Drawing.Point(77, 126);
+            this.txtReserveFund.Location = new System.Drawing.Point(63, 108);
             this.txtReserveFund.Name = "txtReserveFund";
             this.txtReserveFund.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.txtReserveFund.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
             this.txtReserveFund.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.txtReserveFund.Size = new System.Drawing.Size(189, 24);
+            this.txtReserveFund.Size = new System.Drawing.Size(203, 20);
             this.txtReserveFund.StyleController = this.layoutControl1;
             this.txtReserveFund.TabIndex = 6;
             // 
@@ -201,13 +197,13 @@ namespace Hades.HR.UI
             0,
             0});
             this.txtInsurance.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txtInsurance.Location = new System.Drawing.Point(333, 126);
+            this.txtInsurance.Location = new System.Drawing.Point(321, 108);
             this.txtInsurance.Name = "txtInsurance";
             this.txtInsurance.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.txtInsurance.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
             this.txtInsurance.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.txtInsurance.Size = new System.Drawing.Size(190, 24);
+            this.txtInsurance.Size = new System.Drawing.Size(204, 20);
             this.txtInsurance.StyleController = this.layoutControl1;
             this.txtInsurance.TabIndex = 7;
             // 
@@ -222,80 +218,107 @@ namespace Hades.HR.UI
             this.layoutControlItem6,
             this.layoutControlItem4,
             this.layoutControlItem7,
-            this.layoutControlItem8});
+            this.layoutControlItem8,
+            this.layoutControlItem1});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(537, 174);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(537, 187);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.txtCardNumber;
-            this.layoutControlItem2.Location = new System.Drawing.Point(0, 28);
+            this.layoutControlItem2.Location = new System.Drawing.Point(0, 24);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(513, 28);
+            this.layoutControlItem2.Size = new System.Drawing.Size(517, 24);
             this.layoutControlItem2.Text = "银行卡号";
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(60, 18);
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(48, 14);
             // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.txtBaseSalary;
-            this.layoutControlItem3.Location = new System.Drawing.Point(0, 56);
+            this.layoutControlItem3.Location = new System.Drawing.Point(0, 48);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(256, 28);
+            this.layoutControlItem3.Size = new System.Drawing.Size(258, 24);
             this.layoutControlItem3.Text = "基本工资";
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(60, 18);
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(48, 14);
             // 
             // layoutControlItem5
             // 
             this.layoutControlItem5.Control = this.txtDepartmentBonus;
-            this.layoutControlItem5.Location = new System.Drawing.Point(0, 84);
+            this.layoutControlItem5.Location = new System.Drawing.Point(0, 72);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(513, 28);
+            this.layoutControlItem5.Size = new System.Drawing.Size(517, 24);
             this.layoutControlItem5.Text = "部门奖金";
-            this.layoutControlItem5.TextSize = new System.Drawing.Size(60, 18);
+            this.layoutControlItem5.TextSize = new System.Drawing.Size(48, 14);
             // 
             // layoutControlItem6
             // 
             this.layoutControlItem6.Control = this.txtReserveFund;
-            this.layoutControlItem6.Location = new System.Drawing.Point(0, 112);
+            this.layoutControlItem6.Location = new System.Drawing.Point(0, 96);
             this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(256, 38);
+            this.layoutControlItem6.Size = new System.Drawing.Size(258, 24);
             this.layoutControlItem6.Text = "公积金";
-            this.layoutControlItem6.TextSize = new System.Drawing.Size(60, 18);
+            this.layoutControlItem6.TextSize = new System.Drawing.Size(48, 14);
             // 
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.txtBaseBonus;
-            this.layoutControlItem4.Location = new System.Drawing.Point(256, 56);
+            this.layoutControlItem4.Location = new System.Drawing.Point(258, 48);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(257, 28);
+            this.layoutControlItem4.Size = new System.Drawing.Size(259, 24);
             this.layoutControlItem4.Text = "基本奖金";
-            this.layoutControlItem4.TextSize = new System.Drawing.Size(60, 18);
+            this.layoutControlItem4.TextSize = new System.Drawing.Size(48, 14);
             // 
             // layoutControlItem7
             // 
             this.layoutControlItem7.Control = this.txtInsurance;
-            this.layoutControlItem7.Location = new System.Drawing.Point(256, 112);
+            this.layoutControlItem7.Location = new System.Drawing.Point(258, 96);
             this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(257, 38);
+            this.layoutControlItem7.Size = new System.Drawing.Size(259, 24);
             this.layoutControlItem7.Text = "保险费";
-            this.layoutControlItem7.TextSize = new System.Drawing.Size(60, 18);
+            this.layoutControlItem7.TextSize = new System.Drawing.Size(48, 14);
+            // 
+            // luDepartment
+            // 
+            this.luDepartment.Location = new System.Drawing.Point(63, 12);
+            this.luDepartment.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.luDepartment.Name = "luDepartment";
+            this.luDepartment.OnlyShowCompany = false;
+            this.luDepartment.Size = new System.Drawing.Size(462, 20);
+            this.luDepartment.TabIndex = 8;
             // 
             // layoutControlItem8
             // 
             this.layoutControlItem8.Control = this.luDepartment;
             this.layoutControlItem8.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem8.Name = "layoutControlItem8";
-            this.layoutControlItem8.Size = new System.Drawing.Size(513, 28);
+            this.layoutControlItem8.Size = new System.Drawing.Size(517, 24);
             this.layoutControlItem8.Text = "财务部门";
-            this.layoutControlItem8.TextSize = new System.Drawing.Size(60, 18);
+            this.layoutControlItem8.TextSize = new System.Drawing.Size(48, 14);
+            // 
+            // txtRemark
+            // 
+            this.txtRemark.Location = new System.Drawing.Point(63, 132);
+            this.txtRemark.Name = "txtRemark";
+            this.txtRemark.Size = new System.Drawing.Size(462, 43);
+            this.txtRemark.StyleController = this.layoutControl1;
+            this.txtRemark.TabIndex = 9;
+            // 
+            // layoutControlItem1
+            // 
+            this.layoutControlItem1.Control = this.txtRemark;
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 120);
+            this.layoutControlItem1.Name = "layoutControlItem1";
+            this.layoutControlItem1.Size = new System.Drawing.Size(517, 47);
+            this.layoutControlItem1.Text = "备注";
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(48, 14);
             // 
             // FrmStaffSalaryEdit
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(556, 238);
+            this.ClientSize = new System.Drawing.Size(556, 251);
             this.Controls.Add(this.layoutControl1);
             this.Name = "FrmStaffSalaryEdit";
             this.Text = "StaffSalary";
@@ -322,6 +345,8 @@ namespace Hades.HR.UI
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtRemark.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -345,5 +370,7 @@ namespace Hades.HR.UI
          private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
         private DepartmentLookup luDepartment;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
+        private DevExpress.XtraEditors.MemoEdit txtRemark;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
     }
 }

@@ -52,6 +52,7 @@ namespace Hades.HR.UI
         /// <param name="info"></param>
         private void SetInfo(StaffSalaryInfo info)
         {
+            info.Id = this.ID;
             info.FinanceDepartment = this.luDepartment.GetSelectedId();
             info.CardNumber = txtCardNumber.Text;
             info.BaseSalary = txtBaseSalary.Value;
@@ -59,6 +60,11 @@ namespace Hades.HR.UI
             info.DepartmentBonus = txtDepartmentBonus.Value;
             info.ReserveFund = txtReserveFund.Value;
             info.Insurance = txtInsurance.Value;
+            info.Remark = txtRemark.Text;
+
+            info.Editor = this.LoginUserInfo.Name;
+            info.EditorId = this.LoginUserInfo.ID;
+            info.EditTime = DateTime.Now;
         }
 
         /// <summary>
@@ -83,13 +89,7 @@ namespace Hades.HR.UI
                     result = CallerFactory<IStaffSalaryService>.Instance.Update(info, info.Id);
                 }
 
-                if (result)
-                {
-                    //可添加其他关联操作
-
-                    return true;
-                }
-
+                return result;
             }
             catch (Exception ex)
             {
@@ -120,8 +120,20 @@ namespace Hades.HR.UI
         {
             bool result = true;//默认是可以通过
 
-            #region MyRegion
-            #endregion
+            if (string.IsNullOrEmpty(this.luDepartment.GetSelectedId()))
+            {
+                MessageDxUtil.ShowTips("请选择所属部门");
+                this.luDepartment.Focus();
+                result = false;
+            }
+
+            var dep = this.luDepartment.GetSelected();
+            if (dep.Type == (int)DepartmentType.Group || dep.Type == (int)DepartmentType.Company)
+            {
+                MessageDxUtil.ShowTips("所属部门不能为集团或公司");
+                this.luDepartment.Focus();
+                result = false;
+            }
 
             return result;
         }
@@ -135,21 +147,22 @@ namespace Hades.HR.UI
 
             if (!string.IsNullOrEmpty(ID))
             {
-                #region 显示信息
+                this.Text = "编辑职员工资信息";
                 StaffSalaryInfo info = CallerFactory<IStaffSalaryService>.Instance.FindByID(ID);
                 if (info != null)
                 {
                     tempInfo = info;//重新给临时对象赋值，使之指向存在的记录对象
 
-                    // txtFinanceDepartment.Text = info.FinanceDepartment.ToString();
+                    luDepartment.SetSelected(info.FinanceDepartment);
                     txtCardNumber.Text = info.CardNumber;
                     txtBaseSalary.Value = info.BaseSalary;
                     txtBaseBonus.Value = info.BaseBonus;
                     txtDepartmentBonus.Value = info.DepartmentBonus;
                     txtReserveFund.Value = info.ReserveFund;
                     txtInsurance.Value = info.Insurance;
+                    txtRemark.Text = info.Remark;
                 }
-                #endregion
+              
                 //this.btnOK.Enabled = HasFunction("StaffSalary/Edit");             
             }
             else
