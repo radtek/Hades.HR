@@ -101,25 +101,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Facade\IBonusDefineService.cs" />
     <Compile Include="Facade\IDepartmentService.cs" />
     <Compile Include="Facade\IProductionLineService.cs" />
+    <Compile Include="Facade\IStaffBonusService.cs" />
     <Compile Include="Facade\IStaffSalaryService.cs" />
     <Compile Include="Facade\IStaffSalaryViewService.cs" />
     <Compile Include="Facade\IStaffService.cs" />
     <Compile Include="Facade\IWorkTeamService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceCaller\BonusDefineCaller.cs" />
     <Compile Include="ServiceCaller\DepartmentCaller.cs" />
     <Compile Include="ServiceCaller\EndPointConfig.cs" />
     <Compile Include="ServiceCaller\ProductionLineCaller.cs" />
+    <Compile Include="ServiceCaller\StaffBonusCaller.cs" />
     <Compile Include="ServiceCaller\StaffCaller.cs" />
     <Compile Include="ServiceCaller\StaffSalaryCaller.cs" />
     <Compile Include="ServiceCaller\StaffSalaryViewCaller.cs" />
     <Compile Include="ServiceCaller\WorkTeamCaller.cs" />
+    <Compile Include="WinformCaller\BonusDefineCaller.cs" />
     <Compile Include="WinformCaller\DepartmentCaller.cs" />
     <Compile Include="Facade\IPositionService.cs" />
     <Compile Include="ServiceCaller\PositionCaller.cs" />
     <Compile Include="WinformCaller\PositionCaller.cs" />
     <Compile Include="WinformCaller\ProductionLineCaller.cs" />
+    <Compile Include="WinformCaller\StaffBonusCaller.cs" />
     <Compile Include="WinformCaller\StaffCaller.cs" />
     <Compile Include="WinformCaller\StaffSalaryCaller.cs" />
     <Compile Include="WinformCaller\StaffSalaryViewCaller.cs" />

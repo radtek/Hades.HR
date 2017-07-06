@@ -42,9 +42,9 @@ namespace Hades.HR.UI
             this.menuEditSalary = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.depTree = new Hades.HR.UI.DepartmentTreeGrid();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
-            this.depTree = new Hades.HR.UI.DepartmentTreeGrid();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).BeginInit();
@@ -191,6 +191,22 @@ namespace Hades.HR.UI
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "部门列表";
             // 
+            // depTree
+            // 
+            this.depTree.DataSource = null;
+            this.depTree.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.depTree.EnableFocusCellStyle = true;
+            this.depTree.Location = new System.Drawing.Point(2, 21);
+            this.depTree.Name = "depTree";
+            this.depTree.ShowContextMenu = false;
+            this.depTree.ShowMenuCreate = false;
+            this.depTree.ShowMenuDelete = false;
+            this.depTree.ShowMenuEdit = false;
+            this.depTree.ShowMenuView = false;
+            this.depTree.ShowNameOnly = true;
+            this.depTree.Size = new System.Drawing.Size(240, 651);
+            this.depTree.TabIndex = 1;
+            // 
             // groupControl2
             // 
             this.groupControl2.Controls.Add(this.wgvStaffSalary);
@@ -210,22 +226,6 @@ namespace Hades.HR.UI
             this.groupControl3.Size = new System.Drawing.Size(748, 194);
             this.groupControl3.TabIndex = 2;
             this.groupControl3.Text = "查询";
-            // 
-            // depTree
-            // 
-            this.depTree.DataSource = null;
-            this.depTree.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.depTree.EnableFocusCellStyle = true;
-            this.depTree.Location = new System.Drawing.Point(2, 21);
-            this.depTree.Name = "depTree";
-            this.depTree.ShowContextMenu = false;
-            this.depTree.ShowMenuCreate = false;
-            this.depTree.ShowMenuDelete = false;
-            this.depTree.ShowMenuEdit = false;
-            this.depTree.ShowMenuView = false;
-            this.depTree.ShowNameOnly = true;
-            this.depTree.Size = new System.Drawing.Size(240, 651);
-            this.depTree.TabIndex = 1;
             // 
             // FrmStaffSalary
             // 

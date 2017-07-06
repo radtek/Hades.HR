@@ -147,7 +147,7 @@ namespace Hades.HR.UI
 
             if (!string.IsNullOrEmpty(ID))
             {
-                this.Text = "编辑职员工资信息";
+                this.Text = "编辑员工工资信息";
                 StaffSalaryInfo info = CallerFactory<IStaffSalaryService>.Instance.FindByID(ID);
                 if (info != null)
                 {
