@@ -391,6 +391,30 @@
     <Compile Include="Control\ProductionLineLookup.Designer.cs">
       <DependentUpon>ProductionLineLookup.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\FrmBonusDefine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FrmBonusDefine.Designer.cs">
+      <DependentUpon>FrmBonusDefine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FrmEditBonusDefine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FrmEditBonusDefine.Designer.cs">
+      <DependentUpon>FrmEditBonusDefine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FrmEditStaffBonus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FrmEditStaffBonus.Designer.cs">
+      <DependentUpon>FrmEditStaffBonus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FrmStaffBonus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FrmStaffBonus.Designer.cs">
+      <DependentUpon>FrmStaffBonus.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\FrmWorkTeamEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -493,6 +517,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Control\ProductionLineLookup.resx">
       <DependentUpon>ProductionLineLookup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FrmBonusDefine.resx">
+      <DependentUpon>FrmBonusDefine.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmDepartment.resx">
       <DependentUpon>FrmDepartment.cs</DependentUpon>

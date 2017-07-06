@@ -28,16 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup1 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
             DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
-            this.applicationMenu1 = new DevExpress.XtraBars.Ribbon.ApplicationMenu();
+            this.applicationMenu1 = new DevExpress.XtraBars.Ribbon.ApplicationMenu(this.components);
             this.btnQuit = new DevExpress.XtraBars.BarButtonItem();
             this.barItemExit = new DevExpress.XtraBars.BarButtonItem();
             this.btnRelogin = new DevExpress.XtraBars.BarButtonItem();
-            this.imageCollection1 = new DevExpress.Utils.ImageCollection();
+            this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
             this.rgbiSkins = new DevExpress.XtraBars.RibbonGalleryBarItem();
             this.progressBar = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemProgressBar3 = new DevExpress.XtraEditors.Repository.RepositoryItemProgressBar();
@@ -61,10 +62,12 @@
             this.btn_PositionMan = new DevExpress.XtraBars.BarButtonItem();
             this.btn_StaffMan = new DevExpress.XtraBars.BarButtonItem();
             this.btn_StaffOv = new DevExpress.XtraBars.BarButtonItem();
-            this.ribbonMiniToolbar1 = new DevExpress.XtraBars.Ribbon.RibbonMiniToolbar();
-            this.ribbonMiniToolbar2 = new DevExpress.XtraBars.Ribbon.RibbonMiniToolbar();
+            this.btn_StaffSalary = new DevExpress.XtraBars.BarButtonItem();
+            this.ribbonMiniToolbar1 = new DevExpress.XtraBars.Ribbon.RibbonMiniToolbar(this.components);
+            this.ribbonMiniToolbar2 = new DevExpress.XtraBars.Ribbon.RibbonMiniToolbar(this.components);
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonSystem = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup7 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -73,16 +76,15 @@
             this.repositoryItemProgressBar1 = new DevExpress.XtraEditors.Repository.RepositoryItemProgressBar();
             this.repositoryItemProgressBar2 = new DevExpress.XtraEditors.Repository.RepositoryItemProgressBar();
             this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
-            this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager();
-            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel();
-            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip();
+            this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.notifyMenu_Show = new System.Windows.Forms.ToolStripMenuItem();
             this.notifyMenu_About = new System.Windows.Forms.ToolStripMenuItem();
             this.notifyMenu_Exit = new System.Windows.Forms.ToolStripMenuItem();
-            this.popupMenu1 = new DevExpress.XtraBars.PopupMenu();
-            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.btn_StaffSalary = new DevExpress.XtraBars.BarButtonItem();
+            this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.btn_BonusDefine = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
@@ -126,10 +128,11 @@
             this.btn_PositionMan,
             this.btn_StaffMan,
             this.btn_StaffOv,
-            this.btn_StaffSalary});
+            this.btn_StaffSalary,
+            this.btn_BonusDefine});
             this.ribbonControl.LargeImages = this.imageCollection1;
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 9;
+            this.ribbonControl.MaxItemId = 10;
             this.ribbonControl.MiniToolbars.Add(this.ribbonMiniToolbar1);
             this.ribbonControl.MiniToolbars.Add(this.ribbonMiniToolbar2);
             this.ribbonControl.Name = "ribbonControl";
@@ -399,6 +402,16 @@
             this.btn_StaffOv.Name = "btn_StaffOv";
             this.btn_StaffOv.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_StaffOv_ItemClick);
             // 
+            // btn_StaffSalary
+            // 
+            this.btn_StaffSalary.Caption = "工资基本信息";
+            this.btn_StaffSalary.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+            this.btn_StaffSalary.Glyph = ((System.Drawing.Image)(resources.GetObject("btn_StaffSalary.Glyph")));
+            this.btn_StaffSalary.Id = 8;
+            this.btn_StaffSalary.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btn_StaffSalary.LargeGlyph")));
+            this.btn_StaffSalary.Name = "btn_StaffSalary";
+            this.btn_StaffSalary.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_StaffSalary_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -415,6 +428,13 @@
             this.ribbonPageGroup1.ItemLinks.Add(this.btn_StaffOv);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.Text = "基础数据";
+            // 
+            // ribbonPageGroup2
+            // 
+            this.ribbonPageGroup2.ItemLinks.Add(this.btn_StaffSalary);
+            this.ribbonPageGroup2.ItemLinks.Add(this.btn_BonusDefine);
+            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
+            this.ribbonPageGroup2.Text = "工资数据";
             // 
             // ribbonSystem
             // 
@@ -531,21 +551,15 @@
             this.popupMenu1.Name = "popupMenu1";
             this.popupMenu1.Ribbon = this.ribbonControl;
             // 
-            // ribbonPageGroup2
+            // btn_BonusDefine
             // 
-            this.ribbonPageGroup2.ItemLinks.Add(this.btn_StaffSalary);
-            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
-            this.ribbonPageGroup2.Text = "工资数据";
-            // 
-            // btn_StaffSalary
-            // 
-            this.btn_StaffSalary.Caption = "工资基本信息";
-            this.btn_StaffSalary.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
-            this.btn_StaffSalary.Glyph = ((System.Drawing.Image)(resources.GetObject("btn_StaffSalary.Glyph")));
-            this.btn_StaffSalary.Id = 8;
-            this.btn_StaffSalary.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btn_StaffSalary.LargeGlyph")));
-            this.btn_StaffSalary.Name = "btn_StaffSalary";
-            this.btn_StaffSalary.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_StaffSalary_ItemClick);
+            this.btn_BonusDefine.Caption = "奖金设置";
+            this.btn_BonusDefine.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+            this.btn_BonusDefine.Glyph = ((System.Drawing.Image)(resources.GetObject("btn_BonusDefine.Glyph")));
+            this.btn_BonusDefine.Id = 9;
+            this.btn_BonusDefine.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btn_BonusDefine.LargeGlyph")));
+            this.btn_BonusDefine.Name = "btn_BonusDefine";
+            this.btn_BonusDefine.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_BonusDefine_ItemClick);
             // 
             // MainForm
             // 
@@ -635,6 +649,7 @@
         private DevExpress.XtraBars.BarButtonItem btn_StaffOv;
         private DevExpress.XtraBars.BarButtonItem btn_StaffSalary;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
+        private DevExpress.XtraBars.BarButtonItem btn_BonusDefine;
     }
 }
 
