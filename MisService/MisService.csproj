@@ -124,11 +124,15 @@
     <Content Include="Base\Mail\MailSendHistoryService.svc" />
     <Content Include="Base\Mail\MailSendService.svc" />
     <Content Include="Base\Mail\MailUnifiedConfigService.svc" />
+    <Content Include="HR\BonusDefineService.svc" />
     <Content Include="HR\DepartmentService.svc" />
     <Content Include="HR\PositionService.svc" />
+    <Content Include="HR\ProductionLineService.svc" />
+    <Content Include="HR\StaffBonusService.svc" />
     <Content Include="HR\StaffSalaryService.svc" />
     <Content Include="HR\StaffSalaryViewService.svc" />
     <Content Include="HR\StaffService.svc" />
+    <Content Include="HR\WorkTeamService.svc" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
