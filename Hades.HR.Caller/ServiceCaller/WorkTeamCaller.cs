@@ -52,24 +52,36 @@ namespace Hades.HR.ServiceCaller
 
         #region method
         /// <summary>
-        /// 查找所有班组，不包含已删除
+        /// 标记删除
         /// </summary>
+        /// <param name="id">ID</param>
         /// <returns></returns>
-        public List<WorkTeamInfo> FindAll()
+        public bool MarkDelete(string id)
         {
-            List<WorkTeamInfo> result = new List<WorkTeamInfo>();
+            bool result = false;
 
             IWorkTeamService service = CreateSubClient();
             ICommunicationObject comm = service as ICommunicationObject;
             comm.Using(client =>
             {
-                result = service.FindAll();
+                result = service.MarkDelete(id);
             });
 
             return result;
         }
+
+        /// <summary>
+        /// 标记删除
+        /// </summary>
+        /// <param name="id">ID</param>
+        /// <returns></returns>
+        public async Task<bool> MarkDeleteAsync(string id)
+        {
+            IWorkTeamService service = CreateSubClient();
+            return await service.MarkDeleteAsync(id);
+        }
         #endregion //Method
-        
+
         ///// <summary>
         ///// 根据名称查找对象Asyn(自定义接口使用范例)
         ///// </summary>

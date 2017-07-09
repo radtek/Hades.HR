@@ -25,13 +25,16 @@ namespace Hades.HR.BLL
 
         #region Method
         /// <summary>
-        /// 查找所有班组，不包含已删除
+        /// 标记删除
         /// </summary>
+        /// <param name="id">ID</param>
         /// <returns></returns>
-        public List<WorkTeamInfo> FindAll()
+        public bool MarkDelete(string id)
         {
-            string sql = "deleted=0";
-            return base.Find(sql, "ORDER BY SortCode");
+            var entity = base.FindByID(id);
+            entity.Deleted = 1;
+
+            return base.Update(entity, id);
         }
         #endregion //Method
     }

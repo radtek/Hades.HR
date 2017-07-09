@@ -41,15 +41,6 @@ namespace Hades.HR.UI
         }
 
         /// <summary>
-        /// 初始化数据
-        /// </summary>
-        private void LoadData()
-        {
-            var departments = CallerFactory<IDepartmentService>.Instance.Find2("deleted=0", "ORDER BY SortCode");
-            this.depTree.DataSource = departments;
-        }
-
-        /// <summary>
         /// 载入部门数据
         /// </summary>
         private async void LoadDepartments()
@@ -96,8 +87,8 @@ namespace Hades.HR.UI
         {
             var teams = CallerFactory<IWorkTeamService>.Instance.Find2(string.Format("CompanyId='{0}' AND Deleted=0", department.Id), "ORDER BY SortCode");
 
-            this.wgvWorkTeam.DisplayColumns = "Name,Number,SortCode,Remark,Enabled";
-            this.wgvWorkTeam.ColumnNameAlias = CallerFactory<IProductionLineService>.Instance.GetColumnNameAlias();
+            this.wgvWorkTeam.DisplayColumns = "Name,Number,CompanyId,ProductionLineId,SortCode,Remark,Enabled";
+            this.wgvWorkTeam.ColumnNameAlias = CallerFactory<IWorkTeamService>.Instance.GetColumnNameAlias();
 
             this.wgvWorkTeam.DataSource = teams;
             this.wgvWorkTeam.PrintTitle = "班组报表";
@@ -150,20 +141,11 @@ namespace Hades.HR.UI
             this.wgvWorkTeam.AppendedMenu = this.contextMenuStrip3;
             this.wgvWorkTeam.ShowLineNumber = true;
             this.wgvWorkTeam.BestFitColumnWith = true;
+            this.wgvWorkTeam.gridView1.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(wgvWorkTeam_CustomColumnDisplayText);
         }
         #endregion //Method
 
         #region Event
-        /// <summary>
-        /// 数据保存
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void dlg_OnDataSaved(object sender, EventArgs e)
-        {
-            LoadData();
-        }
-
         /// <summary>
         /// 选择部门
         /// </summary>
@@ -178,12 +160,8 @@ namespace Hades.HR.UI
                 this.txtDepartmentNumber.Text = department.Number;
 
                 LoadPositions(department);
-
-                if (department.Type == (int)DepartmentType.Group || department.Type == (int)DepartmentType.Company)
-                {
-                    LoadProductionLines(department);
-                    LoadWorkTeams(department);
-                }
+                LoadProductionLines(department);
+                LoadWorkTeams(department);
             }
         }
 
@@ -336,15 +314,63 @@ namespace Hades.HR.UI
         private void menuAddTeam_Click(object sender, EventArgs e)
         {
             FrmWorkTeamEdit dlg = new FrmWorkTeamEdit();
-            dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
+           // dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
             dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
 
             if (DialogResult.OK == dlg.ShowDialog())
             {
-                LoadData();
+                LoadDepartments();
             }
         }
 
+        /// <summary>
+        /// 菜单 - 编辑班组
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void menuEditTeam_Click(object sender, EventArgs e)
+        {
+            string ID = this.wgvWorkTeam.gridView1.GetFocusedRowCellDisplayText("Id");
+            List<string> IDList = new List<string>();
+            for (int i = 0; i < this.wgvWorkTeam.gridView1.RowCount; i++)
+            {
+                string strTemp = this.wgvWorkTeam.GridView1.GetRowCellDisplayText(i, "Id");
+                IDList.Add(strTemp);
+            }
+
+            if (!string.IsNullOrEmpty(ID))
+            {
+                FrmWorkTeamEdit dlg = new FrmWorkTeamEdit();
+                dlg.ID = ID;
+                dlg.IDList = IDList;
+                dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
+
+                if (DialogResult.OK == dlg.ShowDialog())
+                {
+                    LoadDepartments();
+                }
+            }
+        }
+
+        /// <summary>
+        /// 菜单 - 删除班组
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void menuDeleteTeam_Click(object sender, EventArgs e)
+        {
+            string id = this.wgvWorkTeam.gridView1.GetFocusedRowCellDisplayText("Id");
+            if (string.IsNullOrEmpty(id))
+                return;
+
+            if (MessageDxUtil.ShowYesNoAndTips("您确定删除选定的产线么？") == DialogResult.No)
+            {
+                return;
+            }
+
+            CallerFactory<IWorkTeamService>.Instance.MarkDelete(id);
+            LoadDepartments();
+        }
 
         #region Grid Event
         /// <summary>
@@ -399,6 +425,28 @@ namespace Hades.HR.UI
         /// <param name="sender"></param>
         /// <param name="e"></param>
         void wgvProductionLine_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+        {
+            string columnName = e.Column.FieldName;
+            if (columnName == "CompanyId" && !string.IsNullOrEmpty(e.Value.ToString()))
+            {
+                if (e.Value != null)
+                {
+                    var dep = CallerFactory<IDepartmentService>.Instance.FindByID(e.Value.ToString());
+                    e.DisplayText = dep.Name;
+                }
+            }
+            else if (columnName == "Enabled")
+            {
+                e.DisplayText = Convert.ToInt32(e.Value) == 1 ? "已启用" : "未启用";
+            }
+        }
+
+        /// <summary>
+        /// 格式化班组列表
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void wgvWorkTeam_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
         {
             string columnName = e.Column.FieldName;
             if (columnName == "CompanyId" && !string.IsNullOrEmpty(e.Value.ToString()))

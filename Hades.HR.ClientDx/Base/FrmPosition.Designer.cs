@@ -322,32 +322,32 @@ namespace Hades.HR.UI
             this.menuEditLine,
             this.menuDeleteLine});
             this.contextMenuStrip2.Name = "contextMenuStrip2";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(153, 114);
+            this.contextMenuStrip2.Size = new System.Drawing.Size(125, 92);
             // 
             // menuViewLine
             // 
             this.menuViewLine.Name = "menuViewLine";
-            this.menuViewLine.Size = new System.Drawing.Size(152, 22);
+            this.menuViewLine.Size = new System.Drawing.Size(124, 22);
             this.menuViewLine.Text = "查看产线";
             // 
             // menuAddLine
             // 
             this.menuAddLine.Name = "menuAddLine";
-            this.menuAddLine.Size = new System.Drawing.Size(152, 22);
+            this.menuAddLine.Size = new System.Drawing.Size(124, 22);
             this.menuAddLine.Text = "新增产线";
             this.menuAddLine.Click += new System.EventHandler(this.menuAddLine_Click);
             // 
             // menuEditLine
             // 
             this.menuEditLine.Name = "menuEditLine";
-            this.menuEditLine.Size = new System.Drawing.Size(152, 22);
+            this.menuEditLine.Size = new System.Drawing.Size(124, 22);
             this.menuEditLine.Text = "编辑产线";
             this.menuEditLine.Click += new System.EventHandler(this.menuEditLine_Click);
             // 
             // menuDeleteLine
             // 
             this.menuDeleteLine.Name = "menuDeleteLine";
-            this.menuDeleteLine.Size = new System.Drawing.Size(152, 22);
+            this.menuDeleteLine.Size = new System.Drawing.Size(124, 22);
             this.menuDeleteLine.Text = "删除产线";
             this.menuDeleteLine.Click += new System.EventHandler(this.menuDeleteLine_Click);
             // 
@@ -360,32 +360,34 @@ namespace Hades.HR.UI
             this.menuEditTeam,
             this.menuDeleteTeam});
             this.contextMenuStrip3.Name = "contextMenuStrip3";
-            this.contextMenuStrip3.Size = new System.Drawing.Size(125, 92);
+            this.contextMenuStrip3.Size = new System.Drawing.Size(153, 114);
             // 
             // menuViewTeam
             // 
             this.menuViewTeam.Name = "menuViewTeam";
-            this.menuViewTeam.Size = new System.Drawing.Size(124, 22);
+            this.menuViewTeam.Size = new System.Drawing.Size(152, 22);
             this.menuViewTeam.Text = "查看班组";
             // 
             // menuAddTeam
             // 
             this.menuAddTeam.Name = "menuAddTeam";
-            this.menuAddTeam.Size = new System.Drawing.Size(124, 22);
+            this.menuAddTeam.Size = new System.Drawing.Size(152, 22);
             this.menuAddTeam.Text = "新增班组";
             this.menuAddTeam.Click += new System.EventHandler(this.menuAddTeam_Click);
             // 
             // menuEditTeam
             // 
             this.menuEditTeam.Name = "menuEditTeam";
-            this.menuEditTeam.Size = new System.Drawing.Size(124, 22);
+            this.menuEditTeam.Size = new System.Drawing.Size(152, 22);
             this.menuEditTeam.Text = "编辑班组";
+            this.menuEditTeam.Click += new System.EventHandler(this.menuEditTeam_Click);
             // 
             // menuDeleteTeam
             // 
             this.menuDeleteTeam.Name = "menuDeleteTeam";
-            this.menuDeleteTeam.Size = new System.Drawing.Size(124, 22);
+            this.menuDeleteTeam.Size = new System.Drawing.Size(152, 22);
             this.menuDeleteTeam.Text = "删除班组";
+            this.menuDeleteTeam.Click += new System.EventHandler(this.menuDeleteTeam_Click);
             // 
             // depTree
             // 

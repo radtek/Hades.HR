@@ -51,6 +51,7 @@ namespace Hades.HR.UI
         {
             info.Name = txtName.Text;
             info.Number = txtNumber.Text;
+            info.CompanyId = luCompany.GetSelectedId();
             info.ProductionLineId = luProductionLine.GetSelectedId();
             info.SortCode = txtSortCode.Text;
             info.Remark = txtRemark.Text;
@@ -75,11 +76,17 @@ namespace Hades.HR.UI
         public override bool CheckInput()
         {
             bool result = true;//默认是可以通过
-            
+
             if (this.txtName.Text.Trim().Length == 0)
             {
                 MessageDxUtil.ShowTips("请输入名称");
                 this.txtName.Focus();
+                result = false;
+            }
+            else if (string.IsNullOrEmpty(this.luCompany.GetSelectedId()))
+            {
+                MessageDxUtil.ShowTips("请选择所属公司");
+                this.luProductionLine.Focus();
                 result = false;
             }
             else if (string.IsNullOrEmpty(this.luProductionLine.GetSelectedId()))
@@ -106,7 +113,7 @@ namespace Hades.HR.UI
             InitDictItem();//数据字典加载（公用）
 
             if (!string.IsNullOrEmpty(ID))
-            { 
+            {
                 this.Text = "编辑班组";
                 WorkTeamInfo info = CallerFactory<IWorkTeamService>.Instance.FindByID(ID);
                 if (info != null)
@@ -116,13 +123,14 @@ namespace Hades.HR.UI
                     txtName.Text = info.Name;
                     txtNumber.Text = info.Number;
 
+                    this.luCompany.SetSelected(info.CompanyId);
                     this.luProductionLine.SetSelected(info.ProductionLineId);
-                   
+
                     txtSortCode.Text = info.SortCode;
                     txtRemark.Text = info.Remark;
                     cmbEnabled.EditValue = info.Enabled;
                 }
-                
+
                 //this.btnOK.Enabled = HasFunction("WorkTeam/Edit");             
             }
             else
@@ -168,8 +176,7 @@ namespace Hades.HR.UI
         /// <returns></returns>
         public override bool SaveUpdated()
         {
-
-            WorkTeamInfo info = BLLFactory<WorkTeam>.Instance.FindByID(ID);
+            WorkTeamInfo info = CallerFactory<IWorkTeamService>.Instance.FindByID(ID);
             if (info != null)
             {
                 SetInfo(info);
@@ -177,11 +184,11 @@ namespace Hades.HR.UI
                 try
                 {
                     #region 更新数据
-                    bool succeed = BLLFactory<WorkTeam>.Instance.Update(info, info.Id);
+                    bool succeed = CallerFactory<IWorkTeamService>.Instance.Update(info, info.Id);
                     if (succeed)
                     {
                         //可添加其他关联操作
-                       
+
                         return true;
                     }
                     #endregion
@@ -192,7 +199,7 @@ namespace Hades.HR.UI
                     MessageDxUtil.ShowError(ex.Message);
                 }
             }
-           return false;
+            return false;
         }
         #endregion //Method
 

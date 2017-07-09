@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using System.Threading.Tasks;
 
 using Hades.Framework.ControlUtil.Facade;
 using Hades.HR.Entity;
@@ -14,9 +15,18 @@ namespace Hades.HR.Facade
     public interface IWorkTeamService : IBaseService<WorkTeamInfo>
     {
         /// <summary>
-        /// 查找所有产线，不包含已删除
+        /// 标记删除
         /// </summary>
+        /// <param name="id">ID</param>
         /// <returns></returns>
-        List<WorkTeamInfo> FindAll();
+        bool MarkDelete(string id);
+
+        /// <summary>
+        /// 标记删除
+        /// </summary>
+        /// <param name="id">ID</param>
+        /// <returns></returns>
+        [OperationContract]
+        Task<bool> MarkDeleteAsync(string id);
     }
 }

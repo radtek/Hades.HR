@@ -38,11 +38,11 @@ namespace Hades.HR.UI
             this.txtSortCode = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.picPrint)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
@@ -54,11 +54,11 @@ namespace Hades.HR.UI
             ((System.ComponentModel.ISupportInitialize)(this.txtSortCode.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             this.SuspendLayout();
             // 
@@ -104,64 +104,65 @@ namespace Hades.HR.UI
             // 
             // cmbEnabled
             // 
-            this.cmbEnabled.Location = new System.Drawing.Point(338, 70);
+            this.cmbEnabled.EditValue = 0;
+            this.cmbEnabled.Location = new System.Drawing.Point(326, 60);
             this.cmbEnabled.Name = "cmbEnabled";
             this.cmbEnabled.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cmbEnabled.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("未启用", 0, -1),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("已启用", 1, -1)});
-            this.cmbEnabled.Size = new System.Drawing.Size(195, 24);
+            this.cmbEnabled.Size = new System.Drawing.Size(209, 20);
             this.cmbEnabled.StyleController = this.layoutControl1;
             this.cmbEnabled.TabIndex = 10;
             // 
             // txtRemark
             // 
-            this.txtRemark.Location = new System.Drawing.Point(77, 98);
+            this.txtRemark.Location = new System.Drawing.Point(63, 84);
             this.txtRemark.Name = "txtRemark";
-            this.txtRemark.Size = new System.Drawing.Size(456, 57);
+            this.txtRemark.Size = new System.Drawing.Size(472, 73);
             this.txtRemark.StyleController = this.layoutControl1;
             this.txtRemark.TabIndex = 9;
             // 
             // luProductionLine
             // 
-            this.luProductionLine.Location = new System.Drawing.Point(338, 42);
+            this.luProductionLine.Location = new System.Drawing.Point(326, 36);
             this.luProductionLine.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.luProductionLine.Name = "luProductionLine";
-            this.luProductionLine.Size = new System.Drawing.Size(195, 24);
+            this.luProductionLine.Size = new System.Drawing.Size(209, 20);
             this.luProductionLine.TabIndex = 8;
             // 
             // luCompany
             // 
-            this.luCompany.Location = new System.Drawing.Point(77, 42);
+            this.luCompany.Location = new System.Drawing.Point(63, 36);
             this.luCompany.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.luCompany.Name = "luCompany";
             this.luCompany.OnlyShowCompany = true;
-            this.luCompany.Size = new System.Drawing.Size(194, 24);
+            this.luCompany.Size = new System.Drawing.Size(208, 20);
             this.luCompany.TabIndex = 7;
             this.luCompany.DepartmentSelect += new System.EventHandler(this.luCompany_DepartmentSelect);
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(77, 14);
+            this.txtName.Location = new System.Drawing.Point(63, 12);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(194, 24);
+            this.txtName.Size = new System.Drawing.Size(208, 20);
             this.txtName.StyleController = this.layoutControl1;
             this.txtName.TabIndex = 1;
             // 
             // txtNumber
             // 
-            this.txtNumber.Location = new System.Drawing.Point(338, 14);
+            this.txtNumber.Location = new System.Drawing.Point(326, 12);
             this.txtNumber.Name = "txtNumber";
-            this.txtNumber.Size = new System.Drawing.Size(195, 24);
+            this.txtNumber.Size = new System.Drawing.Size(209, 20);
             this.txtNumber.StyleController = this.layoutControl1;
             this.txtNumber.TabIndex = 2;
             // 
             // txtSortCode
             // 
-            this.txtSortCode.Location = new System.Drawing.Point(77, 70);
+            this.txtSortCode.Location = new System.Drawing.Point(63, 60);
             this.txtSortCode.Name = "txtSortCode";
-            this.txtSortCode.Size = new System.Drawing.Size(194, 24);
+            this.txtSortCode.Size = new System.Drawing.Size(208, 20);
             this.txtSortCode.StyleController = this.layoutControl1;
             this.txtSortCode.TabIndex = 4;
             // 
@@ -187,67 +188,67 @@ namespace Hades.HR.UI
             this.layoutControlItem1.Control = this.txtName;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(261, 28);
+            this.layoutControlItem1.Size = new System.Drawing.Size(263, 24);
             this.layoutControlItem1.Text = "名称";
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(60, 18);
-            // 
-            // layoutControlItem2
-            // 
-            this.layoutControlItem2.Control = this.txtNumber;
-            this.layoutControlItem2.Location = new System.Drawing.Point(261, 0);
-            this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(262, 28);
-            this.layoutControlItem2.Text = "编码";
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(60, 18);
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(48, 14);
             // 
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.txtSortCode;
-            this.layoutControlItem4.Location = new System.Drawing.Point(0, 56);
+            this.layoutControlItem4.Location = new System.Drawing.Point(0, 48);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(261, 28);
+            this.layoutControlItem4.Size = new System.Drawing.Size(263, 24);
             this.layoutControlItem4.Text = "排序码";
-            this.layoutControlItem4.TextSize = new System.Drawing.Size(60, 18);
+            this.layoutControlItem4.TextSize = new System.Drawing.Size(48, 14);
             // 
             // layoutControlItem7
             // 
             this.layoutControlItem7.Control = this.luCompany;
-            this.layoutControlItem7.Location = new System.Drawing.Point(0, 28);
+            this.layoutControlItem7.Location = new System.Drawing.Point(0, 24);
             this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(261, 28);
+            this.layoutControlItem7.Size = new System.Drawing.Size(263, 24);
             this.layoutControlItem7.Text = "所属公司";
-            this.layoutControlItem7.TextSize = new System.Drawing.Size(60, 18);
+            this.layoutControlItem7.TextSize = new System.Drawing.Size(48, 14);
             // 
             // layoutControlItem8
             // 
             this.layoutControlItem8.Control = this.luProductionLine;
-            this.layoutControlItem8.Location = new System.Drawing.Point(261, 28);
+            this.layoutControlItem8.Location = new System.Drawing.Point(263, 24);
             this.layoutControlItem8.Name = "layoutControlItem8";
-            this.layoutControlItem8.Size = new System.Drawing.Size(262, 28);
+            this.layoutControlItem8.Size = new System.Drawing.Size(264, 24);
             this.layoutControlItem8.Text = "所属产线";
-            this.layoutControlItem8.TextSize = new System.Drawing.Size(60, 18);
+            this.layoutControlItem8.TextSize = new System.Drawing.Size(48, 14);
             // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.txtRemark;
-            this.layoutControlItem3.Location = new System.Drawing.Point(0, 84);
+            this.layoutControlItem3.Location = new System.Drawing.Point(0, 72);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(523, 61);
+            this.layoutControlItem3.Size = new System.Drawing.Size(527, 77);
             this.layoutControlItem3.Text = "备注";
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(60, 18);
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(48, 14);
+            // 
+            // layoutControlItem2
+            // 
+            this.layoutControlItem2.Control = this.txtNumber;
+            this.layoutControlItem2.Location = new System.Drawing.Point(263, 0);
+            this.layoutControlItem2.Name = "layoutControlItem2";
+            this.layoutControlItem2.Size = new System.Drawing.Size(264, 24);
+            this.layoutControlItem2.Text = "编码";
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(48, 14);
             // 
             // layoutControlItem5
             // 
             this.layoutControlItem5.Control = this.cmbEnabled;
-            this.layoutControlItem5.Location = new System.Drawing.Point(261, 56);
+            this.layoutControlItem5.Location = new System.Drawing.Point(263, 48);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(262, 28);
+            this.layoutControlItem5.Size = new System.Drawing.Size(264, 24);
             this.layoutControlItem5.Text = "是否启用";
-            this.layoutControlItem5.TextSize = new System.Drawing.Size(60, 18);
+            this.layoutControlItem5.TextSize = new System.Drawing.Size(48, 14);
             // 
             // FrmWorkTeamEdit
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(566, 233);
             this.Controls.Add(this.layoutControl1);
@@ -269,11 +270,11 @@ namespace Hades.HR.UI
             ((System.ComponentModel.ISupportInitialize)(this.txtSortCode.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
