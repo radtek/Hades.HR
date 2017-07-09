@@ -70,20 +70,6 @@ namespace Hades.HR.BLL
         }
 
         /// <summary>
-        /// 新增职员
-        /// </summary>
-        /// <param name="obj"></param>
-        /// <param name="trans"></param>
-        /// <returns></returns>
-        public override bool Insert(StaffInfo obj, DbTransaction trans = null)
-        {
-            obj.Id = Guid.NewGuid().ToString();
-            obj.Deleted = 0;
-
-            return base.Insert(obj, trans);
-        }
-
-        /// <summary>
         /// 标记删除
         /// </summary>
         /// <param name="id">ID</param>

@@ -42,9 +42,9 @@ namespace Hades.HR.UI
             this.menuEditSalary = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.depTree = new Hades.HR.UI.DepartmentTreeGrid();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
+            this.depTree = new Hades.HR.UI.DepartmentTreeGrid();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).BeginInit();
@@ -64,9 +64,9 @@ namespace Hades.HR.UI
             // btnSearch
             // 
             this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSearch.Location = new System.Drawing.Point(12, 36);
+            this.btnSearch.Location = new System.Drawing.Point(567, 12);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(720, 22);
+            this.btnSearch.Size = new System.Drawing.Size(165, 22);
             this.btnSearch.StyleController = this.layoutControl1;
             this.btnSearch.TabIndex = 14;
             this.btnSearch.Text = "查询";
@@ -80,7 +80,7 @@ namespace Hades.HR.UI
             this.layoutControl1.Location = new System.Drawing.Point(2, 21);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(744, 171);
+            this.layoutControl1.Size = new System.Drawing.Size(744, 71);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -88,7 +88,7 @@ namespace Hades.HR.UI
             // 
             this.txtName.Location = new System.Drawing.Point(39, 12);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(693, 20);
+            this.txtName.Size = new System.Drawing.Size(524, 20);
             this.txtName.StyleController = this.layoutControl1;
             this.txtName.TabIndex = 4;
             // 
@@ -101,7 +101,7 @@ namespace Hades.HR.UI
             this.layoutControlItem2});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(744, 171);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(744, 71);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem1
@@ -109,16 +109,16 @@ namespace Hades.HR.UI
             this.layoutControlItem1.Control = this.txtName;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(724, 24);
+            this.layoutControlItem1.Size = new System.Drawing.Size(555, 51);
             this.layoutControlItem1.Text = "姓名";
             this.layoutControlItem1.TextSize = new System.Drawing.Size(24, 14);
             // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.btnSearch;
-            this.layoutControlItem2.Location = new System.Drawing.Point(0, 24);
+            this.layoutControlItem2.Location = new System.Drawing.Point(555, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(724, 127);
+            this.layoutControlItem2.Size = new System.Drawing.Size(169, 51);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
@@ -138,8 +138,8 @@ namespace Hades.HR.UI
             this.wgvStaffSalary.ShowCheckBox = false;
             this.wgvStaffSalary.ShowDeleteMenu = false;
             this.wgvStaffSalary.ShowEditMenu = true;
-            this.wgvStaffSalary.ShowExportButton = true;
-            this.wgvStaffSalary.Size = new System.Drawing.Size(744, 451);
+            this.wgvStaffSalary.ShowExportButton = false;
+            this.wgvStaffSalary.Size = new System.Drawing.Size(744, 551);
             this.wgvStaffSalary.TabIndex = 11;
             // 
             // contextMenuStrip1
@@ -175,7 +175,7 @@ namespace Hades.HR.UI
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1004, 680);
             this.tableLayoutPanel1.TabIndex = 16;
@@ -190,6 +190,26 @@ namespace Hades.HR.UI
             this.groupControl1.Size = new System.Drawing.Size(244, 674);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "部门列表";
+            // 
+            // groupControl2
+            // 
+            this.groupControl2.Controls.Add(this.wgvStaffSalary);
+            this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupControl2.Location = new System.Drawing.Point(253, 103);
+            this.groupControl2.Name = "groupControl2";
+            this.groupControl2.Size = new System.Drawing.Size(748, 574);
+            this.groupControl2.TabIndex = 1;
+            this.groupControl2.Text = "工资信息";
+            // 
+            // groupControl3
+            // 
+            this.groupControl3.Controls.Add(this.layoutControl1);
+            this.groupControl3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupControl3.Location = new System.Drawing.Point(253, 3);
+            this.groupControl3.Name = "groupControl3";
+            this.groupControl3.Size = new System.Drawing.Size(748, 94);
+            this.groupControl3.TabIndex = 2;
+            this.groupControl3.Text = "查询";
             // 
             // depTree
             // 
@@ -206,26 +226,7 @@ namespace Hades.HR.UI
             this.depTree.ShowNameOnly = true;
             this.depTree.Size = new System.Drawing.Size(240, 651);
             this.depTree.TabIndex = 1;
-            // 
-            // groupControl2
-            // 
-            this.groupControl2.Controls.Add(this.wgvStaffSalary);
-            this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl2.Location = new System.Drawing.Point(253, 203);
-            this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(748, 474);
-            this.groupControl2.TabIndex = 1;
-            this.groupControl2.Text = "工资信息";
-            // 
-            // groupControl3
-            // 
-            this.groupControl3.Controls.Add(this.layoutControl1);
-            this.groupControl3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl3.Location = new System.Drawing.Point(253, 3);
-            this.groupControl3.Name = "groupControl3";
-            this.groupControl3.Size = new System.Drawing.Size(748, 194);
-            this.groupControl3.TabIndex = 2;
-            this.groupControl3.Text = "查询";
+            this.depTree.DepartmentSelect += new System.EventHandler(this.depTree_DepartmentSelect);
             // 
             // FrmStaffSalary
             // 

@@ -1,20 +1,20 @@
 using System;
-using System.Text;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Linq;
+using System.Text;
 using System.Windows.Forms;
-using System.ComponentModel;
-using System.Collections.Generic;
 
-using Hades.Pager.Entity;
 using Hades.Dictionary;
 using Hades.Framework.BaseUI;
 using Hades.Framework.Commons;
 using Hades.Framework.ControlUtil;
-
 using Hades.Framework.ControlUtil.Facade;
-using Hades.HR.Facade;
 using Hades.HR.Entity;
+using Hades.HR.Facade;
+using Hades.Pager.Entity;
 
 namespace Hades.HR.UI
 {
@@ -40,15 +40,10 @@ namespace Hades.HR.UI
             this.wgvStaffSalary.OnPageChanged += new EventHandler(winGridViewPager1_OnPageChanged);
             this.wgvStaffSalary.OnEditSelected += new EventHandler(menuEditSalary_Click);
             this.wgvStaffSalary.OnRefresh += new EventHandler(winGridViewPager1_OnRefresh);
-            this.wgvStaffSalary.AppendedMenu = this.contextMenuStrip1;
+            //this.wgvStaffSalary.AppendedMenu = this.contextMenuStrip1;
             this.wgvStaffSalary.ShowLineNumber = true;
             this.wgvStaffSalary.gridView1.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(gridView1_CustomColumnDisplayText);
-
-            //         this.wgvStaffSalary.OnStartExport += new EventHandler(winGridViewPager1_OnStartExport);
-            //this.wgvStaffSalary.gridView1.DataSourceChanged +=new EventHandler(gridView1_DataSourceChanged);
-
-            //         this.wgvStaffSalary.gridView1.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(gridView1_RowCellStyle);
-
+          
             //关联回车键进行查询
             foreach (Control control in this.layoutControl1.Controls)
             {
@@ -75,7 +70,6 @@ namespace Hades.HR.UI
             this.wgvStaffSalary.DisplayColumns = "Number,Name,FinanceDepartment,CardNumber,BaseSalary,BaseBonus,DepartmentBonus,ReserveFund,Insurance";
             this.wgvStaffSalary.ColumnNameAlias = CallerFactory<IStaffSalaryViewService>.Instance.GetColumnNameAlias();//字段列显示名称转义
 
-            
             string where = GetConditionSql();
             PagerInfo pagerInfo = this.wgvStaffSalary.PagerInfo;
             List<StaffSalaryViewInfo> list = CallerFactory<IStaffSalaryViewService>.Instance.FindWithPager(where, ref pagerInfo);
@@ -97,6 +91,18 @@ namespace Hades.HR.UI
             {
                 condition = new SearchCondition();
                 condition.AddCondition("Name", this.txtName.Text.Trim(), SqlOperator.Like);
+
+                var dep = this.depTree.GetSelectedObject();
+                if (dep != null && !string.IsNullOrEmpty(dep.PID))
+                {
+                    var departments = CallerFactory<IDepartmentService>.Instance.FindWithChildren(dep.Id);
+
+                    var idList = departments.Select(r => r.Id).ToList();
+                    string ids = string.Join(",", idList);
+                    ids = ids.TransSQLInStrFormat();
+
+                    condition.AddCondition("FinanceDepartment", ids, SqlOperator.In);
+                }
             }
 
             string where = condition.BuildConditionSql().Replace("Where", "");
@@ -110,6 +116,9 @@ namespace Hades.HR.UI
         /// </summary>
         public override void FormOnLoad()
         {
+            this.depTree.DataSource = CallerFactory<IDepartmentService>.Instance.Find2("deleted=0", "ORDER BY SortCode");
+            this.depTree.Expand();
+
             BindData();
         }
 
@@ -198,6 +207,15 @@ namespace Hades.HR.UI
             BindData();
         }
 
+        /// <summary>
+        /// 部门选择
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void depTree_DepartmentSelect(object sender, EventArgs e)
+        {
+            BindData();
+        }
 
         void dlg_OnDataSaved(object sender, EventArgs e)
         {
@@ -233,25 +251,9 @@ namespace Hades.HR.UI
                 }
             }
         }
-
-
         #endregion //Event
+        
 
-
-        void gridView1_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
-        {
-            //if (e.Column.FieldName == "OrderStatus")
-            //{
-            //    string status = this.winGridViewPager1.gridView1.GetRowCellValue(e.RowHandle, "OrderStatus").ToString();
-            //    Color color = Color.White;
-            //    if (status == "已审核")
-            //    {
-            //        e.Appearance.BackColor = Color.Red;
-            //        e.Appearance.BackColor2 = Color.LightCyan;
-            //    }
-            //}
-        }
-     
         /// <summary>
         /// 绑定数据后，分配各列的宽度
         /// </summary>
@@ -278,9 +280,9 @@ namespace Hades.HR.UI
                 column.Width = width;
             }
         }
-     
-     
-        
+
+
+
         /// <summary>
         /// 分页控件全部导出操作前的操作
         /// </summary> 
@@ -288,32 +290,12 @@ namespace Hades.HR.UI
         {
             string where = GetConditionSql();
             this.wgvStaffSalary.AllToExport = CallerFactory<IStaffSalaryService>.Instance.FindToDataTable(where);
-         }
-
-       
-       
-        
-        
-    
-     
-        /// <summary>
-        /// 新增数据操作
-        /// </summary>
-        private void btnAddNew_Click(object sender, EventArgs e)
-        {
-            FrmStaffSalaryEdit dlg = new FrmStaffSalaryEdit();
-            dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
-            dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
-            
-            if (DialogResult.OK == dlg.ShowDialog())
-            {
-                BindData();
-            }
         }
-        
-          
 
-		 		 		 		 		 		 		 		 
+
+
+
+
         private string moduleName = "StaffSalary";
         /// <summary>
         /// 导入Excel的操作
@@ -348,7 +330,7 @@ namespace Hades.HR.UI
             }
             return result;
         }
-        
+
         bool ExcelData_OnDataSave(DataRow dr)
         {
             bool success = false;
@@ -358,15 +340,15 @@ namespace Hades.HR.UI
             StaffSalaryInfo info = new StaffSalaryInfo();
             //info.Id = GetRowData(dr, "Id");
             //  info.FinanceDepartment = GetRowData(dr, "FinanceDepartment");
-              info.CardNumber = GetRowData(dr, "CardNumber");
-              info.BaseSalary = GetRowData(dr, "BaseSalary").ToDecimal();
-              info.BaseBonus = GetRowData(dr, "BaseBonus").ToDecimal();
-              info.DepartmentBonus = GetRowData(dr, "DepartmentBonus").ToDecimal();
-              info.ReserveFund = GetRowData(dr, "ReserveFund").ToDecimal();
-              info.Insurance = GetRowData(dr, "Insurance").ToDecimal();
-  
+            info.CardNumber = GetRowData(dr, "CardNumber");
+            info.BaseSalary = GetRowData(dr, "BaseSalary").ToDecimal();
+            info.BaseBonus = GetRowData(dr, "BaseBonus").ToDecimal();
+            info.DepartmentBonus = GetRowData(dr, "DepartmentBonus").ToDecimal();
+            info.ReserveFund = GetRowData(dr, "ReserveFund").ToDecimal();
+            info.Insurance = GetRowData(dr, "Insurance").ToDecimal();
+
             success = CallerFactory<IStaffSalaryService>.Instance.Insert(info);
-             return success;
+            return success;
         }
 
         /// <summary>
@@ -379,7 +361,7 @@ namespace Hades.HR.UI
             {
                 string where = GetConditionSql();
                 List<StaffSalaryInfo> list = CallerFactory<IStaffSalaryService>.Instance.Find(where);
-                 DataTable dtNew = DataTableHelper.CreateTable("序号|int,Id,FinanceDepartment,CardNumber,BaseSalary,BaseBonus,DepartmentBonus,ReserveFund,Insurance");
+                DataTable dtNew = DataTableHelper.CreateTable("序号|int,Id,FinanceDepartment,CardNumber,BaseSalary,BaseBonus,DepartmentBonus,ReserveFund,Insurance");
                 DataRow dr;
                 int j = 1;
                 for (int i = 0; i < list.Count; i++)
@@ -387,14 +369,14 @@ namespace Hades.HR.UI
                     dr = dtNew.NewRow();
                     dr["序号"] = j++;
                     dr["Id"] = list[i].Id;
-                     dr["FinanceDepartment"] = list[i].FinanceDepartment;
-                     dr["CardNumber"] = list[i].CardNumber;
-                     dr["BaseSalary"] = list[i].BaseSalary;
-                     dr["BaseBonus"] = list[i].BaseBonus;
-                     dr["DepartmentBonus"] = list[i].DepartmentBonus;
-                     dr["ReserveFund"] = list[i].ReserveFund;
-                     dr["Insurance"] = list[i].Insurance;
-                     dtNew.Rows.Add(dr);
+                    dr["FinanceDepartment"] = list[i].FinanceDepartment;
+                    dr["CardNumber"] = list[i].CardNumber;
+                    dr["BaseSalary"] = list[i].BaseSalary;
+                    dr["BaseBonus"] = list[i].BaseBonus;
+                    dr["DepartmentBonus"] = list[i].DepartmentBonus;
+                    dr["ReserveFund"] = list[i].ReserveFund;
+                    dr["Insurance"] = list[i].Insurance;
+                    dtNew.Rows.Add(dr);
                 }
 
                 try
@@ -419,7 +401,6 @@ namespace Hades.HR.UI
                     MessageDxUtil.ShowError(ex.Message);
                 }
             }
-         }
-                
+        }
     }
 }

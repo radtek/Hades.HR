@@ -239,31 +239,21 @@ namespace Hades.HR.UI
             string where = condition.BuildConditionSql().Replace("Where", "");
             return where;
         }
-        
+
         /// <summary>
         /// 绑定列表数据
         /// </summary>
         private void BindData()
         {
-        	//entity
+            //entity
             this.winGridViewPager1.DisplayColumns = "Id,StaffId,Name,Amount,Remark";
             this.winGridViewPager1.ColumnNameAlias = BLLFactory<StaffBonus>.Instance.GetColumnNameAlias();//字段列显示名称转义
 
-            #region 添加别名解析
-
-            //this.winGridViewPager1.AddColumnAlias("Id", "Id");
-            //this.winGridViewPager1.AddColumnAlias("StaffId", "StaffId");
-            //this.winGridViewPager1.AddColumnAlias("Name", "Name");
-            //this.winGridViewPager1.AddColumnAlias("Amount", "Amount");
-            //this.winGridViewPager1.AddColumnAlias("Remark", "Remark");
-
-            #endregion
-
             string where = GetConditionSql();
-	            List<StaffBonusInfo> list = BLLFactory<StaffBonus>.Instance.FindWithPager(where, this.winGridViewPager1.PagerInfo);
+            List<StaffBonusInfo> list = BLLFactory<StaffBonus>.Instance.FindWithPager(where, this.winGridViewPager1.PagerInfo);
             this.winGridViewPager1.DataSource = list;//new WHC.Pager.WinControl.SortableBindingList<StaffBonusInfo>(list);
-                this.winGridViewPager1.PrintTitle = "StaffBonus报表";
-         }
+            this.winGridViewPager1.PrintTitle = "StaffBonus报表";
+        }
         
         /// <summary>
         /// 查询数据操作

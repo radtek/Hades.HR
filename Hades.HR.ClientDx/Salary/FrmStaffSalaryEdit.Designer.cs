@@ -29,6 +29,7 @@ namespace Hades.HR.UI
         private void InitializeComponent()
         {
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.txtRemark = new DevExpress.XtraEditors.MemoEdit();
             this.txtCardNumber = new DevExpress.XtraEditors.TextEdit();
             this.txtBaseSalary = new DevExpress.XtraEditors.SpinEdit();
             this.txtBaseBonus = new DevExpress.XtraEditors.SpinEdit();
@@ -42,13 +43,15 @@ namespace Hades.HR.UI
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.bonusGrid = new Hades.HR.UI.StaffBonusGrid();
             this.luDepartment = new Hades.HR.UI.DepartmentLookup();
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtRemark = new DevExpress.XtraEditors.MemoEdit();
-            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.picPrint)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtRemark.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCardNumber.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBaseSalary.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBaseBonus.Properties)).BeginInit();
@@ -62,38 +65,39 @@ namespace Hades.HR.UI
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtRemark.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
             this.SuspendLayout();
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(370, 216);
+            this.btnOK.Location = new System.Drawing.Point(370, 360);
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(469, 216);
+            this.btnCancel.Location = new System.Drawing.Point(469, 360);
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(283, 216);
+            this.btnAdd.Location = new System.Drawing.Point(283, 360);
             this.btnAdd.Visible = false;
             // 
             // dataNavigator1
             // 
-            this.dataNavigator1.Location = new System.Drawing.Point(12, 211);
+            this.dataNavigator1.Location = new System.Drawing.Point(12, 355);
             this.dataNavigator1.Size = new System.Drawing.Size(191, 30);
             // 
             // picPrint
             // 
-            this.picPrint.Location = new System.Drawing.Point(202, 213);
+            this.picPrint.Location = new System.Drawing.Point(202, 357);
             // 
             // layoutControl1
             // 
             this.layoutControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.layoutControl1.Controls.Add(this.bonusGrid);
             this.layoutControl1.Controls.Add(this.txtRemark);
             this.layoutControl1.Controls.Add(this.luDepartment);
             this.layoutControl1.Controls.Add(this.txtCardNumber);
@@ -105,9 +109,17 @@ namespace Hades.HR.UI
             this.layoutControl1.Location = new System.Drawing.Point(12, 8);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(537, 187);
+            this.layoutControl1.Size = new System.Drawing.Size(537, 331);
             this.layoutControl1.TabIndex = 6;
             this.layoutControl1.Text = "layoutControl1";
+            // 
+            // txtRemark
+            // 
+            this.txtRemark.Location = new System.Drawing.Point(63, 132);
+            this.txtRemark.Name = "txtRemark";
+            this.txtRemark.Size = new System.Drawing.Size(462, 68);
+            this.txtRemark.StyleController = this.layoutControl1;
+            this.txtRemark.TabIndex = 9;
             // 
             // txtCardNumber
             // 
@@ -219,10 +231,11 @@ namespace Hades.HR.UI
             this.layoutControlItem4,
             this.layoutControlItem7,
             this.layoutControlItem8,
-            this.layoutControlItem1});
+            this.layoutControlItem1,
+            this.layoutControlItem9});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(537, 187);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(537, 331);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem2
@@ -279,6 +292,25 @@ namespace Hades.HR.UI
             this.layoutControlItem7.Text = "保险费";
             this.layoutControlItem7.TextSize = new System.Drawing.Size(48, 14);
             // 
+            // layoutControlItem1
+            // 
+            this.layoutControlItem1.Control = this.txtRemark;
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 120);
+            this.layoutControlItem1.Name = "layoutControlItem1";
+            this.layoutControlItem1.Size = new System.Drawing.Size(517, 72);
+            this.layoutControlItem1.Text = "备注";
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(48, 14);
+            // 
+            // bonusGrid
+            // 
+            this.bonusGrid.DataSource = null;
+            this.bonusGrid.Editable = true;
+            this.bonusGrid.Location = new System.Drawing.Point(63, 204);
+            this.bonusGrid.Name = "bonusGrid";
+            this.bonusGrid.ShowName = false;
+            this.bonusGrid.Size = new System.Drawing.Size(462, 115);
+            this.bonusGrid.TabIndex = 10;
+            // 
             // luDepartment
             // 
             this.luDepartment.Location = new System.Drawing.Point(63, 12);
@@ -297,28 +329,20 @@ namespace Hades.HR.UI
             this.layoutControlItem8.Text = "财务部门";
             this.layoutControlItem8.TextSize = new System.Drawing.Size(48, 14);
             // 
-            // txtRemark
+            // layoutControlItem9
             // 
-            this.txtRemark.Location = new System.Drawing.Point(63, 132);
-            this.txtRemark.Name = "txtRemark";
-            this.txtRemark.Size = new System.Drawing.Size(462, 43);
-            this.txtRemark.StyleController = this.layoutControl1;
-            this.txtRemark.TabIndex = 9;
-            // 
-            // layoutControlItem1
-            // 
-            this.layoutControlItem1.Control = this.txtRemark;
-            this.layoutControlItem1.Location = new System.Drawing.Point(0, 120);
-            this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(517, 47);
-            this.layoutControlItem1.Text = "备注";
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(48, 14);
+            this.layoutControlItem9.Control = this.bonusGrid;
+            this.layoutControlItem9.Location = new System.Drawing.Point(0, 192);
+            this.layoutControlItem9.Name = "layoutControlItem9";
+            this.layoutControlItem9.Size = new System.Drawing.Size(517, 119);
+            this.layoutControlItem9.Text = "额外奖金";
+            this.layoutControlItem9.TextSize = new System.Drawing.Size(48, 14);
             // 
             // FrmStaffSalaryEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(556, 251);
+            this.ClientSize = new System.Drawing.Size(556, 395);
             this.Controls.Add(this.layoutControl1);
             this.Name = "FrmStaffSalaryEdit";
             this.Text = "StaffSalary";
@@ -331,6 +355,7 @@ namespace Hades.HR.UI
             ((System.ComponentModel.ISupportInitialize)(this.picPrint)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtRemark.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCardNumber.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBaseSalary.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBaseBonus.Properties)).EndInit();
@@ -344,9 +369,9 @@ namespace Hades.HR.UI
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtRemark.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -372,5 +397,7 @@ namespace Hades.HR.UI
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
         private DevExpress.XtraEditors.MemoEdit txtRemark;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
+        private StaffBonusGrid bonusGrid;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem9;
     }
 }

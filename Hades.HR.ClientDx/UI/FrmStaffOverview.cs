@@ -101,7 +101,7 @@ namespace Hades.HR.UI
                     ids = ids.TransSQLInStrFormat();
 
                     condition.AddCondition("DepartmentId", ids, SqlOperator.In);
-                }                    
+                }
             }
             string where = condition.BuildConditionSql().Replace("Where", "");
             return where;
@@ -113,7 +113,7 @@ namespace Hades.HR.UI
         private void ViewStaff()
         {
             string ID = this.wgvStaff.gridView1.GetFocusedRowCellDisplayText("Id");
-            
+
             List<string> IDList = new List<string>();
             for (int i = 0; i < this.wgvStaff.gridView1.RowCount; i++)
             {
@@ -230,7 +230,7 @@ namespace Hades.HR.UI
 
         void gridView1_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
         {
-         
+
         }
 
         /// <summary>

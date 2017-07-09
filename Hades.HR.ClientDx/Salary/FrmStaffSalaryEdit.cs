@@ -89,6 +89,13 @@ namespace Hades.HR.UI
                     result = CallerFactory<IStaffSalaryService>.Instance.Update(info, info.Id);
                 }
 
+                //保存自定义奖金
+                var bonus = this.bonusGrid.DataSource;
+                foreach(var item in bonus)
+                {
+                    CallerFactory<IStaffBonusService>.Instance.InsertUpdate(item, item.Id);
+                }
+
                 return result;
             }
             catch (Exception ex)
@@ -108,6 +115,7 @@ namespace Hades.HR.UI
         public override void FormOnLoad()
         {
             this.luDepartment.Init();
+            bonusGrid.Init(this.ID);
 
             base.FormOnLoad();
         }

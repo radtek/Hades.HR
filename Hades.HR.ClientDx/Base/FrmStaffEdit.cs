@@ -230,6 +230,7 @@ namespace Hades.HR.UI
             info.Creator = this.LoginUserInfo.Name;
             info.CreatorId = this.LoginUserInfo.ID;
             info.CreateTime = DateTime.Now;
+            info.Deleted = 0;
 
             try
             {

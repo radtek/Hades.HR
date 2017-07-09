@@ -24,24 +24,6 @@ namespace Hades.HR.BLL
         #endregion //Constructor
 
         #region Method
-        /// <summary>
-        /// 查找所有工资基本信息
-        /// </summary>
-        /// <returns></returns>
-        public List<StaffSalaryInfo> FindAll()
-        {
-            List<StaffSalaryInfo> data = new List<StaffSalaryInfo>();
-
-            Staff staffBll = new Staff();
-            staffBll.Find("");
-
-            string sql = "deleted=0";
-            var salarys = base.Find(sql, "ORDER BY SortCode");
-            
-
-            return data;
-
-        }
         #endregion //Method
     }
 }
