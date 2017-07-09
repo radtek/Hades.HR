@@ -79,21 +79,25 @@ namespace Hades.HR.UI
         public override bool CheckInput()
         {
             bool result = true;//默认是可以通过
-
-            #region MyRegion
+                       
             if (this.txtName.Text.Trim().Length == 0)
             {
-                MessageDxUtil.ShowTips("请输入");
+                MessageDxUtil.ShowTips("请输入名称");
                 this.txtName.Focus();
                 result = false;
             }
             else if (this.txtNumber.Text.Trim().Length == 0)
             {
-                MessageDxUtil.ShowTips("请输入");
+                MessageDxUtil.ShowTips("请输入编码");
                 this.txtNumber.Focus();
                 result = false;
             }
-            #endregion
+            else if (string.IsNullOrEmpty(this.luCompany.GetSelectedId()))
+            {
+                MessageDxUtil.ShowTips("请选择所属公司");
+                this.luCompany.Focus();
+                result = false;
+            }
 
             return result;
         }

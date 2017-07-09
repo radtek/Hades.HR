@@ -24,7 +24,18 @@ namespace Hades.HR.BLL
         #endregion //Constructor
 
         #region Method
-  
+        /// <summary>
+        /// 标记删除
+        /// </summary>
+        /// <param name="id">ID</param>
+        /// <returns></returns>
+        public bool MarkDelete(string id)
+        {
+            var entity = base.FindByID(id);
+            entity.Deleted = 1;
+
+            return base.Update(entity, id);
+        }
         #endregion //Method
     }
 }

@@ -16,14 +16,14 @@ using Hades.HR.Facade;
 
 namespace Hades.HR.ServiceCaller
 {
-	/// <summary>
-	/// 基于WCF服务的Facade接口实现类
-	/// </summary>
+    /// <summary>
+    /// 基于WCF服务的Facade接口实现类
+    /// </summary>
     public class ProductionLineCaller : BaseWCFService<ProductionLineInfo>, IProductionLineService
     {
         #region Constructor
-        public ProductionLineCaller()  : base()
-        {	
+        public ProductionLineCaller() : base()
+        {
             this.configurationPath = EndPointConfig.WcfConfig; //WCF配置文件
             this.endpointConfigurationName = EndPointConfig.ProductionLineService;
         }
@@ -51,32 +51,35 @@ namespace Hades.HR.ServiceCaller
         #endregion //Function
 
         #region Method
-        ///// <summary>
-        ///// 根据名称查找对象(自定义接口使用范例)
-        ///// </summary>
-        //public List<ProductionLineInfo> FindByName(string name)
-        //{
-        //    List<ProductionLineInfo> result = new List<ProductionLineInfo>();
+        /// <summary>
+        /// 标记删除
+        /// </summary>
+        /// <param name="id">ID</param>
+        /// <returns></returns>
+        public bool MarkDelete(string id)
+        {
+            bool result = false;
 
-        //    IProductionLineService service = CreateSubClient();
-        //    ICommunicationObject comm = service as ICommunicationObject;
-        //    comm.Using(client =>
-        //    {
-        //        result = service.FindByName(name);
-        //    });
+            IProductionLineService service = CreateSubClient();
+            ICommunicationObject comm = service as ICommunicationObject;
+            comm.Using(client =>
+            {
+                result = service.MarkDelete(id);
+            });
 
-        //    return result;
-        //}
+            return result;
+        }
 
-
-        ///// <summary>
-        ///// 根据名称查找对象Asyn(自定义接口使用范例)
-        ///// </summary>
-        //public Task<List<ProductionLineInfo>> FindByNameAsyn(string name)
-        //{
-        //    IProductionLineService service = CreateSubClient();       
-        //    return service.FindByNameAsyn(name);  
-        //}
+        /// <summary>
+        /// 标记删除
+        /// </summary>
+        /// <param name="id">ID</param>
+        /// <returns></returns>
+        public async Task<bool> MarkDeleteAsync(string id)
+        {
+            IProductionLineService service = CreateSubClient();
+            return await service.MarkDeleteAsync(id);
+        }
         #endregion //Method
     }
 }

@@ -15,9 +15,9 @@ using Hades.HR.Facade;
 
 namespace Hades.HR.WCFLibrary
 {
-	/// <summary>
-	/// 基于WCFLibrary的ProductionLine对象调用类
-	/// </summary>
+    /// <summary>
+    /// 基于WCFLibrary的ProductionLine对象调用类
+    /// </summary>
     public class ProductionLineService : BaseLocalService<ProductionLineInfo>, IProductionLineService
     {
         #region Field
@@ -32,27 +32,28 @@ namespace Hades.HR.WCFLibrary
         #endregion //Constructor
 
         #region Method
-      
+        /// <summary>
+        /// 标记删除
+        /// </summary>
+        /// <param name="id">ID</param>
+        /// <returns></returns>
+        public bool MarkDelete(string id)
+        {
+            return bll.MarkDelete(id);
+        }
+
+        /// <summary>
+        /// 标记删除
+        /// </summary>
+        /// <param name="id">ID</param>
+        /// <returns></returns>
+        public async Task<bool> MarkDeleteAsync(string id)
+        {
+            return await Task.Factory.StartNew(() =>
+            {
+                return bll.MarkDelete(id);
+            });
+        }
         #endregion //Method
-
-        ///// <summary>
-        ///// 根据名称查找对象(自定义接口使用范例)
-        ///// </summary>
-        //public List<ProductionLineInfo> FindByName(string name)
-        //{
-        //    return bll.FindByName(name);
-        //}
-
-        ///// <summary>
-        ///// 根据名称查找对象(自定义接口使用范例)
-        ///// </summary>
-        //public async Task<List<ProductionLineInfo>> FindByNameAsyn(string name)
-        //{
-        //   return await Task.Factory.StartNew(() =>
-        //   {
-        //       return bll.FindByName(name);
-        //   }
-        //}
-
     }
 }

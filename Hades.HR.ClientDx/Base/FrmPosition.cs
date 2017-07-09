@@ -64,7 +64,7 @@ namespace Hades.HR.UI
         /// <param name="department"></param>
         private void LoadPositions(DepartmentInfo department)
         {
-            var positions = CallerFactory<IPositionService>.Instance.Find2(string.Format("departmentId='{0}'", department.Id), "ORDER BY SortCode");
+            var positions = CallerFactory<IPositionService>.Instance.Find2(string.Format("departmentId='{0}' AND Deleted=0", department.Id), "ORDER BY SortCode");
 
             this.wgvPosition.DisplayColumns = "Name,Number,DepartmentId,Quota,SortCode,Remark,Enabled";
             this.wgvPosition.ColumnNameAlias = CallerFactory<IPositionService>.Instance.GetColumnNameAlias();
@@ -74,14 +74,14 @@ namespace Hades.HR.UI
         }
 
         /// <summary>
-        /// 载入部门包含产线
+        /// 载入公司包含产线
         /// </summary>
         /// <param name="department"></param>
         private void LoadProductionLines(DepartmentInfo department)
         {
-            var lines = CallerFactory<IProductionLineService>.Instance.Find2(string.Format("companyId='{0}'", department.Id), "ORDER BY SortCode");
+            var lines = CallerFactory<IProductionLineService>.Instance.Find2(string.Format("CompanyId='{0}' AND Deleted=0", department.Id), "ORDER BY SortCode");
 
-            this.wgvProductionLine.DisplayColumns = "Name,Number,SortCode,Enabled";
+            this.wgvProductionLine.DisplayColumns = "Name,Number,CompanyId,SortCode,Remark,Enabled";
             this.wgvProductionLine.ColumnNameAlias = CallerFactory<IProductionLineService>.Instance.GetColumnNameAlias();
 
             this.wgvProductionLine.DataSource = lines;
@@ -94,9 +94,9 @@ namespace Hades.HR.UI
         /// <param name="department"></param>
         private void LoadWorkTeams(DepartmentInfo department)
         {
-            var teams = CallerFactory<IWorkTeamService>.Instance.FindAll();
+            var teams = CallerFactory<IWorkTeamService>.Instance.Find2(string.Format("CompanyId='{0}' AND Deleted=0", department.Id), "ORDER BY SortCode");
 
-            this.wgvWorkTeam.DisplayColumns = "Name,Number,SortCode,Enabled";
+            this.wgvWorkTeam.DisplayColumns = "Name,Number,SortCode,Remark,Enabled";
             this.wgvWorkTeam.ColumnNameAlias = CallerFactory<IProductionLineService>.Instance.GetColumnNameAlias();
 
             this.wgvWorkTeam.DataSource = teams;
@@ -145,12 +145,11 @@ namespace Hades.HR.UI
             this.wgvProductionLine.AppendedMenu = this.contextMenuStrip2;
             this.wgvProductionLine.ShowLineNumber = true;
             this.wgvProductionLine.BestFitColumnWith = true;
+            this.wgvProductionLine.gridView1.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(wgvProductionLine_CustomColumnDisplayText);
 
             this.wgvWorkTeam.AppendedMenu = this.contextMenuStrip3;
             this.wgvWorkTeam.ShowLineNumber = true;
             this.wgvWorkTeam.BestFitColumnWith = true;
-
-
         }
         #endregion //Method
 
@@ -179,8 +178,12 @@ namespace Hades.HR.UI
                 this.txtDepartmentNumber.Text = department.Number;
 
                 LoadPositions(department);
-                LoadProductionLines(department);
-                LoadWorkTeams(department);
+
+                if (department.Type == (int)DepartmentType.Group || department.Type == (int)DepartmentType.Company)
+                {
+                    LoadProductionLines(department);
+                    LoadWorkTeams(department);
+                }
             }
         }
 
@@ -256,7 +259,7 @@ namespace Hades.HR.UI
             }
 
             CallerFactory<IPositionService>.Instance.MarkDelete(id);
-            LoadData();
+            LoadDepartments();
         }
 
         /// <summary>
@@ -267,13 +270,62 @@ namespace Hades.HR.UI
         private void menuAddLine_Click(object sender, EventArgs e)
         {
             FrmProductionLineEdit dlg = new FrmProductionLineEdit();
-            dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
+            //dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
             dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
 
             if (DialogResult.OK == dlg.ShowDialog())
             {
-                LoadData();
+                LoadDepartments();
             }
+        }
+
+        /// <summary>
+        /// 菜单 - 编辑产线
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void menuEditLine_Click(object sender, EventArgs e)
+        {
+            string ID = this.wgvProductionLine.gridView1.GetFocusedRowCellDisplayText("Id");
+            List<string> IDList = new List<string>();
+            for (int i = 0; i < this.wgvProductionLine.gridView1.RowCount; i++)
+            {
+                string strTemp = this.wgvProductionLine.GridView1.GetRowCellDisplayText(i, "Id");
+                IDList.Add(strTemp);
+            }
+
+            if (!string.IsNullOrEmpty(ID))
+            {
+                FrmProductionLineEdit dlg = new FrmProductionLineEdit();
+                dlg.ID = ID;
+                dlg.IDList = IDList;
+                dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
+
+                if (DialogResult.OK == dlg.ShowDialog())
+                {
+                    LoadDepartments();
+                }
+            }
+        }
+
+        /// <summary>
+        /// 菜单 - 删除产线
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void menuDeleteLine_Click(object sender, EventArgs e)
+        {
+            string id = this.wgvProductionLine.gridView1.GetFocusedRowCellDisplayText("Id");
+            if (string.IsNullOrEmpty(id))
+                return;
+
+            if (MessageDxUtil.ShowYesNoAndTips("您确定删除选定的产线么？") == DialogResult.No)
+            {
+                return;
+            }
+
+            CallerFactory<IProductionLineService>.Instance.MarkDelete(id);
+            LoadDepartments();
         }
 
         /// <summary>
@@ -339,7 +391,28 @@ namespace Hades.HR.UI
             {
                 e.DisplayText = Convert.ToInt32(e.Value) == 1 ? "已启用" : "未启用";
             }
+        }
 
+        /// <summary>
+        /// 格式化产线列表
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void wgvProductionLine_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+        {
+            string columnName = e.Column.FieldName;
+            if (columnName == "CompanyId" && !string.IsNullOrEmpty(e.Value.ToString()))
+            {
+                if (e.Value != null)
+                {
+                    var dep = CallerFactory<IDepartmentService>.Instance.FindByID(e.Value.ToString());
+                    e.DisplayText = dep.Name;
+                }
+            }
+            else if (columnName == "Enabled")
+            {
+                e.DisplayText = Convert.ToInt32(e.Value) == 1 ? "已启用" : "未启用";
+            }
         }
         #endregion //Grid Event
 

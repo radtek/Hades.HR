@@ -421,10 +421,10 @@
     <Compile Include="UI\FrmWorkTeamEdit.Designer.cs">
       <DependentUpon>FrmWorkTeamEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\FrmProductionLineEdit.cs">
+    <Compile Include="Base\FrmProductionLineEdit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\FrmProductionLineEdit.Designer.cs">
+    <Compile Include="Base\FrmProductionLineEdit.Designer.cs">
       <DependentUpon>FrmProductionLineEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\FrmStaffSalaryEdit.cs">
@@ -533,7 +533,7 @@
     <EmbeddedResource Include="UI\FrmEditBonusDefine.resx">
       <DependentUpon>FrmEditBonusDefine.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\FrmProductionLineEdit.resx">
+    <EmbeddedResource Include="Base\FrmProductionLineEdit.resx">
       <DependentUpon>FrmProductionLineEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmStaffSalary.resx">
