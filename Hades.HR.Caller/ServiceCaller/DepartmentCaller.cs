@@ -75,18 +75,10 @@ namespace Hades.HR.ServiceCaller
         /// </summary>
         /// <param name="id">部门ID</param>
         /// <returns></returns>
-        public Task<List<DepartmentInfo>> FindWithChildrenAsync(string id)
+        public async Task<List<DepartmentInfo>> FindWithChildrenAsync(string id)
         {
-            List<DepartmentInfo> result = new List<DepartmentInfo>();
-
             IDepartmentService service = CreateSubClient();
-            ICommunicationObject comm = service as ICommunicationObject;
-            comm.Using(client =>
-            {
-                result = service.FindWithChildren(id);
-            });
-
-            return null;
+            return await service.FindWithChildrenAsync(id);
         }
 
         /// <summary>
@@ -109,6 +101,17 @@ namespace Hades.HR.ServiceCaller
         }
 
         /// <summary>
+        /// 检查重复
+        /// </summary>
+        /// <param name="entity">实体对象</param>
+        /// <returns></returns>
+        public async Task<bool> CheckDuplicateAsync(DepartmentInfo entity)
+        {
+            IDepartmentService service = CreateSubClient();
+            return await service.CheckDuplicateAsync(entity);
+        }
+
+        /// <summary>
         /// 标记删除
         /// </summary>
         /// <param name="id">ID</param>
@@ -127,6 +130,16 @@ namespace Hades.HR.ServiceCaller
             return result;
         }
 
+        /// <summary>
+        /// 标记删除
+        /// </summary>
+        /// <param name="id">ID</param>
+        /// <returns></returns>
+        public async Task<bool> MarkDeleteAsync(string id)
+        {
+            IDepartmentService service = CreateSubClient();
+            return await service.MarkDeleteAsync(id);
+        }
         #endregion //Method
 
         ///// <summary>

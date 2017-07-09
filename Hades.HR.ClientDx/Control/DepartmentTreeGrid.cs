@@ -149,6 +149,12 @@ namespace Hades.HR.UI
         /// </summary>
         [Description("部门选择事件")]
         public event EventHandler DepartmentSelect;
+
+        /// <summary>
+        /// 部门双击事件
+        /// </summary>
+        [Description("部门双击事件")]
+        public event EventHandler DepartmentDoubleClick;
         #endregion //Delegate
 
         #region Event
@@ -263,7 +269,7 @@ namespace Hades.HR.UI
         /// <param name="e"></param>
         private void tlView_DoubleClick(object sender, EventArgs e)
         {
-
+            DepartmentDoubleClick?.Invoke(sender, e);
         }
         #endregion //Event
 
@@ -404,6 +410,5 @@ namespace Hades.HR.UI
             }
         }
         #endregion //Property
-
     }
 }

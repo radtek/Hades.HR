@@ -28,7 +28,6 @@ namespace Hades.HR.UI
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.depTree = new Hades.HR.UI.DepartmentTreeGrid();
@@ -81,6 +80,7 @@ namespace Hades.HR.UI
             this.depTree.DepartmentView += new System.EventHandler(this.depTree_DepartmentView);
             this.depTree.DepartmentEdit += new System.EventHandler(this.depTree_DepartmentEdit);
             this.depTree.DepartmentDelete += new System.EventHandler(this.depTree_DepartmentDelete);
+            this.depTree.DepartmentDoubleClick += new System.EventHandler(this.depTree_DepartmentDoubleClick);
             // 
             // FrmDepartment
             // 

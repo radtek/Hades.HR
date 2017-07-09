@@ -28,7 +28,6 @@ namespace Hades.HR.UI
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPosition));
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.txtDepartmentNumber = new DevExpress.XtraEditors.TextEdit();
@@ -36,7 +35,7 @@ namespace Hades.HR.UI
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip();
             this.menuViewPosition = new System.Windows.Forms.ToolStripMenuItem();
             this.menuAddPosition = new System.Windows.Forms.ToolStripMenuItem();
             this.menuEditPosition = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,12 +50,12 @@ namespace Hades.HR.UI
             this.wgvProductionLine = new Hades.Pager.WinControl.WinGridView();
             this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
             this.wgvWorkTeam = new Hades.Pager.WinControl.WinGridView();
-            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip();
             this.menuViewLine = new System.Windows.Forms.ToolStripMenuItem();
             this.menuAddLine = new System.Windows.Forms.ToolStripMenuItem();
             this.menuEditLine = new System.Windows.Forms.ToolStripMenuItem();
             this.menuDeleteLine = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip();
             this.menuViewTeam = new System.Windows.Forms.ToolStripMenuItem();
             this.menuAddTeam = new System.Windows.Forms.ToolStripMenuItem();
             this.menuEditTeam = new System.Windows.Forms.ToolStripMenuItem();

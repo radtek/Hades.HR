@@ -11,7 +11,9 @@ using Hades.Dictionary;
 using Hades.Framework.BaseUI;
 using Hades.Framework.Commons;
 using Hades.Framework.ControlUtil;
+using Hades.Framework.ControlUtil.Facade;
 
+using Hades.HR.Facade;
 using Hades.HR.BLL;
 using Hades.HR.Entity;
 
@@ -19,16 +21,41 @@ namespace Hades.HR.UI
 {
     public partial class FrmEditBonusDefine : BaseEditForm
     {
-    	/// <summary>
+        #region Field
+        /// <summary>
         /// 创建一个临时对象，方便在附件管理中获取存在的GUID
         /// </summary>
-    	private BonusDefineInfo tempInfo = new BonusDefineInfo();
-    	
+        private BonusDefineInfo tempInfo = new BonusDefineInfo();
+        #endregion //Field
+
+        #region Constructor
         public FrmEditBonusDefine()
         {
             InitializeComponent();
         }
-                
+        #endregion //Constructor
+
+        #region Function
+        /// <summary>
+        /// 初始化数据字典
+        /// </summary>
+        private void InitDictItem()
+        {
+            //初始化代码
+        }
+
+        /// <summary>
+        /// 编辑或者保存状态下取值函数
+        /// </summary>
+        /// <param name="info"></param>
+        private void SetInfo(BonusDefineInfo info)
+        {
+            info.Name = txtName.Text;
+            info.Remark = txtRemark.Text;
+        }
+        #endregion //Function
+
+        #region Method
         /// <summary>
         /// 实现控件输入检查的函数
         /// </summary>
@@ -37,25 +64,21 @@ namespace Hades.HR.UI
         {
             bool result = true;//默认是可以通过
 
-            #region MyRegion
             if (this.txtName.Text.Trim().Length == 0)
             {
-                MessageDxUtil.ShowTips("请输入");
+                MessageDxUtil.ShowTips("请输入名称");
                 this.txtName.Focus();
                 result = false;
             }
-            #endregion
 
             return result;
         }
 
-        /// <summary>
-        /// 初始化数据字典
-        /// </summary>
-        private void InitDictItem()
+        public override void ClearScreen()
         {
-			//初始化代码
-        }                        
+            this.tempInfo = new BonusDefineInfo();
+            base.ClearScreen();
+        }
 
         /// <summary>
         /// 数据显示的函数
@@ -67,56 +90,25 @@ namespace Hades.HR.UI
             if (!string.IsNullOrEmpty(ID))
             {
                 #region 显示信息
-                BonusDefineInfo info = BLLFactory<BonusDefine>.Instance.FindByID(ID);
+                BonusDefineInfo info = CallerFactory<IBonusDefineService>.Instance.FindByID(ID);
                 if (info != null)
                 {
-                	tempInfo = info;//重新给临时对象赋值，使之指向存在的记录对象
-                	
-	                    txtName.Text = info.Name;
-           	                    txtRemark.Text = info.Remark;
-                             } 
+                    tempInfo = info;//重新给临时对象赋值，使之指向存在的记录对象
+
+                    txtName.Text = info.Name;
+                    txtRemark.Text = info.Remark;
+                }
                 #endregion
+                this.Text = "编辑奖金项目";
                 //this.btnOK.Enabled = HasFunction("BonusDefine/Edit");             
             }
             else
             {
-  
+                this.Text = "新增奖金项目";
                 //this.btnOK.Enabled = Portal.gc.HasFunction("BonusDefine/Add");  
             }
-            
-            //tempInfo在对象存在则为指定对象，新建则是全新的对象，但有一些初始化的GUID用于附件上传
-            //SetAttachInfo(tempInfo);
         }
 
-        //private void SetAttachInfo(BonusDefineInfo info)
-        //{
-        //    this.attachmentGUID.AttachmentGUID = info.AttachGUID;
-        //    this.attachmentGUID.userId = LoginUserInfo.Name;
-
-        //    string name = txtName.Text;
-        //    if (!string.IsNullOrEmpty(name))
-        //    {
-        //        string dir = string.Format("{0}", name);
-        //        this.attachmentGUID.Init(dir, tempInfo.ID, LoginUserInfo.Name);
-        //    }
-        //}
-
-        public override void ClearScreen()
-        {
-            this.tempInfo = new BonusDefineInfo();
-            base.ClearScreen();
-        }
-
-        /// <summary>
-        /// 编辑或者保存状态下取值函数
-        /// </summary>
-        /// <param name="info"></param>
-        private void SetInfo(BonusDefineInfo info)
-        {
-	            info.Name = txtName.Text;
-       	            info.Remark = txtRemark.Text;
-               }
-         
         /// <summary>
         /// 新增状态下的数据保存
         /// </summary>
@@ -130,7 +122,7 @@ namespace Hades.HR.UI
             {
                 #region 新增数据
 
-                bool succeed = BLLFactory<BonusDefine>.Instance.Insert(info);
+                bool succeed = CallerFactory<IBonusDefineService>.Instance.Insert(info);
                 if (succeed)
                 {
                     //可添加其他关联操作
@@ -145,7 +137,7 @@ namespace Hades.HR.UI
                 MessageDxUtil.ShowError(ex.Message);
             }
             return false;
-        }                 
+        }
 
         /// <summary>
         /// 编辑状态下的数据保存
@@ -153,8 +145,7 @@ namespace Hades.HR.UI
         /// <returns></returns>
         public override bool SaveUpdated()
         {
-
-            BonusDefineInfo info = BLLFactory<BonusDefine>.Instance.FindByID(ID);
+            BonusDefineInfo info = CallerFactory<IBonusDefineService>.Instance.FindByID(ID);
             if (info != null)
             {
                 SetInfo(info);
@@ -162,11 +153,11 @@ namespace Hades.HR.UI
                 try
                 {
                     #region 更新数据
-                    bool succeed = BLLFactory<BonusDefine>.Instance.Update(info, info.Id);
+                    bool succeed = CallerFactory<IBonusDefineService>.Instance.Update(info, info.Id);
                     if (succeed)
                     {
                         //可添加其他关联操作
-                       
+
                         return true;
                     }
                     #endregion
@@ -177,7 +168,8 @@ namespace Hades.HR.UI
                     MessageDxUtil.ShowError(ex.Message);
                 }
             }
-           return false;
+            return false;
         }
+        #endregion //Method
     }
 }

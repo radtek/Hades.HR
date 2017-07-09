@@ -17,7 +17,6 @@ namespace Hades.HR.Entity
         public BonusDefineInfo()
         {
             this.Id = System.Guid.NewGuid().ToString();
-
         }
 
         #region Property Members

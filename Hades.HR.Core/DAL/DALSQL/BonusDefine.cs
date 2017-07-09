@@ -77,12 +77,11 @@ namespace Hades.HR.DALSQL
             #region 添加别名解析
             //dict.Add("ID", "编号");
             dict.Add("Id", "");
-            dict.Add("Name", "");
-            dict.Add("Remark", "");
+            dict.Add("Name", "名称");
+            dict.Add("Remark", "备注");
             #endregion
 
             return dict;
         }
-
     }
 }

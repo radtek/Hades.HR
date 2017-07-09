@@ -70,7 +70,7 @@ namespace Hades.HR.UI
         /// <param name="department"></param>
         private void LoadProductionLines(DepartmentInfo department)
         {
-            var lines = CallerFactory<IProductionLineService>.Instance.FindAll();
+            var lines = CallerFactory<IProductionLineService>.Instance.Find2(string.Format("companyId='{0}'", department.Id), "ORDER BY SortCode");
 
             this.wgvProductionLine.DisplayColumns = "Name,Number,SortCode,Enabled";
             this.wgvProductionLine.ColumnNameAlias = CallerFactory<IProductionLineService>.Instance.GetColumnNameAlias();

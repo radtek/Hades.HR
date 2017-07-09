@@ -47,6 +47,24 @@ namespace Hades.HR.UI
             var departments = await CallerFactory<IDepartmentService>.Instance.Find2Asyn("deleted=0", "ORDER BY SortCode");
             this.depTree.DataSource = departments;
         }
+
+        /// <summary>
+        /// 查看部门
+        /// </summary>
+        private void ViewDepartment()
+        {
+            string ID = this.depTree.GetCurrentSelectId();
+            List<string> IDList = this.depTree.GetIDList();
+
+            if (!string.IsNullOrEmpty(ID))
+            {
+                FrmDepartmentView dlg = new FrmDepartmentView();
+                dlg.ID = ID;
+                dlg.IDList = IDList;
+                dlg.InitFunction(LoginUserInfo, FunctionDict);
+                dlg.ShowDialog();
+            }
+        }
         #endregion //Function
 
         #region Method
@@ -134,17 +152,7 @@ namespace Hades.HR.UI
         /// <param name="e"></param>
         private void depTree_DepartmentView(object sender, EventArgs e)
         {
-            string ID = this.depTree.GetCurrentSelectId();
-            List<string> IDList = this.depTree.GetIDList();
-
-            if (!string.IsNullOrEmpty(ID))
-            {
-                FrmDepartmentView dlg = new FrmDepartmentView();
-                dlg.ID = ID;
-                dlg.IDList = IDList;
-                dlg.InitFunction(LoginUserInfo, FunctionDict);
-                dlg.ShowDialog();
-            }
+            ViewDepartment();
         }
 
         /// <summary>
@@ -186,15 +194,26 @@ namespace Hades.HR.UI
             CallerFactory<IDepartmentService>.Instance.MarkDelete(id);
             LoadData();
         }
+
+        /// <summary>
+        /// 双击部门
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+
+        private void depTree_DepartmentDoubleClick(object sender, EventArgs e)
+        {
+            ViewDepartment();
+        }
         #endregion //Event
-        
+
 
         /// <summary>
         /// 绑定列表数据
         /// </summary>
         private void BindData()
         {
-     
+
         }
 
 

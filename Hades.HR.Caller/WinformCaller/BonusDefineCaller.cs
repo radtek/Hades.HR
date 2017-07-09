@@ -10,14 +10,16 @@ using Hades.HR.Entity;
 using Hades.HR.BLL;
 using Hades.HR.Facade;
 
-namespace Hades.HR.Caller.WinformCaller
+namespace Hades.HR.WinformCaller
 {
     /// <summary>
     /// 基于传统Winform方式，直接访问本地数据库的Facade接口实现类
     /// </summary>
     public class BonusDefineCaller : BaseLocalService<BonusDefineInfo>, IBonusDefineService
     {
+        #region Field
         private BonusDefine bll = null;
+        #endregion //Field
 
         #region Constructor
         public BonusDefineCaller() : base(BLLFactory<BonusDefine>.Instance)

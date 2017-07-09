@@ -16,9 +16,9 @@ using Hades.HR.Facade;
 
 namespace Hades.HR.WinformCaller
 {
-	/// <summary>
-	/// 基于传统Winform方式，直接访问本地数据库的Facade接口实现类
-	/// </summary>
+    /// <summary>
+    /// 基于传统Winform方式，直接访问本地数据库的Facade接口实现类
+    /// </summary>
     public class DepartmentCaller : BaseLocalService<DepartmentInfo>, IDepartmentService
     {
         private Department bll = null;
@@ -31,17 +31,6 @@ namespace Hades.HR.WinformCaller
         #endregion //Constructor
 
         #region Method
-        /// <summary>
-        /// 根据名称查找对象Asyn(自定义接口使用范例)
-        /// </summary>
-        //public async Task<List<DepartmentInfo>> FindAllAsync()
-        //{
-        //    return await Task.Run(() =>
-        //    {
-        //        return bll.FindAll();
-        //    });
-        //}
-
         /// <summary>
         /// 查找部门及其子部门
         /// </summary>
@@ -77,6 +66,19 @@ namespace Hades.HR.WinformCaller
         }
 
         /// <summary>
+        /// 检查重复
+        /// </summary>
+        /// <param name="entity">实体对象</param>
+        /// <returns></returns>
+        public async Task<bool> CheckDuplicateAsync(DepartmentInfo entity)
+        {
+            return await Task.Factory.StartNew(() =>
+            {
+                return bll.CheckDuplicate(entity);
+            });
+        }
+
+        /// <summary>
         /// 标记删除
         /// </summary>
         /// <param name="id">ID</param>
@@ -84,6 +86,19 @@ namespace Hades.HR.WinformCaller
         public bool MarkDelete(string id)
         {
             return bll.MarkDelete(id);
+        }
+
+        /// <summary>
+        /// 标记删除
+        /// </summary>
+        /// <param name="id">ID</param>
+        /// <returns></returns>
+        public async Task<bool> MarkDeleteAsync(string id)
+        {
+            return await Task.Factory.StartNew(() =>
+            {
+                return bll.MarkDelete(id);
+            });
         }
         #endregion //Method
     }

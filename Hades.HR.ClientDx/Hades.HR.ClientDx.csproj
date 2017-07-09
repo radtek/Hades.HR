@@ -530,6 +530,9 @@
     <EmbeddedResource Include="UI\FrmDepartmentView.resx">
       <DependentUpon>FrmDepartmentView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\FrmEditBonusDefine.resx">
+      <DependentUpon>FrmEditBonusDefine.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmProductionLineEdit.resx">
       <DependentUpon>FrmProductionLineEdit.cs</DependentUpon>
     </EmbeddedResource>
