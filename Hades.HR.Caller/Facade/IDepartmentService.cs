@@ -28,7 +28,7 @@ namespace Hades.HR.Facade
         /// <param name="id">部门ID</param>
         /// <returns></returns>
         [OperationContract]
-        Task<List<DepartmentInfo>> FindWithChildrenAsync(string id);
+        Task<List<DepartmentInfo>> FindWithChildrenAsyn(string id);
 
         /// <summary>
         /// 检查重复
@@ -44,7 +44,7 @@ namespace Hades.HR.Facade
         /// <param name="entity">实体对象</param>
         /// <returns></returns>
         [OperationContract]
-        Task<bool> CheckDuplicateAsync(DepartmentInfo entity);
+        Task<bool> CheckDuplicateAsyn(DepartmentInfo entity);
         
         /// <summary>
         /// 标记删除
@@ -60,6 +60,6 @@ namespace Hades.HR.Facade
         /// <param name="id">ID</param>
         /// <returns></returns>
         [OperationContract]
-        Task<bool> MarkDeleteAsync(string id);
+        Task<bool> MarkDeleteAsyn(string id);
     }
 }

@@ -47,7 +47,7 @@ namespace Hades.HR.WCFLibrary
         /// </summary>
         /// <param name="id">部门ID</param>
         /// <returns></returns>
-        public async Task<List<DepartmentInfo>> FindWithChildrenAsync(string id)
+        public async Task<List<DepartmentInfo>> FindWithChildrenAsyn(string id)
         {
             var task = Task.Factory.StartNew(() =>
             {
@@ -72,7 +72,7 @@ namespace Hades.HR.WCFLibrary
         /// </summary>
         /// <param name="entity">实体对象</param>
         /// <returns></returns>
-        public async Task<bool> CheckDuplicateAsync(DepartmentInfo entity)
+        public async Task<bool> CheckDuplicateAsyn(DepartmentInfo entity)
         {
             return await Task.Factory.StartNew(() =>
             {
@@ -95,7 +95,7 @@ namespace Hades.HR.WCFLibrary
         /// </summary>
         /// <param name="id">ID</param>
         /// <returns></returns>
-        public async Task<bool> MarkDeleteAsync(string id)
+        public async Task<bool> MarkDeleteAsyn(string id)
         {
             return await Task.Factory.StartNew(() =>
             {

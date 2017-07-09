@@ -50,7 +50,7 @@ namespace Hades.HR.ServiceCaller
         }
         #endregion //Function
 
-        #region method
+        #region Method
         /// <summary>
         /// 标记删除
         /// </summary>
@@ -75,10 +75,10 @@ namespace Hades.HR.ServiceCaller
         /// </summary>
         /// <param name="id">ID</param>
         /// <returns></returns>
-        public async Task<bool> MarkDeleteAsync(string id)
+        public Task<bool> MarkDeleteAsyn(string id)
         {
             IWorkTeamService service = CreateSubClient();
-            return await service.MarkDeleteAsync(id);
+            return service.MarkDeleteAsyn(id);
         }
         #endregion //Method
 

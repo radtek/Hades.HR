@@ -71,6 +71,17 @@ namespace Hades.HR.ServiceCaller
         }
 
         /// <summary>
+        /// 检查重复
+        /// </summary>
+        /// <param name="entity">实体对象</param>
+        /// <returns></returns>
+        public Task<bool> CheckDuplicateAsyn(PositionInfo entity)
+        {
+            IPositionService service = CreateSubClient();
+            return service.CheckDuplicateAsyn(entity);
+        }
+
+        /// <summary>
         /// 标记删除
         /// </summary>
         /// <param name="id">ID</param>
@@ -94,10 +105,10 @@ namespace Hades.HR.ServiceCaller
         /// </summary>
         /// <param name="id">ID</param>
         /// <returns></returns>
-        public async Task<bool> MarkDeleteAsync(string id)
+        public Task<bool> MarkDeleteAsyn(string id)
         {
             IPositionService service = CreateSubClient();
-            return await service.MarkDeleteAsync(id);
+            return service.MarkDeleteAsyn(id);
         }
         #endregion //Method
     }

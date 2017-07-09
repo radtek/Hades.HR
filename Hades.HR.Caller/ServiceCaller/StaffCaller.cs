@@ -75,10 +75,10 @@ namespace Hades.HR.ServiceCaller
         /// </summary>
         /// <param name="entity">实体对象</param>
         /// <returns></returns>
-        public async Task<bool> CheckDuplicateAsync(StaffInfo entity)
+        public Task<bool> CheckDuplicateAsyn(StaffInfo entity)
         {
             IStaffService service = CreateSubClient();
-            return await service.CheckDuplicateAsync(entity);
+            return service.CheckDuplicateAsyn(entity);
         }
 
         /// <summary>
@@ -105,10 +105,10 @@ namespace Hades.HR.ServiceCaller
         /// </summary>
         /// <param name="id">ID</param>
         /// <returns></returns>
-        public async Task<bool> MarkDeleteAsync(string id)
+        public Task<bool> MarkDeleteAsyn(string id)
         {
             IStaffService service = CreateSubClient();
-            return await service.MarkDeleteAsync(id);
+            return service.MarkDeleteAsyn(id);
         }
         #endregion //Method
     }

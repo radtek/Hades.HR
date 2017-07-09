@@ -42,9 +42,9 @@ namespace Hades.HR.UI
         /// <summary>
         /// 初始化数据
         /// </summary>
-        private async void LoadData()
+        private void LoadData()
         {
-            var departments = await CallerFactory<IDepartmentService>.Instance.Find2Asyn("deleted=0", "ORDER BY SortCode");
+            var departments = CallerFactory<IDepartmentService>.Instance.Find2("deleted=0", "ORDER BY SortCode");
             this.depTree.DataSource = departments;
         }
 

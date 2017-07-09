@@ -45,7 +45,7 @@ namespace Hades.HR.WinformCaller
         /// </summary>
         /// <param name="id">ID</param>
         /// <returns></returns>
-        public async Task<bool> MarkDeleteAsync(string id)
+        public async Task<bool> MarkDeleteAsyn(string id)
         {
             return await Task.Factory.StartNew(() =>
             {

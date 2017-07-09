@@ -75,10 +75,10 @@ namespace Hades.HR.ServiceCaller
         /// </summary>
         /// <param name="id">ID</param>
         /// <returns></returns>
-        public async Task<bool> MarkDeleteAsync(string id)
+        public Task<bool> MarkDeleteAsyn(string id)
         {
             IProductionLineService service = CreateSubClient();
-            return await service.MarkDeleteAsync(id);
+            return service.MarkDeleteAsyn(id);
         }
         #endregion //Method
     }

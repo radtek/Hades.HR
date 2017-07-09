@@ -75,10 +75,10 @@ namespace Hades.HR.ServiceCaller
         /// </summary>
         /// <param name="id">部门ID</param>
         /// <returns></returns>
-        public async Task<List<DepartmentInfo>> FindWithChildrenAsync(string id)
+        public Task<List<DepartmentInfo>> FindWithChildrenAsyn(string id)
         {
             IDepartmentService service = CreateSubClient();
-            return await service.FindWithChildrenAsync(id);
+            return service.FindWithChildrenAsyn(id);
         }
 
         /// <summary>
@@ -105,10 +105,10 @@ namespace Hades.HR.ServiceCaller
         /// </summary>
         /// <param name="entity">实体对象</param>
         /// <returns></returns>
-        public async Task<bool> CheckDuplicateAsync(DepartmentInfo entity)
+        public Task<bool> CheckDuplicateAsyn(DepartmentInfo entity)
         {
             IDepartmentService service = CreateSubClient();
-            return await service.CheckDuplicateAsync(entity);
+            return service.CheckDuplicateAsyn(entity);
         }
 
         /// <summary>
@@ -135,29 +135,11 @@ namespace Hades.HR.ServiceCaller
         /// </summary>
         /// <param name="id">ID</param>
         /// <returns></returns>
-        public async Task<bool> MarkDeleteAsync(string id)
+        public Task<bool> MarkDeleteAsyn(string id)
         {
             IDepartmentService service = CreateSubClient();
-            return await service.MarkDeleteAsync(id);
+            return service.MarkDeleteAsyn(id);
         }
         #endregion //Method
-
-        ///// <summary>
-        ///// 根据名称查找对象(自定义接口使用范例)
-        ///// </summary>
-        //public List<DepartmentInfo> FindByName(string name)
-        //{
-        //    List<DepartmentInfo> result = new List<DepartmentInfo>();
-
-        //    IDepartmentService service = CreateSubClient();
-        //    ICommunicationObject comm = service as ICommunicationObject;
-        //    comm.Using(client =>
-        //    {
-        //        result = service.FindByName(name);
-        //    });
-
-        //    return result;
-        //}
-
     }
 }

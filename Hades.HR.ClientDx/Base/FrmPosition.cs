@@ -43,9 +43,9 @@ namespace Hades.HR.UI
         /// <summary>
         /// 载入部门数据
         /// </summary>
-        private async void LoadDepartments()
+        private void LoadDepartments()
         {
-            var departments = await CallerFactory<IDepartmentService>.Instance.Find2Asyn("deleted=0", "ORDER BY SortCode");
+            var departments = CallerFactory<IDepartmentService>.Instance.Find2("deleted=0", "ORDER BY SortCode");
             this.depTree.DataSource = departments;
         }
 
@@ -314,7 +314,7 @@ namespace Hades.HR.UI
         private void menuAddTeam_Click(object sender, EventArgs e)
         {
             FrmWorkTeamEdit dlg = new FrmWorkTeamEdit();
-           // dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
+            // dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
             dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
 
             if (DialogResult.OK == dlg.ShowDialog())
@@ -465,6 +465,5 @@ namespace Hades.HR.UI
         #endregion //Grid Event
 
         #endregion //Event
-
     }
 }

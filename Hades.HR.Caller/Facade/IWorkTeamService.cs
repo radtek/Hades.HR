@@ -19,6 +19,7 @@ namespace Hades.HR.Facade
         /// </summary>
         /// <param name="id">ID</param>
         /// <returns></returns>
+        [OperationContract]
         bool MarkDelete(string id);
 
         /// <summary>
@@ -27,6 +28,6 @@ namespace Hades.HR.Facade
         /// <param name="id">ID</param>
         /// <returns></returns>
         [OperationContract]
-        Task<bool> MarkDeleteAsync(string id);
+        Task<bool> MarkDeleteAsyn(string id);
     }
 }

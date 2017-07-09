@@ -43,6 +43,19 @@ namespace Hades.HR.WCFLibrary
         }
 
         /// <summary>
+        /// 检查重复
+        /// </summary>
+        /// <param name="entity">实体对象</param>
+        /// <returns></returns>
+        public async Task<bool> CheckDuplicateAsyn(PositionInfo entity)
+        {
+            return await Task.Factory.StartNew(() =>
+            {
+                return bll.CheckDuplicate(entity);
+            });
+        }
+
+        /// <summary>
         /// 标记删除
         /// </summary>
         /// <param name="id">ID</param>
@@ -57,7 +70,7 @@ namespace Hades.HR.WCFLibrary
         /// </summary>
         /// <param name="id">ID</param>
         /// <returns></returns>
-        public async Task<bool> MarkDeleteAsync(string id)
+        public async Task<bool> MarkDeleteAsyn(string id)
         {
             return await Task.Factory.StartNew(() =>
             {

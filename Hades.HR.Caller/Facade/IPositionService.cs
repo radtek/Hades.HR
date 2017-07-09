@@ -19,13 +19,23 @@ namespace Hades.HR.Facade
         /// </summary>
         /// <param name="entity">实体对象</param>
         /// <returns></returns>
+        [OperationContract]
         bool CheckDuplicate(PositionInfo entity);
+
+        /// <summary>
+        /// 检查重复
+        /// </summary>
+        /// <param name="entity">实体对象</param>
+        /// <returns></returns>
+        [OperationContract]
+        Task<bool> CheckDuplicateAsyn(PositionInfo entity);
 
         /// <summary>
         /// 标记删除
         /// </summary>
         /// <param name="id">ID</param>
         /// <returns></returns>
+        [OperationContract]
         bool MarkDelete(string id);
 
         /// <summary>
@@ -34,6 +44,6 @@ namespace Hades.HR.Facade
         /// <param name="id">ID</param>
         /// <returns></returns>
         [OperationContract]
-        Task<bool> MarkDeleteAsync(string id);
+        Task<bool> MarkDeleteAsyn(string id);
     }
 }
