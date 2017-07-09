@@ -21,7 +21,9 @@ namespace Hades.HR.WinformCaller
     /// </summary>
     public class DepartmentCaller : BaseLocalService<DepartmentInfo>, IDepartmentService
     {
+        #region Field
         private Department bll = null;
+        #endregion //Field
 
         #region Constructor
         public DepartmentCaller() : base(BLLFactory<Department>.Instance)

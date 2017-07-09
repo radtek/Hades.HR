@@ -29,24 +29,7 @@ namespace Hades.HR.WinformCaller
         #endregion //Constructor
 
         #region Method
-        /// <summary>
-        /// 查找所有产线，不包含已删除
-        /// </summary>
-        /// <returns></returns>
-        public List<ProductionLineInfo> FindAll()
-        {
-            return bll.FindAll();
-        }
-
-        /// <summary>
-        /// 按公司获取产线
-        /// </summary>
-        /// <param name="companyId">公司ID</param>
-        /// <returns></returns>
-        public List<ProductionLineInfo> FindByCompany(string companyId)
-        {
-            return bll.FindByCompany(companyId);
-        }
+       
         #endregion //Method
     }
 }

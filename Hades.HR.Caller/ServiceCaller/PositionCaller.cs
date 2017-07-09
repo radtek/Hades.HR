@@ -5,6 +5,7 @@ using System.Text;
 using System.ServiceModel;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+using System.Threading.Tasks;
 
 using Hades.Framework.Commons;
 using Hades.Framework.ControlUtil;
@@ -87,24 +88,17 @@ namespace Hades.HR.ServiceCaller
 
             return result;
         }
+
+        /// <summary>
+        /// 标记删除
+        /// </summary>
+        /// <param name="id">ID</param>
+        /// <returns></returns>
+        public async Task<bool> MarkDeleteAsync(string id)
+        {
+            IPositionService service = CreateSubClient();
+            return await service.MarkDeleteAsync(id);
+        }
         #endregion //Method
-
-        ///// <summary>
-        ///// 根据名称查找对象(自定义接口使用范例)
-        ///// </summary>
-        //public List<PositionInfo> FindByName(string name)
-        //{
-        //    List<PositionInfo> result = new List<PositionInfo>();
-
-        //    IPositionService service = CreateSubClient();
-        //    ICommunicationObject comm = service as ICommunicationObject;
-        //    comm.Using(client =>
-        //    {
-        //        result = service.FindByName(name);
-        //    });
-
-        //    return result;
-        //}
-
     }
 }

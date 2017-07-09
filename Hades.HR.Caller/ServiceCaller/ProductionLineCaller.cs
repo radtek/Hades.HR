@@ -21,12 +21,15 @@ namespace Hades.HR.ServiceCaller
 	/// </summary>
     public class ProductionLineCaller : BaseWCFService<ProductionLineInfo>, IProductionLineService
     {
+        #region Constructor
         public ProductionLineCaller()  : base()
         {	
             this.configurationPath = EndPointConfig.WcfConfig; //WCF配置文件
             this.endpointConfigurationName = EndPointConfig.ProductionLineService;
         }
+        #endregion //Constructor
 
+        #region Function
         /// <summary>
         /// 子类构造一个IChannel对象转换为基类接口，方便给基类进行调用通用的API
         /// </summary>
@@ -45,46 +48,9 @@ namespace Hades.HR.ServiceCaller
             CustomClientChannel<IProductionLineService> factory = new CustomClientChannel<IProductionLineService>(endpointConfigurationName, configurationPath);
             return factory.CreateChannel();
         }
+        #endregion //Function
 
         #region Method
-        /// <summary>
-        /// 查找所有产线，不包含已删除
-        /// </summary>
-        /// <returns></returns>
-        public List<ProductionLineInfo> FindAll()
-        {
-            List<ProductionLineInfo> result = new List<ProductionLineInfo>();
-
-            IProductionLineService service = CreateSubClient();
-            ICommunicationObject comm = service as ICommunicationObject;
-            comm.Using(client =>
-            {
-                result = service.FindAll();
-            });
-
-            return result;
-        }
-
-        /// <summary>
-        /// 按公司获取产线
-        /// </summary>
-        /// <param name="companyId">公司ID</param>
-        /// <returns></returns>
-        public List<ProductionLineInfo> FindByCompany(string companyId)
-        {
-            List<ProductionLineInfo> result = new List<ProductionLineInfo>();
-
-            IProductionLineService service = CreateSubClient();
-            ICommunicationObject comm = service as ICommunicationObject;
-            comm.Using(client =>
-            {
-                result = service.FindByCompany(companyId);
-            });
-
-            return result;
-        }
-        #endregion //Method
-
         ///// <summary>
         ///// 根据名称查找对象(自定义接口使用范例)
         ///// </summary>
@@ -111,5 +77,6 @@ namespace Hades.HR.ServiceCaller
         //    IProductionLineService service = CreateSubClient();       
         //    return service.FindByNameAsyn(name);  
         //}
+        #endregion //Method
     }
 }

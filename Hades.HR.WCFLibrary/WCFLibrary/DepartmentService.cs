@@ -47,7 +47,6 @@ namespace Hades.HR.WCFLibrary
         /// </summary>
         /// <param name="id">部门ID</param>
         /// <returns></returns>
-        [OperationContract]
         public async Task<List<DepartmentInfo>> FindWithChildrenAsync(string id)
         {
             var task = Task.Factory.StartNew(() =>

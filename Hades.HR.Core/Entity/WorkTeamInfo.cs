@@ -33,6 +33,9 @@ namespace Hades.HR.Entity
         public virtual string Number { get; set; }
 
         [DataMember]
+        public virtual string CompanyId { get; set; }
+
+        [DataMember]
         public virtual string ProductionLineId { get; set; }
 
         [DataMember]

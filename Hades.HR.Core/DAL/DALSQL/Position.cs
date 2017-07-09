@@ -101,7 +101,7 @@ namespace Hades.HR.DALSQL
             #region 添加别名解析
             //dict.Add("ID", "编号");
             dict.Add("Id", "");
-            dict.Add("DepartmentId", "");
+            dict.Add("DepartmentId", "所属部门");
             dict.Add("Name", "岗位名称");
             dict.Add("Number", "岗位代码");
             dict.Add("Quota", "定员人数");

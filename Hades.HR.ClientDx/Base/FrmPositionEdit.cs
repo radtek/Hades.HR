@@ -17,6 +17,9 @@ using Hades.HR.Entity;
 
 namespace Hades.HR.UI
 {
+    /// <summary>
+    /// ±à¼­¸ÚÎ»´°Ìå
+    /// </summary>
     public partial class FrmPositionEdit : BaseEditForm
     {
         #region Field

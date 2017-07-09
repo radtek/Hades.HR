@@ -33,7 +33,7 @@ namespace Hades.HR.UI
         /// <param name="companyId">所属公司ID</param>
         public void Init(string companyId)
         {
-            var data = CallerFactory<IProductionLineService>.Instance.FindByCompany(companyId);
+            var data = CallerFactory<IProductionLineService>.Instance.Find2(string.Format("CompanyId='{0}' AND Deleted=0", companyId), "ORDER BY SortCode");
             this.bsProductionLine.DataSource = data;
         }
 

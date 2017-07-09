@@ -24,26 +24,7 @@ namespace Hades.HR.BLL
         #endregion //Constructor
 
         #region Method
-        /// <summary>
-        /// 查找所有产线，不包含已删除
-        /// </summary>
-        /// <returns></returns>
-        public List<ProductionLineInfo> FindAll()
-        {
-            string sql = "deleted=0";
-            return base.Find(sql, "ORDER BY SortCode");
-        }
-
-        /// <summary>
-        /// 按公司获取产线
-        /// </summary>
-        /// <param name="companyId">公司ID</param>
-        /// <returns></returns>
-        public List<ProductionLineInfo> FindByCompany(string companyId)
-        {
-            string sql = $"companyId='{companyId}' AND deleted=0";
-            return base.Find(sql, "ORDER BY SortCode");
-        }
+  
         #endregion //Method
     }
 }

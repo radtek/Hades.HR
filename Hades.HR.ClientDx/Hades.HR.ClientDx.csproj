@@ -445,10 +445,10 @@
     <Compile Include="UI\FrmStaffView.Designer.cs">
       <DependentUpon>FrmStaffView.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\FrmPositionView.cs">
+    <Compile Include="Base\FrmPositionView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\FrmPositionView.Designer.cs">
+    <Compile Include="Base\FrmPositionView.Designer.cs">
       <DependentUpon>FrmPositionView.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\FrmStaffOverview.cs">
@@ -457,29 +457,29 @@
     <Compile Include="UI\FrmStaffOverview.Designer.cs">
       <DependentUpon>FrmStaffOverview.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\FrmDepartmentView.cs">
+    <Compile Include="Base\FrmDepartmentView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\FrmDepartmentView.Designer.cs">
+    <Compile Include="Base\FrmDepartmentView.Designer.cs">
       <DependentUpon>FrmDepartmentView.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UI\FrmDepartment.cs">
+    <Compile Include="Base\FrmDepartment.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\FrmDepartment.Designer.cs">
+    <Compile Include="Base\FrmDepartment.Designer.cs">
       <DependentUpon>FrmDepartment.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\FrmDepartmentEdit.cs">
+    <Compile Include="Base\FrmDepartmentEdit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\FrmDepartmentEdit.Designer.cs">
+    <Compile Include="Base\FrmDepartmentEdit.Designer.cs">
       <DependentUpon>FrmDepartmentEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\FrmPositionEdit.cs">
+    <Compile Include="Base\FrmPositionEdit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\FrmPositionEdit.Designer.cs">
+    <Compile Include="Base\FrmPositionEdit.Designer.cs">
       <DependentUpon>FrmPositionEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\FrmStaffEdit.cs">
@@ -488,10 +488,10 @@
     <Compile Include="UI\FrmStaffEdit.Designer.cs">
       <DependentUpon>FrmStaffEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\FrmPosition.cs">
+    <Compile Include="Base\FrmPosition.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\FrmPosition.Designer.cs">
+    <Compile Include="Base\FrmPosition.Designer.cs">
       <DependentUpon>FrmPosition.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\FrmStaff.cs">
@@ -521,13 +521,13 @@
     <EmbeddedResource Include="UI\FrmBonusDefine.resx">
       <DependentUpon>FrmBonusDefine.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\FrmDepartment.resx">
+    <EmbeddedResource Include="Base\FrmDepartment.resx">
       <DependentUpon>FrmDepartment.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\FrmDepartmentEdit.resx">
+    <EmbeddedResource Include="Base\FrmDepartmentEdit.resx">
       <DependentUpon>FrmDepartmentEdit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\FrmDepartmentView.resx">
+    <EmbeddedResource Include="Base\FrmDepartmentView.resx">
       <DependentUpon>FrmDepartmentView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmEditBonusDefine.resx">
@@ -542,13 +542,13 @@
     <EmbeddedResource Include="UI\FrmStaffSalaryEdit.resx">
       <DependentUpon>FrmStaffSalaryEdit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\FrmPosition.resx">
+    <EmbeddedResource Include="Base\FrmPosition.resx">
       <DependentUpon>FrmPosition.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\FrmPositionEdit.resx">
+    <EmbeddedResource Include="Base\FrmPositionEdit.resx">
       <DependentUpon>FrmPositionEdit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\FrmPositionView.resx">
+    <EmbeddedResource Include="Base\FrmPositionView.resx">
       <DependentUpon>FrmPositionView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmStaff.resx">

@@ -18,7 +18,7 @@ using Hades.HR.Entity;
 namespace Hades.HR.UI
 {
     /// <summary>
-    /// Position
+    /// 岗位产线班组管理窗体
     /// </summary>	
     public partial class FrmPosition : BaseDock
     {
@@ -50,6 +50,15 @@ namespace Hades.HR.UI
         }
 
         /// <summary>
+        /// 载入部门数据
+        /// </summary>
+        private async void LoadDepartments()
+        {
+            var departments = await CallerFactory<IDepartmentService>.Instance.Find2Asyn("deleted=0", "ORDER BY SortCode");
+            this.depTree.DataSource = departments;
+        }
+
+        /// <summary>
         /// 载入部门包含岗位
         /// </summary>
         /// <param name="department"></param>
@@ -57,11 +66,11 @@ namespace Hades.HR.UI
         {
             var positions = CallerFactory<IPositionService>.Instance.Find2(string.Format("departmentId='{0}'", department.Id), "ORDER BY SortCode");
 
-            this.wgvPosition.DisplayColumns = "Name,Number,Quota,SortCode,Remark,Enabled";
+            this.wgvPosition.DisplayColumns = "Name,Number,DepartmentId,Quota,SortCode,Remark,Enabled";
             this.wgvPosition.ColumnNameAlias = CallerFactory<IPositionService>.Instance.GetColumnNameAlias();
 
             this.wgvPosition.DataSource = positions;
-            this.wgvPosition.PrintTitle = "岗位报表";            
+            this.wgvPosition.PrintTitle = "岗位报表";
         }
 
         /// <summary>
@@ -92,7 +101,29 @@ namespace Hades.HR.UI
 
             this.wgvWorkTeam.DataSource = teams;
             this.wgvWorkTeam.PrintTitle = "班组报表";
+        }
 
+        /// <summary>
+        /// 查看岗位
+        /// </summary>
+        private void ViewPosition()
+        {
+            string ID = this.wgvPosition.gridView1.GetFocusedRowCellDisplayText("Id");
+            List<string> IDList = new List<string>();
+            for (int i = 0; i < this.wgvPosition.gridView1.RowCount; i++)
+            {
+                string strTemp = this.wgvPosition.GridView1.GetRowCellDisplayText(i, "Id");
+                IDList.Add(strTemp);
+            }
+
+            if (!string.IsNullOrEmpty(ID))
+            {
+                FrmPositionView dlg = new FrmPositionView();
+                dlg.ID = ID;
+                dlg.IDList = IDList;
+                dlg.InitFunction(LoginUserInfo, FunctionDict);
+                dlg.ShowDialog();
+            }
         }
         #endregion //Function
 
@@ -102,13 +133,14 @@ namespace Hades.HR.UI
         /// </summary>
         public override void FormOnLoad()
         {
-            LoadData();
+            LoadDepartments();
 
             this.depTree.Expand();
 
             this.wgvPosition.AppendedMenu = this.contextMenuStrip1;
             this.wgvPosition.ShowLineNumber = true;
             this.wgvPosition.BestFitColumnWith = true;
+            this.wgvPosition.gridView1.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(wgvPosition_CustomColumnDisplayText);
 
             this.wgvProductionLine.AppendedMenu = this.contextMenuStrip2;
             this.wgvProductionLine.ShowLineNumber = true;
@@ -118,7 +150,7 @@ namespace Hades.HR.UI
             this.wgvWorkTeam.ShowLineNumber = true;
             this.wgvWorkTeam.BestFitColumnWith = true;
 
-            this.wgvPosition.gridView1.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(gridView1_CustomColumnDisplayText);
+
         }
         #endregion //Method
 
@@ -145,10 +177,9 @@ namespace Hades.HR.UI
             {
                 this.txtDepartmentName.Text = department.Name;
                 this.txtDepartmentNumber.Text = department.Number;
+
                 LoadPositions(department);
-
                 LoadProductionLines(department);
-
                 LoadWorkTeams(department);
             }
         }
@@ -160,22 +191,7 @@ namespace Hades.HR.UI
         /// <param name="e"></param>
         private void menuViewPosition_Click(object sender, EventArgs e)
         {
-            string ID = this.wgvPosition.gridView1.GetFocusedRowCellDisplayText("Id");
-            List<string> IDList = new List<string>();
-            for (int i = 0; i < this.wgvPosition.gridView1.RowCount; i++)
-            {
-                string strTemp = this.wgvPosition.GridView1.GetRowCellDisplayText(i, "Id");
-                IDList.Add(strTemp);
-            }
-
-            if (!string.IsNullOrEmpty(ID))
-            {
-                FrmPositionView dlg = new FrmPositionView();
-                dlg.ID = ID;
-                dlg.IDList = IDList;
-                dlg.InitFunction(LoginUserInfo, FunctionDict);
-                dlg.ShowDialog();
-            }
+            ViewPosition();
         }
 
         /// <summary>
@@ -186,12 +202,11 @@ namespace Hades.HR.UI
         private void menuAddPosition_Click(object sender, EventArgs e)
         {
             FrmPositionEdit dlg = new FrmPositionEdit();
-            dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
             dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
 
             if (DialogResult.OK == dlg.ShowDialog())
             {
-                LoadData();
+                LoadDepartments();
             }
         }
 
@@ -215,12 +230,11 @@ namespace Hades.HR.UI
                 FrmPositionEdit dlg = new FrmPositionEdit();
                 dlg.ID = ID;
                 dlg.IDList = IDList;
-                dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
                 dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
 
                 if (DialogResult.OK == dlg.ShowDialog())
                 {
-                    LoadData();
+                    LoadDepartments();
                 }
             }
         }
@@ -281,7 +295,22 @@ namespace Hades.HR.UI
 
 
         #region Grid Event
-        void gridView1_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+        /// <summary>
+        /// 双击岗位
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void wgvPosition_OnGridViewMouseDoubleClick(object sender, EventArgs e)
+        {
+            ViewPosition();
+        }
+
+        /// <summary>
+        /// 格式化岗位列表
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void wgvPosition_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
         {
             string columnName = e.Column.FieldName;
             if (e.Column.ColumnType == typeof(DateTime))
@@ -298,6 +327,14 @@ namespace Hades.HR.UI
                     }
                 }
             }
+            else if (columnName == "DepartmentId" && !string.IsNullOrEmpty(e.Value.ToString()))
+            {
+                if (e.Value != null)
+                {
+                    var dep = CallerFactory<IDepartmentService>.Instance.FindByID(e.Value.ToString());
+                    e.DisplayText = dep.Name;
+                }
+            }
             else if (columnName == "Enabled")
             {
                 e.DisplayText = Convert.ToInt32(e.Value) == 1 ? "已启用" : "未启用";
@@ -305,32 +342,8 @@ namespace Hades.HR.UI
 
         }
         #endregion //Grid Event
+
         #endregion //Event
 
-
-      
-        
-        /// <summary>
-        /// 高级查询条件语句对象
-        /// </summary>
-        private SearchCondition advanceCondition;
-        
-        /// <summary>
-        /// 根据查询条件构造查询语句
-        /// </summary> 
-        private string GetConditionSql()
-        {
-            //如果存在高级查询对象信息，则使用高级查询条件，否则使用主表条件查询
-            SearchCondition condition = advanceCondition;
-            if (condition == null)
-            {
-                condition = new SearchCondition();
-                //condition.AddNumericCondition("DepartmentId", this.txtDepartmentId1, this.txtDepartmentId2); //数值类型
-                //condition.AddCondition("Name", this.txtName.Text.Trim(), SqlOperator.Like);
-                //condition.AddCondition("Number", this.txtNumber.Text.Trim(), SqlOperator.Like);
-            }
-            string where = condition.BuildConditionSql().Replace("Where", "");
-            return where;
-        }
     }
 }
