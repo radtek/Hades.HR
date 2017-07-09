@@ -33,12 +33,11 @@ namespace Hades.HR.BLL
             List<StaffSalaryInfo> data = new List<StaffSalaryInfo>();
 
             Staff staffBll = new Staff();
-            staffBll.FindAll();
+            staffBll.Find("");
 
             string sql = "deleted=0";
             var salarys = base.Find(sql, "ORDER BY SortCode");
-
-
+            
 
             return data;
 

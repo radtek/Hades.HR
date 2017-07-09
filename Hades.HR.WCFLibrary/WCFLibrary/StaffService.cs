@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using System.Threading.Tasks;
 
 using Hades.Framework.Commons;
 using Hades.Framework.ControlUtil;
@@ -19,40 +20,63 @@ namespace Hades.HR.WCFLibrary
 	/// </summary>
     public class StaffService : BaseLocalService<StaffInfo>, IStaffService
     {
+        #region Field
         private Staff bll = null;
+        #endregion //Field
 
+        #region Constructor
         public StaffService() : base(BLLFactory<Staff>.Instance)
         {
             bll = baseBLL as Staff;
         }
+        #endregion //Constructor
 
-        public bool CheckDuplicate(StaffInfo entity, out string message)
+        #region Method
+        /// <summary>
+        /// 检查重复
+        /// </summary>
+        /// <param name="entity">实体对象</param>
+        /// <returns></returns>
+        public bool CheckDuplicate(StaffInfo entity)
         {
-            throw new NotImplementedException();
+            return bll.CheckDuplicate(entity);
         }
 
-        public List<StaffInfo> FindByDepartment(string departmentId)
+        /// <summary>
+        /// 检查重复
+        /// </summary>
+        /// <param name="entity">实体对象</param>
+        /// <returns></returns>
+        public async Task<bool> CheckDuplicateAsync(StaffInfo entity)
         {
-            throw new NotImplementedException();
+            return await Task.Factory.StartNew(() =>
+            {
+                return bll.CheckDuplicate(entity);
+            });
         }
 
-        public List<StaffInfo> FindByDepartments(List<string> idList)
-        {
-            throw new NotImplementedException();
-        }
-
+        /// <summary>
+        /// 标记删除
+        /// </summary>
+        /// <param name="id">ID</param>
+        /// <returns></returns>
         public bool MarkDelete(string id)
         {
-            throw new NotImplementedException();
+            return bll.MarkDelete(id);
         }
 
-        ///// <summary>
-        ///// 根据名称查找对象(自定义接口使用范例)
-        ///// </summary>
-        //public List<StaffInfo> FindByName(string name)
-        //{
-        //    return bll.FindByName(name);
-        //}
-
+        /// <summary>
+        /// 标记删除
+        /// </summary>
+        /// <param name="id">ID</param>
+        /// <returns></returns>
+        public async Task<bool> MarkDeleteAsync(string id)
+        {
+            return await Task.Factory.StartNew(() =>
+            {
+                return bll.MarkDelete(id);
+            });
+        }
+        #endregion //Method
     }
 }

@@ -48,7 +48,6 @@ namespace Hades.HR.WinformCaller
         /// </summary>
         /// <param name="id">部门ID</param>
         /// <returns></returns>
-        [OperationContract]
         public async Task<List<DepartmentInfo>> FindWithChildrenAsync(string id)
         {
             return await Task.Factory.StartNew(() =>

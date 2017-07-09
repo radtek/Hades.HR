@@ -26,27 +26,6 @@ namespace Hades.HR.BLL
 
         #region Method
         /// <summary>
-        /// 查找所有职员，不包含已删除
-        /// </summary>
-        /// <returns></returns>
-        public List<StaffInfo> FindAll()
-        {
-            string sql = "deleted=0";
-            return base.Find(sql, "ORDER BY SortCode");
-        }
-
-        /// <summary>
-        /// 查找某一部门员工
-        /// </summary>
-        /// <param name="departmentId">部门ID</param>
-        /// <returns></returns>
-        public List<StaffInfo> FindByDepartment(string departmentId)
-        {
-            string sql = $"DepartmentId = '{departmentId}'";
-            return base.Find(sql);
-        }
-
-        /// <summary>
         /// 查找多个部门员工
         /// </summary>
         /// <param name="ids">部门ID列表</param>
@@ -64,11 +43,11 @@ namespace Hades.HR.BLL
         /// 检查重复
         /// </summary>
         /// <param name="entity">实体对象</param>
-        /// <param name="message">错误消息</param>
         /// <returns></returns>
-        public bool CheckDuplicate(StaffInfo entity, out string message)
+        public bool CheckDuplicate(StaffInfo entity)
         {
             string sql = "";
+            string message = "";
             if (string.IsNullOrEmpty(entity.Id))
             {
                 sql = string.Format("Number = '{0}'", entity.Number);

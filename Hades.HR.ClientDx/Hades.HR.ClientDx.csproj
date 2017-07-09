@@ -391,28 +391,28 @@
     <Compile Include="Control\ProductionLineLookup.Designer.cs">
       <DependentUpon>ProductionLineLookup.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\FrmBonusDefine.cs">
+    <Compile Include="Salary\FrmBonusDefine.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\FrmBonusDefine.Designer.cs">
+    <Compile Include="Salary\FrmBonusDefine.Designer.cs">
       <DependentUpon>FrmBonusDefine.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\FrmEditBonusDefine.cs">
+    <Compile Include="Salary\FrmEditBonusDefine.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\FrmEditBonusDefine.Designer.cs">
+    <Compile Include="Salary\FrmEditBonusDefine.Designer.cs">
       <DependentUpon>FrmEditBonusDefine.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\FrmEditStaffBonus.cs">
+    <Compile Include="Salary\FrmEditStaffBonus.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\FrmEditStaffBonus.Designer.cs">
+    <Compile Include="Salary\FrmEditStaffBonus.Designer.cs">
       <DependentUpon>FrmEditStaffBonus.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\FrmStaffBonus.cs">
+    <Compile Include="Salary\FrmStaffBonus.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\FrmStaffBonus.Designer.cs">
+    <Compile Include="Salary\FrmStaffBonus.Designer.cs">
       <DependentUpon>FrmStaffBonus.cs</DependentUpon>
     </Compile>
     <Compile Include="Base\FrmWorkTeamEdit.cs">
@@ -427,22 +427,22 @@
     <Compile Include="Base\FrmProductionLineEdit.Designer.cs">
       <DependentUpon>FrmProductionLineEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\FrmStaffSalaryEdit.cs">
+    <Compile Include="Salary\FrmStaffSalaryEdit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\FrmStaffSalaryEdit.Designer.cs">
+    <Compile Include="Salary\FrmStaffSalaryEdit.Designer.cs">
       <DependentUpon>FrmStaffSalaryEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\FrmStaffSalary.cs">
+    <Compile Include="Salary\FrmStaffSalary.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\FrmStaffSalary.Designer.cs">
+    <Compile Include="Salary\FrmStaffSalary.Designer.cs">
       <DependentUpon>FrmStaffSalary.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\FrmStaffView.cs">
+    <Compile Include="Base\FrmStaffView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\FrmStaffView.Designer.cs">
+    <Compile Include="Base\FrmStaffView.Designer.cs">
       <DependentUpon>FrmStaffView.cs</DependentUpon>
     </Compile>
     <Compile Include="Base\FrmPositionView.cs">
@@ -482,10 +482,10 @@
     <Compile Include="Base\FrmPositionEdit.Designer.cs">
       <DependentUpon>FrmPositionEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\FrmStaffEdit.cs">
+    <Compile Include="Base\FrmStaffEdit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\FrmStaffEdit.Designer.cs">
+    <Compile Include="Base\FrmStaffEdit.Designer.cs">
       <DependentUpon>FrmStaffEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="Base\FrmPosition.cs">
@@ -494,10 +494,10 @@
     <Compile Include="Base\FrmPosition.Designer.cs">
       <DependentUpon>FrmPosition.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\FrmStaff.cs">
+    <Compile Include="Base\FrmStaff.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\FrmStaff.Designer.cs">
+    <Compile Include="Base\FrmStaff.Designer.cs">
       <DependentUpon>FrmStaff.cs</DependentUpon>
     </Compile>
     <Compile Include="Util\ControlUtil.cs" />
@@ -518,7 +518,7 @@
     <EmbeddedResource Include="Control\ProductionLineLookup.resx">
       <DependentUpon>ProductionLineLookup.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\FrmBonusDefine.resx">
+    <EmbeddedResource Include="Salary\FrmBonusDefine.resx">
       <DependentUpon>FrmBonusDefine.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Base\FrmDepartment.resx">
@@ -530,16 +530,22 @@
     <EmbeddedResource Include="Base\FrmDepartmentView.resx">
       <DependentUpon>FrmDepartmentView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\FrmEditBonusDefine.resx">
+    <EmbeddedResource Include="Salary\FrmEditBonusDefine.resx">
       <DependentUpon>FrmEditBonusDefine.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Base\FrmProductionLineEdit.resx">
       <DependentUpon>FrmProductionLineEdit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\FrmStaffSalary.resx">
+    <EmbeddedResource Include="Salary\FrmEditStaffBonus.resx">
+      <DependentUpon>FrmEditStaffBonus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Salary\FrmStaffBonus.resx">
+      <DependentUpon>FrmStaffBonus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Salary\FrmStaffSalary.resx">
       <DependentUpon>FrmStaffSalary.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\FrmStaffSalaryEdit.resx">
+    <EmbeddedResource Include="Salary\FrmStaffSalaryEdit.resx">
       <DependentUpon>FrmStaffSalaryEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Base\FrmPosition.resx">
@@ -551,16 +557,16 @@
     <EmbeddedResource Include="Base\FrmPositionView.resx">
       <DependentUpon>FrmPositionView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\FrmStaff.resx">
+    <EmbeddedResource Include="Base\FrmStaff.resx">
       <DependentUpon>FrmStaff.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\FrmStaffEdit.resx">
+    <EmbeddedResource Include="Base\FrmStaffEdit.resx">
       <DependentUpon>FrmStaffEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmStaffOverview.resx">
       <DependentUpon>FrmStaffOverview.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\FrmStaffView.resx">
+    <EmbeddedResource Include="Base\FrmStaffView.resx">
       <DependentUpon>FrmStaffView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Base\FrmWorkTeamEdit.resx">

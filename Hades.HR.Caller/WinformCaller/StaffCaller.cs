@@ -5,6 +5,7 @@ using System.Text;
 using System.ServiceModel;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+using System.Threading.Tasks;
 
 using Hades.Framework.Commons;
 using Hades.Framework.ControlUtil;
@@ -33,23 +34,26 @@ namespace Hades.HR.WinformCaller
 
         #region Method
         /// <summary>
-        /// 查找某一部门下员工
+        /// 检查重复
         /// </summary>
-        /// <param name="departmentId">部门ID</param>
+        /// <param name="entity">实体对象</param>
         /// <returns></returns>
-        public List<StaffInfo> FindByDepartment(string departmentId)
+        public bool CheckDuplicate(StaffInfo entity)
         {
-            return bll.FindByDepartment(departmentId);
+            return bll.CheckDuplicate(entity);
         }
 
-        public List<StaffInfo> FindByDepartments(List<string> idList)
+        /// <summary>
+        /// 检查重复
+        /// </summary>
+        /// <param name="entity">实体对象</param>
+        /// <returns></returns>
+        public async Task<bool> CheckDuplicateAsync(StaffInfo entity)
         {
-            return bll.FindByDepartments(idList);
-        }
-
-        public bool CheckDuplicate(StaffInfo entity, out string message)
-        {
-            return bll.CheckDuplicate(entity, out message);
+            return await Task.Factory.StartNew(() =>
+            {
+                return bll.CheckDuplicate(entity);
+            });
         }
 
         /// <summary>
@@ -62,6 +66,18 @@ namespace Hades.HR.WinformCaller
             return bll.MarkDelete(id);
         }
 
+        /// <summary>
+        /// 标记删除
+        /// </summary>
+        /// <param name="id">ID</param>
+        /// <returns></returns>
+        public async Task<bool> MarkDeleteAsync(string id)
+        {
+            return await Task.Factory.StartNew(() =>
+            {
+                return bll.MarkDelete(id);
+            });
+        }
         #endregion //Method
 
         ///// <summary>

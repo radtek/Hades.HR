@@ -5,6 +5,7 @@ using System.Text;
 using System.ServiceModel;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+using System.Threading.Tasks;
 
 using Hades.Framework.Commons;
 using Hades.Framework.ControlUtil;
@@ -20,32 +21,15 @@ namespace Hades.HR.ServiceCaller
 	/// </summary>
     public class StaffCaller : BaseWCFService<StaffInfo>, IStaffService
     {
+        #region Constructor
         public StaffCaller()  : base()
         {	
             this.configurationPath = EndPointConfig.WcfConfig; //WCF配置文件
             this.endpointConfigurationName = EndPointConfig.StaffService;
         }
+        #endregion //Constructor
 
-        public bool CheckDuplicate(StaffInfo entity, out string message)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<StaffInfo> FindByDepartment(string departmentId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<StaffInfo> FindByDepartments(List<string> idList)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool MarkDelete(string id)
-        {
-            throw new NotImplementedException();
-        }
-
+        #region Function
         /// <summary>
         /// 子类构造一个IChannel对象转换为基类接口，方便给基类进行调用通用的API
         /// </summary>
@@ -64,23 +48,68 @@ namespace Hades.HR.ServiceCaller
             CustomClientChannel<IStaffService> factory = new CustomClientChannel<IStaffService>(endpointConfigurationName, configurationPath);
             return factory.CreateChannel();
         }
+        #endregion //Function
 
-        ///// <summary>
-        ///// 根据名称查找对象(自定义接口使用范例)
-        ///// </summary>
-        //public List<StaffInfo> FindByName(string name)
-        //{
-        //    List<StaffInfo> result = new List<StaffInfo>();
+        #region Method
+        /// <summary>
+        /// 检查重复
+        /// </summary>
+        /// <param name="entity">实体对象</param>
+        /// <returns></returns>
+        public bool CheckDuplicate(StaffInfo entity)
+        {
+            bool result = false;
 
-        //    IStaffService service = CreateSubClient();
-        //    ICommunicationObject comm = service as ICommunicationObject;
-        //    comm.Using(client =>
-        //    {
-        //        result = service.FindByName(name);
-        //    });
+            IStaffService service = CreateSubClient();
+            ICommunicationObject comm = service as ICommunicationObject;
+            comm.Using(client =>
+            {
+                result = service.CheckDuplicate(entity);
+            });
 
-        //    return result;
-        //}
+            return result;
+        }
 
+        /// <summary>
+        /// 检查重复
+        /// </summary>
+        /// <param name="entity">实体对象</param>
+        /// <returns></returns>
+        public async Task<bool> CheckDuplicateAsync(StaffInfo entity)
+        {
+            IStaffService service = CreateSubClient();
+            return await service.CheckDuplicateAsync(entity);
+        }
+
+        /// <summary>
+        /// 标记删除
+        /// </summary>
+        /// <param name="id">ID</param>
+        /// <returns></returns>
+        public bool MarkDelete(string id)
+        {
+            bool result = false;
+
+            IStaffService service = CreateSubClient();
+            ICommunicationObject comm = service as ICommunicationObject;
+            comm.Using(client =>
+            {
+                result = service.MarkDelete(id);
+            });
+
+            return result;
+        }
+
+        /// <summary>
+        /// 标记删除
+        /// </summary>
+        /// <param name="id">ID</param>
+        /// <returns></returns>
+        public async Task<bool> MarkDeleteAsync(string id)
+        {
+            IStaffService service = CreateSubClient();
+            return await service.MarkDeleteAsync(id);
+        }
+        #endregion //Method
     }
 }

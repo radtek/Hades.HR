@@ -19,7 +19,7 @@ using Hades.Framework.ControlUtil;
 namespace Hades.HR.UI
 {
     /// <summary>
-    /// Staff
+    /// 职员管理窗体
     /// </summary>	
     public partial class FrmStaff : BaseDock
     {
@@ -38,16 +38,15 @@ namespace Hades.HR.UI
             InitDictItem();
 
             this.wgvStaff.OnPageChanged += new EventHandler(winGridViewPager1_OnPageChanged);
-            this.wgvStaff.OnStartExport += new EventHandler(winGridViewPager1_OnStartExport);
-            this.wgvStaff.OnEditSelected += new EventHandler(winGridViewPager1_OnEditSelected);
-            this.wgvStaff.OnAddNew += new EventHandler(winGridViewPager1_OnAddNew);
+            //this.wgvStaff.OnEditSelected += new EventHandler(winGridViewPager1_OnEditSelected);
+            //this.wgvStaff.OnAddNew += new EventHandler(winGridViewPager1_OnAddNew);
             this.wgvStaff.OnDeleteSelected += new EventHandler(winGridViewPager1_OnDeleteSelected);
             this.wgvStaff.OnRefresh += new EventHandler(winGridViewPager1_OnRefresh);
             this.wgvStaff.AppendedMenu = this.contextMenuStrip1;
             this.wgvStaff.ShowLineNumber = true;
             this.wgvStaff.BestFitColumnWith = false;//是否设置为自动调整宽度，false为不设置
             this.wgvStaff.gridView1.DataSourceChanged += new EventHandler(gridView1_DataSourceChanged);
-            this.wgvStaff.gridView1.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(gridView1_CustomColumnDisplayText);
+            this.wgvStaff.gridView1.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(wgvStaff_CustomColumnDisplayText);
             this.wgvStaff.gridView1.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(gridView1_RowCellStyle);
 
             //关联回车键进行查询
@@ -100,6 +99,29 @@ namespace Hades.HR.UI
             string where = condition.BuildConditionSql().Replace("Where", "");
             return where;
         }
+
+        /// <summary>
+        /// 查看职员
+        /// </summary>
+        private void ViewStaff()
+        {
+            string ID = this.wgvStaff.gridView1.GetFocusedRowCellDisplayText("Id");
+            List<string> IDList = new List<string>();
+            for (int i = 0; i < this.wgvStaff.gridView1.RowCount; i++)
+            {
+                string strTemp = this.wgvStaff.GridView1.GetRowCellDisplayText(i, "Id");
+                IDList.Add(strTemp);
+            }
+
+            if (!string.IsNullOrEmpty(ID))
+            {
+                FrmStaffView dlg = new FrmStaffView();
+                dlg.ID = ID;
+                dlg.IDList = IDList;
+                dlg.InitFunction(LoginUserInfo, FunctionDict);
+                dlg.ShowDialog();
+            }
+        }
         #endregion //Function
 
         #region Method
@@ -114,33 +136,65 @@ namespace Hades.HR.UI
 
         #region Event
         /// <summary>
-        /// 部门选择
+        /// 菜单 - 查看职员
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void depTree_DepartmentSelect(object sender, EventArgs e)
+        private void menuViewStaff_Click(object sender, EventArgs e)
         {
-            //BindData();
-        }
-
-        private void dlg_OnDataSaved(object sender, EventArgs e)
-        {
-            BindData();
+            ViewStaff();
         }
 
         /// <summary>
-        /// 新增数据操作
+        /// 菜单 - 新增职员
         /// </summary>
-        private void btnAddNew_Click(object sender, EventArgs e)
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void menuAddStaff_Click(object sender, EventArgs e)
         {
             FrmStaffEdit dlg = new FrmStaffEdit();
-            dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
+            //dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
             dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
 
             if (DialogResult.OK == dlg.ShowDialog())
             {
                 BindData();
             }
+        }
+
+        /// <summary>
+        /// 菜单 - 编辑职员
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void menuEditStaff_Click(object sender, EventArgs e)
+        {
+            string ID = this.wgvStaff.gridView1.GetFocusedRowCellDisplayText("Id");
+            List<string> IDList = new List<string>();
+            for (int i = 0; i < this.wgvStaff.gridView1.RowCount; i++)
+            {
+                string strTemp = this.wgvStaff.GridView1.GetRowCellDisplayText(i, "Id");
+                IDList.Add(strTemp);
+            }
+
+            if (!string.IsNullOrEmpty(ID))
+            {
+                FrmStaffEdit dlg = new FrmStaffEdit();
+                dlg.ID = ID;
+                dlg.IDList = IDList;
+                //dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
+                dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
+
+                if (DialogResult.OK == dlg.ShowDialog())
+                {
+                    BindData();
+                }
+            }
+        }
+
+        private void dlg_OnDataSaved(object sender, EventArgs e)
+        {
+            BindData();
         }
 
 
@@ -166,7 +220,7 @@ namespace Hades.HR.UI
         }
 
         #region Grid Event
-        void gridView1_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+        void wgvStaff_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
         {
             string columnName = e.Column.FieldName;
             if (e.Column.ColumnType == typeof(DateTime))
@@ -246,39 +300,11 @@ namespace Hades.HR.UI
         }
 
         /// <summary>
-        /// 分页控件编辑项操作
-        /// </summary>
-        private void winGridViewPager1_OnEditSelected(object sender, EventArgs e)
-        {
-            string ID = this.wgvStaff.gridView1.GetFocusedRowCellDisplayText("Id");
-            List<string> IDList = new List<string>();
-            for (int i = 0; i < this.wgvStaff.gridView1.RowCount; i++)
-            {
-                string strTemp = this.wgvStaff.GridView1.GetRowCellDisplayText(i, "Id");
-                IDList.Add(strTemp);
-            }
-
-            if (!string.IsNullOrEmpty(ID))
-            {
-                FrmStaffEdit dlg = new FrmStaffEdit();
-                dlg.ID = ID;
-                dlg.IDList = IDList;
-                dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
-                dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
-
-                if (DialogResult.OK == dlg.ShowDialog())
-                {
-                    BindData();
-                }
-            }
-        }
-
-        /// <summary>
         /// 分页控件新增操作
         /// </summary>
         private void winGridViewPager1_OnAddNew(object sender, EventArgs e)
         {
-            btnAddNew_Click(null, null);
+            menuAddStaff_Click(null, null);
         }
 
         /// <summary>
@@ -316,18 +342,18 @@ namespace Hades.HR.UI
             BindData();
         }
 
+        /// <summary>
+        /// 双击控件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void wgvStaff_OnGridViewMouseDoubleClick(object sender, EventArgs e)
+        {
+            ViewStaff();
+        }
         #endregion //Grid Event
         #endregion //Event
 
-
-        private void SetGridColumWidth(string columnName, int width)
-        {
-            DevExpress.XtraGrid.Columns.GridColumn column = this.wgvStaff.gridView1.Columns.ColumnByFieldName(columnName);
-            if (column != null)
-            {
-                column.Width = width;
-            }
-        }
 
         /// <summary>
         /// 分页控件全部导出操作前的操作
@@ -568,6 +594,5 @@ namespace Hades.HR.UI
             advanceCondition = condition;
             BindData();
         }
-
     }
 }
