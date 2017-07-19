@@ -28,7 +28,7 @@ namespace SFYX.Framework.Starter
         public string AppName = string.Empty; //程序名称
         public string AppWholeName = string.Empty; //单位名称+程序名称
         public string SystemType= "HadesERP";
-        public int AsynTimeOut = 3000;  //异步超时事件3秒
+        public int AsynTimeOut = 30000;  //异步超时事件3秒
         public LoginUserInfo LoginUserInfo = null; //登陆用户基础信息        
         public Dictionary<string, string> FunctionDict = new Dictionary<string, string>(); //登录用户具有的功能字典集合
         public UserInfo UserInfo = null; //登录用户信息

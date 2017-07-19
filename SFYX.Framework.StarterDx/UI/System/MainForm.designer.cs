@@ -58,16 +58,8 @@
             this.popMenuCloseCurrent = new DevExpress.XtraBars.BarButtonItem();
             this.popMenuCloseAll = new DevExpress.XtraBars.BarButtonItem();
             this.popMenuCloseOther = new DevExpress.XtraBars.BarButtonItem();
-            this.btn_DepartmentMan = new DevExpress.XtraBars.BarButtonItem();
-            this.btn_PositionMan = new DevExpress.XtraBars.BarButtonItem();
-            this.btn_StaffMan = new DevExpress.XtraBars.BarButtonItem();
-            this.btn_StaffOv = new DevExpress.XtraBars.BarButtonItem();
-            this.btn_StaffSalary = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonMiniToolbar1 = new DevExpress.XtraBars.Ribbon.RibbonMiniToolbar(this.components);
             this.ribbonMiniToolbar2 = new DevExpress.XtraBars.Ribbon.RibbonMiniToolbar(this.components);
-            this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonSystem = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup7 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -84,7 +76,6 @@
             this.notifyMenu_About = new System.Windows.Forms.ToolStripMenuItem();
             this.notifyMenu_Exit = new System.Windows.Forms.ToolStripMenuItem();
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.btn_BonusDefine = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
@@ -123,22 +114,15 @@
             this.btnRelogin,
             this.popMenuCloseCurrent,
             this.popMenuCloseAll,
-            this.popMenuCloseOther,
-            this.btn_DepartmentMan,
-            this.btn_PositionMan,
-            this.btn_StaffMan,
-            this.btn_StaffOv,
-            this.btn_StaffSalary,
-            this.btn_BonusDefine});
+            this.popMenuCloseOther});
             this.ribbonControl.LargeImages = this.imageCollection1;
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 10;
+            this.ribbonControl.MaxItemId = 4;
             this.ribbonControl.MiniToolbars.Add(this.ribbonMiniToolbar1);
             this.ribbonControl.MiniToolbars.Add(this.ribbonMiniToolbar2);
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.PageHeaderItemLinks.Add(this.menuLogo, true);
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
-            this.ribbonPage1,
             this.ribbonSystem,
             this.ribbonHelp});
             this.ribbonControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
@@ -362,80 +346,6 @@
             this.popMenuCloseOther.Name = "popMenuCloseOther";
             this.popMenuCloseOther.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.popMenuCloseOther_ItemClick);
             // 
-            // btn_DepartmentMan
-            // 
-            this.btn_DepartmentMan.Caption = "部门管理";
-            this.btn_DepartmentMan.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
-            this.btn_DepartmentMan.Glyph = ((System.Drawing.Image)(resources.GetObject("btn_DepartmentMan.Glyph")));
-            this.btn_DepartmentMan.Id = 4;
-            this.btn_DepartmentMan.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btn_DepartmentMan.LargeGlyph")));
-            this.btn_DepartmentMan.Name = "btn_DepartmentMan";
-            this.btn_DepartmentMan.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_DepartmentMan_ItemClick);
-            // 
-            // btn_PositionMan
-            // 
-            this.btn_PositionMan.Caption = "岗位管理";
-            this.btn_PositionMan.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
-            this.btn_PositionMan.Glyph = ((System.Drawing.Image)(resources.GetObject("btn_PositionMan.Glyph")));
-            this.btn_PositionMan.Id = 5;
-            this.btn_PositionMan.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btn_PositionMan.LargeGlyph")));
-            this.btn_PositionMan.Name = "btn_PositionMan";
-            this.btn_PositionMan.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_PositionMan_ItemClick);
-            // 
-            // btn_StaffMan
-            // 
-            this.btn_StaffMan.Caption = "职员管理";
-            this.btn_StaffMan.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
-            this.btn_StaffMan.Glyph = ((System.Drawing.Image)(resources.GetObject("btn_StaffMan.Glyph")));
-            this.btn_StaffMan.Id = 6;
-            this.btn_StaffMan.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btn_StaffMan.LargeGlyph")));
-            this.btn_StaffMan.Name = "btn_StaffMan";
-            this.btn_StaffMan.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_StaffMan_ItemClick);
-            // 
-            // btn_StaffOv
-            // 
-            this.btn_StaffOv.Caption = "职员查找";
-            this.btn_StaffOv.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
-            this.btn_StaffOv.Glyph = ((System.Drawing.Image)(resources.GetObject("btn_StaffOv.Glyph")));
-            this.btn_StaffOv.Id = 7;
-            this.btn_StaffOv.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btn_StaffOv.LargeGlyph")));
-            this.btn_StaffOv.Name = "btn_StaffOv";
-            this.btn_StaffOv.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_StaffOv_ItemClick);
-            // 
-            // btn_StaffSalary
-            // 
-            this.btn_StaffSalary.Caption = "工资基本信息";
-            this.btn_StaffSalary.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
-            this.btn_StaffSalary.Glyph = ((System.Drawing.Image)(resources.GetObject("btn_StaffSalary.Glyph")));
-            this.btn_StaffSalary.Id = 8;
-            this.btn_StaffSalary.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btn_StaffSalary.LargeGlyph")));
-            this.btn_StaffSalary.Name = "btn_StaffSalary";
-            this.btn_StaffSalary.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_StaffSalary_ItemClick);
-            // 
-            // ribbonPage1
-            // 
-            this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup1,
-            this.ribbonPageGroup2});
-            this.ribbonPage1.Name = "ribbonPage1";
-            this.ribbonPage1.Text = "人力资源管理";
-            // 
-            // ribbonPageGroup1
-            // 
-            this.ribbonPageGroup1.ItemLinks.Add(this.btn_DepartmentMan);
-            this.ribbonPageGroup1.ItemLinks.Add(this.btn_PositionMan);
-            this.ribbonPageGroup1.ItemLinks.Add(this.btn_StaffMan);
-            this.ribbonPageGroup1.ItemLinks.Add(this.btn_StaffOv);
-            this.ribbonPageGroup1.Name = "ribbonPageGroup1";
-            this.ribbonPageGroup1.Text = "基础数据";
-            // 
-            // ribbonPageGroup2
-            // 
-            this.ribbonPageGroup2.ItemLinks.Add(this.btn_StaffSalary);
-            this.ribbonPageGroup2.ItemLinks.Add(this.btn_BonusDefine);
-            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
-            this.ribbonPageGroup2.Text = "工资数据";
-            // 
             // ribbonSystem
             // 
             this.ribbonSystem.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -551,16 +461,6 @@
             this.popupMenu1.Name = "popupMenu1";
             this.popupMenu1.Ribbon = this.ribbonControl;
             // 
-            // btn_BonusDefine
-            // 
-            this.btn_BonusDefine.Caption = "奖金设置";
-            this.btn_BonusDefine.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
-            this.btn_BonusDefine.Glyph = ((System.Drawing.Image)(resources.GetObject("btn_BonusDefine.Glyph")));
-            this.btn_BonusDefine.Id = 9;
-            this.btn_BonusDefine.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btn_BonusDefine.LargeGlyph")));
-            this.btn_BonusDefine.Name = "btn_BonusDefine";
-            this.btn_BonusDefine.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_BonusDefine_ItemClick);
-            // 
             // MainForm
             // 
             this.AllowMdiBar = true;
@@ -641,15 +541,6 @@
         private DevExpress.XtraBars.BarButtonItem popMenuCloseCurrent;
         private DevExpress.XtraBars.BarButtonItem popMenuCloseAll;
         private DevExpress.XtraBars.BarButtonItem popMenuCloseOther;
-        private DevExpress.XtraBars.BarButtonItem btn_DepartmentMan;
-        private DevExpress.XtraBars.BarButtonItem btn_PositionMan;
-        private DevExpress.XtraBars.BarButtonItem btn_StaffMan;
-        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
-        private DevExpress.XtraBars.BarButtonItem btn_StaffOv;
-        private DevExpress.XtraBars.BarButtonItem btn_StaffSalary;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
-        private DevExpress.XtraBars.BarButtonItem btn_BonusDefine;
     }
 }
 

@@ -63,7 +63,7 @@ namespace SFYX.Framework.Starter
 
             Application.DoEvents();
 
-            Initialize().Wait();
+            Initialize();
 
             Application.DoEvents();
 
@@ -76,12 +76,13 @@ namespace SFYX.Framework.Starter
         /// 系统初始化处理
         /// </summary>
         /// <returns></returns>
-        private async Task Initialize()
+        private void Initialize()
         {           
             SplashScreen.Splasher.Status = "加载系统菜单...";
 
             System.Threading.Thread.Sleep(100);
-            await InitUserMenuItems(); //构建菜单
+
+            InitUserMenuItems(); //构建菜单
            
             //TODO :系统初始化处理
             DevExpress.XtraBars.Helpers.SkinHelper.InitSkinGallery(rgbiSkins, true);
@@ -95,7 +96,7 @@ namespace SFYX.Framework.Starter
         /// <summary>
         /// 初始化用户相关的系统信息
         /// </summary>
-        private async Task InitUserMenuItems()
+        private void InitUserMenuItems()
         {
             UserStatus = string.Format("当前用户：{0}({1})", Portal.gc.UserInfo.FullName, Portal.gc.UserInfo.Name);
 
@@ -104,7 +105,7 @@ namespace SFYX.Framework.Starter
             {
                 ribbonHelper = new RibbonPageHelper(this, ref this.ribbonControl);
             }
-            await ribbonHelper.InitRibbonMenus();
+            ribbonHelper.InitRibbonMenus();
 
             if (this.ribbonControl.Pages.Count > 0)
             {
@@ -279,6 +280,8 @@ namespace SFYX.Framework.Starter
             this.lblCalendar.Caption = cal.GetDateInfo(System.DateTime.Now).Fullinfo;
 
             //TODO: 其他初始化工作
+
+
         }
 
         #region Tab顶部右键菜单
@@ -354,7 +357,7 @@ namespace SFYX.Framework.Starter
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private async void btnRelogin_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void btnRelogin_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             if (MessageDxUtil.ShowYesNoAndWarning("您确定需要重新登录吗？") != DialogResult.Yes)
                 return;
@@ -376,7 +379,7 @@ namespace SFYX.Framework.Starter
                         ribbonHelper = new RibbonPageHelper(this, ref this.ribbonControl);
                     }
                     ribbonHelper.ReInitPage();
-                    await InitUserMenuItems();
+                    InitUserMenuItems();
                 }
 
             }
@@ -463,34 +466,5 @@ namespace SFYX.Framework.Starter
 
         #endregion
 
-        private void btn_DepartmentMan_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            ChildWinManagement.LoadMdiForm(this, typeof(Hades.HR.UI.FrmDepartment));
-        }
-
-        private void btn_PositionMan_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            ChildWinManagement.LoadMdiForm(this, typeof(Hades.HR.UI.FrmPosition));
-        }
-
-        private void btn_StaffMan_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            ChildWinManagement.LoadMdiForm(this, typeof(Hades.HR.UI.FrmStaff));
-        }
-
-        private void btn_StaffOv_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            ChildWinManagement.LoadMdiForm(this, typeof(Hades.HR.UI.FrmStaffOverview));
-        }
-
-        private void btn_StaffSalary_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            ChildWinManagement.LoadMdiForm(this, typeof(Hades.HR.UI.FrmStaffSalary));
-        }
-
-        private void btn_BonusDefine_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            ChildWinManagement.LoadMdiForm(this, typeof(Hades.HR.UI.FrmBonusDefine));
-        }
     }
 }

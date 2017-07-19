@@ -5,7 +5,6 @@ using System.Text;
 using System.ServiceModel;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
-using System.Threading.Tasks;
 
 using Hades.Framework.Commons;
 using Hades.Framework.ControlUtil;
@@ -71,17 +70,6 @@ namespace Hades.HR.ServiceCaller
         }
 
         /// <summary>
-        /// 查找部门及其子部门
-        /// </summary>
-        /// <param name="id">部门ID</param>
-        /// <returns></returns>
-        public Task<List<DepartmentInfo>> FindWithChildrenAsyn(string id)
-        {
-            IDepartmentService service = CreateSubClient();
-            return service.FindWithChildrenAsyn(id);
-        }
-
-        /// <summary>
         /// 检查重复
         /// </summary>
         /// <param name="entity">实体对象</param>
@@ -101,17 +89,6 @@ namespace Hades.HR.ServiceCaller
         }
 
         /// <summary>
-        /// 检查重复
-        /// </summary>
-        /// <param name="entity">实体对象</param>
-        /// <returns></returns>
-        public Task<bool> CheckDuplicateAsyn(DepartmentInfo entity)
-        {
-            IDepartmentService service = CreateSubClient();
-            return service.CheckDuplicateAsyn(entity);
-        }
-
-        /// <summary>
         /// 标记删除
         /// </summary>
         /// <param name="id">ID</param>
@@ -128,17 +105,6 @@ namespace Hades.HR.ServiceCaller
             });
 
             return result;
-        }
-
-        /// <summary>
-        /// 标记删除
-        /// </summary>
-        /// <param name="id">ID</param>
-        /// <returns></returns>
-        public Task<bool> MarkDeleteAsyn(string id)
-        {
-            IDepartmentService service = CreateSubClient();
-            return service.MarkDeleteAsyn(id);
         }
         #endregion //Method
     }

@@ -11,6 +11,7 @@ using Hades.Framework.ControlUtil;
 using Hades.Framework.BaseUI;
 using Hades.Security.Facade;
 using Hades.Framework.ControlUtil.Facade;
+using Hades.Security.Entity;
 
 namespace SFYX.Framework.Starter
 {
@@ -40,7 +41,14 @@ namespace SFYX.Framework.Starter
 
             try
             {
-                bool result = await CallerFactory<IUserService>.Instance.ModifyPasswordAsyn(this.LoginUserInfo.Name, this.txtPassword.Text).TimeOut<bool>(Portal.gc.AsynTimeOut);
+                UserInfo user = await TaskExt.CallerAsync<UserInfo>(() => { return CallerFactory<IUserService>.Instance.FindSingle(string.Format("Name='{0}'", this.LoginUserInfo.Name)); });
+
+                if (user.Password != EncryptHelper.ComputeHash(txtOldPassword.Text.Trim(), user.Name.ToLower())){
+                    MessageDxUtil.ShowError("旧密码错误！");
+                    return;
+                }
+
+                bool result = await TaskExt.CallerAsync<bool>(() => { return CallerFactory<IUserService>.Instance.ModifyPassword(this.LoginUserInfo.Name, this.txtPassword.Text); });
 
                 if (result)
                 {
@@ -54,7 +62,7 @@ namespace SFYX.Framework.Starter
             }
             catch (Exception ex)
             {
-                MessageDxUtil.ShowError(ex.Message);
+                ex.ShowException();
             }
         }
 

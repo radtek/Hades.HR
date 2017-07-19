@@ -16,6 +16,7 @@ namespace Hades.HR.Entity
         /// </summary>
         public StaffInfo()
         {
+            this.Id = Guid.NewGuid().ToString();
             this.Deleted = 0;
             this.Enabled = 0;
         }

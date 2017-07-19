@@ -234,7 +234,6 @@ namespace Hades.HR.UI
 
             try
             {
-                string msg;
                 bool succeed = CallerFactory<IStaffService>.Instance.CheckDuplicate(info);
                 if (!succeed)
                 {

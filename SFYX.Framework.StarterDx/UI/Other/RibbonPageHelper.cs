@@ -52,20 +52,20 @@ namespace SFYX.Framework.Starter
         /// 增加TabPage
         /// </summary>
         /// <remarks> 处理所有的SystemType</remarks>
-        public async Task InitRibbonMenus()
+        public void InitRibbonMenus()
         {
             //约定菜单共有3级，第一级为大的类别，第二级为小模块分组，第三级为具体的菜单
             List<MenuNodeInfo> menuList = new List<MenuNodeInfo>();
             #region 菜单系统信息获取
             try
             {
-                menuList = await CallerFactory<IMenuService>.Instance.GetTreeAsyn(Portal.gc.SystemType).TimeOut<List<MenuNodeInfo>>(Portal.gc.AsynTimeOut);
+                menuList = CallerFactory<IMenuService>.Instance.GetTree(Portal.gc.SystemType); 
             }
             catch (Exception ex)
             {
-                MessageDxUtil.ShowError(ex.Message);
+                ex.ShowException();
             }
-            if (menuList.Count == 0) return;
+            if (menuList==null || menuList.Count == 0) return;
             #endregion
 
             control.BeginInit();
@@ -141,7 +141,7 @@ namespace SFYX.Framework.Starter
                         if (!Portal.gc.HasFunction(thirdInfo.FunctionId)) continue;
 
                         //如果是启动节点的话
-                        if (!await hasWorkFlow(thirdInfo)) continue;
+                        if (!hasWorkFlow(thirdInfo)) continue;
 
                         //添加功能按钮（三级菜单）                       
                         group.ItemLinks.Add(initBarButtonItem(thirdInfo));
@@ -167,26 +167,33 @@ namespace SFYX.Framework.Starter
 
         #region 判断登录人员是否有权限启动流程节点
         private List<WorkTaskViewInfo> myStartWorkflows = null;
-        private async Task<bool> hasWorkFlow(MenuNodeInfo menuInfo)
+        private bool hasWorkFlow(MenuNodeInfo menuInfo)
         {
             //不是和流程启动有关的菜单
             if (!menuInfo.WinformType.Contains("Hades.Workflow.UI.FrmStartWorkFlow")) return true;
             bool result = true;
-            if (myStartWorkflows == null)
+            try
             {
-                //当前登录用户可以使用的流程启动信息
-                myStartWorkflows = await CallerFactory<IWorkFlowService>.Instance.GetAllowStartWorkFlowsAsyn(Portal.gc.LoginUserInfo.ID)
-                        .TimeOut<List<WorkTaskViewInfo>>(20);
+                if (myStartWorkflows == null)
+                {
+                    //当前登录用户可以使用的流程启动信息
+                    myStartWorkflows =  CallerFactory<IWorkFlowService>.Instance.GetAllowStartWorkFlows(Portal.gc.LoginUserInfo.ID);
+                }
+                string[] paras = menuInfo.Data1.Split(new char[] { '※' });
+                if (paras.Length >= 2)
+                {
+                    result = myStartWorkflows.FindLast((w) => w.WorkFlowID == paras[0] && w.WorkTaskID == paras[1]) != null;
+                }
+                else
+                {
+                    result = false;
+                }
             }
-            string[] paras = menuInfo.Data1.Split(new char[] { '※' });
-            if (paras.Length>=2)
+            catch(Exception ex)
             {
-                result = myStartWorkflows.FindLast((w) => w.WorkFlowID == paras[0] && w.WorkTaskID == paras[1]) != null;
-            }
-            else
-            {
+                ex.ShowException(false);
                 result = false;
-            }
+            }          
             return result;
         }
         #endregion

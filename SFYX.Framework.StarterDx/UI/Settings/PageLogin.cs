@@ -11,6 +11,9 @@ using SettingsProviderNet;
 using Hades.Framework.Commons;
 using Hades.Framework.BaseUI;
 using Hades.Framework.BaseUI.Settings;
+using System.IO;
+using System.Xml.Linq;
+using System.Text.RegularExpressions;
 
 namespace SFYX.Framework.Starter
 {
@@ -59,10 +62,12 @@ namespace SFYX.Framework.Starter
 
         public override void OnSetActive()
         {
+            
         }
 
         public override bool OnApply()
         {
+            this.Cursor = Cursors.WaitCursor;
             bool result = false;
             try
             {
@@ -79,6 +84,9 @@ namespace SFYX.Framework.Starter
                     parameter.IsLocalDatabase = this.txtUseLocalType.Checked;
                     parameter.WcfMode = this.txtUseLocalType.Checked?"": this.rdgWCFMode.EditValue.ToString();
                     settings.SaveSettings<LoginParameter>(parameter);
+
+                    SetWcfConfig(parameter);
+                    SetAppConfig(parameter);
                 }
                 result = true;
             }
@@ -87,7 +95,10 @@ namespace SFYX.Framework.Starter
                 LogTextHelper.Error(ex);
                 MessageDxUtil.ShowError(ex.Message);
             }
-
+            finally
+            {
+                this.Cursor = Cursors.Default;
+            }
             return result;
         }
 
@@ -98,6 +109,49 @@ namespace SFYX.Framework.Starter
             {
                 this.rdgWCFMode.SelectedIndex = -1;
             }
+        }
+
+        private void SetWcfConfig(LoginParameter parameter)
+        {
+            if (parameter.IsLocalDatabase) return;
+
+            AppConfig cfg = new AppConfig();
+            
+            string cfgPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, cfg.AppConfigGet("wcfconfigpath"));
+            var files = Directory.GetFiles(cfgPath, "*.config");
+            foreach(var f in files)
+            {
+                XDocument wcfRoot = XDocument.Load(f);
+                IEnumerable<XElement> endpoints = from target in wcfRoot.Descendants("endpoint")
+                                                    select target;
+                
+                foreach(var p in endpoints)
+                {
+                    string oldAddress = p.Attribute("address").Value;
+                    int header = oldAddress.IndexOf(@"//");
+                    string oldName = oldAddress.Substring(oldAddress.IndexOf(@"//") + 2, oldAddress.IndexOf(@"/", header + 2) - header - 2);
+                    string newName = parameter.WcfMode == "内网" ? (parameter.InternalWcfHost + ":" + parameter.InternalWcfPort.ToString()) : (parameter.ExternalWcfHost + ":" + parameter.ExternalWcfPort.ToString());
+                    p.Attribute("address").Value=oldAddress.Replace(oldName, newName);
+                    p.Descendants("dns").First().Attribute("value").Value = parameter.WcfMode == "内网" ? parameter.InternalWcfHost : parameter.ExternalWcfHost;
+                }
+                wcfRoot.Save(f);
+            }
+        }  
+        
+        private void SetAppConfig(LoginParameter parameter)
+        {
+            string app = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "App.Config");
+            XDocument root = XDocument.Load(app);
+            var appSettings = root.Descendants("appSettings").First();
+            IEnumerable<XElement> keySet = from target in appSettings.Descendants("add")
+                                           where target.Attribute("key").Value.ToLower().Equals("callertype")
+                                           select target;
+            foreach (var key in keySet)
+            {
+                key.Attribute("value").Value = parameter.IsLocalDatabase ? "win" : "wcf";
+            }
+            root.Save(app);
+
         }
     }
 }

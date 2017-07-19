@@ -1,24 +1,17 @@
 ﻿using System;
 using System.IO;
 using System.ComponentModel;
-using System.Data;
-using System.Data.OleDb;
 using System.Diagnostics;
-using System.Drawing;
 using System.Windows.Forms;
 using System.Collections.Generic;
-using System.Collections;
-using System.Threading.Tasks;
 
 using Hades.Framework.Commons;
 using Hades.Security.Entity;
 using Updater.Core;
 using Hades.Framework.BaseUI;
-using Hades.Framework.ControlUtil;
 using Hades.Security.Facade;
 using Hades.Framework.ControlUtil.Facade;
 using System.Configuration;
-using System.ServiceModel.Configuration;
 using System.Text.RegularExpressions;
 using SettingsProvider = SettingsProviderNet.SettingsProvider;
 using SettingsProviderNet;
@@ -27,9 +20,12 @@ using DevExpress.XtraBars.Alerter;
 
 namespace SFYX.Framework.Starter
 {
+    /// <summary>
+    /// 登录处理
+    /// </summary>
     public partial class Login : BaseDock //DevExpress.XtraEditors.XtraForm
     {
-        public bool bLogin = false; //判断用户是否登录
+        public bool bLogin = false;    //判断用户是否登录
         private const string Login_Name_Key = "SFYX_ERP_LoginName";
         private BackgroundWorker updateWorker;
         private RegisterHotKeyHelper hotKey1 = new RegisterHotKeyHelper();
@@ -50,8 +46,7 @@ namespace SFYX.Framework.Starter
             }
             catch (Exception ex)
             {
-                MessageDxUtil.ShowError(ex.Message);
-                LogHelper.Error(ex);
+                ex.ShowException();
             }
             this.txtUserName.Focus();
         }
@@ -155,71 +150,8 @@ namespace SFYX.Framework.Starter
             AppConfig config = new AppConfig();
             config.AppConfigSet("CallerType", localType ? "win" : "wcf");
             ConfigurationManager.RefreshSection("appSettings");
-
-            //需要调整对应的IP地址
-            ChangeConfig(wcfmode);
         }
-
-
-        /// <summary>
-        /// 修改配置文件
-        /// </summary>
-        private void ChangeConfig(string wcfmode)
-        {
-            if (parameter != null)
-            {
-                bool isIntranet = wcfmode == "内网";
-                if (isIntranet)
-                {
-                    UpdateConfig(parameter.InternalWcfHost, parameter.InternalWcfPort);
-                }
-                else
-                {
-                    UpdateConfig(parameter.ExternalWcfHost, parameter.ExternalWcfPort);
-                }
-            }
-            else
-            {
-                MessageDxUtil.ShowError("获取参数信息失败");
-            }
-        }
-
-        /// <summary>
-        /// WCF模式下，修改配置文件中的主机地址信息和端口
-        /// </summary>
-        /// <param name="serverIPAddress">主机地址信息</param>
-        /// <param name="serverPort">端口</param>
-        private void UpdateConfig(string serverIPAddress, int serverPort)
-        {
-            string basePath = System.Environment.CurrentDirectory;
-
-            //修改WCF配置文件
-            UpdateConfigFile(serverIPAddress, serverPort, Path.Combine(basePath, "BaseWcfConfig.config"));
-            UpdateConfigFile(serverIPAddress, serverPort, Path.Combine(basePath, "WcfConfig.config"));
-
-            //修改自动升级配置文件
-            UpdateConfigFile(serverIPAddress, serverPort, Path.Combine(basePath, "updateconfiguration.config"));
-        }
-
-        /// <summary>
-        /// 通过正则标识方式替换其中的主机信息和端口参数
-        /// </summary>
-        /// <param name="serverIPAddress">主机地址信息</param>
-        /// <param name="serverPort">端口</param>
-        /// <param name="exeFilePath">配置文件地址</param>
-        private void UpdateConfigFile(string serverIPAddress, int serverPort, string exeFilePath)
-        {
-            if (File.Exists(exeFilePath))
-            {
-                string address = File.ReadAllText(exeFilePath, System.Text.Encoding.UTF8);
-
-                string pattern = "://.*?/";
-                string replacement = string.Format("://{0}:{1}/", serverIPAddress, serverPort);
-                address = Regex.Replace(address, pattern, replacement);
-
-                File.WriteAllText(exeFilePath, address, System.Text.Encoding.UTF8);
-            }
-        }
+      
         #endregion
 
         /// <summary>
@@ -227,7 +159,7 @@ namespace SFYX.Framework.Starter
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private async void btnLogin_Click(object sender, EventArgs e)
+        private void btnLogin_Click(object sender, EventArgs e)
         {
             #region 检查验证
             if (this.txtUserName.Text.Length == 0)
@@ -249,16 +181,16 @@ namespace SFYX.Framework.Starter
                 string ip = NetworkUtil.GetLocalIP();
                 string macAddr = HardwareInfoHelper.GetMacAddress();
                 string loginName = this.txtUserName.Text.Trim();
-                string identity = await CallerFactory<IUserService>.Instance.VerifyUser2Asyn(loginName, this.txtPassword.Text, Portal.gc.SystemType, ip, macAddr).TimeOut<string>(Portal.gc.AsynTimeOut);
+                string identity = CallerFactory<IUserService>.Instance.VerifyUser2(loginName, this.txtPassword.Text, Portal.gc.SystemType, ip, macAddr); 
                 if (!string.IsNullOrEmpty(identity))
                 {
-                    UserInfo info = await  CallerFactory<IUserService>.Instance.GetUserByNameAsyn(loginName).TimeOut<UserInfo>(Portal.gc.AsynTimeOut);
+                    UserInfo info = CallerFactory<IUserService>.Instance.GetUserByName(loginName);  
                     if (info != null)
                     {
                         #region 获取用户的功能列表
                         Portal.gc.FunctionDict.Clear();
 
-                        List<FunctionInfo> list =await CallerFactory<IFunctionService>.Instance.GetFunctionsByUserAsyn(info.ID,Portal.gc.SystemType).TimeOut<List<FunctionInfo>>(Portal.gc.AsynTimeOut);
+                        List<FunctionInfo> list =CallerFactory<IFunctionService>.Instance.GetFunctionsByUser(info.ID, Portal.gc.SystemType); 
                         if (list != null && list.Count > 0)
                         {
                             foreach (FunctionInfo functionInfo in list)
@@ -276,11 +208,11 @@ namespace SFYX.Framework.Starter
                         #region 权限判断
 
                         //判断是否为超级管理员
-                        Portal.gc.IsAdmin = await CallerFactory<IUserService>.Instance.UserIsAdminAsyn(info.Name).TimeOut<bool>(Portal.gc.AsynTimeOut);
+                        Portal.gc.IsAdmin =CallerFactory<IUserService>.Instance.UserIsAdmin(info.Name); 
 
                         //判断如果用户管理的公司数据多于一个，那么就显示选择单位列表，并绑定公司数据
-                        Portal.gc.CompanyList =await  CallerFactory<IRoleDataService>.Instance.GetBelongCompanysByUserAsyn(info.ID).TimeOut<List<string>>(Portal.gc.AsynTimeOut);
-                        List<string> deptList =await CallerFactory<IRoleDataService>.Instance.GetBelongDeptsByUserAsyn(info.ID).TimeOut<List<string>>(Portal.gc.AsynTimeOut);
+                        Portal.gc.CompanyList =  CallerFactory<IRoleDataService>.Instance.GetBelongCompanysByUser(info.ID); 
+                        List<string> deptList =  CallerFactory<IRoleDataService>.Instance.GetBelongDeptsByUser(info.ID); 
                         Portal.gc.DeptList = deptList;
 
                         //设置选定的公司ID(默认为用户所在公司的ID）
@@ -291,7 +223,7 @@ namespace SFYX.Framework.Starter
                         {
                             if (deptList.Count > 0)
                             {                                
-                                filterCondition += string.Format(" AND Dept_ID IN ('{0}')", deptList.CreateSQLInCondition());
+                                filterCondition += string.Format(" AND Dept_ID IN ({0})", deptList.CreateSQLInCondition());
                             }
                             else
                             {
@@ -307,7 +239,6 @@ namespace SFYX.Framework.Starter
                         Portal.gc.LoginUserInfo = Portal.gc.ConvertToLoginUser(info);//方便后续处理
                         Portal.gc.LoginUserInfo.Data1 = txtPassword.Text;//当前用户登录密码,方便其他子系统自动登录
                         Cache.Instance.Add("FunctionDict", Portal.gc.FunctionDict);//缓存权限信息，方便后续使用
-                        Cache.Instance.Add("LoginUserInfo", Portal.gc.LoginUserInfo);
 
                         this.DialogResult = DialogResult.OK;
                         RegistryHelper.SaveValue(Login_Name_Key, this.txtUserName.Text);
@@ -321,8 +252,7 @@ namespace SFYX.Framework.Starter
             }
             catch (Exception ex)
             {
-                LogTextHelper.Error(ex);
-                MessageDxUtil.ShowError(ex.Message);
+                ex.ShowException();
             }
             finally
             {

@@ -29,6 +29,8 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -101,16 +103,17 @@
     <Reference Include="DevExpress.XtraLayout.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraNavBar.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraPrinting.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DmProvider, Version=1.1.0.0, Culture=neutral, PublicKeyToken=7a2d44aa446c6d01, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Reference\DmProvider.dll</HintPath>
-    </Reference>
-    <Reference Include="EntLibContrib.Data.Dm">
-      <HintPath>..\..\Reference\EntLibContrib.Data.Dm.dll</HintPath>
-    </Reference>
     <Reference Include="Hades.Attachment.ClientDx, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Reference\Hades.Attachment.ClientDx.dll</HintPath>
+    </Reference>
+    <Reference Include="Hades.BaseData.ClientDx, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Reference\Hades.BaseData.ClientDx.dll</HintPath>
+    </Reference>
+    <Reference Include="Hades.BaseData.ClientDx.1, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Reference\Hades.BaseData.ClientDx.1.dll</HintPath>
     </Reference>
     <Reference Include="Hades.Dictionary.ClientDx, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
@@ -168,19 +171,19 @@
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.IO, Version=2.6.8.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Bcl.1.1.8\lib\net40\System.IO.dll</HintPath>
+    <Reference Include="System.IO, Version=2.6.10.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.10\lib\net40\System.IO.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Net" />
-    <Reference Include="System.Runtime, Version=2.6.8.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Bcl.1.1.8\lib\net40\System.Runtime.dll</HintPath>
+    <Reference Include="System.Runtime, Version=2.6.10.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.10\lib\net40\System.Runtime.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
-    <Reference Include="System.Threading.Tasks, Version=2.6.8.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Bcl.1.1.8\lib\net40\System.Threading.Tasks.dll</HintPath>
+    <Reference Include="System.Threading.Tasks, Version=2.6.10.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.10\lib\net40\System.Threading.Tasks.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Web" />
@@ -214,11 +217,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="UI\Other\EncryptHelper.cs" />
+    <Compile Include="UI\Other\ExceptionExtend.cs" />
     <Compile Include="UI\Other\ExtensionMethod.cs" />
     <Compile Include="UI\Other\GlobalControl.cs" />
     <Compile Include="UI\Other\Portal.cs" />
     <Compile Include="UI\Other\RibbonPageHelper.cs" />
+    <Compile Include="UI\Other\TaskExt.cs" />
     <Compile Include="UI\Settings\DatabaseStorage.cs" />
     <Compile Include="UI\Settings\EmailParameter.cs" />
     <Compile Include="UI\Settings\FrmLoginSettings.cs">
@@ -305,14 +315,9 @@
     <None Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="UI\Settings\FrmSettings.resx">
       <DependentUpon>FrmSettings.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -350,8 +355,11 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="WcfConfig\BaseDataWcfConfig.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="WcfConfig\BaseWcfConfig.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </None>
     <None Include="Log4Net.config" />
@@ -367,69 +375,92 @@
     <None Include="updateconfiguration.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="WcfConfig\HRWcfConfig.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <None Include="WcfConfig\PurchaseWcfConfig.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="WcfConfig\WorkflowWcfConfig.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.ico" />
     <Content Include="house.jpg" />
-    <None Include="menuIcon.ico" />
-    <Content Include="Images\MenuIcon\101.ico">
+    <None Include="Resource\Images\MenuIcon\menuIcon.ico" />
+    <Content Include="Resource\Images\MenuIcon\101.ico" />
+    <Content Include="Resource\Images\MenuIcon\102.ico" />
+    <Content Include="Resource\Images\MenuIcon\103.ICO" />
+    <Content Include="Resource\Images\MenuIcon\104.ico" />
+    <Content Include="Resource\Images\MenuIcon\105.ico" />
+    <Content Include="Resource\Images\MenuIcon\106.ICO" />
+    <Content Include="Resource\Images\MenuIcon\107.ico" />
+    <Content Include="Resource\Images\MenuIcon\201.ico" />
+    <Content Include="Resource\Images\MenuIcon\202.ico" />
+    <Content Include="Resource\Images\MenuIcon\203.ico" />
+    <Content Include="Resource\Images\MenuIcon\204.ICO" />
+    <Content Include="Resource\Images\MenuIcon\205.ico" />
+    <Content Include="Resource\Images\MenuIcon\206.ico" />
+    <Content Include="Resource\Images\MenuIcon\207.ICO" />
+    <Content Include="Resource\Images\MenuIcon\301.ico" />
+    <Content Include="Resource\Images\MenuIcon\302.ico" />
+    <Content Include="Resource\Images\MenuIcon\303.ico" />
+    <Content Include="Resource\Images\MenuIcon\Book.ico" />
+    <Content Include="Resource\Images\MenuIcon\book2.ico" />
+    <Content Include="Resource\Images\MenuIcon\Security.ico" />
+    <Content Include="Resource\Images\MenuIcon\Security2.ICO" />
+    <Content Include="Resource\Images\MenuIcon\Setting.ico" />
+    <Content Include="Resource\Images\startScreen.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\MenuIcon\102.ico">
+    <Content Include="Resource\WFImage\交互节点.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\MenuIcon\103.ICO">
+    <Content Include="Resource\WFImage\交互节点_灰.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\MenuIcon\104.ico">
+    <Content Include="Resource\WFImage\判断节点1.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\MenuIcon\105.ico">
+    <Content Include="Resource\WFImage\启动节点.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\MenuIcon\106.ICO">
+    <Content Include="Resource\WFImage\启动节点_灰.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\MenuIcon\107.ico">
+    <Content Include="Resource\WFImage\子流程节点.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\MenuIcon\201.ico">
+    <Content Include="Resource\WFImage\子流程节点_灰.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\MenuIcon\202.ICO">
+    <Content Include="Resource\WFImage\控制节点.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\MenuIcon\203.ico">
+    <Content Include="Resource\WFImage\控制节点_灰.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\MenuIcon\204.ICO">
+    <Content Include="Resource\WFImage\查看节点.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\MenuIcon\205.ico">
+    <Content Include="Resource\WFImage\查看节点_灰.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\MenuIcon\206.ico">
+    <Content Include="Resource\WFImage\终止节点.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\MenuIcon\207.ICO">
+    <Content Include="Resource\WFImage\终止节点_灰.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\MenuIcon\301.ico" />
-    <Content Include="Images\MenuIcon\302.ico" />
-    <Content Include="Images\MenuIcon\303.ico" />
-    <Content Include="Images\MenuIcon\Book.ico" />
-    <Content Include="Images\MenuIcon\book2.ico" />
-    <Content Include="Images\MenuIcon\Security.ico" />
-    <Content Include="Images\MenuIcon\Security2.ICO" />
-    <Content Include="Images\MenuIcon\Setting.ico" />
-    <Content Include="Images\startScreen.png">
+    <Content Include="Resource\WFImage\自动节点.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resource\WFImage\自连线.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resource\WFImage\连线.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resource\WFImage\锁.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="UI\SplashScreen\splashbg.jpg" />
@@ -451,17 +482,13 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Hades.HR.ClientDx\Hades.HR.ClientDx.csproj">
-      <Project>{24705efe-34f6-4879-857c-a1278c3a7375}</Project>
-      <Name>Hades.HR.ClientDx</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
-  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
-    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
-    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

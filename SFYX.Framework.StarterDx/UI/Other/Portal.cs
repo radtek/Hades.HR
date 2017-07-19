@@ -27,7 +27,7 @@ namespace SFYX.Framework.Starter
             //配置使用Web API模式，需要构建登陆token才能访问
             AppConfig config = new AppConfig();
             //获取异步访问超时设置
-            int to = 3;
+            int to = 30;
             if (int.TryParse(config.AppConfigGet("AsynTimeOut"), out to))
             {
                 gc.AsynTimeOut = to * 1000;

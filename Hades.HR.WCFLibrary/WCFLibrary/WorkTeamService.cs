@@ -4,7 +4,6 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
-using System.Threading.Tasks;
 
 using Hades.Framework.Commons;
 using Hades.Framework.ControlUtil;
@@ -40,19 +39,6 @@ namespace Hades.HR.WCFLibrary
         public bool MarkDelete(string id)
         {
             return bll.MarkDelete(id);
-        }
-
-        /// <summary>
-        /// 标记删除
-        /// </summary>
-        /// <param name="id">ID</param>
-        /// <returns></returns>
-        public async Task<bool> MarkDeleteAsyn(string id)
-        {
-            return await Task.Factory.StartNew(() =>
-            {
-                return bll.MarkDelete(id);
-            });
         }
         #endregion //Method
     }

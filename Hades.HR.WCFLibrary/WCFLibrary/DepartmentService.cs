@@ -4,7 +4,6 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
-using System.Threading.Tasks;
 
 using Hades.Framework.Commons;
 using Hades.Framework.ControlUtil;
@@ -43,21 +42,6 @@ namespace Hades.HR.WCFLibrary
         }
 
         /// <summary>
-        /// 查找部门及其子部门
-        /// </summary>
-        /// <param name="id">部门ID</param>
-        /// <returns></returns>
-        public async Task<List<DepartmentInfo>> FindWithChildrenAsyn(string id)
-        {
-            var task = Task.Factory.StartNew(() =>
-            {
-                return bll.FindWithChildren(id);
-            });
-
-            return await task;
-        }
-
-        /// <summary>
         /// 检查重复
         /// </summary>
         /// <param name="entity">实体对象</param>
@@ -68,19 +52,6 @@ namespace Hades.HR.WCFLibrary
         }
 
         /// <summary>
-        /// 检查重复
-        /// </summary>
-        /// <param name="entity">实体对象</param>
-        /// <returns></returns>
-        public async Task<bool> CheckDuplicateAsyn(DepartmentInfo entity)
-        {
-            return await Task.Factory.StartNew(() =>
-            {
-                return bll.CheckDuplicate(entity);
-            });
-        }
-
-        /// <summary>
         /// 标记删除
         /// </summary>
         /// <param name="id">ID</param>
@@ -88,19 +59,6 @@ namespace Hades.HR.WCFLibrary
         public bool MarkDelete(string id)
         {
             return bll.MarkDelete(id);
-        }
-
-        /// <summary>
-        /// 标记删除
-        /// </summary>
-        /// <param name="id">ID</param>
-        /// <returns></returns>
-        public async Task<bool> MarkDeleteAsyn(string id)
-        {
-            return await Task.Factory.StartNew(() =>
-            {
-                return bll.MarkDelete(id);
-            });
         }
         #endregion //Method
     }

@@ -174,7 +174,6 @@ namespace Hades.HR.UI
 
             try
             {
-                string msg;
                 bool succeed = CallerFactory<IDepartmentService>.Instance.CheckDuplicate(info);
                 if (!succeed)
                 {
@@ -211,7 +210,6 @@ namespace Hades.HR.UI
 
                 try
                 {
-                    string msg;
                     bool succeed = CallerFactory<IDepartmentService>.Instance.CheckDuplicate(info);
                     if (!succeed)
                     {
