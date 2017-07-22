@@ -77,6 +77,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Facade\IAttendanceRecordService.cs" />
+    <Compile Include="Facade\IAttendanceService.cs" />
     <Compile Include="Facade\IBonusDefineService.cs" />
     <Compile Include="Facade\IDepartmentService.cs" />
     <Compile Include="Facade\IProductionLineService.cs" />
@@ -86,6 +88,8 @@
     <Compile Include="Facade\IStaffService.cs" />
     <Compile Include="Facade\IWorkTeamService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceCaller\AttendanceCaller.cs" />
+    <Compile Include="ServiceCaller\AttendanceRecordCaller.cs" />
     <Compile Include="ServiceCaller\BonusDefineCaller.cs" />
     <Compile Include="ServiceCaller\DepartmentCaller.cs" />
     <Compile Include="ServiceCaller\EndPointConfig.cs" />
@@ -95,6 +99,8 @@
     <Compile Include="ServiceCaller\StaffSalaryCaller.cs" />
     <Compile Include="ServiceCaller\StaffSalaryViewCaller.cs" />
     <Compile Include="ServiceCaller\WorkTeamCaller.cs" />
+    <Compile Include="WinformCaller\AttendanceCaller.cs" />
+    <Compile Include="WinformCaller\AttendanceRecordCaller.cs" />
     <Compile Include="WinformCaller\BonusDefineCaller.cs" />
     <Compile Include="WinformCaller\DepartmentCaller.cs" />
     <Compile Include="Facade\IPositionService.cs" />

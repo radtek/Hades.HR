@@ -86,6 +86,12 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\Hades.HR.Caller\Facade\IAttendanceRecordService.cs">
+      <Link>Facade\IAttendanceRecordService.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Caller\Facade\IAttendanceService.cs">
+      <Link>Facade\IAttendanceService.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Caller\Facade\IBonusDefineService.cs">
       <Link>Facade\IBonusDefineService.cs</Link>
     </Compile>
@@ -109,6 +115,12 @@
     </Compile>
     <Compile Include="..\Hades.HR.Caller\Facade\IWorkTeamService.cs">
       <Link>Facade\IWorkTeamService.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\BLL\Attendance.cs">
+      <Link>Biz\BLL\Attendance.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\BLL\AttendanceRecord.cs">
+      <Link>Biz\BLL\AttendanceRecord.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\BLL\BonusDefine.cs">
       <Link>Biz\BLL\BonusDefine.cs</Link>
@@ -134,6 +146,12 @@
     <Compile Include="..\Hades.HR.Core\BLL\WorkTeam.cs">
       <Link>Biz\BLL\WorkTeam.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Attendance.cs">
+      <Link>Biz\DAL\DALSQL\Attendance.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\DAL\DALSQL\AttendanceRecord.cs">
+      <Link>Biz\DAL\DALSQL\AttendanceRecord.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\BonusDefine.cs">
       <Link>Biz\DAL\DALSQL\BonusDefine.cs</Link>
     </Compile>
@@ -158,6 +176,12 @@
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\WorkTeam.cs">
       <Link>Biz\DAL\DALSQL\WorkTeam.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Core\Entity\AttendanceInfo.cs">
+      <Link>Biz\Entity\AttendanceInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\Entity\AttendanceRecordInfo.cs">
+      <Link>Biz\Entity\AttendanceRecordInfo.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Core\Entity\BonusDefineInfo.cs">
       <Link>Biz\Entity\BonusDefineInfo.cs</Link>
     </Compile>
@@ -181,6 +205,12 @@
     </Compile>
     <Compile Include="..\Hades.HR.Core\Entity\WorkTeamInfo.cs">
       <Link>Biz\Entity\WorkTeamInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\IDAL\IAttendance.cs">
+      <Link>Biz\IDAL\IAttendance.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\IDAL\IAttendanceRecord.cs">
+      <Link>Biz\IDAL\IAttendanceRecord.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\IDAL\IBonusDefine.cs">
       <Link>Biz\IDAL\IBonusDefine.cs</Link>
@@ -222,6 +252,8 @@
     <Compile Include="..\Hades.HR.Core\Entity\PositionInfo.cs">
       <Link>Biz\Entity\PositionInfo.cs</Link>
     </Compile>
+    <Compile Include="WCFLibrary\AttendanceRecordService.cs" />
+    <Compile Include="WCFLibrary\AttendanceService.cs" />
     <Compile Include="WCFLibrary\BonusDefineService.cs" />
     <Compile Include="WCFLibrary\DepartmentService.cs" />
     <Compile Include="WCFLibrary\PositionService.cs" />

@@ -124,6 +124,8 @@
     <Content Include="Base\Mail\MailSendHistoryService.svc" />
     <Content Include="Base\Mail\MailSendService.svc" />
     <Content Include="Base\Mail\MailUnifiedConfigService.svc" />
+    <Content Include="HR\AttendanceRecordService.svc" />
+    <Content Include="HR\AttendanceService.svc" />
     <Content Include="HR\BonusDefineService.svc" />
     <Content Include="HR\DepartmentService.svc" />
     <Content Include="HR\PositionService.svc" />
