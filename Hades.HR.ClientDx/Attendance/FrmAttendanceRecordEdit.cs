@@ -62,11 +62,15 @@ namespace Hades.HR.UI
             this.staffs = CallerFactory<IStaffService>.Instance.Find(string.Format("DepartmentId='{0}'", departmentId));
 
             List<AttendanceRecordInfo> records = new List<AttendanceRecordInfo>();
-            records.AddRange(data);
 
-            foreach(var item in staffs)
+            foreach (var item in staffs)
             {
-                if (data.All(r => r.StaffId == item.Id))
+                var find = data.SingleOrDefault(r => r.StaffId == item.Id);
+                if (find != null)
+                {
+                    records.Add(find);
+                }
+                else
                 {
                     AttendanceRecordInfo info = new AttendanceRecordInfo();
                     info.Id = Guid.NewGuid().ToString();
@@ -90,6 +94,7 @@ namespace Hades.HR.UI
             foreach (var item in records)
             {
                 item.LeaveDays = item.AnnualLeave + item.SickLeave + item.CasualLeave + item.InjuryLeave + item.MarriageLeave;
+                item.OvertimeSalarySum = item.NormalOvertimeSalary + item.WeekendOvertimeSalary + item.HolidayOvertimeSalary;
                 CallerFactory<IAttendanceRecordService>.Instance.InsertUpdate(item, item.Id);
             }
         }
@@ -107,7 +112,7 @@ namespace Hades.HR.UI
             this.txtRemark.Text = attendance.Remark;
 
             var records = InitRecords();
-            this.bsAttendanceRecord.DataSource = records;            
+            this.bsAttendanceRecord.DataSource = records;
         }
         #endregion //Method
 
@@ -122,8 +127,11 @@ namespace Hades.HR.UI
             string columnName = e.Column.FieldName;
             if (columnName == "StaffId")
             {
-                var s = this.staffs.Single(r => r.Id == e.Value.ToString());
-                e.DisplayText = s.Name;
+                var s = this.staffs.SingleOrDefault(r => r.Id == e.Value.ToString());
+                if (s == null)
+                    e.DisplayText = "";
+                else
+                    e.DisplayText = s.Name;
             }
         }
 
@@ -139,12 +147,11 @@ namespace Hades.HR.UI
                 SaveRecords();
                 this.DialogResult = DialogResult.OK;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageDxUtil.ShowWarning(ex.Message);
             }
         }
         #endregion //Event
-
     }
 }

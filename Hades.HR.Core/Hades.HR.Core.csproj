@@ -114,6 +114,7 @@
     <Compile Include="BLL\Department.cs" />
     <Compile Include="BLL\ProductionLine.cs" />
     <Compile Include="BLL\Staff.cs" />
+    <Compile Include="BLL\StaffAttendanceView.cs" />
     <Compile Include="BLL\StaffBonus.cs" />
     <Compile Include="BLL\StaffSalary.cs" />
     <Compile Include="BLL\StaffSalaryView.cs" />
@@ -124,6 +125,7 @@
     <Compile Include="DAL\DALSQL\Department.cs" />
     <Compile Include="DAL\DALSQL\ProductionLine.cs" />
     <Compile Include="DAL\DALSQL\Staff.cs" />
+    <Compile Include="DAL\DALSQL\StaffAttendanceView.cs" />
     <Compile Include="DAL\DALSQL\StaffBonus.cs" />
     <Compile Include="DAL\DALSQL\StaffSalary.cs" />
     <Compile Include="DAL\DALSQL\StaffSalaryView.cs" />
@@ -133,6 +135,7 @@
     <Compile Include="Entity\BonusDefineInfo.cs" />
     <Compile Include="Entity\DepartmentInfo.cs" />
     <Compile Include="Entity\ProductionLineInfo.cs" />
+    <Compile Include="Entity\StaffAttendanceViewInfo.cs" />
     <Compile Include="Entity\StaffBonusInfo.cs" />
     <Compile Include="Entity\StaffInfo.cs" />
     <Compile Include="Entity\StaffSalaryInfo.cs" />
@@ -144,6 +147,7 @@
     <Compile Include="IDAL\IDepartment.cs" />
     <Compile Include="IDAL\IProductionLine.cs" />
     <Compile Include="IDAL\IStaff.cs" />
+    <Compile Include="IDAL\IStaffAttendanceView.cs" />
     <Compile Include="IDAL\IStaffBonus.cs" />
     <Compile Include="IDAL\IStaffSalary.cs" />
     <Compile Include="IDAL\IStaffSalaryView.cs" />

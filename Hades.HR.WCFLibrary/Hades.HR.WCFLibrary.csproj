@@ -101,6 +101,9 @@
     <Compile Include="..\Hades.HR.Caller\Facade\IProductionLineService.cs">
       <Link>Facade\IProductionLineService.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Caller\Facade\IStaffAttendanceViewService.cs">
+      <Link>Facade\IStaffAttendanceViewService.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Caller\Facade\IStaffBonusService.cs">
       <Link>Facade\IStaffBonusService.cs</Link>
     </Compile>
@@ -134,6 +137,9 @@
     <Compile Include="..\Hades.HR.Core\BLL\Staff.cs">
       <Link>Biz\BLL\Staff.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Core\BLL\StaffAttendanceView.cs">
+      <Link>Biz\BLL\StaffAttendanceView.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Core\BLL\StaffBonus.cs">
       <Link>Biz\BLL\StaffBonus.cs</Link>
     </Compile>
@@ -164,6 +170,9 @@
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Staff.cs">
       <Link>Biz\DAL\DALSQL\Staff.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Core\DAL\DALSQL\StaffAttendanceView.cs">
+      <Link>Biz\DAL\DALSQL\StaffAttendanceView.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\StaffBonus.cs">
       <Link>Biz\DAL\DALSQL\StaffBonus.cs</Link>
     </Compile>
@@ -190,6 +199,9 @@
     </Compile>
     <Compile Include="..\Hades.HR.Core\Entity\ProductionLineInfo.cs">
       <Link>Biz\Entity\ProductionLineInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\Entity\StaffAttendanceViewInfo.cs">
+      <Link>Biz\Entity\StaffAttendanceViewInfo.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\Entity\StaffBonusInfo.cs">
       <Link>Biz\Entity\StaffBonusInfo.cs</Link>
@@ -223,6 +235,9 @@
     </Compile>
     <Compile Include="..\Hades.HR.Core\IDAL\IStaff.cs">
       <Link>Biz\IDAL\IStaff.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\IDAL\IStaffAttendanceView.cs">
+      <Link>Biz\IDAL\IStaffAttendanceView.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\IDAL\IStaffBonus.cs">
       <Link>Biz\IDAL\IStaffBonus.cs</Link>
@@ -258,6 +273,7 @@
     <Compile Include="WCFLibrary\DepartmentService.cs" />
     <Compile Include="WCFLibrary\PositionService.cs" />
     <Compile Include="WCFLibrary\ProductionLineService.cs" />
+    <Compile Include="WCFLibrary\StaffAttendanceViewService.cs" />
     <Compile Include="WCFLibrary\StaffBonusService.cs" />
     <Compile Include="WCFLibrary\StaffSalaryService.cs" />
     <Compile Include="WCFLibrary\StaffSalaryViewService.cs" />

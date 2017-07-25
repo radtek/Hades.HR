@@ -130,6 +130,7 @@
     <Content Include="HR\DepartmentService.svc" />
     <Content Include="HR\PositionService.svc" />
     <Content Include="HR\ProductionLineService.svc" />
+    <Content Include="HR\StaffAttendanceViewService.svc" />
     <Content Include="HR\StaffBonusService.svc" />
     <Content Include="HR\StaffSalaryService.svc" />
     <Content Include="HR\StaffSalaryViewService.svc" />

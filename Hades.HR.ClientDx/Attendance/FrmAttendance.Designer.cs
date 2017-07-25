@@ -36,11 +36,15 @@ namespace Hades.HR.UI
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.tvAttendance = new System.Windows.Forms.TreeView();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.btnEditAttendance = new DevExpress.XtraEditors.SimpleButton();
+            this.btnEditRecord = new DevExpress.XtraEditors.SimpleButton();
             this.btnAddAttendance = new DevExpress.XtraEditors.SimpleButton();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
-            this.btnEditRecord = new DevExpress.XtraEditors.SimpleButton();
-            this.btnEditAttendance = new DevExpress.XtraEditors.SimpleButton();
+            this.txtDays = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.luDepartment = new Hades.HR.UI.DepartmentLookup();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.txtMonth = new DevExpress.XtraEditors.TextEdit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
@@ -48,6 +52,8 @@ namespace Hades.HR.UI
             this.groupControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.groupControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDays.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMonth.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // wgvRecord
@@ -62,12 +68,12 @@ namespace Hades.HR.UI
             this.wgvRecord.MinimumSize = new System.Drawing.Size(540, 0);
             this.wgvRecord.Name = "wgvRecord";
             this.wgvRecord.PrintTitle = "";
-            this.wgvRecord.ShowAddMenu = true;
+            this.wgvRecord.ShowAddMenu = false;
             this.wgvRecord.ShowCheckBox = false;
-            this.wgvRecord.ShowDeleteMenu = true;
-            this.wgvRecord.ShowEditMenu = true;
-            this.wgvRecord.ShowExportButton = true;
-            this.wgvRecord.Size = new System.Drawing.Size(794, 501);
+            this.wgvRecord.ShowDeleteMenu = false;
+            this.wgvRecord.ShowEditMenu = false;
+            this.wgvRecord.ShowExportButton = false;
+            this.wgvRecord.Size = new System.Drawing.Size(817, 531);
             this.wgvRecord.TabIndex = 11;
             // 
             // contextMenuStrip1
@@ -87,9 +93,9 @@ namespace Hades.HR.UI
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 120F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1004, 680);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1027, 680);
             this.tableLayoutPanel1.TabIndex = 16;
             // 
             // groupControl1
@@ -114,6 +120,10 @@ namespace Hades.HR.UI
             // 
             // groupControl2
             // 
+            this.groupControl2.Controls.Add(this.txtMonth);
+            this.groupControl2.Controls.Add(this.labelControl2);
+            this.groupControl2.Controls.Add(this.labelControl1);
+            this.groupControl2.Controls.Add(this.txtDays);
             this.groupControl2.Controls.Add(this.btnEditAttendance);
             this.groupControl2.Controls.Add(this.btnEditRecord);
             this.groupControl2.Controls.Add(this.luDepartment);
@@ -121,9 +131,27 @@ namespace Hades.HR.UI
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl2.Location = new System.Drawing.Point(203, 3);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(798, 144);
+            this.groupControl2.Size = new System.Drawing.Size(821, 114);
             this.groupControl2.TabIndex = 1;
             this.groupControl2.Text = "²Ù×÷";
+            // 
+            // btnEditAttendance
+            // 
+            this.btnEditAttendance.Location = new System.Drawing.Point(129, 33);
+            this.btnEditAttendance.Name = "btnEditAttendance";
+            this.btnEditAttendance.Size = new System.Drawing.Size(75, 23);
+            this.btnEditAttendance.TabIndex = 3;
+            this.btnEditAttendance.Text = "±à¼­ÔÂ¿¼ÇÚ";
+            this.btnEditAttendance.Click += new System.EventHandler(this.btnEditAttendance_Click);
+            // 
+            // btnEditRecord
+            // 
+            this.btnEditRecord.Location = new System.Drawing.Point(472, 33);
+            this.btnEditRecord.Name = "btnEditRecord";
+            this.btnEditRecord.Size = new System.Drawing.Size(102, 23);
+            this.btnEditRecord.TabIndex = 2;
+            this.btnEditRecord.Text = "±à¼­¿¼ÇÚ¼ÇÂ¼";
+            this.btnEditRecord.Click += new System.EventHandler(this.btnEditRecord_Click);
             // 
             // btnAddAttendance
             // 
@@ -138,44 +166,58 @@ namespace Hades.HR.UI
             // 
             this.groupControl3.Controls.Add(this.wgvRecord);
             this.groupControl3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl3.Location = new System.Drawing.Point(203, 153);
+            this.groupControl3.Location = new System.Drawing.Point(203, 123);
             this.groupControl3.Name = "groupControl3";
-            this.groupControl3.Size = new System.Drawing.Size(798, 524);
+            this.groupControl3.Size = new System.Drawing.Size(821, 554);
             this.groupControl3.TabIndex = 2;
             this.groupControl3.Text = "¿¼ÇÚ¼ÇÂ¼";
             // 
-            // btnEditRecord
+            // txtDays
             // 
-            this.btnEditRecord.Location = new System.Drawing.Point(558, 33);
-            this.btnEditRecord.Name = "btnEditRecord";
-            this.btnEditRecord.Size = new System.Drawing.Size(102, 23);
-            this.btnEditRecord.TabIndex = 2;
-            this.btnEditRecord.Text = "±à¼­¿¼ÇÚ¼ÇÂ¼";
-            this.btnEditRecord.Click += new System.EventHandler(this.btnEditRecord_Click);
+            this.txtDays.Location = new System.Drawing.Point(296, 72);
+            this.txtDays.Name = "txtDays";
+            this.txtDays.Properties.ReadOnly = true;
+            this.txtDays.Size = new System.Drawing.Size(65, 20);
+            this.txtDays.TabIndex = 4;
             // 
-            // btnEditAttendance
+            // labelControl1
             // 
-            this.btnEditAttendance.Location = new System.Drawing.Point(114, 33);
-            this.btnEditAttendance.Name = "btnEditAttendance";
-            this.btnEditAttendance.Size = new System.Drawing.Size(75, 23);
-            this.btnEditAttendance.TabIndex = 3;
-            this.btnEditAttendance.Text = "±à¼­ÔÂ¿¼ÇÚ";
-            this.btnEditAttendance.Click += new System.EventHandler(this.btnEditAttendance_Click);
+            this.labelControl1.Location = new System.Drawing.Point(242, 75);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(48, 14);
+            this.labelControl1.TabIndex = 5;
+            this.labelControl1.Text = "±¾ÔÂÌìÊý";
             // 
             // luDepartment
             // 
-            this.luDepartment.Location = new System.Drawing.Point(267, 33);
+            this.luDepartment.Location = new System.Drawing.Point(242, 33);
             this.luDepartment.Name = "luDepartment";
             this.luDepartment.OnlyShowCompany = false;
-            this.luDepartment.Size = new System.Drawing.Size(262, 20);
+            this.luDepartment.Size = new System.Drawing.Size(215, 20);
             this.luDepartment.TabIndex = 1;
             this.luDepartment.DepartmentSelect += new System.EventHandler(this.luDepartment_DepartmentSelect);
+            // 
+            // labelControl2
+            // 
+            this.labelControl2.Location = new System.Drawing.Point(18, 75);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(48, 14);
+            this.labelControl2.TabIndex = 6;
+            this.labelControl2.Text = "¿¼ÇÚÔÂ¶È";
+            // 
+            // txtMonth
+            // 
+            this.txtMonth.Location = new System.Drawing.Point(83, 72);
+            this.txtMonth.Name = "txtMonth";
+            this.txtMonth.Properties.ReadOnly = true;
+            this.txtMonth.Size = new System.Drawing.Size(121, 20);
+            this.txtMonth.TabIndex = 7;
             // 
             // FrmAttendance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1004, 680);
+            this.ClientSize = new System.Drawing.Size(1027, 680);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "FrmAttendance";
             this.Text = "¿¼ÇÚ¹ÜÀí";
@@ -184,8 +226,11 @@ namespace Hades.HR.UI
             this.groupControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
+            this.groupControl2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
             this.groupControl3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtDays.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMonth.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -202,5 +247,9 @@ namespace Hades.HR.UI
         private DevExpress.XtraEditors.SimpleButton btnEditRecord;
         private DepartmentLookup luDepartment;
         private DevExpress.XtraEditors.SimpleButton btnEditAttendance;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraEditors.TextEdit txtDays;
+        private DevExpress.XtraEditors.TextEdit txtMonth;
+        private DevExpress.XtraEditors.LabelControl labelControl2;
     }
 }
