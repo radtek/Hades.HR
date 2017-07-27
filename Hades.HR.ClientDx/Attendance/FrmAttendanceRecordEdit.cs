@@ -93,7 +93,7 @@ namespace Hades.HR.UI
 
             foreach (var item in records)
             {
-                item.LeaveDays = item.AnnualLeave + item.SickLeave + item.CasualLeave + item.InjuryLeave + item.MarriageLeave;
+                item.LeaveDays = item.AnnualLeave + item.SickLeave + item.CasualLeave + item.InjuryLeave + item.MarriageLeave + item.AbsentLeave;
                 item.OvertimeSalarySum = item.NormalOvertimeSalary + item.WeekendOvertimeSalary + item.HolidayOvertimeSalary;
                 CallerFactory<IAttendanceRecordService>.Instance.InsertUpdate(item, item.Id);
             }

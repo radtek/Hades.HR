@@ -42,6 +42,7 @@
             this.colCasualLeave = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colInjuryLeave = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMarriageLeave = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colAbsentLeave = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colBindLeaveDays = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colLeaveDays = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colNormalOvertime = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -158,6 +159,7 @@
             this.colCasualLeave,
             this.colInjuryLeave,
             this.colMarriageLeave,
+            this.colAbsentLeave,
             this.colBindLeaveDays,
             this.colLeaveDays,
             this.colNormalOvertime,
@@ -252,16 +254,25 @@
             this.colMarriageLeave.Visible = true;
             this.colMarriageLeave.VisibleIndex = 6;
             // 
+            // colAbsentLeave
+            // 
+            this.colAbsentLeave.Caption = "旷工天数";
+            this.colAbsentLeave.FieldName = "AbsentLeave";
+            this.colAbsentLeave.Name = "colAbsentLeave";
+            this.colAbsentLeave.Visible = true;
+            this.colAbsentLeave.VisibleIndex = 7;
+            // 
             // colBindLeaveDays
             // 
             this.colBindLeaveDays.Caption = "缺勤天数合计";
             this.colBindLeaveDays.FieldName = "colBindLeaveDays";
             this.colBindLeaveDays.Name = "colBindLeaveDays";
             this.colBindLeaveDays.OptionsColumn.AllowEdit = false;
-            this.colBindLeaveDays.UnboundExpression = "[AnnualLeave] + [SickLeave] + [CasualLeave] + [InjuryLeave] + [MarriageLeave]";
+            this.colBindLeaveDays.UnboundExpression = "[AnnualLeave] + [SickLeave] + [CasualLeave] + [InjuryLeave] + [MarriageLeave] + [" +
+    "AbsentLeave]";
             this.colBindLeaveDays.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
             this.colBindLeaveDays.Visible = true;
-            this.colBindLeaveDays.VisibleIndex = 7;
+            this.colBindLeaveDays.VisibleIndex = 8;
             // 
             // colLeaveDays
             // 
@@ -275,7 +286,7 @@
             this.colNormalOvertime.FieldName = "NormalOvertime";
             this.colNormalOvertime.Name = "colNormalOvertime";
             this.colNormalOvertime.Visible = true;
-            this.colNormalOvertime.VisibleIndex = 8;
+            this.colNormalOvertime.VisibleIndex = 9;
             // 
             // colNormalOvertimeSalary
             // 
@@ -283,7 +294,7 @@
             this.colNormalOvertimeSalary.FieldName = "NormalOvertimeSalary";
             this.colNormalOvertimeSalary.Name = "colNormalOvertimeSalary";
             this.colNormalOvertimeSalary.Visible = true;
-            this.colNormalOvertimeSalary.VisibleIndex = 9;
+            this.colNormalOvertimeSalary.VisibleIndex = 10;
             // 
             // colWeekendOvertime
             // 
@@ -291,7 +302,7 @@
             this.colWeekendOvertime.FieldName = "WeekendOvertime";
             this.colWeekendOvertime.Name = "colWeekendOvertime";
             this.colWeekendOvertime.Visible = true;
-            this.colWeekendOvertime.VisibleIndex = 10;
+            this.colWeekendOvertime.VisibleIndex = 11;
             // 
             // colWeekendOvertimeSalary
             // 
@@ -299,7 +310,7 @@
             this.colWeekendOvertimeSalary.FieldName = "WeekendOvertimeSalary";
             this.colWeekendOvertimeSalary.Name = "colWeekendOvertimeSalary";
             this.colWeekendOvertimeSalary.Visible = true;
-            this.colWeekendOvertimeSalary.VisibleIndex = 11;
+            this.colWeekendOvertimeSalary.VisibleIndex = 12;
             // 
             // colHolidayOvertime
             // 
@@ -307,7 +318,7 @@
             this.colHolidayOvertime.FieldName = "HolidayOvertime";
             this.colHolidayOvertime.Name = "colHolidayOvertime";
             this.colHolidayOvertime.Visible = true;
-            this.colHolidayOvertime.VisibleIndex = 12;
+            this.colHolidayOvertime.VisibleIndex = 13;
             // 
             // colHolidayOvertimeSalary
             // 
@@ -315,7 +326,7 @@
             this.colHolidayOvertimeSalary.FieldName = "HolidayOvertimeSalary";
             this.colHolidayOvertimeSalary.Name = "colHolidayOvertimeSalary";
             this.colHolidayOvertimeSalary.Visible = true;
-            this.colHolidayOvertimeSalary.VisibleIndex = 13;
+            this.colHolidayOvertimeSalary.VisibleIndex = 14;
             // 
             // colBindOvertimeSalarySum
             // 
@@ -326,7 +337,7 @@
             this.colBindOvertimeSalarySum.UnboundExpression = "[NormalOvertimeSalary] + [WeekendOvertimeSalary] + [HolidayOvertimeSalary]";
             this.colBindOvertimeSalarySum.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.colBindOvertimeSalarySum.Visible = true;
-            this.colBindOvertimeSalarySum.VisibleIndex = 14;
+            this.colBindOvertimeSalarySum.VisibleIndex = 15;
             // 
             // colOvertimeSalarySum
             // 
@@ -340,7 +351,7 @@
             this.colNoonShift.FieldName = "NoonShift";
             this.colNoonShift.Name = "colNoonShift";
             this.colNoonShift.Visible = true;
-            this.colNoonShift.VisibleIndex = 15;
+            this.colNoonShift.VisibleIndex = 16;
             // 
             // colNightShift
             // 
@@ -348,7 +359,7 @@
             this.colNightShift.FieldName = "NightShift";
             this.colNightShift.Name = "colNightShift";
             this.colNightShift.Visible = true;
-            this.colNightShift.VisibleIndex = 16;
+            this.colNightShift.VisibleIndex = 17;
             // 
             // colOtherShift
             // 
@@ -356,7 +367,7 @@
             this.colOtherShift.FieldName = "OtherShift";
             this.colOtherShift.Name = "colOtherShift";
             this.colOtherShift.Visible = true;
-            this.colOtherShift.VisibleIndex = 17;
+            this.colOtherShift.VisibleIndex = 18;
             // 
             // colLunchAllowance
             // 
@@ -364,7 +375,7 @@
             this.colLunchAllowance.FieldName = "LunchAllowance";
             this.colLunchAllowance.Name = "colLunchAllowance";
             this.colLunchAllowance.Visible = true;
-            this.colLunchAllowance.VisibleIndex = 18;
+            this.colLunchAllowance.VisibleIndex = 19;
             // 
             // colLeaderAllowance
             // 
@@ -372,7 +383,7 @@
             this.colLeaderAllowance.FieldName = "LeaderAllowance";
             this.colLeaderAllowance.Name = "colLeaderAllowance";
             this.colLeaderAllowance.Visible = true;
-            this.colLeaderAllowance.VisibleIndex = 19;
+            this.colLeaderAllowance.VisibleIndex = 20;
             // 
             // colDeduction
             // 
@@ -380,7 +391,7 @@
             this.colDeduction.FieldName = "Deduction";
             this.colDeduction.Name = "colDeduction";
             this.colDeduction.Visible = true;
-            this.colDeduction.VisibleIndex = 20;
+            this.colDeduction.VisibleIndex = 21;
             // 
             // colNutrition
             // 
@@ -388,7 +399,7 @@
             this.colNutrition.FieldName = "Nutrition";
             this.colNutrition.Name = "colNutrition";
             this.colNutrition.Visible = true;
-            this.colNutrition.VisibleIndex = 21;
+            this.colNutrition.VisibleIndex = 22;
             // 
             // colRemark
             // 
@@ -396,7 +407,7 @@
             this.colRemark.FieldName = "Remark";
             this.colRemark.Name = "colRemark";
             this.colRemark.Visible = true;
-            this.colRemark.VisibleIndex = 22;
+            this.colRemark.VisibleIndex = 23;
             // 
             // panelControl1
             // 
@@ -591,5 +602,6 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         private DevExpress.XtraGrid.Columns.GridColumn colBindOvertimeSalarySum;
+        private DevExpress.XtraGrid.Columns.GridColumn colAbsentLeave;
     }
 }

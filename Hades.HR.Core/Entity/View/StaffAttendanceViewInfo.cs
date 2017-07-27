@@ -23,6 +23,7 @@ namespace Hades.HR.Entity
             this.CasualLeave = 0;
             this.InjuryLeave = 0;
             this.MarriageLeave = 0;
+            this.AbsentLeave = 0;
             this.LeaveDays = 0;
             this.NormalOvertime = 0;
             this.NormalOvertimeSalary = 0;
@@ -68,6 +69,9 @@ namespace Hades.HR.Entity
 
         [DataMember]
         public virtual int MarriageLeave { get; set; }
+
+        [DataMember]
+        public virtual int AbsentLeave { get; set; }
 
         [DataMember]
         public virtual int LeaveDays { get; set; }

@@ -20,12 +20,15 @@ namespace Hades.HR.ServiceCaller
 	/// </summary>
     public class StaffAttendanceViewCaller : BaseWCFService<StaffAttendanceViewInfo>, IStaffAttendanceViewService
     {
+        #region Constructor
         public StaffAttendanceViewCaller()  : base()
         {	
             this.configurationPath = EndPointConfig.WcfConfig; //WCF配置文件
             this.endpointConfigurationName = EndPointConfig.StaffAttendanceViewService;
         }
+        #endregion //Constructor
 
+        #region Function
         /// <summary>
         /// 子类构造一个IChannel对象转换为基类接口，方便给基类进行调用通用的API
         /// </summary>
@@ -44,6 +47,7 @@ namespace Hades.HR.ServiceCaller
             CustomClientChannel<IStaffAttendanceViewService> factory = new CustomClientChannel<IStaffAttendanceViewService>(endpointConfigurationName, configurationPath);
             return factory.CreateChannel();
         }
+        #endregion //Function
 
         ///// <summary>
         ///// 根据名称查找对象(自定义接口使用范例)

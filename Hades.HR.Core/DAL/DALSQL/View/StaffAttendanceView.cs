@@ -52,6 +52,7 @@ namespace Hades.HR.DALSQL
             info.CasualLeave = reader.GetInt32("CasualLeave");
             info.InjuryLeave = reader.GetInt32("InjuryLeave");
             info.MarriageLeave = reader.GetInt32("MarriageLeave");
+            info.AbsentLeave = reader.GetInt32("AbsentLeave");
             info.LeaveDays = reader.GetInt32("LeaveDays");
             info.NormalOvertime = reader.GetInt32("NormalOvertime");
             info.NormalOvertimeSalary = reader.GetDecimal("NormalOvertimeSalary");
@@ -95,6 +96,7 @@ namespace Hades.HR.DALSQL
             hash.Add("CasualLeave", info.CasualLeave);
             hash.Add("InjuryLeave", info.InjuryLeave);
             hash.Add("MarriageLeave", info.MarriageLeave);
+            hash.Add("AbsentLeave", info.AbsentLeave);
             hash.Add("LeaveDays", info.LeaveDays);
             hash.Add("NormalOvertime", info.NormalOvertime);
             hash.Add("NormalOvertimeSalary", info.NormalOvertimeSalary);
@@ -137,6 +139,7 @@ namespace Hades.HR.DALSQL
             dict.Add("CasualLeave", "事假天数");
             dict.Add("InjuryLeave", "工伤天数");
             dict.Add("MarriageLeave", "婚产丧假天数");
+            dict.Add("AbsentLeave", "旷工天数");
             dict.Add("LeaveDays", "缺勤天数合计");
             dict.Add("NormalOvertime", "平时加班工时");
             dict.Add("NormalOvertimeSalary", "平时加班工资");
@@ -161,6 +164,5 @@ namespace Hades.HR.DALSQL
 
             return dict;
         }
-
     }
 }

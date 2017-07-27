@@ -449,12 +449,20 @@ namespace Hades.HR.UI
         void wgvWorkTeam_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
         {
             string columnName = e.Column.FieldName;
-            if (columnName == "CompanyId" && !string.IsNullOrEmpty(e.Value.ToString()))
+            if (columnName == "CompanyId")
             {
-                if (e.Value != null)
+                if (e.Value != null && !string.IsNullOrEmpty(e.Value.ToString()))
                 {
                     var dep = CallerFactory<IDepartmentService>.Instance.FindByID(e.Value.ToString());
                     e.DisplayText = dep.Name;
+                }
+            }
+            else if (columnName == "ProductionLineId")
+            {
+                if (e.Value != null && !string.IsNullOrEmpty(e.Value.ToString()))
+                {
+                    var line = CallerFactory<IProductionLineService>.Instance.FindByID(e.Value.ToString());
+                    e.DisplayText = line.Name;
                 }
             }
             else if (columnName == "Enabled")

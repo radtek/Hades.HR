@@ -98,7 +98,7 @@ namespace Hades.HR.UI
         private void LoadRecordData()
         {
             //entity
-            this.wgvRecord.DisplayColumns = "DepartmentName,Name,AttendanceDays,AnnualLeave,SickLeave,CasualLeave,InjuryLeave,MarriageLeave,LeaveDays,NormalOvertime,NormalOvertimeSalary,WeekendOvertime,WeekendOvertimeSalary,HolidayOvertime,HolidayOvertimeSalary,OvertimeSalarySum,NoonShift,NightShift,OtherShift,LunchAllowance,LeaderAllowance,Deduction,Nutrition,Remark";
+            this.wgvRecord.DisplayColumns = "DepartmentName,Name,AttendanceDays,AnnualLeave,SickLeave,CasualLeave,InjuryLeave,MarriageLeave,AbsentLeave,LeaveDays,NormalOvertime,NormalOvertimeSalary,WeekendOvertime,WeekendOvertimeSalary,HolidayOvertime,HolidayOvertimeSalary,OvertimeSalarySum,NoonShift,NightShift,OtherShift,LunchAllowance,LeaderAllowance,Deduction,Nutrition,Remark";
             this.wgvRecord.ColumnNameAlias = CallerFactory<IStaffAttendanceViewService>.Instance.GetColumnNameAlias();//字段列显示名称转义
 
             string where = GetConditionSql();

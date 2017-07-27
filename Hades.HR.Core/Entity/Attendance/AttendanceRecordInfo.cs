@@ -70,6 +70,9 @@ namespace Hades.HR.Entity
         public virtual int MarriageLeave { get; set; }
 
         [DataMember]
+        public virtual int AbsentLeave { get; set; }
+
+        [DataMember]
         public virtual int LeaveDays { get; set; }
 
         [DataMember]
