@@ -56,6 +56,9 @@ namespace Hades.HR.UI
             info.Month = Convert.ToInt32(txtMonth.Value);
             info.Days = Convert.ToInt32(txtDays.Value);
             info.Remark = txtRemark.Text;
+            info.Editor = this.LoginUserInfo.Name;
+            info.EditorId = this.LoginUserInfo.ID;
+            info.EditTime = DateTime.Now;
         }
         #endregion //Function
 

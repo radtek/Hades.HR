@@ -38,6 +38,24 @@ namespace Hades.HR.Entity
 
         [DataMember]
         public virtual string Remark { get; set; }
+
+        /// <summary>
+        /// 编辑人
+        /// </summary>
+        [DataMember]
+        public virtual string Editor { get; set; }
+
+        /// <summary>
+        /// 编辑人ID
+        /// </summary>
+        [DataMember]
+        public virtual string EditorId { get; set; }
+
+        /// <summary>
+        /// 编辑时间
+        /// </summary>
+        [DataMember]
+        public virtual DateTime EditTime { get; set; }
         #endregion
     }
 }

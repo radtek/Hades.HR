@@ -18,14 +18,14 @@ using Hades.HR.Entity;
 
 namespace Hades.HR.UI
 {
-    public partial class FrmEditBonusDefine : BaseEditForm
+    public partial class FrmEditSalaryLevel : BaseEditForm
     {
     	/// <summary>
         /// 创建一个临时对象，方便在附件管理中获取存在的GUID
         /// </summary>
-    	private BonusDefineInfo tempInfo = new BonusDefineInfo();
+    	private SalaryLevelInfo tempInfo = new SalaryLevelInfo();
     	
-        public FrmEditBonusDefine()
+        public FrmEditSalaryLevel()
         {
             InitializeComponent();
         }
@@ -45,16 +45,10 @@ namespace Hades.HR.UI
                 this.txtName.Focus();
                 result = false;
             }
-             else if (this.txtCode.Text.Trim().Length == 0)
+             else if (this.txtSalary.Text.Trim().Length == 0)
             {
                 MessageDxUtil.ShowTips("请输入");
-                this.txtCode.Focus();
-                result = false;
-            }
-             else if (this.txtCalcType.Text.Trim().Length == 0)
-            {
-                MessageDxUtil.ShowTips("请输入");
-                this.txtCalcType.Focus();
+                this.txtSalary.Focus();
                 result = false;
             }
             #endregion
@@ -80,33 +74,30 @@ namespace Hades.HR.UI
             if (!string.IsNullOrEmpty(ID))
             {
                 #region 显示信息
-                BonusDefineInfo info = CallerFactory<IBonusDefineService>.Instance.FindByID(ID);
+                SalaryLevelInfo info = CallerFactory<ISalaryLevelService>.Instance.FindByID(ID);
                 if (info != null)
                 {
                 	tempInfo = info;//重新给临时对象赋值，使之指向存在的记录对象
                 	
 	                    txtName.Text = info.Name;
-           	                    txtCode.Text = info.Code;
-                                   txtCalcType.Value = info.CalcType;
-                               txtCardinal.Value = info.Cardinal;
-                               txtCoefficient.Value = info.Coefficient;
-                               txtLimit.Value = info.Limit;
-       	                    txtRemark.Text = info.Remark;
+                                   txtSalary.Value = info.Salary;
+       	                    txtSortCode.Text = info.SortCode;
+           	                    txtRemark.Text = info.Remark;
                              } 
                 #endregion
-                //this.btnOK.Enabled = HasFunction("BonusDefine/Edit");             
+                //this.btnOK.Enabled = HasFunction("SalaryLevel/Edit");             
             }
             else
             {
-       
-                //this.btnOK.Enabled = Portal.gc.HasFunction("BonusDefine/Add");  
+    
+                //this.btnOK.Enabled = Portal.gc.HasFunction("SalaryLevel/Add");  
             }
             
             //tempInfo在对象存在则为指定对象，新建则是全新的对象，但有一些初始化的GUID用于附件上传
             //SetAttachInfo(tempInfo);
         }
 
-        //private void SetAttachInfo(BonusDefineInfo info)
+        //private void SetAttachInfo(SalaryLevelInfo info)
         //{
         //    this.attachmentGUID.AttachmentGUID = info.AttachGUID;
         //    this.attachmentGUID.userId = LoginUserInfo.Name;
@@ -121,7 +112,7 @@ namespace Hades.HR.UI
 
         public override void ClearScreen()
         {
-            this.tempInfo = new BonusDefineInfo();
+            this.tempInfo = new SalaryLevelInfo();
             base.ClearScreen();
         }
 
@@ -129,14 +120,11 @@ namespace Hades.HR.UI
         /// 编辑或者保存状态下取值函数
         /// </summary>
         /// <param name="info"></param>
-        private void SetInfo(BonusDefineInfo info)
+        private void SetInfo(SalaryLevelInfo info)
         {
 	            info.Name = txtName.Text;
-       	            info.Code = txtCode.Text;
-                       info.CalcType = Convert.ToInt32(txtCalcType.Value);
-                       info.Cardinal = txtCardinal.Value;
-                       info.Coefficient = txtCoefficient.Value;
-                       info.Limit = txtLimit.Value;
+                       info.Salary = txtSalary.Value;
+       	            info.SortCode = txtSortCode.Text;
        	            info.Remark = txtRemark.Text;
                }
          
@@ -146,14 +134,14 @@ namespace Hades.HR.UI
         /// <returns></returns>
         public override bool SaveAddNew()
         {
-            BonusDefineInfo info = tempInfo;//必须使用存在的局部变量，因为部分信息可能被附件使用
+            SalaryLevelInfo info = tempInfo;//必须使用存在的局部变量，因为部分信息可能被附件使用
             SetInfo(info);
 
             try
             {
                 #region 新增数据
 
-                bool succeed = CallerFactory<IBonusDefineService>.Instance.Insert(info);
+                bool succeed = CallerFactory<ISalaryLevelService>.Instance.Insert(info);
                 if (succeed)
                 {
                     //可添加其他关联操作
@@ -177,7 +165,7 @@ namespace Hades.HR.UI
         public override bool SaveUpdated()
         {
 
-            BonusDefineInfo info = CallerFactory<IBonusDefineService>.Instance.FindByID(ID);
+            SalaryLevelInfo info = CallerFactory<ISalaryLevelService>.Instance.FindByID(ID);
             if (info != null)
             {
                 SetInfo(info);
@@ -185,7 +173,7 @@ namespace Hades.HR.UI
                 try
                 {
                     #region 更新数据
-                    bool succeed = CallerFactory<IBonusDefineService>.Instance.Update(info, info.Id);
+                    bool succeed = CallerFactory<ISalaryLevelService>.Instance.Update(info, info.Id);
                     if (succeed)
                     {
                         //可添加其他关联操作

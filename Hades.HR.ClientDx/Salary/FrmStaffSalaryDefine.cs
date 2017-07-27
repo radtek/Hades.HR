@@ -19,11 +19,11 @@ using Hades.HR.Entity;
 namespace Hades.HR.UI
 {
     /// <summary>
-    /// BonusDefine
+    /// StaffSalaryDefine
     /// </summary>	
-    public partial class FrmBonusDefine : BaseDock
+    public partial class FrmStaffSalaryDefine : BaseDock
     {
-        public FrmBonusDefine()
+        public FrmStaffSalaryDefine()
         {
             InitializeComponent();
 
@@ -156,7 +156,7 @@ namespace Hades.HR.UI
             foreach (int iRow in rowSelected)
             {
                 string ID = this.winGridViewPager1.GridView1.GetRowCellDisplayText(iRow, "ID");
-                CallerFactory<IBonusDefineService>.Instance.Delete(ID);
+                CallerFactory<IStaffSalaryDefineService>.Instance.Delete(ID);
             }	 
              
             BindData();
@@ -177,7 +177,7 @@ namespace Hades.HR.UI
 
             if (!string.IsNullOrEmpty(ID))
             {
-                FrmEditBonusDefine dlg = new FrmEditBonusDefine();
+                FrmEditStaffSalaryDefine dlg = new FrmEditStaffSalaryDefine();
                 dlg.ID = ID;
                 dlg.IDList = IDList;
                 dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
@@ -209,7 +209,7 @@ namespace Hades.HR.UI
         private void winGridViewPager1_OnStartExport(object sender, EventArgs e)
         {
             string where = GetConditionSql();
-            this.winGridViewPager1.AllToExport = CallerFactory<IBonusDefineService>.Instance.FindToDataTable(where);
+            this.winGridViewPager1.AllToExport = CallerFactory<IStaffSalaryDefineService>.Instance.FindToDataTable(where);
          }
 
         /// <summary>
@@ -235,7 +235,7 @@ namespace Hades.HR.UI
             if (condition == null)
             {
                 condition = new SearchCondition();
-                condition.AddCondition("Name", this.txtName.Text.Trim(), SqlOperator.Like);
+                condition.AddCondition("CardNumber", this.txtCardNumber.Text.Trim(), SqlOperator.Like);
             }
             string where = condition.BuildConditionSql().Replace("Where", "");
             return where;
@@ -247,28 +247,32 @@ namespace Hades.HR.UI
         private void BindData()
         {
         	//entity
-            this.winGridViewPager1.DisplayColumns = "Id,Name,Code,CalcType,Cardinal,Coefficient,Limit,Remark";
-            this.winGridViewPager1.ColumnNameAlias = CallerFactory<IBonusDefineService>.Instance.GetColumnNameAlias();//字段列显示名称转义
+            this.winGridViewPager1.DisplayColumns = "Id,FinanceDepartment,CardNumber,SalaryLevel,BaseBonus,DepartmentBonus,ReserveFund,Insurance,Remark,Editor,EditorId,EditTime";
+            this.winGridViewPager1.ColumnNameAlias = CallerFactory<IStaffSalaryDefineService>.Instance.GetColumnNameAlias();//字段列显示名称转义
 
             #region 添加别名解析
 
             //this.winGridViewPager1.AddColumnAlias("Id", "Id");
-            //this.winGridViewPager1.AddColumnAlias("Name", "Name");
-            //this.winGridViewPager1.AddColumnAlias("Code", "Code");
-            //this.winGridViewPager1.AddColumnAlias("CalcType", "CalcType");
-            //this.winGridViewPager1.AddColumnAlias("Cardinal", "Cardinal");
-            //this.winGridViewPager1.AddColumnAlias("Coefficient", "Coefficient");
-            //this.winGridViewPager1.AddColumnAlias("Limit", "Limit");
+            //this.winGridViewPager1.AddColumnAlias("FinanceDepartment", "FinanceDepartment");
+            //this.winGridViewPager1.AddColumnAlias("CardNumber", "CardNumber");
+            //this.winGridViewPager1.AddColumnAlias("SalaryLevel", "SalaryLevel");
+            //this.winGridViewPager1.AddColumnAlias("BaseBonus", "BaseBonus");
+            //this.winGridViewPager1.AddColumnAlias("DepartmentBonus", "DepartmentBonus");
+            //this.winGridViewPager1.AddColumnAlias("ReserveFund", "ReserveFund");
+            //this.winGridViewPager1.AddColumnAlias("Insurance", "Insurance");
             //this.winGridViewPager1.AddColumnAlias("Remark", "Remark");
+            //this.winGridViewPager1.AddColumnAlias("Editor", "Editor");
+            //this.winGridViewPager1.AddColumnAlias("EditorId", "EditorId");
+            //this.winGridViewPager1.AddColumnAlias("EditTime", "EditTime");
 
             #endregion
 
             string where = GetConditionSql();
             PagerInfo pagerInfo = this.winGridViewPager1.PagerInfo;
-               List<BonusDefineInfo> list = CallerFactory<IBonusDefineService>.Instance.FindWithPager(where, ref pagerInfo);
+               List<StaffSalaryDefineInfo> list = CallerFactory<IStaffSalaryDefineService>.Instance.FindWithPager(where, ref pagerInfo);
             this.winGridViewPager1.PagerInfo.RecordCount = pagerInfo.RecordCount;
-            this.winGridViewPager1.DataSource = new Hades.Pager.WinControl.SortableBindingList<BonusDefineInfo>(list);
-               this.winGridViewPager1.PrintTitle = "BonusDefine报表";
+            this.winGridViewPager1.DataSource = new Hades.Pager.WinControl.SortableBindingList<StaffSalaryDefineInfo>(list);
+               this.winGridViewPager1.PrintTitle = "StaffSalaryDefine报表";
          }
         
         /// <summary>
@@ -285,7 +289,7 @@ namespace Hades.HR.UI
         /// </summary>
         private void btnAddNew_Click(object sender, EventArgs e)
         {
-            FrmEditBonusDefine dlg = new FrmEditBonusDefine();
+            FrmEditStaffSalaryDefine dlg = new FrmEditStaffSalaryDefine();
             dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
             dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
             
@@ -306,8 +310,8 @@ namespace Hades.HR.UI
             }
         }        
 
-		 		 		 		 		 		 		 		 
-        private string moduleName = "BonusDefine";
+		 		 		 		 		 		 		 		 		  		  
+        private string moduleName = "StaffSalaryDefine";
         /// <summary>
         /// 导入Excel的操作
         /// </summary>          
@@ -348,17 +352,19 @@ namespace Hades.HR.UI
             bool converted = false;
             DateTime dtDefault = Convert.ToDateTime("1900-01-01");
             DateTime dt;
-            BonusDefineInfo info = new BonusDefineInfo();
+            StaffSalaryDefineInfo info = new StaffSalaryDefineInfo();
             info.Id = GetRowData(dr, "Id");
-              info.Name = GetRowData(dr, "Name");
-              info.Code = GetRowData(dr, "Code");
-              info.CalcType = GetRowData(dr, "CalcType").ToInt32();
-              info.Cardinal = GetRowData(dr, "Cardinal").ToDecimal();
-              info.Coefficient = GetRowData(dr, "Coefficient").ToDecimal();
-              info.Limit = GetRowData(dr, "Limit").ToDecimal();
+              info.FinanceDepartment = GetRowData(dr, "FinanceDepartment");
+              info.CardNumber = GetRowData(dr, "CardNumber");
+              info.SalaryLevel = GetRowData(dr, "SalaryLevel");
+              info.BaseBonus = GetRowData(dr, "BaseBonus").ToDecimal();
+              info.DepartmentBonus = GetRowData(dr, "DepartmentBonus").ToDecimal();
+              info.ReserveFund = GetRowData(dr, "ReserveFund").ToDecimal();
+              info.Insurance = GetRowData(dr, "Insurance").ToDecimal();
               info.Remark = GetRowData(dr, "Remark");
-  
-            success = CallerFactory<IBonusDefineService>.Instance.Insert(info);
+               info.EditorId = GetRowData(dr, "EditorId");
+   
+            success = CallerFactory<IStaffSalaryDefineService>.Instance.Insert(info);
              return success;
         }
 
@@ -371,8 +377,8 @@ namespace Hades.HR.UI
             if (!string.IsNullOrEmpty(file))
             {
                 string where = GetConditionSql();
-                List<BonusDefineInfo> list = CallerFactory<IBonusDefineService>.Instance.Find(where);
-                 DataTable dtNew = DataTableHelper.CreateTable("序号|int,Id,Name,Code,CalcType,Cardinal,Coefficient,Limit,Remark");
+                List<StaffSalaryDefineInfo> list = CallerFactory<IStaffSalaryDefineService>.Instance.Find(where);
+                 DataTable dtNew = DataTableHelper.CreateTable("序号|int,Id,FinanceDepartment,CardNumber,SalaryLevel,BaseBonus,DepartmentBonus,ReserveFund,Insurance,Remark,EditorId");
                 DataRow dr;
                 int j = 1;
                 for (int i = 0; i < list.Count; i++)
@@ -380,14 +386,16 @@ namespace Hades.HR.UI
                     dr = dtNew.NewRow();
                     dr["序号"] = j++;
                     dr["Id"] = list[i].Id;
-                     dr["Name"] = list[i].Name;
-                     dr["Code"] = list[i].Code;
-                     dr["CalcType"] = list[i].CalcType;
-                     dr["Cardinal"] = list[i].Cardinal;
-                     dr["Coefficient"] = list[i].Coefficient;
-                     dr["Limit"] = list[i].Limit;
+                     dr["FinanceDepartment"] = list[i].FinanceDepartment;
+                     dr["CardNumber"] = list[i].CardNumber;
+                     dr["SalaryLevel"] = list[i].SalaryLevel;
+                     dr["BaseBonus"] = list[i].BaseBonus;
+                     dr["DepartmentBonus"] = list[i].DepartmentBonus;
+                     dr["ReserveFund"] = list[i].ReserveFund;
+                     dr["Insurance"] = list[i].Insurance;
                      dr["Remark"] = list[i].Remark;
-                     dtNew.Rows.Add(dr);
+                      dr["EditorId"] = list[i].EditorId;
+                      dtNew.Rows.Add(dr);
                 }
 
                 try
@@ -420,15 +428,15 @@ namespace Hades.HR.UI
             if (dlg == null)
             {
                 dlg = new FrmAdvanceSearch();
-                dlg.FieldTypeTable = CallerFactory<IBonusDefineService>.Instance.GetFieldTypeList();
-                dlg.ColumnNameAlias = CallerFactory<IBonusDefineService>.Instance.GetColumnNameAlias();                
-                 dlg.DisplayColumns = "Id,Name,Code,CalcType,Cardinal,Coefficient,Limit,Remark";
+                dlg.FieldTypeTable = CallerFactory<IStaffSalaryDefineService>.Instance.GetFieldTypeList();
+                dlg.ColumnNameAlias = CallerFactory<IStaffSalaryDefineService>.Instance.GetColumnNameAlias();                
+                 dlg.DisplayColumns = "Id,FinanceDepartment,CardNumber,SalaryLevel,BaseBonus,DepartmentBonus,ReserveFund,Insurance,Remark,EditorId";
 
                 #region 下拉列表数据
 
                 //dlg.AddColumnListItem("UserType", Portal.gc.GetDictData("人员类型"));//字典列表
                 //dlg.AddColumnListItem("Sex", "男,女");//固定列表
-                //dlg.AddColumnListItem("Credit", BLLFactory<BonusDefine>.Instance.GetFieldList("Credit"));//动态列表
+                //dlg.AddColumnListItem("Credit", BLLFactory<StaffSalaryDefine>.Instance.GetFieldList("Credit"));//动态列表
 
                 #endregion
 

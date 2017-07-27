@@ -19,11 +19,11 @@ using Hades.HR.Entity;
 namespace Hades.HR.UI
 {
     /// <summary>
-    /// BonusDefine
+    /// SalaryLevel
     /// </summary>	
-    public partial class FrmBonusDefine : BaseDock
+    public partial class FrmSalaryLevel : BaseDock
     {
-        public FrmBonusDefine()
+        public FrmSalaryLevel()
         {
             InitializeComponent();
 
@@ -156,7 +156,7 @@ namespace Hades.HR.UI
             foreach (int iRow in rowSelected)
             {
                 string ID = this.winGridViewPager1.GridView1.GetRowCellDisplayText(iRow, "ID");
-                CallerFactory<IBonusDefineService>.Instance.Delete(ID);
+                CallerFactory<ISalaryLevelService>.Instance.Delete(ID);
             }	 
              
             BindData();
@@ -177,7 +177,7 @@ namespace Hades.HR.UI
 
             if (!string.IsNullOrEmpty(ID))
             {
-                FrmEditBonusDefine dlg = new FrmEditBonusDefine();
+                FrmEditSalaryLevel dlg = new FrmEditSalaryLevel();
                 dlg.ID = ID;
                 dlg.IDList = IDList;
                 dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
@@ -209,7 +209,7 @@ namespace Hades.HR.UI
         private void winGridViewPager1_OnStartExport(object sender, EventArgs e)
         {
             string where = GetConditionSql();
-            this.winGridViewPager1.AllToExport = CallerFactory<IBonusDefineService>.Instance.FindToDataTable(where);
+            this.winGridViewPager1.AllToExport = CallerFactory<ISalaryLevelService>.Instance.FindToDataTable(where);
          }
 
         /// <summary>
@@ -247,28 +247,24 @@ namespace Hades.HR.UI
         private void BindData()
         {
         	//entity
-            this.winGridViewPager1.DisplayColumns = "Id,Name,Code,CalcType,Cardinal,Coefficient,Limit,Remark";
-            this.winGridViewPager1.ColumnNameAlias = CallerFactory<IBonusDefineService>.Instance.GetColumnNameAlias();//字段列显示名称转义
+            this.winGridViewPager1.DisplayColumns = "Name,Salary,SortCode,Remark";
+            this.winGridViewPager1.ColumnNameAlias = CallerFactory<ISalaryLevelService>.Instance.GetColumnNameAlias();//字段列显示名称转义
 
             #region 添加别名解析
 
-            //this.winGridViewPager1.AddColumnAlias("Id", "Id");
             //this.winGridViewPager1.AddColumnAlias("Name", "Name");
-            //this.winGridViewPager1.AddColumnAlias("Code", "Code");
-            //this.winGridViewPager1.AddColumnAlias("CalcType", "CalcType");
-            //this.winGridViewPager1.AddColumnAlias("Cardinal", "Cardinal");
-            //this.winGridViewPager1.AddColumnAlias("Coefficient", "Coefficient");
-            //this.winGridViewPager1.AddColumnAlias("Limit", "Limit");
+            //this.winGridViewPager1.AddColumnAlias("Salary", "Salary");
+            //this.winGridViewPager1.AddColumnAlias("SortCode", "SortCode");
             //this.winGridViewPager1.AddColumnAlias("Remark", "Remark");
 
             #endregion
 
             string where = GetConditionSql();
             PagerInfo pagerInfo = this.winGridViewPager1.PagerInfo;
-               List<BonusDefineInfo> list = CallerFactory<IBonusDefineService>.Instance.FindWithPager(where, ref pagerInfo);
+               List<SalaryLevelInfo> list = CallerFactory<ISalaryLevelService>.Instance.FindWithPager(where, ref pagerInfo);
             this.winGridViewPager1.PagerInfo.RecordCount = pagerInfo.RecordCount;
-            this.winGridViewPager1.DataSource = new Hades.Pager.WinControl.SortableBindingList<BonusDefineInfo>(list);
-               this.winGridViewPager1.PrintTitle = "BonusDefine报表";
+            this.winGridViewPager1.DataSource = new Hades.Pager.WinControl.SortableBindingList<SalaryLevelInfo>(list);
+               this.winGridViewPager1.PrintTitle = "SalaryLevel报表";
          }
         
         /// <summary>
@@ -285,7 +281,7 @@ namespace Hades.HR.UI
         /// </summary>
         private void btnAddNew_Click(object sender, EventArgs e)
         {
-            FrmEditBonusDefine dlg = new FrmEditBonusDefine();
+            FrmEditSalaryLevel dlg = new FrmEditSalaryLevel();
             dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
             dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
             
@@ -306,8 +302,8 @@ namespace Hades.HR.UI
             }
         }        
 
-		 		 		 		 		 		 		 		 
-        private string moduleName = "BonusDefine";
+		 		 		 		 		 
+        private string moduleName = "SalaryLevel";
         /// <summary>
         /// 导入Excel的操作
         /// </summary>          
@@ -348,17 +344,14 @@ namespace Hades.HR.UI
             bool converted = false;
             DateTime dtDefault = Convert.ToDateTime("1900-01-01");
             DateTime dt;
-            BonusDefineInfo info = new BonusDefineInfo();
+            SalaryLevelInfo info = new SalaryLevelInfo();
             info.Id = GetRowData(dr, "Id");
               info.Name = GetRowData(dr, "Name");
-              info.Code = GetRowData(dr, "Code");
-              info.CalcType = GetRowData(dr, "CalcType").ToInt32();
-              info.Cardinal = GetRowData(dr, "Cardinal").ToDecimal();
-              info.Coefficient = GetRowData(dr, "Coefficient").ToDecimal();
-              info.Limit = GetRowData(dr, "Limit").ToDecimal();
+              info.Salary = GetRowData(dr, "Salary").ToDecimal();
+              info.SortCode = GetRowData(dr, "SortCode");
               info.Remark = GetRowData(dr, "Remark");
   
-            success = CallerFactory<IBonusDefineService>.Instance.Insert(info);
+            success = CallerFactory<ISalaryLevelService>.Instance.Insert(info);
              return success;
         }
 
@@ -371,8 +364,8 @@ namespace Hades.HR.UI
             if (!string.IsNullOrEmpty(file))
             {
                 string where = GetConditionSql();
-                List<BonusDefineInfo> list = CallerFactory<IBonusDefineService>.Instance.Find(where);
-                 DataTable dtNew = DataTableHelper.CreateTable("序号|int,Id,Name,Code,CalcType,Cardinal,Coefficient,Limit,Remark");
+                List<SalaryLevelInfo> list = CallerFactory<ISalaryLevelService>.Instance.Find(where);
+                 DataTable dtNew = DataTableHelper.CreateTable("序号|int,Id,Name,Salary,SortCode,Remark");
                 DataRow dr;
                 int j = 1;
                 for (int i = 0; i < list.Count; i++)
@@ -381,11 +374,8 @@ namespace Hades.HR.UI
                     dr["序号"] = j++;
                     dr["Id"] = list[i].Id;
                      dr["Name"] = list[i].Name;
-                     dr["Code"] = list[i].Code;
-                     dr["CalcType"] = list[i].CalcType;
-                     dr["Cardinal"] = list[i].Cardinal;
-                     dr["Coefficient"] = list[i].Coefficient;
-                     dr["Limit"] = list[i].Limit;
+                     dr["Salary"] = list[i].Salary;
+                     dr["SortCode"] = list[i].SortCode;
                      dr["Remark"] = list[i].Remark;
                      dtNew.Rows.Add(dr);
                 }
@@ -420,15 +410,15 @@ namespace Hades.HR.UI
             if (dlg == null)
             {
                 dlg = new FrmAdvanceSearch();
-                dlg.FieldTypeTable = CallerFactory<IBonusDefineService>.Instance.GetFieldTypeList();
-                dlg.ColumnNameAlias = CallerFactory<IBonusDefineService>.Instance.GetColumnNameAlias();                
-                 dlg.DisplayColumns = "Id,Name,Code,CalcType,Cardinal,Coefficient,Limit,Remark";
+                dlg.FieldTypeTable = CallerFactory<ISalaryLevelService>.Instance.GetFieldTypeList();
+                dlg.ColumnNameAlias = CallerFactory<ISalaryLevelService>.Instance.GetColumnNameAlias();                
+                 dlg.DisplayColumns = "Id,Name,Salary,SortCode,Remark";
 
                 #region 下拉列表数据
 
                 //dlg.AddColumnListItem("UserType", Portal.gc.GetDictData("人员类型"));//字典列表
                 //dlg.AddColumnListItem("Sex", "男,女");//固定列表
-                //dlg.AddColumnListItem("Credit", BLLFactory<BonusDefine>.Instance.GetFieldList("Credit"));//动态列表
+                //dlg.AddColumnListItem("Credit", BLLFactory<SalaryLevel>.Instance.GetFieldList("Credit"));//动态列表
 
                 #endregion
 

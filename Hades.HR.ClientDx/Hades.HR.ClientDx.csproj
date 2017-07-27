@@ -453,18 +453,6 @@
     <Compile Include="Attendance\FrmAttendanceRecordEdit.Designer.cs">
       <DependentUpon>FrmAttendanceRecordEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="Salary\FrmBonusDefine.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Salary\FrmBonusDefine.Designer.cs">
-      <DependentUpon>FrmBonusDefine.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Salary\FrmEditBonusDefine.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Salary\FrmEditBonusDefine.Designer.cs">
-      <DependentUpon>FrmEditBonusDefine.cs</DependentUpon>
-    </Compile>
     <Compile Include="Base\FrmWorkTeamEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -488,6 +476,42 @@
     </Compile>
     <Compile Include="Base\FrmPositionView.Designer.cs">
       <DependentUpon>FrmPositionView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Salary\FrmBonusDefine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Salary\FrmBonusDefine.Designer.cs">
+      <DependentUpon>FrmBonusDefine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Salary\FrmEditBonusDefine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Salary\FrmEditBonusDefine.Designer.cs">
+      <DependentUpon>FrmEditBonusDefine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Salary\FrmEditSalaryLevel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Salary\FrmEditSalaryLevel.Designer.cs">
+      <DependentUpon>FrmEditSalaryLevel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Salary\FrmEditStaffSalaryDefine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Salary\FrmEditStaffSalaryDefine.Designer.cs">
+      <DependentUpon>FrmEditStaffSalaryDefine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Salary\FrmSalaryLevel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Salary\FrmSalaryLevel.Designer.cs">
+      <DependentUpon>FrmSalaryLevel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Salary\FrmStaffSalaryDefine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Salary\FrmStaffSalaryDefine.Designer.cs">
+      <DependentUpon>FrmStaffSalaryDefine.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\FrmStaffOverview.cs">
       <SubType>Form</SubType>
@@ -565,9 +589,6 @@
     <EmbeddedResource Include="Control\ProductionLineLookup.resx">
       <DependentUpon>ProductionLineLookup.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Salary\FrmBonusDefine.resx">
-      <DependentUpon>FrmBonusDefine.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Base\FrmDepartment.resx">
       <DependentUpon>FrmDepartment.cs</DependentUpon>
     </EmbeddedResource>
@@ -576,9 +597,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Base\FrmDepartmentView.resx">
       <DependentUpon>FrmDepartmentView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Salary\FrmEditBonusDefine.resx">
-      <DependentUpon>FrmEditBonusDefine.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Base\FrmProductionLineEdit.resx">
       <DependentUpon>FrmProductionLineEdit.cs</DependentUpon>

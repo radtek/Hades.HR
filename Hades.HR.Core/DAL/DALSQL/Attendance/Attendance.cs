@@ -48,6 +48,9 @@ namespace Hades.HR.DALSQL
             info.Month = reader.GetInt32("Month");
             info.Days = reader.GetInt32("Days");
             info.Remark = reader.GetString("Remark");
+            info.Editor = reader.GetString("Editor");
+            info.EditorId = reader.GetString("EditorId");
+            info.EditTime = reader.GetDateTime("EditTime");
 
             return info;
         }
@@ -67,6 +70,9 @@ namespace Hades.HR.DALSQL
             hash.Add("Month", info.Month);
             hash.Add("Days", info.Days);
             hash.Add("Remark", info.Remark);
+            hash.Add("Editor", info.Editor);
+            hash.Add("EditorId", info.EditorId);
+            hash.Add("EditTime", info.EditTime);
 
             return hash;
         }
@@ -85,6 +91,9 @@ namespace Hades.HR.DALSQL
             dict.Add("Month", "月份");
             dict.Add("Days", "本月天数");
             dict.Add("Remark", "备注");
+            dict.Add("Editor", "编辑人");
+            dict.Add("EditorId", "编辑人ID");
+            dict.Add("EditTime", "编辑时间");
             #endregion
 
             return dict;

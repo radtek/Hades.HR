@@ -1,6 +1,6 @@
 namespace Hades.HR.UI
 {
-    partial class FrmBonusDefine
+    partial class FrmStaffSalaryDefine
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace Hades.HR.UI
         private void InitializeComponent()
         {
         	this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmBonusDefine));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmStaffSalaryDefine));
             this.btnAddNew = new DevExpress.XtraEditors.SimpleButton();
             this.btnSearch = new DevExpress.XtraEditors.SimpleButton();
             this.btnExport = new DevExpress.XtraEditors.SimpleButton();
@@ -40,7 +40,7 @@ namespace Hades.HR.UI
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();    
 
 
-            this.txtName = new DevExpress.XtraEditors.TextEdit();
+            this.txtCardNumber = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
              
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
@@ -48,7 +48,7 @@ namespace Hades.HR.UI
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();    
 
-            ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCardNumber.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
  
 
@@ -131,14 +131,14 @@ namespace Hades.HR.UI
             this.layoutControl1.Text = "layoutControl1";
 
 
-            this.layoutControl1.Controls.Add(this.txtName);
+            this.layoutControl1.Controls.Add(this.txtCardNumber);
 
  
 
             // 
             // layoutControlItem1
             // 
-            this.layoutControlItem1.Control = this.txtName;
+            this.layoutControlItem1.Control = this.txtCardNumber;
             this.layoutControlItem1.CustomizationFormText = "";
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.MaxSize = new System.Drawing.Size(150, 25);
@@ -149,13 +149,13 @@ namespace Hades.HR.UI
             this.layoutControlItem1.Text = "";
             this.layoutControlItem1.TextSize = new System.Drawing.Size(48, 14); 
             // 
-            // txtName
+            // txtCardNumber
             // 
-            this.txtName.Location = new System.Drawing.Point(64, 12);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(122, 20);
-            this.txtName.StyleController = this.layoutControl1;
-            this.txtName.TabIndex = 1;
+            this.txtCardNumber.Location = new System.Drawing.Point(64, 12);
+            this.txtCardNumber.Name = "txtCardNumber";
+            this.txtCardNumber.Size = new System.Drawing.Size(122, 20);
+            this.txtCardNumber.StyleController = this.layoutControl1;
+            this.txtCardNumber.TabIndex = 1;
 
 
  
@@ -175,7 +175,7 @@ namespace Hades.HR.UI
             this.layoutControlGroup1.TextVisible = false;          
 
             // 
-            // FrmBonusDefine
+            // FrmStaffSalaryDefine
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -186,13 +186,13 @@ namespace Hades.HR.UI
             this.Controls.Add(this.btnAddNew);
             this.Controls.Add(this.btnExport);
             this.Controls.Add(this.btnImport);
-            this.Name = "FrmBonusDefine";
-            this.Text = "BonusDefine";
+            this.Name = "FrmStaffSalaryDefine";
+            this.Text = "StaffSalaryDefine";
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);            
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
 
-            ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCardNumber.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();            
  
             this.ResumeLayout(false);
@@ -213,7 +213,7 @@ namespace Hades.HR.UI
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
 
 
-        private DevExpress.XtraEditors.TextEdit txtName; 
+        private DevExpress.XtraEditors.TextEdit txtCardNumber; 
  
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;    
  

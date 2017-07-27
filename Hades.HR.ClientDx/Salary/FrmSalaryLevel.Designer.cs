@@ -1,6 +1,6 @@
 namespace Hades.HR.UI
 {
-    partial class FrmBonusDefine
+    partial class FrmSalaryLevel
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace Hades.HR.UI
         private void InitializeComponent()
         {
         	this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmBonusDefine));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSalaryLevel));
             this.btnAddNew = new DevExpress.XtraEditors.SimpleButton();
             this.btnSearch = new DevExpress.XtraEditors.SimpleButton();
             this.btnExport = new DevExpress.XtraEditors.SimpleButton();
@@ -175,7 +175,7 @@ namespace Hades.HR.UI
             this.layoutControlGroup1.TextVisible = false;          
 
             // 
-            // FrmBonusDefine
+            // FrmSalaryLevel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -186,8 +186,8 @@ namespace Hades.HR.UI
             this.Controls.Add(this.btnAddNew);
             this.Controls.Add(this.btnExport);
             this.Controls.Add(this.btnImport);
-            this.Name = "FrmBonusDefine";
-            this.Text = "BonusDefine";
+            this.Name = "FrmSalaryLevel";
+            this.Text = "SalaryLevel";
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);            
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
