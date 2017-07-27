@@ -21,15 +21,11 @@ namespace Hades.HR.ServiceCaller
 
         public const string ProductionLineService = "WSHttpBinding_IProductionLineService";
         public const string WorkTeamService = "WSHttpBinding_IWorkTeamService";
-
-        public const string StaffSalaryService = "WSHttpBinding_IStaffSalaryService";
-
-        public const string StaffSalaryViewService = "WSHttpBinding_IStaffSalaryViewService";
-
+              
+        public const string SalaryLevelService = "WSHttpBinding_ISalaryLevelService";
         public const string BonusDefineService = "WSHttpBinding_IBonusDefineService";
-
-        public const string StaffBonusService = "WSHttpBinding_IStaffBonusService";
-
+        public const string StaffSalaryDefineService = "WSHttpBinding_IStaffSalaryDefineService";
+        
         public const string AttendanceService = "WSHttpBinding_IAttendanceService";
         public const string AttendanceRecordService = "WSHttpBinding_IAttendanceRecordService";
 
