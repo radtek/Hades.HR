@@ -70,9 +70,12 @@ namespace Hades.HR.DALSQL
             info.Remark = reader.GetString("Remark");
             //info.Protraint = reader.GetBytes("Protraint");
             info.AttachId = reader.GetString("AttachId");
+            info.StaffType = reader.GetInt32("StaffType");
             info.CompanyId = reader.GetString("CompanyId");
             info.DepartmentId = reader.GetString("DepartmentId");
             info.PositionId = reader.GetString("PositionId");
+            info.ProductionLineId = reader.GetString("ProductionLineId");
+            info.WorkTeamId = reader.GetString("WorkTeamId");
             info.Creator = reader.GetString("Creator");
             info.CreatorId = reader.GetString("CreatorId");
             info.CreateTime = reader.GetDateTime("CreateTime");
@@ -122,9 +125,12 @@ namespace Hades.HR.DALSQL
             hash.Add("Remark", info.Remark);
             //hash.Add("Protraint", info.Protraint);
             hash.Add("AttachId", info.AttachId);
+            hash.Add("StaffType", info.StaffType);
             hash.Add("CompanyId", info.CompanyId);
             hash.Add("DepartmentId", info.DepartmentId);
             hash.Add("PositionId", info.PositionId);
+            hash.Add("ProductionLineId", info.ProductionLineId);
+            hash.Add("WorkTeamId", info.WorkTeamId);
             hash.Add("Creator", info.Creator);
             hash.Add("CreatorId", info.CreatorId);
             hash.Add("CreateTime", info.CreateTime);
@@ -172,9 +178,12 @@ namespace Hades.HR.DALSQL
             dict.Add("Remark", "备注");
             dict.Add("Protraint", "");
             dict.Add("AttachId", "");
+            dict.Add("StaffType", "职员类型");
             dict.Add("CompanyId", "所属公司");
             dict.Add("DepartmentId", "工作部门");
             dict.Add("PositionId", "工作岗位");
+            dict.Add("ProductionLineId", "所属产线");
+            dict.Add("WorkTeamId", "所属班组");
             dict.Add("Creator", "");
             dict.Add("CreatorId", "");
             dict.Add("CreateTime", "");

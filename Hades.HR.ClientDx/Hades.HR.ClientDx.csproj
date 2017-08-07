@@ -177,6 +177,12 @@
     <Compile Include="..\Hades.HR.Caller\Facade\Attendance\IAttendanceService.cs">
       <Link>Facade\Attendance\IAttendanceService.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Caller\Facade\Attendance\ILaborAttendanceRecordService.cs">
+      <Link>Facade\Attendance\ILaborAttendanceRecordService.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Caller\Facade\Attendance\ILaborMonthAttendanceService.cs">
+      <Link>Facade\Attendance\ILaborMonthAttendanceService.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Caller\Facade\Base\IDepartmentService.cs">
       <Link>Facade\Base\IDepartmentService.cs</Link>
     </Compile>
@@ -279,6 +285,12 @@
     <Compile Include="..\Hades.HR.Core\BLL\Attendance\AttendanceRecord.cs">
       <Link>Biz\BLL\Attendance\AttendanceRecord.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Core\BLL\Attendance\LaborAttendanceRecord.cs">
+      <Link>Biz\BLL\Attendance\LaborAttendanceRecord.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\BLL\Attendance\LaborMonthAttendance.cs">
+      <Link>Biz\BLL\Attendance\LaborMonthAttendance.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Core\BLL\Base\Department.cs">
       <Link>Biz\BLL\Base\Department.cs</Link>
     </Compile>
@@ -311,6 +323,12 @@
     </Compile>
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Attendance\AttendanceRecord.cs">
       <Link>Biz\DAL\DALSQL\Attendance\AttendanceRecord.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Attendance\LaborAttendanceRecord.cs">
+      <Link>Biz\DAL\DALSQL\Attendance\LaborAttendanceRecord.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Attendance\LaborMonthAttendance.cs">
+      <Link>Biz\DAL\DALSQL\Attendance\LaborMonthAttendance.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Base\Department.cs">
       <Link>Biz\DAL\DALSQL\Base\Department.cs</Link>
@@ -345,6 +363,12 @@
     <Compile Include="..\Hades.HR.Core\Entity\Attendance\AttendanceRecordInfo.cs">
       <Link>Biz\Entity\Attendance\AttendanceRecordInfo.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Core\Entity\Attendance\LaborAttendanceRecordInfo.cs">
+      <Link>Biz\Entity\Attendance\LaborAttendanceRecordInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\Entity\Attendance\LaborMonthAttendanceInfo.cs">
+      <Link>Biz\Entity\Attendance\LaborMonthAttendanceInfo.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Core\Entity\Base\DepartmentInfo.cs">
       <Link>Biz\Entity\Base\DepartmentInfo.cs</Link>
     </Compile>
@@ -377,6 +401,12 @@
     </Compile>
     <Compile Include="..\Hades.HR.Core\IDAL\Attendance\IAttendanceRecord.cs">
       <Link>Biz\IDAL\Attendance\IAttendanceRecord.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\IDAL\Attendance\ILaborAttendanceRecord.cs">
+      <Link>Biz\IDAL\Attendance\ILaborAttendanceRecord.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\IDAL\Attendance\ILaborMonthAttendance.cs">
+      <Link>Biz\IDAL\Attendance\ILaborMonthAttendance.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\IDAL\Base\IDepartment.cs">
       <Link>Biz\IDAL\Base\IDepartment.cs</Link>
@@ -416,6 +446,30 @@
     </Compile>
     <Compile Include="Attendance\FrmEditAttendance.Designer.cs">
       <DependentUpon>FrmEditAttendance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Attendance\FrmEditLaborAttendanceRecord.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Attendance\FrmEditLaborAttendanceRecord.Designer.cs">
+      <DependentUpon>FrmEditLaborAttendanceRecord.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Attendance\FrmEditLaborMonthAttendance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Attendance\FrmEditLaborMonthAttendance.Designer.cs">
+      <DependentUpon>FrmEditLaborMonthAttendance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Attendance\FrmLaborAttendanceRecord.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Attendance\FrmLaborAttendanceRecord.Designer.cs">
+      <DependentUpon>FrmLaborAttendanceRecord.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Attendance\FrmLaborMonthAttendance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Attendance\FrmLaborMonthAttendance.Designer.cs">
+      <DependentUpon>FrmLaborMonthAttendance.cs</DependentUpon>
     </Compile>
     <Compile Include="Control\DepartmentLookup.cs">
       <SubType>UserControl</SubType>
@@ -574,6 +628,15 @@
     <EmbeddedResource Include="Attendance\FrmEditAttendance.resx">
       <DependentUpon>FrmEditAttendance.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Attendance\FrmEditLaborAttendanceRecord.resx">
+      <DependentUpon>FrmEditLaborAttendanceRecord.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Attendance\FrmLaborAttendanceRecord.resx">
+      <DependentUpon>FrmLaborAttendanceRecord.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Attendance\FrmLaborMonthAttendance.resx">
+      <DependentUpon>FrmLaborMonthAttendance.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Control\DepartmentLookup.resx">
       <DependentUpon>DepartmentLookup.cs</DependentUpon>
     </EmbeddedResource>
@@ -629,6 +692,7 @@
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Hades.HR.Entity.AttendanceRecordInfo.datasource" />
     <None Include="Properties\DataSources\Hades.HR.Entity.DepartmentInfo.datasource" />
+    <None Include="Properties\DataSources\Hades.HR.Entity.LaborAttendanceRecordInfo.datasource" />
     <None Include="Properties\DataSources\Hades.HR.Entity.PositionInfo.datasource" />
     <None Include="Properties\DataSources\Hades.HR.Entity.ProductionLineInfo.datasource" />
     <None Include="Properties\DataSources\Hades.HR.Entity.StaffBonusInfo.datasource" />

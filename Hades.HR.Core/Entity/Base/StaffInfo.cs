@@ -104,6 +104,9 @@ namespace Hades.HR.Entity
         public virtual string AttachId { get; set; }
 
         [DataMember]
+        public virtual int StaffType { get; set; }
+
+        [DataMember]
         public virtual string CompanyId { get; set; }
 
         [DataMember]
@@ -111,6 +114,12 @@ namespace Hades.HR.Entity
 
         [DataMember]
         public virtual string PositionId { get; set; }
+
+        [DataMember]
+        public virtual string ProductionLineId { get; set; }
+
+        [DataMember]
+        public virtual string WorkTeamId { get; set; }
 
         [DataMember]
         public virtual string Creator { get; set; }

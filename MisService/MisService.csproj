@@ -126,6 +126,8 @@
     <Content Include="Base\Mail\MailUnifiedConfigService.svc" />
     <Content Include="HR\Attendance\AttendanceRecordService.svc" />
     <Content Include="HR\Attendance\AttendanceService.svc" />
+    <Content Include="HR\Attendance\LaborAttendanceRecordService.svc" />
+    <Content Include="HR\Attendance\LaborMonthAttendanceService.svc" />
     <Content Include="HR\BonusDefineService.svc" />
     <Content Include="HR\Base\DepartmentService.svc" />
     <Content Include="HR\Base\PositionService.svc" />

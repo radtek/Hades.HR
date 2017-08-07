@@ -29,6 +29,9 @@ namespace Hades.HR.ServiceCaller
         public const string AttendanceService = "WSHttpBinding_IAttendanceService";
         public const string AttendanceRecordService = "WSHttpBinding_IAttendanceRecordService";
 
+        public const string LaborAttendanceRecordService = "WSHttpBinding_ILaborAttendanceRecordService";
+        public const string LaborMonthAttendanceService = "WSHttpBinding_ILaborMonthAttendanceService";
+
         public const string StaffAttendanceViewService = "WSHttpBinding_IStaffAttendanceViewService";
     }
 }

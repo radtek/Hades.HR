@@ -110,6 +110,7 @@
             // dataNavigator1
             // 
             this.dataNavigator1.Location = new System.Drawing.Point(6, 451);
+            this.dataNavigator1.Size = new System.Drawing.Size(191, 30);
             this.dataNavigator1.Visible = false;
             // 
             // picPrint
@@ -131,10 +132,10 @@
             // 
             this.dgcAttendance.DataSource = this.bsAttendanceRecord;
             this.dgcAttendance.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgcAttendance.Location = new System.Drawing.Point(2, 21);
+            this.dgcAttendance.Location = new System.Drawing.Point(2, 25);
             this.dgcAttendance.MainView = this.dgvAttendance;
             this.dgcAttendance.Name = "dgcAttendance";
-            this.dgcAttendance.Size = new System.Drawing.Size(980, 330);
+            this.dgcAttendance.Size = new System.Drawing.Size(980, 326);
             this.dgcAttendance.TabIndex = 0;
             this.dgcAttendance.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.dgvAttendance});
@@ -434,37 +435,37 @@
             // 
             // txtRemark
             // 
-            this.txtRemark.Location = new System.Drawing.Point(730, 12);
+            this.txtRemark.Location = new System.Drawing.Point(727, 14);
             this.txtRemark.Name = "txtRemark";
             this.txtRemark.Properties.ReadOnly = true;
-            this.txtRemark.Size = new System.Drawing.Size(238, 20);
+            this.txtRemark.Size = new System.Drawing.Size(218, 24);
             this.txtRemark.StyleController = this.layoutControl1;
             this.txtRemark.TabIndex = 7;
             // 
             // txtDays
             // 
-            this.txtDays.Location = new System.Drawing.Point(576, 12);
+            this.txtDays.Location = new System.Drawing.Point(577, 14);
             this.txtDays.Name = "txtDays";
             this.txtDays.Properties.ReadOnly = true;
-            this.txtDays.Size = new System.Drawing.Size(99, 20);
+            this.txtDays.Size = new System.Drawing.Size(83, 24);
             this.txtDays.StyleController = this.layoutControl1;
             this.txtDays.TabIndex = 6;
             // 
             // txtAttendanceDate
             // 
-            this.txtAttendanceDate.Location = new System.Drawing.Point(330, 12);
+            this.txtAttendanceDate.Location = new System.Drawing.Point(337, 14);
             this.txtAttendanceDate.Name = "txtAttendanceDate";
             this.txtAttendanceDate.Properties.ReadOnly = true;
-            this.txtAttendanceDate.Size = new System.Drawing.Size(191, 20);
+            this.txtAttendanceDate.Size = new System.Drawing.Size(173, 24);
             this.txtAttendanceDate.StyleController = this.layoutControl1;
             this.txtAttendanceDate.TabIndex = 5;
             // 
             // txtDepartmentName
             // 
-            this.txtDepartmentName.Location = new System.Drawing.Point(63, 12);
+            this.txtDepartmentName.Location = new System.Drawing.Point(77, 14);
             this.txtDepartmentName.Name = "txtDepartmentName";
             this.txtDepartmentName.Properties.ReadOnly = true;
-            this.txtDepartmentName.Size = new System.Drawing.Size(212, 20);
+            this.txtDepartmentName.Size = new System.Drawing.Size(193, 24);
             this.txtDepartmentName.StyleController = this.layoutControl1;
             this.txtDepartmentName.TabIndex = 4;
             // 
@@ -479,7 +480,7 @@
             this.layoutControlItem4});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(980, 45);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(959, 52);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem1
@@ -487,40 +488,40 @@
             this.layoutControlItem1.Control = this.txtDepartmentName;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(267, 25);
+            this.layoutControlItem1.Size = new System.Drawing.Size(260, 28);
             this.layoutControlItem1.Text = "部门名称";
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(48, 14);
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(60, 18);
             // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.txtAttendanceDate;
-            this.layoutControlItem2.Location = new System.Drawing.Point(267, 0);
+            this.layoutControlItem2.Location = new System.Drawing.Point(260, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(246, 25);
+            this.layoutControlItem2.Size = new System.Drawing.Size(240, 28);
             this.layoutControlItem2.Text = "考勤时间";
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(48, 14);
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(60, 18);
             // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.txtDays;
-            this.layoutControlItem3.Location = new System.Drawing.Point(513, 0);
+            this.layoutControlItem3.Location = new System.Drawing.Point(500, 0);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(154, 25);
+            this.layoutControlItem3.Size = new System.Drawing.Size(150, 28);
             this.layoutControlItem3.Text = "本月天数";
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(48, 14);
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(60, 18);
             // 
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.txtRemark;
-            this.layoutControlItem4.Location = new System.Drawing.Point(667, 0);
+            this.layoutControlItem4.Location = new System.Drawing.Point(650, 0);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(293, 25);
+            this.layoutControlItem4.Size = new System.Drawing.Size(285, 28);
             this.layoutControlItem4.Text = "备注";
-            this.layoutControlItem4.TextSize = new System.Drawing.Size(48, 14);
+            this.layoutControlItem4.TextSize = new System.Drawing.Size(60, 18);
             // 
             // FrmAttendanceRecordEdit
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 486);
             this.Controls.Add(this.groupControl1);

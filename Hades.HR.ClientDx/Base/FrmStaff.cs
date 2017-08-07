@@ -72,7 +72,7 @@ namespace Hades.HR.UI
         private void BindData()
         {
             //entity
-            this.wgvStaff.DisplayColumns = "Number,Name,CompanyId,DepartmentId,PositionId,Gender,Birthday,NativePlace,Nationality,IdentityCard,Phone,OfficePhone,Email,HomeAddress,Political,PartyDate,Education,Degree,WorkingDate,Marriage,ChildStatus,Titles,Duty,JobType,Enabled";
+            this.wgvStaff.DisplayColumns = "Number,Name,StaffType,CompanyId,DepartmentId,PositionId,Gender,Birthday,NativePlace,Nationality,IdentityCard,Phone,OfficePhone,Email,HomeAddress,Political,PartyDate,Education,Degree,WorkingDate,Marriage,ChildStatus,Titles,Duty,JobType,Enabled";
             this.wgvStaff.ColumnNameAlias = CallerFactory<IStaffService>.Instance.GetColumnNameAlias();//字段列显示名称转义
 
             string where = GetConditionSql();
