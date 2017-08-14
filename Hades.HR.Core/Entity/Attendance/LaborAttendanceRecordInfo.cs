@@ -10,37 +10,44 @@ namespace Hades.HR.Entity
     /// </summary>
     [DataContract]
     public class LaborAttendanceRecordInfo : BaseEntity
-    { 
+    {
         /// <summary>
         /// 默认构造函数（需要初始化属性的在此处理）
         /// </summary>
-	    public LaborAttendanceRecordInfo()
-		{
-            this.Id= System.Guid.NewGuid().ToString();
-               this.Workload= 0;
-             this.AbsentType= 0;
-  
-		}
+        public LaborAttendanceRecordInfo()
+        {
+            this.Id = System.Guid.NewGuid().ToString();
+            this.Workload = 0;
+            this.AbsentType = 0;
+            this.IsWeekend = false;
+            this.IsHoliday = false;
+        }
 
         #region Property Members
-        
-		[DataMember]
+
+        [DataMember]
         public virtual string Id { get; set; }
 
-		[DataMember]
+        [DataMember]
         public virtual string StaffId { get; set; }
 
-		[DataMember]
+        [DataMember]
         public virtual DateTime AttendanceDate { get; set; }
 
-		[DataMember]
+        [DataMember]
         public virtual decimal Workload { get; set; }
 
-		[DataMember]
+        [DataMember]
         public virtual int AbsentType { get; set; }
 
+        [DataMember]
+        public virtual bool IsWeekend { get; set; }
 
+        [DataMember]
+        public virtual bool IsHoliday { get; set; }
+
+        [DataMember]
+        public virtual string Remark { get; set; }
         #endregion
-
     }
 }

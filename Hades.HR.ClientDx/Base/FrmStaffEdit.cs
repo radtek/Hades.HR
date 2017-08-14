@@ -103,9 +103,8 @@ namespace Hades.HR.UI
         /// </summary>
         public override void FormOnLoad()
         {
-            this.luDepartment.Init();
+            //this.luDepartment.Init();
             this.luCompany.Init();
-
 
             base.FormOnLoad();
         }
@@ -299,6 +298,22 @@ namespace Hades.HR.UI
 
         #region Event
         /// <summary>
+        /// 公司选择
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void luCompany_DepartmentSelect(object sender, EventArgs e)
+        {
+            var compId = this.luCompany.GetSelectedId();
+            if (!string.IsNullOrEmpty(compId))
+            {
+                this.luDepartment.Init(compId);
+
+                this.luProductionLine.Init(compId);
+            }
+        }
+
+        /// <summary>
         /// 部门选择
         /// </summary>
         /// <param name="sender"></param>
@@ -311,6 +326,21 @@ namespace Hades.HR.UI
                 this.luPosition.Init(depId);
             }
         }
+
+        /// <summary>
+        /// 产线选择
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void luProductionLine_ProductionLineSelect(object sender, EventArgs e)
+        {
+            var lineId = this.luProductionLine.GetSelectedId();
+            if (!string.IsNullOrEmpty(lineId))
+            {
+                this.luWorkTeam.Init(lineId);
+            }
+        }
+
         #endregion //Event
 
         //private void SetAttachInfo(StaffInfo info)

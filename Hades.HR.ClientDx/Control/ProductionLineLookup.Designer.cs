@@ -52,6 +52,7 @@
             this.luProductionLine.Properties.ValueMember = "Id";
             this.luProductionLine.Size = new System.Drawing.Size(217, 20);
             this.luProductionLine.TabIndex = 0;
+            this.luProductionLine.EditValueChanged += new System.EventHandler(this.luProductionLine_EditValueChanged);
             // 
             // bsProductionLine
             // 

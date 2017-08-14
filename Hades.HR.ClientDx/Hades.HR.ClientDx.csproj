@@ -531,6 +531,12 @@
     <Compile Include="Base\FrmPositionView.Designer.cs">
       <DependentUpon>FrmPositionView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Control\WorkTeamLookup.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\WorkTeamLookup.Designer.cs">
+      <DependentUpon>WorkTeamLookup.cs</DependentUpon>
+    </Compile>
     <Compile Include="Salary\FrmBonusDefine.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -679,6 +685,9 @@
     <EmbeddedResource Include="Base\FrmStaffEdit.resx">
       <DependentUpon>FrmStaffEdit.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Control\WorkTeamLookup.resx">
+      <DependentUpon>WorkTeamLookup.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmStaffOverview.resx">
       <DependentUpon>FrmStaffOverview.cs</DependentUpon>
     </EmbeddedResource>
@@ -696,6 +705,7 @@
     <None Include="Properties\DataSources\Hades.HR.Entity.PositionInfo.datasource" />
     <None Include="Properties\DataSources\Hades.HR.Entity.ProductionLineInfo.datasource" />
     <None Include="Properties\DataSources\Hades.HR.Entity.StaffBonusInfo.datasource" />
+    <None Include="Properties\DataSources\Hades.HR.Entity.WorkTeamInfo.datasource" />
     <None Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

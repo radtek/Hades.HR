@@ -70,5 +70,25 @@ namespace Hades.HR.UI
             }
         }
         #endregion //Method
+
+        #region Delegate
+        /// <summary>
+        /// 产线选择事件
+        /// </summary>
+        [Description("产线选择事件")]
+        public event EventHandler ProductionLineSelect;
+        #endregion //Delegate
+
+        #region Event
+        /// <summary>
+        /// 产线选择
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void luProductionLine_EditValueChanged(object sender, EventArgs e)
+        {
+            ProductionLineSelect?.Invoke(sender, e);
+        }
+        #endregion //Event
     }
 }

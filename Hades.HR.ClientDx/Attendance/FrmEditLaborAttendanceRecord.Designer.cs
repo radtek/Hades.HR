@@ -39,6 +39,8 @@ namespace Hades.HR.UI
             this.colAttendanceDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colWorkload = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAbsentType = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colIsWeekend = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colIsHoliday = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.picPrint)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
@@ -87,10 +89,10 @@ namespace Hades.HR.UI
             // 
             this.dgcAttendance.DataSource = this.bsAttendanceRecord;
             this.dgcAttendance.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgcAttendance.Location = new System.Drawing.Point(2, 25);
+            this.dgcAttendance.Location = new System.Drawing.Point(2, 21);
             this.dgcAttendance.MainView = this.dgvAttendance;
             this.dgcAttendance.Name = "dgcAttendance";
-            this.dgcAttendance.Size = new System.Drawing.Size(697, 236);
+            this.dgcAttendance.Size = new System.Drawing.Size(697, 240);
             this.dgcAttendance.TabIndex = 0;
             this.dgcAttendance.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.dgvAttendance});
@@ -106,7 +108,9 @@ namespace Hades.HR.UI
             this.colStaffId,
             this.colAttendanceDate,
             this.colWorkload,
-            this.colAbsentType});
+            this.colAbsentType,
+            this.colIsWeekend,
+            this.colIsHoliday});
             this.dgvAttendance.GridControl = this.dgcAttendance;
             this.dgvAttendance.Name = "dgvAttendance";
             this.dgvAttendance.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
@@ -121,42 +125,54 @@ namespace Hades.HR.UI
             // 
             this.colId.FieldName = "Id";
             this.colId.Name = "colId";
+            this.colId.Visible = true;
+            this.colId.VisibleIndex = 0;
             // 
             // colStaffId
             // 
-            this.colStaffId.Caption = "员工姓名";
             this.colStaffId.FieldName = "StaffId";
             this.colStaffId.Name = "colStaffId";
             this.colStaffId.Visible = true;
-            this.colStaffId.VisibleIndex = 0;
+            this.colStaffId.VisibleIndex = 1;
             // 
             // colAttendanceDate
             // 
-            this.colAttendanceDate.Caption = "考勤日期";
             this.colAttendanceDate.FieldName = "AttendanceDate";
             this.colAttendanceDate.Name = "colAttendanceDate";
             this.colAttendanceDate.Visible = true;
-            this.colAttendanceDate.VisibleIndex = 1;
+            this.colAttendanceDate.VisibleIndex = 2;
             // 
             // colWorkload
             // 
-            this.colWorkload.Caption = "工作量";
             this.colWorkload.FieldName = "Workload";
             this.colWorkload.Name = "colWorkload";
             this.colWorkload.Visible = true;
-            this.colWorkload.VisibleIndex = 2;
+            this.colWorkload.VisibleIndex = 3;
             // 
             // colAbsentType
             // 
-            this.colAbsentType.Caption = "缺勤类型";
             this.colAbsentType.FieldName = "AbsentType";
             this.colAbsentType.Name = "colAbsentType";
             this.colAbsentType.Visible = true;
-            this.colAbsentType.VisibleIndex = 3;
+            this.colAbsentType.VisibleIndex = 4;
+            // 
+            // colIsWeekend
+            // 
+            this.colIsWeekend.FieldName = "IsWeekend";
+            this.colIsWeekend.Name = "colIsWeekend";
+            this.colIsWeekend.Visible = true;
+            this.colIsWeekend.VisibleIndex = 5;
+            // 
+            // colIsHoliday
+            // 
+            this.colIsHoliday.FieldName = "IsHoliday";
+            this.colIsHoliday.Name = "colIsHoliday";
+            this.colIsHoliday.Visible = true;
+            this.colIsHoliday.VisibleIndex = 6;
             // 
             // FrmEditLaborAttendanceRecord
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(701, 427);
             this.Controls.Add(this.groupControl1);
@@ -194,5 +210,7 @@ namespace Hades.HR.UI
         private DevExpress.XtraGrid.Columns.GridColumn colAttendanceDate;
         private DevExpress.XtraGrid.Columns.GridColumn colWorkload;
         private DevExpress.XtraGrid.Columns.GridColumn colAbsentType;
+        private DevExpress.XtraGrid.Columns.GridColumn colIsWeekend;
+        private DevExpress.XtraGrid.Columns.GridColumn colIsHoliday;
     }
 }

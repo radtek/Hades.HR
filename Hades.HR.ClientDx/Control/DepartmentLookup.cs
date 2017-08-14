@@ -51,6 +51,16 @@ namespace Hades.HR.UI
         }
 
         /// <summary>
+        /// 初始化部门数据
+        /// </summary>
+        /// <param name="id">父部门ID</param>
+        public void Init(string id)
+        {
+            var data = CallerFactory<IDepartmentService>.Instance.FindWithChildren(id);
+            this.bsDepartment.DataSource = data;
+        }
+
+        /// <summary>
         /// 设置选中部门
         /// </summary>
         /// <param name="departmentId"></param>
