@@ -62,9 +62,12 @@ namespace Hades.HR.UI
         {
             info.Number = txtNumber.Text;
             info.Name = txtName.Text;
+            info.StaffType = Convert.ToInt32(cmbStaffType.EditValue);
             info.DepartmentId = luDepartment.GetSelectedId();
             info.PositionId = luPosition.GetSelectedId();
             info.CompanyId = luCompany.GetSelectedId();
+            info.ProductionLineId = luProductionLine.GetSelectedId();
+            info.WorkTeamId = luWorkTeam.GetSelectedId();
 
             info.Gender = cmbGender.Text;
             info.Birthday = txtBirthday.DateTime;
@@ -127,9 +130,12 @@ namespace Hades.HR.UI
                     txtNumber.Text = info.Number;
                     txtName.Text = info.Name;
 
-                    luDepartment.SetSelected(info.DepartmentId);
+                    cmbStaffType.EditValue = info.StaffType;
                     luCompany.SetSelected(info.CompanyId);
+                    luDepartment.SetSelected(info.DepartmentId);                    
                     luPosition.SetSelected(info.PositionId);
+                    luProductionLine.SetSelected(info.ProductionLineId);
+                    luWorkTeam.SetSelected(info.WorkTeamId);
 
                     cmbGender.Text = info.Gender;
                     txtBirthday.SetDateTime(info.Birthday);

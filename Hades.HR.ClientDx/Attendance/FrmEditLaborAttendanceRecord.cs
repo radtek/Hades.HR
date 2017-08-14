@@ -2,6 +2,7 @@ using System;
 using System.Text;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 using System.ComponentModel;
 using System.Collections.Generic;
@@ -43,38 +44,88 @@ namespace Hades.HR.UI
         public FrmEditLaborAttendanceRecord()
         {
             InitializeComponent();
+
+            this.workTeamId = "3aafbe8c-98db-41db-bccc-0171ff20e89a";
+            this.attendanceDate = DateTime.Now;
         }
 
         public FrmEditLaborAttendanceRecord(DateTime attendanceDate, string workTeamId)
         {
             InitializeComponent();
 
+            this.attendanceDate = attendanceDate;
             this.workTeamId = workTeamId;
         }
         #endregion //Constructor
 
         #region Function
+        /// <summary>
+        /// 初始化数据字典
+        /// </summary>
+        private void InitDictItem()
+        {
+            //初始化代码
+
+            this.repoCmbAbsentType.Items.AddEnum(typeof(AbsentType), true);
+        }
+
+        /// <summary>
+        /// 初始化考勤记录
+        /// </summary>
+        /// <returns></returns>
         private List<LaborAttendanceRecordInfo> InitRecords()
         {
-            //List<LaborAttendanceRecordInfo> data = new List<LaborAttendanceRecordInfo>();
-
             var data = CallerFactory<ILaborAttendanceRecordService>.Instance.Find(string.Format("AttendanceDate='{0}'", attendanceDate));
             this.staffs = CallerFactory<IStaffService>.Instance.Find(string.Format("WorkTeamId='{0}'", workTeamId));
 
-            
-            return data;
+            List<LaborAttendanceRecordInfo> records = new List<LaborAttendanceRecordInfo>();
+            foreach (var item in staffs)
+            {
+                var find = data.SingleOrDefault(r => r.StaffId == item.Id);
+                if (find != null)
+                {
+                    records.Add(find);
+                }
+                else
+                {
+                    LaborAttendanceRecordInfo info = new LaborAttendanceRecordInfo();
+                    info.Id = Guid.NewGuid().ToString();
+                    info.AttendanceDate = this.attendanceDate;
+                    info.StaffId = item.Id;
+
+                    records.Add(info);
+                }
+            }
+
+            return records;
+        }
+
+        /// <summary>
+        /// 编辑或者保存状态下取值函数
+        /// </summary>
+        /// <param name="info"></param>
+        private void SetInfo(LaborAttendanceRecordInfo info)
+        {
+            //info.StaffId = txtStaffId.Text;
+            //      info.AttendanceDate = txtAttendanceDate.DateTime;
+            //      info.Workload = txtWorkload.Value;
+            //          info.AbsentType = Convert.ToInt32(txtAbsentType.Value);
         }
         #endregion //Function
 
         #region Method
         public override void FormOnLoad()
         {
+            InitDictItem();
             var records = InitRecords();
             this.bsAttendanceRecord.DataSource = records;
-
-            
         }
-        #endregion //Method
+
+        public override void ClearScreen()
+        {
+            this.tempInfo = new LaborAttendanceRecordInfo();
+            base.ClearScreen();
+        }
 
         /// <summary>
         /// 实现控件输入检查的函数
@@ -115,14 +166,6 @@ namespace Hades.HR.UI
         }
 
         /// <summary>
-        /// 初始化数据字典
-        /// </summary>
-        private void InitDictItem()
-        {
-            //初始化代码
-        }
-
-        /// <summary>
         /// 数据显示的函数
         /// </summary>
         public override void DisplayData()
@@ -155,98 +198,40 @@ namespace Hades.HR.UI
             //SetAttachInfo(tempInfo);
         }
 
-        //private void SetAttachInfo(LaborAttendanceRecordInfo info)
-        //{
-        //    this.attachmentGUID.AttachmentGUID = info.AttachGUID;
-        //    this.attachmentGUID.userId = LoginUserInfo.Name;
-
-        //    string name = txtName.Text;
-        //    if (!string.IsNullOrEmpty(name))
-        //    {
-        //        string dir = string.Format("{0}", name);
-        //        this.attachmentGUID.Init(dir, tempInfo.ID, LoginUserInfo.Name);
-        //    }
-        //}
-
-        public override void ClearScreen()
-        {
-            this.tempInfo = new LaborAttendanceRecordInfo();
-            base.ClearScreen();
-        }
-
         /// <summary>
-        /// 编辑或者保存状态下取值函数
+        /// 保存记录
         /// </summary>
-        /// <param name="info"></param>
-        private void SetInfo(LaborAttendanceRecordInfo info)
+        private void SaveRecords()
         {
-            //info.StaffId = txtStaffId.Text;
-            //      info.AttendanceDate = txtAttendanceDate.DateTime;
-            //      info.Workload = txtWorkload.Value;
-            //          info.AbsentType = Convert.ToInt32(txtAbsentType.Value);
+            var records = this.bsAttendanceRecord.DataSource as List<LaborAttendanceRecordInfo>;
+
+            foreach (var item in records)
+            {
+                //item.LeaveDays = item.AnnualLeave + item.SickLeave + item.CasualLeave + item.InjuryLeave + item.MarriageLeave + item.AbsentLeave;
+                //item.OvertimeSalarySum = item.NormalOvertimeSalary + item.WeekendOvertimeSalary + item.HolidayOvertimeSalary;
+                CallerFactory<ILaborAttendanceRecordService>.Instance.InsertUpdate(item, item.Id);
+            }
         }
+        #endregion //Method
 
+        #region Event
         /// <summary>
-        /// 新增状态下的数据保存
+        /// 保存
         /// </summary>
-        /// <returns></returns>
-        public override bool SaveAddNew()
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnOK_Click(object sender, EventArgs e)
         {
-            LaborAttendanceRecordInfo info = tempInfo;//必须使用存在的局部变量，因为部分信息可能被附件使用
-            SetInfo(info);
-
             try
             {
-                #region 新增数据
-
-                bool succeed = CallerFactory<ILaborAttendanceRecordService>.Instance.Insert(info);
-                if (succeed)
-                {
-                    //可添加其他关联操作
-
-                    return true;
-                }
-                #endregion
+                SaveRecords();
+                this.DialogResult = DialogResult.OK;
             }
             catch (Exception ex)
             {
-                LogTextHelper.Error(ex);
-                MessageDxUtil.ShowError(ex.Message);
+                MessageDxUtil.ShowWarning(ex.Message);
             }
-            return false;
         }
-
-        /// <summary>
-        /// 编辑状态下的数据保存
-        /// </summary>
-        /// <returns></returns>
-        public override bool SaveUpdated()
-        {
-
-            LaborAttendanceRecordInfo info = CallerFactory<ILaborAttendanceRecordService>.Instance.FindByID(ID);
-            if (info != null)
-            {
-                SetInfo(info);
-
-                try
-                {
-                    #region 更新数据
-                    bool succeed = CallerFactory<ILaborAttendanceRecordService>.Instance.Update(info, info.Id);
-                    if (succeed)
-                    {
-                        //可添加其他关联操作
-
-                        return true;
-                    }
-                    #endregion
-                }
-                catch (Exception ex)
-                {
-                    LogTextHelper.Error(ex);
-                    MessageDxUtil.ShowError(ex.Message);
-                }
-            }
-            return false;
-        }
+        #endregion //Event
     }
 }

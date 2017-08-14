@@ -216,6 +216,12 @@
     <Compile Include="..\Hades.HR.Caller\ServiceCaller\Attendance\AttendanceRecordCaller.cs">
       <Link>Caller\ServiceCaller\Attendance\AttendanceRecordCaller.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Caller\ServiceCaller\Attendance\LaborAttendanceRecordCaller.cs">
+      <Link>Caller\ServiceCaller\Attendance\LaborAttendanceRecordCaller.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Caller\ServiceCaller\Attendance\LaborMonthAttendanceCaller.cs">
+      <Link>Caller\ServiceCaller\Attendance\LaborMonthAttendanceCaller.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Caller\ServiceCaller\Base\DepartmentCaller.cs">
       <Link>Caller\ServiceCaller\Base\DepartmentCaller.cs</Link>
     </Compile>
@@ -251,6 +257,12 @@
     </Compile>
     <Compile Include="..\Hades.HR.Caller\WinformCaller\Attendance\AttendanceRecordCaller.cs">
       <Link>Caller\WinformCaller\Attendance\AttendanceRecordCaller.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Caller\WinformCaller\Attendance\LaborAttendanceRecordCaller.cs">
+      <Link>Caller\WinformCaller\Attendance\LaborAttendanceRecordCaller.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Caller\WinformCaller\Attendance\LaborMonthAttendanceCaller.cs">
+      <Link>Caller\WinformCaller\Attendance\LaborMonthAttendanceCaller.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Caller\WinformCaller\Base\DepartmentCaller.cs">
       <Link>Caller\WinformCaller\Base\DepartmentCaller.cs</Link>
@@ -459,11 +471,11 @@
     <Compile Include="Attendance\FrmEditLaborMonthAttendance.Designer.cs">
       <DependentUpon>FrmEditLaborMonthAttendance.cs</DependentUpon>
     </Compile>
-    <Compile Include="Attendance\FrmLaborAttendanceRecord.cs">
+    <Compile Include="Attendance\FrmLaborAttendance.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Attendance\FrmLaborAttendanceRecord.Designer.cs">
-      <DependentUpon>FrmLaborAttendanceRecord.cs</DependentUpon>
+    <Compile Include="Attendance\FrmLaborAttendance.Designer.cs">
+      <DependentUpon>FrmLaborAttendance.cs</DependentUpon>
     </Compile>
     <Compile Include="Attendance\FrmLaborMonthAttendance.cs">
       <SubType>Form</SubType>
@@ -625,6 +637,7 @@
     <Compile Include="Util\ControlUtil.cs" />
     <Compile Include="Util\DepartmentType.cs" />
     <Compile Include="Util\ExtensionMethod.cs" />
+    <Compile Include="Util\HREnum.cs" />
     <EmbeddedResource Include="Attendance\FrmAttendance.resx">
       <DependentUpon>FrmAttendance.cs</DependentUpon>
     </EmbeddedResource>
@@ -637,8 +650,8 @@
     <EmbeddedResource Include="Attendance\FrmEditLaborAttendanceRecord.resx">
       <DependentUpon>FrmEditLaborAttendanceRecord.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Attendance\FrmLaborAttendanceRecord.resx">
-      <DependentUpon>FrmLaborAttendanceRecord.cs</DependentUpon>
+    <EmbeddedResource Include="Attendance\FrmLaborAttendance.resx">
+      <DependentUpon>FrmLaborAttendance.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Attendance\FrmLaborMonthAttendance.resx">
       <DependentUpon>FrmLaborMonthAttendance.cs</DependentUpon>

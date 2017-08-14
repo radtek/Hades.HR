@@ -39,8 +39,10 @@ namespace Hades.HR.UI
             this.colAttendanceDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colWorkload = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAbsentType = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repoCmbAbsentType = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.colIsWeekend = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colIsHoliday = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colRemark = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.picPrint)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
@@ -48,31 +50,39 @@ namespace Hades.HR.UI
             ((System.ComponentModel.ISupportInitialize)(this.dgcAttendance)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsAttendanceRecord)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAttendance)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repoCmbAbsentType)).BeginInit();
             this.SuspendLayout();
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(515, 392);
+            this.btnOK.Location = new System.Drawing.Point(698, 427);
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(614, 392);
+            this.btnCancel.Location = new System.Drawing.Point(797, 427);
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(428, 392);
+            this.btnAdd.Location = new System.Drawing.Point(611, 427);
+            this.btnAdd.Visible = false;
             // 
             // dataNavigator1
             // 
-            this.dataNavigator1.Location = new System.Drawing.Point(12, 385);
+            this.dataNavigator1.Location = new System.Drawing.Point(12, 420);
             this.dataNavigator1.Size = new System.Drawing.Size(191, 30);
+            this.dataNavigator1.Visible = false;
+            // 
+            // picPrint
+            // 
+            this.picPrint.Location = new System.Drawing.Point(202, 424);
             // 
             // panelControl1
             // 
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(701, 61);
+            this.panelControl1.Size = new System.Drawing.Size(884, 61);
             this.panelControl1.TabIndex = 6;
             // 
             // groupControl1
@@ -81,7 +91,7 @@ namespace Hades.HR.UI
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupControl1.Location = new System.Drawing.Point(0, 61);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(701, 263);
+            this.groupControl1.Size = new System.Drawing.Size(884, 332);
             this.groupControl1.TabIndex = 7;
             this.groupControl1.Text = "考勤记录";
             // 
@@ -92,7 +102,9 @@ namespace Hades.HR.UI
             this.dgcAttendance.Location = new System.Drawing.Point(2, 21);
             this.dgcAttendance.MainView = this.dgvAttendance;
             this.dgcAttendance.Name = "dgcAttendance";
-            this.dgcAttendance.Size = new System.Drawing.Size(697, 240);
+            this.dgcAttendance.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repoCmbAbsentType});
+            this.dgcAttendance.Size = new System.Drawing.Size(880, 309);
             this.dgcAttendance.TabIndex = 0;
             this.dgcAttendance.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.dgvAttendance});
@@ -110,7 +122,8 @@ namespace Hades.HR.UI
             this.colWorkload,
             this.colAbsentType,
             this.colIsWeekend,
-            this.colIsHoliday});
+            this.colIsHoliday,
+            this.colRemark});
             this.dgvAttendance.GridControl = this.dgcAttendance;
             this.dgvAttendance.Name = "dgvAttendance";
             this.dgvAttendance.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
@@ -125,56 +138,78 @@ namespace Hades.HR.UI
             // 
             this.colId.FieldName = "Id";
             this.colId.Name = "colId";
-            this.colId.Visible = true;
-            this.colId.VisibleIndex = 0;
             // 
             // colStaffId
             // 
+            this.colStaffId.Caption = "员工姓名";
             this.colStaffId.FieldName = "StaffId";
             this.colStaffId.Name = "colStaffId";
+            this.colStaffId.OptionsColumn.AllowEdit = false;
             this.colStaffId.Visible = true;
-            this.colStaffId.VisibleIndex = 1;
+            this.colStaffId.VisibleIndex = 0;
             // 
             // colAttendanceDate
             // 
+            this.colAttendanceDate.Caption = "考勤日期";
             this.colAttendanceDate.FieldName = "AttendanceDate";
             this.colAttendanceDate.Name = "colAttendanceDate";
+            this.colAttendanceDate.OptionsColumn.AllowEdit = false;
             this.colAttendanceDate.Visible = true;
-            this.colAttendanceDate.VisibleIndex = 2;
+            this.colAttendanceDate.VisibleIndex = 1;
             // 
             // colWorkload
             // 
+            this.colWorkload.Caption = "工作量";
             this.colWorkload.FieldName = "Workload";
             this.colWorkload.Name = "colWorkload";
             this.colWorkload.Visible = true;
-            this.colWorkload.VisibleIndex = 3;
+            this.colWorkload.VisibleIndex = 2;
             // 
             // colAbsentType
             // 
+            this.colAbsentType.Caption = "缺勤类型";
+            this.colAbsentType.ColumnEdit = this.repoCmbAbsentType;
             this.colAbsentType.FieldName = "AbsentType";
             this.colAbsentType.Name = "colAbsentType";
             this.colAbsentType.Visible = true;
-            this.colAbsentType.VisibleIndex = 4;
+            this.colAbsentType.VisibleIndex = 3;
+            // 
+            // repoCmbAbsentType
+            // 
+            this.repoCmbAbsentType.AutoHeight = false;
+            this.repoCmbAbsentType.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repoCmbAbsentType.Name = "repoCmbAbsentType";
             // 
             // colIsWeekend
             // 
+            this.colIsWeekend.Caption = "是否周末";
             this.colIsWeekend.FieldName = "IsWeekend";
             this.colIsWeekend.Name = "colIsWeekend";
             this.colIsWeekend.Visible = true;
-            this.colIsWeekend.VisibleIndex = 5;
+            this.colIsWeekend.VisibleIndex = 4;
             // 
             // colIsHoliday
             // 
+            this.colIsHoliday.Caption = "是否节假日";
             this.colIsHoliday.FieldName = "IsHoliday";
             this.colIsHoliday.Name = "colIsHoliday";
             this.colIsHoliday.Visible = true;
-            this.colIsHoliday.VisibleIndex = 6;
+            this.colIsHoliday.VisibleIndex = 5;
+            // 
+            // colRemark
+            // 
+            this.colRemark.Caption = "备注";
+            this.colRemark.FieldName = "Remark";
+            this.colRemark.Name = "colRemark";
+            this.colRemark.Visible = true;
+            this.colRemark.VisibleIndex = 6;
             // 
             // FrmEditLaborAttendanceRecord
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(701, 427);
+            this.ClientSize = new System.Drawing.Size(884, 462);
             this.Controls.Add(this.groupControl1);
             this.Controls.Add(this.panelControl1);
             this.Name = "FrmEditLaborAttendanceRecord";
@@ -193,6 +228,7 @@ namespace Hades.HR.UI
             ((System.ComponentModel.ISupportInitialize)(this.dgcAttendance)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsAttendanceRecord)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAttendance)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repoCmbAbsentType)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -212,5 +248,7 @@ namespace Hades.HR.UI
         private DevExpress.XtraGrid.Columns.GridColumn colAbsentType;
         private DevExpress.XtraGrid.Columns.GridColumn colIsWeekend;
         private DevExpress.XtraGrid.Columns.GridColumn colIsHoliday;
+        private DevExpress.XtraGrid.Columns.GridColumn colRemark;
+        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repoCmbAbsentType;
     }
 }

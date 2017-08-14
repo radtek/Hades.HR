@@ -31,6 +31,7 @@ namespace Hades.HR.UI
         private SearchCondition advanceCondition;
         #endregion //Field
 
+        #region Constructor
         public FrmAttendance()
         {
             InitializeComponent();
@@ -43,6 +44,7 @@ namespace Hades.HR.UI
             this.wgvRecord.BestFitColumnWith = false;//是否设置为自动调整宽度，false为不设置
             this.wgvRecord.gridView1.DataSourceChanged += new EventHandler(gridView1_DataSourceChanged);
         }
+        #endregion //Constructor
 
         #region Function
         /// <summary>

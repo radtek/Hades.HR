@@ -21,33 +21,73 @@ namespace Hades.HR.UI
     /// <summary>
     /// LaborAttendanceRecord
     /// </summary>	
-    public partial class FrmLaborAttendanceRecord : BaseDock
+    public partial class FrmLaborAttendance : BaseDock
     {
-        public FrmLaborAttendanceRecord()
+        #region Constructor
+        public FrmLaborAttendance()
         {
             InitializeComponent();
 
             InitDictItem();
 
-            this.winGridViewPager1.OnPageChanged += new EventHandler(winGridViewPager1_OnPageChanged);
-            this.winGridViewPager1.OnStartExport += new EventHandler(winGridViewPager1_OnStartExport);
-            this.winGridViewPager1.OnEditSelected += new EventHandler(winGridViewPager1_OnEditSelected);
-            this.winGridViewPager1.OnAddNew += new EventHandler(winGridViewPager1_OnAddNew);
-            this.winGridViewPager1.OnDeleteSelected += new EventHandler(winGridViewPager1_OnDeleteSelected);
-            this.winGridViewPager1.OnRefresh += new EventHandler(winGridViewPager1_OnRefresh);
-            this.winGridViewPager1.AppendedMenu = this.contextMenuStrip1;
-            this.winGridViewPager1.ShowLineNumber = true;
-            this.winGridViewPager1.BestFitColumnWith = false;//是否设置为自动调整宽度，false为不设置
-			this.winGridViewPager1.gridView1.DataSourceChanged +=new EventHandler(gridView1_DataSourceChanged);
-            this.winGridViewPager1.gridView1.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(gridView1_CustomColumnDisplayText);
-            this.winGridViewPager1.gridView1.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(gridView1_RowCellStyle);
+   //         this.winGridViewPager1.OnPageChanged += new EventHandler(winGridViewPager1_OnPageChanged);
+   //         this.winGridViewPager1.OnStartExport += new EventHandler(winGridViewPager1_OnStartExport);
+   //         this.winGridViewPager1.OnEditSelected += new EventHandler(winGridViewPager1_OnEditSelected);
+   //         this.winGridViewPager1.OnAddNew += new EventHandler(winGridViewPager1_OnAddNew);
+   //         this.winGridViewPager1.OnDeleteSelected += new EventHandler(winGridViewPager1_OnDeleteSelected);
+   //         this.winGridViewPager1.OnRefresh += new EventHandler(winGridViewPager1_OnRefresh);
+   //         this.winGridViewPager1.AppendedMenu = this.contextMenuStrip1;
+   //         this.winGridViewPager1.ShowLineNumber = true;
+   //         this.winGridViewPager1.BestFitColumnWith = false;//是否设置为自动调整宽度，false为不设置
+			//this.winGridViewPager1.gridView1.DataSourceChanged +=new EventHandler(gridView1_DataSourceChanged);
+   //         this.winGridViewPager1.gridView1.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(gridView1_CustomColumnDisplayText);
+   //         this.winGridViewPager1.gridView1.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(gridView1_RowCellStyle);
 
-            //关联回车键进行查询
-            foreach (Control control in this.layoutControl1.Controls)
+        }
+        #endregion //Constructor
+
+        #region Function
+        /// <summary>
+        /// 初始化字典列表内容
+        /// </summary>
+        private void InitDictItem()
+        {
+            //初始化代码
+        }
+        #endregion //Function
+
+        #region Method
+        /// <summary>
+        /// 编写初始化窗体的实现，可以用于刷新
+        /// </summary>
+        public override void FormOnLoad()
+        {
+            //BindData();
+        }
+        #endregion //Method
+
+        #region Event
+        private void btnAddAttendance_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// 编辑考勤记录
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnEditRecord_Click(object sender, EventArgs e)
+        {
+            FrmEditLaborAttendanceRecord dlg = new FrmEditLaborAttendanceRecord();
+            dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
+            if (DialogResult.OK == dlg.ShowDialog())
             {
-                control.KeyUp += new System.Windows.Forms.KeyEventHandler(this.SearchControl_KeyUp);
+                //LoadRecordData();
             }
         }
+        #endregion //Event
+
         void gridView1_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
         {
             //if (e.Column.FieldName == "OrderStatus")
@@ -118,21 +158,9 @@ namespace Hades.HR.UI
             }
         }
 
-        /// <summary>
-        /// 编写初始化窗体的实现，可以用于刷新
-        /// </summary>
-        public override void  FormOnLoad()
-        {   
-            BindData();
-        }
+    
         
-        /// <summary>
-        /// 初始化字典列表内容
-        /// </summary>
-        private void InitDictItem()
-        {
-			//初始化代码
-        }
+    
         
         /// <summary>
         /// 分页控件刷新操作
@@ -235,7 +263,7 @@ namespace Hades.HR.UI
             if (condition == null)
             {
                 condition = new SearchCondition();
-                condition.AddCondition("StaffId", this.txtStaffId.Text.Trim(), SqlOperator.Like);
+                //condition.AddCondition("StaffId", this.txtStaffId.Text.Trim(), SqlOperator.Like);
             }
             string where = condition.BuildConditionSql().Replace("Where", "");
             return where;
@@ -446,5 +474,6 @@ namespace Hades.HR.UI
             advanceCondition = condition;
             BindData();
         }
+
     }
 }
