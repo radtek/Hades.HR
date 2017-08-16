@@ -2,6 +2,7 @@ using System;
 using System.Text;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 using System.ComponentModel;
 using System.Collections.Generic;
@@ -54,6 +55,37 @@ namespace Hades.HR.UI
         {
             //初始化代码
         }
+
+        /// <summary>
+        /// 初始化工作组列表
+        /// </summary>
+        private void InitWorkTeam()
+        {
+            var companys = CallerFactory<IDepartmentService>.Instance.Find("Type=2");
+            var lines = CallerFactory<IProductionLineService>.Instance.Find("");
+            var teams = CallerFactory<IWorkTeamService>.Instance.Find("");
+
+            foreach(var com in companys)
+            {
+                TreeNode comNode = new TreeNode { Name = com.Id, Text = com.Name, Tag = 1 };
+                var node = this.tvLine.Nodes.Add(comNode);
+
+                var lines2 = lines.Where(r => r.CompanyId == com.Id);
+                foreach(var line in lines2)
+                {
+                    TreeNode lineNode = new TreeNode { Name = line.Id, Text = line.Name, Tag = 2 };
+                    var node2 = comNode.Nodes.Add(lineNode);
+
+                    var teams2 = teams.Where(r => r.ProductionLineId == line.Id);
+                    foreach(var team in teams2)
+                    {
+                        TreeNode teamNode = new TreeNode { Name = team.Id, Text = team.Name, Tag = 3 };
+                        lineNode.Nodes.Add(teamNode);
+                    }
+                }
+
+            }
+        }
         #endregion //Function
 
         #region Method
@@ -62,12 +94,13 @@ namespace Hades.HR.UI
         /// </summary>
         public override void FormOnLoad()
         {
-            //BindData();
+            InitWorkTeam();
         }
         #endregion //Method
 
         #region Event
-        private void btnAddAttendance_Click(object sender, EventArgs e)
+      
+        private void dpAttendance_EditValueChanged(object sender, EventArgs e)
         {
 
         }
@@ -79,7 +112,22 @@ namespace Hades.HR.UI
         /// <param name="e"></param>
         private void btnEditRecord_Click(object sender, EventArgs e)
         {
-            FrmEditLaborAttendanceRecord dlg = new FrmEditLaborAttendanceRecord();
+            var node = this.tvLine.SelectedNode;
+            if (node == null || Convert.ToInt32(node.Tag) != 3)
+            {
+                MessageDxUtil.ShowWarning("请选择班组");
+                return;
+            }
+            if (this.dpAttendance.EditValue == null)
+            {
+                MessageDxUtil.ShowWarning("请选择考勤日期");
+                return;
+            }
+
+            var teamId = node.Name;
+            var date = this.dpAttendance.DateTime.Date;
+
+            FrmEditLaborAttendanceRecord dlg = new FrmEditLaborAttendanceRecord(date, teamId);
             dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
             if (DialogResult.OK == dlg.ShowDialog())
             {
@@ -203,19 +251,19 @@ namespace Hades.HR.UI
                 IDList.Add(strTemp);
             }
 
-            if (!string.IsNullOrEmpty(ID))
-            {
-                FrmEditLaborAttendanceRecord dlg = new FrmEditLaborAttendanceRecord();
-                dlg.ID = ID;
-                dlg.IDList = IDList;
-                dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
-                dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
+            //if (!string.IsNullOrEmpty(ID))
+            //{
+            //    FrmEditLaborAttendanceRecord dlg = new FrmEditLaborAttendanceRecord();
+            //    dlg.ID = ID;
+            //    dlg.IDList = IDList;
+            //    dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
+            //    dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
                 
-                if (DialogResult.OK == dlg.ShowDialog())
-                {
-                    BindData();
-                }
-            }
+            //    if (DialogResult.OK == dlg.ShowDialog())
+            //    {
+            //        BindData();
+            //    }
+            //}
         }        
         
         void dlg_OnDataSaved(object sender, EventArgs e)
@@ -309,14 +357,14 @@ namespace Hades.HR.UI
         /// </summary>
         private void btnAddNew_Click(object sender, EventArgs e)
         {
-            FrmEditLaborAttendanceRecord dlg = new FrmEditLaborAttendanceRecord();
-            dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
-            dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
+            //FrmEditLaborAttendanceRecord dlg = new FrmEditLaborAttendanceRecord();
+            //dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
+            //dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
             
-            if (DialogResult.OK == dlg.ShowDialog())
-            {
-                BindData();
-            }
+            //if (DialogResult.OK == dlg.ShowDialog())
+            //{
+            //    BindData();
+            //}
         }
         
         /// <summary>

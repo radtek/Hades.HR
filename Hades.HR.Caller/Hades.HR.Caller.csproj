@@ -80,7 +80,6 @@
     <Compile Include="Facade\Attendance\IAttendanceRecordService.cs" />
     <Compile Include="Facade\Attendance\IAttendanceService.cs" />
     <Compile Include="Facade\Attendance\ILaborAttendanceRecordService.cs" />
-    <Compile Include="Facade\Attendance\ILaborAttendanceService.cs" />
     <Compile Include="Facade\Attendance\ILaborMonthAttendanceService.cs" />
     <Compile Include="Facade\Salary\IBonusDefineService.cs" />
     <Compile Include="Facade\Base\IDepartmentService.cs" />
@@ -93,7 +92,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceCaller\Attendance\AttendanceCaller.cs" />
     <Compile Include="ServiceCaller\Attendance\AttendanceRecordCaller.cs" />
-    <Compile Include="ServiceCaller\Attendance\LaborAttendanceCaller.cs" />
     <Compile Include="ServiceCaller\Attendance\LaborAttendanceRecordCaller.cs" />
     <Compile Include="ServiceCaller\Attendance\LaborMonthAttendanceCaller.cs" />
     <Compile Include="ServiceCaller\Salary\BonusDefineCaller.cs" />

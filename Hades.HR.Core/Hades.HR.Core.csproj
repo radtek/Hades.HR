@@ -110,7 +110,6 @@
   <ItemGroup>
     <Compile Include="BLL\Attendance\Attendance.cs" />
     <Compile Include="BLL\Attendance\AttendanceRecord.cs" />
-    <Compile Include="BLL\Attendance\LaborAttendance.cs" />
     <Compile Include="BLL\Attendance\LaborAttendanceRecord.cs" />
     <Compile Include="BLL\Attendance\LaborMonthAttendance.cs" />
     <Compile Include="BLL\Salary\BonusDefine.cs" />
@@ -123,7 +122,6 @@
     <Compile Include="BLL\Base\WorkTeam.cs" />
     <Compile Include="DAL\DALSQL\Attendance\Attendance.cs" />
     <Compile Include="DAL\DALSQL\Attendance\AttendanceRecord.cs" />
-    <Compile Include="DAL\DALSQL\Attendance\LaborAttendance.cs" />
     <Compile Include="DAL\DALSQL\Attendance\LaborAttendanceRecord.cs" />
     <Compile Include="DAL\DALSQL\Attendance\LaborMonthAttendance.cs" />
     <Compile Include="DAL\DALSQL\Salary\BonusDefine.cs" />
@@ -136,7 +134,6 @@
     <Compile Include="DAL\DALSQL\Base\WorkTeam.cs" />
     <Compile Include="Entity\Attendance\AttendanceInfo.cs" />
     <Compile Include="Entity\Attendance\AttendanceRecordInfo.cs" />
-    <Compile Include="Entity\Attendance\LaborAttendanceInfo.cs" />
     <Compile Include="Entity\Attendance\LaborAttendanceRecordInfo.cs" />
     <Compile Include="Entity\Attendance\LaborMonthAttendanceInfo.cs" />
     <Compile Include="Entity\Salary\BonusDefineInfo.cs" />
@@ -149,7 +146,6 @@
     <Compile Include="Entity\Base\WorkTeamInfo.cs" />
     <Compile Include="IDAL\Attendance\IAttendance.cs" />
     <Compile Include="IDAL\Attendance\IAttendanceRecord.cs" />
-    <Compile Include="IDAL\Attendance\ILaborAttendance.cs" />
     <Compile Include="IDAL\Attendance\ILaborAttendanceRecord.cs" />
     <Compile Include="IDAL\Attendance\ILaborMonthAttendance.cs" />
     <Compile Include="IDAL\Salary\IBonusDefine.cs" />
