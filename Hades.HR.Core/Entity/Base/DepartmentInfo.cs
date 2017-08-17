@@ -89,6 +89,20 @@ namespace Hades.HR.Entity
         public virtual string OuterPhone { get; set; }
 
         /// <summary>
+        /// 传真
+        /// </summary>
+        [Display(Name = "传真")]
+        [DataMember]
+        public virtual string Fax { get; set; }
+
+        /// <summary>
+        /// 负责人
+        /// </summary>
+        [Display(Name = "负责人")]
+        [DataMember]
+        public virtual string Principal { get; set; }
+
+        /// <summary>
         /// 备注
         /// </summary>
         [Display(Name = "备注")]

@@ -81,6 +81,8 @@
     <Compile Include="Facade\Attendance\IAttendanceService.cs" />
     <Compile Include="Facade\Attendance\ILaborAttendanceRecordService.cs" />
     <Compile Include="Facade\Attendance\ILaborMonthAttendanceService.cs" />
+    <Compile Include="Facade\Base\IWarehouseManagerService.cs" />
+    <Compile Include="Facade\Base\IWarehouseService.cs" />
     <Compile Include="Facade\Salary\IBonusDefineService.cs" />
     <Compile Include="Facade\Base\IDepartmentService.cs" />
     <Compile Include="Facade\Base\IProductionLineService.cs" />
@@ -94,6 +96,8 @@
     <Compile Include="ServiceCaller\Attendance\AttendanceRecordCaller.cs" />
     <Compile Include="ServiceCaller\Attendance\LaborAttendanceRecordCaller.cs" />
     <Compile Include="ServiceCaller\Attendance\LaborMonthAttendanceCaller.cs" />
+    <Compile Include="ServiceCaller\Base\WarehouseCaller.cs" />
+    <Compile Include="ServiceCaller\Base\WarehouseManagerCaller.cs" />
     <Compile Include="ServiceCaller\Salary\BonusDefineCaller.cs" />
     <Compile Include="ServiceCaller\Base\DepartmentCaller.cs" />
     <Compile Include="ServiceCaller\EndPointConfig.cs" />
@@ -107,6 +111,8 @@
     <Compile Include="WinformCaller\Attendance\AttendanceRecordCaller.cs" />
     <Compile Include="WinformCaller\Attendance\LaborAttendanceRecordCaller.cs" />
     <Compile Include="WinformCaller\Attendance\LaborMonthAttendanceCaller.cs" />
+    <Compile Include="WinformCaller\Base\WarehouseCaller.cs" />
+    <Compile Include="WinformCaller\Base\WarehouseManagerCaller.cs" />
     <Compile Include="WinformCaller\Salary\BonusDefineCaller.cs" />
     <Compile Include="WinformCaller\Base\DepartmentCaller.cs" />
     <Compile Include="Facade\Base\IPositionService.cs" />
