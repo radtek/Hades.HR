@@ -56,6 +56,8 @@ namespace Hades.HR.UI
             info.SortCode = txtSortCode.Text;
             info.Type = Convert.ToInt32(cmbType.EditValue);
             info.Address = txtAddress.Text;
+            info.Principal = txtPrincipal.Text;
+            info.Fax = txtFax.Text;
             info.InnerPhone = txtInnerPhone.Text;
             info.OuterPhone = txtOuterPhone.Text;
             info.Remark = txtRemark.Text;
@@ -102,6 +104,8 @@ namespace Hades.HR.UI
                     txtSortCode.Text = info.SortCode;
                     cmbType.EditValue = (DepartmentType)info.Type;
                     txtAddress.Text = info.Address;
+                    txtPrincipal.Text = info.Principal;
+                    txtFax.Text = info.Fax;
                     txtInnerPhone.Text = info.InnerPhone;
                     txtOuterPhone.Text = info.OuterPhone;
                     dpFoundDate.SetDateTime(info.FoundDate);

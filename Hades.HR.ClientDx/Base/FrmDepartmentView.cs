@@ -55,6 +55,8 @@ namespace Hades.HR.UI
                     txtSortCode.Text = info.SortCode;
                     txtType.Text = ((DepartmentType)info.Type).DisplayName();
                     txtAddress.Text = info.Address;
+                    txtFax.Text = info.Fax;
+                    txtPrincipal.Text = info.Principal;
                     txtInnerPhone.Text = info.InnerPhone;
                     txtOuterPhone.Text = info.OuterPhone;
                     dpFoundDate.SetDateTime(info.FoundDate);

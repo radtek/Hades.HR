@@ -44,11 +44,13 @@
             this.colDeleted = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.colEnabled = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.menuCreate = new System.Windows.Forms.ToolStripMenuItem();
             this.menuView = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuCreate = new System.Windows.Forms.ToolStripMenuItem();
             this.menuEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.menuDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.bsDepartment = new System.Windows.Forms.BindingSource(this.components);
+            this.colFax = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.colPrincipal = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             ((System.ComponentModel.ISupportInitialize)(this.tlView)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bsDepartment)).BeginInit();
@@ -65,6 +67,8 @@
             this.colSortCode,
             this.colType,
             this.colAddress,
+            this.colPrincipal,
+            this.colFax,
             this.colInnerPhone,
             this.colOuterPhone,
             this.colRemark,
@@ -77,11 +81,11 @@
             this.tlView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlView.KeyFieldName = "Id";
             this.tlView.Location = new System.Drawing.Point(0, 0);
-            this.tlView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tlView.Name = "tlView";
             this.tlView.OptionsBehavior.Editable = false;
+            this.tlView.OptionsBehavior.PopulateServiceColumns = true;
             this.tlView.ParentFieldName = "PID";
-            this.tlView.Size = new System.Drawing.Size(760, 498);
+            this.tlView.Size = new System.Drawing.Size(665, 387);
             this.tlView.TabIndex = 0;
             this.tlView.GetNodeDisplayValue += new DevExpress.XtraTreeList.GetNodeDisplayValueEventHandler(this.tlView_GetNodeDisplayValue);
             this.tlView.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.tlView_FocusedNodeChanged);
@@ -146,7 +150,7 @@
             this.colInnerPhone.FieldName = "InnerPhone";
             this.colInnerPhone.Name = "colInnerPhone";
             this.colInnerPhone.Visible = true;
-            this.colInnerPhone.VisibleIndex = 5;
+            this.colInnerPhone.VisibleIndex = 7;
             this.colInnerPhone.Width = 45;
             // 
             // colOuterPhone
@@ -155,7 +159,7 @@
             this.colOuterPhone.FieldName = "OuterPhone";
             this.colOuterPhone.Name = "colOuterPhone";
             this.colOuterPhone.Visible = true;
-            this.colOuterPhone.VisibleIndex = 6;
+            this.colOuterPhone.VisibleIndex = 8;
             this.colOuterPhone.Width = 45;
             // 
             // colRemark
@@ -164,7 +168,7 @@
             this.colRemark.FieldName = "Remark";
             this.colRemark.Name = "colRemark";
             this.colRemark.Visible = true;
-            this.colRemark.VisibleIndex = 7;
+            this.colRemark.VisibleIndex = 9;
             this.colRemark.Width = 45;
             // 
             // colFoundDate
@@ -196,7 +200,7 @@
             this.colEnabled.FieldName = "Enabled";
             this.colEnabled.Name = "colEnabled";
             this.colEnabled.Visible = true;
-            this.colEnabled.VisibleIndex = 8;
+            this.colEnabled.VisibleIndex = 10;
             this.colEnabled.Width = 44;
             // 
             // contextMenuStrip1
@@ -208,33 +212,33 @@
             this.menuEdit,
             this.menuDelete});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(139, 100);
-            // 
-            // menuCreate
-            // 
-            this.menuCreate.Name = "menuCreate";
-            this.menuCreate.Size = new System.Drawing.Size(138, 24);
-            this.menuCreate.Text = "新增部门";
-            this.menuCreate.Click += new System.EventHandler(this.menuCreate_Click);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(125, 92);
             // 
             // menuView
             // 
             this.menuView.Name = "menuView";
-            this.menuView.Size = new System.Drawing.Size(138, 24);
+            this.menuView.Size = new System.Drawing.Size(124, 22);
             this.menuView.Text = "查看部门";
             this.menuView.Click += new System.EventHandler(this.menuView_Click);
+            // 
+            // menuCreate
+            // 
+            this.menuCreate.Name = "menuCreate";
+            this.menuCreate.Size = new System.Drawing.Size(124, 22);
+            this.menuCreate.Text = "新增部门";
+            this.menuCreate.Click += new System.EventHandler(this.menuCreate_Click);
             // 
             // menuEdit
             // 
             this.menuEdit.Name = "menuEdit";
-            this.menuEdit.Size = new System.Drawing.Size(138, 24);
+            this.menuEdit.Size = new System.Drawing.Size(124, 22);
             this.menuEdit.Text = "编辑部门";
             this.menuEdit.Click += new System.EventHandler(this.menuEdit_Click);
             // 
             // menuDelete
             // 
             this.menuDelete.Name = "menuDelete";
-            this.menuDelete.Size = new System.Drawing.Size(138, 24);
+            this.menuDelete.Size = new System.Drawing.Size(124, 22);
             this.menuDelete.Text = "删除部门";
             this.menuDelete.Click += new System.EventHandler(this.menuDelete_Click);
             // 
@@ -242,14 +246,29 @@
             // 
             this.bsDepartment.DataSource = typeof(Hades.HR.Entity.DepartmentInfo);
             // 
+            // colFax
+            // 
+            this.colFax.Caption = "传真";
+            this.colFax.FieldName = "Fax";
+            this.colFax.Name = "colFax";
+            this.colFax.Visible = true;
+            this.colFax.VisibleIndex = 6;
+            // 
+            // colPrincipal
+            // 
+            this.colPrincipal.Caption = "负责人";
+            this.colPrincipal.FieldName = "Principal";
+            this.colPrincipal.Name = "colPrincipal";
+            this.colPrincipal.Visible = true;
+            this.colPrincipal.VisibleIndex = 5;
+            // 
             // DepartmentTreeGrid
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tlView);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "DepartmentTreeGrid";
-            this.Size = new System.Drawing.Size(760, 498);
+            this.Size = new System.Drawing.Size(665, 387);
             this.Load += new System.EventHandler(this.DepartmentTreeGrid_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tlView)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
@@ -280,5 +299,7 @@
         private DevExpress.XtraTreeList.Columns.TreeListColumn colId;
         private System.Windows.Forms.ToolStripMenuItem menuCreate;
         private System.Windows.Forms.ToolStripMenuItem menuDelete;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn colPrincipal;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn colFax;
     }
 }

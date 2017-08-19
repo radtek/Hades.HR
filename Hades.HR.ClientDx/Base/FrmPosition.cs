@@ -95,6 +95,21 @@ namespace Hades.HR.UI
         }
 
         /// <summary>
+        /// 载入公司包含仓库
+        /// </summary>
+        /// <param name="department"></param>
+        private void LoadWarehouse(DepartmentInfo department)
+        {
+            var warehouse = CallerFactory<IWarehouseService>.Instance.Find2(string.Format("CompanyId='{0}' AND Deleted=0", department.Id), "ORDER BY SortCode");
+
+            this.wgvWarehouse.DisplayColumns = "Name,Number,CompanyId,SortCode,Remark,Enabled";
+            this.wgvWarehouse.ColumnNameAlias = CallerFactory<IWarehouseService>.Instance.GetColumnNameAlias();
+
+            this.wgvWarehouse.DataSource = warehouse;
+            this.wgvWarehouse.PrintTitle = "仓库报表";
+        }
+
+        /// <summary>
         /// 查看岗位
         /// </summary>
         private void ViewPosition()
@@ -142,6 +157,11 @@ namespace Hades.HR.UI
             this.wgvWorkTeam.ShowLineNumber = true;
             this.wgvWorkTeam.BestFitColumnWith = true;
             this.wgvWorkTeam.gridView1.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(wgvWorkTeam_CustomColumnDisplayText);
+
+            this.wgvWarehouse.AppendedMenu = this.contextMenuStrip4;
+            this.wgvWarehouse.ShowLineNumber = true;
+            this.wgvWarehouse.BestFitColumnWith = true;
+            this.wgvWarehouse.gridView1.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(wgvWarehouse_CustomColumnDisplayText);
         }
         #endregion //Method
 
@@ -162,6 +182,7 @@ namespace Hades.HR.UI
                 LoadPositions(department);
                 LoadProductionLines(department);
                 LoadWorkTeams(department);
+                LoadWarehouse(department);
             }
         }
 
@@ -372,6 +393,62 @@ namespace Hades.HR.UI
             LoadDepartments();
         }
 
+        /// <summary>
+        /// 菜单 - 查看仓库
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void menuViewWarehouse_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// 菜单 - 新增仓库
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void menuAddWarehouse_Click(object sender, EventArgs e)
+        {
+            FrmWarehouseEdit dlg = new FrmWarehouseEdit();
+            // dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
+            dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
+
+            if (DialogResult.OK == dlg.ShowDialog())
+            {
+                LoadDepartments();
+            }
+        }
+
+        /// <summary>
+        /// 菜单 - 编辑仓库
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void menuEditWarehouse_Click(object sender, EventArgs e)
+        {
+            string ID = this.wgvWarehouse.gridView1.GetFocusedRowCellDisplayText("Id");
+            List<string> IDList = new List<string>();
+            for (int i = 0; i < this.wgvWarehouse.gridView1.RowCount; i++)
+            {
+                string strTemp = this.wgvWarehouse.GridView1.GetRowCellDisplayText(i, "Id");
+                IDList.Add(strTemp);
+            }
+
+            if (!string.IsNullOrEmpty(ID))
+            {
+                FrmWarehouseEdit dlg = new FrmWarehouseEdit();
+                dlg.ID = ID;
+                dlg.IDList = IDList;
+                dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
+
+                if (DialogResult.OK == dlg.ShowDialog())
+                {
+                    LoadDepartments();
+                }
+            }
+        }
+
         #region Grid Event
         /// <summary>
         /// 双击岗位
@@ -470,8 +547,32 @@ namespace Hades.HR.UI
                 e.DisplayText = Convert.ToInt32(e.Value) == 1 ? "已启用" : "未启用";
             }
         }
+
+        /// <summary>
+        /// 格式化仓库列表
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void wgvWarehouse_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+        {
+            string columnName = e.Column.FieldName;
+            if (columnName == "CompanyId")
+            {
+                if (e.Value != null && !string.IsNullOrEmpty(e.Value.ToString()))
+                {
+                    var dep = CallerFactory<IDepartmentService>.Instance.FindByID(e.Value.ToString());
+                    e.DisplayText = dep.Name;
+                }
+            }
+            else if (columnName == "Enabled")
+            {
+                e.DisplayText = Convert.ToInt32(e.Value) == 1 ? "已启用" : "未启用";
+            }
+        }
+
         #endregion //Grid Event
 
         #endregion //Event
+
     }
 }

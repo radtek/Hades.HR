@@ -525,6 +525,12 @@
     <Compile Include="Attendance\FrmLaborMonthAttendance.Designer.cs">
       <DependentUpon>FrmLaborMonthAttendance.cs</DependentUpon>
     </Compile>
+    <Compile Include="Base\FrmWarehouseEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Base\FrmWarehouseEdit.Designer.cs">
+      <DependentUpon>FrmWarehouseEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Control\DepartmentLookup.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -697,6 +703,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Attendance\FrmLaborMonthAttendance.resx">
       <DependentUpon>FrmLaborMonthAttendance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Base\FrmWarehouseEdit.resx">
+      <DependentUpon>FrmWarehouseEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Control\DepartmentLookup.resx">
       <DependentUpon>DepartmentLookup.cs</DependentUpon>
