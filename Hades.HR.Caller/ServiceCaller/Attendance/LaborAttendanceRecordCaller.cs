@@ -20,12 +20,15 @@ namespace Hades.HR.ServiceCaller
 	/// </summary>
     public class LaborAttendanceRecordCaller : BaseWCFService<LaborAttendanceRecordInfo>, ILaborAttendanceRecordService
     {
+        #region Constructor
         public LaborAttendanceRecordCaller()  : base()
         {	
             this.configurationPath = EndPointConfig.WcfConfig; //WCF配置文件
             this.endpointConfigurationName = EndPointConfig.LaborAttendanceRecordService;
         }
+        #endregion //Constructor
 
+        #region Function
         /// <summary>
         /// 子类构造一个IChannel对象转换为基类接口，方便给基类进行调用通用的API
         /// </summary>
@@ -44,6 +47,28 @@ namespace Hades.HR.ServiceCaller
             CustomClientChannel<ILaborAttendanceRecordService> factory = new CustomClientChannel<ILaborAttendanceRecordService>(endpointConfigurationName, configurationPath);
             return factory.CreateChannel();
         }
+        #endregion //Function
+
+        #region Method
+        /// <summary>
+        /// 插入班组日考勤记录
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public string InsertRecords(List<LaborAttendanceRecordInfo> data)
+        {
+            string result = "";
+
+            ILaborAttendanceRecordService service = CreateSubClient();
+            ICommunicationObject comm = service as ICommunicationObject;
+            comm.Using(client =>
+            {
+                result = service.InsertRecords(data);
+            });
+
+            return result;
+        }
+        #endregion //Method
 
         ///// <summary>
         ///// 根据名称查找对象(自定义接口使用范例)

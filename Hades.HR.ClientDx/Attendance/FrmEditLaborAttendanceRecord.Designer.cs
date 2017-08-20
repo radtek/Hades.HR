@@ -45,13 +45,15 @@ namespace Hades.HR.UI
             this.bsAttendanceRecord = new System.Windows.Forms.BindingSource(this.components);
             this.dgvAttendance = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colStaffNumber = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colStaffId = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colAttendanceDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colWorkload = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAbsentType = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repoCmbAbsentType = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.colRemark = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colStaffNumber = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.btnDelete = new DevExpress.XtraEditors.SimpleButton();
+            this.btnAddRecord = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.picPrint)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -72,12 +74,13 @@ namespace Hades.HR.UI
             ((System.ComponentModel.ISupportInitialize)(this.bsAttendanceRecord)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAttendance)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repoCmbAbsentType)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
+            this.panelControl2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnOK
             // 
             this.btnOK.Location = new System.Drawing.Point(698, 427);
-            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // btnCancel
             // 
@@ -210,6 +213,7 @@ namespace Hades.HR.UI
             // groupControl1
             // 
             this.groupControl1.Controls.Add(this.dgcAttendance);
+            this.groupControl1.Controls.Add(this.panelControl2);
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupControl1.Location = new System.Drawing.Point(0, 84);
             this.groupControl1.Name = "groupControl1";
@@ -226,7 +230,7 @@ namespace Hades.HR.UI
             this.dgcAttendance.Name = "dgcAttendance";
             this.dgcAttendance.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repoCmbAbsentType});
-            this.dgcAttendance.Size = new System.Drawing.Size(880, 305);
+            this.dgcAttendance.Size = new System.Drawing.Size(880, 266);
             this.dgcAttendance.TabIndex = 0;
             this.dgcAttendance.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.dgvAttendance});
@@ -241,7 +245,6 @@ namespace Hades.HR.UI
             this.colId,
             this.colStaffNumber,
             this.colStaffId,
-            this.colAttendanceDate,
             this.colWorkload,
             this.colAbsentType,
             this.colRemark});
@@ -262,6 +265,16 @@ namespace Hades.HR.UI
             this.colId.FieldName = "Id";
             this.colId.Name = "colId";
             // 
+            // colStaffNumber
+            // 
+            this.colStaffNumber.Caption = "工号";
+            this.colStaffNumber.FieldName = "StaffNumber";
+            this.colStaffNumber.Name = "colStaffNumber";
+            this.colStaffNumber.OptionsColumn.AllowEdit = false;
+            this.colStaffNumber.UnboundType = DevExpress.Data.UnboundColumnType.String;
+            this.colStaffNumber.Visible = true;
+            this.colStaffNumber.VisibleIndex = 0;
+            // 
             // colStaffId
             // 
             this.colStaffId.Caption = "员工姓名";
@@ -271,22 +284,13 @@ namespace Hades.HR.UI
             this.colStaffId.Visible = true;
             this.colStaffId.VisibleIndex = 1;
             // 
-            // colAttendanceDate
-            // 
-            this.colAttendanceDate.Caption = "考勤日期";
-            this.colAttendanceDate.FieldName = "AttendanceDate";
-            this.colAttendanceDate.Name = "colAttendanceDate";
-            this.colAttendanceDate.OptionsColumn.AllowEdit = false;
-            this.colAttendanceDate.Visible = true;
-            this.colAttendanceDate.VisibleIndex = 2;
-            // 
             // colWorkload
             // 
             this.colWorkload.Caption = "工作量";
             this.colWorkload.FieldName = "Workload";
             this.colWorkload.Name = "colWorkload";
             this.colWorkload.Visible = true;
-            this.colWorkload.VisibleIndex = 3;
+            this.colWorkload.VisibleIndex = 2;
             // 
             // colAbsentType
             // 
@@ -295,7 +299,7 @@ namespace Hades.HR.UI
             this.colAbsentType.FieldName = "AbsentType";
             this.colAbsentType.Name = "colAbsentType";
             this.colAbsentType.Visible = true;
-            this.colAbsentType.VisibleIndex = 4;
+            this.colAbsentType.VisibleIndex = 3;
             // 
             // repoCmbAbsentType
             // 
@@ -310,17 +314,34 @@ namespace Hades.HR.UI
             this.colRemark.FieldName = "Remark";
             this.colRemark.Name = "colRemark";
             this.colRemark.Visible = true;
-            this.colRemark.VisibleIndex = 5;
+            this.colRemark.VisibleIndex = 4;
             // 
-            // colStaffNumber
+            // panelControl2
             // 
-            this.colStaffNumber.Caption = "工号";
-            this.colStaffNumber.FieldName = "StaffNumber";
-            this.colStaffNumber.Name = "colStaffNumber";
-            this.colStaffNumber.OptionsColumn.AllowEdit = false;
-            this.colStaffNumber.UnboundType = DevExpress.Data.UnboundColumnType.String;
-            this.colStaffNumber.Visible = true;
-            this.colStaffNumber.VisibleIndex = 0;
+            this.panelControl2.Controls.Add(this.btnDelete);
+            this.panelControl2.Controls.Add(this.btnAddRecord);
+            this.panelControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelControl2.Location = new System.Drawing.Point(2, 291);
+            this.panelControl2.Name = "panelControl2";
+            this.panelControl2.Size = new System.Drawing.Size(880, 39);
+            this.panelControl2.TabIndex = 1;
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(113, 6);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.TabIndex = 1;
+            this.btnDelete.Text = "删除员工";
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnAddRecord
+            // 
+            this.btnAddRecord.Location = new System.Drawing.Point(23, 6);
+            this.btnAddRecord.Name = "btnAddRecord";
+            this.btnAddRecord.Size = new System.Drawing.Size(75, 23);
+            this.btnAddRecord.TabIndex = 0;
+            this.btnAddRecord.Text = "增加员工";
             // 
             // FrmEditLaborAttendanceRecord
             // 
@@ -331,13 +352,13 @@ namespace Hades.HR.UI
             this.Controls.Add(this.panelControl1);
             this.Name = "FrmEditLaborAttendanceRecord";
             this.Text = "日考勤登记";
+            this.Controls.SetChildIndex(this.panelControl1, 0);
+            this.Controls.SetChildIndex(this.groupControl1, 0);
             this.Controls.SetChildIndex(this.btnCancel, 0);
             this.Controls.SetChildIndex(this.btnOK, 0);
             this.Controls.SetChildIndex(this.btnAdd, 0);
             this.Controls.SetChildIndex(this.dataNavigator1, 0);
             this.Controls.SetChildIndex(this.picPrint, 0);
-            this.Controls.SetChildIndex(this.panelControl1, 0);
-            this.Controls.SetChildIndex(this.groupControl1, 0);
             ((System.ComponentModel.ISupportInitialize)(this.picPrint)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
@@ -358,6 +379,8 @@ namespace Hades.HR.UI
             ((System.ComponentModel.ISupportInitialize)(this.bsAttendanceRecord)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAttendance)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repoCmbAbsentType)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
+            this.panelControl2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -372,7 +395,6 @@ namespace Hades.HR.UI
         private DevExpress.XtraGrid.Views.Grid.GridView dgvAttendance;
         private DevExpress.XtraGrid.Columns.GridColumn colId;
         private DevExpress.XtraGrid.Columns.GridColumn colStaffId;
-        private DevExpress.XtraGrid.Columns.GridColumn colAttendanceDate;
         private DevExpress.XtraGrid.Columns.GridColumn colWorkload;
         private DevExpress.XtraGrid.Columns.GridColumn colAbsentType;
         private DevExpress.XtraGrid.Columns.GridColumn colRemark;
@@ -388,5 +410,8 @@ namespace Hades.HR.UI
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         private DevExpress.XtraGrid.Columns.GridColumn colStaffNumber;
+        private DevExpress.XtraEditors.PanelControl panelControl2;
+        private DevExpress.XtraEditors.SimpleButton btnDelete;
+        private DevExpress.XtraEditors.SimpleButton btnAddRecord;
     }
 }

@@ -13,6 +13,12 @@ namespace Hades.HR.Facade
     [ServiceContract]
     public interface ILaborAttendanceRecordService : IBaseService<LaborAttendanceRecordInfo>
     {
-
+        /// <summary>
+        /// 插入班组日考勤记录
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        [OperationContract]
+        string InsertRecords(List<LaborAttendanceRecordInfo> data);
     }
 }

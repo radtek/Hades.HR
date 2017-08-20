@@ -19,12 +19,28 @@ namespace Hades.HR.WCFLibrary
 	/// </summary>
     public class LaborAttendanceRecordService : BaseLocalService<LaborAttendanceRecordInfo>, ILaborAttendanceRecordService
     {
+        #region Field
         private LaborAttendanceRecord bll = null;
+        #endregion //Field
 
+        #region Constructor
         public LaborAttendanceRecordService() : base(BLLFactory<LaborAttendanceRecord>.Instance)
         {
             bll = baseBLL as LaborAttendanceRecord;
         }
+        #endregion //Constructor
+
+        #region Method
+        /// <summary>
+        /// 插入班组日考勤记录
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public string InsertRecords(List<LaborAttendanceRecordInfo> data)
+        {
+            return bll.InsertRecords(data);
+        }
+        #endregion //Method
 
         ///// <summary>
         ///// 根据名称查找对象(自定义接口使用范例)

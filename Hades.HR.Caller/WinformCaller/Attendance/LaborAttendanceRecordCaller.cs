@@ -27,5 +27,17 @@ namespace Hades.HR.WinformCaller
             bll = baseBLL as LaborAttendanceRecord;
         }
         #endregion //Constructor
+
+        #region Method
+        /// <summary>
+        /// 插入班组日考勤记录
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public string InsertRecords(List<LaborAttendanceRecordInfo> data)
+        {
+            return bll.InsertRecords(data);
+        }
+        #endregion //Method
     }
 }

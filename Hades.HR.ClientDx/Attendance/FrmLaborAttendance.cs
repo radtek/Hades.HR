@@ -184,10 +184,10 @@ namespace Hades.HR.UI
         /// </summary>
         private void gridView1_DataSourceChanged(object sender, EventArgs e)
         {
-            if (this.winGridViewPager1.gridView1.Columns.Count > 0 && this.winGridViewPager1.gridView1.RowCount > 0)
+            if (this.wgvRecord.gridView1.Columns.Count > 0 && this.wgvRecord.gridView1.RowCount > 0)
             {
                 //统一设置100宽度
-                foreach (DevExpress.XtraGrid.Columns.GridColumn column in this.winGridViewPager1.gridView1.Columns)
+                foreach (DevExpress.XtraGrid.Columns.GridColumn column in this.wgvRecord.gridView1.Columns)
                 {
                     column.Width = 100;
                 }
@@ -199,7 +199,7 @@ namespace Hades.HR.UI
 
         private void SetGridColumWidth(string columnName, int width)
         {
-            DevExpress.XtraGrid.Columns.GridColumn column = this.winGridViewPager1.gridView1.Columns.ColumnByFieldName(columnName);
+            DevExpress.XtraGrid.Columns.GridColumn column = this.wgvRecord.gridView1.Columns.ColumnByFieldName(columnName);
             if (column != null)
             {
                 column.Width = width;
@@ -228,10 +228,10 @@ namespace Hades.HR.UI
                 return;
             }
 
-            int[] rowSelected = this.winGridViewPager1.GridView1.GetSelectedRows();
+            int[] rowSelected = this.wgvRecord.GridView1.GetSelectedRows();
             foreach (int iRow in rowSelected)
             {
-                string ID = this.winGridViewPager1.GridView1.GetRowCellDisplayText(iRow, "ID");
+                string ID = this.wgvRecord.GridView1.GetRowCellDisplayText(iRow, "ID");
                 CallerFactory<ILaborAttendanceRecordService>.Instance.Delete(ID);
             }	 
              
@@ -243,11 +243,11 @@ namespace Hades.HR.UI
         /// </summary>
         private void winGridViewPager1_OnEditSelected(object sender, EventArgs e)
         {
-            string ID = this.winGridViewPager1.gridView1.GetFocusedRowCellDisplayText("ID");
+            string ID = this.wgvRecord.gridView1.GetFocusedRowCellDisplayText("ID");
             List<string> IDList = new List<string>();
-            for (int i = 0; i < this.winGridViewPager1.gridView1.RowCount; i++)
+            for (int i = 0; i < this.wgvRecord.gridView1.RowCount; i++)
             {
-                string strTemp = this.winGridViewPager1.GridView1.GetRowCellDisplayText(i, "ID");
+                string strTemp = this.wgvRecord.GridView1.GetRowCellDisplayText(i, "ID");
                 IDList.Add(strTemp);
             }
 
@@ -285,7 +285,7 @@ namespace Hades.HR.UI
         private void winGridViewPager1_OnStartExport(object sender, EventArgs e)
         {
             string where = GetConditionSql();
-            this.winGridViewPager1.AllToExport = CallerFactory<ILaborAttendanceRecordService>.Instance.FindToDataTable(where);
+            this.wgvRecord.AllToExport = CallerFactory<ILaborAttendanceRecordService>.Instance.FindToDataTable(where);
          }
 
         /// <summary>
@@ -323,8 +323,8 @@ namespace Hades.HR.UI
         private void BindData()
         {
         	//entity
-            this.winGridViewPager1.DisplayColumns = "StaffId,AttendanceDate,Workload,AbsentType";
-            this.winGridViewPager1.ColumnNameAlias = CallerFactory<ILaborAttendanceRecordService>.Instance.GetColumnNameAlias();//字段列显示名称转义
+            this.wgvRecord.DisplayColumns = "StaffId,AttendanceDate,Workload,AbsentType";
+            this.wgvRecord.ColumnNameAlias = CallerFactory<ILaborAttendanceRecordService>.Instance.GetColumnNameAlias();//字段列显示名称转义
 
             #region 添加别名解析
 
@@ -336,11 +336,11 @@ namespace Hades.HR.UI
             #endregion
 
             string where = GetConditionSql();
-            PagerInfo pagerInfo = this.winGridViewPager1.PagerInfo;
+            PagerInfo pagerInfo = this.wgvRecord.PagerInfo;
                List<LaborAttendanceRecordInfo> list = CallerFactory<ILaborAttendanceRecordService>.Instance.FindWithPager(where, ref pagerInfo);
-            this.winGridViewPager1.PagerInfo.RecordCount = pagerInfo.RecordCount;
-            this.winGridViewPager1.DataSource = new Hades.Pager.WinControl.SortableBindingList<LaborAttendanceRecordInfo>(list);
-               this.winGridViewPager1.PrintTitle = "LaborAttendanceRecord报表";
+            this.wgvRecord.PagerInfo.RecordCount = pagerInfo.RecordCount;
+            this.wgvRecord.DataSource = new Hades.Pager.WinControl.SortableBindingList<LaborAttendanceRecordInfo>(list);
+               this.wgvRecord.PrintTitle = "LaborAttendanceRecord报表";
          }
         
         /// <summary>

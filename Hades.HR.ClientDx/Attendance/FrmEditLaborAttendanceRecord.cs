@@ -74,7 +74,7 @@ namespace Hades.HR.UI
         private List<LaborAttendanceRecordInfo> InitRecords()
         {
             var data = CallerFactory<ILaborAttendanceRecordService>.Instance.Find(string.Format("AttendanceDate='{0}'", attendanceDate));
-            this.staffs = CallerFactory<IStaffService>.Instance.Find(string.Format("StaffType=2 AND WorkTeamId='{0}'", workTeamId));
+            this.staffs = CallerFactory<IStaffService>.Instance.Find(string.Format("StaffType=2 AND WorkTeamId='{0}' AND Enabled=1 AND Deleted=0", workTeamId));
 
             List<LaborAttendanceRecordInfo> records = new List<LaborAttendanceRecordInfo>();
             foreach (var item in staffs)
@@ -128,17 +128,24 @@ namespace Hades.HR.UI
         /// <summary>
         /// 保存记录
         /// </summary>
-        private void SaveRecords()
+        private string SaveRecords()
         {
+            //CallerFactory<ILaborAttendanceRecordService>.Instance.DeleteByCondition(string.Format("AttendanceDate='{0}' AND WorkTeamId='{1}'", attendanceDate, workTeamId));
+
             var records = this.bsAttendanceRecord.DataSource as List<LaborAttendanceRecordInfo>;
 
             foreach (var item in records)
             {
                 item.AttendanceDate = this.attendanceDate;
+                item.WorkTeamId = this.workTeamId;
                 item.IsWeekend = this.chkIsWeekend.Checked;
                 item.IsHoliday = this.chkIsHoliday.Checked;
-                CallerFactory<ILaborAttendanceRecordService>.Instance.InsertUpdate(item, item.Id);
+                
+                //CallerFactory<ILaborAttendanceRecordService>.Instance.Insert(item);
             }
+
+            var result = CallerFactory<ILaborAttendanceRecordService>.Instance.InsertRecords(records);
+            return result;
         }
         #endregion //Method
 
@@ -162,32 +169,69 @@ namespace Hades.HR.UI
         }
 
         /// <summary>
-        /// 保存
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnOK_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                SaveRecords();
-                this.DialogResult = DialogResult.OK;
-            }
-            catch (Exception ex)
-            {
-                MessageDxUtil.ShowWarning(ex.Message);
-            }
-        }
-        
-        /// <summary>
         /// 绑定数据显示
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void dgvAttendance_CustomUnboundColumnData(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDataEventArgs e)
         {
+            int rowIndex = e.ListSourceRowIndex;
+            if (rowIndex < 0 || rowIndex >= this.bsAttendanceRecord.Count)
+                return;
 
+            var record = this.bsAttendanceRecord[rowIndex] as LaborAttendanceRecordInfo;
+
+            if (e.Column.FieldName == "StaffNumber" && e.IsGetData)
+            {
+                var s = this.staffs.SingleOrDefault(r => r.Id == record.StaffId);
+                e.Value = s.Number;
+            }
+        }
+
+        /// <summary>
+        /// 删除员工
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            int rowIndex = this.dgvAttendance.GetFocusedDataSourceRowIndex();
+            if (rowIndex < 0 || rowIndex >= this.bsAttendanceRecord.Count)
+                return;
+
+            this.bsAttendanceRecord.RemoveAt(rowIndex);
+            this.bsAttendanceRecord.ResetBindings(false);
+            return;
+        }
+
+        /// <summary>
+        /// 新增状态下的数据保存
+        /// </summary>
+        /// <returns></returns>
+        public override bool SaveAddNew()
+        {
+            try
+            {
+                string result = SaveRecords();
+                if (string.IsNullOrEmpty(result))
+                {
+                    this.DialogResult = DialogResult.OK;
+
+                    return true;
+                }
+                else
+                {
+                    MessageDxUtil.ShowWarning(result);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageDxUtil.ShowWarning(ex.Message);
+                return false;
+            }
         }
         #endregion //Event
+
     }
 }
