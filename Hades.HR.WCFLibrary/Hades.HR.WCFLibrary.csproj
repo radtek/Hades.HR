@@ -128,6 +128,9 @@
     <Compile Include="..\Hades.HR.Caller\Facade\Salary\IStaffSalaryDefineService.cs">
       <Link>Facade\Salary\IStaffSalaryDefineService.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Caller\Facade\View\ILaborAttendanceRecordViewService.cs">
+      <Link>Facade\View\ILaborAttendanceRecordViewService.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Caller\Facade\View\IStaffAttendanceViewService.cs">
       <Link>Facade\View\IStaffAttendanceViewService.cs</Link>
     </Compile>
@@ -172,6 +175,9 @@
     </Compile>
     <Compile Include="..\Hades.HR.Core\BLL\Salary\StaffSalaryDefine.cs">
       <Link>Biz\BLL\Salary\StaffSalaryDefine.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\BLL\View\LaborAttendanceRecordView.cs">
+      <Link>Biz\BLL\View\LaborAttendanceRecordView.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\BLL\View\StaffAttendanceView.cs">
       <Link>Biz\BLL\View\StaffAttendanceView.cs</Link>
@@ -218,6 +224,9 @@
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Salary\StaffSalaryDefine.cs">
       <Link>Biz\DAL\DALSQL\Salary\StaffSalaryDefine.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Core\DAL\DALSQL\View\LaborAttendanceRecordView.cs">
+      <Link>Biz\DAL\DALSQL\View\LaborAttendanceRecordView.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\View\StaffAttendanceView.cs">
       <Link>Biz\DAL\DALSQL\View\StaffAttendanceView.cs</Link>
     </Compile>
@@ -262,6 +271,9 @@
     </Compile>
     <Compile Include="..\Hades.HR.Core\Entity\Salary\StaffSalaryDefineInfo.cs">
       <Link>Biz\Entity\Salary\StaffSalaryDefineInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\Entity\View\LaborAttendanceRecordViewInfo.cs">
+      <Link>Biz\Entity\View\LaborAttendanceRecordViewInfo.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\Entity\View\StaffAttendanceViewInfo.cs">
       <Link>Biz\Entity\View\StaffAttendanceViewInfo.cs</Link>
@@ -308,6 +320,9 @@
     <Compile Include="..\Hades.HR.Core\IDAL\Salary\IStaffSalaryDefine.cs">
       <Link>Biz\IDAL\Salary\IStaffSalaryDefine.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Core\IDAL\View\ILaborAttendanceRecordView.cs">
+      <Link>Biz\IDAL\View\ILaborAttendanceRecordView.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Core\IDAL\View\IStaffAttendanceView.cs">
       <Link>Biz\IDAL\View\IStaffAttendanceView.cs</Link>
     </Compile>
@@ -323,6 +338,7 @@
     <Compile Include="WCFLibrary\Base\PositionService.cs" />
     <Compile Include="WCFLibrary\Base\ProductionLineService.cs" />
     <Compile Include="WCFLibrary\Salary\SalaryLevelService.cs" />
+    <Compile Include="WCFLibrary\View\LaborAttendanceRecordViewService.cs" />
     <Compile Include="WCFLibrary\View\StaffAttendanceViewService.cs" />
     <Compile Include="WCFLibrary\Base\StaffService.cs" />
     <Compile Include="WCFLibrary\Base\WorkTeamService.cs" />
