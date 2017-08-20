@@ -29,7 +29,7 @@ namespace Hades.HR.UI
         [Display(Name = "婚产丧假")]
         MarriageLeave = 5,
 
-        [Display(Name = "缺勤")]
+        [Display(Name = "旷工")]
         AbsentLeave = 6
     }
 }

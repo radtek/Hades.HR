@@ -39,6 +39,10 @@ namespace Hades.HR.UI
             this.tabPageSummary = new DevExpress.XtraTab.XtraTabPage();
             this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
+            this.layoutControl2 = new DevExpress.XtraLayout.LayoutControl();
+            this.dpMonth = new DevExpress.XtraEditors.DateEdit();
+            this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.tabPageRecord = new DevExpress.XtraTab.XtraTabPage();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
@@ -48,6 +52,12 @@ namespace Hades.HR.UI
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.dgcSummary = new DevExpress.XtraGrid.GridControl();
+            this.dgvSummary = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.txtWorkTeamName = new DevExpress.XtraEditors.TextEdit();
+            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.txtWorkTeamName2 = new DevExpress.XtraEditors.TextEdit();
+            this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.groupControl3.SuspendLayout();
@@ -55,7 +65,15 @@ namespace Hades.HR.UI
             this.tabAttendance.SuspendLayout();
             this.tabPageSummary.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).BeginInit();
+            this.groupControl5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
+            this.groupControl4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).BeginInit();
+            this.layoutControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dpMonth.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dpMonth.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             this.tabPageRecord.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
@@ -68,6 +86,12 @@ namespace Hades.HR.UI
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgcSummary)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSummary)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtWorkTeamName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtWorkTeamName2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             this.SuspendLayout();
             // 
             // wgvRecord
@@ -78,7 +102,7 @@ namespace Hades.HR.UI
             this.wgvRecord.DisplayColumns = "";
             this.wgvRecord.Dock = System.Windows.Forms.DockStyle.Fill;
             this.wgvRecord.FixedColumns = null;
-            this.wgvRecord.Location = new System.Drawing.Point(2, 25);
+            this.wgvRecord.Location = new System.Drawing.Point(2, 21);
             this.wgvRecord.MinimumSize = new System.Drawing.Size(540, 0);
             this.wgvRecord.Name = "wgvRecord";
             this.wgvRecord.PrintTitle = "";
@@ -87,7 +111,7 @@ namespace Hades.HR.UI
             this.wgvRecord.ShowDeleteMenu = true;
             this.wgvRecord.ShowEditMenu = true;
             this.wgvRecord.ShowExportButton = true;
-            this.wgvRecord.Size = new System.Drawing.Size(787, 517);
+            this.wgvRecord.Size = new System.Drawing.Size(788, 527);
             this.wgvRecord.TabIndex = 11;
             // 
             // contextMenuStrip1
@@ -126,10 +150,11 @@ namespace Hades.HR.UI
             // tvLine
             // 
             this.tvLine.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tvLine.Location = new System.Drawing.Point(2, 25);
+            this.tvLine.Location = new System.Drawing.Point(2, 21);
             this.tvLine.Name = "tvLine";
-            this.tvLine.Size = new System.Drawing.Size(190, 647);
+            this.tvLine.Size = new System.Drawing.Size(190, 651);
             this.tvLine.TabIndex = 0;
+            this.tvLine.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvLine_AfterSelect);
             // 
             // tabAttendance
             // 
@@ -148,33 +173,88 @@ namespace Hades.HR.UI
             this.tabPageSummary.Controls.Add(this.groupControl5);
             this.tabPageSummary.Controls.Add(this.groupControl4);
             this.tabPageSummary.Name = "tabPageSummary";
-            this.tabPageSummary.Size = new System.Drawing.Size(791, 639);
+            this.tabPageSummary.Size = new System.Drawing.Size(792, 645);
             this.tabPageSummary.Text = "考勤汇总";
             // 
             // groupControl5
             // 
+            this.groupControl5.Controls.Add(this.dgcSummary);
             this.groupControl5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl5.Location = new System.Drawing.Point(0, 100);
             this.groupControl5.Name = "groupControl5";
-            this.groupControl5.Size = new System.Drawing.Size(791, 539);
+            this.groupControl5.Size = new System.Drawing.Size(792, 545);
             this.groupControl5.TabIndex = 1;
             this.groupControl5.Text = "汇总记录";
             // 
             // groupControl4
             // 
+            this.groupControl4.Controls.Add(this.layoutControl2);
             this.groupControl4.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupControl4.Location = new System.Drawing.Point(0, 0);
             this.groupControl4.Name = "groupControl4";
-            this.groupControl4.Size = new System.Drawing.Size(791, 100);
+            this.groupControl4.Size = new System.Drawing.Size(792, 100);
             this.groupControl4.TabIndex = 0;
             this.groupControl4.Text = "操作";
+            // 
+            // layoutControl2
+            // 
+            this.layoutControl2.Controls.Add(this.txtWorkTeamName);
+            this.layoutControl2.Controls.Add(this.dpMonth);
+            this.layoutControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layoutControl2.Location = new System.Drawing.Point(2, 21);
+            this.layoutControl2.Name = "layoutControl2";
+            this.layoutControl2.Root = this.layoutControlGroup2;
+            this.layoutControl2.Size = new System.Drawing.Size(788, 77);
+            this.layoutControl2.TabIndex = 0;
+            this.layoutControl2.Text = "layoutControl2";
+            // 
+            // dpMonth
+            // 
+            this.dpMonth.EditValue = null;
+            this.dpMonth.Location = new System.Drawing.Point(63, 12);
+            this.dpMonth.Name = "dpMonth";
+            this.dpMonth.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
+            this.dpMonth.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dpMonth.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dpMonth.Properties.DisplayFormat.FormatString = "yyyy年MM月";
+            this.dpMonth.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.dpMonth.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.dpMonth.Properties.VistaCalendarInitialViewStyle = DevExpress.XtraEditors.VistaCalendarInitialViewStyle.YearView;
+            this.dpMonth.Properties.VistaCalendarViewStyle = ((DevExpress.XtraEditors.VistaCalendarViewStyle)((DevExpress.XtraEditors.VistaCalendarViewStyle.YearView | DevExpress.XtraEditors.VistaCalendarViewStyle.CenturyView)));
+            this.dpMonth.Size = new System.Drawing.Size(713, 20);
+            this.dpMonth.StyleController = this.layoutControl2;
+            this.dpMonth.TabIndex = 4;
+            this.dpMonth.EditValueChanged += new System.EventHandler(this.dpMonth_EditValueChanged);
+            // 
+            // layoutControlGroup2
+            // 
+            this.layoutControlGroup2.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.layoutControlGroup2.GroupBordersVisible = false;
+            this.layoutControlGroup2.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem3,
+            this.layoutControlItem4});
+            this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlGroup2.Name = "layoutControlGroup2";
+            this.layoutControlGroup2.Size = new System.Drawing.Size(788, 77);
+            this.layoutControlGroup2.TextVisible = false;
+            // 
+            // layoutControlItem3
+            // 
+            this.layoutControlItem3.Control = this.dpMonth;
+            this.layoutControlItem3.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem3.Name = "layoutControlItem3";
+            this.layoutControlItem3.Size = new System.Drawing.Size(768, 24);
+            this.layoutControlItem3.Text = "月份选择";
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(48, 14);
             // 
             // tabPageRecord
             // 
             this.tabPageRecord.Controls.Add(this.groupControl2);
             this.tabPageRecord.Controls.Add(this.groupControl1);
             this.tabPageRecord.Name = "tabPageRecord";
-            this.tabPageRecord.Size = new System.Drawing.Size(791, 639);
+            this.tabPageRecord.Size = new System.Drawing.Size(792, 645);
             this.tabPageRecord.Text = "考勤记录";
             // 
             // groupControl2
@@ -183,7 +263,7 @@ namespace Hades.HR.UI
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl2.Location = new System.Drawing.Point(0, 95);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(791, 544);
+            this.groupControl2.Size = new System.Drawing.Size(792, 550);
             this.groupControl2.TabIndex = 1;
             this.groupControl2.Text = "考勤记录";
             // 
@@ -193,27 +273,28 @@ namespace Hades.HR.UI
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(791, 95);
+            this.groupControl1.Size = new System.Drawing.Size(792, 95);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "操作";
             // 
             // layoutControl1
             // 
+            this.layoutControl1.Controls.Add(this.txtWorkTeamName2);
             this.layoutControl1.Controls.Add(this.btnEditRecord);
             this.layoutControl1.Controls.Add(this.dpAttendance);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutControl1.Location = new System.Drawing.Point(2, 25);
+            this.layoutControl1.Location = new System.Drawing.Point(2, 21);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(787, 68);
+            this.layoutControl1.Size = new System.Drawing.Size(788, 72);
             this.layoutControl1.TabIndex = 5;
             this.layoutControl1.Text = "layoutControl1";
             // 
             // btnEditRecord
             // 
-            this.btnEditRecord.Location = new System.Drawing.Point(396, 14);
+            this.btnEditRecord.Location = new System.Drawing.Point(397, 12);
             this.btnEditRecord.Name = "btnEditRecord";
-            this.btnEditRecord.Size = new System.Drawing.Size(377, 27);
+            this.btnEditRecord.Size = new System.Drawing.Size(379, 22);
             this.btnEditRecord.StyleController = this.layoutControl1;
             this.btnEditRecord.TabIndex = 3;
             this.btnEditRecord.Text = "编辑考勤记录";
@@ -222,14 +303,15 @@ namespace Hades.HR.UI
             // dpAttendance
             // 
             this.dpAttendance.EditValue = null;
-            this.dpAttendance.Location = new System.Drawing.Point(77, 14);
+            this.dpAttendance.Location = new System.Drawing.Point(63, 12);
             this.dpAttendance.Name = "dpAttendance";
             this.dpAttendance.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
             this.dpAttendance.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dpAttendance.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dpAttendance.Size = new System.Drawing.Size(315, 24);
+            this.dpAttendance.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.dpAttendance.Size = new System.Drawing.Size(330, 20);
             this.dpAttendance.StyleController = this.layoutControl1;
             this.dpAttendance.TabIndex = 4;
             this.dpAttendance.EditValueChanged += new System.EventHandler(this.dpAttendance_EditValueChanged);
@@ -240,10 +322,11 @@ namespace Hades.HR.UI
             this.layoutControlGroup1.GroupBordersVisible = false;
             this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem1,
-            this.layoutControlItem2});
+            this.layoutControlItem2,
+            this.layoutControlItem5});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(787, 68);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(788, 72);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem1
@@ -251,22 +334,82 @@ namespace Hades.HR.UI
             this.layoutControlItem1.Control = this.dpAttendance;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(382, 44);
+            this.layoutControlItem1.Size = new System.Drawing.Size(385, 24);
             this.layoutControlItem1.Text = "日期选择";
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(60, 18);
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(48, 14);
             // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.btnEditRecord;
-            this.layoutControlItem2.Location = new System.Drawing.Point(382, 0);
+            this.layoutControlItem2.Location = new System.Drawing.Point(385, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(381, 44);
+            this.layoutControlItem2.Size = new System.Drawing.Size(383, 52);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
+            // dgcSummary
+            // 
+            this.dgcSummary.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgcSummary.Location = new System.Drawing.Point(2, 21);
+            this.dgcSummary.MainView = this.dgvSummary;
+            this.dgcSummary.Name = "dgcSummary";
+            this.dgcSummary.Size = new System.Drawing.Size(788, 522);
+            this.dgcSummary.TabIndex = 0;
+            this.dgcSummary.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.dgvSummary});
+            // 
+            // dgvSummary
+            // 
+            this.dgvSummary.GridControl = this.dgcSummary;
+            this.dgvSummary.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
+            this.dgvSummary.Name = "dgvSummary";
+            this.dgvSummary.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
+            this.dgvSummary.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
+            this.dgvSummary.OptionsBehavior.Editable = false;
+            this.dgvSummary.OptionsCustomization.AllowFilter = false;
+            this.dgvSummary.OptionsCustomization.AllowGroup = false;
+            this.dgvSummary.OptionsView.ColumnAutoWidth = false;
+            this.dgvSummary.OptionsView.ShowGroupPanel = false;
+            // 
+            // txtWorkTeamName
+            // 
+            this.txtWorkTeamName.Location = new System.Drawing.Point(63, 36);
+            this.txtWorkTeamName.Name = "txtWorkTeamName";
+            this.txtWorkTeamName.Properties.ReadOnly = true;
+            this.txtWorkTeamName.Size = new System.Drawing.Size(713, 20);
+            this.txtWorkTeamName.StyleController = this.layoutControl2;
+            this.txtWorkTeamName.TabIndex = 5;
+            // 
+            // layoutControlItem4
+            // 
+            this.layoutControlItem4.Control = this.txtWorkTeamName;
+            this.layoutControlItem4.Location = new System.Drawing.Point(0, 24);
+            this.layoutControlItem4.Name = "layoutControlItem4";
+            this.layoutControlItem4.Size = new System.Drawing.Size(768, 33);
+            this.layoutControlItem4.Text = "班组";
+            this.layoutControlItem4.TextSize = new System.Drawing.Size(48, 14);
+            // 
+            // txtWorkTeamName2
+            // 
+            this.txtWorkTeamName2.Location = new System.Drawing.Point(63, 36);
+            this.txtWorkTeamName2.Name = "txtWorkTeamName2";
+            this.txtWorkTeamName2.Properties.ReadOnly = true;
+            this.txtWorkTeamName2.Size = new System.Drawing.Size(330, 20);
+            this.txtWorkTeamName2.StyleController = this.layoutControl1;
+            this.txtWorkTeamName2.TabIndex = 5;
+            // 
+            // layoutControlItem5
+            // 
+            this.layoutControlItem5.Control = this.txtWorkTeamName2;
+            this.layoutControlItem5.Location = new System.Drawing.Point(0, 24);
+            this.layoutControlItem5.Name = "layoutControlItem5";
+            this.layoutControlItem5.Size = new System.Drawing.Size(385, 28);
+            this.layoutControlItem5.Text = "班组";
+            this.layoutControlItem5.TextSize = new System.Drawing.Size(48, 14);
+            // 
             // FrmLaborAttendance
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1004, 680);
             this.Controls.Add(this.tableLayoutPanel1);
@@ -279,7 +422,15 @@ namespace Hades.HR.UI
             this.tabAttendance.ResumeLayout(false);
             this.tabPageSummary.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).EndInit();
+            this.groupControl5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
+            this.groupControl4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).EndInit();
+            this.layoutControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dpMonth.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dpMonth.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             this.tabPageRecord.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
@@ -292,6 +443,12 @@ namespace Hades.HR.UI
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgcSummary)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSummary)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtWorkTeamName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtWorkTeamName2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -316,5 +473,15 @@ namespace Hades.HR.UI
         private DevExpress.XtraEditors.GroupControl groupControl5;
         private DevExpress.XtraEditors.GroupControl groupControl4;
         private DevExpress.XtraTab.XtraTabPage tabPageRecord;
+        private DevExpress.XtraLayout.LayoutControl layoutControl2;
+        private DevExpress.XtraEditors.DateEdit dpMonth;
+        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup2;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
+        private DevExpress.XtraGrid.GridControl dgcSummary;
+        private DevExpress.XtraGrid.Views.Grid.GridView dgvSummary;
+        private DevExpress.XtraEditors.TextEdit txtWorkTeamName;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
+        private DevExpress.XtraEditors.TextEdit txtWorkTeamName2;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
     }
 }

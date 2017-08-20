@@ -97,6 +97,29 @@ namespace Hades.HR.UI
 
             return records;
         }
+
+        /// <summary>
+        /// 保存记录
+        /// </summary>
+        private string SaveRecords()
+        {
+            //CallerFactory<ILaborAttendanceRecordService>.Instance.DeleteByCondition(string.Format("AttendanceDate='{0}' AND WorkTeamId='{1}'", attendanceDate, workTeamId));
+
+            var records = this.bsAttendanceRecord.DataSource as List<LaborAttendanceRecordInfo>;
+
+            foreach (var item in records)
+            {
+                item.AttendanceDate = this.attendanceDate;
+                item.WorkTeamId = this.workTeamId;
+                item.IsWeekend = this.chkIsWeekend.Checked;
+                item.IsHoliday = this.chkIsHoliday.Checked;
+
+                //CallerFactory<ILaborAttendanceRecordService>.Instance.Insert(item);
+            }
+
+            var result = CallerFactory<ILaborAttendanceRecordService>.Instance.InsertRecords(records);
+            return result;
+        }
         #endregion //Function
 
         #region Method
@@ -125,27 +148,25 @@ namespace Hades.HR.UI
             base.ClearScreen();
         }
 
-        /// <summary>
-        /// 保存记录
-        /// </summary>
-        private string SaveRecords()
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-            //CallerFactory<ILaborAttendanceRecordService>.Instance.DeleteByCondition(string.Format("AttendanceDate='{0}' AND WorkTeamId='{1}'", attendanceDate, workTeamId));
-
-            var records = this.bsAttendanceRecord.DataSource as List<LaborAttendanceRecordInfo>;
-
-            foreach (var item in records)
+            if (!(ActiveControl is Button))
             {
-                item.AttendanceDate = this.attendanceDate;
-                item.WorkTeamId = this.workTeamId;
-                item.IsWeekend = this.chkIsWeekend.Checked;
-                item.IsHoliday = this.chkIsHoliday.Checked;
-                
-                //CallerFactory<ILaborAttendanceRecordService>.Instance.Insert(item);
-            }
+                if (keyData == Keys.Down || keyData == Keys.Enter)
+                {
+                    return false;
+                }
+                else if (keyData == Keys.Up)
+                {
+                    return false;
+                }
 
-            var result = CallerFactory<ILaborAttendanceRecordService>.Instance.InsertRecords(records);
-            return result;
+                return false;
+            }
+            else
+            {
+                return base.ProcessCmdKey(ref msg, keyData);
+            }
         }
         #endregion //Method
 

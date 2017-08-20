@@ -101,6 +101,11 @@ namespace Hades.HR.UI
             this.wgvRecord.PagerInfo.RecordCount = pagerInfo.RecordCount;
             this.wgvRecord.DataSource = new Hades.Pager.WinControl.SortableBindingList<LaborAttendanceRecordViewInfo>(list);
             this.wgvRecord.PrintTitle = "考勤记录报表";
+
+            this.wgvRecord.GridView1.OptionsView.ShowFooter = true;
+            var col = this.wgvRecord.GridView1.Columns["Workload"];
+            col.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Workload", "合计={0:0.##}")});
         }
 
         /// <summary>
@@ -113,16 +118,96 @@ namespace Hades.HR.UI
             if (condition == null)
             {
                 condition = new SearchCondition();
+                if (this.dpAttendance.EditValue == null)
+                    return "1 = 2";
                 condition.AddCondition("AttendanceDate", this.dpAttendance.DateTime.Date, SqlOperator.Equal);
 
                 var node = this.tvLine.SelectedNode;
-                if (node == null && Convert.ToInt32(node.Tag) == 3)
+                if (node != null && Convert.ToInt32(node.Tag) == 3)
                 {
                     condition.AddCondition("WorkTeamId", node.Name, SqlOperator.Equal);
                 }
             }
             string where = condition.BuildConditionSql().Replace("Where", "");
             return where;
+        }
+
+        /// <summary>
+        /// 载入考勤汇总
+        /// </summary>
+        /// <param name="month"></param>
+        /// <param name="workTeamId"></param>
+        /// <returns></returns>
+        private DataTable LoadSummaryAttendance(DateTime month, string workTeamId)
+        {
+            DateTime d1 = new DateTime(month.Year, month.Month, 1);
+            DateTime d2 = d1.AddMonths(1).AddDays(-1);
+
+            string sql = string.Format("WorkTeamId = '{0}' AND AttendanceDate between '{1}' AND '{2}'", workTeamId, d1, d2);
+            var records = CallerFactory<ILaborAttendanceRecordViewService>.Instance.Find(sql);
+
+            DataTable dt = new DataTable();
+
+            dt.Columns.Add(new DataColumn { ColumnName = "number", Caption = "工号" });
+            dt.Columns.Add(new DataColumn { ColumnName = "name", Caption = "姓名" });
+
+            int days = DateTime.DaysInMonth(month.Year, month.Month);
+            for (int i = 1; i <= days; i++)
+            {
+                dt.Columns.Add(new DataColumn { ColumnName = i.ToString() });
+            }
+
+            dt.Columns.Add(new DataColumn { ColumnName = "sum", Caption = "合计" });
+            dt.Columns.Add(new DataColumn { ColumnName = "weekendsum", Caption = "周末合计" });
+            dt.Columns.Add(new DataColumn { ColumnName = "normalsum", Caption = "平时合计" });
+            dt.Columns.Add(new DataColumn { ColumnName = "holidaysum", Caption = "节假日合计" });
+            dt.Columns.Add(new DataColumn { ColumnName = "attendanceDays", Caption = "出勤天数" });
+            dt.Columns.Add(new DataColumn { ColumnName = "annualDays", Caption = "年假天数" });
+            dt.Columns.Add(new DataColumn { ColumnName = "sickDays", Caption = "病假天数" });
+            dt.Columns.Add(new DataColumn { ColumnName = "casualDays", Caption = "事假天数" });
+            dt.Columns.Add(new DataColumn { ColumnName = "absentDays", Caption = "旷工天数" });
+            dt.Columns.Add(new DataColumn { ColumnName = "injuryDays", Caption = "工伤天数" });
+            dt.Columns.Add(new DataColumn { ColumnName = "realDays", Caption = "实际天数" });
+
+            var staffs = records.Select(r => r.StaffId).Distinct();
+            foreach (var staffId in staffs)
+            {
+                DataRow row = dt.NewRow();
+
+                var staff = records.First(r => r.StaffId == staffId);
+                row["number"] = staff.Number;
+                row["name"] = staff.Name;
+
+                for (int i = 1; i <= days; i++)
+                {
+                    var find = records.SingleOrDefault(r => r.StaffId == staffId && r.AttendanceDate == new DateTime(month.Year, month.Month, i));
+                    if (find == null)
+                    {
+                        row[i.ToString()] = 0;
+                    }
+                    else
+                    {
+                        row[i.ToString()] = find.Workload;
+                    }
+                }
+
+                row["sum"] = records.Where(r => r.StaffId == staffId).Sum(r => r.Workload);
+                row["weekendsum"] = records.Where(r => r.StaffId == staffId && r.IsWeekend == true).Sum(r => r.Workload);
+                row["normalsum"] = records.Where(r => r.StaffId == staffId && r.IsWeekend == false && r.IsHoliday == false).Sum(r => r.Workload);
+                row["holidaysum"] = records.Where(r => r.StaffId == staffId && r.IsHoliday == true).Sum(r => r.Workload);
+
+                row["attendanceDays"] = records.Where(r => r.StaffId == staffId && r.AbsentType == (int)AbsentType.None && r.IsWeekend == false && r.IsHoliday == false).Count(); ;
+                row["annualDays"] = records.Where(r => r.StaffId == staffId && r.AbsentType == (int)AbsentType.AnnualLeave).Count();
+                row["sickDays"] = records.Where(r => r.StaffId == staffId && r.AbsentType == (int)AbsentType.SickLeave).Count();
+                row["casualDays"] = records.Where(r => r.StaffId == staffId && r.AbsentType == (int)AbsentType.CasualLeave).Count();
+                row["absentDays"] = records.Where(r => r.StaffId == staffId && r.AbsentType == (int)AbsentType.AbsentLeave).Count();
+                row["injuryDays"] = records.Where(r => r.StaffId == staffId && r.AbsentType == (int)AbsentType.InjuryLeave).Count();
+                row["realDays"] = Convert.ToInt32(row["attendanceDays"]) - Convert.ToInt32(row["annualDays"]);
+
+                dt.Rows.Add(row);
+            }
+
+            return dt;
         }
         #endregion //Function
 
@@ -137,6 +222,38 @@ namespace Hades.HR.UI
         #endregion //Method
 
         #region Event
+        /// <summary>
+        /// 班组选择
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tvLine_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            this.txtWorkTeamName.Text = e.Node.Text;
+            this.txtWorkTeamName2.Text = e.Node.Text;
+            LoadRecordData();
+        }
+
+        /// <summary>
+        /// 汇总月度选择
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dpMonth_EditValueChanged(object sender, EventArgs e)
+        {
+            if (this.dpMonth.EditValue == null)
+                return;
+
+            var node = this.tvLine.SelectedNode;
+            if (node != null && Convert.ToInt32(node.Tag) == 3)
+            {
+                var dt = LoadSummaryAttendance(this.dpMonth.DateTime.Date, node.Name);
+
+                this.dgcSummary.DataSource = dt;
+                this.dgvSummary.PopulateColumns();
+            }            
+        }
+
         /// <summary>
         /// 考勤日期选择
         /// </summary>
@@ -231,5 +348,7 @@ namespace Hades.HR.UI
             //}
         }
         #endregion //Event
+
+        
     }
 }

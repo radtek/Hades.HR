@@ -153,7 +153,7 @@ namespace Hades.HR.UI
         private void menuAddStaff_Click(object sender, EventArgs e)
         {
             FrmStaffEdit dlg = new FrmStaffEdit();
-            //dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
+            dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
             dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
 
             if (DialogResult.OK == dlg.ShowDialog())
@@ -182,7 +182,7 @@ namespace Hades.HR.UI
                 FrmStaffEdit dlg = new FrmStaffEdit();
                 dlg.ID = ID;
                 dlg.IDList = IDList;
-                //dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
+                dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
                 dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
 
                 if (DialogResult.OK == dlg.ShowDialog())
@@ -196,7 +196,6 @@ namespace Hades.HR.UI
         {
             BindData();
         }
-
 
         /// <summary>
         /// 查询数据操作

@@ -167,6 +167,16 @@ namespace Hades.HR.UI
 
         #region Event
         /// <summary>
+        /// 对话框数据保存时间
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dlg_OnDataSaved(object sender, EventArgs e)
+        {
+            LoadDepartments();
+        }
+
+        /// <summary>
         /// 选择部门
         /// </summary>
         /// <param name="sender"></param>
@@ -335,7 +345,7 @@ namespace Hades.HR.UI
         private void menuAddTeam_Click(object sender, EventArgs e)
         {
             FrmWorkTeamEdit dlg = new FrmWorkTeamEdit();
-            // dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
+            dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
             dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
 
             if (DialogResult.OK == dlg.ShowDialog())

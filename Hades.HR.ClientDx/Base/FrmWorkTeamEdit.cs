@@ -56,6 +56,10 @@ namespace Hades.HR.UI
             info.SortCode = txtSortCode.Text;
             info.Remark = txtRemark.Text;
             info.Enabled = Convert.ToInt32(cmbEnabled.EditValue);
+
+            info.Editor = this.LoginUserInfo.Name;
+            info.EditorId = this.LoginUserInfo.ID;
+            info.EditTime = DateTime.Now;
         }
         #endregion //Function
 
@@ -149,6 +153,11 @@ namespace Hades.HR.UI
             WorkTeamInfo info = tempInfo;//必须使用存在的局部变量，因为部分信息可能被附件使用
             SetInfo(info);
 
+            info.Creator = this.LoginUserInfo.Name;
+            info.CreatorId = this.LoginUserInfo.ID;
+            info.CreateTime = DateTime.Now;
+            info.Deleted = 0;
+
             try
             {
                 #region 新增数据
@@ -180,6 +189,7 @@ namespace Hades.HR.UI
             if (info != null)
             {
                 SetInfo(info);
+                info.Deleted = 0;
 
                 try
                 {
