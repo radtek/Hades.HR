@@ -23,6 +23,7 @@ namespace Hades.HR.UI
     /// </summary>	
     public partial class FrmSalaryLevel : BaseDock
     {
+        #region Constructor
         public FrmSalaryLevel()
         {
             InitializeComponent();
@@ -48,6 +49,39 @@ namespace Hades.HR.UI
                 control.KeyUp += new System.Windows.Forms.KeyEventHandler(this.SearchControl_KeyUp);
             }
         }
+        #endregion //Constructor
+
+        #region Function
+        /// <summary>
+        /// 初始化字典列表内容
+        /// </summary>
+        private void InitDictItem()
+        {
+            //初始化代码
+        }
+
+        private void SetGridColumWidth(string columnName, int width)
+        {
+            DevExpress.XtraGrid.Columns.GridColumn column = this.winGridViewPager1.gridView1.Columns.ColumnByFieldName(columnName);
+            if (column != null)
+            {
+                column.Width = width;
+            }
+        }
+        #endregion //Function
+
+        #region Method
+        /// <summary>
+        /// 编写初始化窗体的实现，可以用于刷新
+        /// </summary>
+        public override void FormOnLoad()
+        {
+            BindData();
+        }
+        #endregion //Method
+
+
+
         void gridView1_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
         {
             //if (e.Column.FieldName == "OrderStatus")
@@ -109,30 +143,8 @@ namespace Hades.HR.UI
             }
         }
 
-        private void SetGridColumWidth(string columnName, int width)
-        {
-            DevExpress.XtraGrid.Columns.GridColumn column = this.winGridViewPager1.gridView1.Columns.ColumnByFieldName(columnName);
-            if (column != null)
-            {
-                column.Width = width;
-            }
-        }
-
-        /// <summary>
-        /// 编写初始化窗体的实现，可以用于刷新
-        /// </summary>
-        public override void  FormOnLoad()
-        {   
-            BindData();
-        }
         
-        /// <summary>
-        /// 初始化字典列表内容
-        /// </summary>
-        private void InitDictItem()
-        {
-			//初始化代码
-        }
+   
         
         /// <summary>
         /// 分页控件刷新操作

@@ -26,6 +26,7 @@
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
     <TargetFrameworkProfile />
+    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -130,13 +131,14 @@
     <Content Include="HR\Attendance\LaborMonthAttendanceService.svc" />
     <Content Include="HR\Base\WarehouseManagerService.svc" />
     <Content Include="HR\Base\WarehouseService.svc" />
-    <Content Include="HR\BonusDefineService.svc" />
+    <Content Include="HR\Salary\BonusDefineService.svc" />
     <Content Include="HR\Base\DepartmentService.svc" />
     <Content Include="HR\Base\PositionService.svc" />
     <Content Include="HR\Base\ProductionLineService.svc" />
+    <Content Include="HR\Salary\SalaryLevelService.svc" />
     <Content Include="HR\View\LaborAttendanceRecordViewService.svc" />
     <Content Include="HR\View\StaffAttendanceViewService.svc" />
-    <Content Include="HR\StaffSalaryService.svc" />
+    <Content Include="HR\Salary\StaffSalaryService.svc" />
     <Content Include="HR\Base\StaffService.svc" />
     <Content Include="HR\Base\WorkTeamService.svc" />
     <Content Include="Web.config">

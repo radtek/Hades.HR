@@ -782,6 +782,12 @@
     <EmbeddedResource Include="Control\WorkTeamLookup.resx">
       <DependentUpon>WorkTeamLookup.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Salary\FrmEditSalaryLevel.resx">
+      <DependentUpon>FrmEditSalaryLevel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Salary\FrmSalaryLevel.resx">
+      <DependentUpon>FrmSalaryLevel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmStaffOverview.resx">
       <DependentUpon>FrmStaffOverview.cs</DependentUpon>
     </EmbeddedResource>

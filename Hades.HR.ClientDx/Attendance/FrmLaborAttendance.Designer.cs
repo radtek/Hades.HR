@@ -38,25 +38,25 @@ namespace Hades.HR.UI
             this.tabAttendance = new DevExpress.XtraTab.XtraTabControl();
             this.tabPageSummary = new DevExpress.XtraTab.XtraTabPage();
             this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
+            this.dgcSummary = new DevExpress.XtraGrid.GridControl();
+            this.dgvSummary = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
             this.layoutControl2 = new DevExpress.XtraLayout.LayoutControl();
+            this.txtWorkTeamName = new DevExpress.XtraEditors.TextEdit();
             this.dpMonth = new DevExpress.XtraEditors.DateEdit();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.tabPageRecord = new DevExpress.XtraTab.XtraTabPage();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.txtWorkTeamName2 = new DevExpress.XtraEditors.TextEdit();
             this.btnEditRecord = new DevExpress.XtraEditors.SimpleButton();
             this.dpAttendance = new DevExpress.XtraEditors.DateEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.dgcSummary = new DevExpress.XtraGrid.GridControl();
-            this.dgvSummary = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.txtWorkTeamName = new DevExpress.XtraEditors.TextEdit();
-            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtWorkTeamName2 = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
@@ -66,14 +66,18 @@ namespace Hades.HR.UI
             this.tabPageSummary.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).BeginInit();
             this.groupControl5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgcSummary)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSummary)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
             this.groupControl4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).BeginInit();
             this.layoutControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtWorkTeamName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dpMonth.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dpMonth.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             this.tabPageRecord.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
@@ -81,16 +85,12 @@ namespace Hades.HR.UI
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtWorkTeamName2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dpAttendance.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dpAttendance.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgcSummary)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSummary)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtWorkTeamName.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtWorkTeamName2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             this.SuspendLayout();
             // 
@@ -186,6 +186,32 @@ namespace Hades.HR.UI
             this.groupControl5.TabIndex = 1;
             this.groupControl5.Text = "汇总记录";
             // 
+            // dgcSummary
+            // 
+            this.dgcSummary.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgcSummary.Location = new System.Drawing.Point(2, 21);
+            this.dgcSummary.MainView = this.dgvSummary;
+            this.dgcSummary.Name = "dgcSummary";
+            this.dgcSummary.Size = new System.Drawing.Size(788, 522);
+            this.dgcSummary.TabIndex = 0;
+            this.dgcSummary.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.dgvSummary});
+            // 
+            // dgvSummary
+            // 
+            this.dgvSummary.GridControl = this.dgcSummary;
+            this.dgvSummary.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
+            this.dgvSummary.Name = "dgvSummary";
+            this.dgvSummary.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
+            this.dgvSummary.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
+            this.dgvSummary.OptionsBehavior.Editable = false;
+            this.dgvSummary.OptionsCustomization.AllowFilter = false;
+            this.dgvSummary.OptionsCustomization.AllowGroup = false;
+            this.dgvSummary.OptionsMenu.EnableGroupPanelMenu = false;
+            this.dgvSummary.OptionsView.ColumnAutoWidth = false;
+            this.dgvSummary.OptionsView.ShowFooter = true;
+            this.dgvSummary.OptionsView.ShowGroupPanel = false;
+            // 
             // groupControl4
             // 
             this.groupControl4.Controls.Add(this.layoutControl2);
@@ -207,6 +233,15 @@ namespace Hades.HR.UI
             this.layoutControl2.Size = new System.Drawing.Size(788, 77);
             this.layoutControl2.TabIndex = 0;
             this.layoutControl2.Text = "layoutControl2";
+            // 
+            // txtWorkTeamName
+            // 
+            this.txtWorkTeamName.Location = new System.Drawing.Point(63, 36);
+            this.txtWorkTeamName.Name = "txtWorkTeamName";
+            this.txtWorkTeamName.Properties.ReadOnly = true;
+            this.txtWorkTeamName.Size = new System.Drawing.Size(713, 20);
+            this.txtWorkTeamName.StyleController = this.layoutControl2;
+            this.txtWorkTeamName.TabIndex = 5;
             // 
             // dpMonth
             // 
@@ -249,6 +284,15 @@ namespace Hades.HR.UI
             this.layoutControlItem3.Text = "月份选择";
             this.layoutControlItem3.TextSize = new System.Drawing.Size(48, 14);
             // 
+            // layoutControlItem4
+            // 
+            this.layoutControlItem4.Control = this.txtWorkTeamName;
+            this.layoutControlItem4.Location = new System.Drawing.Point(0, 24);
+            this.layoutControlItem4.Name = "layoutControlItem4";
+            this.layoutControlItem4.Size = new System.Drawing.Size(768, 33);
+            this.layoutControlItem4.Text = "班组";
+            this.layoutControlItem4.TextSize = new System.Drawing.Size(48, 14);
+            // 
             // tabPageRecord
             // 
             this.tabPageRecord.Controls.Add(this.groupControl2);
@@ -289,6 +333,15 @@ namespace Hades.HR.UI
             this.layoutControl1.Size = new System.Drawing.Size(788, 72);
             this.layoutControl1.TabIndex = 5;
             this.layoutControl1.Text = "layoutControl1";
+            // 
+            // txtWorkTeamName2
+            // 
+            this.txtWorkTeamName2.Location = new System.Drawing.Point(63, 36);
+            this.txtWorkTeamName2.Name = "txtWorkTeamName2";
+            this.txtWorkTeamName2.Properties.ReadOnly = true;
+            this.txtWorkTeamName2.Size = new System.Drawing.Size(330, 20);
+            this.txtWorkTeamName2.StyleController = this.layoutControl1;
+            this.txtWorkTeamName2.TabIndex = 5;
             // 
             // btnEditRecord
             // 
@@ -347,57 +400,6 @@ namespace Hades.HR.UI
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
-            // dgcSummary
-            // 
-            this.dgcSummary.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgcSummary.Location = new System.Drawing.Point(2, 21);
-            this.dgcSummary.MainView = this.dgvSummary;
-            this.dgcSummary.Name = "dgcSummary";
-            this.dgcSummary.Size = new System.Drawing.Size(788, 522);
-            this.dgcSummary.TabIndex = 0;
-            this.dgcSummary.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.dgvSummary});
-            // 
-            // dgvSummary
-            // 
-            this.dgvSummary.GridControl = this.dgcSummary;
-            this.dgvSummary.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
-            this.dgvSummary.Name = "dgvSummary";
-            this.dgvSummary.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
-            this.dgvSummary.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
-            this.dgvSummary.OptionsBehavior.Editable = false;
-            this.dgvSummary.OptionsCustomization.AllowFilter = false;
-            this.dgvSummary.OptionsCustomization.AllowGroup = false;
-            this.dgvSummary.OptionsView.ColumnAutoWidth = false;
-            this.dgvSummary.OptionsView.ShowGroupPanel = false;
-            // 
-            // txtWorkTeamName
-            // 
-            this.txtWorkTeamName.Location = new System.Drawing.Point(63, 36);
-            this.txtWorkTeamName.Name = "txtWorkTeamName";
-            this.txtWorkTeamName.Properties.ReadOnly = true;
-            this.txtWorkTeamName.Size = new System.Drawing.Size(713, 20);
-            this.txtWorkTeamName.StyleController = this.layoutControl2;
-            this.txtWorkTeamName.TabIndex = 5;
-            // 
-            // layoutControlItem4
-            // 
-            this.layoutControlItem4.Control = this.txtWorkTeamName;
-            this.layoutControlItem4.Location = new System.Drawing.Point(0, 24);
-            this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(768, 33);
-            this.layoutControlItem4.Text = "班组";
-            this.layoutControlItem4.TextSize = new System.Drawing.Size(48, 14);
-            // 
-            // txtWorkTeamName2
-            // 
-            this.txtWorkTeamName2.Location = new System.Drawing.Point(63, 36);
-            this.txtWorkTeamName2.Name = "txtWorkTeamName2";
-            this.txtWorkTeamName2.Properties.ReadOnly = true;
-            this.txtWorkTeamName2.Size = new System.Drawing.Size(330, 20);
-            this.txtWorkTeamName2.StyleController = this.layoutControl1;
-            this.txtWorkTeamName2.TabIndex = 5;
-            // 
             // layoutControlItem5
             // 
             this.layoutControlItem5.Control = this.txtWorkTeamName2;
@@ -423,14 +425,18 @@ namespace Hades.HR.UI
             this.tabPageSummary.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).EndInit();
             this.groupControl5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgcSummary)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSummary)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
             this.groupControl4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).EndInit();
             this.layoutControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtWorkTeamName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dpMonth.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dpMonth.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             this.tabPageRecord.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
@@ -438,16 +444,12 @@ namespace Hades.HR.UI
             this.groupControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtWorkTeamName2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dpAttendance.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dpAttendance.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgcSummary)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSummary)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtWorkTeamName.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtWorkTeamName2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             this.ResumeLayout(false);
 

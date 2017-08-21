@@ -20,16 +20,43 @@ namespace Hades.HR.UI
 {
     public partial class FrmEditSalaryLevel : BaseEditForm
     {
-    	/// <summary>
+        #region Field
+        /// <summary>
         /// 创建一个临时对象，方便在附件管理中获取存在的GUID
         /// </summary>
-    	private SalaryLevelInfo tempInfo = new SalaryLevelInfo();
-    	
+        private SalaryLevelInfo tempInfo = new SalaryLevelInfo();
+        #endregion //Field
+
+        #region Constructor
         public FrmEditSalaryLevel()
         {
             InitializeComponent();
         }
-                
+        #endregion //Constructor
+
+        #region Function
+        /// <summary>
+        /// 初始化数据字典
+        /// </summary>
+        private void InitDictItem()
+        {
+            //初始化代码
+        }
+
+        /// <summary>
+        /// 编辑或者保存状态下取值函数
+        /// </summary>
+        /// <param name="info"></param>
+        private void SetInfo(SalaryLevelInfo info)
+        {
+            info.Name = txtName.Text;
+            info.Salary = txtSalary.Value;
+            info.SortCode = txtSortCode.Text;
+            info.Remark = txtRemark.Text;
+        }
+        #endregion //Function
+
+        #region Method
         /// <summary>
         /// 实现控件输入检查的函数
         /// </summary>
@@ -38,31 +65,21 @@ namespace Hades.HR.UI
         {
             bool result = true;//默认是可以通过
 
-            #region MyRegion
             if (this.txtName.Text.Trim().Length == 0)
             {
-                MessageDxUtil.ShowTips("请输入");
+                MessageDxUtil.ShowTips("请输入名称");
                 this.txtName.Focus();
                 result = false;
             }
-             else if (this.txtSalary.Text.Trim().Length == 0)
-            {
-                MessageDxUtil.ShowTips("请输入");
-                this.txtSalary.Focus();
-                result = false;
-            }
-            #endregion
 
             return result;
         }
 
-        /// <summary>
-        /// 初始化数据字典
-        /// </summary>
-        private void InitDictItem()
+        public override void ClearScreen()
         {
-			//初始化代码
-        }                        
+            this.tempInfo = new SalaryLevelInfo();
+            base.ClearScreen();
+        }
 
         /// <summary>
         /// 数据显示的函数
@@ -73,61 +90,27 @@ namespace Hades.HR.UI
 
             if (!string.IsNullOrEmpty(ID))
             {
-                #region 显示信息
+                this.Text = "编辑工资级别";
                 SalaryLevelInfo info = CallerFactory<ISalaryLevelService>.Instance.FindByID(ID);
                 if (info != null)
                 {
-                	tempInfo = info;//重新给临时对象赋值，使之指向存在的记录对象
-                	
-	                    txtName.Text = info.Name;
-                                   txtSalary.Value = info.Salary;
-       	                    txtSortCode.Text = info.SortCode;
-           	                    txtRemark.Text = info.Remark;
-                             } 
-                #endregion
+                    tempInfo = info;//重新给临时对象赋值，使之指向存在的记录对象
+
+                    txtName.Text = info.Name;
+                    txtSalary.Value = info.Salary;
+                    txtSortCode.Text = info.SortCode;
+                    txtRemark.Text = info.Remark;
+                }
+
                 //this.btnOK.Enabled = HasFunction("SalaryLevel/Edit");             
             }
             else
             {
-    
+                this.Text = "新增工资级别";
                 //this.btnOK.Enabled = Portal.gc.HasFunction("SalaryLevel/Add");  
             }
-            
-            //tempInfo在对象存在则为指定对象，新建则是全新的对象，但有一些初始化的GUID用于附件上传
-            //SetAttachInfo(tempInfo);
         }
 
-        //private void SetAttachInfo(SalaryLevelInfo info)
-        //{
-        //    this.attachmentGUID.AttachmentGUID = info.AttachGUID;
-        //    this.attachmentGUID.userId = LoginUserInfo.Name;
-
-        //    string name = txtName.Text;
-        //    if (!string.IsNullOrEmpty(name))
-        //    {
-        //        string dir = string.Format("{0}", name);
-        //        this.attachmentGUID.Init(dir, tempInfo.ID, LoginUserInfo.Name);
-        //    }
-        //}
-
-        public override void ClearScreen()
-        {
-            this.tempInfo = new SalaryLevelInfo();
-            base.ClearScreen();
-        }
-
-        /// <summary>
-        /// 编辑或者保存状态下取值函数
-        /// </summary>
-        /// <param name="info"></param>
-        private void SetInfo(SalaryLevelInfo info)
-        {
-	            info.Name = txtName.Text;
-                       info.Salary = txtSalary.Value;
-       	            info.SortCode = txtSortCode.Text;
-       	            info.Remark = txtRemark.Text;
-               }
-         
         /// <summary>
         /// 新增状态下的数据保存
         /// </summary>
@@ -156,7 +139,7 @@ namespace Hades.HR.UI
                 MessageDxUtil.ShowError(ex.Message);
             }
             return false;
-        }                 
+        }
 
         /// <summary>
         /// 编辑状态下的数据保存
@@ -177,7 +160,7 @@ namespace Hades.HR.UI
                     if (succeed)
                     {
                         //可添加其他关联操作
-                       
+
                         return true;
                     }
                     #endregion
@@ -188,7 +171,8 @@ namespace Hades.HR.UI
                     MessageDxUtil.ShowError(ex.Message);
                 }
             }
-           return false;
+            return false;
         }
+        #endregion //Method
     }
 }

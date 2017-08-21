@@ -87,6 +87,32 @@ namespace Hades.HR.UI
         }
 
         /// <summary>
+        /// 载入汇总数据
+        /// </summary>
+        private void LoadSummaryData()
+        {
+            if (this.dpMonth.EditValue == null)
+                return;
+
+            var node = this.tvLine.SelectedNode;
+            if (node != null && Convert.ToInt32(node.Tag) == 3)
+            {
+                var dt = GetSummaryAttendance(this.dpMonth.DateTime.Date, node.Name);
+
+                this.dgcSummary.DataSource = dt;
+                this.dgvSummary.PopulateColumns();
+
+                int days = DateTime.DaysInMonth(this.dpMonth.DateTime.Date.Year, this.dpMonth.DateTime.Date.Month);
+                for (int i = 1; i <= days; i++)
+                {
+                    var col = this.dgvSummary.Columns[i.ToString()];
+                    col.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+                        new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, i.ToString(), "{0:0.##}")});
+                }
+            }
+        }
+
+        /// <summary>
         /// 绑定列表数据
         /// </summary>
         private void LoadRecordData()
@@ -138,7 +164,7 @@ namespace Hades.HR.UI
         /// <param name="month"></param>
         /// <param name="workTeamId"></param>
         /// <returns></returns>
-        private DataTable LoadSummaryAttendance(DateTime month, string workTeamId)
+        private DataTable GetSummaryAttendance(DateTime month, string workTeamId)
         {
             DateTime d1 = new DateTime(month.Year, month.Month, 1);
             DateTime d2 = d1.AddMonths(1).AddDays(-1);
@@ -183,11 +209,14 @@ namespace Hades.HR.UI
                     var find = records.SingleOrDefault(r => r.StaffId == staffId && r.AttendanceDate == new DateTime(month.Year, month.Month, i));
                     if (find == null)
                     {
-                        row[i.ToString()] = 0;
+                        row[i.ToString()] = "";
                     }
                     else
                     {
-                        row[i.ToString()] = find.Workload;
+                        if (find.AbsentType == (int)AbsentType.None)
+                            row[i.ToString()] = find.Workload;
+                        else
+                            row[i.ToString()] = ((AbsentType)find.AbsentType).DisplayName();
                     }
                 }
 
@@ -232,6 +261,7 @@ namespace Hades.HR.UI
             this.txtWorkTeamName.Text = e.Node.Text;
             this.txtWorkTeamName2.Text = e.Node.Text;
             LoadRecordData();
+            LoadSummaryData();
         }
 
         /// <summary>
@@ -241,17 +271,7 @@ namespace Hades.HR.UI
         /// <param name="e"></param>
         private void dpMonth_EditValueChanged(object sender, EventArgs e)
         {
-            if (this.dpMonth.EditValue == null)
-                return;
-
-            var node = this.tvLine.SelectedNode;
-            if (node != null && Convert.ToInt32(node.Tag) == 3)
-            {
-                var dt = LoadSummaryAttendance(this.dpMonth.DateTime.Date, node.Name);
-
-                this.dgcSummary.DataSource = dt;
-                this.dgvSummary.PopulateColumns();
-            }            
+            LoadSummaryData();
         }
 
         /// <summary>
@@ -347,8 +367,6 @@ namespace Hades.HR.UI
             //    }
             //}
         }
-        #endregion //Event
-
-        
+        #endregion //Event        
     }
 }

@@ -224,7 +224,8 @@ namespace Hades.HR.UI
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(93, 262);
+            this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnDelete.Location = new System.Drawing.Point(93, 294);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 1;
@@ -233,7 +234,8 @@ namespace Hades.HR.UI
             // 
             // btnAddRecord
             // 
-            this.btnAddRecord.Location = new System.Drawing.Point(12, 262);
+            this.btnAddRecord.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnAddRecord.Location = new System.Drawing.Point(12, 294);
             this.btnAddRecord.Name = "btnAddRecord";
             this.btnAddRecord.Size = new System.Drawing.Size(75, 23);
             this.btnAddRecord.TabIndex = 0;
@@ -248,7 +250,7 @@ namespace Hades.HR.UI
             this.dgcAttendance.Name = "dgcAttendance";
             this.dgcAttendance.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repoCmbAbsentType});
-            this.dgcAttendance.Size = new System.Drawing.Size(880, 270);
+            this.dgcAttendance.Size = new System.Drawing.Size(880, 296);
             this.dgcAttendance.TabIndex = 0;
             this.dgcAttendance.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.dgvAttendance});
@@ -339,9 +341,9 @@ namespace Hades.HR.UI
             // panelControl2
             // 
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControl2.Location = new System.Drawing.Point(2, 291);
+            this.panelControl2.Location = new System.Drawing.Point(2, 317);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(880, 39);
+            this.panelControl2.Size = new System.Drawing.Size(880, 13);
             this.panelControl2.TabIndex = 1;
             // 
             // FrmEditLaborAttendanceRecord

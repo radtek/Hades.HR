@@ -14,22 +14,25 @@ namespace Hades.HR.UI
         [Display(Name = "无")]
         None = 0,
 
+        [Display(Name = "休息")]
+        Rest = 1,
+
         [Display(Name = "年假")]
-        AnnualLeave = 1,
+        AnnualLeave = 2,
 
         [Display(Name = "病假")]
-        SickLeave = 2,
+        SickLeave = 3,
 
         [Display(Name = "事假")]
-        CasualLeave = 3,
+        CasualLeave = 4,
 
         [Display(Name = "工伤假")]
-        InjuryLeave = 4,
+        InjuryLeave = 5,
 
         [Display(Name = "婚产丧假")]
-        MarriageLeave = 5,
+        MarriageLeave = 6,
 
         [Display(Name = "旷工")]
-        AbsentLeave = 6
+        AbsentLeave = 7
     }
 }
