@@ -6,15 +6,15 @@ using Hades.Framework.ControlUtil;
 namespace Hades.HR.Entity
 {
     /// <summary>
-    /// SalaryLevelInfo
+    /// StaffLevelInfo
     /// </summary>
     [DataContract]
-    public class SalaryLevelInfo : BaseEntity
+    public class StaffLevelInfo : BaseEntity
     {
         /// <summary>
         /// 默认构造函数（需要初始化属性的在此处理）
         /// </summary>
-        public SalaryLevelInfo()
+        public StaffLevelInfo()
         {
             this.Id = System.Guid.NewGuid().ToString();
             this.Salary = 0;
@@ -37,6 +37,5 @@ namespace Hades.HR.Entity
         [DataMember]
         public virtual string Remark { get; set; }
         #endregion
-
     }
 }

@@ -18,19 +18,19 @@ namespace Hades.HR.ServiceCaller
 	/// <summary>
 	/// 基于WCF服务的Facade接口实现类
 	/// </summary>
-    public class SalaryLevelCaller : BaseWCFService<SalaryLevelInfo>, ISalaryLevelService
+    public class WorkSectionLaborCaller : BaseWCFService<WorkSectionLaborInfo>, IWorkSectionLaborService
     {
-        public SalaryLevelCaller()  : base()
+        public WorkSectionLaborCaller()  : base()
         {	
             this.configurationPath = EndPointConfig.WcfConfig; //WCF配置文件
-            this.endpointConfigurationName = EndPointConfig.SalaryLevelService;
+            this.endpointConfigurationName = EndPointConfig.WorkSectionLaborService;
         }
 
         /// <summary>
         /// 子类构造一个IChannel对象转换为基类接口，方便给基类进行调用通用的API
         /// </summary>
         /// <returns></returns>
-        protected override IBaseService<SalaryLevelInfo> CreateClient()
+        protected override IBaseService<WorkSectionLaborInfo> CreateClient()
         {
             return CreateSubClient();
         }
@@ -39,20 +39,20 @@ namespace Hades.HR.ServiceCaller
         /// 创建一个强类型接口对象，供本地调用
         /// </summary>
         /// <returns></returns>
-        private ISalaryLevelService CreateSubClient()
+        private IWorkSectionLaborService CreateSubClient()
         {
-            CustomClientChannel<ISalaryLevelService> factory = new CustomClientChannel<ISalaryLevelService>(endpointConfigurationName, configurationPath);
+            CustomClientChannel<IWorkSectionLaborService> factory = new CustomClientChannel<IWorkSectionLaborService>(endpointConfigurationName, configurationPath);
             return factory.CreateChannel();
         }
 
         ///// <summary>
         ///// 根据名称查找对象(自定义接口使用范例)
         ///// </summary>
-        //public List<SalaryLevelInfo> FindByName(string name)
+        //public List<WorkSectionLaborInfo> FindByName(string name)
         //{
-        //    List<SalaryLevelInfo> result = new List<SalaryLevelInfo>();
+        //    List<WorkSectionLaborInfo> result = new List<WorkSectionLaborInfo>();
 
-        //    ISalaryLevelService service = CreateSubClient();
+        //    IWorkSectionLaborService service = CreateSubClient();
         //    ICommunicationObject comm = service as ICommunicationObject;
         //    comm.Using(client =>
         //    {

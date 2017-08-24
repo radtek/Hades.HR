@@ -11,9 +11,9 @@ using Hades.HR.Entity;
 namespace Hades.HR.IDAL
 {
     /// <summary>
-    /// SalaryLevel
+    /// StaffLevel
     /// </summary>
-	public interface ISalaryLevel : IBaseDAL<SalaryLevelInfo>
+	public interface IStaffLevel : IBaseDAL<StaffLevelInfo>
 	{
     }
 }

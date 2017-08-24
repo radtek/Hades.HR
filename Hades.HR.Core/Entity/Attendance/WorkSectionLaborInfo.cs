@@ -6,19 +6,19 @@ using Hades.Framework.ControlUtil;
 namespace Hades.HR.Entity
 {
     /// <summary>
-    /// WorkTeamInfo
+    /// WorkSectionLaborInfo
     /// </summary>
     [DataContract]
-    public class WorkTeamInfo : BaseEntity
+    public class WorkSectionLaborInfo : BaseEntity
     {
         /// <summary>
         /// 默认构造函数（需要初始化属性的在此处理）
         /// </summary>
-        public WorkTeamInfo()
+        public WorkSectionLaborInfo()
         {
             this.Id = System.Guid.NewGuid().ToString();
-            this.Deleted = 0;
-            this.Enabled = 0;
+            this.Year = 0;
+            this.Month = 0;
         }
 
         #region Property Members
@@ -27,34 +27,22 @@ namespace Hades.HR.Entity
         public virtual string Id { get; set; }
 
         [DataMember]
-        public virtual string Name { get; set; }
+        public virtual int Year { get; set; }
 
         [DataMember]
-        public virtual string Number { get; set; }
+        public virtual int Month { get; set; }
 
         [DataMember]
-        public virtual string CompanyId { get; set; }
+        public virtual string WorkSectionId { get; set; }
 
         [DataMember]
-        public virtual string ProductionLineId { get; set; }
+        public virtual string StaffId { get; set; }
 
         [DataMember]
-        public virtual int Quota { get; set; }
-
-        [DataMember]
-        public virtual string SortCode { get; set; }
+        public virtual string StaffLevel { get; set; }
 
         [DataMember]
         public virtual string Remark { get; set; }
-
-        [DataMember]
-        public virtual string Creator { get; set; }
-
-        [DataMember]
-        public virtual string CreatorId { get; set; }
-
-        [DataMember]
-        public virtual DateTime CreateTime { get; set; }
 
         [DataMember]
         public virtual string Editor { get; set; }
@@ -64,15 +52,6 @@ namespace Hades.HR.Entity
 
         [DataMember]
         public virtual DateTime EditTime { get; set; }
-
-        [DataMember]
-        public virtual int Deleted { get; set; }
-
-        [DataMember]
-        public virtual int Enabled { get; set; }
-
-
         #endregion
-
     }
 }

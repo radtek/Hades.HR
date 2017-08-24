@@ -6,15 +6,15 @@ using Hades.Framework.ControlUtil;
 namespace Hades.HR.Entity
 {
     /// <summary>
-    /// WorkTeamInfo
+    /// WorkSectionInfo
     /// </summary>
     [DataContract]
-    public class WorkTeamInfo : BaseEntity
+    public class WorkSectionInfo : BaseEntity
     {
         /// <summary>
         /// 默认构造函数（需要初始化属性的在此处理）
         /// </summary>
-        public WorkTeamInfo()
+        public WorkSectionInfo()
         {
             this.Id = System.Guid.NewGuid().ToString();
             this.Deleted = 0;
@@ -33,28 +33,13 @@ namespace Hades.HR.Entity
         public virtual string Number { get; set; }
 
         [DataMember]
-        public virtual string CompanyId { get; set; }
-
-        [DataMember]
-        public virtual string ProductionLineId { get; set; }
-
-        [DataMember]
-        public virtual int Quota { get; set; }
+        public virtual string WorkTeamId { get; set; }
 
         [DataMember]
         public virtual string SortCode { get; set; }
 
         [DataMember]
         public virtual string Remark { get; set; }
-
-        [DataMember]
-        public virtual string Creator { get; set; }
-
-        [DataMember]
-        public virtual string CreatorId { get; set; }
-
-        [DataMember]
-        public virtual DateTime CreateTime { get; set; }
 
         [DataMember]
         public virtual string Editor { get; set; }
@@ -70,9 +55,6 @@ namespace Hades.HR.Entity
 
         [DataMember]
         public virtual int Enabled { get; set; }
-
-
         #endregion
-
     }
 }

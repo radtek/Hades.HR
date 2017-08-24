@@ -15,21 +15,21 @@ using Hades.HR.Facade;
 namespace Hades.HR.WCFLibrary
 {
 	/// <summary>
-	/// 基于WCFLibrary的SalaryLevel对象调用类
+	/// 基于WCFLibrary的WorkSectionLabor对象调用类
 	/// </summary>
-    public class SalaryLevelService : BaseLocalService<SalaryLevelInfo>, ISalaryLevelService
+    public class WorkSectionLaborService : BaseLocalService<WorkSectionLaborInfo>, IWorkSectionLaborService
     {
-        private SalaryLevel bll = null;
+        private WorkSectionLabor bll = null;
 
-        public SalaryLevelService() : base(BLLFactory<SalaryLevel>.Instance)
+        public WorkSectionLaborService() : base(BLLFactory<WorkSectionLabor>.Instance)
         {
-            bll = baseBLL as SalaryLevel;
+            bll = baseBLL as WorkSectionLabor;
         }
 
         ///// <summary>
         ///// 根据名称查找对象(自定义接口使用范例)
         ///// </summary>
-        //public List<SalaryLevelInfo> FindByName(string name)
+        //public List<WorkSectionLaborInfo> FindByName(string name)
         //{
         //    return bll.FindByName(name);
         //}
