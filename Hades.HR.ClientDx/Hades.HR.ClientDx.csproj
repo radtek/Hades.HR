@@ -576,6 +576,12 @@
     <Compile Include="Attendance\FrmEditLaborMonthAttendance.Designer.cs">
       <DependentUpon>FrmEditLaborMonthAttendance.cs</DependentUpon>
     </Compile>
+    <Compile Include="Attendance\FrmEditWorkSectionLabor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Attendance\FrmEditWorkSectionLabor.Designer.cs">
+      <DependentUpon>FrmEditWorkSectionLabor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Attendance\FrmLaborAttendance.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -588,17 +594,47 @@
     <Compile Include="Attendance\FrmLaborMonthAttendance.Designer.cs">
       <DependentUpon>FrmLaborMonthAttendance.cs</DependentUpon>
     </Compile>
+    <Compile Include="Attendance\FrmWorkSectionLabor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Attendance\FrmWorkSectionLabor.Designer.cs">
+      <DependentUpon>FrmWorkSectionLabor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Base\FrmEditStaffLevel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Base\FrmEditStaffLevel.Designer.cs">
+      <DependentUpon>FrmEditStaffLevel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Base\FrmEditWarehouseManager.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Base\FrmEditWarehouseManager.Designer.cs">
       <DependentUpon>FrmEditWarehouseManager.cs</DependentUpon>
     </Compile>
+    <Compile Include="Base\FrmWorkSectionEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Base\FrmWorkSectionEdit.Designer.cs">
+      <DependentUpon>FrmWorkSectionEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Base\FrmStaffLevel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Base\FrmStaffLevel.Designer.cs">
+      <DependentUpon>FrmStaffLevel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Base\FrmWarehouseEdit.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Base\FrmWarehouseEdit.Designer.cs">
       <DependentUpon>FrmWarehouseEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Base\FrmProductionLine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Base\FrmProductionLine.Designer.cs">
+      <DependentUpon>FrmProductionLine.cs</DependentUpon>
     </Compile>
     <Compile Include="Control\DepartmentLookup.cs">
       <SubType>UserControl</SubType>
@@ -761,8 +797,20 @@
     <EmbeddedResource Include="Attendance\FrmLaborMonthAttendance.resx">
       <DependentUpon>FrmLaborMonthAttendance.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Base\FrmEditStaffLevel.resx">
+      <DependentUpon>FrmEditStaffLevel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Base\FrmEditWarehouseManager.resx">
       <DependentUpon>FrmEditWarehouseManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Base\FrmWorkSectionEdit.resx">
+      <DependentUpon>FrmWorkSectionEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Base\FrmProductionLine.resx">
+      <DependentUpon>FrmProductionLine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Base\FrmStaffLevel.resx">
+      <DependentUpon>FrmStaffLevel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Base\FrmWarehouseEdit.resx">
       <DependentUpon>FrmWarehouseEdit.cs</DependentUpon>

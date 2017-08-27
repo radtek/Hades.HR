@@ -9,7 +9,9 @@ using System.Windows.Forms;
 
 namespace Hades.HR.UI
 {
+    using Hades.HR.Facade;
     using Hades.HR.Entity;
+    using Framework.ControlUtil.Facade;    
 
     /// <summary>
     /// 部门树形表格
@@ -62,6 +64,16 @@ namespace Hades.HR.UI
         #endregion //Constructor
 
         #region Method
+        /// <summary>
+        /// 初始化部门树
+        /// </summary>
+        /// <param name="level">显示到第几级</param>
+        public void Init(int level)
+        {
+            var departments = CallerFactory<IDepartmentService>.Instance.Find2(string.Format("Enabled = 1 AND Deleted=0 AND Type <= {0}", level), "ORDER BY SortCode");
+            this.bsDepartment.DataSource = departments;
+        }
+
         /// <summary>
         /// 获取当前选中对象
         /// </summary>

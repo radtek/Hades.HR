@@ -6,29 +6,29 @@ using System.Windows.Forms;
 using System.ComponentModel;
 using System.Collections.Generic;
 
+using Hades.Pager.Entity;
 using Hades.Dictionary;
 using Hades.Framework.BaseUI;
 using Hades.Framework.Commons;
 using Hades.Framework.ControlUtil;
-using Hades.Framework.ControlUtil.Facade;
 
-using Hades.HR.BLL;
+using Hades.Framework.ControlUtil.Facade;
 using Hades.HR.Facade;
 using Hades.HR.Entity;
 
 namespace Hades.HR.UI
 {
-    public partial class FrmWorkTeamEdit : BaseEditForm
+    public partial class FrmEditStaffLevel : BaseEditForm
     {
         #region Field
         /// <summary>
         /// 创建一个临时对象，方便在附件管理中获取存在的GUID
         /// </summary>
-        private WorkTeamInfo tempInfo = new WorkTeamInfo();
+        private StaffLevelInfo tempInfo = new StaffLevelInfo();
         #endregion //Field
 
         #region Constructor
-        public FrmWorkTeamEdit()
+        public FrmEditStaffLevel()
         {
             InitializeComponent();
         }
@@ -47,31 +47,20 @@ namespace Hades.HR.UI
         /// 编辑或者保存状态下取值函数
         /// </summary>
         /// <param name="info"></param>
-        private void SetInfo(WorkTeamInfo info)
+        private void SetInfo(StaffLevelInfo info)
         {
             info.Name = txtName.Text;
-            info.Number = txtNumber.Text;
-            info.CompanyId = luCompany.GetSelectedId();
-            info.ProductionLineId = luProductionLine.GetSelectedId();
-            info.Quota = Convert.ToInt32(spQuota.Value);
+            info.Salary = txtSalary.Value;
             info.SortCode = txtSortCode.Text;
             info.Remark = txtRemark.Text;
-            info.Enabled = Convert.ToInt32(cmbEnabled.EditValue);
-
-            info.Editor = this.LoginUserInfo.Name;
-            info.EditorId = this.LoginUserInfo.ID;
-            info.EditTime = DateTime.Now;
         }
         #endregion //Function
 
         #region Method
-        /// <summary>
-        /// 窗体载入
-        /// </summary>
-        public override void FormOnLoad()
+        public override void ClearScreen()
         {
-            this.luCompany.Init();
-            base.FormOnLoad();
+            this.tempInfo = new StaffLevelInfo();
+            base.ClearScreen();
         }
 
         /// <summary>
@@ -88,26 +77,8 @@ namespace Hades.HR.UI
                 this.txtName.Focus();
                 result = false;
             }
-            else if (string.IsNullOrEmpty(this.luCompany.GetSelectedId()))
-            {
-                MessageDxUtil.ShowTips("请选择所属公司");
-                this.luProductionLine.Focus();
-                result = false;
-            }
-            else if (string.IsNullOrEmpty(this.luProductionLine.GetSelectedId()))
-            {
-                MessageDxUtil.ShowTips("请选择所属生产线");
-                this.luProductionLine.Focus();
-                result = false;
-            }
 
             return result;
-        }
-
-        public override void ClearScreen()
-        {
-            this.tempInfo = new WorkTeamInfo();
-            base.ClearScreen();
         }
 
         /// <summary>
@@ -119,30 +90,24 @@ namespace Hades.HR.UI
 
             if (!string.IsNullOrEmpty(ID))
             {
-                this.Text = "编辑班组";
-                WorkTeamInfo info = CallerFactory<IWorkTeamService>.Instance.FindByID(ID);
+                StaffLevelInfo info = CallerFactory<IStaffLevelService>.Instance.FindByID(ID);
                 if (info != null)
                 {
                     tempInfo = info;//重新给临时对象赋值，使之指向存在的记录对象
 
                     txtName.Text = info.Name;
-                    txtNumber.Text = info.Number;
-                    spQuota.Value = info.Quota;
-
-                    this.luCompany.SetSelected(info.CompanyId);
-                    this.luProductionLine.SetSelected(info.ProductionLineId);
-
+                    txtSalary.Value = info.Salary;
                     txtSortCode.Text = info.SortCode;
                     txtRemark.Text = info.Remark;
-                    cmbEnabled.EditValue = info.Enabled;
                 }
 
-                //this.btnOK.Enabled = HasFunction("WorkTeam/Edit");             
+                this.Text = "编辑职员等级";
+                //this.btnOK.Enabled = HasFunction("StaffLevel/Edit");             
             }
             else
             {
-                this.Text = "新增班组";
-                //this.btnOK.Enabled = Portal.gc.HasFunction("WorkTeam/Add");  
+                this.Text = "新增职员等级";
+                //this.btnOK.Enabled = Portal.gc.HasFunction("StaffLevel/Add");  
             }
         }
 
@@ -152,26 +117,18 @@ namespace Hades.HR.UI
         /// <returns></returns>
         public override bool SaveAddNew()
         {
-            WorkTeamInfo info = tempInfo;//必须使用存在的局部变量，因为部分信息可能被附件使用
+            StaffLevelInfo info = tempInfo;//必须使用存在的局部变量，因为部分信息可能被附件使用
             SetInfo(info);
-
-            info.Creator = this.LoginUserInfo.Name;
-            info.CreatorId = this.LoginUserInfo.ID;
-            info.CreateTime = DateTime.Now;
-            info.Deleted = 0;
 
             try
             {
-                #region 新增数据
-
-                bool succeed = CallerFactory<IWorkTeamService>.Instance.Insert(info);
+                bool succeed = CallerFactory<IStaffLevelService>.Instance.Insert(info);
                 if (succeed)
                 {
                     //可添加其他关联操作
 
                     return true;
                 }
-                #endregion
             }
             catch (Exception ex)
             {
@@ -187,16 +144,15 @@ namespace Hades.HR.UI
         /// <returns></returns>
         public override bool SaveUpdated()
         {
-            WorkTeamInfo info = CallerFactory<IWorkTeamService>.Instance.FindByID(ID);
+            StaffLevelInfo info = CallerFactory<IStaffLevelService>.Instance.FindByID(ID);
             if (info != null)
             {
                 SetInfo(info);
-                info.Deleted = 0;
 
                 try
                 {
                     #region 更新数据
-                    bool succeed = CallerFactory<IWorkTeamService>.Instance.Update(info, info.Id);
+                    bool succeed = CallerFactory<IStaffLevelService>.Instance.Update(info, info.Id);
                     if (succeed)
                     {
                         //可添加其他关联操作
@@ -214,16 +170,5 @@ namespace Hades.HR.UI
             return false;
         }
         #endregion //Method
-
-        #region Event
-        private void luCompany_DepartmentSelect(object sender, EventArgs e)
-        {
-            var depId = this.luCompany.GetSelectedId();
-            if (!string.IsNullOrEmpty(depId))
-            {
-                this.luProductionLine.Init(depId);
-            }
-        }
-        #endregion //Event
     }
 }

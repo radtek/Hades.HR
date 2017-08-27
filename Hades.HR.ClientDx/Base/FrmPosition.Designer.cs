@@ -43,7 +43,6 @@ namespace Hades.HR.UI
             this.menuDeletePosition = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.depTree = new Hades.HR.UI.DepartmentTreeGrid();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
             this.wgvPosition = new Hades.Pager.WinControl.WinGridView();
@@ -68,6 +67,7 @@ namespace Hades.HR.UI
             this.menuAddWarehouse = new System.Windows.Forms.ToolStripMenuItem();
             this.menuEditWarehouse = new System.Windows.Forms.ToolStripMenuItem();
             this.menuDeleteWarehouse = new System.Windows.Forms.ToolStripMenuItem();
+            this.depTree = new Hades.HR.UI.DepartmentTreeGrid();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtDepartmentNumber.Properties)).BeginInit();
@@ -226,24 +226,6 @@ namespace Hades.HR.UI
             this.groupControl1.Size = new System.Drawing.Size(294, 674);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "部门列表";
-            // 
-            // depTree
-            // 
-            this.depTree.DataSource = null;
-            this.depTree.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.depTree.EnableFocusCellStyle = true;
-            this.depTree.Location = new System.Drawing.Point(2, 21);
-            this.depTree.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.depTree.Name = "depTree";
-            this.depTree.ShowContextMenu = false;
-            this.depTree.ShowMenuCreate = false;
-            this.depTree.ShowMenuDelete = false;
-            this.depTree.ShowMenuEdit = false;
-            this.depTree.ShowMenuView = false;
-            this.depTree.ShowNameOnly = true;
-            this.depTree.Size = new System.Drawing.Size(290, 651);
-            this.depTree.TabIndex = 0;
-            this.depTree.DepartmentSelect += new System.EventHandler(this.depTree_DepartmentSelect);
             // 
             // groupControl2
             // 
@@ -456,34 +438,52 @@ namespace Hades.HR.UI
             this.menuEditWarehouse,
             this.menuDeleteWarehouse});
             this.contextMenuStrip4.Name = "contextMenuStrip4";
-            this.contextMenuStrip4.Size = new System.Drawing.Size(153, 114);
+            this.contextMenuStrip4.Size = new System.Drawing.Size(125, 92);
             // 
             // menuViewWarehouse
             // 
             this.menuViewWarehouse.Name = "menuViewWarehouse";
-            this.menuViewWarehouse.Size = new System.Drawing.Size(152, 22);
+            this.menuViewWarehouse.Size = new System.Drawing.Size(124, 22);
             this.menuViewWarehouse.Text = "查看仓库";
             this.menuViewWarehouse.Click += new System.EventHandler(this.menuViewWarehouse_Click);
             // 
             // menuAddWarehouse
             // 
             this.menuAddWarehouse.Name = "menuAddWarehouse";
-            this.menuAddWarehouse.Size = new System.Drawing.Size(152, 22);
+            this.menuAddWarehouse.Size = new System.Drawing.Size(124, 22);
             this.menuAddWarehouse.Text = "新增仓库";
             this.menuAddWarehouse.Click += new System.EventHandler(this.menuAddWarehouse_Click);
             // 
             // menuEditWarehouse
             // 
             this.menuEditWarehouse.Name = "menuEditWarehouse";
-            this.menuEditWarehouse.Size = new System.Drawing.Size(152, 22);
+            this.menuEditWarehouse.Size = new System.Drawing.Size(124, 22);
             this.menuEditWarehouse.Text = "编辑仓库";
             this.menuEditWarehouse.Click += new System.EventHandler(this.menuEditWarehouse_Click);
             // 
             // menuDeleteWarehouse
             // 
             this.menuDeleteWarehouse.Name = "menuDeleteWarehouse";
-            this.menuDeleteWarehouse.Size = new System.Drawing.Size(152, 22);
+            this.menuDeleteWarehouse.Size = new System.Drawing.Size(124, 22);
             this.menuDeleteWarehouse.Text = "删除仓库";
+            // 
+            // depTree
+            // 
+            this.depTree.DataSource = null;
+            this.depTree.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.depTree.EnableFocusCellStyle = true;
+            this.depTree.Location = new System.Drawing.Point(2, 21);
+            this.depTree.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.depTree.Name = "depTree";
+            this.depTree.ShowContextMenu = false;
+            this.depTree.ShowMenuCreate = false;
+            this.depTree.ShowMenuDelete = false;
+            this.depTree.ShowMenuEdit = false;
+            this.depTree.ShowMenuView = false;
+            this.depTree.ShowNameOnly = true;
+            this.depTree.Size = new System.Drawing.Size(290, 651);
+            this.depTree.TabIndex = 0;
+            this.depTree.DepartmentSelect += new System.EventHandler(this.depTree_DepartmentSelect);
             // 
             // FrmPosition
             // 
@@ -492,7 +492,7 @@ namespace Hades.HR.UI
             this.ClientSize = new System.Drawing.Size(1004, 680);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "FrmPosition";
-            this.Text = "岗位产线班组管理";
+            this.Text = "岗位仓库管理";
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtDepartmentNumber.Properties)).EndInit();

@@ -10,7 +10,7 @@ using Hades.HR.Entity;
 using Hades.HR.BLL;
 using Hades.HR.Facade;
 
-namespace Hades.HR.Caller.WinformCaller.Base
+namespace Hades.HR.WinformCaller
 {
     /// <summary>
     /// 基于传统Winform方式，直接访问本地数据库的Facade接口实现类
