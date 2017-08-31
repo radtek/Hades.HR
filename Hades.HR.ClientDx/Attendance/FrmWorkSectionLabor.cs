@@ -23,6 +23,7 @@ namespace Hades.HR.UI
     /// </summary>	
     public partial class FrmWorkSectionLabor : BaseDock
     {
+        #region Constructor
         public FrmWorkSectionLabor()
         {
             InitializeComponent();
@@ -41,13 +42,44 @@ namespace Hades.HR.UI
 			this.winGridViewPager1.gridView1.DataSourceChanged +=new EventHandler(gridView1_DataSourceChanged);
             this.winGridViewPager1.gridView1.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(gridView1_CustomColumnDisplayText);
             this.winGridViewPager1.gridView1.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(gridView1_RowCellStyle);
+                       
+        }
+        #endregion //Constructor
 
-            //关联回车键进行查询
-            foreach (Control control in this.layoutControl1.Controls)
+        #region Function
+
+        #endregion //Function
+
+        #region Method
+        /// <summary>
+        /// 编写初始化窗体的实现，可以用于刷新
+        /// </summary>
+        public override void FormOnLoad()
+        {
+            //BindData();
+
+            this.treeLine.Init();
+        }
+        #endregion //Method
+
+
+        #region Event
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            var teamId = this.treeLine.GetSelectedTeamId();
+
+            if (string.IsNullOrEmpty(teamId))
             {
-                control.KeyUp += new System.Windows.Forms.KeyEventHandler(this.SearchControl_KeyUp);
+                return;
+            }
+            else
+            {
+                FrmEditWorkSectionLabor frm = new FrmEditWorkSectionLabor(2017, 8, teamId);
+                frm.ShowDialog();
             }
         }
+        #endregion //Event
+
         void gridView1_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
         {
             //if (e.Column.FieldName == "OrderStatus")
@@ -118,13 +150,6 @@ namespace Hades.HR.UI
             }
         }
 
-        /// <summary>
-        /// 编写初始化窗体的实现，可以用于刷新
-        /// </summary>
-        public override void  FormOnLoad()
-        {   
-            BindData();
-        }
         
         /// <summary>
         /// 初始化字典列表内容
@@ -235,8 +260,7 @@ namespace Hades.HR.UI
             if (condition == null)
             {
                 condition = new SearchCondition();
-                condition.AddNumericCondition("Year", this.txtYear1, this.txtYear2); //数值类型
-                condition.AddNumericCondition("Month", this.txtMonth1, this.txtMonth2); //数值类型
+               
             }
             string where = condition.BuildConditionSql().Replace("Where", "");
             return where;
@@ -311,139 +335,15 @@ namespace Hades.HR.UI
 
 		 		 		 		 		 		 		  		  
         private string moduleName = "WorkSectionLabor";
-        /// <summary>
-        /// 导入Excel的操作
-        /// </summary>          
-        private void btnImport_Click(object sender, EventArgs e)
-        {
-            string templateFile = string.Format("{0}-模板.xls", moduleName);
-            FrmImportExcelData dlg = new FrmImportExcelData();
-            dlg.SetTemplate(templateFile, System.IO.Path.Combine(Application.StartupPath, templateFile));
-            dlg.OnDataSave += new FrmImportExcelData.SaveDataHandler(ExcelData_OnDataSave);
-            dlg.OnRefreshData += new EventHandler(ExcelData_OnRefreshData);
-            dlg.ShowDialog();
-        }
 
-        void ExcelData_OnRefreshData(object sender, EventArgs e)
-        {
-            BindData();
-        }
 
-        /// <summary>
-        /// 如果字段存在，则获取对应的值，否则返回默认空
-        /// </summary>
-        /// <param name="row">DataRow对象</param>
-        /// <param name="columnName">字段列名</param>
-        /// <returns></returns>
-        private string GetRowData(DataRow row, string columnName)
-        {
-            string result = "";
-            if (row.Table.Columns.Contains(columnName))
-            {
-                result = row[columnName].ToString();
-            }
-            return result;
-        }
-        
-        bool ExcelData_OnDataSave(DataRow dr)
-        {
-            bool success = false;
-            bool converted = false;
-            DateTime dtDefault = Convert.ToDateTime("1900-01-01");
-            DateTime dt;
-            WorkSectionLaborInfo info = new WorkSectionLaborInfo();
-            info.Id = GetRowData(dr, "Id");
-              info.Year = GetRowData(dr, "Year").ToInt32();
-              info.Month = GetRowData(dr, "Month").ToInt32();
-              info.WorkSectionId = GetRowData(dr, "WorkSectionId");
-              info.StaffId = GetRowData(dr, "StaffId");
-              info.StaffLevel = GetRowData(dr, "StaffLevel");
-              info.Remark = GetRowData(dr, "Remark");
-               info.EditorId = GetRowData(dr, "EditorId");
-   
-            success = CallerFactory<IWorkSectionLaborService>.Instance.Insert(info);
-             return success;
-        }
 
-        /// <summary>
-        /// 导出Excel的操作
-        /// </summary>
-        private void btnExport_Click(object sender, EventArgs e)
-        {
-            string file = FileDialogHelper.SaveExcel(string.Format("{0}.xls", moduleName));
-            if (!string.IsNullOrEmpty(file))
-            {
-                string where = GetConditionSql();
-                List<WorkSectionLaborInfo> list = CallerFactory<IWorkSectionLaborService>.Instance.Find(where);
-                 DataTable dtNew = DataTableHelper.CreateTable("序号|int,Id,Year,Month,WorkSectionId,StaffId,StaffLevel,Remark,EditorId");
-                DataRow dr;
-                int j = 1;
-                for (int i = 0; i < list.Count; i++)
-                {
-                    dr = dtNew.NewRow();
-                    dr["序号"] = j++;
-                    dr["Id"] = list[i].Id;
-                     dr["Year"] = list[i].Year;
-                     dr["Month"] = list[i].Month;
-                     dr["WorkSectionId"] = list[i].WorkSectionId;
-                     dr["StaffId"] = list[i].StaffId;
-                     dr["StaffLevel"] = list[i].StaffLevel;
-                     dr["Remark"] = list[i].Remark;
-                      dr["EditorId"] = list[i].EditorId;
-                      dtNew.Rows.Add(dr);
-                }
-
-                try
-                {
-                    string error = "";
-                    AsposeExcelTools.DataTableToExcel2(dtNew, file, out error);
-                    if (!string.IsNullOrEmpty(error))
-                    {
-                        MessageDxUtil.ShowError(string.Format("导出Excel出现错误：{0}", error));
-                    }
-                    else
-                    {
-                        if (MessageDxUtil.ShowYesNoAndTips("导出成功，是否打开文件？") == System.Windows.Forms.DialogResult.Yes)
-                        {
-                            System.Diagnostics.Process.Start(file);
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    LogTextHelper.Error(ex);
-                    MessageDxUtil.ShowError(ex.Message);
-                }
-            }
-         }
-         
-        private FrmAdvanceSearch dlg;
-        private void btnAdvanceSearch_Click(object sender, EventArgs e)
-        {
-            if (dlg == null)
-            {
-                dlg = new FrmAdvanceSearch();
-                dlg.FieldTypeTable = CallerFactory<IWorkSectionLaborService>.Instance.GetFieldTypeList();
-                dlg.ColumnNameAlias = CallerFactory<IWorkSectionLaborService>.Instance.GetColumnNameAlias();                
-                 dlg.DisplayColumns = "Id,Year,Month,WorkSectionId,StaffId,StaffLevel,Remark,EditorId";
-
-                #region 下拉列表数据
-
-                //dlg.AddColumnListItem("UserType", Portal.gc.GetDictData("人员类型"));//字典列表
-                //dlg.AddColumnListItem("Sex", "男,女");//固定列表
-                //dlg.AddColumnListItem("Credit", BLLFactory<WorkSectionLabor>.Instance.GetFieldList("Credit"));//动态列表
-
-                #endregion
-
-                dlg.ConditionChanged += new FrmAdvanceSearch.ConditionChangedEventHandler(dlg_ConditionChanged);
-            }
-            dlg.ShowDialog();
-        }
 
         void dlg_ConditionChanged(SearchCondition condition)
         {
             advanceCondition = condition;
             BindData();
         }
+
     }
 }

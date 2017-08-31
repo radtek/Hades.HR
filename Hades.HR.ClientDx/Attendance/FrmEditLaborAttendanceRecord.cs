@@ -253,6 +253,5 @@ namespace Hades.HR.UI
             }
         }
         #endregion //Event
-
     }
 }

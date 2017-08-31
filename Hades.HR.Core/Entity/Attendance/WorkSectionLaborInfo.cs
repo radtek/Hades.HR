@@ -33,6 +33,9 @@ namespace Hades.HR.Entity
         public virtual int Month { get; set; }
 
         [DataMember]
+        public virtual string WorkTeamId { get; set; }
+
+        [DataMember]
         public virtual string WorkSectionId { get; set; }
 
         [DataMember]
@@ -40,6 +43,9 @@ namespace Hades.HR.Entity
 
         [DataMember]
         public virtual string StaffLevel { get; set; }
+
+        [DataMember]
+        public virtual int InPosition { get; set; }
 
         [DataMember]
         public virtual string Remark { get; set; }

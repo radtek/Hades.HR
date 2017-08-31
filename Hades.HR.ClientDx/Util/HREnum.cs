@@ -35,4 +35,16 @@ namespace Hades.HR.UI
         [Display(Name = "旷工")]
         AbsentLeave = 7
     }
+
+    /// <summary>
+    /// 职员类型
+    /// </summary>
+    public enum StaffType
+    {
+        [Display(Name = "管理员工")]
+        Manage = 1,
+
+        [Display(Name = "计件员工")]
+        Labor = 2
+    }
 }

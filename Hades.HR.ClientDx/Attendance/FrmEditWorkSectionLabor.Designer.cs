@@ -28,371 +28,352 @@ namespace Hades.HR.UI
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();                
-
-            this.txtYear = new DevExpress.XtraEditors.SpinEdit();
+            this.txtWorkTeamName = new DevExpress.XtraEditors.TextEdit();
+            this.txtDate = new DevExpress.XtraEditors.TextEdit();
+            this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-             this.txtMonth = new DevExpress.XtraEditors.SpinEdit();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-             this.txtWorkSectionId = new DevExpress.XtraEditors.TextEdit();
-            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-             this.txtStaffId = new DevExpress.XtraEditors.TextEdit();
-            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
-             this.txtStaffLevel = new DevExpress.XtraEditors.TextEdit();
-            this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
-             this.txtRemark = new DevExpress.XtraEditors.TextEdit();
-            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
-             this.txtEditor = new DevExpress.XtraEditors.TextEdit();
-            this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
-             this.txtEditorId = new DevExpress.XtraEditors.TextEdit();
-            this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
-             this.txtEditTime = new DevExpress.XtraEditors.DateEdit();
-            this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
-             
+            this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.dgcStaff = new DevExpress.XtraGrid.GridControl();
+            this.bsLabors = new System.Windows.Forms.BindingSource(this.components);
+            this.dgvStaff = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colYear = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colMonth = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colWorkTeamId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colWorkSectionId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colStaffNumber = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colStaffId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colStaffLevel = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colIn = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colInPosition = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colRemark = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colAction = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repoActionButton = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             ((System.ComponentModel.ISupportInitialize)(this.picPrint)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
+            this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
-
             this.layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();            
-            ((System.ComponentModel.ISupportInitialize)(this.txtYear.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtWorkTeamName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDate.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
-             ((System.ComponentModel.ISupportInitialize)(this.txtMonth.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
-             ((System.ComponentModel.ISupportInitialize)(this.txtWorkSectionId.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
-             ((System.ComponentModel.ISupportInitialize)(this.txtStaffId.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
-             ((System.ComponentModel.ISupportInitialize)(this.txtStaffLevel.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
-             ((System.ComponentModel.ISupportInitialize)(this.txtRemark.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
-             ((System.ComponentModel.ISupportInitialize)(this.txtEditor.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
-             ((System.ComponentModel.ISupportInitialize)(this.txtEditorId.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
-             ((System.ComponentModel.ISupportInitialize)(this.txtEditTime.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtEditTime.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
-             
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
+            this.groupControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgcStaff)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsLabors)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStaff)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repoActionButton)).BeginInit();
             this.SuspendLayout();
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(438, 392);
+            this.btnOK.Location = new System.Drawing.Point(588, 392);
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(537, 392);
+            this.btnCancel.Location = new System.Drawing.Point(687, 392);
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(351, 392);
+            this.btnAdd.Location = new System.Drawing.Point(501, 392);
+            this.btnAdd.Visible = false;
+            // 
+            // dataNavigator1
+            // 
+            this.dataNavigator1.Visible = false;
+            // 
+            // picPrint
+            // 
+            this.picPrint.Visible = false;
+            // 
+            // groupControl1
+            // 
+            this.groupControl1.Controls.Add(this.layoutControl1);
+            this.groupControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupControl1.Location = new System.Drawing.Point(0, 0);
+            this.groupControl1.Name = "groupControl1";
+            this.groupControl1.Size = new System.Drawing.Size(774, 92);
+            this.groupControl1.TabIndex = 8;
+            this.groupControl1.Text = "班组信息";
             // 
             // layoutControl1
-            //             
-            this.layoutControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.layoutControl1.Location = new System.Drawing.Point(12, 8);
+            // 
+            this.layoutControl1.Controls.Add(this.txtWorkTeamName);
+            this.layoutControl1.Controls.Add(this.txtDate);
+            this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layoutControl1.Location = new System.Drawing.Point(2, 21);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(605, 363);
-            this.layoutControl1.TabIndex = 6;
+            this.layoutControl1.Size = new System.Drawing.Size(770, 69);
+            this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
-
-            this.layoutControl1.Controls.Add(this.txtYear);
-             this.layoutControl1.Controls.Add(this.txtMonth);
-             this.layoutControl1.Controls.Add(this.txtWorkSectionId);
-             this.layoutControl1.Controls.Add(this.txtStaffId);
-             this.layoutControl1.Controls.Add(this.txtStaffLevel);
-             this.layoutControl1.Controls.Add(this.txtRemark);
-             this.layoutControl1.Controls.Add(this.txtEditor);
-             this.layoutControl1.Controls.Add(this.txtEditorId);
-             this.layoutControl1.Controls.Add(this.txtEditTime);
- 
-            this.txtYear.EditValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.txtYear.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txtYear.Location = new System.Drawing.Point(112, 12);
-            this.txtYear.Name = "txtYear";
-            this.txtYear.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.txtYear.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
-            this.txtYear.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.txtYear.Size = new System.Drawing.Size(120, 20);
-            this.txtYear.StyleController = this.layoutControl1;
-            this.txtYear.TabIndex = 1;
             // 
-            // layoutControlItem1
+            // txtWorkTeamName
             // 
-            this.layoutControlItem1.Control = this.txtYear;
-            this.layoutControlItem1.CustomizationFormText = "";
-            this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(585, 24);
-            this.layoutControlItem1.Text = "";
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(96, 14);  
-
-             this.txtMonth.EditValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.txtMonth.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txtMonth.Location = new System.Drawing.Point(112, 36);
-            this.txtMonth.Name = "txtMonth";
-            this.txtMonth.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.txtMonth.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
-            this.txtMonth.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.txtMonth.Size = new System.Drawing.Size(120, 20);
-            this.txtMonth.StyleController = this.layoutControl1;
-            this.txtMonth.TabIndex = 2;
+            this.txtWorkTeamName.Location = new System.Drawing.Point(263, 12);
+            this.txtWorkTeamName.Name = "txtWorkTeamName";
+            this.txtWorkTeamName.Size = new System.Drawing.Size(495, 20);
+            this.txtWorkTeamName.StyleController = this.layoutControl1;
+            this.txtWorkTeamName.TabIndex = 5;
             // 
-            // layoutControlItem2
+            // txtDate
             // 
-            this.layoutControlItem2.Control = this.txtMonth;
-            this.layoutControlItem2.CustomizationFormText = "";
-            this.layoutControlItem2.Location = new System.Drawing.Point(0, 24);
-            this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(585, 24);
-            this.layoutControlItem2.Text = "";
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(96, 14);  
-
-             // 
-            // txtWorkSectionId
-            // 
-            this.txtWorkSectionId.Location = new System.Drawing.Point(112, 60);
-            this.txtWorkSectionId.Name = "txtWorkSectionId";
-            this.txtWorkSectionId.Size = new System.Drawing.Size(481, 20);
-            this.txtWorkSectionId.StyleController = this.layoutControl1;
-            this.txtWorkSectionId.TabIndex = 3;
-            // 
-            // layoutControlItem3
-            // 
-            this.layoutControlItem3.Control = this.txtWorkSectionId;
-            this.layoutControlItem3.CustomizationFormText = "";
-            this.layoutControlItem3.Location = new System.Drawing.Point(0, 48);
-            this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(585, 24);
-            this.layoutControlItem3.Text = "";
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(96, 14);  
-
-             // 
-            // txtStaffId
-            // 
-            this.txtStaffId.Location = new System.Drawing.Point(112, 84);
-            this.txtStaffId.Name = "txtStaffId";
-            this.txtStaffId.Size = new System.Drawing.Size(481, 20);
-            this.txtStaffId.StyleController = this.layoutControl1;
-            this.txtStaffId.TabIndex = 4;
-            // 
-            // layoutControlItem4
-            // 
-            this.layoutControlItem4.Control = this.txtStaffId;
-            this.layoutControlItem4.CustomizationFormText = "";
-            this.layoutControlItem4.Location = new System.Drawing.Point(0, 72);
-            this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(585, 24);
-            this.layoutControlItem4.Text = "";
-            this.layoutControlItem4.TextSize = new System.Drawing.Size(96, 14);  
-
-             // 
-            // txtStaffLevel
-            // 
-            this.txtStaffLevel.Location = new System.Drawing.Point(112, 108);
-            this.txtStaffLevel.Name = "txtStaffLevel";
-            this.txtStaffLevel.Size = new System.Drawing.Size(481, 20);
-            this.txtStaffLevel.StyleController = this.layoutControl1;
-            this.txtStaffLevel.TabIndex = 5;
-            // 
-            // layoutControlItem5
-            // 
-            this.layoutControlItem5.Control = this.txtStaffLevel;
-            this.layoutControlItem5.CustomizationFormText = "";
-            this.layoutControlItem5.Location = new System.Drawing.Point(0, 96);
-            this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(585, 24);
-            this.layoutControlItem5.Text = "";
-            this.layoutControlItem5.TextSize = new System.Drawing.Size(96, 14);  
-
-             // 
-            // txtRemark
-            // 
-            this.txtRemark.Location = new System.Drawing.Point(112, 132);
-            this.txtRemark.Name = "txtRemark";
-            this.txtRemark.Size = new System.Drawing.Size(481, 20);
-            this.txtRemark.StyleController = this.layoutControl1;
-            this.txtRemark.TabIndex = 6;
-            // 
-            // layoutControlItem6
-            // 
-            this.layoutControlItem6.Control = this.txtRemark;
-            this.layoutControlItem6.CustomizationFormText = "";
-            this.layoutControlItem6.Location = new System.Drawing.Point(0, 120);
-            this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(585, 24);
-            this.layoutControlItem6.Text = "";
-            this.layoutControlItem6.TextSize = new System.Drawing.Size(96, 14);  
-
-             // 
-            // txtEditor
-            // 
-            this.txtEditor.Location = new System.Drawing.Point(112, 156);
-            this.txtEditor.Name = "txtEditor";
-            this.txtEditor.Size = new System.Drawing.Size(481, 20);
-            this.txtEditor.StyleController = this.layoutControl1;
-            this.txtEditor.TabIndex = 7;
-            // 
-            // layoutControlItem7
-            // 
-            this.layoutControlItem7.Control = this.txtEditor;
-            this.layoutControlItem7.CustomizationFormText = "";
-            this.layoutControlItem7.Location = new System.Drawing.Point(0, 144);
-            this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(585, 24);
-            this.layoutControlItem7.Text = "";
-            this.layoutControlItem7.TextSize = new System.Drawing.Size(96, 14);  
-
-             // 
-            // txtEditorId
-            // 
-            this.txtEditorId.Location = new System.Drawing.Point(112, 180);
-            this.txtEditorId.Name = "txtEditorId";
-            this.txtEditorId.Size = new System.Drawing.Size(481, 20);
-            this.txtEditorId.StyleController = this.layoutControl1;
-            this.txtEditorId.TabIndex = 8;
-            // 
-            // layoutControlItem8
-            // 
-            this.layoutControlItem8.Control = this.txtEditorId;
-            this.layoutControlItem8.CustomizationFormText = "";
-            this.layoutControlItem8.Location = new System.Drawing.Point(0, 168);
-            this.layoutControlItem8.Name = "layoutControlItem8";
-            this.layoutControlItem8.Size = new System.Drawing.Size(585, 24);
-            this.layoutControlItem8.Text = "";
-            this.layoutControlItem8.TextSize = new System.Drawing.Size(96, 14);  
-
-             // 
-            // txtEditTime
-            // 
-            this.txtEditTime.EditValue = null;
-            this.txtEditTime.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txtEditTime.Location = new System.Drawing.Point(112, 204);
-            this.txtEditTime.Name = "txtEditTime";
-            this.txtEditTime.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtEditTime.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.txtEditTime.Size = new System.Drawing.Size(481, 20);
-            this.txtEditTime.StyleController = this.layoutControl1;
-            this.txtEditTime.TabIndex = 9;
-            // 
-            // layoutControlItem9
-            // 
-            this.layoutControlItem9.Control = this.txtEditTime;
-            this.layoutControlItem9.CustomizationFormText = "";
-            this.layoutControlItem9.Location = new System.Drawing.Point(0, 192);
-            this.layoutControlItem9.Name = "layoutControlItem9";
-            this.layoutControlItem9.Size = new System.Drawing.Size(585, 24);
-            this.layoutControlItem9.Text = "";
-            this.layoutControlItem9.TextSize = new System.Drawing.Size(96, 14);  
-
- 
+            this.txtDate.Location = new System.Drawing.Point(39, 12);
+            this.txtDate.Name = "txtDate";
+            this.txtDate.Size = new System.Drawing.Size(193, 20);
+            this.txtDate.StyleController = this.layoutControl1;
+            this.txtDate.TabIndex = 4;
             // 
             // layoutControlGroup1
             // 
-            this.layoutControlGroup1.CustomizationFormText = "layoutControlGroup1";
             this.layoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.layoutControlGroup1.GroupBordersVisible = false;
             this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-	        this.layoutControlItem1
-	 	       ,this.layoutControlItem2
-	 	       ,this.layoutControlItem3
-	 	       ,this.layoutControlItem4
-	 	       ,this.layoutControlItem5
-	 	       ,this.layoutControlItem6
-	 	       ,this.layoutControlItem7
-	 	       ,this.layoutControlItem8
-	 	       ,this.layoutControlItem9
-	        });
+            this.layoutControlItem1,
+            this.layoutControlItem2});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(605, 363);
-            this.layoutControlGroup1.Text = "layoutControlGroup1";
-            this.layoutControlGroup1.TextVisible = false;          
-
+            this.layoutControlGroup1.Size = new System.Drawing.Size(770, 69);
+            this.layoutControlGroup1.TextVisible = false;
+            // 
+            // layoutControlItem1
+            // 
+            this.layoutControlItem1.Control = this.txtDate;
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem1.Name = "layoutControlItem1";
+            this.layoutControlItem1.Size = new System.Drawing.Size(224, 49);
+            this.layoutControlItem1.Text = "日期";
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(24, 14);
+            // 
+            // layoutControlItem2
+            // 
+            this.layoutControlItem2.Control = this.txtWorkTeamName;
+            this.layoutControlItem2.Location = new System.Drawing.Point(224, 0);
+            this.layoutControlItem2.Name = "layoutControlItem2";
+            this.layoutControlItem2.Size = new System.Drawing.Size(526, 49);
+            this.layoutControlItem2.Text = "班组";
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(24, 14);
+            // 
+            // groupControl2
+            // 
+            this.groupControl2.Controls.Add(this.dgcStaff);
+            this.groupControl2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupControl2.Location = new System.Drawing.Point(0, 92);
+            this.groupControl2.Name = "groupControl2";
+            this.groupControl2.Size = new System.Drawing.Size(774, 277);
+            this.groupControl2.TabIndex = 9;
+            this.groupControl2.Text = "工段职员";
+            // 
+            // dgcStaff
+            // 
+            this.dgcStaff.DataSource = this.bsLabors;
+            this.dgcStaff.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgcStaff.Location = new System.Drawing.Point(2, 21);
+            this.dgcStaff.MainView = this.dgvStaff;
+            this.dgcStaff.Name = "dgcStaff";
+            this.dgcStaff.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repoActionButton});
+            this.dgcStaff.Size = new System.Drawing.Size(770, 254);
+            this.dgcStaff.TabIndex = 0;
+            this.dgcStaff.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.dgvStaff});
+            // 
+            // bsLabors
+            // 
+            this.bsLabors.DataSource = typeof(Hades.HR.Entity.WorkSectionLaborInfo);
+            // 
+            // dgvStaff
+            // 
+            this.dgvStaff.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colId,
+            this.colYear,
+            this.colMonth,
+            this.colWorkTeamId,
+            this.colWorkSectionId,
+            this.colStaffNumber,
+            this.colStaffId,
+            this.colStaffLevel,
+            this.colIn,
+            this.colInPosition,
+            this.colRemark,
+            this.colAction});
+            this.dgvStaff.GridControl = this.dgcStaff;
+            this.dgvStaff.Name = "dgvStaff";
+            this.dgvStaff.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
+            this.dgvStaff.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
+            this.dgvStaff.OptionsView.ShowGroupPanel = false;
+            this.dgvStaff.CustomUnboundColumnData += new DevExpress.XtraGrid.Views.Base.CustomColumnDataEventHandler(this.dgvStaff_CustomUnboundColumnData);
+            this.dgvStaff.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.dgvStaff_CustomColumnDisplayText);
+            // 
+            // colId
+            // 
+            this.colId.FieldName = "Id";
+            this.colId.Name = "colId";
+            this.colId.OptionsColumn.AllowEdit = false;
+            // 
+            // colYear
+            // 
+            this.colYear.FieldName = "Year";
+            this.colYear.Name = "colYear";
+            this.colYear.OptionsColumn.AllowEdit = false;
+            // 
+            // colMonth
+            // 
+            this.colMonth.FieldName = "Month";
+            this.colMonth.Name = "colMonth";
+            this.colMonth.OptionsColumn.AllowEdit = false;
+            // 
+            // colWorkTeamId
+            // 
+            this.colWorkTeamId.FieldName = "WorkTeamId";
+            this.colWorkTeamId.Name = "colWorkTeamId";
+            this.colWorkTeamId.OptionsColumn.AllowEdit = false;
+            // 
+            // colWorkSectionId
+            // 
+            this.colWorkSectionId.Caption = "工段名称";
+            this.colWorkSectionId.FieldName = "WorkSectionId";
+            this.colWorkSectionId.Name = "colWorkSectionId";
+            this.colWorkSectionId.OptionsColumn.AllowEdit = false;
+            this.colWorkSectionId.Visible = true;
+            this.colWorkSectionId.VisibleIndex = 0;
+            // 
+            // colStaffNumber
+            // 
+            this.colStaffNumber.Caption = "职工工号";
+            this.colStaffNumber.FieldName = "colStaffNumber";
+            this.colStaffNumber.Name = "colStaffNumber";
+            this.colStaffNumber.OptionsColumn.AllowEdit = false;
+            this.colStaffNumber.UnboundType = DevExpress.Data.UnboundColumnType.String;
+            this.colStaffNumber.Visible = true;
+            this.colStaffNumber.VisibleIndex = 1;
+            // 
+            // colStaffId
+            // 
+            this.colStaffId.Caption = "职员姓名";
+            this.colStaffId.FieldName = "StaffId";
+            this.colStaffId.Name = "colStaffId";
+            this.colStaffId.OptionsColumn.AllowEdit = false;
+            this.colStaffId.Visible = true;
+            this.colStaffId.VisibleIndex = 2;
+            // 
+            // colStaffLevel
+            // 
+            this.colStaffLevel.Caption = "职员等级";
+            this.colStaffLevel.FieldName = "StaffLevel";
+            this.colStaffLevel.Name = "colStaffLevel";
+            this.colStaffLevel.OptionsColumn.AllowEdit = false;
+            this.colStaffLevel.Visible = true;
+            this.colStaffLevel.VisibleIndex = 3;
+            // 
+            // colIn
+            // 
+            this.colIn.Caption = "是否在岗";
+            this.colIn.FieldName = "colIn";
+            this.colIn.Name = "colIn";
+            this.colIn.UnboundType = DevExpress.Data.UnboundColumnType.Boolean;
+            this.colIn.Visible = true;
+            this.colIn.VisibleIndex = 4;
+            // 
+            // colInPosition
+            // 
+            this.colInPosition.Caption = "是否在岗";
+            this.colInPosition.FieldName = "InPosition";
+            this.colInPosition.Name = "colInPosition";
+            // 
+            // colRemark
+            // 
+            this.colRemark.Caption = "备注";
+            this.colRemark.FieldName = "Remark";
+            this.colRemark.Name = "colRemark";
+            this.colRemark.Visible = true;
+            this.colRemark.VisibleIndex = 5;
+            // 
+            // colAction
+            // 
+            this.colAction.Caption = "选择职员";
+            this.colAction.ColumnEdit = this.repoActionButton;
+            this.colAction.Name = "colAction";
+            this.colAction.Visible = true;
+            this.colAction.VisibleIndex = 6;
+            // 
+            // repoActionButton
+            // 
+            this.repoActionButton.AutoHeight = false;
+            this.repoActionButton.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search, "选择职员", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, "选择职员", null, null, true)});
+            this.repoActionButton.Name = "repoActionButton";
+            this.repoActionButton.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
+            this.repoActionButton.Click += new System.EventHandler(this.repoActionButton_Click);
             // 
             // FrmEditWorkSectionLabor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(624, 427);
-            this.Controls.Add(this.layoutControl1);
+            this.ClientSize = new System.Drawing.Size(774, 427);
+            this.Controls.Add(this.groupControl2);
+            this.Controls.Add(this.groupControl1);
             this.Name = "FrmEditWorkSectionLabor";
             this.Text = "WorkSectionLabor";
-            this.Controls.SetChildIndex(this.layoutControl1, 0);
             this.Controls.SetChildIndex(this.btnCancel, 0);
             this.Controls.SetChildIndex(this.btnOK, 0);
             this.Controls.SetChildIndex(this.btnAdd, 0);
             this.Controls.SetChildIndex(this.dataNavigator1, 0);
             this.Controls.SetChildIndex(this.picPrint, 0);
+            this.Controls.SetChildIndex(this.groupControl1, 0);
+            this.Controls.SetChildIndex(this.groupControl2, 0);
             ((System.ComponentModel.ISupportInitialize)(this.picPrint)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
+            this.groupControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
-            this.layoutControl1.ResumeLayout(false);            
+            this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtWorkTeamName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
-
-            ((System.ComponentModel.ISupportInitialize)(this.txtYear.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();            
-             ((System.ComponentModel.ISupportInitialize)(this.txtMonth.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();            
-             ((System.ComponentModel.ISupportInitialize)(this.txtWorkSectionId.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();            
-             ((System.ComponentModel.ISupportInitialize)(this.txtStaffId.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();            
-             ((System.ComponentModel.ISupportInitialize)(this.txtStaffLevel.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();            
-             ((System.ComponentModel.ISupportInitialize)(this.txtRemark.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();            
-             ((System.ComponentModel.ISupportInitialize)(this.txtEditor.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();            
-             ((System.ComponentModel.ISupportInitialize)(this.txtEditorId.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();            
-             ((System.ComponentModel.ISupportInitialize)(this.txtEditTime.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();            
- 
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
+            this.groupControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgcStaff)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsLabors)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStaff)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repoActionButton)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
+        private DevExpress.XtraEditors.GroupControl groupControl1;
+        private DevExpress.XtraEditors.GroupControl groupControl2;
+        private DevExpress.XtraGrid.GridControl dgcStaff;
+        private System.Windows.Forms.BindingSource bsLabors;
+        private DevExpress.XtraGrid.Views.Grid.GridView dgvStaff;
+        private DevExpress.XtraGrid.Columns.GridColumn colId;
+        private DevExpress.XtraGrid.Columns.GridColumn colYear;
+        private DevExpress.XtraGrid.Columns.GridColumn colMonth;
+        private DevExpress.XtraGrid.Columns.GridColumn colWorkTeamId;
+        private DevExpress.XtraGrid.Columns.GridColumn colWorkSectionId;
+        private DevExpress.XtraGrid.Columns.GridColumn colStaffId;
+        private DevExpress.XtraGrid.Columns.GridColumn colStaffLevel;
+        private DevExpress.XtraGrid.Columns.GridColumn colInPosition;
+        private DevExpress.XtraGrid.Columns.GridColumn colRemark;
+        private DevExpress.XtraGrid.Columns.GridColumn colAction;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repoActionButton;
         private DevExpress.XtraLayout.LayoutControl layoutControl1;
+        private DevExpress.XtraEditors.TextEdit txtWorkTeamName;
+        private DevExpress.XtraEditors.TextEdit txtDate;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
-
-        private DevExpress.XtraEditors.SpinEdit txtYear;
-          private DevExpress.XtraEditors.SpinEdit txtMonth;
-          private DevExpress.XtraEditors.TextEdit txtWorkSectionId;
-          private DevExpress.XtraEditors.TextEdit txtStaffId;
-          private DevExpress.XtraEditors.TextEdit txtStaffLevel;
-          private DevExpress.XtraEditors.TextEdit txtRemark;
-          private DevExpress.XtraEditors.TextEdit txtEditor;
-          private DevExpress.XtraEditors.TextEdit txtEditorId;
-          private DevExpress.XtraEditors.DateEdit txtEditTime;
-  
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
-         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
-         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
-         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
-         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
-         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
-         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
-         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
-         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem9;
- 
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
+        private DevExpress.XtraGrid.Columns.GridColumn colIn;
+        private DevExpress.XtraGrid.Columns.GridColumn colStaffNumber;
     }
 }
