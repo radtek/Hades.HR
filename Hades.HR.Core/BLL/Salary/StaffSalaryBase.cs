@@ -12,11 +12,11 @@ using Hades.Framework.ControlUtil;
 namespace Hades.HR.BLL
 {
     /// <summary>
-    /// StaffSalaryDefine
+    /// StaffSalaryBase
     /// </summary>
-	public class StaffSalaryDefine : BaseBLL<StaffSalaryDefineInfo>
+	public class StaffSalaryBase : BaseBLL<StaffSalaryBaseInfo>
     {
-        public StaffSalaryDefine() : base()
+        public StaffSalaryBase() : base()
         {
             base.Init(this.GetType().FullName, System.Reflection.Assembly.GetExecutingAssembly().GetName().Name);
         }

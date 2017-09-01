@@ -216,8 +216,8 @@
     <Compile Include="..\Hades.HR.Caller\Facade\Salary\IBonusDefineService.cs">
       <Link>Facade\Salary\IBonusDefineService.cs</Link>
     </Compile>
-    <Compile Include="..\Hades.HR.Caller\Facade\Salary\IStaffSalaryDefineService.cs">
-      <Link>Facade\Salary\IStaffSalaryDefineService.cs</Link>
+    <Compile Include="..\Hades.HR.Caller\Facade\Salary\IStaffSalaryBaseService.cs">
+      <Link>Facade\Salary\IStaffSalaryBaseService.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Caller\Facade\View\ILaborAttendanceRecordViewService.cs">
       <Link>Facade\View\ILaborAttendanceRecordViewService.cs</Link>
@@ -273,8 +273,8 @@
     <Compile Include="..\Hades.HR.Caller\ServiceCaller\Salary\BonusDefineCaller.cs">
       <Link>Caller\ServiceCaller\Salary\BonusDefineCaller.cs</Link>
     </Compile>
-    <Compile Include="..\Hades.HR.Caller\ServiceCaller\Salary\StaffSalaryDefineCaller.cs">
-      <Link>Caller\ServiceCaller\Salary\StaffSalaryDefineCaller.cs</Link>
+    <Compile Include="..\Hades.HR.Caller\ServiceCaller\Salary\StaffSalaryBaseCaller.cs">
+      <Link>Caller\ServiceCaller\Salary\StaffSalaryBaseCaller.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Caller\ServiceCaller\View\LaborAttendanceRecordViewCaller.cs">
       <Link>Caller\ServiceCaller\View\LaborAttendanceRecordViewCaller.cs</Link>
@@ -327,8 +327,8 @@
     <Compile Include="..\Hades.HR.Caller\WinformCaller\Salary\BonusDefineCaller.cs">
       <Link>Caller\WinformCaller\Salary\BonusDefineCaller.cs</Link>
     </Compile>
-    <Compile Include="..\Hades.HR.Caller\WinformCaller\Salary\StaffSalaryDefineCaller.cs">
-      <Link>Caller\WinformCaller\Salary\StaffSalaryDefineCaller.cs</Link>
+    <Compile Include="..\Hades.HR.Caller\WinformCaller\Salary\StaffSalaryBaseCaller.cs">
+      <Link>Caller\WinformCaller\Salary\StaffSalaryBaseCaller.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Caller\WinformCaller\View\LaborAttendanceRecordViewCaller.cs">
       <Link>Caller\WinformCaller\View\LaborAttendanceRecordViewCaller.cs</Link>
@@ -381,8 +381,8 @@
     <Compile Include="..\Hades.HR.Core\BLL\Salary\BonusDefine.cs">
       <Link>Biz\BLL\Salary\BonusDefine.cs</Link>
     </Compile>
-    <Compile Include="..\Hades.HR.Core\BLL\Salary\StaffSalaryDefine.cs">
-      <Link>Biz\BLL\Salary\StaffSalaryDefine.cs</Link>
+    <Compile Include="..\Hades.HR.Core\BLL\Salary\StaffSalaryBase.cs">
+      <Link>Biz\BLL\Salary\StaffSalaryBase.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\BLL\View\LaborAttendanceRecordView.cs">
       <Link>Biz\BLL\View\LaborAttendanceRecordView.cs</Link>
@@ -435,8 +435,8 @@
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Salary\BonusDefine.cs">
       <Link>Biz\DAL\DALSQL\Salary\BonusDefine.cs</Link>
     </Compile>
-    <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Salary\StaffSalaryDefine.cs">
-      <Link>Biz\DAL\DALSQL\Salary\StaffSalaryDefine.cs</Link>
+    <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Salary\StaffSalaryBase.cs">
+      <Link>Biz\DAL\DALSQL\Salary\StaffSalaryBase.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\View\LaborAttendanceRecordView.cs">
       <Link>Biz\DAL\DALSQL\View\LaborAttendanceRecordView.cs</Link>
@@ -489,8 +489,8 @@
     <Compile Include="..\Hades.HR.Core\Entity\Salary\BonusDefineInfo.cs">
       <Link>Biz\Entity\Salary\BonusDefineInfo.cs</Link>
     </Compile>
-    <Compile Include="..\Hades.HR.Core\Entity\Salary\StaffSalaryDefineInfo.cs">
-      <Link>Biz\Entity\Salary\StaffSalaryDefineInfo.cs</Link>
+    <Compile Include="..\Hades.HR.Core\Entity\Salary\StaffSalaryBaseInfo.cs">
+      <Link>Biz\Entity\Salary\StaffSalaryBaseInfo.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\Entity\View\LaborAttendanceRecordViewInfo.cs">
       <Link>Biz\Entity\View\LaborAttendanceRecordViewInfo.cs</Link>
@@ -543,8 +543,8 @@
     <Compile Include="..\Hades.HR.Core\IDAL\Salary\IBonusDefine.cs">
       <Link>Biz\IDAL\Salary\IBonusDefine.cs</Link>
     </Compile>
-    <Compile Include="..\Hades.HR.Core\IDAL\Salary\IStaffSalaryDefine.cs">
-      <Link>Biz\IDAL\Salary\IStaffSalaryDefine.cs</Link>
+    <Compile Include="..\Hades.HR.Core\IDAL\Salary\IStaffSalaryBase.cs">
+      <Link>Biz\IDAL\Salary\IStaffSalaryBase.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\IDAL\View\ILaborAttendanceRecordView.cs">
       <Link>Biz\IDAL\View\ILaborAttendanceRecordView.cs</Link>
@@ -726,17 +726,17 @@
     <Compile Include="Salary\FrmEditBonusDefine.Designer.cs">
       <DependentUpon>FrmEditBonusDefine.cs</DependentUpon>
     </Compile>
-    <Compile Include="Salary\FrmEditStaffSalaryDefine.cs">
+    <Compile Include="Salary\FrmEditStaffSalaryBase.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Salary\FrmEditStaffSalaryDefine.Designer.cs">
-      <DependentUpon>FrmEditStaffSalaryDefine.cs</DependentUpon>
+    <Compile Include="Salary\FrmEditStaffSalaryBase.Designer.cs">
+      <DependentUpon>FrmEditStaffSalaryBase.cs</DependentUpon>
     </Compile>
-    <Compile Include="Salary\FrmStaffSalaryDefine.cs">
+    <Compile Include="Salary\FrmStaffSalaryBase.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Salary\FrmStaffSalaryDefine.Designer.cs">
-      <DependentUpon>FrmStaffSalaryDefine.cs</DependentUpon>
+    <Compile Include="Salary\FrmStaffSalaryBase.Designer.cs">
+      <DependentUpon>FrmStaffSalaryBase.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\FrmStaffOverview.cs">
       <SubType>Form</SubType>
@@ -883,6 +883,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Control\WorkTeamLookup.resx">
       <DependentUpon>WorkTeamLookup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Salary\FrmEditStaffSalaryBase.resx">
+      <DependentUpon>FrmEditStaffSalaryBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Salary\FrmStaffSalaryBase.resx">
+      <DependentUpon>FrmStaffSalaryBase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmStaffOverview.resx">
       <DependentUpon>FrmStaffOverview.cs</DependentUpon>

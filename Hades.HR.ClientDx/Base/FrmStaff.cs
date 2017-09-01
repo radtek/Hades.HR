@@ -192,6 +192,36 @@ namespace Hades.HR.UI
             }
         }
 
+        /// <summary>
+        /// 编辑基本工资信息
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void menuEditBaseSalary_Click(object sender, EventArgs e)
+        {
+            string ID = this.wgvStaff.gridView1.GetFocusedRowCellDisplayText("Id");
+            List<string> IDList = new List<string>();
+            for (int i = 0; i < this.wgvStaff.gridView1.RowCount; i++)
+            {
+                string strTemp = this.wgvStaff.GridView1.GetRowCellDisplayText(i, "Id");
+                IDList.Add(strTemp);
+            }
+
+            if (!string.IsNullOrEmpty(ID))
+            {
+                FrmEditStaffSalaryBase dlg = new FrmEditStaffSalaryBase();
+                dlg.ID = ID;
+                dlg.IDList = IDList;
+                dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
+                dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
+
+                if (DialogResult.OK == dlg.ShowDialog())
+                {
+                    BindData();
+                }
+            }
+        }
+
         private void dlg_OnDataSaved(object sender, EventArgs e)
         {
             BindData();
@@ -593,5 +623,7 @@ namespace Hades.HR.UI
             advanceCondition = condition;
             BindData();
         }
+
+      
     }
 }

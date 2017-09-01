@@ -38,18 +38,18 @@ namespace Hades.HR.UI
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.wgvStaff = new Hades.Pager.WinControl.WinGridViewPager();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.menuViewStaff = new System.Windows.Forms.ToolStripMenuItem();
             this.menuAddStaff = new System.Windows.Forms.ToolStripMenuItem();
             this.menuEditStaff = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuEditSalary = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuEditBaseSalary = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
-            this.menuViewStaff = new System.Windows.Forms.ToolStripMenuItem();
-            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtNumber.Properties)).BeginInit();
@@ -58,15 +58,15 @@ namespace Hades.HR.UI
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.groupControl3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -152,6 +152,15 @@ namespace Hades.HR.UI
             this.layoutControlItem2.Text = "姓名";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(48, 14);
             // 
+            // layoutControlItem4
+            // 
+            this.layoutControlItem4.Control = this.txtIdentityCard;
+            this.layoutControlItem4.Location = new System.Drawing.Point(571, 0);
+            this.layoutControlItem4.Name = "layoutControlItem4";
+            this.layoutControlItem4.Size = new System.Drawing.Size(276, 26);
+            this.layoutControlItem4.Text = "身份证号";
+            this.layoutControlItem4.TextSize = new System.Drawing.Size(48, 14);
+            // 
             // layoutControlItem9
             // 
             this.layoutControlItem9.Control = this.btnSearch;
@@ -161,14 +170,13 @@ namespace Hades.HR.UI
             this.layoutControlItem9.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem9.TextVisible = false;
             // 
-            // layoutControlItem4
+            // emptySpaceItem1
             // 
-            this.layoutControlItem4.Control = this.txtIdentityCard;
-            this.layoutControlItem4.Location = new System.Drawing.Point(571, 0);
-            this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(276, 26);
-            this.layoutControlItem4.Text = "身份证号";
-            this.layoutControlItem4.TextSize = new System.Drawing.Size(48, 14);
+            this.emptySpaceItem1.AllowHotTrack = false;
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 26);
+            this.emptySpaceItem1.Name = "emptySpaceItem1";
+            this.emptySpaceItem1.Size = new System.Drawing.Size(974, 25);
+            this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // wgvStaff
             // 
@@ -197,29 +205,37 @@ namespace Hades.HR.UI
             this.menuViewStaff,
             this.menuAddStaff,
             this.menuEditStaff,
-            this.menuEditSalary});
+            this.menuEditBaseSalary});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 114);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(173, 114);
+            // 
+            // menuViewStaff
+            // 
+            this.menuViewStaff.Name = "menuViewStaff";
+            this.menuViewStaff.Size = new System.Drawing.Size(172, 22);
+            this.menuViewStaff.Text = "查看职员";
+            this.menuViewStaff.Click += new System.EventHandler(this.menuViewStaff_Click);
             // 
             // menuAddStaff
             // 
             this.menuAddStaff.Name = "menuAddStaff";
-            this.menuAddStaff.Size = new System.Drawing.Size(152, 22);
+            this.menuAddStaff.Size = new System.Drawing.Size(172, 22);
             this.menuAddStaff.Text = "新增职员";
             this.menuAddStaff.Click += new System.EventHandler(this.menuAddStaff_Click);
             // 
             // menuEditStaff
             // 
             this.menuEditStaff.Name = "menuEditStaff";
-            this.menuEditStaff.Size = new System.Drawing.Size(152, 22);
+            this.menuEditStaff.Size = new System.Drawing.Size(172, 22);
             this.menuEditStaff.Text = "编辑职员";
             this.menuEditStaff.Click += new System.EventHandler(this.menuEditStaff_Click);
             // 
-            // menuEditSalary
+            // menuEditBaseSalary
             // 
-            this.menuEditSalary.Name = "menuEditSalary";
-            this.menuEditSalary.Size = new System.Drawing.Size(152, 22);
-            this.menuEditSalary.Text = "编辑工资信息";
+            this.menuEditBaseSalary.Name = "menuEditBaseSalary";
+            this.menuEditBaseSalary.Size = new System.Drawing.Size(172, 22);
+            this.menuEditBaseSalary.Text = "编辑基本工资信息";
+            this.menuEditBaseSalary.Click += new System.EventHandler(this.menuEditBaseSalary_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -256,21 +272,6 @@ namespace Hades.HR.UI
             this.groupControl3.TabIndex = 2;
             this.groupControl3.Text = "职工列表";
             // 
-            // menuViewStaff
-            // 
-            this.menuViewStaff.Name = "menuViewStaff";
-            this.menuViewStaff.Size = new System.Drawing.Size(152, 22);
-            this.menuViewStaff.Text = "查看职员";
-            this.menuViewStaff.Click += new System.EventHandler(this.menuViewStaff_Click);
-            // 
-            // emptySpaceItem1
-            // 
-            this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 26);
-            this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(974, 25);
-            this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
-            // 
             // FrmStaff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -287,15 +288,15 @@ namespace Hades.HR.UI
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
             this.groupControl3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -325,7 +326,7 @@ namespace Hades.HR.UI
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem9;
         private System.Windows.Forms.ToolStripMenuItem menuAddStaff;
         private System.Windows.Forms.ToolStripMenuItem menuEditStaff;
-        private System.Windows.Forms.ToolStripMenuItem menuEditSalary;
+        private System.Windows.Forms.ToolStripMenuItem menuEditBaseSalary;
         private System.Windows.Forms.ToolStripMenuItem menuViewStaff;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
     }

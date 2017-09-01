@@ -17,13 +17,13 @@ namespace Hades.HR.WCFLibrary
 	/// <summary>
 	/// 基于WCFLibrary的StaffSalaryDefine对象调用类
 	/// </summary>
-    public class StaffSalaryDefineService : BaseLocalService<StaffSalaryDefineInfo>, IStaffSalaryDefineService
+    public class StaffSalaryBaseService : BaseLocalService<StaffSalaryBaseInfo>, IStaffSalaryBaseService
     {
-        private StaffSalaryDefine bll = null;
+        private StaffSalaryBase bll = null;
 
-        public StaffSalaryDefineService() : base(BLLFactory<StaffSalaryDefine>.Instance)
+        public StaffSalaryBaseService() : base(BLLFactory<StaffSalaryBase>.Instance)
         {
-            bll = baseBLL as StaffSalaryDefine;
+            bll = baseBLL as StaffSalaryBase;
         }
 
         ///// <summary>

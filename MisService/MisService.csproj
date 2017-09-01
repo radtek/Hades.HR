@@ -140,7 +140,7 @@
     <Content Include="HR\Base\ProductionLineService.svc" />
     <Content Include="HR\View\LaborAttendanceRecordViewService.svc" />
     <Content Include="HR\View\StaffAttendanceViewService.svc" />
-    <Content Include="HR\Salary\StaffSalaryService.svc" />
+    <Content Include="HR\Salary\StaffSalaryBaseService.svc" />
     <Content Include="HR\Base\StaffService.svc" />
     <Content Include="HR\Base\WorkTeamService.svc" />
     <Content Include="Web.config">

@@ -15,16 +15,16 @@ namespace Hades.HR.WinformCaller
     /// <summary>
     /// 基于传统Winform方式，直接访问本地数据库的Facade接口实现类
     /// </summary>
-    public class StaffSalaryDefineCaller : BaseLocalService<StaffSalaryDefineInfo>, IStaffSalaryDefineService
+    public class StaffSalaryBaseCaller : BaseLocalService<StaffSalaryBaseInfo>, IStaffSalaryBaseService
     {
         #region Field
-        private StaffSalaryDefine bll = null;
+        private StaffSalaryBase bll = null;
         #endregion //Field
 
         #region Constructor
-        public StaffSalaryDefineCaller() : base(BLLFactory<StaffSalaryDefine>.Instance)
+        public StaffSalaryBaseCaller() : base(BLLFactory<StaffSalaryBase>.Instance)
         {
-            bll = baseBLL as StaffSalaryDefine;
+            bll = baseBLL as StaffSalaryBase;
         }
         #endregion //Constructor
     }

@@ -6,22 +6,21 @@ using Hades.Framework.ControlUtil;
 namespace Hades.HR.Entity
 {
     /// <summary>
-    /// StaffSalaryDefineInfo
+    /// StaffSalaryBaseInfo
     /// </summary>
     [DataContract]
-    public class StaffSalaryDefineInfo : BaseEntity
+    public class StaffSalaryBaseInfo : BaseEntity
     {
         /// <summary>
         /// 默认构造函数（需要初始化属性的在此处理）
         /// </summary>
-        public StaffSalaryDefineInfo()
+        public StaffSalaryBaseInfo()
         {
-            this.Id = System.Guid.NewGuid().ToString();
-            this.SalaryLevel = "0";
             this.BaseBonus = 0;
             this.DepartmentBonus = 0;
             this.ReserveFund = 0;
             this.Insurance = 0;
+            this.HighTemp = 0;
         }
 
         #region Property Members
@@ -30,13 +29,13 @@ namespace Hades.HR.Entity
         public virtual string Id { get; set; }
 
         [DataMember]
-        public virtual string FinanceDepartment { get; set; }
+        public virtual string FinanceDepartmentId { get; set; }
 
         [DataMember]
         public virtual string CardNumber { get; set; }
 
         [DataMember]
-        public virtual string SalaryLevel { get; set; }
+        public virtual string StaffLevelId { get; set; }
 
         [DataMember]
         public virtual decimal BaseBonus { get; set; }
@@ -49,6 +48,9 @@ namespace Hades.HR.Entity
 
         [DataMember]
         public virtual decimal Insurance { get; set; }
+
+        [DataMember]
+        public virtual decimal HighTemp { get; set; }
 
         [DataMember]
         public virtual string Remark { get; set; }

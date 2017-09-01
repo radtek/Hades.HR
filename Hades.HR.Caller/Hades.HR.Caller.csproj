@@ -91,7 +91,7 @@
     <Compile Include="Facade\Base\IProductionLineService.cs" />
     <Compile Include="Facade\View\ILaborAttendanceRecordViewService.cs" />
     <Compile Include="Facade\View\IStaffAttendanceViewService.cs" />
-    <Compile Include="Facade\Salary\IStaffSalaryDefineService.cs" />
+    <Compile Include="Facade\Salary\IStaffSalaryBaseService.cs" />
     <Compile Include="Facade\Base\IStaffService.cs" />
     <Compile Include="Facade\Base\IWorkTeamService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -111,7 +111,7 @@
     <Compile Include="ServiceCaller\View\LaborAttendanceRecordViewCaller.cs" />
     <Compile Include="ServiceCaller\View\StaffAttendanceViewCaller.cs" />
     <Compile Include="ServiceCaller\Base\StaffCaller.cs" />
-    <Compile Include="ServiceCaller\Salary\StaffSalaryDefineCaller.cs" />
+    <Compile Include="ServiceCaller\Salary\StaffSalaryBaseCaller.cs" />
     <Compile Include="ServiceCaller\Base\WorkTeamCaller.cs" />
     <Compile Include="WinformCaller\Attendance\AttendanceCaller.cs" />
     <Compile Include="WinformCaller\Attendance\AttendanceRecordCaller.cs" />
@@ -131,7 +131,7 @@
     <Compile Include="WinformCaller\View\LaborAttendanceRecordViewCaller.cs" />
     <Compile Include="WinformCaller\View\StaffAttendanceViewCaller.cs" />
     <Compile Include="WinformCaller\Base\StaffCaller.cs" />
-    <Compile Include="WinformCaller\Salary\StaffSalaryDefineCaller.cs" />
+    <Compile Include="WinformCaller\Salary\StaffSalaryBaseCaller.cs" />
     <Compile Include="WinformCaller\Base\WorkTeamCaller.cs" />
   </ItemGroup>
   <ItemGroup>

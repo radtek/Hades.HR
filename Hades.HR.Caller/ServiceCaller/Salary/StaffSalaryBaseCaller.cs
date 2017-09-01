@@ -18,19 +18,19 @@ namespace Hades.HR.ServiceCaller
 	/// <summary>
 	/// 基于WCF服务的Facade接口实现类
 	/// </summary>
-    public class StaffSalaryDefineCaller : BaseWCFService<StaffSalaryDefineInfo>, IStaffSalaryDefineService
+    public class StaffSalaryBaseCaller : BaseWCFService<StaffSalaryBaseInfo>, IStaffSalaryBaseService
     {
-        public StaffSalaryDefineCaller()  : base()
+        public StaffSalaryBaseCaller()  : base()
         {	
             this.configurationPath = EndPointConfig.WcfConfig; //WCF配置文件
-            this.endpointConfigurationName = EndPointConfig.StaffSalaryDefineService;
+            this.endpointConfigurationName = EndPointConfig.StaffSalaryBaseService;
         }
 
         /// <summary>
         /// 子类构造一个IChannel对象转换为基类接口，方便给基类进行调用通用的API
         /// </summary>
         /// <returns></returns>
-        protected override IBaseService<StaffSalaryDefineInfo> CreateClient()
+        protected override IBaseService<StaffSalaryBaseInfo> CreateClient()
         {
             return CreateSubClient();
         }
@@ -39,9 +39,9 @@ namespace Hades.HR.ServiceCaller
         /// 创建一个强类型接口对象，供本地调用
         /// </summary>
         /// <returns></returns>
-        private IStaffSalaryDefineService CreateSubClient()
+        private IStaffSalaryBaseService CreateSubClient()
         {
-            CustomClientChannel<IStaffSalaryDefineService> factory = new CustomClientChannel<IStaffSalaryDefineService>(endpointConfigurationName, configurationPath);
+            CustomClientChannel<IStaffSalaryBaseService> factory = new CustomClientChannel<IStaffSalaryBaseService>(endpointConfigurationName, configurationPath);
             return factory.CreateChannel();
         }
 

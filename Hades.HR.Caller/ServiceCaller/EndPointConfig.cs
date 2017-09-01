@@ -42,7 +42,7 @@ namespace Hades.HR.ServiceCaller
 
         #region Salary      
         public const string BonusDefineService = "WSHttpBinding_IBonusDefineService";
-        public const string StaffSalaryDefineService = "WSHttpBinding_IStaffSalaryDefineService";
+        public const string StaffSalaryBaseService = "WSHttpBinding_IStaffSalaryBaseService";
         #endregion //Salary
 
         #region View
