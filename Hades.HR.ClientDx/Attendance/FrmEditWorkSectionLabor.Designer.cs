@@ -48,7 +48,7 @@ namespace Hades.HR.UI
             this.colWorkSectionId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colStaffNumber = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colStaffId = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colStaffLevel = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colStaffLevelId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colIn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colInPosition = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colRemark = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -119,6 +119,7 @@ namespace Hades.HR.UI
             // 
             this.txtWorkTeamName.Location = new System.Drawing.Point(263, 12);
             this.txtWorkTeamName.Name = "txtWorkTeamName";
+            this.txtWorkTeamName.Properties.ReadOnly = true;
             this.txtWorkTeamName.Size = new System.Drawing.Size(495, 20);
             this.txtWorkTeamName.StyleController = this.layoutControl1;
             this.txtWorkTeamName.TabIndex = 5;
@@ -127,6 +128,7 @@ namespace Hades.HR.UI
             // 
             this.txtDate.Location = new System.Drawing.Point(39, 12);
             this.txtDate.Name = "txtDate";
+            this.txtDate.Properties.ReadOnly = true;
             this.txtDate.Size = new System.Drawing.Size(193, 20);
             this.txtDate.StyleController = this.layoutControl1;
             this.txtDate.TabIndex = 4;
@@ -199,7 +201,7 @@ namespace Hades.HR.UI
             this.colWorkSectionId,
             this.colStaffNumber,
             this.colStaffId,
-            this.colStaffLevel,
+            this.colStaffLevelId,
             this.colIn,
             this.colInPosition,
             this.colRemark,
@@ -264,14 +266,14 @@ namespace Hades.HR.UI
             this.colStaffId.Visible = true;
             this.colStaffId.VisibleIndex = 2;
             // 
-            // colStaffLevel
+            // colStaffLevelId
             // 
-            this.colStaffLevel.Caption = "职员等级";
-            this.colStaffLevel.FieldName = "StaffLevel";
-            this.colStaffLevel.Name = "colStaffLevel";
-            this.colStaffLevel.OptionsColumn.AllowEdit = false;
-            this.colStaffLevel.Visible = true;
-            this.colStaffLevel.VisibleIndex = 3;
+            this.colStaffLevelId.Caption = "职员等级";
+            this.colStaffLevelId.FieldName = "StaffLevelId";
+            this.colStaffLevelId.Name = "colStaffLevelId";
+            this.colStaffLevelId.OptionsColumn.AllowEdit = false;
+            this.colStaffLevelId.Visible = true;
+            this.colStaffLevelId.VisibleIndex = 3;
             // 
             // colIn
             // 
@@ -362,7 +364,7 @@ namespace Hades.HR.UI
         private DevExpress.XtraGrid.Columns.GridColumn colWorkTeamId;
         private DevExpress.XtraGrid.Columns.GridColumn colWorkSectionId;
         private DevExpress.XtraGrid.Columns.GridColumn colStaffId;
-        private DevExpress.XtraGrid.Columns.GridColumn colStaffLevel;
+        private DevExpress.XtraGrid.Columns.GridColumn colStaffLevelId;
         private DevExpress.XtraGrid.Columns.GridColumn colInPosition;
         private DevExpress.XtraGrid.Columns.GridColumn colRemark;
         private DevExpress.XtraGrid.Columns.GridColumn colAction;

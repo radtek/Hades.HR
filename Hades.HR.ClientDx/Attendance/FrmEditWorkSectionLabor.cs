@@ -118,7 +118,25 @@ namespace Hades.HR.UI
 
                 labor.StaffId = frm.SelectedStaff.Id;
 
+                var salaryBase = CallerFactory<IStaffSalaryBaseService>.Instance.FindByID(frm.SelectedStaff.Id);
+                if (salaryBase != null)
+                    labor.StaffLevelId = salaryBase.StaffLevelId;
+
                 this.dgvStaff.UpdateCurrentRow();
+            }
+        }
+
+        /// <summary>
+        /// 编辑或者保存状态下取值函数
+        /// </summary>
+        /// <param name="info"></param>
+        private void SetInfo()
+        {
+            var data = this.bsLabors.DataSource as List<WorkSectionLaborInfo>;
+
+            foreach (var item in data)
+            {
+                CallerFactory<IWorkSectionLaborService>.Instance.InsertUpdate(item, item.Id);
             }
         }
         #endregion //Function
@@ -154,21 +172,7 @@ namespace Hades.HR.UI
         /// <returns></returns>
         public override bool CheckInput()
         {
-            bool result = true;//默认是可以通过
-
-
-            //if (this.txtYear.Text.Trim().Length == 0)
-            //{
-            //    MessageDxUtil.ShowTips("请输入");
-            //    this.txtYear.Focus();
-            //    result = false;
-            //}
-            // else if (this.txtMonth.Text.Trim().Length == 0)
-            //{
-            //    MessageDxUtil.ShowTips("请输入");
-            //    this.txtMonth.Focus();
-            //    result = false;
-            //}
+            bool result = true;//默认是可以通过            
 
             return result;
         }
@@ -180,6 +184,25 @@ namespace Hades.HR.UI
         public override bool SaveUpdated()
         {
             return true;
+        }
+
+        /// <summary>
+        /// 新增状态下的数据保存
+        /// </summary>
+        /// <returns></returns>
+        public override bool SaveAddNew()
+        {
+            try
+            {
+                SetInfo();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                LogTextHelper.Error(ex);
+                MessageDxUtil.ShowError(ex.Message);
+            }
+            return false;
         }
         #endregion //Method
 
@@ -216,6 +239,17 @@ namespace Hades.HR.UI
                         var staff = CallerFactory<IStaffService>.Instance.FindByID(e.Value.ToString());
                         e.DisplayText = staff.Name;
                     }
+                }
+            }
+            else if (columnName == "StaffLevelId")
+            {
+                if (e.Value != null)
+                {
+                    var s = this.staffLevels.SingleOrDefault(r => r.Id == e.Value.ToString());
+                    if (s == null)
+                        e.DisplayText = "";
+                    else
+                        e.DisplayText = s.Name;
                 }
             }
         }
@@ -269,63 +303,6 @@ namespace Hades.HR.UI
         {
             SelectStaff();
         }
-
-
         #endregion //Event
-
-
-
-
-        /// <summary>
-        /// 编辑或者保存状态下取值函数
-        /// </summary>
-        /// <param name="info"></param>
-        private void SetInfo(WorkSectionLaborInfo info)
-        {
-            //info.Year = Convert.ToInt32(txtYear.Value);
-            //       info.Month = Convert.ToInt32(txtMonth.Value);
-            //    info.WorkSectionId = txtWorkSectionId.Text;
-            //    info.StaffId = txtStaffId.Text;
-            //    info.StaffLevel = txtStaffLevel.Text;
-            //    info.Remark = txtRemark.Text;
-            //    info.Editor = txtEditor.Text;
-            //    info.EditorId = txtEditorId.Text;
-            //   info.EditTime = txtEditTime.DateTime;
-        }
-
-        /// <summary>
-        /// 新增状态下的数据保存
-        /// </summary>
-        /// <returns></returns>
-        public override bool SaveAddNew()
-        {
-            //WorkSectionLaborInfo info = tempInfo;//必须使用存在的局部变量，因为部分信息可能被附件使用
-            //SetInfo(info);
-
-            //try
-            //{
-            //    #region 新增数据
-
-            //    bool succeed = CallerFactory<IWorkSectionLaborService>.Instance.Insert(info);
-            //    if (succeed)
-            //    {
-            //        //可添加其他关联操作
-
-            //        return true;
-            //    }
-            //    #endregion
-            //}
-            //catch (Exception ex)
-            //{
-            //    LogTextHelper.Error(ex);
-            //    MessageDxUtil.ShowError(ex.Message);
-            //}
-            //return false;
-
-            MessageDxUtil.ShowTips("ss");
-            return true;
-        }
-
-
     }
 }

@@ -42,7 +42,7 @@ namespace Hades.HR.Entity
         public virtual string StaffId { get; set; }
 
         [DataMember]
-        public virtual string StaffLevel { get; set; }
+        public virtual string StaffLevelId { get; set; }
 
         [DataMember]
         public virtual int InPosition { get; set; }

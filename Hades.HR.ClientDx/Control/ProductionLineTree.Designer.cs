@@ -51,6 +51,7 @@
             this.trList.Location = new System.Drawing.Point(0, 0);
             this.trList.Name = "trList";
             this.trList.OptionsBehavior.Editable = false;
+            this.trList.OptionsCustomization.AllowQuickHideColumns = false;
             this.trList.OptionsFilter.AllowFilterEditor = false;
             this.trList.Size = new System.Drawing.Size(281, 406);
             this.trList.TabIndex = 0;
@@ -67,6 +68,7 @@
             this.colName.Caption = "名称";
             this.colName.FieldName = "colName";
             this.colName.Name = "colName";
+            this.colName.OptionsColumn.AllowSort = false;
             this.colName.Visible = true;
             this.colName.VisibleIndex = 0;
             this.colName.Width = 88;
