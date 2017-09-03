@@ -48,11 +48,6 @@ namespace Hades.HR.UI
         #endregion //Field
 
         #region Constructor
-        public FrmEditWorkSectionLabor()
-        {
-            InitializeComponent();
-        }
-
         public FrmEditWorkSectionLabor(int year, int month, string workTeamId)
         {
             InitializeComponent();
@@ -79,8 +74,10 @@ namespace Hades.HR.UI
         private void LoadWorkSections()
         {
             this.workSections = CallerFactory<IWorkSectionService>.Instance.Find2(string.Format("WorkTeamId = '{0}' AND Enabled=1 AND Deleted=0", this.workTeamId), "ORDER BY SortCode");
+            var sectionLabors = CallerFactory<IWorkSectionLaborService>.Instance.Find(string.Format("WorkTeamId = '{0}' AND Year = {1} AND Month = {2}", this.workTeamId, this.year, this.month));
 
             List<WorkSectionLaborInfo> labors = new List<WorkSectionLaborInfo>();
+
             foreach (var section in workSections)
             {
                 WorkSectionLaborInfo info = new WorkSectionLaborInfo();
@@ -88,7 +85,16 @@ namespace Hades.HR.UI
                 info.Month = this.month;
                 info.WorkTeamId = workTeamId;
                 info.WorkSectionId = section.Id;
-                info.InPosition = 0;
+
+                var labor = sectionLabors.SingleOrDefault(r => r.WorkSectionId == section.Id);
+                if (labor != null)
+                {
+                    info.Id = labor.Id;
+                    info.StaffId = labor.StaffId;
+                    info.StaffLevelId = labor.StaffLevelId;
+                    info.InPosition = labor.InPosition;
+                    info.Remark = labor.Remark;
+                }
 
                 labors.Add(info);
             }
@@ -134,8 +140,14 @@ namespace Hades.HR.UI
         {
             var data = this.bsLabors.DataSource as List<WorkSectionLaborInfo>;
 
+            //data.Where(r => !string.IsNullOrEmpty(r.StaffId)).Distinct()
+
             foreach (var item in data)
             {
+                item.Editor = this.LoginUserInfo.Name;
+                item.EditorId = this.LoginUserInfo.ID;
+                item.EditTime = DateTime.Now;
+
                 CallerFactory<IWorkSectionLaborService>.Instance.InsertUpdate(item, item.Id);
             }
         }
@@ -238,6 +250,7 @@ namespace Hades.HR.UI
                     {
                         var staff = CallerFactory<IStaffService>.Instance.FindByID(e.Value.ToString());
                         e.DisplayText = staff.Name;
+                        this.staffs.Add(staff);
                     }
                 }
             }
@@ -287,7 +300,7 @@ namespace Hades.HR.UI
                         e.Value = s.Number;
                     else
                     {
-                        var staff = CallerFactory<IStaffService>.Instance.FindByID(e.Value.ToString());
+                        var staff = CallerFactory<IStaffService>.Instance.FindByID(record.StaffId);
                         e.Value = staff.Number;
                     }
                 }

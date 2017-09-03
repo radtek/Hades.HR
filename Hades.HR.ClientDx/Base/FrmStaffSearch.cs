@@ -84,7 +84,7 @@ namespace Hades.HR.UI
         private void BindData()
         {
             //entity
-            this.wgvStaff.DisplayColumns = "Number,Name,StaffType,CompanyId,DepartmentId,PositionId,ProductionLineId,WorkTeamId,Gender,Birthday,IdentityCard,Phone,OfficePhone,Email,Titles,Duty,JobType,Enabled";
+            this.wgvStaff.DisplayColumns = "Number,Name,StaffType,CompanyId,DepartmentId,PositionId,ProductionLineId,WorkTeamId,Gender,Birthday,IdentityCard,Phone,Titles,Duty,JobType,Enabled";
             this.wgvStaff.ColumnNameAlias = CallerFactory<IStaffService>.Instance.GetColumnNameAlias();//字段列显示名称转义
 
             string where = GetConditionSql();
@@ -227,6 +227,22 @@ namespace Hades.HR.UI
                 if (e.Value != null && !string.IsNullOrEmpty(e.Value.ToString()))
                 {
                     var pos = CallerFactory<IPositionService>.Instance.FindByID(e.Value.ToString());
+                    e.DisplayText = pos.Name;
+                }
+            }
+            else if (columnName == "ProductionLineId")
+            {
+                if (e.Value != null && !string.IsNullOrEmpty(e.Value.ToString()))
+                {
+                    var pos = CallerFactory<IProductionLineService>.Instance.FindByID(e.Value.ToString());
+                    e.DisplayText = pos.Name;
+                }
+            }
+            else if (columnName == "WorkTeamId")
+            {
+                if (e.Value != null && !string.IsNullOrEmpty(e.Value.ToString()))
+                {
+                    var pos = CallerFactory<IWorkTeamService>.Instance.FindByID(e.Value.ToString());
                     e.DisplayText = pos.Name;
                 }
             }

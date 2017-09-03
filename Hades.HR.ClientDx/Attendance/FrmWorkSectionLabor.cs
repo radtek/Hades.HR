@@ -75,12 +75,12 @@ namespace Hades.HR.UI
         private void BindData()
         {
             //entity
-            this.wgvLabor.DisplayColumns = "WorkTeamName,WorkSectionName,Number,Name,StaffLevelName,Remark";
+            this.wgvLabor.DisplayColumns = "WorkTeamName,WorkSectionName,Number,Name,StaffLevelName,InPosition,Remark";
             this.wgvLabor.ColumnNameAlias = CallerFactory<IWorkSectionLaborViewService>.Instance.GetColumnNameAlias();//字段列显示名称转义
 
             string where = GetConditionSql();
 
-            var list = CallerFactory<IWorkSectionLaborViewService>.Instance.Find(where);
+            var list = CallerFactory<IWorkSectionLaborViewService>.Instance.Find2(where, "ORDER BY SortCode");
 
             this.wgvLabor.DataSource = list;
             this.wgvLabor.PrintTitle = "WorkSectionLabor报表";
@@ -135,8 +135,12 @@ namespace Hades.HR.UI
             }
             else
             {
-                FrmEditWorkSectionLabor frm = new FrmEditWorkSectionLabor(2017, 8, teamId);
+                var date = this.dpDate.DateTime;
+                FrmEditWorkSectionLabor frm = new FrmEditWorkSectionLabor(date.Year, date.Month, teamId);
+                frm.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
                 frm.ShowDialog();
+
+                BindData();
             }
         }
 
@@ -179,17 +183,10 @@ namespace Hades.HR.UI
                     }
                 }
             }
-            //else if (columnName == "Age")
-            //{
-            //    e.DisplayText = string.Format("{0}岁", e.Value);
-            //}
-            //else if (columnName == "ReceivedMoney")
-            //{
-            //    if (e.Value != null)
-            //    {
-            //        e.DisplayText = e.Value.ToString().ToDecimal().ToString("C");
-            //    }
-            //}
+            else if (columnName == "InPosition")
+            {
+                e.DisplayText = Convert.ToInt32(e.Value) == 1 ? "在岗" : "不在岗";
+            }
         }
         #endregion //Event
     }
