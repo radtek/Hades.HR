@@ -125,6 +125,7 @@
     <Compile Include="BLL\View\StaffAttendanceView.cs" />
     <Compile Include="BLL\Salary\StaffSalaryBase.cs" />
     <Compile Include="BLL\Base\WorkTeam.cs" />
+    <Compile Include="BLL\View\WorkSectionLaborView.cs" />
     <Compile Include="DAL\DALSQL\Attendance\Attendance.cs" />
     <Compile Include="DAL\DALSQL\Attendance\AttendanceRecord.cs" />
     <Compile Include="DAL\DALSQL\Attendance\LaborAttendanceRecord.cs" />
@@ -142,6 +143,7 @@
     <Compile Include="DAL\DALSQL\View\StaffAttendanceView.cs" />
     <Compile Include="DAL\DALSQL\Salary\StaffSalaryBase.cs" />
     <Compile Include="DAL\DALSQL\Base\WorkTeam.cs" />
+    <Compile Include="DAL\DALSQL\View\WorkSectionLaborView.cs" />
     <Compile Include="Entity\Attendance\AttendanceInfo.cs" />
     <Compile Include="Entity\Attendance\AttendanceRecordInfo.cs" />
     <Compile Include="Entity\Attendance\LaborAttendanceRecordInfo.cs" />
@@ -159,6 +161,7 @@
     <Compile Include="Entity\Base\StaffInfo.cs" />
     <Compile Include="Entity\Salary\StaffSalaryBaseInfo.cs" />
     <Compile Include="Entity\Base\WorkTeamInfo.cs" />
+    <Compile Include="Entity\View\WorkSectionLaborViewInfo.cs" />
     <Compile Include="IDAL\Attendance\IAttendance.cs" />
     <Compile Include="IDAL\Attendance\IAttendanceRecord.cs" />
     <Compile Include="IDAL\Attendance\ILaborAttendanceRecord.cs" />
@@ -176,6 +179,7 @@
     <Compile Include="IDAL\View\IStaffAttendanceView.cs" />
     <Compile Include="IDAL\Salary\IStaffSalaryBase.cs" />
     <Compile Include="IDAL\Base\IWorkTeam.cs" />
+    <Compile Include="IDAL\View\IWorkSectionLaborView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BLL\Base\Position.cs" />
     <Compile Include="DAL\DALSQL\Base\Position.cs" />

@@ -30,18 +30,18 @@ namespace Hades.HR.UI
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmWorkSectionLabor));
-            this.winGridViewPager1 = new Hades.Pager.WinControl.WinGridViewPager();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.treeLine = new Hades.HR.UI.ProductionLineTree();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
-            this.btnEdit = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.dpDate = new DevExpress.XtraEditors.DateEdit();
+            this.btnEdit = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.dpDate = new DevExpress.XtraEditors.DateEdit();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.treeLine = new Hades.HR.UI.ProductionLineTree();
+            this.wgvLabor = new Hades.Pager.WinControl.WinGridView();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
@@ -49,34 +49,12 @@ namespace Hades.HR.UI
             this.groupControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dpDate.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dpDate.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             this.SuspendLayout();
-            // 
-            // winGridViewPager1
-            // 
-            this.winGridViewPager1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.winGridViewPager1.AppendedMenu = null;
-            this.winGridViewPager1.ColumnNameAlias = ((System.Collections.Generic.Dictionary<string, string>)(resources.GetObject("winGridViewPager1.ColumnNameAlias")));
-            this.winGridViewPager1.DataSource = null;
-            this.winGridViewPager1.DisplayColumns = "";
-            this.winGridViewPager1.FixedColumns = null;
-            this.winGridViewPager1.Location = new System.Drawing.Point(303, 143);
-            this.winGridViewPager1.MinimumSize = new System.Drawing.Size(540, 0);
-            this.winGridViewPager1.Name = "winGridViewPager1";
-            this.winGridViewPager1.PrintTitle = "";
-            this.winGridViewPager1.ShowAddMenu = true;
-            this.winGridViewPager1.ShowCheckBox = false;
-            this.winGridViewPager1.ShowDeleteMenu = true;
-            this.winGridViewPager1.ShowEditMenu = true;
-            this.winGridViewPager1.ShowExportButton = true;
-            this.winGridViewPager1.Size = new System.Drawing.Size(698, 534);
-            this.winGridViewPager1.TabIndex = 11;
             // 
             // contextMenuStrip1
             // 
@@ -90,7 +68,7 @@ namespace Hades.HR.UI
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.groupControl1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.groupControl2, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.winGridViewPager1, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.wgvLabor, 1, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -111,6 +89,15 @@ namespace Hades.HR.UI
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "产线列表";
             // 
+            // treeLine
+            // 
+            this.treeLine.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeLine.Location = new System.Drawing.Point(2, 21);
+            this.treeLine.Name = "treeLine";
+            this.treeLine.Size = new System.Drawing.Size(290, 651);
+            this.treeLine.TabIndex = 0;
+            this.treeLine.TeamSeleted += new System.EventHandler(this.treeLine_TeamSeleted);
+            // 
             // groupControl2
             // 
             this.groupControl2.Controls.Add(this.layoutControl1);
@@ -120,16 +107,6 @@ namespace Hades.HR.UI
             this.groupControl2.Size = new System.Drawing.Size(698, 134);
             this.groupControl2.TabIndex = 1;
             this.groupControl2.Text = "操作";
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.Location = new System.Drawing.Point(349, 12);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(333, 22);
-            this.btnEdit.StyleController = this.layoutControl1;
-            this.btnEdit.TabIndex = 0;
-            this.btnEdit.Text = "编辑工段职员";
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // layoutControl1
             // 
@@ -142,6 +119,36 @@ namespace Hades.HR.UI
             this.layoutControl1.Size = new System.Drawing.Size(694, 111);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
+            // 
+            // dpDate
+            // 
+            this.dpDate.EditValue = null;
+            this.dpDate.Location = new System.Drawing.Point(63, 12);
+            this.dpDate.Name = "dpDate";
+            this.dpDate.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
+            this.dpDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dpDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dpDate.Properties.DisplayFormat.FormatString = "yyyy年MM月";
+            this.dpDate.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.dpDate.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.dpDate.Properties.VistaCalendarInitialViewStyle = DevExpress.XtraEditors.VistaCalendarInitialViewStyle.YearView;
+            this.dpDate.Properties.VistaCalendarViewStyle = ((DevExpress.XtraEditors.VistaCalendarViewStyle)((DevExpress.XtraEditors.VistaCalendarViewStyle.YearView | DevExpress.XtraEditors.VistaCalendarViewStyle.CenturyView)));
+            this.dpDate.Size = new System.Drawing.Size(282, 20);
+            this.dpDate.StyleController = this.layoutControl1;
+            this.dpDate.TabIndex = 4;
+            this.dpDate.EditValueChanged += new System.EventHandler(this.dpDate_EditValueChanged);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Location = new System.Drawing.Point(349, 12);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(333, 22);
+            this.btnEdit.StyleController = this.layoutControl1;
+            this.btnEdit.TabIndex = 0;
+            this.btnEdit.Text = "编辑工段职员";
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // layoutControlGroup1
             // 
@@ -164,24 +171,6 @@ namespace Hades.HR.UI
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
-            // dpDate
-            // 
-            this.dpDate.EditValue = null;
-            this.dpDate.Location = new System.Drawing.Point(64, 12);
-            this.dpDate.Name = "dpDate";
-            this.dpDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dpDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dpDate.Properties.DisplayFormat.FormatString = "yyyy年MM月";
-            this.dpDate.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.dpDate.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.dpDate.Properties.VistaCalendarInitialViewStyle = DevExpress.XtraEditors.VistaCalendarInitialViewStyle.YearView;
-            this.dpDate.Properties.VistaCalendarViewStyle = ((DevExpress.XtraEditors.VistaCalendarViewStyle)((DevExpress.XtraEditors.VistaCalendarViewStyle.YearView | DevExpress.XtraEditors.VistaCalendarViewStyle.CenturyView)));
-            this.dpDate.Size = new System.Drawing.Size(281, 20);
-            this.dpDate.StyleController = this.layoutControl1;
-            this.dpDate.TabIndex = 4;
-            // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.dpDate;
@@ -191,13 +180,24 @@ namespace Hades.HR.UI
             this.layoutControlItem2.Text = "日期选择";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(48, 14);
             // 
-            // treeLine
+            // wgvLabor
             // 
-            this.treeLine.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeLine.Location = new System.Drawing.Point(2, 21);
-            this.treeLine.Name = "treeLine";
-            this.treeLine.Size = new System.Drawing.Size(290, 651);
-            this.treeLine.TabIndex = 0;
+            this.wgvLabor.AppendedMenu = null;
+            this.wgvLabor.ColumnNameAlias = ((System.Collections.Generic.Dictionary<string, string>)(resources.GetObject("wgvLabor.ColumnNameAlias")));
+            this.wgvLabor.DataSource = null;
+            this.wgvLabor.DisplayColumns = "";
+            this.wgvLabor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.wgvLabor.FixedColumns = null;
+            this.wgvLabor.Location = new System.Drawing.Point(303, 143);
+            this.wgvLabor.Name = "wgvLabor";
+            this.wgvLabor.PrintTitle = "";
+            this.wgvLabor.ShowAddMenu = true;
+            this.wgvLabor.ShowCheckBox = false;
+            this.wgvLabor.ShowDeleteMenu = true;
+            this.wgvLabor.ShowEditMenu = true;
+            this.wgvLabor.ShowExportButton = true;
+            this.wgvLabor.Size = new System.Drawing.Size(698, 534);
+            this.wgvLabor.TabIndex = 2;
             // 
             // FrmWorkSectionLabor
             // 
@@ -214,10 +214,10 @@ namespace Hades.HR.UI
             this.groupControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dpDate.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dpDate.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             this.ResumeLayout(false);
 
@@ -225,7 +225,6 @@ namespace Hades.HR.UI
 
         #endregion
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private Hades.Pager.WinControl.WinGridViewPager winGridViewPager1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private DevExpress.XtraEditors.GroupControl groupControl1;
         private ProductionLineTree treeLine;
@@ -236,5 +235,6 @@ namespace Hades.HR.UI
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
+        private Pager.WinControl.WinGridView wgvLabor;
     }
 }

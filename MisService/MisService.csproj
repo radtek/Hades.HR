@@ -143,6 +143,7 @@
     <Content Include="HR\Salary\StaffSalaryBaseService.svc" />
     <Content Include="HR\Base\StaffService.svc" />
     <Content Include="HR\Base\WorkTeamService.svc" />
+    <Content Include="HR\View\WorkSectionLaborViewService.svc" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

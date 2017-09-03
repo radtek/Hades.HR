@@ -105,6 +105,9 @@ namespace Hades.HR.UI
         public string GetSelectedTeamId()
         {
             var node = this.trList.FocusedNode;
+            if (node == null)
+                return "";
+
             int type = Convert.ToInt32(node["colType"]);
             if (type == 3)
                 return node["colId"].ToString();

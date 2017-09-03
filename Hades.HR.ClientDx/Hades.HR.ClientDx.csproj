@@ -225,6 +225,9 @@
     <Compile Include="..\Hades.HR.Caller\Facade\View\IStaffAttendanceViewService.cs">
       <Link>Facade\View\IStaffAttendanceViewService.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Caller\Facade\View\IWorkSectionLaborViewService.cs">
+      <Link>Facade\View\IWorkSectionLaborViewService.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Caller\ServiceCaller\Attendance\AttendanceCaller.cs">
       <Link>Caller\ServiceCaller\Attendance\AttendanceCaller.cs</Link>
     </Compile>
@@ -282,6 +285,9 @@
     <Compile Include="..\Hades.HR.Caller\ServiceCaller\View\StaffAttendanceViewCaller.cs">
       <Link>Caller\ServiceCaller\View\StaffAttendanceViewCaller.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Caller\ServiceCaller\View\WorkSectionLaborViewCaller.cs">
+      <Link>Caller\ServiceCaller\View\WorkSectionLaborViewCaller.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Caller\WinformCaller\Attendance\AttendanceCaller.cs">
       <Link>Caller\WinformCaller\Attendance\AttendanceCaller.cs</Link>
     </Compile>
@@ -335,6 +341,9 @@
     </Compile>
     <Compile Include="..\Hades.HR.Caller\WinformCaller\View\StaffAttendanceViewCaller.cs">
       <Link>Caller\WinformCaller\View\StaffAttendanceViewCaller.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Caller\WinformCaller\View\WorkSectionLaborViewCaller.cs">
+      <Link>Caller\WinformCaller\View\WorkSectionLaborViewCaller.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\BLL\Attendance\Attendance.cs">
       <Link>Biz\BLL\Attendance\Attendance.cs</Link>
@@ -390,6 +399,9 @@
     <Compile Include="..\Hades.HR.Core\BLL\View\StaffAttendanceView.cs">
       <Link>Biz\BLL\View\StaffAttendanceView.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Core\BLL\View\WorkSectionLaborView.cs">
+      <Link>Biz\BLL\View\WorkSectionLaborView.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Attendance\Attendance.cs">
       <Link>Biz\DAL\DALSQL\Attendance\Attendance.cs</Link>
     </Compile>
@@ -443,6 +455,9 @@
     </Compile>
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\View\StaffAttendanceView.cs">
       <Link>Biz\DAL\DALSQL\View\StaffAttendanceView.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\DAL\DALSQL\View\WorkSectionLaborView.cs">
+      <Link>Biz\DAL\DALSQL\View\WorkSectionLaborView.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\Entity\Attendance\AttendanceInfo.cs">
       <Link>Biz\Entity\Attendance\AttendanceInfo.cs</Link>
@@ -498,6 +513,9 @@
     <Compile Include="..\Hades.HR.Core\Entity\View\StaffAttendanceViewInfo.cs">
       <Link>Biz\Entity\View\StaffAttendanceViewInfo.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Core\Entity\View\WorkSectionLaborViewInfo.cs">
+      <Link>Biz\Entity\View\WorkSectionLaborViewInfo.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Core\IDAL\Attendance\IAttendance.cs">
       <Link>Biz\IDAL\Attendance\IAttendance.cs</Link>
     </Compile>
@@ -551,6 +569,9 @@
     </Compile>
     <Compile Include="..\Hades.HR.Core\IDAL\View\IStaffAttendanceView.cs">
       <Link>Biz\IDAL\View\IStaffAttendanceView.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\IDAL\View\IWorkSectionLaborView.cs">
+      <Link>Biz\IDAL\View\IWorkSectionLaborView.cs</Link>
     </Compile>
     <Compile Include="Attendance\FrmAttendance.cs">
       <SubType>Form</SubType>

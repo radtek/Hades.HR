@@ -48,6 +48,7 @@ namespace Hades.HR.ServiceCaller
         #region View
         public const string StaffAttendanceViewService = "WSHttpBinding_IStaffAttendanceViewService";
         public const string LaborAttendanceRecordViewService = "WSHttpBinding_ILaborAttendanceRecordViewService";
+        public const string WorkSectionLaborViewService = "WSHttpBinding_IWorkSectionLaborViewService";
         #endregion //View
     }
 }

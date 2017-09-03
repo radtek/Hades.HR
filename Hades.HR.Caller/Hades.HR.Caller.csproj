@@ -94,6 +94,7 @@
     <Compile Include="Facade\Salary\IStaffSalaryBaseService.cs" />
     <Compile Include="Facade\Base\IStaffService.cs" />
     <Compile Include="Facade\Base\IWorkTeamService.cs" />
+    <Compile Include="Facade\View\IWorkSectionLaborViewService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceCaller\Attendance\AttendanceCaller.cs" />
     <Compile Include="ServiceCaller\Attendance\AttendanceRecordCaller.cs" />
@@ -113,6 +114,7 @@
     <Compile Include="ServiceCaller\Base\StaffCaller.cs" />
     <Compile Include="ServiceCaller\Salary\StaffSalaryBaseCaller.cs" />
     <Compile Include="ServiceCaller\Base\WorkTeamCaller.cs" />
+    <Compile Include="ServiceCaller\View\WorkSectionLaborViewCaller.cs" />
     <Compile Include="WinformCaller\Attendance\AttendanceCaller.cs" />
     <Compile Include="WinformCaller\Attendance\AttendanceRecordCaller.cs" />
     <Compile Include="WinformCaller\Attendance\LaborAttendanceRecordCaller.cs" />
@@ -133,6 +135,7 @@
     <Compile Include="WinformCaller\Base\StaffCaller.cs" />
     <Compile Include="WinformCaller\Salary\StaffSalaryBaseCaller.cs" />
     <Compile Include="WinformCaller\Base\WorkTeamCaller.cs" />
+    <Compile Include="WinformCaller\View\WorkSectionLaborViewCaller.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Hades.HR.Core\Hades.HR.Core.csproj">
