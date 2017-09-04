@@ -114,6 +114,39 @@ namespace Hades.HR.UI
             else
                 return "";
         }
+
+        /// <summary>
+        /// 获取选择产线ID
+        /// </summary>
+        /// <returns></returns>
+        public string GetSelectedLineId()
+        {
+            var node = this.trList.FocusedNode;
+            if (node == null)
+                return "";
+
+            int type = Convert.ToInt32(node["colType"]);
+            if (type == 2)
+                return node["colId"].ToString();
+            else
+                return "";
+        }
+
+        /// <summary>
+        /// 获取选择节点类型
+        /// </summary>
+        /// <returns>
+        /// 1:公司，2:产线，3:班组
+        /// </returns>
+        public int GetSelectType()
+        {
+            var node = this.trList.FocusedNode;
+            if (node == null)
+                return 0;
+
+            int type = Convert.ToInt32(node["colType"]);
+            return type;
+        }
         #endregion //Method
 
         #region Delegate

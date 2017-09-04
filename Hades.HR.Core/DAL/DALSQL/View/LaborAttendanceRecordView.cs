@@ -46,6 +46,7 @@ namespace Hades.HR.DALSQL
             info.Id = reader.GetString("Id");
             info.StaffId = reader.GetString("StaffId");
             info.WorkTeamId = reader.GetString("WorkTeamId");
+            info.WorkSectionId = reader.GetString("WorkSectionId");
             info.AttendanceDate = reader.GetDateTime("AttendanceDate");
             info.Workload = reader.GetDecimal("Workload");
             info.AbsentType = reader.GetInt32("AbsentType");
@@ -55,6 +56,7 @@ namespace Hades.HR.DALSQL
             info.Number = reader.GetString("Number");
             info.Name = reader.GetString("Name");
             info.WorkTeamName = reader.GetString("WorkTeamName");
+            info.WorkSectionName = reader.GetString("WorkSectionName");
 
             return info;
         }
@@ -72,6 +74,7 @@ namespace Hades.HR.DALSQL
             hash.Add("Id", info.Id);
             hash.Add("StaffId", info.StaffId);
             hash.Add("WorkTeamId", info.WorkTeamId);
+            hash.Add("WorkSectionId", info.WorkSectionId);
             hash.Add("AttendanceDate", info.AttendanceDate);
             hash.Add("Workload", info.Workload);
             hash.Add("AbsentType", info.AbsentType);
@@ -81,6 +84,7 @@ namespace Hades.HR.DALSQL
             hash.Add("Number", info.Number);
             hash.Add("Name", info.Name);
             hash.Add("WorkTeamName", info.WorkTeamName);
+            hash.Add("WorkSectionName", info.WorkSectionName);
 
             return hash;
         }
@@ -97,6 +101,7 @@ namespace Hades.HR.DALSQL
             dict.Add("Id", "");
             dict.Add("StaffId", "");
             dict.Add("WorkTeamId", "");
+            dict.Add("WorkSectionId", "");
             dict.Add("AttendanceDate", "考勤日期");
             dict.Add("Workload", "工作量");
             dict.Add("AbsentType", "缺勤类型");
@@ -106,6 +111,7 @@ namespace Hades.HR.DALSQL
             dict.Add("Number", "工号");
             dict.Add("Name", "姓名");
             dict.Add("WorkTeamName", "班组名称");
+            dict.Add("WorkSectionName", "工段名称");
             #endregion
 
             return dict;

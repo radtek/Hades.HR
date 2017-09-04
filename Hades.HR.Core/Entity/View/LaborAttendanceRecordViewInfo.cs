@@ -35,6 +35,9 @@ namespace Hades.HR.Entity
         public virtual string WorkTeamId { get; set; }
 
         [DataMember]
+        public virtual string WorkSectionId { get; set; }
+
+        [DataMember]
         public virtual DateTime AttendanceDate { get; set; }
 
         [DataMember]
@@ -61,6 +64,8 @@ namespace Hades.HR.Entity
         [DataMember]
         public virtual string WorkTeamName { get; set; }
 
+        [DataMember]
+        public virtual string WorkSectionName { get; set; }
         #endregion
     }
 }

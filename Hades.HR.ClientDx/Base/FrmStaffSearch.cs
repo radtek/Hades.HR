@@ -51,10 +51,12 @@ namespace Hades.HR.UI
             this.wgvStaff.gridView1.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(wgvStaff_CustomColumnDisplayText);
 
             //关联回车键进行查询
-            foreach (Control control in this.layoutControl1.Controls)
-            {
-                control.KeyUp += new System.Windows.Forms.KeyEventHandler(this.SearchControl_KeyUp);
-            }
+            //foreach (Control control in this.layoutControl1.Controls)
+            //{
+            //    control.KeyUp += new System.Windows.Forms.KeyEventHandler(this.SearchControl_KeyUp);
+            //}
+
+            this.txtFind.KeyUp += new System.Windows.Forms.KeyEventHandler(this.SearchControl_KeyUp);
         }
         #endregion //Constructor
 
@@ -73,6 +75,7 @@ namespace Hades.HR.UI
                 condition.AddCondition("Name", this.txtFind.Text.Trim(), SqlOperator.Like);
 
             condition.AddCondition("StaffType", (int)this.staffType, SqlOperator.Equal);
+            condition.AddCondition("Enabled", 1, SqlOperator.Equal);
             condition.AddCondition("Deleted", 0, SqlOperator.Equal);
             string where = condition.BuildConditionSql().Replace("Where", "");
             return where;

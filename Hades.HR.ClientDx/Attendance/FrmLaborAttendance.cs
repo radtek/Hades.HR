@@ -57,36 +57,6 @@ namespace Hades.HR.UI
         }
 
         /// <summary>
-        /// 初始化工作组列表
-        /// </summary>
-        private void InitWorkTeam()
-        {
-            var companys = CallerFactory<IDepartmentService>.Instance.Find("Type=2");
-            var lines = CallerFactory<IProductionLineService>.Instance.Find("");
-            var teams = CallerFactory<IWorkTeamService>.Instance.Find("");
-
-            foreach (var com in companys)
-            {
-                TreeNode comNode = new TreeNode { Name = com.Id, Text = com.Name, Tag = 1 };
-                var node = this.tvLine.Nodes.Add(comNode);
-
-                var lines2 = lines.Where(r => r.CompanyId == com.Id);
-                foreach (var line in lines2)
-                {
-                    TreeNode lineNode = new TreeNode { Name = line.Id, Text = line.Name, Tag = 2 };
-                    var node2 = comNode.Nodes.Add(lineNode);
-
-                    var teams2 = teams.Where(r => r.ProductionLineId == line.Id);
-                    foreach (var team in teams2)
-                    {
-                        TreeNode teamNode = new TreeNode { Name = team.Id, Text = team.Name, Tag = 3 };
-                        lineNode.Nodes.Add(teamNode);
-                    }
-                }
-            }
-        }
-
-        /// <summary>
         /// 载入汇总数据
         /// </summary>
         private void LoadSummaryData()
@@ -94,10 +64,10 @@ namespace Hades.HR.UI
             if (this.dpMonth.EditValue == null)
                 return;
 
-            var node = this.tvLine.SelectedNode;
-            if (node != null && Convert.ToInt32(node.Tag) == 3)
+            var teamId = this.treeLine.GetSelectedTeamId();
+            if (!string.IsNullOrEmpty(teamId))
             {
-                var dt = GetSummaryAttendance(this.dpMonth.DateTime.Date, node.Name);
+                var dt = GetSummaryAttendance(this.dpMonth.DateTime.Date, teamId);
 
                 this.dgcSummary.DataSource = dt;
                 this.dgvSummary.PopulateColumns();
@@ -107,9 +77,25 @@ namespace Hades.HR.UI
                 {
                     var col = this.dgvSummary.Columns[i.ToString()];
                     col.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-                        new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, i.ToString(), "{0:0.##}")});
+                            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, i.ToString(), "{0:0.##}")});
                 }
             }
+            //var node = this.tvLine.SelectedNode;
+            //if (node != null && Convert.ToInt32(node.Tag) == 3)
+            //{
+            //    var dt = GetSummaryAttendance(this.dpMonth.DateTime.Date, node.Name);
+
+            //    this.dgcSummary.DataSource = dt;
+            //    this.dgvSummary.PopulateColumns();
+
+            //    int days = DateTime.DaysInMonth(this.dpMonth.DateTime.Date.Year, this.dpMonth.DateTime.Date.Month);
+            //    for (int i = 1; i <= days; i++)
+            //    {
+            //        var col = this.dgvSummary.Columns[i.ToString()];
+            //        col.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            //            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, i.ToString(), "{0:0.##}")});
+            //    }
+            //}
         }
 
         /// <summary>
@@ -118,7 +104,7 @@ namespace Hades.HR.UI
         private void LoadRecordData()
         {
             //entity
-            this.wgvRecord.DisplayColumns = "WorkTeamName,Number,Name,AttendanceDate,Workload,AbsentType,IsWeekend,IsHoliday,Remark";
+            this.wgvRecord.DisplayColumns = "WorkTeamName,WorkSectionName,Number,Name,AttendanceDate,Workload,AbsentType,IsWeekend,IsHoliday,Remark";
             this.wgvRecord.ColumnNameAlias = CallerFactory<ILaborAttendanceRecordViewService>.Instance.GetColumnNameAlias();//字段列显示名称转义
 
             string where = GetConditionSql();
@@ -148,11 +134,15 @@ namespace Hades.HR.UI
                     return "1 = 2";
                 condition.AddCondition("AttendanceDate", this.dpAttendance.DateTime.Date, SqlOperator.Equal);
 
-                var node = this.tvLine.SelectedNode;
-                if (node != null && Convert.ToInt32(node.Tag) == 3)
+                int type = this.treeLine.GetSelectType();
+
+                if (type == 3)
                 {
-                    condition.AddCondition("WorkTeamId", node.Name, SqlOperator.Equal);
+                    var teamId = this.treeLine.GetSelectedTeamId();
+                    condition.AddCondition("WorkTeamId", teamId, SqlOperator.Equal);
                 }
+                else
+                    return "1 = 2";
             }
             string where = condition.BuildConditionSql().Replace("Where", "");
             return where;
@@ -246,7 +236,7 @@ namespace Hades.HR.UI
         /// </summary>
         public override void FormOnLoad()
         {
-            InitWorkTeam();
+            this.treeLine.Init();
         }
         #endregion //Method
 
@@ -256,10 +246,14 @@ namespace Hades.HR.UI
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void tvLine_AfterSelect(object sender, TreeViewEventArgs e)
+        private void treeLine_TeamSeleted(object sender, EventArgs e)
         {
-            this.txtWorkTeamName.Text = e.Node.Text;
-            this.txtWorkTeamName2.Text = e.Node.Text;
+            var teamId =  this.treeLine.GetSelectedTeamId();
+
+            var workTeam = CallerFactory<IWorkTeamService>.Instance.FindByID(teamId);
+            this.txtWorkTeamName.Text = workTeam.Name;
+            this.txtWorkTeamName2.Text = workTeam.Name;
+
             LoadRecordData();
             LoadSummaryData();
         }
@@ -291,8 +285,8 @@ namespace Hades.HR.UI
         /// <param name="e"></param>
         private void btnEditRecord_Click(object sender, EventArgs e)
         {
-            var node = this.tvLine.SelectedNode;
-            if (node == null || Convert.ToInt32(node.Tag) != 3)
+            var teamId = this.treeLine.GetSelectedTeamId();
+            if (string.IsNullOrEmpty(teamId))
             {
                 MessageDxUtil.ShowWarning("请选择班组");
                 return;
@@ -303,7 +297,6 @@ namespace Hades.HR.UI
                 return;
             }
 
-            var teamId = node.Name;
             var date = this.dpAttendance.DateTime.Date;
 
             FrmEditLaborAttendanceRecord dlg = new FrmEditLaborAttendanceRecord(date, teamId);
@@ -368,5 +361,6 @@ namespace Hades.HR.UI
             //}
         }
         #endregion //Event        
+
     }
 }

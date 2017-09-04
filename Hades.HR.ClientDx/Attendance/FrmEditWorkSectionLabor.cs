@@ -85,6 +85,7 @@ namespace Hades.HR.UI
                 info.Month = this.month;
                 info.WorkTeamId = workTeamId;
                 info.WorkSectionId = section.Id;
+                info.SortCode = section.SortCode;
 
                 var labor = sectionLabors.SingleOrDefault(r => r.WorkSectionId == section.Id);
                 if (labor != null)

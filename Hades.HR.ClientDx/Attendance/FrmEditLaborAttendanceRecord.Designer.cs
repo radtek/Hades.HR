@@ -54,6 +54,7 @@ namespace Hades.HR.UI
             this.repoCmbAbsentType = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.colRemark = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.colWorkSectionid = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.picPrint)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -263,6 +264,7 @@ namespace Hades.HR.UI
             // 
             this.dgvAttendance.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colId,
+            this.colWorkSectionid,
             this.colStaffNumber,
             this.colStaffId,
             this.colWorkload,
@@ -293,7 +295,7 @@ namespace Hades.HR.UI
             this.colStaffNumber.OptionsColumn.AllowEdit = false;
             this.colStaffNumber.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.colStaffNumber.Visible = true;
-            this.colStaffNumber.VisibleIndex = 0;
+            this.colStaffNumber.VisibleIndex = 1;
             // 
             // colStaffId
             // 
@@ -302,7 +304,7 @@ namespace Hades.HR.UI
             this.colStaffId.Name = "colStaffId";
             this.colStaffId.OptionsColumn.AllowEdit = false;
             this.colStaffId.Visible = true;
-            this.colStaffId.VisibleIndex = 1;
+            this.colStaffId.VisibleIndex = 2;
             // 
             // colWorkload
             // 
@@ -312,7 +314,7 @@ namespace Hades.HR.UI
             this.colWorkload.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Workload", "ºÏ¼Æ={0:0.##}")});
             this.colWorkload.Visible = true;
-            this.colWorkload.VisibleIndex = 2;
+            this.colWorkload.VisibleIndex = 3;
             // 
             // colAbsentType
             // 
@@ -321,7 +323,7 @@ namespace Hades.HR.UI
             this.colAbsentType.FieldName = "AbsentType";
             this.colAbsentType.Name = "colAbsentType";
             this.colAbsentType.Visible = true;
-            this.colAbsentType.VisibleIndex = 3;
+            this.colAbsentType.VisibleIndex = 4;
             // 
             // repoCmbAbsentType
             // 
@@ -336,7 +338,7 @@ namespace Hades.HR.UI
             this.colRemark.FieldName = "Remark";
             this.colRemark.Name = "colRemark";
             this.colRemark.Visible = true;
-            this.colRemark.VisibleIndex = 4;
+            this.colRemark.VisibleIndex = 5;
             // 
             // panelControl2
             // 
@@ -345,6 +347,15 @@ namespace Hades.HR.UI
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Size = new System.Drawing.Size(880, 13);
             this.panelControl2.TabIndex = 1;
+            // 
+            // colWorkSectionid
+            // 
+            this.colWorkSectionid.Caption = "¹¤¶Î";
+            this.colWorkSectionid.FieldName = "WorkSectionId";
+            this.colWorkSectionid.Name = "colWorkSectionid";
+            this.colWorkSectionid.OptionsColumn.AllowEdit = false;
+            this.colWorkSectionid.Visible = true;
+            this.colWorkSectionid.VisibleIndex = 0;
             // 
             // FrmEditLaborAttendanceRecord
             // 
@@ -415,5 +426,6 @@ namespace Hades.HR.UI
         private DevExpress.XtraEditors.PanelControl panelControl2;
         private DevExpress.XtraEditors.SimpleButton btnDelete;
         private DevExpress.XtraEditors.SimpleButton btnAddRecord;
+        private DevExpress.XtraGrid.Columns.GridColumn colWorkSectionid;
     }
 }

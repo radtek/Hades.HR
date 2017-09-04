@@ -41,6 +41,11 @@ namespace Hades.HR.UI
         private DateTime attendanceDate;
 
         /// <summary>
+        /// 缓存工段
+        /// </summary>
+        private List<WorkSectionInfo> workSections;
+
+        /// <summary>
         /// 相关职员
         /// </summary>
         private List<StaffInfo> staffs;
@@ -73,29 +78,31 @@ namespace Hades.HR.UI
         /// <returns></returns>
         private List<LaborAttendanceRecordInfo> InitRecords()
         {
-            var data = CallerFactory<ILaborAttendanceRecordService>.Instance.Find(string.Format("AttendanceDate='{0}'", attendanceDate));
-            this.staffs = CallerFactory<IStaffService>.Instance.Find(string.Format("StaffType=2 AND WorkTeamId='{0}' AND Enabled=1 AND Deleted=0", workTeamId));
+            var sectionLabors = CallerFactory<IWorkSectionLaborService>.Instance.Find2(string.Format("WorkTeamId = '{0}' AND Year = {1} AND Month = {2}", this.workTeamId, this.attendanceDate.Year, this.attendanceDate.Month), "ORDER BY SortCode");
 
-            List<LaborAttendanceRecordInfo> records = new List<LaborAttendanceRecordInfo>();
-            foreach (var item in staffs)
+            var records = CallerFactory<ILaborAttendanceRecordService>.Instance.Find(string.Format("AttendanceDate='{0}'", attendanceDate));
+            
+            List<LaborAttendanceRecordInfo> data = new List<LaborAttendanceRecordInfo>();
+            foreach (var item in sectionLabors)
             {
-                var find = data.SingleOrDefault(r => r.StaffId == item.Id);
-                if (find != null)
-                {
-                    records.Add(find);
-                }
-                else
-                {
-                    LaborAttendanceRecordInfo info = new LaborAttendanceRecordInfo();
-                    info.Id = Guid.NewGuid().ToString();
-                    info.AttendanceDate = this.attendanceDate;
-                    info.StaffId = item.Id;
+                LaborAttendanceRecordInfo info = new LaborAttendanceRecordInfo();
+                info.AttendanceDate = this.attendanceDate;
+                info.WorkTeamId = workTeamId;
+                info.WorkSectionId = item.WorkSectionId;
+                info.StaffId = item.StaffId;
 
-                    records.Add(info);
+                var record = records.SingleOrDefault(r => r.StaffId == item.StaffId & r.WorkTeamId == workTeamId);
+                if (record != null)
+                {
+                    info.Workload = record.Workload;
+                    info.AbsentType = record.AbsentType;
+                    info.Remark = record.Remark;
                 }
+
+                data.Add(info);
             }
 
-            return records;
+            return data;
         }
 
         /// <summary>
@@ -103,18 +110,12 @@ namespace Hades.HR.UI
         /// </summary>
         private string SaveRecords()
         {
-            //CallerFactory<ILaborAttendanceRecordService>.Instance.DeleteByCondition(string.Format("AttendanceDate='{0}' AND WorkTeamId='{1}'", attendanceDate, workTeamId));
-
             var records = this.bsAttendanceRecord.DataSource as List<LaborAttendanceRecordInfo>;
 
             foreach (var item in records)
             {
-                item.AttendanceDate = this.attendanceDate;
-                item.WorkTeamId = this.workTeamId;
                 item.IsWeekend = this.chkIsWeekend.Checked;
                 item.IsHoliday = this.chkIsHoliday.Checked;
-
-                //CallerFactory<ILaborAttendanceRecordService>.Instance.Insert(item);
             }
 
             var result = CallerFactory<ILaborAttendanceRecordService>.Instance.InsertRecords(records);
@@ -130,6 +131,10 @@ namespace Hades.HR.UI
             var team = CallerFactory<IWorkTeamService>.Instance.FindByID(this.workTeamId);
             this.txtWorkTeamName.Text = team.Name;
 
+            this.workSections = CallerFactory<IWorkSectionService>.Instance.Find(string.Format("WorkTeamId = '{0}'", workTeamId));
+
+            this.staffs = CallerFactory<IStaffService>.Instance.Find("StaffType = 2 AND Enabled = 1 AND Deleted = 0");
+            
             var records = InitRecords();
             this.bsAttendanceRecord.DataSource = records;
 
@@ -182,6 +187,14 @@ namespace Hades.HR.UI
             if (columnName == "StaffId")
             {
                 var s = this.staffs.SingleOrDefault(r => r.Id == e.Value.ToString());
+                if (s == null)
+                    e.DisplayText = "";
+                else
+                    e.DisplayText = s.Name;
+            }
+            else if (columnName == "WorkSectionId")
+            {
+                var s = this.workSections.SingleOrDefault(r => r.Id == e.Value.ToString());
                 if (s == null)
                     e.DisplayText = "";
                 else

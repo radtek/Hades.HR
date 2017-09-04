@@ -48,6 +48,9 @@ namespace Hades.HR.Entity
         public virtual int InPosition { get; set; }
 
         [DataMember]
+        public virtual string SortCode { get; set; }
+
+        [DataMember]
         public virtual string Remark { get; set; }
 
         [DataMember]

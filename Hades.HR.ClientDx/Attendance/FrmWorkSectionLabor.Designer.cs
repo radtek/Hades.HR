@@ -87,7 +87,7 @@ namespace Hades.HR.UI
             this.tableLayoutPanel1.SetRowSpan(this.groupControl1, 2);
             this.groupControl1.Size = new System.Drawing.Size(294, 674);
             this.groupControl1.TabIndex = 0;
-            this.groupControl1.Text = "产线列表";
+            this.groupControl1.Text = "产线班组列表";
             // 
             // treeLine
             // 
