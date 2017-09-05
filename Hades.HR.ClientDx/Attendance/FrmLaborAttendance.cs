@@ -80,22 +80,6 @@ namespace Hades.HR.UI
                             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, i.ToString(), "{0:0.##}")});
                 }
             }
-            //var node = this.tvLine.SelectedNode;
-            //if (node != null && Convert.ToInt32(node.Tag) == 3)
-            //{
-            //    var dt = GetSummaryAttendance(this.dpMonth.DateTime.Date, node.Name);
-
-            //    this.dgcSummary.DataSource = dt;
-            //    this.dgvSummary.PopulateColumns();
-
-            //    int days = DateTime.DaysInMonth(this.dpMonth.DateTime.Date.Year, this.dpMonth.DateTime.Date.Month);
-            //    for (int i = 1; i <= days; i++)
-            //    {
-            //        var col = this.dgvSummary.Columns[i.ToString()];
-            //        col.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            //            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, i.ToString(), "{0:0.##}")});
-            //    }
-            //}
         }
 
         /// <summary>
