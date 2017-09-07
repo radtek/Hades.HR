@@ -13,6 +13,13 @@ namespace Hades.HR.Facade
     [ServiceContract]
     public interface ILaborSalaryRecordService : IBaseService<LaborSalaryRecordInfo>
     {
-
+        /// <summary>
+        /// 计算计件工人工资
+        /// </summary>
+        /// <param name="attendanceId">考勤ID</param>
+        /// <param name="workTeamId">班组ID</param>
+        /// <returns></returns>
+        [OperationContract]
+        List<LaborSalaryRecordInfo> CalcLaborSalary(string attendanceId, string workTeamId);
     }
 }

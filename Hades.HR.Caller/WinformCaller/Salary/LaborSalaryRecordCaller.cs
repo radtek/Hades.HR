@@ -27,5 +27,18 @@ namespace Hades.HR.WinformCaller
             bll = baseBLL as LaborSalaryRecord;
         }
         #endregion //Constructor
+
+        #region Method
+        /// <summary>
+        /// 计算计件工人工资
+        /// </summary>
+        /// <param name="attendanceId">考勤ID</param>
+        /// <param name="workTeamId">班组ID</param>
+        /// <returns></returns>
+        public List<LaborSalaryRecordInfo> CalcLaborSalary(string attendanceId, string workTeamId)
+        {
+            return bll.CalcLaborSalary(attendanceId, workTeamId);
+        }
+        #endregion //Method
     }
 }

@@ -189,6 +189,7 @@
     <Compile Include="DAL\DALSQL\Base\Position.cs" />
     <Compile Include="Entity\Base\PositionInfo.cs" />
     <Compile Include="IDAL\Base\IPosition.cs" />
+    <Compile Include="Util\HREnum.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

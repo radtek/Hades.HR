@@ -15,17 +15,20 @@ using Hades.HR.Facade;
 
 namespace Hades.HR.ServiceCaller
 {
-	/// <summary>
-	/// 基于WCF服务的Facade接口实现类
-	/// </summary>
+    /// <summary>
+    /// 基于WCF服务的Facade接口实现类
+    /// </summary>
     public class LaborSalaryRecordCaller : BaseWCFService<LaborSalaryRecordInfo>, ILaborSalaryRecordService
     {
-        public LaborSalaryRecordCaller()  : base()
-        {	
+        #region Constructor
+        public LaborSalaryRecordCaller() : base()
+        {
             this.configurationPath = EndPointConfig.WcfConfig; //WCF配置文件
             this.endpointConfigurationName = EndPointConfig.LaborSalaryRecordService;
         }
+        #endregion //Constructor
 
+        #region Function
         /// <summary>
         /// 子类构造一个IChannel对象转换为基类接口，方便给基类进行调用通用的API
         /// </summary>
@@ -44,6 +47,29 @@ namespace Hades.HR.ServiceCaller
             CustomClientChannel<ILaborSalaryRecordService> factory = new CustomClientChannel<ILaborSalaryRecordService>(endpointConfigurationName, configurationPath);
             return factory.CreateChannel();
         }
+        #endregion //Function
+
+        #region Method
+        /// <summary>
+        /// 计算计件工人工资
+        /// </summary>
+        /// <param name="attendanceId">考勤ID</param>
+        /// <param name="workTeamId">班组ID</param>
+        /// <returns></returns>
+        public List<LaborSalaryRecordInfo> CalcLaborSalary(string attendanceId, string workTeamId)
+        {
+            List<LaborSalaryRecordInfo> result = new List<LaborSalaryRecordInfo>();
+
+            ILaborSalaryRecordService service = CreateSubClient();
+            ICommunicationObject comm = service as ICommunicationObject;
+            comm.Using(client =>
+            {
+                result = service.CalcLaborSalary(attendanceId, workTeamId);
+            });
+
+            return result;
+        }
+        #endregion //Method
 
         ///// <summary>
         ///// 根据名称查找对象(自定义接口使用范例)

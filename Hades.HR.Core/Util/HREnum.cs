@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;    
 using System.Linq;
 using System.Text;
 
-namespace Hades.HR.UI
+namespace Hades.HR.Util
 {
     /// <summary>
     /// 缺勤类型

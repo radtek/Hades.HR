@@ -386,6 +386,9 @@
     <Compile Include="..\Hades.HR.Core\IDAL\View\IWorkSectionLaborView.cs">
       <Link>Biz\IDAL\View\IWorkSectionLaborView.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Core\Util\HREnum.cs">
+      <Link>Biz\Util\HREnum.cs</Link>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WCFLibrary\Attendance\AttendanceRecordService.cs" />
     <Compile Include="WCFLibrary\Attendance\AttendanceService.cs" />

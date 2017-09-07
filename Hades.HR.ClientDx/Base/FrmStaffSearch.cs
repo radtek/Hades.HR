@@ -16,6 +16,7 @@ using Hades.Framework.ControlUtil.Facade;
 
 using Hades.HR.Facade;
 using Hades.HR.Entity;
+using Hades.HR.Util;
 
 namespace Hades.HR.UI
 {

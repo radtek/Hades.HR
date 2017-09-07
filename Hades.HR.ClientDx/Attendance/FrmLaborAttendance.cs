@@ -16,6 +16,7 @@ using Hades.Framework.ControlUtil;
 using Hades.Framework.ControlUtil.Facade;
 using Hades.HR.Facade;
 using Hades.HR.Entity;
+using Hades.HR.Util;
 
 namespace Hades.HR.UI
 {
@@ -199,7 +200,7 @@ namespace Hades.HR.UI
                 row["normalsum"] = records.Where(r => r.StaffId == staffId && r.IsWeekend == false && r.IsHoliday == false).Sum(r => r.Workload);
                 row["holidaysum"] = records.Where(r => r.StaffId == staffId && r.IsHoliday == true).Sum(r => r.Workload);
 
-                row["attendanceDays"] = records.Where(r => r.StaffId == staffId && r.AbsentType == (int)AbsentType.None && r.IsWeekend == false && r.IsHoliday == false).Count(); ;
+                row["attendanceDays"] = records.Where(r => r.StaffId == staffId && r.AbsentType == (int)AbsentType.None && r.IsWeekend == false && r.IsHoliday == false).Count();
                 row["annualDays"] = records.Where(r => r.StaffId == staffId && r.AbsentType == (int)AbsentType.AnnualLeave).Count();
                 row["sickDays"] = records.Where(r => r.StaffId == staffId && r.AbsentType == (int)AbsentType.SickLeave).Count();
                 row["casualDays"] = records.Where(r => r.StaffId == staffId && r.AbsentType == (int)AbsentType.CasualLeave).Count();
@@ -330,7 +331,6 @@ namespace Hades.HR.UI
             }
         }
 
-
         void gridView1_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
         {
             //if (e.Column.FieldName == "OrderStatus")
@@ -344,7 +344,6 @@ namespace Hades.HR.UI
             //    }
             //}
         }
-        #endregion //Event        
-
+        #endregion //Event
     }
 }

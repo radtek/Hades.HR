@@ -14,25 +14,33 @@ using Hades.HR.Facade;
 
 namespace Hades.HR.WCFLibrary
 {
-	/// <summary>
-	/// 基于WCFLibrary的LaborSalaryRecord对象调用类
-	/// </summary>
+    /// <summary>
+    /// 基于WCFLibrary的LaborSalaryRecord对象调用类
+    /// </summary>
     public class LaborSalaryRecordService : BaseLocalService<LaborSalaryRecordInfo>, ILaborSalaryRecordService
     {
+        #region Field
         private LaborSalaryRecord bll = null;
+        #endregion //Field
 
+        #region Method
         public LaborSalaryRecordService() : base(BLLFactory<LaborSalaryRecord>.Instance)
         {
             bll = baseBLL as LaborSalaryRecord;
         }
+        #endregion //Method
 
-        ///// <summary>
-        ///// 根据名称查找对象(自定义接口使用范例)
-        ///// </summary>
-        //public List<LaborSalaryRecordInfo> FindByName(string name)
-        //{
-        //    return bll.FindByName(name);
-        //}
-
+        #region Method
+        /// <summary>
+        /// 计算计件工人工资
+        /// </summary>
+        /// <param name="attendanceId">考勤ID</param>
+        /// <param name="workTeamId">班组ID</param>
+        /// <returns></returns>
+        public List<LaborSalaryRecordInfo> CalcLaborSalary(string attendanceId, string workTeamId)
+        {
+            return bll.CalcLaborSalary(attendanceId, workTeamId);
+        }
+        #endregion //Method
     }
 }

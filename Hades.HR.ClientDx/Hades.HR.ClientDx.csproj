@@ -594,6 +594,9 @@
     <Compile Include="..\Hades.HR.Core\IDAL\View\IWorkSectionLaborView.cs">
       <Link>Biz\IDAL\View\IWorkSectionLaborView.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Core\Util\HREnum.cs">
+      <Link>Util\HREnum.cs</Link>
+    </Compile>
     <Compile Include="Attendance\FrmAttendance.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -844,7 +847,6 @@
     <Compile Include="Util\ControlUtil.cs" />
     <Compile Include="Util\DepartmentType.cs" />
     <Compile Include="Util\ExtensionMethod.cs" />
-    <Compile Include="Util\HREnum.cs" />
     <EmbeddedResource Include="Attendance\FrmAttendance.resx">
       <DependentUpon>FrmAttendance.cs</DependentUpon>
     </EmbeddedResource>
@@ -938,8 +940,14 @@
     <EmbeddedResource Include="Control\WorkTeamLookup.resx">
       <DependentUpon>WorkTeamLookup.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Salary\FrmEditLaborSalaryRecord.resx">
+      <DependentUpon>FrmEditLaborSalaryRecord.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Salary\FrmEditStaffSalaryBase.resx">
       <DependentUpon>FrmEditStaffSalaryBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Salary\FrmLaborSalary.resx">
+      <DependentUpon>FrmLaborSalary.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Salary\FrmStaffSalaryBase.resx">
       <DependentUpon>FrmStaffSalaryBase.cs</DependentUpon>
@@ -958,6 +966,7 @@
     <None Include="Properties\DataSources\Hades.HR.Entity.AttendanceRecordInfo.datasource" />
     <None Include="Properties\DataSources\Hades.HR.Entity.DepartmentInfo.datasource" />
     <None Include="Properties\DataSources\Hades.HR.Entity.LaborAttendanceRecordInfo.datasource" />
+    <None Include="Properties\DataSources\Hades.HR.Entity.LaborSalaryRecordInfo.datasource" />
     <None Include="Properties\DataSources\Hades.HR.Entity.PositionInfo.datasource" />
     <None Include="Properties\DataSources\Hades.HR.Entity.ProductionLineInfo.datasource" />
     <None Include="Properties\DataSources\Hades.HR.Entity.StaffBonusInfo.datasource" />
