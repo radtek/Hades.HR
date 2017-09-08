@@ -32,6 +32,7 @@ namespace Hades.HR.UI
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.treeLine = new Hades.HR.UI.ProductionLineTree();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.layoutControl2 = new DevExpress.XtraLayout.LayoutControl();
             this.txtMonthDays = new DevExpress.XtraEditors.TextEdit();
@@ -41,7 +42,6 @@ namespace Hades.HR.UI
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.treeLine = new Hades.HR.UI.ProductionLineTree();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
@@ -60,6 +60,7 @@ namespace Hades.HR.UI
             // 
             // contextMenuStrip1
             // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
@@ -90,6 +91,15 @@ namespace Hades.HR.UI
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "产线班组列表";
             // 
+            // treeLine
+            // 
+            this.treeLine.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeLine.Location = new System.Drawing.Point(2, 25);
+            this.treeLine.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.treeLine.Name = "treeLine";
+            this.treeLine.Size = new System.Drawing.Size(290, 647);
+            this.treeLine.TabIndex = 0;
+            // 
             // groupControl2
             // 
             this.groupControl2.Controls.Add(this.layoutControl2);
@@ -106,26 +116,26 @@ namespace Hades.HR.UI
             this.layoutControl2.Controls.Add(this.btnCalc);
             this.layoutControl2.Controls.Add(this.dpMonth);
             this.layoutControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutControl2.Location = new System.Drawing.Point(2, 21);
+            this.layoutControl2.Location = new System.Drawing.Point(2, 25);
             this.layoutControl2.Name = "layoutControl2";
             this.layoutControl2.Root = this.layoutControlGroup2;
-            this.layoutControl2.Size = new System.Drawing.Size(694, 111);
+            this.layoutControl2.Size = new System.Drawing.Size(694, 107);
             this.layoutControl2.TabIndex = 0;
             this.layoutControl2.Text = "layoutControl2";
             // 
             // txtMonthDays
             // 
-            this.txtMonthDays.Location = new System.Drawing.Point(340, 12);
+            this.txtMonthDays.Location = new System.Drawing.Point(352, 14);
             this.txtMonthDays.Name = "txtMonthDays";
-            this.txtMonthDays.Size = new System.Drawing.Size(174, 20);
+            this.txtMonthDays.Size = new System.Drawing.Size(161, 24);
             this.txtMonthDays.StyleController = this.layoutControl2;
             this.txtMonthDays.TabIndex = 6;
             // 
             // btnCalc
             // 
-            this.btnCalc.Location = new System.Drawing.Point(518, 12);
+            this.btnCalc.Location = new System.Drawing.Point(517, 14);
             this.btnCalc.Name = "btnCalc";
-            this.btnCalc.Size = new System.Drawing.Size(164, 22);
+            this.btnCalc.Size = new System.Drawing.Size(163, 27);
             this.btnCalc.StyleController = this.layoutControl2;
             this.btnCalc.TabIndex = 5;
             this.btnCalc.Text = "生成月度工资";
@@ -134,7 +144,7 @@ namespace Hades.HR.UI
             // dpMonth
             // 
             this.dpMonth.EditValue = null;
-            this.dpMonth.Location = new System.Drawing.Point(63, 12);
+            this.dpMonth.Location = new System.Drawing.Point(77, 14);
             this.dpMonth.Name = "dpMonth";
             this.dpMonth.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
             this.dpMonth.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -146,7 +156,7 @@ namespace Hades.HR.UI
             this.dpMonth.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.dpMonth.Properties.VistaCalendarInitialViewStyle = DevExpress.XtraEditors.VistaCalendarInitialViewStyle.YearView;
             this.dpMonth.Properties.VistaCalendarViewStyle = ((DevExpress.XtraEditors.VistaCalendarViewStyle)((DevExpress.XtraEditors.VistaCalendarViewStyle.YearView | DevExpress.XtraEditors.VistaCalendarViewStyle.CenturyView)));
-            this.dpMonth.Size = new System.Drawing.Size(222, 20);
+            this.dpMonth.Size = new System.Drawing.Size(208, 24);
             this.dpMonth.StyleController = this.layoutControl2;
             this.dpMonth.TabIndex = 4;
             this.dpMonth.EditValueChanged += new System.EventHandler(this.dpMonth_EditValueChanged);
@@ -161,7 +171,7 @@ namespace Hades.HR.UI
             this.layoutControlItem4});
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup2.Name = "layoutControlGroup2";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(694, 111);
+            this.layoutControlGroup2.Size = new System.Drawing.Size(694, 107);
             this.layoutControlGroup2.TextVisible = false;
             // 
             // layoutControlItem2
@@ -169,39 +179,31 @@ namespace Hades.HR.UI
             this.layoutControlItem2.Control = this.dpMonth;
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(277, 91);
+            this.layoutControlItem2.Size = new System.Drawing.Size(275, 83);
             this.layoutControlItem2.Text = "月份选择";
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(48, 14);
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(60, 18);
             // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.btnCalc;
-            this.layoutControlItem3.Location = new System.Drawing.Point(506, 0);
+            this.layoutControlItem3.Location = new System.Drawing.Point(503, 0);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(168, 91);
+            this.layoutControlItem3.Size = new System.Drawing.Size(167, 83);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.txtMonthDays;
-            this.layoutControlItem4.Location = new System.Drawing.Point(277, 0);
+            this.layoutControlItem4.Location = new System.Drawing.Point(275, 0);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(229, 91);
+            this.layoutControlItem4.Size = new System.Drawing.Size(228, 83);
             this.layoutControlItem4.Text = "本月天数";
-            this.layoutControlItem4.TextSize = new System.Drawing.Size(48, 14);
-            // 
-            // treeLine
-            // 
-            this.treeLine.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeLine.Location = new System.Drawing.Point(2, 21);
-            this.treeLine.Name = "treeLine";
-            this.treeLine.Size = new System.Drawing.Size(290, 651);
-            this.treeLine.TabIndex = 0;
+            this.layoutControlItem4.TextSize = new System.Drawing.Size(60, 18);
             // 
             // FrmLaborSalary
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1004, 680);
             this.Controls.Add(this.tableLayoutPanel1);

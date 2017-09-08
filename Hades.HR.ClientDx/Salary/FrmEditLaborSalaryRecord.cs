@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.ComponentModel;
 using System.Collections.Generic;
+using System.Linq;
 
 using Hades.Pager.Entity;
 using Hades.Dictionary;
@@ -24,6 +25,8 @@ namespace Hades.HR.UI
         private string attendanceId;
 
         private string workTeamId;
+
+        private List<WorkSectionLaborViewInfo> sectionLabors;
 
         /// <summary>
         /// 创建一个临时对象，方便在附件管理中获取存在的GUID
@@ -46,16 +49,66 @@ namespace Hades.HR.UI
         }
         #endregion //Constructor
 
+        #region Function
+
+        #endregion //Function
+
         #region Method
         public override void FormOnLoad()
         {
             InitDictItem();
+
+            this.sectionLabors = CallerFactory<IWorkSectionLaborViewService>.Instance.Find(string.Format("WorkTeamId = '{0}'", this.workTeamId));
 
             var records = CallerFactory<ILaborSalaryRecordService>.Instance.CalcLaborSalary(this.attendanceId, this.workTeamId);
 
             this.bsSalaryRecords.DataSource = records;
         }
         #endregion //Method
+
+
+        #region Event
+        /// <summary>
+        /// 格式化数据显示
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dgvSalary_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+        {
+            string columnName = e.Column.FieldName;
+            if (columnName == "StaffId")
+            {
+                var s = this.sectionLabors.FirstOrDefault(r => r.StaffId == e.Value.ToString());
+                if (s == null)
+                    e.DisplayText = "";
+                else
+                    e.DisplayText = s.Name;
+            }
+        }
+
+        /// <summary>
+        /// 自定义数据显示
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dgvSalary_CustomUnboundColumnData(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDataEventArgs e)
+        {
+            int rowIndex = e.ListSourceRowIndex;
+            if (rowIndex < 0 || rowIndex >= this.bsSalaryRecords.Count)
+                return;
+
+            var record = this.bsSalaryRecords[rowIndex] as LaborSalaryRecordInfo;
+
+            if (e.Column.FieldName == "StaffNumber" && e.IsGetData)
+            {
+                var s = this.sectionLabors.FirstOrDefault(r => r.StaffId == record.StaffId);
+                if (s == null)
+                    e.Value = "";
+                else
+                    e.Value = s.Number;
+            }
+        }
+        #endregion //Event
 
         /// <summary>
         /// 实现控件输入检查的函数

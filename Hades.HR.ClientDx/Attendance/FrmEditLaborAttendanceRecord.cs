@@ -219,7 +219,10 @@ namespace Hades.HR.UI
             if (e.Column.FieldName == "StaffNumber" && e.IsGetData)
             {
                 var s = this.staffs.SingleOrDefault(r => r.Id == record.StaffId);
-                e.Value = s.Number;
+                if (s == null)
+                    e.Value = "";
+                else
+                    e.Value = s.Number;
             }
         }
 

@@ -36,6 +36,10 @@ namespace Hades.HR.BLL
         {
             List<LaborSalaryRecordInfo> data = new List<LaborSalaryRecordInfo>();
 
+            // 获取级别工资
+            StaffLevel blLevel = new StaffLevel();
+            var levels = blLevel.Find("");
+
             // 获取考勤
             Attendance blAttendace = new Attendance();
             var attendaceInfo = blAttendace.FindByID(attendanceId);
@@ -70,7 +74,19 @@ namespace Hades.HR.BLL
                 info.AbsentLeave = records.Where(r => r.StaffId == info.StaffId && r.AbsentType == (int)AbsentType.AbsentLeave).Count();
                 info.InjuryLeave = records.Where(r => r.StaffId == info.StaffId && r.AbsentType == (int)AbsentType.InjuryLeave).Count();
 
+                info.StaffLevelId = labor.StaffLevelId;
+
+                var level = levels.SingleOrDefault(r => r.Id == info.StaffLevelId);
+                if (level == null)
+                    info.LevelSalary = 0;
+                else
+                    info.LevelSalary = level.Salary;
+                
                 info.MonthWorkload = records.Where(r => r.StaffId == info.StaffId).Sum(r => r.Workload);
+                info.BaseWorkload = info.AttendanceDays * 8;
+                info.WeekendWorkload = records.Where(r => r.StaffId == info.StaffId && r.IsWeekend == true).Sum(r => r.Workload) * 8;
+                info.HolidayWorkload = records.Where(r => r.StaffId == info.StaffId && r.IsWeekend == false && r.IsHoliday == false).Sum(r => r.Workload) * 8;
+
 
                 data.Add(info);
             }

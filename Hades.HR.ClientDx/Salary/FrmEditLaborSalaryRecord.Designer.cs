@@ -36,6 +36,7 @@ namespace Hades.HR.UI
             this.dgvSalary = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAttendanceId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colStaffNumber = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colStaffId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAttendanceDays = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAnnualLeave = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -69,7 +70,6 @@ namespace Hades.HR.UI
             this.colHotBonus = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colLunchAllowance = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colRemark = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colStaffNumber = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.picPrint)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
@@ -94,6 +94,7 @@ namespace Hades.HR.UI
             // dataNavigator1
             // 
             this.dataNavigator1.Location = new System.Drawing.Point(12, 481);
+            this.dataNavigator1.Size = new System.Drawing.Size(191, 30);
             // 
             // picPrint
             // 
@@ -122,10 +123,10 @@ namespace Hades.HR.UI
             // 
             this.dgcSalary.DataSource = this.bsSalaryRecords;
             this.dgcSalary.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgcSalary.Location = new System.Drawing.Point(2, 21);
+            this.dgcSalary.Location = new System.Drawing.Point(2, 25);
             this.dgcSalary.MainView = this.dgvSalary;
             this.dgcSalary.Name = "dgcSalary";
-            this.dgcSalary.Size = new System.Drawing.Size(866, 331);
+            this.dgcSalary.Size = new System.Drawing.Size(866, 327);
             this.dgcSalary.TabIndex = 0;
             this.dgcSalary.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.dgvSalary});
@@ -177,6 +178,8 @@ namespace Hades.HR.UI
             this.dgvSalary.Name = "dgvSalary";
             this.dgvSalary.OptionsView.ColumnAutoWidth = false;
             this.dgvSalary.OptionsView.ShowGroupPanel = false;
+            this.dgvSalary.CustomUnboundColumnData += new DevExpress.XtraGrid.Views.Base.CustomColumnDataEventHandler(this.dgvSalary_CustomUnboundColumnData);
+            this.dgvSalary.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.dgvSalary_CustomColumnDisplayText);
             // 
             // colId
             // 
@@ -187,6 +190,16 @@ namespace Hades.HR.UI
             // 
             this.colAttendanceId.FieldName = "AttendanceId";
             this.colAttendanceId.Name = "colAttendanceId";
+            // 
+            // colStaffNumber
+            // 
+            this.colStaffNumber.Caption = "职员工号";
+            this.colStaffNumber.FieldName = "StaffNumber";
+            this.colStaffNumber.Name = "colStaffNumber";
+            this.colStaffNumber.OptionsColumn.AllowEdit = false;
+            this.colStaffNumber.UnboundType = DevExpress.Data.UnboundColumnType.String;
+            this.colStaffNumber.Visible = true;
+            this.colStaffNumber.VisibleIndex = 0;
             // 
             // colStaffId
             // 
@@ -211,6 +224,7 @@ namespace Hades.HR.UI
             this.colAnnualLeave.Caption = "年假天数";
             this.colAnnualLeave.FieldName = "AnnualLeave";
             this.colAnnualLeave.Name = "colAnnualLeave";
+            this.colAnnualLeave.OptionsColumn.AllowEdit = false;
             this.colAnnualLeave.Visible = true;
             this.colAnnualLeave.VisibleIndex = 3;
             // 
@@ -219,6 +233,7 @@ namespace Hades.HR.UI
             this.colSickLeave.Caption = "病假天数";
             this.colSickLeave.FieldName = "SickLeave";
             this.colSickLeave.Name = "colSickLeave";
+            this.colSickLeave.OptionsColumn.AllowEdit = false;
             this.colSickLeave.Visible = true;
             this.colSickLeave.VisibleIndex = 4;
             // 
@@ -227,6 +242,7 @@ namespace Hades.HR.UI
             this.colCasualLeave.Caption = "事假天数";
             this.colCasualLeave.FieldName = "CasualLeave";
             this.colCasualLeave.Name = "colCasualLeave";
+            this.colCasualLeave.OptionsColumn.AllowEdit = false;
             this.colCasualLeave.Visible = true;
             this.colCasualLeave.VisibleIndex = 5;
             // 
@@ -235,6 +251,7 @@ namespace Hades.HR.UI
             this.colInjuryLeave.Caption = "工伤天数";
             this.colInjuryLeave.FieldName = "InjuryLeave";
             this.colInjuryLeave.Name = "colInjuryLeave";
+            this.colInjuryLeave.OptionsColumn.AllowEdit = false;
             this.colInjuryLeave.Visible = true;
             this.colInjuryLeave.VisibleIndex = 6;
             // 
@@ -243,6 +260,7 @@ namespace Hades.HR.UI
             this.colMarriageLeave.Caption = "婚产丧假天数";
             this.colMarriageLeave.FieldName = "MarriageLeave";
             this.colMarriageLeave.Name = "colMarriageLeave";
+            this.colMarriageLeave.OptionsColumn.AllowEdit = false;
             this.colMarriageLeave.Visible = true;
             this.colMarriageLeave.VisibleIndex = 7;
             // 
@@ -251,6 +269,7 @@ namespace Hades.HR.UI
             this.colAbsentLeave.Caption = "旷工天数";
             this.colAbsentLeave.FieldName = "AbsentLeave";
             this.colAbsentLeave.Name = "colAbsentLeave";
+            this.colAbsentLeave.OptionsColumn.AllowEdit = false;
             this.colAbsentLeave.Visible = true;
             this.colAbsentLeave.VisibleIndex = 8;
             // 
@@ -266,6 +285,7 @@ namespace Hades.HR.UI
             this.colLevelSalary.Caption = "级别工资";
             this.colLevelSalary.FieldName = "LevelSalary";
             this.colLevelSalary.Name = "colLevelSalary";
+            this.colLevelSalary.OptionsColumn.AllowEdit = false;
             this.colLevelSalary.Visible = true;
             this.colLevelSalary.VisibleIndex = 10;
             // 
@@ -292,6 +312,7 @@ namespace Hades.HR.UI
             this.colWeekendWorkload.Caption = "周末工作量";
             this.colWeekendWorkload.FieldName = "WeekendWorkload";
             this.colWeekendWorkload.Name = "colWeekendWorkload";
+            this.colWeekendWorkload.OptionsColumn.AllowEdit = false;
             this.colWeekendWorkload.Visible = true;
             this.colWeekendWorkload.VisibleIndex = 13;
             // 
@@ -300,6 +321,7 @@ namespace Hades.HR.UI
             this.colHolidayWorkload.Caption = "法定假日工作量";
             this.colHolidayWorkload.FieldName = "HolidayWorkload";
             this.colHolidayWorkload.Name = "colHolidayWorkload";
+            this.colHolidayWorkload.OptionsColumn.AllowEdit = false;
             this.colHolidayWorkload.Visible = true;
             this.colHolidayWorkload.VisibleIndex = 14;
             // 
@@ -455,19 +477,9 @@ namespace Hades.HR.UI
             this.colRemark.Visible = true;
             this.colRemark.VisibleIndex = 33;
             // 
-            // colStaffNumber
-            // 
-            this.colStaffNumber.Caption = "职员工号";
-            this.colStaffNumber.FieldName = "colStaffNumber";
-            this.colStaffNumber.Name = "colStaffNumber";
-            this.colStaffNumber.OptionsColumn.AllowEdit = false;
-            this.colStaffNumber.UnboundType = DevExpress.Data.UnboundColumnType.String;
-            this.colStaffNumber.Visible = true;
-            this.colStaffNumber.VisibleIndex = 0;
-            // 
             // FrmEditLaborSalaryRecord
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(870, 521);
             this.Controls.Add(this.groupControl2);
