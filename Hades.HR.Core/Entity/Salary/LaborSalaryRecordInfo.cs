@@ -27,13 +27,19 @@ namespace Hades.HR.Entity
             this.LevelSalary = 0;
             this.MonthWorkload = 0;
             this.BaseWorkload = 0;
+            this.BaseSalary = 0;
+            this.OverWorkload = 0;
+            this.OverSalary = 0;
             this.WeekendWorkload = 0;
+            this.WeekendSalary = 0;
             this.HolidayWorkload = 0;
+            this.HolidaySalary = 0;
             this.Estimation = 0;
             this.Allowance = 0;
             this.WorkshopDeduction = 0;
             this.WorkshopBonus = 0;
             this.BonusDeduction = 0;
+            this.TotalSalary = 0;
             this.NoonShift = 0;
             this.NightShift = 0;
             this.OtherNoon = 0;
@@ -94,10 +100,25 @@ namespace Hades.HR.Entity
         public virtual decimal BaseWorkload { get; set; }
 
         [DataMember]
+        public virtual decimal BaseSalary { get; set; }
+        
+        [DataMember]
+        public virtual decimal OverWorkload { get; set; }
+
+        [DataMember]
+        public virtual decimal OverSalary { get; set; }
+
+        [DataMember]
         public virtual decimal WeekendWorkload { get; set; }
 
         [DataMember]
+        public virtual decimal WeekendSalary { get; set; }
+
+        [DataMember]
         public virtual decimal HolidayWorkload { get; set; }
+
+        [DataMember]
+        public virtual decimal HolidaySalary { get; set; }
 
         [DataMember]
         public virtual decimal Estimation { get; set; }
@@ -113,6 +134,9 @@ namespace Hades.HR.Entity
 
         [DataMember]
         public virtual decimal BonusDeduction { get; set; }
+
+        [DataMember]
+        public virtual decimal TotalSalary { get; set; }
 
         [DataMember]
         public virtual int NoonShift { get; set; }

@@ -84,10 +84,17 @@ namespace Hades.HR.BLL
                 
                 info.MonthWorkload = records.Where(r => r.StaffId == info.StaffId).Sum(r => r.Workload);
                 info.BaseWorkload = info.AttendanceDays * 8;
+                info.BaseSalary = info.BaseWorkload * info.LevelSalary;
+                
                 info.WeekendWorkload = records.Where(r => r.StaffId == info.StaffId && r.IsWeekend == true).Sum(r => r.Workload) * 8;
+                info.WeekendSalary = info.LevelSalary * info.WeekendWorkload * 2;
+
                 info.HolidayWorkload = records.Where(r => r.StaffId == info.StaffId && r.IsWeekend == false && r.IsHoliday == false).Sum(r => r.Workload) * 8;
+                info.HolidaySalary = info.LevelSalary * info.HolidayWorkload * 3;
 
-
+                info.OverWorkload = info.MonthWorkload - info.BaseWorkload - info.WeekendWorkload - info.HolidayWorkload;
+                info.OverSalary = info.LevelSalary * info.OverWorkload * 1.5m;
+                                
                 data.Add(info);
             }
 

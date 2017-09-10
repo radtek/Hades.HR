@@ -49,8 +49,13 @@ namespace Hades.HR.UI
             this.colLevelSalary = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMonthWorkload = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colBaseWorkload = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colBaseSalary = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colOverWorkload = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colOverSalary = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colWeekendWorkload = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colWeekendSalary = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colHolidayWorkload = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colHolidaySalary = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colEstimation = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAllowance = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colWorkshopDeduction = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -70,6 +75,7 @@ namespace Hades.HR.UI
             this.colHotBonus = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colLunchAllowance = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colRemark = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colTotalSalary2 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.picPrint)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
@@ -123,10 +129,10 @@ namespace Hades.HR.UI
             // 
             this.dgcSalary.DataSource = this.bsSalaryRecords;
             this.dgcSalary.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgcSalary.Location = new System.Drawing.Point(2, 25);
+            this.dgcSalary.Location = new System.Drawing.Point(2, 21);
             this.dgcSalary.MainView = this.dgvSalary;
             this.dgcSalary.Name = "dgcSalary";
-            this.dgcSalary.Size = new System.Drawing.Size(866, 327);
+            this.dgcSalary.Size = new System.Drawing.Size(866, 331);
             this.dgcSalary.TabIndex = 0;
             this.dgcSalary.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.dgvSalary});
@@ -153,13 +159,19 @@ namespace Hades.HR.UI
             this.colLevelSalary,
             this.colMonthWorkload,
             this.colBaseWorkload,
+            this.colBaseSalary,
+            this.colOverWorkload,
+            this.colOverSalary,
             this.colWeekendWorkload,
+            this.colWeekendSalary,
             this.colHolidayWorkload,
+            this.colHolidaySalary,
             this.colEstimation,
             this.colAllowance,
             this.colWorkshopDeduction,
             this.colWorkshopBonus,
             this.colBonusDeduction,
+            this.colTotalSalary2,
             this.colNoonShift,
             this.colNightShift,
             this.colOtherNoon,
@@ -307,6 +319,33 @@ namespace Hades.HR.UI
             this.colBaseWorkload.Visible = true;
             this.colBaseWorkload.VisibleIndex = 12;
             // 
+            // colBaseSalary
+            // 
+            this.colBaseSalary.Caption = "基本工资";
+            this.colBaseSalary.FieldName = "BaseSalary";
+            this.colBaseSalary.Name = "colBaseSalary";
+            this.colBaseSalary.OptionsColumn.AllowEdit = false;
+            this.colBaseSalary.Visible = true;
+            this.colBaseSalary.VisibleIndex = 13;
+            // 
+            // colOverWorkload
+            // 
+            this.colOverWorkload.Caption = "超产工作量";
+            this.colOverWorkload.FieldName = "OverWorkload";
+            this.colOverWorkload.Name = "colOverWorkload";
+            this.colOverWorkload.OptionsColumn.AllowEdit = false;
+            this.colOverWorkload.Visible = true;
+            this.colOverWorkload.VisibleIndex = 14;
+            // 
+            // colOverSalary
+            // 
+            this.colOverSalary.Caption = "超产工资";
+            this.colOverSalary.FieldName = "OverSalary";
+            this.colOverSalary.Name = "colOverSalary";
+            this.colOverSalary.OptionsColumn.AllowEdit = false;
+            this.colOverSalary.Visible = true;
+            this.colOverSalary.VisibleIndex = 15;
+            // 
             // colWeekendWorkload
             // 
             this.colWeekendWorkload.Caption = "周末工作量";
@@ -314,7 +353,16 @@ namespace Hades.HR.UI
             this.colWeekendWorkload.Name = "colWeekendWorkload";
             this.colWeekendWorkload.OptionsColumn.AllowEdit = false;
             this.colWeekendWorkload.Visible = true;
-            this.colWeekendWorkload.VisibleIndex = 13;
+            this.colWeekendWorkload.VisibleIndex = 16;
+            // 
+            // colWeekendSalary
+            // 
+            this.colWeekendSalary.Caption = "周末工资";
+            this.colWeekendSalary.FieldName = "WeekendSalary";
+            this.colWeekendSalary.Name = "colWeekendSalary";
+            this.colWeekendSalary.OptionsColumn.AllowEdit = false;
+            this.colWeekendSalary.Visible = true;
+            this.colWeekendSalary.VisibleIndex = 17;
             // 
             // colHolidayWorkload
             // 
@@ -323,7 +371,16 @@ namespace Hades.HR.UI
             this.colHolidayWorkload.Name = "colHolidayWorkload";
             this.colHolidayWorkload.OptionsColumn.AllowEdit = false;
             this.colHolidayWorkload.Visible = true;
-            this.colHolidayWorkload.VisibleIndex = 14;
+            this.colHolidayWorkload.VisibleIndex = 18;
+            // 
+            // colHolidaySalary
+            // 
+            this.colHolidaySalary.Caption = "法定假日工资";
+            this.colHolidaySalary.FieldName = "HolidaySalary";
+            this.colHolidaySalary.Name = "colHolidaySalary";
+            this.colHolidaySalary.OptionsColumn.AllowEdit = false;
+            this.colHolidaySalary.Visible = true;
+            this.colHolidaySalary.VisibleIndex = 19;
             // 
             // colEstimation
             // 
@@ -331,7 +388,7 @@ namespace Hades.HR.UI
             this.colEstimation.FieldName = "Estimation";
             this.colEstimation.Name = "colEstimation";
             this.colEstimation.Visible = true;
-            this.colEstimation.VisibleIndex = 15;
+            this.colEstimation.VisibleIndex = 20;
             // 
             // colAllowance
             // 
@@ -339,7 +396,7 @@ namespace Hades.HR.UI
             this.colAllowance.FieldName = "Allowance";
             this.colAllowance.Name = "colAllowance";
             this.colAllowance.Visible = true;
-            this.colAllowance.VisibleIndex = 16;
+            this.colAllowance.VisibleIndex = 21;
             // 
             // colWorkshopDeduction
             // 
@@ -347,7 +404,7 @@ namespace Hades.HR.UI
             this.colWorkshopDeduction.FieldName = "WorkshopDeduction";
             this.colWorkshopDeduction.Name = "colWorkshopDeduction";
             this.colWorkshopDeduction.Visible = true;
-            this.colWorkshopDeduction.VisibleIndex = 17;
+            this.colWorkshopDeduction.VisibleIndex = 22;
             // 
             // colWorkshopBonus
             // 
@@ -355,7 +412,7 @@ namespace Hades.HR.UI
             this.colWorkshopBonus.FieldName = "WorkshopBonus";
             this.colWorkshopBonus.Name = "colWorkshopBonus";
             this.colWorkshopBonus.Visible = true;
-            this.colWorkshopBonus.VisibleIndex = 18;
+            this.colWorkshopBonus.VisibleIndex = 23;
             // 
             // colBonusDeduction
             // 
@@ -363,7 +420,7 @@ namespace Hades.HR.UI
             this.colBonusDeduction.FieldName = "BonusDeduction";
             this.colBonusDeduction.Name = "colBonusDeduction";
             this.colBonusDeduction.Visible = true;
-            this.colBonusDeduction.VisibleIndex = 19;
+            this.colBonusDeduction.VisibleIndex = 24;
             // 
             // colNoonShift
             // 
@@ -371,7 +428,7 @@ namespace Hades.HR.UI
             this.colNoonShift.FieldName = "NoonShift";
             this.colNoonShift.Name = "colNoonShift";
             this.colNoonShift.Visible = true;
-            this.colNoonShift.VisibleIndex = 20;
+            this.colNoonShift.VisibleIndex = 25;
             // 
             // colNightShift
             // 
@@ -379,7 +436,7 @@ namespace Hades.HR.UI
             this.colNightShift.FieldName = "NightShift";
             this.colNightShift.Name = "colNightShift";
             this.colNightShift.Visible = true;
-            this.colNightShift.VisibleIndex = 21;
+            this.colNightShift.VisibleIndex = 27;
             // 
             // colOtherNoon
             // 
@@ -387,7 +444,7 @@ namespace Hades.HR.UI
             this.colOtherNoon.FieldName = "OtherNoon";
             this.colOtherNoon.Name = "colOtherNoon";
             this.colOtherNoon.Visible = true;
-            this.colOtherNoon.VisibleIndex = 22;
+            this.colOtherNoon.VisibleIndex = 28;
             // 
             // colOtherNight
             // 
@@ -395,7 +452,7 @@ namespace Hades.HR.UI
             this.colOtherNight.FieldName = "OtherNight";
             this.colOtherNight.Name = "colOtherNight";
             this.colOtherNight.Visible = true;
-            this.colOtherNight.VisibleIndex = 23;
+            this.colOtherNight.VisibleIndex = 29;
             // 
             // colShiftAmount
             // 
@@ -403,7 +460,7 @@ namespace Hades.HR.UI
             this.colShiftAmount.FieldName = "ShiftAmount";
             this.colShiftAmount.Name = "colShiftAmount";
             this.colShiftAmount.Visible = true;
-            this.colShiftAmount.VisibleIndex = 24;
+            this.colShiftAmount.VisibleIndex = 30;
             // 
             // colQualityBonus
             // 
@@ -411,7 +468,7 @@ namespace Hades.HR.UI
             this.colQualityBonus.FieldName = "QualityBonus";
             this.colQualityBonus.Name = "colQualityBonus";
             this.colQualityBonus.Visible = true;
-            this.colQualityBonus.VisibleIndex = 25;
+            this.colQualityBonus.VisibleIndex = 31;
             // 
             // colDeduction
             // 
@@ -419,7 +476,7 @@ namespace Hades.HR.UI
             this.colDeduction.FieldName = "Deduction";
             this.colDeduction.Name = "colDeduction";
             this.colDeduction.Visible = true;
-            this.colDeduction.VisibleIndex = 26;
+            this.colDeduction.VisibleIndex = 32;
             // 
             // colNutrition
             // 
@@ -427,7 +484,7 @@ namespace Hades.HR.UI
             this.colNutrition.FieldName = "Nutrition";
             this.colNutrition.Name = "colNutrition";
             this.colNutrition.Visible = true;
-            this.colNutrition.VisibleIndex = 27;
+            this.colNutrition.VisibleIndex = 33;
             // 
             // colEquipmentBonus
             // 
@@ -435,7 +492,7 @@ namespace Hades.HR.UI
             this.colEquipmentBonus.FieldName = "EquipmentBonus";
             this.colEquipmentBonus.Name = "colEquipmentBonus";
             this.colEquipmentBonus.Visible = true;
-            this.colEquipmentBonus.VisibleIndex = 28;
+            this.colEquipmentBonus.VisibleIndex = 34;
             // 
             // colSafetyBonus
             // 
@@ -443,7 +500,7 @@ namespace Hades.HR.UI
             this.colSafetyBonus.FieldName = "SafetyBonus";
             this.colSafetyBonus.Name = "colSafetyBonus";
             this.colSafetyBonus.Visible = true;
-            this.colSafetyBonus.VisibleIndex = 29;
+            this.colSafetyBonus.VisibleIndex = 35;
             // 
             // colFiveSBonus
             // 
@@ -451,7 +508,7 @@ namespace Hades.HR.UI
             this.colFiveSBonus.FieldName = "FiveSBonus";
             this.colFiveSBonus.Name = "colFiveSBonus";
             this.colFiveSBonus.Visible = true;
-            this.colFiveSBonus.VisibleIndex = 30;
+            this.colFiveSBonus.VisibleIndex = 36;
             // 
             // colHotBonus
             // 
@@ -459,7 +516,7 @@ namespace Hades.HR.UI
             this.colHotBonus.FieldName = "HotBonus";
             this.colHotBonus.Name = "colHotBonus";
             this.colHotBonus.Visible = true;
-            this.colHotBonus.VisibleIndex = 31;
+            this.colHotBonus.VisibleIndex = 37;
             // 
             // colLunchAllowance
             // 
@@ -467,7 +524,7 @@ namespace Hades.HR.UI
             this.colLunchAllowance.FieldName = "LunchAllowance";
             this.colLunchAllowance.Name = "colLunchAllowance";
             this.colLunchAllowance.Visible = true;
-            this.colLunchAllowance.VisibleIndex = 32;
+            this.colLunchAllowance.VisibleIndex = 38;
             // 
             // colRemark
             // 
@@ -475,11 +532,23 @@ namespace Hades.HR.UI
             this.colRemark.FieldName = "Remark";
             this.colRemark.Name = "colRemark";
             this.colRemark.Visible = true;
-            this.colRemark.VisibleIndex = 33;
+            this.colRemark.VisibleIndex = 39;
+            // 
+            // colTotalSalary2
+            // 
+            this.colTotalSalary2.Caption = "工资合计";
+            this.colTotalSalary2.FieldName = "colTotalSalary2";
+            this.colTotalSalary2.Name = "colTotalSalary2";
+            this.colTotalSalary2.OptionsColumn.AllowEdit = false;
+            this.colTotalSalary2.UnboundExpression = "[BaseSalary] + [OverSalary] + [WeekendSalary] + [HolidaySalary] + [Estimation] + " +
+    "[Allowance] - [WorkshopDeduction] + [WorkshopBonus] - [BonusDeduction]";
+            this.colTotalSalary2.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
+            this.colTotalSalary2.Visible = true;
+            this.colTotalSalary2.VisibleIndex = 26;
             // 
             // FrmEditLaborSalaryRecord
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(870, 521);
             this.Controls.Add(this.groupControl2);
@@ -548,5 +617,11 @@ namespace Hades.HR.UI
         private DevExpress.XtraGrid.Columns.GridColumn colLunchAllowance;
         private DevExpress.XtraGrid.Columns.GridColumn colRemark;
         private DevExpress.XtraGrid.Columns.GridColumn colStaffNumber;
+        private DevExpress.XtraGrid.Columns.GridColumn colBaseSalary;
+        private DevExpress.XtraGrid.Columns.GridColumn colOverWorkload;
+        private DevExpress.XtraGrid.Columns.GridColumn colOverSalary;
+        private DevExpress.XtraGrid.Columns.GridColumn colWeekendSalary;
+        private DevExpress.XtraGrid.Columns.GridColumn colHolidaySalary;
+        private DevExpress.XtraGrid.Columns.GridColumn colTotalSalary2;
     }
 }

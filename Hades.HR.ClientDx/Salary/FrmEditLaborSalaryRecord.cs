@@ -50,13 +50,19 @@ namespace Hades.HR.UI
         #endregion //Constructor
 
         #region Function
-
+        private void InitGrid()
+        {
+            //this.colOverSalary2.UnboundExpression = "[LevelSalary] * [colOverWorkload2] * 1.5";
+            //this.colWeekendSalary2.UnboundExpression = "[LevelSalary] * [WeekendWorkload] * 2";
+            //this.colHolidaySalary2.UnboundExpression = "[LevelSalary] * [HolidayWorkload] * 3";
+        }
         #endregion //Function
 
         #region Method
         public override void FormOnLoad()
         {
             InitDictItem();
+            InitGrid();
 
             this.sectionLabors = CallerFactory<IWorkSectionLaborViewService>.Instance.Find(string.Format("WorkTeamId = '{0}'", this.workTeamId));
 
@@ -64,8 +70,13 @@ namespace Hades.HR.UI
 
             this.bsSalaryRecords.DataSource = records;
         }
-        #endregion //Method
 
+        public override void ClearScreen()
+        {
+            this.tempInfo = new LaborSalaryRecordInfo();
+            base.ClearScreen();
+        }
+        #endregion //Method
 
         #region Event
         /// <summary>
@@ -201,24 +212,7 @@ namespace Hades.HR.UI
             //SetAttachInfo(tempInfo);
         }
 
-        //private void SetAttachInfo(LaborSalaryRecordInfo info)
-        //{
-        //    this.attachmentGUID.AttachmentGUID = info.AttachGUID;
-        //    this.attachmentGUID.userId = LoginUserInfo.Name;
 
-        //    string name = txtName.Text;
-        //    if (!string.IsNullOrEmpty(name))
-        //    {
-        //        string dir = string.Format("{0}", name);
-        //        this.attachmentGUID.Init(dir, tempInfo.ID, LoginUserInfo.Name);
-        //    }
-        //}
-
-        public override void ClearScreen()
-        {
-            this.tempInfo = new LaborSalaryRecordInfo();
-            base.ClearScreen();
-        }
 
         /// <summary>
         /// 编辑或者保存状态下取值函数
@@ -273,16 +267,16 @@ namespace Hades.HR.UI
 
             try
             {
-                #region 新增数据
+                //#region 新增数据
 
-                bool succeed = CallerFactory<ILaborSalaryRecordService>.Instance.Insert(info);
-                if (succeed)
-                {
-                    //可添加其他关联操作
+                //bool succeed = CallerFactory<ILaborSalaryRecordService>.Instance.Insert(info);
+                //if (succeed)
+                //{
+                //    //可添加其他关联操作
 
-                    return true;
-                }
-                #endregion
+                //    return true;
+                //}
+                //#endregion
             }
             catch (Exception ex)
             {
@@ -298,29 +292,28 @@ namespace Hades.HR.UI
         /// <returns></returns>
         public override bool SaveUpdated()
         {
-
             LaborSalaryRecordInfo info = CallerFactory<ILaborSalaryRecordService>.Instance.FindByID(ID);
             if (info != null)
             {
-                SetInfo(info);
+                //SetInfo(info);
 
-                try
-                {
-                    #region 更新数据
-                    bool succeed = CallerFactory<ILaborSalaryRecordService>.Instance.Update(info, info.Id);
-                    if (succeed)
-                    {
-                        //可添加其他关联操作
+                //try
+                //{
+                //    #region 更新数据
+                //    bool succeed = CallerFactory<ILaborSalaryRecordService>.Instance.Update(info, info.Id);
+                //    if (succeed)
+                //    {
+                //        //可添加其他关联操作
 
-                        return true;
-                    }
-                    #endregion
-                }
-                catch (Exception ex)
-                {
-                    LogTextHelper.Error(ex);
-                    MessageDxUtil.ShowError(ex.Message);
-                }
+                //        return true;
+                //    }
+                //    #endregion
+                //}
+                //catch (Exception ex)
+                //{
+                //    LogTextHelper.Error(ex);
+                //    MessageDxUtil.ShowError(ex.Message);
+                //}
             }
             return false;
         }
