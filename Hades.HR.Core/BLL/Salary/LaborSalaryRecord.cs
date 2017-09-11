@@ -9,6 +9,7 @@ using Hades.HR.Entity;
 using Hades.HR.IDAL;
 using Hades.HR.Util;
 using Hades.Pager.Entity;
+using Hades.Framework.Commons;
 using Hades.Framework.ControlUtil;
 
 namespace Hades.HR.BLL
@@ -89,7 +90,7 @@ namespace Hades.HR.BLL
                 info.WeekendWorkload = records.Where(r => r.StaffId == info.StaffId && r.IsWeekend == true).Sum(r => r.Workload) * 8;
                 info.WeekendSalary = info.LevelSalary * info.WeekendWorkload * 2;
 
-                info.HolidayWorkload = records.Where(r => r.StaffId == info.StaffId && r.IsWeekend == false && r.IsHoliday == false).Sum(r => r.Workload) * 8;
+                info.HolidayWorkload = records.Where(r => r.StaffId == info.StaffId && r.IsWeekend == false && r.IsHoliday == true).Sum(r => r.Workload) * 8;
                 info.HolidaySalary = info.LevelSalary * info.HolidayWorkload * 3;
 
                 info.OverWorkload = info.MonthWorkload - info.BaseWorkload - info.WeekendWorkload - info.HolidayWorkload;
@@ -100,6 +101,37 @@ namespace Hades.HR.BLL
 
 
             return data;
+        }
+
+        /// <summary>
+        /// 保存计件工人工资
+        /// </summary>
+        /// <param name="attendanceId">考勤ID</param>
+        /// <param name="data">工资数据</param>
+        /// <returns></returns>
+        public bool SaveLaborSalary(string attendanceId, List<LaborSalaryRecordInfo> data)
+        {
+            try
+            {
+                foreach(var item in data)
+                {
+                    item.AttendanceId = attendanceId;
+
+                    item.TotalSalary = item.BaseSalary + item.OverSalary + item.WeekendSalary + item.HolidaySalary +
+                        item.Estimation + item.Allowance - item.WorkshopDeduction + item.WorkshopBonus - item.BonusDeduction;
+
+                    base.InsertUpdate(item, item.Id);
+                }
+
+                return true;
+            }
+            catch(Exception ex)
+            {
+                LogTextHelper.Error(ex);
+                return false;
+            }
+
+            return true;
         }
         #endregion //Method
     }

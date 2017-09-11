@@ -92,6 +92,8 @@ namespace Hades.HR.UI
             this.layoutControlItem22 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem27 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem28 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.cmbJobStatus = new DevExpress.XtraEditors.ImageComboBoxEdit();
+            this.layoutControlItem29 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.picPrint)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -156,6 +158,8 @@ namespace Hades.HR.UI
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem22)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem27)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem28)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbJobStatus.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem29)).BeginInit();
             this.SuspendLayout();
             // 
             // btnOK
@@ -183,6 +187,7 @@ namespace Hades.HR.UI
             this.layoutControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.layoutControl1.Controls.Add(this.cmbJobStatus);
             this.layoutControl1.Controls.Add(this.luWorkTeam);
             this.layoutControl1.Controls.Add(this.luProductionLine);
             this.layoutControl1.Controls.Add(this.cmbStaffType);
@@ -284,14 +289,14 @@ namespace Hades.HR.UI
             // cmbEnabled
             // 
             this.cmbEnabled.EditValue = 0;
-            this.cmbEnabled.Location = new System.Drawing.Point(87, 406);
+            this.cmbEnabled.Location = new System.Drawing.Point(444, 406);
             this.cmbEnabled.Name = "cmbEnabled";
             this.cmbEnabled.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cmbEnabled.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("未启用", 0, -1),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("已启用", 1, -1)});
-            this.cmbEnabled.Size = new System.Drawing.Size(636, 20);
+            this.cmbEnabled.Size = new System.Drawing.Size(279, 20);
             this.cmbEnabled.StyleController = this.layoutControl1;
             this.cmbEnabled.TabIndex = 43;
             // 
@@ -569,7 +574,8 @@ namespace Hades.HR.UI
             this.layoutControlItem19,
             this.layoutControlItem22,
             this.layoutControlItem27,
-            this.layoutControlItem28});
+            this.layoutControlItem28,
+            this.layoutControlItem29});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
             this.layoutControlGroup1.Size = new System.Drawing.Size(735, 438);
@@ -704,9 +710,9 @@ namespace Hades.HR.UI
             // layoutControlItem26
             // 
             this.layoutControlItem26.Control = this.cmbEnabled;
-            this.layoutControlItem26.Location = new System.Drawing.Point(0, 394);
+            this.layoutControlItem26.Location = new System.Drawing.Point(357, 394);
             this.layoutControlItem26.Name = "layoutControlItem26";
-            this.layoutControlItem26.Size = new System.Drawing.Size(715, 24);
+            this.layoutControlItem26.Size = new System.Drawing.Size(358, 24);
             this.layoutControlItem26.Text = "是否启用";
             this.layoutControlItem26.TextSize = new System.Drawing.Size(72, 14);
             // 
@@ -854,6 +860,29 @@ namespace Hades.HR.UI
             this.layoutControlItem28.Text = "所属班组";
             this.layoutControlItem28.TextSize = new System.Drawing.Size(72, 14);
             // 
+            // cmbJobStatus
+            // 
+            this.cmbJobStatus.EditValue = 1;
+            this.cmbJobStatus.Location = new System.Drawing.Point(87, 406);
+            this.cmbJobStatus.Name = "cmbJobStatus";
+            this.cmbJobStatus.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cmbJobStatus.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("在职", 1, -1),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("离职", 2, -1)});
+            this.cmbJobStatus.Size = new System.Drawing.Size(278, 20);
+            this.cmbJobStatus.StyleController = this.layoutControl1;
+            this.cmbJobStatus.TabIndex = 51;
+            // 
+            // layoutControlItem29
+            // 
+            this.layoutControlItem29.Control = this.cmbJobStatus;
+            this.layoutControlItem29.Location = new System.Drawing.Point(0, 394);
+            this.layoutControlItem29.Name = "layoutControlItem29";
+            this.layoutControlItem29.Size = new System.Drawing.Size(357, 24);
+            this.layoutControlItem29.Text = "在职状态";
+            this.layoutControlItem29.TextSize = new System.Drawing.Size(72, 14);
+            // 
             // FrmStaffEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -932,6 +961,8 @@ namespace Hades.HR.UI
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem22)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem27)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem28)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbJobStatus.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem29)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1005,5 +1036,7 @@ namespace Hades.HR.UI
         private ProductionLineLookup luProductionLine;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem27;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem28;
+        private DevExpress.XtraEditors.ImageComboBoxEdit cmbJobStatus;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem29;
     }
 }

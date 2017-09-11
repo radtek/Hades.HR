@@ -92,6 +92,7 @@ namespace Hades.HR.UI
             info.Introduce = txtIntroduce.Text;
             info.Remark = txtRemark.Text;
 
+            info.JobStatus = Convert.ToInt32(cmbJobStatus.EditValue);
             info.Enabled = Convert.ToInt32(cmbEnabled.EditValue);
 
             info.Editor = this.LoginUserInfo.Name;
@@ -159,6 +160,7 @@ namespace Hades.HR.UI
                     txtJobType.Text = info.JobType;
                     txtIntroduce.Text = info.Introduce;
                     txtRemark.Text = info.Remark;
+                    cmbJobStatus.EditValue = info.JobStatus;
                     cmbEnabled.EditValue = info.Enabled;
                 }
                 //this.btnOK.Enabled = HasFunction("Staff/Edit");             

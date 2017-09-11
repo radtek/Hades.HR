@@ -69,6 +69,26 @@ namespace Hades.HR.ServiceCaller
 
             return result;
         }
+
+        /// <summary>
+        /// 保存计件工人工资
+        /// </summary>
+        /// <param name="attendanceId">考勤ID</param>
+        /// <param name="data">工资数据</param>
+        /// <returns></returns>
+        public bool SaveLaborSalary(string attendanceId, List<LaborSalaryRecordInfo> data)
+        {
+            bool result = false;
+
+            ILaborSalaryRecordService service = CreateSubClient();
+            ICommunicationObject comm = service as ICommunicationObject;
+            comm.Using(client =>
+            {
+                result = service.SaveLaborSalary(attendanceId, data);
+            });
+
+            return result;
+        }
         #endregion //Method
 
         ///// <summary>

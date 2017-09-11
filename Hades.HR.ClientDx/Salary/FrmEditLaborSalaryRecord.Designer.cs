@@ -61,6 +61,7 @@ namespace Hades.HR.UI
             this.colWorkshopDeduction = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colWorkshopBonus = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colBonusDeduction = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colTotalSalary2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colNoonShift = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colNightShift = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colOtherNoon = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -75,7 +76,6 @@ namespace Hades.HR.UI
             this.colHotBonus = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colLunchAllowance = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colRemark = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colTotalSalary2 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.picPrint)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
@@ -96,6 +96,7 @@ namespace Hades.HR.UI
             // btnAdd
             // 
             this.btnAdd.Location = new System.Drawing.Point(597, 486);
+            this.btnAdd.Visible = false;
             // 
             // dataNavigator1
             // 
@@ -287,8 +288,10 @@ namespace Hades.HR.UI
             // 
             // colStaffLevelId
             // 
+            this.colStaffLevelId.Caption = "职员等级";
             this.colStaffLevelId.FieldName = "StaffLevelId";
             this.colStaffLevelId.Name = "colStaffLevelId";
+            this.colStaffLevelId.OptionsColumn.AllowEdit = false;
             this.colStaffLevelId.Visible = true;
             this.colStaffLevelId.VisibleIndex = 9;
             // 
@@ -422,6 +425,18 @@ namespace Hades.HR.UI
             this.colBonusDeduction.Visible = true;
             this.colBonusDeduction.VisibleIndex = 24;
             // 
+            // colTotalSalary2
+            // 
+            this.colTotalSalary2.Caption = "工资合计";
+            this.colTotalSalary2.FieldName = "colTotalSalary2";
+            this.colTotalSalary2.Name = "colTotalSalary2";
+            this.colTotalSalary2.OptionsColumn.AllowEdit = false;
+            this.colTotalSalary2.UnboundExpression = "[BaseSalary] + [OverSalary] + [WeekendSalary] + [HolidaySalary] + [Estimation] + " +
+    "[Allowance] - [WorkshopDeduction] + [WorkshopBonus] - [BonusDeduction]";
+            this.colTotalSalary2.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
+            this.colTotalSalary2.Visible = true;
+            this.colTotalSalary2.VisibleIndex = 26;
+            // 
             // colNoonShift
             // 
             this.colNoonShift.Caption = "中班天数";
@@ -533,18 +548,6 @@ namespace Hades.HR.UI
             this.colRemark.Name = "colRemark";
             this.colRemark.Visible = true;
             this.colRemark.VisibleIndex = 39;
-            // 
-            // colTotalSalary2
-            // 
-            this.colTotalSalary2.Caption = "工资合计";
-            this.colTotalSalary2.FieldName = "colTotalSalary2";
-            this.colTotalSalary2.Name = "colTotalSalary2";
-            this.colTotalSalary2.OptionsColumn.AllowEdit = false;
-            this.colTotalSalary2.UnboundExpression = "[BaseSalary] + [OverSalary] + [WeekendSalary] + [HolidaySalary] + [Estimation] + " +
-    "[Allowance] - [WorkshopDeduction] + [WorkshopBonus] - [BonusDeduction]";
-            this.colTotalSalary2.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
-            this.colTotalSalary2.Visible = true;
-            this.colTotalSalary2.VisibleIndex = 26;
             // 
             // FrmEditLaborSalaryRecord
             // 

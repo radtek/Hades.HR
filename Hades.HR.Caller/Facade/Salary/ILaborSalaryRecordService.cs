@@ -21,5 +21,14 @@ namespace Hades.HR.Facade
         /// <returns></returns>
         [OperationContract]
         List<LaborSalaryRecordInfo> CalcLaborSalary(string attendanceId, string workTeamId);
+
+        /// <summary>
+        /// 保存计件工人工资
+        /// </summary>
+        /// <param name="attendanceId">考勤ID</param>
+        /// <param name="data">工资数据</param>
+        /// <returns></returns>
+        [OperationContract]
+        bool SaveLaborSalary(string attendanceId, List<LaborSalaryRecordInfo> data);
     }
 }

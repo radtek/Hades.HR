@@ -39,6 +39,17 @@ namespace Hades.HR.WinformCaller
         {
             return bll.CalcLaborSalary(attendanceId, workTeamId);
         }
+
+        /// <summary>
+        /// 保存计件工人工资
+        /// </summary>
+        /// <param name="attendanceId">考勤ID</param>
+        /// <param name="data">工资数据</param>
+        /// <returns></returns>
+        public bool SaveLaborSalary(string attendanceId, List<LaborSalaryRecordInfo> data)
+        {
+            return bll.SaveLaborSalary(attendanceId, data);
+        }
         #endregion //Method
     }
 }

@@ -122,6 +122,9 @@ namespace Hades.HR.Entity
         public virtual string WorkTeamId { get; set; }
 
         [DataMember]
+        public virtual int JobStatus { get; set; }
+
+        [DataMember]
         public virtual string Creator { get; set; }
 
         [DataMember]

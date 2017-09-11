@@ -250,6 +250,8 @@ namespace Hades.HR.UI
         {
             try
             {
+                this.dgvAttendance.CloseEditor();
+
                 string result = SaveRecords();
                 if (string.IsNullOrEmpty(result))
                 {
