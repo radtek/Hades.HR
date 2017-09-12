@@ -89,7 +89,7 @@ namespace Hades.HR.UI
         private void LoadRecordData()
         {
             //entity
-            this.wgvRecord.DisplayColumns = "WorkTeamName,WorkSectionName,Number,Name,AttendanceDate,Workload,AbsentType,IsWeekend,IsHoliday,Remark";
+            this.wgvRecord.DisplayColumns = "WorkTeamName,WorkSectionName,Number,Name,AttendanceDate,StandardWorkload,Workload,AbsentType,IsWeekend,IsHoliday,Remark";
             this.wgvRecord.ColumnNameAlias = CallerFactory<ILaborAttendanceRecordViewService>.Instance.GetColumnNameAlias();//字段列显示名称转义
 
             string where = GetConditionSql();
@@ -100,9 +100,13 @@ namespace Hades.HR.UI
             this.wgvRecord.PrintTitle = "考勤记录报表";
 
             this.wgvRecord.GridView1.OptionsView.ShowFooter = true;
-            var col = this.wgvRecord.GridView1.Columns["Workload"];
-            col.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Workload", "合计={0:0.##}")});
+            var col1 = this.wgvRecord.GridView1.Columns["Workload"];
+            col1.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+                new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Workload", "合计={0:0.##}")});
+
+            var col2 = this.wgvRecord.GridView1.Columns["StandardWorkload"];
+            col2.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+                new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "StandardWorkload", "合计={0:0.##}")});
         }
 
         /// <summary>

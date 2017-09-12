@@ -41,6 +41,9 @@ namespace Hades.HR.Entity
         public virtual DateTime AttendanceDate { get; set; }
 
         [DataMember]
+        public virtual decimal StandardWorkload { get; set; }
+
+        [DataMember]
         public virtual decimal Workload { get; set; }
 
         [DataMember]

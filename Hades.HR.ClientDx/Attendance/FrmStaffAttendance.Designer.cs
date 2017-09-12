@@ -1,6 +1,6 @@
 namespace Hades.HR.UI
 {
-    partial class FrmAttendance
+    partial class FrmStaffAttendance
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace Hades.HR.UI
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAttendance));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmStaffAttendance));
             this.wgvRecord = new Hades.Pager.WinControl.WinGridViewPager();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();

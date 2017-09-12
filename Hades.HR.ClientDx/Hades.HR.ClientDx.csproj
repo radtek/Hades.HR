@@ -597,11 +597,11 @@
     <Compile Include="..\Hades.HR.Core\Util\HREnum.cs">
       <Link>Util\HREnum.cs</Link>
     </Compile>
-    <Compile Include="Attendance\FrmAttendance.cs">
+    <Compile Include="Attendance\FrmStaffAttendance.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Attendance\FrmAttendance.Designer.cs">
-      <DependentUpon>FrmAttendance.cs</DependentUpon>
+    <Compile Include="Attendance\FrmStaffAttendance.Designer.cs">
+      <DependentUpon>FrmStaffAttendance.cs</DependentUpon>
     </Compile>
     <Compile Include="Attendance\FrmEditAttendance.cs">
       <SubType>Form</SubType>
@@ -759,6 +759,12 @@
     <Compile Include="Control\ProductionLineTree.Designer.cs">
       <DependentUpon>ProductionLineTree.cs</DependentUpon>
     </Compile>
+    <Compile Include="Attendance\FrmMonthAttendance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Attendance\FrmMonthAttendance.Designer.cs">
+      <DependentUpon>FrmMonthAttendance.cs</DependentUpon>
+    </Compile>
     <Compile Include="Salary\FrmBonusDefine.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -847,8 +853,11 @@
     <Compile Include="Util\ControlUtil.cs" />
     <Compile Include="Util\DepartmentType.cs" />
     <Compile Include="Util\ExtensionMethod.cs" />
-    <EmbeddedResource Include="Attendance\FrmAttendance.resx">
-      <DependentUpon>FrmAttendance.cs</DependentUpon>
+    <EmbeddedResource Include="Attendance\FrmMonthAttendance.resx">
+      <DependentUpon>FrmMonthAttendance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Attendance\FrmStaffAttendance.resx">
+      <DependentUpon>FrmStaffAttendance.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Attendance\FrmAttendanceRecordEdit.resx">
       <DependentUpon>FrmAttendanceRecordEdit.cs</DependentUpon>

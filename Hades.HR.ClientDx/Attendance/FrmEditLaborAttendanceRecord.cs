@@ -91,6 +91,7 @@ namespace Hades.HR.UI
                 info.WorkTeamId = workTeamId;
                 info.WorkSectionId = item.WorkSectionId;
                 info.StaffId = item.StaffId;
+                info.StandardWorkload = 0;
 
                 var record = records.SingleOrDefault(r => r.StaffId == item.StaffId & r.WorkTeamId == workTeamId);
                 if (record != null)
@@ -177,6 +178,44 @@ namespace Hades.HR.UI
         #endregion //Method
 
         #region Event
+        /// <summary>
+        /// 设置参考工作量
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSetStandard_Click(object sender, EventArgs e)
+        {
+            var records = this.bsAttendanceRecord.DataSource as List<LaborAttendanceRecordInfo>;
+
+            this.dgvAttendance.BeginDataUpdate();
+
+            foreach (var item in records)
+            {
+                item.StandardWorkload = this.spStandard.Value;
+            }
+
+            this.dgvAttendance.EndDataUpdate();
+        }
+
+        /// <summary>
+        /// 使用参考工作量
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnUseStandard_Click(object sender, EventArgs e)
+        {
+            var records = this.bsAttendanceRecord.DataSource as List<LaborAttendanceRecordInfo>;
+
+            this.dgvAttendance.BeginDataUpdate();
+
+            foreach(var item in records)
+            {
+                item.Workload = item.StandardWorkload;
+            }
+
+            this.dgvAttendance.EndDataUpdate();
+        }
+
         /// <summary>
         /// 格式化显示
         /// </summary>

@@ -22,7 +22,7 @@ namespace Hades.HR.UI
     /// <summary>
     /// Attendance
     /// </summary>	
-    public partial class FrmAttendance : BaseDock
+    public partial class FrmStaffAttendance : BaseDock
     {
         #region Field
         /// <summary>
@@ -32,7 +32,7 @@ namespace Hades.HR.UI
         #endregion //Field
 
         #region Constructor
-        public FrmAttendance()
+        public FrmStaffAttendance()
         {
             InitializeComponent();
 

@@ -48,6 +48,7 @@ namespace Hades.HR.DALSQL
             info.WorkTeamId = reader.GetString("WorkTeamId");
             info.WorkSectionId = reader.GetString("WorkSectionId");
             info.AttendanceDate = reader.GetDateTime("AttendanceDate");
+            info.StandardWorkload = reader.GetDecimal("StandardWorkload");
             info.Workload = reader.GetDecimal("Workload");
             info.AbsentType = reader.GetInt32("AbsentType");
             info.IsWeekend = reader.GetBoolean("IsWeekend");
@@ -76,6 +77,7 @@ namespace Hades.HR.DALSQL
             hash.Add("WorkTeamId", info.WorkTeamId);
             hash.Add("WorkSectionId", info.WorkSectionId);
             hash.Add("AttendanceDate", info.AttendanceDate);
+            hash.Add("StandardWorkload", info.StandardWorkload);
             hash.Add("Workload", info.Workload);
             hash.Add("AbsentType", info.AbsentType);
             hash.Add("IsWeekend", info.IsWeekend);
@@ -103,6 +105,7 @@ namespace Hades.HR.DALSQL
             dict.Add("WorkTeamId", "");
             dict.Add("WorkSectionId", "");
             dict.Add("AttendanceDate", "考勤日期");
+            dict.Add("StandardWorkload", "标准工作量");
             dict.Add("Workload", "工作量");
             dict.Add("AbsentType", "缺勤类型");
             dict.Add("IsWeekend", "是否周末");
