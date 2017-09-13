@@ -30,6 +30,12 @@ namespace Hades.HR.UI
         {
             this.components = new System.ComponentModel.Container();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.txtSalaryTime = new DevExpress.XtraEditors.TextEdit();
+            this.txtWorkTeamName = new DevExpress.XtraEditors.TextEdit();
+            this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.dgcSalary = new DevExpress.XtraGrid.GridControl();
             this.bsSalaryRecords = new System.Windows.Forms.BindingSource(this.components);
@@ -78,6 +84,14 @@ namespace Hades.HR.UI
             this.colRemark = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.picPrint)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
+            this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
+            this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSalaryTime.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtWorkTeamName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgcSalary)).BeginInit();
@@ -109,12 +123,73 @@ namespace Hades.HR.UI
             // 
             // groupControl1
             // 
+            this.groupControl1.Controls.Add(this.layoutControl1);
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(870, 100);
             this.groupControl1.TabIndex = 6;
             this.groupControl1.Text = "班组信息";
+            // 
+            // layoutControl1
+            // 
+            this.layoutControl1.Controls.Add(this.txtSalaryTime);
+            this.layoutControl1.Controls.Add(this.txtWorkTeamName);
+            this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layoutControl1.Location = new System.Drawing.Point(2, 21);
+            this.layoutControl1.Name = "layoutControl1";
+            this.layoutControl1.Root = this.layoutControlGroup1;
+            this.layoutControl1.Size = new System.Drawing.Size(866, 77);
+            this.layoutControl1.TabIndex = 0;
+            this.layoutControl1.Text = "layoutControl1";
+            // 
+            // txtSalaryTime
+            // 
+            this.txtSalaryTime.Location = new System.Drawing.Point(486, 12);
+            this.txtSalaryTime.Name = "txtSalaryTime";
+            this.txtSalaryTime.Properties.ReadOnly = true;
+            this.txtSalaryTime.Size = new System.Drawing.Size(368, 20);
+            this.txtSalaryTime.StyleController = this.layoutControl1;
+            this.txtSalaryTime.TabIndex = 5;
+            // 
+            // txtWorkTeamName
+            // 
+            this.txtWorkTeamName.Location = new System.Drawing.Point(63, 12);
+            this.txtWorkTeamName.Name = "txtWorkTeamName";
+            this.txtWorkTeamName.Properties.ReadOnly = true;
+            this.txtWorkTeamName.Size = new System.Drawing.Size(368, 20);
+            this.txtWorkTeamName.StyleController = this.layoutControl1;
+            this.txtWorkTeamName.TabIndex = 4;
+            // 
+            // layoutControlGroup1
+            // 
+            this.layoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.layoutControlGroup1.GroupBordersVisible = false;
+            this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem1,
+            this.layoutControlItem2});
+            this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlGroup1.Name = "layoutControlGroup1";
+            this.layoutControlGroup1.Size = new System.Drawing.Size(866, 77);
+            this.layoutControlGroup1.TextVisible = false;
+            // 
+            // layoutControlItem1
+            // 
+            this.layoutControlItem1.Control = this.txtWorkTeamName;
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem1.Name = "layoutControlItem1";
+            this.layoutControlItem1.Size = new System.Drawing.Size(423, 57);
+            this.layoutControlItem1.Text = "班组名称";
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(48, 14);
+            // 
+            // layoutControlItem2
+            // 
+            this.layoutControlItem2.Control = this.txtSalaryTime;
+            this.layoutControlItem2.Location = new System.Drawing.Point(423, 0);
+            this.layoutControlItem2.Name = "layoutControlItem2";
+            this.layoutControlItem2.Size = new System.Drawing.Size(423, 57);
+            this.layoutControlItem2.Text = "工资时间";
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(48, 14);
             // 
             // groupControl2
             // 
@@ -208,6 +283,7 @@ namespace Hades.HR.UI
             // 
             this.colStaffNumber.Caption = "职员工号";
             this.colStaffNumber.FieldName = "StaffNumber";
+            this.colStaffNumber.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
             this.colStaffNumber.Name = "colStaffNumber";
             this.colStaffNumber.OptionsColumn.AllowEdit = false;
             this.colStaffNumber.UnboundType = DevExpress.Data.UnboundColumnType.String;
@@ -218,6 +294,7 @@ namespace Hades.HR.UI
             // 
             this.colStaffId.Caption = "职员姓名";
             this.colStaffId.FieldName = "StaffId";
+            this.colStaffId.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
             this.colStaffId.Name = "colStaffId";
             this.colStaffId.OptionsColumn.AllowEdit = false;
             this.colStaffId.Visible = true;
@@ -307,6 +384,8 @@ namespace Hades.HR.UI
             // colMonthWorkload
             // 
             this.colMonthWorkload.Caption = "月工作总量";
+            this.colMonthWorkload.DisplayFormat.FormatString = "0.00";
+            this.colMonthWorkload.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colMonthWorkload.FieldName = "MonthWorkload";
             this.colMonthWorkload.Name = "colMonthWorkload";
             this.colMonthWorkload.OptionsColumn.AllowEdit = false;
@@ -316,6 +395,8 @@ namespace Hades.HR.UI
             // colBaseWorkload
             // 
             this.colBaseWorkload.Caption = "基本工作量";
+            this.colBaseWorkload.DisplayFormat.FormatString = "0.00";
+            this.colBaseWorkload.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colBaseWorkload.FieldName = "BaseWorkload";
             this.colBaseWorkload.Name = "colBaseWorkload";
             this.colBaseWorkload.OptionsColumn.AllowEdit = false;
@@ -325,6 +406,8 @@ namespace Hades.HR.UI
             // colBaseSalary
             // 
             this.colBaseSalary.Caption = "基本工资";
+            this.colBaseSalary.DisplayFormat.FormatString = "0.00";
+            this.colBaseSalary.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colBaseSalary.FieldName = "BaseSalary";
             this.colBaseSalary.Name = "colBaseSalary";
             this.colBaseSalary.OptionsColumn.AllowEdit = false;
@@ -334,6 +417,8 @@ namespace Hades.HR.UI
             // colOverWorkload
             // 
             this.colOverWorkload.Caption = "超产工作量";
+            this.colOverWorkload.DisplayFormat.FormatString = "0.00";
+            this.colOverWorkload.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colOverWorkload.FieldName = "OverWorkload";
             this.colOverWorkload.Name = "colOverWorkload";
             this.colOverWorkload.OptionsColumn.AllowEdit = false;
@@ -343,6 +428,8 @@ namespace Hades.HR.UI
             // colOverSalary
             // 
             this.colOverSalary.Caption = "超产工资";
+            this.colOverSalary.DisplayFormat.FormatString = "0.00";
+            this.colOverSalary.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colOverSalary.FieldName = "OverSalary";
             this.colOverSalary.Name = "colOverSalary";
             this.colOverSalary.OptionsColumn.AllowEdit = false;
@@ -352,6 +439,8 @@ namespace Hades.HR.UI
             // colWeekendWorkload
             // 
             this.colWeekendWorkload.Caption = "周末工作量";
+            this.colWeekendWorkload.DisplayFormat.FormatString = "0.00";
+            this.colWeekendWorkload.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colWeekendWorkload.FieldName = "WeekendWorkload";
             this.colWeekendWorkload.Name = "colWeekendWorkload";
             this.colWeekendWorkload.OptionsColumn.AllowEdit = false;
@@ -361,6 +450,8 @@ namespace Hades.HR.UI
             // colWeekendSalary
             // 
             this.colWeekendSalary.Caption = "周末工资";
+            this.colWeekendSalary.DisplayFormat.FormatString = "0.00";
+            this.colWeekendSalary.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colWeekendSalary.FieldName = "WeekendSalary";
             this.colWeekendSalary.Name = "colWeekendSalary";
             this.colWeekendSalary.OptionsColumn.AllowEdit = false;
@@ -370,6 +461,8 @@ namespace Hades.HR.UI
             // colHolidayWorkload
             // 
             this.colHolidayWorkload.Caption = "法定假日工作量";
+            this.colHolidayWorkload.DisplayFormat.FormatString = "0.00";
+            this.colHolidayWorkload.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colHolidayWorkload.FieldName = "HolidayWorkload";
             this.colHolidayWorkload.Name = "colHolidayWorkload";
             this.colHolidayWorkload.OptionsColumn.AllowEdit = false;
@@ -379,6 +472,8 @@ namespace Hades.HR.UI
             // colHolidaySalary
             // 
             this.colHolidaySalary.Caption = "法定假日工资";
+            this.colHolidaySalary.DisplayFormat.FormatString = "0.00";
+            this.colHolidaySalary.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colHolidaySalary.FieldName = "HolidaySalary";
             this.colHolidaySalary.Name = "colHolidaySalary";
             this.colHolidaySalary.OptionsColumn.AllowEdit = false;
@@ -428,6 +523,8 @@ namespace Hades.HR.UI
             // colTotalSalary2
             // 
             this.colTotalSalary2.Caption = "工资合计";
+            this.colTotalSalary2.DisplayFormat.FormatString = "0.00";
+            this.colTotalSalary2.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colTotalSalary2.FieldName = "colTotalSalary2";
             this.colTotalSalary2.Name = "colTotalSalary2";
             this.colTotalSalary2.OptionsColumn.AllowEdit = false;
@@ -472,6 +569,8 @@ namespace Hades.HR.UI
             // colShiftAmount
             // 
             this.colShiftAmount.Caption = "中夜班金额";
+            this.colShiftAmount.DisplayFormat.FormatString = "0.00";
+            this.colShiftAmount.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colShiftAmount.FieldName = "ShiftAmount";
             this.colShiftAmount.Name = "colShiftAmount";
             this.colShiftAmount.Visible = true;
@@ -480,6 +579,8 @@ namespace Hades.HR.UI
             // colQualityBonus
             // 
             this.colQualityBonus.Caption = "质量奖";
+            this.colQualityBonus.DisplayFormat.FormatString = "0.00";
+            this.colQualityBonus.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colQualityBonus.FieldName = "QualityBonus";
             this.colQualityBonus.Name = "colQualityBonus";
             this.colQualityBonus.Visible = true;
@@ -488,6 +589,8 @@ namespace Hades.HR.UI
             // colDeduction
             // 
             this.colDeduction.Caption = "扣款";
+            this.colDeduction.DisplayFormat.FormatString = "0.00";
+            this.colDeduction.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colDeduction.FieldName = "Deduction";
             this.colDeduction.Name = "colDeduction";
             this.colDeduction.Visible = true;
@@ -496,6 +599,8 @@ namespace Hades.HR.UI
             // colNutrition
             // 
             this.colNutrition.Caption = "营养奖";
+            this.colNutrition.DisplayFormat.FormatString = "0.00";
+            this.colNutrition.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colNutrition.FieldName = "Nutrition";
             this.colNutrition.Name = "colNutrition";
             this.colNutrition.Visible = true;
@@ -504,6 +609,8 @@ namespace Hades.HR.UI
             // colEquipmentBonus
             // 
             this.colEquipmentBonus.Caption = "设备维护奖";
+            this.colEquipmentBonus.DisplayFormat.FormatString = "0.00";
+            this.colEquipmentBonus.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colEquipmentBonus.FieldName = "EquipmentBonus";
             this.colEquipmentBonus.Name = "colEquipmentBonus";
             this.colEquipmentBonus.Visible = true;
@@ -512,6 +619,8 @@ namespace Hades.HR.UI
             // colSafetyBonus
             // 
             this.colSafetyBonus.Caption = "安全奖";
+            this.colSafetyBonus.DisplayFormat.FormatString = "0.00";
+            this.colSafetyBonus.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colSafetyBonus.FieldName = "SafetyBonus";
             this.colSafetyBonus.Name = "colSafetyBonus";
             this.colSafetyBonus.Visible = true;
@@ -520,6 +629,8 @@ namespace Hades.HR.UI
             // colFiveSBonus
             // 
             this.colFiveSBonus.Caption = "5S扣款";
+            this.colFiveSBonus.DisplayFormat.FormatString = "0.00";
+            this.colFiveSBonus.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colFiveSBonus.FieldName = "FiveSBonus";
             this.colFiveSBonus.Name = "colFiveSBonus";
             this.colFiveSBonus.Visible = true;
@@ -528,6 +639,8 @@ namespace Hades.HR.UI
             // colHotBonus
             // 
             this.colHotBonus.Caption = "高温费";
+            this.colHotBonus.DisplayFormat.FormatString = "0.00";
+            this.colHotBonus.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colHotBonus.FieldName = "HotBonus";
             this.colHotBonus.Name = "colHotBonus";
             this.colHotBonus.Visible = true;
@@ -536,6 +649,8 @@ namespace Hades.HR.UI
             // colLunchAllowance
             // 
             this.colLunchAllowance.Caption = "午餐补贴";
+            this.colLunchAllowance.DisplayFormat.FormatString = "0.00";
+            this.colLunchAllowance.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colLunchAllowance.FieldName = "LunchAllowance";
             this.colLunchAllowance.Name = "colLunchAllowance";
             this.colLunchAllowance.Visible = true;
@@ -567,6 +682,14 @@ namespace Hades.HR.UI
             this.Controls.SetChildIndex(this.groupControl2, 0);
             ((System.ComponentModel.ISupportInitialize)(this.picPrint)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
+            this.groupControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
+            this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtSalaryTime.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtWorkTeamName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgcSalary)).EndInit();
@@ -626,5 +749,11 @@ namespace Hades.HR.UI
         private DevExpress.XtraGrid.Columns.GridColumn colWeekendSalary;
         private DevExpress.XtraGrid.Columns.GridColumn colHolidaySalary;
         private DevExpress.XtraGrid.Columns.GridColumn colTotalSalary2;
+        private DevExpress.XtraLayout.LayoutControl layoutControl1;
+        private DevExpress.XtraEditors.TextEdit txtSalaryTime;
+        private DevExpress.XtraEditors.TextEdit txtWorkTeamName;
+        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
     }
 }

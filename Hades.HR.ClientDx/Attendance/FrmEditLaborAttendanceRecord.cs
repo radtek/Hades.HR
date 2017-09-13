@@ -96,6 +96,7 @@ namespace Hades.HR.UI
                 var record = records.SingleOrDefault(r => r.StaffId == item.StaffId & r.WorkTeamId == workTeamId);
                 if (record != null)
                 {
+                    info.StandardWorkload = record.StandardWorkload;
                     info.Workload = record.Workload;
                     info.AbsentType = record.AbsentType;
                     info.Remark = record.Remark;

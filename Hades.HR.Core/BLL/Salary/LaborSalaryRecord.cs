@@ -54,9 +54,13 @@ namespace Hades.HR.BLL
             LaborAttendanceRecord blAttendaceRecord = new LaborAttendanceRecord();
             var records = blAttendaceRecord.Find(sql1);
 
+            // 获取工资记录
+            string sql3 = string.Format("AttendanceId = '{0}'", attendanceId);
+            var salarys = base.Find(sql3);
+
             // 获取员工记录
             string sql2 = string.Format("WorkTeamId = '{0}' AND Year = {1} AND Month = {2}", workTeamId, attendaceInfo.Year, attendaceInfo.Month);
-
+                        
             WorkSectionLabor blLabor = new WorkSectionLabor();
             var labors = blLabor.Find(sql2);
 
@@ -87,18 +91,40 @@ namespace Hades.HR.BLL
                 info.BaseWorkload = info.AttendanceDays * 8;
                 info.BaseSalary = info.BaseWorkload * info.LevelSalary;
                 
-                info.WeekendWorkload = records.Where(r => r.StaffId == info.StaffId && r.IsWeekend == true).Sum(r => r.Workload) * 8;
+                info.WeekendWorkload = records.Where(r => r.StaffId == info.StaffId && r.IsWeekend == true).Sum(r => r.Workload);
                 info.WeekendSalary = info.LevelSalary * info.WeekendWorkload * 2;
 
-                info.HolidayWorkload = records.Where(r => r.StaffId == info.StaffId && r.IsWeekend == false && r.IsHoliday == true).Sum(r => r.Workload) * 8;
+                info.HolidayWorkload = records.Where(r => r.StaffId == info.StaffId && r.IsWeekend == false && r.IsHoliday == true).Sum(r => r.Workload);
                 info.HolidaySalary = info.LevelSalary * info.HolidayWorkload * 3;
 
                 info.OverWorkload = info.MonthWorkload - info.BaseWorkload - info.WeekendWorkload - info.HolidayWorkload;
                 info.OverSalary = info.LevelSalary * info.OverWorkload * 1.5m;
-                                
+
+                var exist = salarys.SingleOrDefault(r => r.StaffId == labor.StaffId);
+                if (exist != null)
+                {
+                    info.Estimation = exist.Estimation;
+                    info.Allowance = exist.Allowance;
+                    info.WorkshopDeduction = exist.WorkshopDeduction;
+                    info.WorkshopBonus = exist.WorkshopBonus;
+                    info.NoonShift = exist.NoonShift;
+                    info.NightShift = exist.NightShift;
+                    info.OtherNoon = exist.OtherNoon;
+                    info.OtherNight = exist.OtherNight;
+                    info.ShiftAmount = exist.ShiftAmount;
+                    info.QualityBonus = exist.QualityBonus;
+                    info.Deduction = exist.Deduction;
+                    info.Nutrition = exist.Nutrition;
+                    info.EquipmentBonus = exist.EquipmentBonus;
+                    info.SafetyBonus = exist.SafetyBonus;
+                    info.FiveSBonus = exist.FiveSBonus;
+                    info.HotBonus = exist.HotBonus;
+                    info.LunchAllowance = exist.LunchAllowance;
+                    info.Remark = exist.Remark;
+                }
+
                 data.Add(info);
             }
-
 
             return data;
         }

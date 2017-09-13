@@ -50,13 +50,6 @@ namespace Hades.HR.UI
             //初始化代码
         }
 
-        private void InitGrid()
-        {
-            //this.colOverSalary2.UnboundExpression = "[LevelSalary] * [colOverWorkload2] * 1.5";
-            //this.colWeekendSalary2.UnboundExpression = "[LevelSalary] * [WeekendWorkload] * 2";
-            //this.colHolidaySalary2.UnboundExpression = "[LevelSalary] * [HolidayWorkload] * 3";
-        }
-
         private List<LaborSalaryRecordInfo> SetEntity()
         {
             List<LaborSalaryRecordInfo> data = this.bsSalaryRecords.DataSource as List<LaborSalaryRecordInfo>;
@@ -68,7 +61,14 @@ namespace Hades.HR.UI
         public override void FormOnLoad()
         {
             InitDictItem();
-            InitGrid();
+
+            this.Text = "生成工资";
+
+            var workTeam = CallerFactory<IWorkTeamService>.Instance.FindByID(this.workTeamId);
+            var attendance = CallerFactory<IAttendanceService>.Instance.FindByID(this.attendanceId);
+
+            this.txtWorkTeamName.Text = workTeam.Name;
+            this.txtSalaryTime.Text = attendance.Year + "年" + attendance.Month + "月";
 
             this.sectionLabors = CallerFactory<IWorkSectionLaborViewService>.Instance.Find(string.Format("WorkTeamId = '{0}'", this.workTeamId));
             this.staffLevels = CallerFactory<IStaffLevelService>.Instance.Find("");
@@ -124,6 +124,27 @@ namespace Hades.HR.UI
                 MessageDxUtil.ShowError(ex.Message);
             }
             return false;
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (!(ActiveControl is Button))
+            {
+                if (keyData == Keys.Down || keyData == Keys.Enter)
+                {
+                    return false;
+                }
+                else if (keyData == Keys.Up)
+                {
+                    return false;
+                }
+
+                return false;
+            }
+            else
+            {
+                return base.ProcessCmdKey(ref msg, keyData);
+            }
         }
         #endregion //Method
 
