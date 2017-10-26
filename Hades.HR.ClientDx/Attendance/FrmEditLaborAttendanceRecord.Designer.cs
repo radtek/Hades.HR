@@ -29,6 +29,7 @@ namespace Hades.HR.UI
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.spStandard = new DevExpress.XtraEditors.SpinEdit();
@@ -40,14 +41,14 @@ namespace Hades.HR.UI
             this.txtWorkTeamName = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.btnDelete = new DevExpress.XtraEditors.SimpleButton();
+            this.btnDeleteRecord = new DevExpress.XtraEditors.SimpleButton();
             this.btnAddRecord = new DevExpress.XtraEditors.SimpleButton();
             this.dgcAttendance = new DevExpress.XtraGrid.GridControl();
             this.bsAttendanceRecord = new System.Windows.Forms.BindingSource(this.components);
@@ -61,6 +62,8 @@ namespace Hades.HR.UI
             this.colAbsentType = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repoCmbAbsentType = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.colRemark = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colAction = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repoActionButton = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             ((System.ComponentModel.ISupportInitialize)(this.picPrint)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -74,18 +77,19 @@ namespace Hades.HR.UI
             ((System.ComponentModel.ISupportInitialize)(this.txtWorkTeamName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgcAttendance)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsAttendanceRecord)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAttendance)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repoCmbAbsentType)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repoActionButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -235,15 +239,6 @@ namespace Hades.HR.UI
             this.layoutControlItem1.Text = "班组名称";
             this.layoutControlItem1.TextSize = new System.Drawing.Size(60, 14);
             // 
-            // layoutControlItem2
-            // 
-            this.layoutControlItem2.Control = this.chkIsWeekend;
-            this.layoutControlItem2.Location = new System.Drawing.Point(254, 24);
-            this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(89, 36);
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem2.TextVisible = false;
-            // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.chkIsHoliday;
@@ -289,9 +284,18 @@ namespace Hades.HR.UI
             this.layoutControlItem6.Text = "参考工作量";
             this.layoutControlItem6.TextSize = new System.Drawing.Size(60, 14);
             // 
+            // layoutControlItem2
+            // 
+            this.layoutControlItem2.Control = this.chkIsWeekend;
+            this.layoutControlItem2.Location = new System.Drawing.Point(254, 24);
+            this.layoutControlItem2.Name = "layoutControlItem2";
+            this.layoutControlItem2.Size = new System.Drawing.Size(89, 36);
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem2.TextVisible = false;
+            // 
             // groupControl1
             // 
-            this.groupControl1.Controls.Add(this.btnDelete);
+            this.groupControl1.Controls.Add(this.btnDeleteRecord);
             this.groupControl1.Controls.Add(this.btnAddRecord);
             this.groupControl1.Controls.Add(this.dgcAttendance);
             this.groupControl1.Controls.Add(this.panelControl2);
@@ -302,15 +306,15 @@ namespace Hades.HR.UI
             this.groupControl1.TabIndex = 7;
             this.groupControl1.Text = "考勤记录";
             // 
-            // btnDelete
+            // btnDeleteRecord
             // 
-            this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnDelete.Location = new System.Drawing.Point(93, 294);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 23);
-            this.btnDelete.TabIndex = 1;
-            this.btnDelete.Text = "删除员工";
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            this.btnDeleteRecord.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnDeleteRecord.Location = new System.Drawing.Point(93, 294);
+            this.btnDeleteRecord.Name = "btnDeleteRecord";
+            this.btnDeleteRecord.Size = new System.Drawing.Size(75, 23);
+            this.btnDeleteRecord.TabIndex = 1;
+            this.btnDeleteRecord.Text = "删除员工";
+            this.btnDeleteRecord.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnAddRecord
             // 
@@ -320,6 +324,7 @@ namespace Hades.HR.UI
             this.btnAddRecord.Size = new System.Drawing.Size(75, 23);
             this.btnAddRecord.TabIndex = 0;
             this.btnAddRecord.Text = "增加员工";
+            this.btnAddRecord.Click += new System.EventHandler(this.btnAddRecord_Click);
             // 
             // dgcAttendance
             // 
@@ -329,7 +334,8 @@ namespace Hades.HR.UI
             this.dgcAttendance.MainView = this.dgvAttendance;
             this.dgcAttendance.Name = "dgcAttendance";
             this.dgcAttendance.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repoCmbAbsentType});
+            this.repoCmbAbsentType,
+            this.repoActionButton});
             this.dgcAttendance.Size = new System.Drawing.Size(880, 296);
             this.dgcAttendance.TabIndex = 0;
             this.dgcAttendance.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -349,7 +355,8 @@ namespace Hades.HR.UI
             this.colStandardWorkload,
             this.colWorkload,
             this.colAbsentType,
-            this.colRemark});
+            this.colRemark,
+            this.colAction});
             this.dgvAttendance.GridControl = this.dgcAttendance;
             this.dgvAttendance.Name = "dgvAttendance";
             this.dgvAttendance.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
@@ -438,6 +445,23 @@ namespace Hades.HR.UI
             this.colRemark.Visible = true;
             this.colRemark.VisibleIndex = 6;
             // 
+            // colAction
+            // 
+            this.colAction.Caption = "选择职员";
+            this.colAction.ColumnEdit = this.repoActionButton;
+            this.colAction.Name = "colAction";
+            this.colAction.Visible = true;
+            this.colAction.VisibleIndex = 7;
+            // 
+            // repoActionButton
+            // 
+            this.repoActionButton.AutoHeight = false;
+            this.repoActionButton.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, "选择职员", null, null, true)});
+            this.repoActionButton.Name = "repoActionButton";
+            this.repoActionButton.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
+            this.repoActionButton.Click += new System.EventHandler(this.repoActionButton_Click);
+            // 
             // panelControl2
             // 
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -474,18 +498,19 @@ namespace Hades.HR.UI
             ((System.ComponentModel.ISupportInitialize)(this.txtWorkTeamName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgcAttendance)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsAttendanceRecord)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAttendance)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repoCmbAbsentType)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repoActionButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -517,7 +542,7 @@ namespace Hades.HR.UI
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         private DevExpress.XtraGrid.Columns.GridColumn colStaffNumber;
         private DevExpress.XtraEditors.PanelControl panelControl2;
-        private DevExpress.XtraEditors.SimpleButton btnDelete;
+        private DevExpress.XtraEditors.SimpleButton btnDeleteRecord;
         private DevExpress.XtraEditors.SimpleButton btnAddRecord;
         private DevExpress.XtraGrid.Columns.GridColumn colWorkSectionid;
         private DevExpress.XtraGrid.Columns.GridColumn colStandardWorkload;
@@ -527,5 +552,7 @@ namespace Hades.HR.UI
         private DevExpress.XtraEditors.SimpleButton btnSetStandard;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
+        private DevExpress.XtraGrid.Columns.GridColumn colAction;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repoActionButton;
     }
 }

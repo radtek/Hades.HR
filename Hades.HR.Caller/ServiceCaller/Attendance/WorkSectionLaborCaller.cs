@@ -26,6 +26,7 @@ namespace Hades.HR.ServiceCaller
             this.endpointConfigurationName = EndPointConfig.WorkSectionLaborService;
         }
 
+        #region Function
         /// <summary>
         /// 子类构造一个IChannel对象转换为基类接口，方便给基类进行调用通用的API
         /// </summary>
@@ -44,6 +45,28 @@ namespace Hades.HR.ServiceCaller
             CustomClientChannel<IWorkSectionLaborService> factory = new CustomClientChannel<IWorkSectionLaborService>(endpointConfigurationName, configurationPath);
             return factory.CreateChannel();
         }
+        #endregion //Function
+
+        #region Method
+        /// <summary>
+        /// 保存职员
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public int SaveLabors(List<WorkSectionLaborInfo> data)
+        {
+            int result = -1;
+
+            IWorkSectionLaborService service = CreateSubClient();
+            ICommunicationObject comm = service as ICommunicationObject;
+            comm.Using(client =>
+            {
+                result = service.SaveLabors(data);
+            });
+
+            return result;
+        }
+        #endregion //Method
 
         ///// <summary>
         ///// 根据名称查找对象(自定义接口使用范例)

@@ -13,6 +13,12 @@ namespace Hades.HR.Facade
     [ServiceContract]
     public interface IWorkSectionLaborService : IBaseService<WorkSectionLaborInfo>
     {
-
+        /// <summary>
+        /// 保存职员
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        [OperationContract]
+        int SaveLabors(List<WorkSectionLaborInfo> data);
     }
 }

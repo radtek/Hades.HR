@@ -32,11 +32,13 @@ namespace Hades.HR.UI
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.btnUsePrevious = new DevExpress.XtraEditors.SimpleButton();
             this.txtWorkTeamName = new DevExpress.XtraEditors.TextEdit();
             this.txtDate = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.dgcStaff = new DevExpress.XtraGrid.GridControl();
             this.bsLabors = new System.Windows.Forms.BindingSource(this.components);
@@ -54,6 +56,8 @@ namespace Hades.HR.UI
             this.colRemark = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAction = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repoActionButton = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
+            this.btnAddStaff = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.picPrint)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
@@ -64,6 +68,7 @@ namespace Hades.HR.UI
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgcStaff)).BeginInit();
@@ -87,10 +92,12 @@ namespace Hades.HR.UI
             // 
             // dataNavigator1
             // 
+            this.dataNavigator1.Location = new System.Drawing.Point(265, 387);
             this.dataNavigator1.Visible = false;
             // 
             // picPrint
             // 
+            this.picPrint.Location = new System.Drawing.Point(458, 389);
             this.picPrint.Visible = false;
             // 
             // groupControl1
@@ -105,6 +112,7 @@ namespace Hades.HR.UI
             // 
             // layoutControl1
             // 
+            this.layoutControl1.Controls.Add(this.btnUsePrevious);
             this.layoutControl1.Controls.Add(this.txtWorkTeamName);
             this.layoutControl1.Controls.Add(this.txtDate);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -115,12 +123,22 @@ namespace Hades.HR.UI
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
+            // btnUsePrevious
+            // 
+            this.btnUsePrevious.Location = new System.Drawing.Point(605, 12);
+            this.btnUsePrevious.Name = "btnUsePrevious";
+            this.btnUsePrevious.Size = new System.Drawing.Size(153, 22);
+            this.btnUsePrevious.StyleController = this.layoutControl1;
+            this.btnUsePrevious.TabIndex = 6;
+            this.btnUsePrevious.Text = "使用上月职员";
+            this.btnUsePrevious.Click += new System.EventHandler(this.btnUsePrevious_Click);
+            // 
             // txtWorkTeamName
             // 
             this.txtWorkTeamName.Location = new System.Drawing.Point(263, 12);
             this.txtWorkTeamName.Name = "txtWorkTeamName";
             this.txtWorkTeamName.Properties.ReadOnly = true;
-            this.txtWorkTeamName.Size = new System.Drawing.Size(495, 20);
+            this.txtWorkTeamName.Size = new System.Drawing.Size(338, 20);
             this.txtWorkTeamName.StyleController = this.layoutControl1;
             this.txtWorkTeamName.TabIndex = 5;
             // 
@@ -139,7 +157,8 @@ namespace Hades.HR.UI
             this.layoutControlGroup1.GroupBordersVisible = false;
             this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem1,
-            this.layoutControlItem2});
+            this.layoutControlItem2,
+            this.layoutControlItem3});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
             this.layoutControlGroup1.Size = new System.Drawing.Size(770, 69);
@@ -159,9 +178,18 @@ namespace Hades.HR.UI
             this.layoutControlItem2.Control = this.txtWorkTeamName;
             this.layoutControlItem2.Location = new System.Drawing.Point(224, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(526, 49);
+            this.layoutControlItem2.Size = new System.Drawing.Size(369, 49);
             this.layoutControlItem2.Text = "班组";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(24, 14);
+            // 
+            // layoutControlItem3
+            // 
+            this.layoutControlItem3.Control = this.btnUsePrevious;
+            this.layoutControlItem3.Location = new System.Drawing.Point(593, 0);
+            this.layoutControlItem3.Name = "layoutControlItem3";
+            this.layoutControlItem3.Size = new System.Drawing.Size(157, 49);
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem3.TextVisible = false;
             // 
             // groupControl2
             // 
@@ -315,11 +343,29 @@ namespace Hades.HR.UI
             this.repoActionButton.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             this.repoActionButton.Click += new System.EventHandler(this.repoActionButton_Click);
             // 
+            // btnAddStaff
+            // 
+            this.btnAddStaff.Location = new System.Drawing.Point(12, 392);
+            this.btnAddStaff.Name = "btnAddStaff";
+            this.btnAddStaff.Size = new System.Drawing.Size(75, 23);
+            this.btnAddStaff.TabIndex = 10;
+            this.btnAddStaff.Text = "增加职员";
+            // 
+            // simpleButton2
+            // 
+            this.simpleButton2.Location = new System.Drawing.Point(107, 392);
+            this.simpleButton2.Name = "simpleButton2";
+            this.simpleButton2.Size = new System.Drawing.Size(75, 23);
+            this.simpleButton2.TabIndex = 11;
+            this.simpleButton2.Text = "删除职员";
+            // 
             // FrmEditWorkSectionLabor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(774, 427);
+            this.Controls.Add(this.simpleButton2);
+            this.Controls.Add(this.btnAddStaff);
             this.Controls.Add(this.groupControl2);
             this.Controls.Add(this.groupControl1);
             this.Name = "FrmEditWorkSectionLabor";
@@ -331,6 +377,8 @@ namespace Hades.HR.UI
             this.Controls.SetChildIndex(this.picPrint, 0);
             this.Controls.SetChildIndex(this.groupControl1, 0);
             this.Controls.SetChildIndex(this.groupControl2, 0);
+            this.Controls.SetChildIndex(this.btnAddStaff, 0);
+            this.Controls.SetChildIndex(this.simpleButton2, 0);
             ((System.ComponentModel.ISupportInitialize)(this.picPrint)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
@@ -341,6 +389,7 @@ namespace Hades.HR.UI
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgcStaff)).EndInit();
@@ -377,5 +426,9 @@ namespace Hades.HR.UI
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraGrid.Columns.GridColumn colIn;
         private DevExpress.XtraGrid.Columns.GridColumn colStaffNumber;
+        private DevExpress.XtraEditors.SimpleButton btnUsePrevious;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
+        private DevExpress.XtraEditors.SimpleButton btnAddStaff;
+        private DevExpress.XtraEditors.SimpleButton simpleButton2;
     }
 }

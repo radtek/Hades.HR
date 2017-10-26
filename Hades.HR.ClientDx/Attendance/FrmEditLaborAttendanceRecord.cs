@@ -124,6 +124,52 @@ namespace Hades.HR.UI
             var result = CallerFactory<ILaborAttendanceRecordService>.Instance.InsertRecords(records);
             return result;
         }
+
+        /// <summary>
+        /// 选择员工
+        /// </summary>
+        private void SelectStaff()
+        {
+            var selected = this.dgvAttendance.GetSelectedRows();
+            if (selected.Length == 0)
+                return;
+
+            var dsIndex = this.dgvAttendance.GetDataSourceRowIndex(selected[0]);
+            var labor = this.bsAttendanceRecord[dsIndex] as LaborAttendanceRecordInfo;
+
+            FrmStaffSearch frm = new FrmStaffSearch(StaffType.Labor);
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                if (this.staffs.All(r => r.Id != frm.SelectedStaff.Id))
+                {
+                    this.staffs.Add(frm.SelectedStaff);
+                }
+
+                labor.StaffId = frm.SelectedStaff.Id;
+
+                //var salaryBase = CallerFactory<IStaffSalaryBaseService>.Instance.FindByID(frm.SelectedStaff.Id);
+                //if (salaryBase != null)
+                //    labor.StaffLevelId = salaryBase.StaffLevelId;
+
+                this.dgvAttendance.UpdateCurrentRow();
+            }
+        }
+
+        private void AddStaff()
+        {
+            LaborAttendanceRecordInfo info = new LaborAttendanceRecordInfo();
+            info.WorkTeamId = this.workTeamId;
+            info.WorkSectionId = "";
+            info.AttendanceDate = this.attendanceDate;
+
+            this.dgvAttendance.BeginDataUpdate();
+
+            var data = this.bsAttendanceRecord.DataSource as List<LaborAttendanceRecordInfo>;
+
+            data.Add(info);
+
+            this.dgvAttendance.EndDataUpdate();
+        }
         #endregion //Function
 
         #region Method
@@ -227,19 +273,25 @@ namespace Hades.HR.UI
             string columnName = e.Column.FieldName;
             if (columnName == "StaffId")
             {
-                var s = this.staffs.SingleOrDefault(r => r.Id == e.Value.ToString());
-                if (s == null)
-                    e.DisplayText = "";
-                else
-                    e.DisplayText = s.Name;
+                if (e.Value != null)
+                {
+                    var s = this.staffs.SingleOrDefault(r => r.Id == e.Value.ToString());
+                    if (s == null)
+                        e.DisplayText = "";
+                    else
+                        e.DisplayText = s.Name;
+                }
             }
             else if (columnName == "WorkSectionId")
             {
-                var s = this.workSections.SingleOrDefault(r => r.Id == e.Value.ToString());
-                if (s == null)
-                    e.DisplayText = "";
-                else
-                    e.DisplayText = s.Name;
+                if (e.Value != null && !string.IsNullOrEmpty(e.Value.ToString()))
+                {
+                    var s = this.workSections.SingleOrDefault(r => r.Id == e.Value.ToString());
+                    if (s == null)
+                        e.DisplayText = "";
+                    else
+                        e.DisplayText = s.Name;
+                }
             }
         }
 
@@ -264,22 +316,6 @@ namespace Hades.HR.UI
                 else
                     e.Value = s.Number;
             }
-        }
-
-        /// <summary>
-        /// 删除员工
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            int rowIndex = this.dgvAttendance.GetFocusedDataSourceRowIndex();
-            if (rowIndex < 0 || rowIndex >= this.bsAttendanceRecord.Count)
-                return;
-
-            this.bsAttendanceRecord.RemoveAt(rowIndex);
-            this.bsAttendanceRecord.ResetBindings(false);
-            return;
         }
 
         /// <summary>
@@ -310,6 +346,55 @@ namespace Hades.HR.UI
                 MessageDxUtil.ShowWarning(ex.Message);
                 return false;
             }
+        }
+       
+        /// <summary>
+        /// 选择员工
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void repoActionButton_Click(object sender, EventArgs e)
+        {
+            SelectStaff();
+        }
+        
+        /// <summary>
+        /// 增加员工
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnAddRecord_Click(object sender, EventArgs e)
+        {
+            AddStaff();
+        }
+
+        /// <summary>
+        /// 删除员工
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            int rowIndex = this.dgvAttendance.GetFocusedDataSourceRowIndex();
+            if (rowIndex < 0 || rowIndex >= this.bsAttendanceRecord.Count)
+                return;
+
+            var data = this.bsAttendanceRecord.DataSource as List<LaborAttendanceRecordInfo>;
+
+            var info = data[rowIndex];
+            if (string.IsNullOrEmpty(info.WorkSectionId))
+            {
+                data.RemoveAt(rowIndex);
+            }
+            else
+            {
+                info.StaffId = "";
+                info.StandardWorkload = 0;
+                info.Workload = 0;
+            }
+
+            this.bsAttendanceRecord.ResetBindings(false);
+            return;
         }
         #endregion //Event
     }

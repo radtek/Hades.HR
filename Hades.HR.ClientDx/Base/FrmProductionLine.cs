@@ -154,6 +154,7 @@ namespace Hades.HR.UI
             this.wgvWorkSection.AppendedMenu = this.contextMenuStrip3;
             this.wgvWorkSection.ShowLineNumber = true;
             this.wgvWorkSection.BestFitColumnWith = true;
+            this.wgvWorkSection.gridView1.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(wgvWorkSection_CustomColumnDisplayText);
         }
         #endregion //Method
 
@@ -195,6 +196,7 @@ namespace Hades.HR.UI
         {
             LoadWorkSections();
         }
+
         #region Menu Event
         /// <summary>
         /// 菜单 - 新增产线

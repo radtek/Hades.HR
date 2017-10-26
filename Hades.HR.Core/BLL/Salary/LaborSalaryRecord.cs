@@ -100,7 +100,7 @@ namespace Hades.HR.BLL
                 info.OverWorkload = info.MonthWorkload - info.BaseWorkload - info.WeekendWorkload - info.HolidayWorkload;
                 info.OverSalary = info.LevelSalary * info.OverWorkload * 1.5m;
 
-                var exist = salarys.SingleOrDefault(r => r.StaffId == labor.StaffId);
+                var exist = salarys.FirstOrDefault(r => r.StaffId == labor.StaffId);
                 if (exist != null)
                 {
                     info.Estimation = exist.Estimation;

@@ -27,5 +27,17 @@ namespace Hades.HR.WinformCaller
             bll = baseBLL as WorkSectionLabor;
         }
         #endregion //Constructor
+
+        #region Method
+        /// <summary>
+        /// 保存职员
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public int SaveLabors(List<WorkSectionLaborInfo> data)
+        {
+            return bll.SaveLabors(data);
+        }
+        #endregion //Method
     }
 }

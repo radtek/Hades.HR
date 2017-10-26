@@ -105,6 +105,43 @@ namespace Hades.HR.UI
         }
 
         /// <summary>
+        /// 设置上月职员
+        /// </summary>
+        private void SetPreviousStaff()
+        {
+            int year = this.year;
+            int month = this.month - 1;
+            if (month == 0)
+            {
+                month = 12;
+                year--;
+            }
+
+            string sql = string.Format("Year = {0} AND Month = {1} AND WorkTeamId = '{2}'", year, month, this.workTeamId);
+            var labors = CallerFactory<IWorkSectionLaborService>.Instance.Find(sql);
+
+            this.dgvStaff.BeginDataUpdate();
+
+            var data = this.bsLabors.DataSource as List<WorkSectionLaborInfo>;
+
+            foreach (var item in data)
+            {
+                var find = labors.SingleOrDefault(r => r.WorkSectionId == item.WorkSectionId);
+                if (find != null)
+                {
+                    item.StaffId = find.StaffId;
+                    item.InPosition = find.InPosition;
+
+                    var salaryBase = CallerFactory<IStaffSalaryBaseService>.Instance.FindByID(find.StaffId);
+                    if (salaryBase != null)
+                        item.StaffLevelId = salaryBase.StaffLevelId;
+                }
+            }
+
+            this.dgvStaff.EndDataUpdate();
+        }
+
+        /// <summary>
         /// 选择员工
         /// </summary>
         private void SelectStaff()
@@ -124,33 +161,14 @@ namespace Hades.HR.UI
                     this.staffs.Add(frm.SelectedStaff);
                 }
 
+                labor.WorkTeamId = this.workTeamId;
                 labor.StaffId = frm.SelectedStaff.Id;
-
+                
                 var salaryBase = CallerFactory<IStaffSalaryBaseService>.Instance.FindByID(frm.SelectedStaff.Id);
                 if (salaryBase != null)
                     labor.StaffLevelId = salaryBase.StaffLevelId;
 
                 this.dgvStaff.UpdateCurrentRow();
-            }
-        }
-
-        /// <summary>
-        /// 编辑或者保存状态下取值函数
-        /// </summary>
-        /// <param name="info"></param>
-        private void SetInfo()
-        {
-            var data = this.bsLabors.DataSource as List<WorkSectionLaborInfo>;
-
-            //data.Where(r => !string.IsNullOrEmpty(r.StaffId)).Distinct()
-
-            foreach (var item in data)
-            {
-                item.Editor = this.LoginUserInfo.Name;
-                item.EditorId = this.LoginUserInfo.ID;
-                item.EditTime = DateTime.Now;
-
-                CallerFactory<IWorkSectionLaborService>.Instance.InsertUpdate(item, item.Id);
             }
         }
         #endregion //Function
@@ -208,8 +226,27 @@ namespace Hades.HR.UI
         {
             try
             {
-                SetInfo();
-                return true;
+                var data = this.bsLabors.DataSource as List<WorkSectionLaborInfo>;
+                
+                foreach (var item in data)
+                {
+                    item.Editor = this.LoginUserInfo.Name;
+                    item.EditorId = this.LoginUserInfo.ID;
+                    item.EditTime = DateTime.Now;
+                }
+
+                int result = CallerFactory<IWorkSectionLaborService>.Instance.SaveLabors(data);
+
+                if (result == -1)
+                {
+                    return true;
+                }
+                else
+                {
+                    var staff = this.staffs.Find(r => r.Id == data[result].StaffId);
+                    MessageDxUtil.ShowWarning(string.Format("职员{0} 本月已经排班", staff.Name));
+                    return false;
+                }
             }
             catch (Exception ex)
             {
@@ -231,11 +268,18 @@ namespace Hades.HR.UI
             string columnName = e.Column.FieldName;
             if (columnName == "WorkSectionId")
             {
-                var s = this.workSections.SingleOrDefault(r => r.Id == e.Value.ToString());
-                if (s == null)
+                if (e.Value == null || string.IsNullOrEmpty(e.Value.ToString()))
+                {
                     e.DisplayText = "";
+                }
                 else
-                    e.DisplayText = s.Name;
+                {
+                    var s = this.workSections.SingleOrDefault(r => r.Id == e.Value.ToString());
+                    if (s == null)
+                        e.DisplayText = "";
+                    else
+                        e.DisplayText = s.Name;
+                }
             }
             else if (columnName == "StaffId")
             {
@@ -310,6 +354,16 @@ namespace Hades.HR.UI
         }
 
         /// <summary>
+        /// 使用上月职员
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnUsePrevious_Click(object sender, EventArgs e)
+        {
+            SetPreviousStaff();
+        }
+
+        /// <summary>
         /// 选择员工
         /// </summary>
         /// <param name="sender"></param>
@@ -319,5 +373,6 @@ namespace Hades.HR.UI
             SelectStaff();
         }
         #endregion //Event
+
     }
 }

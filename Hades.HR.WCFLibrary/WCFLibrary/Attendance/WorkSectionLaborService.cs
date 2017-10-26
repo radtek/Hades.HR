@@ -19,20 +19,27 @@ namespace Hades.HR.WCFLibrary
 	/// </summary>
     public class WorkSectionLaborService : BaseLocalService<WorkSectionLaborInfo>, IWorkSectionLaborService
     {
+        #region Field
         private WorkSectionLabor bll = null;
+        #endregion //Field
 
+        #region Constructor
         public WorkSectionLaborService() : base(BLLFactory<WorkSectionLabor>.Instance)
         {
             bll = baseBLL as WorkSectionLabor;
         }
+        #endregion //Constructor
 
-        ///// <summary>
-        ///// 根据名称查找对象(自定义接口使用范例)
-        ///// </summary>
-        //public List<WorkSectionLaborInfo> FindByName(string name)
-        //{
-        //    return bll.FindByName(name);
-        //}
-
+        #region Method
+        /// <summary>
+        /// 保存职员
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public int SaveLabors(List<WorkSectionLaborInfo> data)
+        {
+            return bll.SaveLabors(data);
+        }
+        #endregion //Method
     }
 }
