@@ -103,6 +103,13 @@ namespace Hades.HR.Entity
         public virtual string Principal { get; set; }
 
         /// <summary>
+        /// 定员人数
+        /// </summary>
+        [Display(Name = "定员人数")]
+        [DataMember]
+        public virtual int Quota { get; set; }
+
+        /// <summary>
         /// 备注
         /// </summary>
         [Display(Name = "备注")]

@@ -46,7 +46,7 @@ namespace Hades.HR.DALSQL
             info.Id = reader.GetString("Id");
             info.Name = reader.GetString("Name");
             info.Number = reader.GetString("Number");
-            info.WorkTeamId = reader.GetString("WorkTeamId");
+            info.CompanyId = reader.GetString("CompanyId");
             info.SortCode = reader.GetString("SortCode");
             info.Remark = reader.GetString("Remark");
             info.Editor = reader.GetString("Editor");
@@ -71,7 +71,7 @@ namespace Hades.HR.DALSQL
             hash.Add("Id", info.Id);
             hash.Add("Name", info.Name);
             hash.Add("Number", info.Number);
-            hash.Add("WorkTeamId", info.WorkTeamId);
+            hash.Add("CompanyId", info.CompanyId);
             hash.Add("SortCode", info.SortCode);
             hash.Add("Remark", info.Remark);
             hash.Add("Editor", info.Editor);
@@ -95,7 +95,7 @@ namespace Hades.HR.DALSQL
             dict.Add("Id", "");
             dict.Add("Name", "工段名称");
             dict.Add("Number", "工段编号");
-            dict.Add("WorkTeamId", "所属班组");
+            dict.Add("CompanyId", "所属公司");
             dict.Add("SortCode", "排序码");
             dict.Add("Remark", "备注");
             dict.Add("Editor", "");

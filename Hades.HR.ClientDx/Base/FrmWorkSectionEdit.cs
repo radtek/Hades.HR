@@ -18,6 +18,9 @@ using Hades.HR.Entity;
 
 namespace Hades.HR.UI
 {
+    /// <summary>
+    /// 编辑工段窗体
+    /// </summary>
     public partial class FrmWorkSectionEdit : BaseEditForm
     {
         #region Field
@@ -51,7 +54,8 @@ namespace Hades.HR.UI
         {
             info.Name = txtName.Text;
             info.Number = txtNumber.Text;
-            info.WorkTeamId = luWorkTeam.GetSelectedId();
+            info.CompanyId = this.luCompany.GetSelectedId();
+
             info.SortCode = txtSortCode.Text;
             info.Remark = txtRemark.Text;
             info.Enabled = Convert.ToInt32(cmbEnabled.EditValue);
@@ -92,18 +96,12 @@ namespace Hades.HR.UI
                 this.txtName.Focus();
                 result = false;
             }
-            else if (string.IsNullOrEmpty(this.luProductionLine.GetSelectedId()))
+            else if (string.IsNullOrEmpty(this.luCompany.GetSelectedId()))
             {
-                MessageDxUtil.ShowTips("请选择所属生产线");
-                this.luProductionLine.Focus();
+                MessageDxUtil.ShowTips("请选择所属公司");
+                this.luCompany.Focus();
                 result = false;
-            }
-            else if (string.IsNullOrEmpty(this.luWorkTeam.GetSelectedId()))
-            {
-                MessageDxUtil.ShowTips("请选择所属班组");
-                this.luWorkTeam.Focus();
-                result = false;
-            }
+            }          
 
             return result;
         }
@@ -120,16 +118,12 @@ namespace Hades.HR.UI
                 WorkSectionInfo info = CallerFactory<IWorkSectionService>.Instance.FindByID(ID);
                 if (info != null)
                 {
-                    var workTeam = CallerFactory<IWorkTeamService>.Instance.FindByID(info.WorkTeamId);
-
                     tempInfo = info;//重新给临时对象赋值，使之指向存在的记录对象
 
                     txtName.Text = info.Name;
                     txtNumber.Text = info.Number;
 
-                    this.luCompany.SetSelected(workTeam.CompanyId);
-                    this.luProductionLine.SetSelected(workTeam.ProductionLineId);
-                    this.luWorkTeam.SetSelected(info.WorkTeamId);
+                    this.luCompany.SetSelected(info.CompanyId);
 
                     txtSortCode.Text = info.SortCode;
                     txtRemark.Text = info.Remark;
@@ -158,16 +152,13 @@ namespace Hades.HR.UI
 
             try
             {
-                #region 新增数据
-
                 bool succeed = CallerFactory<IWorkSectionService>.Instance.Insert(info);
                 if (succeed)
                 {
                     //可添加其他关联操作
 
                     return true;
-                }
-                #endregion
+                }               
             }
             catch (Exception ex)
             {
@@ -209,23 +200,7 @@ namespace Hades.HR.UI
         #endregion //Method
 
         #region Event
-        private void luCompany_DepartmentSelect(object sender, EventArgs e)
-        {
-            var depId = this.luCompany.GetSelectedId();
-            if (!string.IsNullOrEmpty(depId))
-            {
-                this.luProductionLine.Init(depId);
-            }
-        }       
-
-        private void luProductionLine_ProductionLineSelect(object sender, EventArgs e)
-        {
-            var lineId = this.luProductionLine.GetSelectedId();
-            if (!string.IsNullOrEmpty(lineId))
-            {
-                this.luWorkTeam.Init(lineId);
-            }
-        }
+     
         #endregion //Event
     }
 }

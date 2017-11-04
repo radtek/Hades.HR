@@ -65,23 +65,23 @@ namespace Hades.HR.UI
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(363, 326);
+            this.btnOK.Location = new System.Drawing.Point(363, 306);
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(462, 326);
+            this.btnCancel.Location = new System.Drawing.Point(462, 306);
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(276, 326);
+            this.btnAdd.Location = new System.Drawing.Point(276, 306);
             // 
             // dataNavigator1
             // 
-            this.dataNavigator1.Location = new System.Drawing.Point(12, 321);
+            this.dataNavigator1.Location = new System.Drawing.Point(12, 301);
             // 
             // picPrint
             // 
-            this.picPrint.Location = new System.Drawing.Point(202, 323);
+            this.picPrint.Location = new System.Drawing.Point(202, 303);
             // 
             // layoutControl1
             // 
@@ -98,7 +98,7 @@ namespace Hades.HR.UI
             this.layoutControl1.Location = new System.Drawing.Point(12, 8);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(530, 297);
+            this.layoutControl1.Size = new System.Drawing.Size(530, 277);
             this.layoutControl1.TabIndex = 6;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -106,6 +106,7 @@ namespace Hades.HR.UI
             // 
             this.luDepartment.Location = new System.Drawing.Point(63, 36);
             this.luDepartment.Name = "luDepartment";
+            this.luDepartment.OnlyShowCompany = false;
             this.luDepartment.Size = new System.Drawing.Size(455, 20);
             this.luDepartment.TabIndex = 2;
             // 
@@ -113,7 +114,7 @@ namespace Hades.HR.UI
             // 
             this.txtRemark.Location = new System.Drawing.Point(63, 132);
             this.txtRemark.Name = "txtRemark";
-            this.txtRemark.Size = new System.Drawing.Size(455, 153);
+            this.txtRemark.Size = new System.Drawing.Size(455, 133);
             this.txtRemark.StyleController = this.layoutControl1;
             this.txtRemark.TabIndex = 6;
             // 
@@ -187,7 +188,7 @@ namespace Hades.HR.UI
             this.layoutControlItem7});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(530, 297);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(530, 277);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem2
@@ -240,7 +241,7 @@ namespace Hades.HR.UI
             this.layoutControlItem6.Control = this.txtRemark;
             this.layoutControlItem6.Location = new System.Drawing.Point(0, 120);
             this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(510, 157);
+            this.layoutControlItem6.Size = new System.Drawing.Size(510, 137);
             this.layoutControlItem6.Text = "±¸×¢";
             this.layoutControlItem6.TextSize = new System.Drawing.Size(48, 14);
             // 
@@ -257,7 +258,7 @@ namespace Hades.HR.UI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(549, 361);
+            this.ClientSize = new System.Drawing.Size(549, 341);
             this.Controls.Add(this.layoutControl1);
             this.Name = "FrmPositionEdit";
             this.Text = "Position";

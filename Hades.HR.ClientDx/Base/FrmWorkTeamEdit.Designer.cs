@@ -29,9 +29,9 @@ namespace Hades.HR.UI
         private void InitializeComponent()
         {
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.spQuota = new DevExpress.XtraEditors.SpinEdit();
             this.cmbEnabled = new DevExpress.XtraEditors.ImageComboBoxEdit();
             this.txtRemark = new DevExpress.XtraEditors.MemoEdit();
-            this.luProductionLine = new Hades.HR.UI.ProductionLineLookup();
             this.luCompany = new Hades.HR.UI.DepartmentLookup();
             this.txtName = new DevExpress.XtraEditors.TextEdit();
             this.txtNumber = new DevExpress.XtraEditors.TextEdit();
@@ -40,15 +40,16 @@ namespace Hades.HR.UI
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.spQuota = new DevExpress.XtraEditors.SpinEdit();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.txtPrincipal = new DevExpress.XtraEditors.TextEdit();
+            this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.picPrint)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spQuota.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbEnabled.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRemark.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).BeginInit();
@@ -58,12 +59,12 @@ namespace Hades.HR.UI
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spQuota.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPrincipal.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             this.SuspendLayout();
             // 
             // btnOK
@@ -92,10 +93,10 @@ namespace Hades.HR.UI
             this.layoutControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.layoutControl1.Controls.Add(this.txtPrincipal);
             this.layoutControl1.Controls.Add(this.spQuota);
             this.layoutControl1.Controls.Add(this.cmbEnabled);
             this.layoutControl1.Controls.Add(this.txtRemark);
-            this.layoutControl1.Controls.Add(this.luProductionLine);
             this.layoutControl1.Controls.Add(this.luCompany);
             this.layoutControl1.Controls.Add(this.txtName);
             this.layoutControl1.Controls.Add(this.txtNumber);
@@ -106,6 +107,23 @@ namespace Hades.HR.UI
             this.layoutControl1.Size = new System.Drawing.Size(547, 169);
             this.layoutControl1.TabIndex = 6;
             this.layoutControl1.Text = "layoutControl1";
+            // 
+            // spQuota
+            // 
+            this.spQuota.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.spQuota.Location = new System.Drawing.Point(63, 60);
+            this.spQuota.Name = "spQuota";
+            this.spQuota.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.spQuota.Properties.IsFloatValue = false;
+            this.spQuota.Properties.Mask.EditMask = "N00";
+            this.spQuota.Size = new System.Drawing.Size(208, 20);
+            this.spQuota.StyleController = this.layoutControl1;
+            this.spQuota.TabIndex = 11;
             // 
             // cmbEnabled
             // 
@@ -129,23 +147,14 @@ namespace Hades.HR.UI
             this.txtRemark.StyleController = this.layoutControl1;
             this.txtRemark.TabIndex = 9;
             // 
-            // luProductionLine
-            // 
-            this.luProductionLine.Location = new System.Drawing.Point(326, 36);
-            this.luProductionLine.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.luProductionLine.Name = "luProductionLine";
-            this.luProductionLine.Size = new System.Drawing.Size(209, 20);
-            this.luProductionLine.TabIndex = 8;
-            // 
             // luCompany
             // 
             this.luCompany.Location = new System.Drawing.Point(63, 36);
             this.luCompany.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.luCompany.Name = "luCompany";
             this.luCompany.OnlyShowCompany = true;
-            this.luCompany.Size = new System.Drawing.Size(208, 20);
+            this.luCompany.Size = new System.Drawing.Size(472, 20);
             this.luCompany.TabIndex = 7;
-            this.luCompany.DepartmentSelect += new System.EventHandler(this.luCompany_DepartmentSelect);
             // 
             // txtName
             // 
@@ -179,11 +188,11 @@ namespace Hades.HR.UI
             this.layoutControlItem1,
             this.layoutControlItem4,
             this.layoutControlItem7,
-            this.layoutControlItem8,
             this.layoutControlItem3,
             this.layoutControlItem2,
             this.layoutControlItem5,
-            this.layoutControlItem6});
+            this.layoutControlItem6,
+            this.layoutControlItem8});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
             this.layoutControlGroup1.Size = new System.Drawing.Size(547, 169);
@@ -212,18 +221,9 @@ namespace Hades.HR.UI
             this.layoutControlItem7.Control = this.luCompany;
             this.layoutControlItem7.Location = new System.Drawing.Point(0, 24);
             this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(263, 24);
+            this.layoutControlItem7.Size = new System.Drawing.Size(527, 24);
             this.layoutControlItem7.Text = "所属公司";
             this.layoutControlItem7.TextSize = new System.Drawing.Size(48, 14);
-            // 
-            // layoutControlItem8
-            // 
-            this.layoutControlItem8.Control = this.luProductionLine;
-            this.layoutControlItem8.Location = new System.Drawing.Point(263, 24);
-            this.layoutControlItem8.Name = "layoutControlItem8";
-            this.layoutControlItem8.Size = new System.Drawing.Size(264, 24);
-            this.layoutControlItem8.Text = "所属产线";
-            this.layoutControlItem8.TextSize = new System.Drawing.Size(48, 14);
             // 
             // layoutControlItem3
             // 
@@ -252,31 +252,31 @@ namespace Hades.HR.UI
             this.layoutControlItem5.Text = "是否启用";
             this.layoutControlItem5.TextSize = new System.Drawing.Size(48, 14);
             // 
-            // spQuota
-            // 
-            this.spQuota.EditValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.spQuota.Location = new System.Drawing.Point(63, 60);
-            this.spQuota.Name = "spQuota";
-            this.spQuota.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.spQuota.Properties.IsFloatValue = false;
-            this.spQuota.Properties.Mask.EditMask = "N00";
-            this.spQuota.Size = new System.Drawing.Size(472, 20);
-            this.spQuota.StyleController = this.layoutControl1;
-            this.spQuota.TabIndex = 11;
-            // 
             // layoutControlItem6
             // 
             this.layoutControlItem6.Control = this.spQuota;
             this.layoutControlItem6.Location = new System.Drawing.Point(0, 48);
             this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(527, 24);
+            this.layoutControlItem6.Size = new System.Drawing.Size(263, 24);
             this.layoutControlItem6.Text = "定员人数";
             this.layoutControlItem6.TextSize = new System.Drawing.Size(48, 14);
+            // 
+            // txtPrincipal
+            // 
+            this.txtPrincipal.Location = new System.Drawing.Point(326, 60);
+            this.txtPrincipal.Name = "txtPrincipal";
+            this.txtPrincipal.Size = new System.Drawing.Size(209, 20);
+            this.txtPrincipal.StyleController = this.layoutControl1;
+            this.txtPrincipal.TabIndex = 12;
+            // 
+            // layoutControlItem8
+            // 
+            this.layoutControlItem8.Control = this.txtPrincipal;
+            this.layoutControlItem8.Location = new System.Drawing.Point(263, 48);
+            this.layoutControlItem8.Name = "layoutControlItem8";
+            this.layoutControlItem8.Size = new System.Drawing.Size(264, 24);
+            this.layoutControlItem8.Text = "负责人";
+            this.layoutControlItem8.TextSize = new System.Drawing.Size(48, 14);
             // 
             // FrmWorkTeamEdit
             // 
@@ -295,6 +295,7 @@ namespace Hades.HR.UI
             ((System.ComponentModel.ISupportInitialize)(this.picPrint)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.spQuota.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbEnabled.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRemark.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).EndInit();
@@ -304,12 +305,12 @@ namespace Hades.HR.UI
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spQuota.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPrincipal.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -330,12 +331,12 @@ namespace Hades.HR.UI
         private DepartmentLookup luCompany;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
         private DevExpress.XtraEditors.MemoEdit txtRemark;
-        private ProductionLineLookup luProductionLine;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
         private DevExpress.XtraEditors.ImageComboBoxEdit cmbEnabled;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
         private DevExpress.XtraEditors.SpinEdit spQuota;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
+        private DevExpress.XtraEditors.TextEdit txtPrincipal;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
     }
 }

@@ -57,6 +57,7 @@ namespace Hades.HR.UI
             info.Type = Convert.ToInt32(cmbType.EditValue);
             info.Address = txtAddress.Text;
             info.Principal = txtPrincipal.Text;
+            info.Quota = Convert.ToInt32(spQuota.Value);
             info.Fax = txtFax.Text;
             info.InnerPhone = txtInnerPhone.Text;
             info.OuterPhone = txtOuterPhone.Text;
@@ -105,6 +106,7 @@ namespace Hades.HR.UI
                     cmbType.EditValue = (DepartmentType)info.Type;
                     txtAddress.Text = info.Address;
                     txtPrincipal.Text = info.Principal;
+                    spQuota.Value = info.Quota;
                     txtFax.Text = info.Fax;
                     txtInnerPhone.Text = info.InnerPhone;
                     txtOuterPhone.Text = info.OuterPhone;

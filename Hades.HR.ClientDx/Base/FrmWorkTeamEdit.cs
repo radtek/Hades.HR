@@ -52,8 +52,8 @@ namespace Hades.HR.UI
             info.Name = txtName.Text;
             info.Number = txtNumber.Text;
             info.CompanyId = luCompany.GetSelectedId();
-            info.ProductionLineId = luProductionLine.GetSelectedId();
             info.Quota = Convert.ToInt32(spQuota.Value);
+            info.Principal = txtPrincipal.Text;
             info.SortCode = txtSortCode.Text;
             info.Remark = txtRemark.Text;
             info.Enabled = Convert.ToInt32(cmbEnabled.EditValue);
@@ -91,13 +91,7 @@ namespace Hades.HR.UI
             else if (string.IsNullOrEmpty(this.luCompany.GetSelectedId()))
             {
                 MessageDxUtil.ShowTips("请选择所属公司");
-                this.luProductionLine.Focus();
-                result = false;
-            }
-            else if (string.IsNullOrEmpty(this.luProductionLine.GetSelectedId()))
-            {
-                MessageDxUtil.ShowTips("请选择所属生产线");
-                this.luProductionLine.Focus();
+                this.luCompany.Focus();
                 result = false;
             }
 
@@ -130,8 +124,8 @@ namespace Hades.HR.UI
                     spQuota.Value = info.Quota;
 
                     this.luCompany.SetSelected(info.CompanyId);
-                    this.luProductionLine.SetSelected(info.ProductionLineId);
 
+                    txtPrincipal.Text = info.Principal;
                     txtSortCode.Text = info.SortCode;
                     txtRemark.Text = info.Remark;
                     cmbEnabled.EditValue = info.Enabled;
@@ -216,14 +210,6 @@ namespace Hades.HR.UI
         #endregion //Method
 
         #region Event
-        private void luCompany_DepartmentSelect(object sender, EventArgs e)
-        {
-            var depId = this.luCompany.GetSelectedId();
-            if (!string.IsNullOrEmpty(depId))
-            {
-                this.luProductionLine.Init(depId);
-            }
-        }
         #endregion //Event
     }
 }

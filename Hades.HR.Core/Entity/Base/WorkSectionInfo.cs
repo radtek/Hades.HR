@@ -6,7 +6,7 @@ using Hades.Framework.ControlUtil;
 namespace Hades.HR.Entity
 {
     /// <summary>
-    /// WorkSectionInfo
+    /// 工段类
     /// </summary>
     [DataContract]
     public class WorkSectionInfo : BaseEntity
@@ -33,7 +33,7 @@ namespace Hades.HR.Entity
         public virtual string Number { get; set; }
 
         [DataMember]
-        public virtual string WorkTeamId { get; set; }
+        public virtual string CompanyId { get; set; }
 
         [DataMember]
         public virtual string SortCode { get; set; }

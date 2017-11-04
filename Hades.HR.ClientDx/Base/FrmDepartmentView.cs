@@ -57,6 +57,7 @@ namespace Hades.HR.UI
                     txtAddress.Text = info.Address;
                     txtFax.Text = info.Fax;
                     txtPrincipal.Text = info.Principal;
+                    txtQuota.Text = info.Quota.ToString();
                     txtInnerPhone.Text = info.InnerPhone;
                     txtOuterPhone.Text = info.OuterPhone;
                     dpFoundDate.SetDateTime(info.FoundDate);

@@ -75,14 +75,14 @@ namespace Hades.HR.UI
         /// <param name="parentNode"></param>
         private void AppendTeamNodes(ProductionLineInfo line, TreeListNode parentNode)
         {
-            var teams = this.workTeams.Where(r => r.ProductionLineId == line.Id);
+            //var teams = this.workTeams.Where(r => r.ProductionLineId == line.Id);
 
-            foreach (var item in teams)
-            {
-                var node = this.trList.AppendNode(new object[] { item.Id, item.Name, 3 }, parentNode);
-                node.StateImageIndex = 2;
-                node.HasChildren = false;
-            }
+            //foreach (var item in teams)
+            //{
+            //    var node = this.trList.AppendNode(new object[] { item.Id, item.Name, 3 }, parentNode);
+            //    node.StateImageIndex = 2;
+            //    node.HasChildren = false;
+            //}
         }
         #endregion //Function
 

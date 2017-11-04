@@ -63,36 +63,7 @@ namespace Hades.HR.UI
             this.wgvPosition.DataSource = positions;
             this.wgvPosition.PrintTitle = "岗位报表";
         }
-
-        /// <summary>
-        /// 载入公司包含产线
-        /// </summary>
-        /// <param name="department"></param>
-        private void LoadProductionLines(DepartmentInfo department)
-        {
-            var lines = CallerFactory<IProductionLineService>.Instance.Find2(string.Format("CompanyId='{0}' AND Deleted=0", department.Id), "ORDER BY SortCode");
-
-            this.wgvProductionLine.DisplayColumns = "Name,Number,CompanyId,SortCode,Remark,Enabled";
-            this.wgvProductionLine.ColumnNameAlias = CallerFactory<IProductionLineService>.Instance.GetColumnNameAlias();
-
-            this.wgvProductionLine.DataSource = lines;
-            this.wgvProductionLine.PrintTitle = "产线报表";
-        }
-
-        /// <summary>
-        /// 载入部门包含班组
-        /// </summary>
-        /// <param name="department"></param>
-        private void LoadWorkTeams(DepartmentInfo department)
-        {
-            var teams = CallerFactory<IWorkTeamService>.Instance.Find2(string.Format("CompanyId='{0}' AND Deleted=0", department.Id), "ORDER BY SortCode");
-
-            this.wgvWorkTeam.DisplayColumns = "Name,Number,CompanyId,ProductionLineId,SortCode,Remark,Enabled";
-            this.wgvWorkTeam.ColumnNameAlias = CallerFactory<IWorkTeamService>.Instance.GetColumnNameAlias();
-
-            this.wgvWorkTeam.DataSource = teams;
-            this.wgvWorkTeam.PrintTitle = "班组报表";
-        }
+      
 
         /// <summary>
         /// 载入公司包含仓库
@@ -148,16 +119,6 @@ namespace Hades.HR.UI
             this.wgvPosition.BestFitColumnWith = true;
             this.wgvPosition.gridView1.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(wgvPosition_CustomColumnDisplayText);
 
-            this.wgvProductionLine.AppendedMenu = this.contextMenuStrip2;
-            this.wgvProductionLine.ShowLineNumber = true;
-            this.wgvProductionLine.BestFitColumnWith = true;
-            this.wgvProductionLine.gridView1.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(wgvProductionLine_CustomColumnDisplayText);
-
-            this.wgvWorkTeam.AppendedMenu = this.contextMenuStrip3;
-            this.wgvWorkTeam.ShowLineNumber = true;
-            this.wgvWorkTeam.BestFitColumnWith = true;
-            this.wgvWorkTeam.gridView1.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(wgvWorkTeam_CustomColumnDisplayText);
-
             this.wgvWarehouse.AppendedMenu = this.contextMenuStrip4;
             this.wgvWarehouse.ShowLineNumber = true;
             this.wgvWarehouse.BestFitColumnWith = true;
@@ -189,9 +150,8 @@ namespace Hades.HR.UI
                 this.txtDepartmentName.Text = department.Name;
                 this.txtDepartmentNumber.Text = department.Number;
 
-                LoadPositions(department);
-                LoadProductionLines(department);
-                LoadWorkTeams(department);
+                LoadPositions(department);               
+               
                 LoadWarehouse(department);
             }
         }
@@ -276,132 +236,132 @@ namespace Hades.HR.UI
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void menuAddLine_Click(object sender, EventArgs e)
-        {
-            FrmProductionLineEdit dlg = new FrmProductionLineEdit();
-            //dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
-            dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
+        //private void menuAddLine_Click(object sender, EventArgs e)
+        //{
+        //    FrmProductionLineEdit dlg = new FrmProductionLineEdit();
+        //    //dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
+        //    dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
 
-            if (DialogResult.OK == dlg.ShowDialog())
-            {
-                LoadDepartments();
-            }
-        }
+        //    if (DialogResult.OK == dlg.ShowDialog())
+        //    {
+        //        LoadDepartments();
+        //    }
+        //}
 
         /// <summary>
         /// 菜单 - 编辑产线
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void menuEditLine_Click(object sender, EventArgs e)
-        {
-            string ID = this.wgvProductionLine.gridView1.GetFocusedRowCellDisplayText("Id");
-            List<string> IDList = new List<string>();
-            for (int i = 0; i < this.wgvProductionLine.gridView1.RowCount; i++)
-            {
-                string strTemp = this.wgvProductionLine.GridView1.GetRowCellDisplayText(i, "Id");
-                IDList.Add(strTemp);
-            }
+        //private void menuEditLine_Click(object sender, EventArgs e)
+        //{
+        //    string ID = this.wgvProductionLine.gridView1.GetFocusedRowCellDisplayText("Id");
+        //    List<string> IDList = new List<string>();
+        //    for (int i = 0; i < this.wgvProductionLine.gridView1.RowCount; i++)
+        //    {
+        //        string strTemp = this.wgvProductionLine.GridView1.GetRowCellDisplayText(i, "Id");
+        //        IDList.Add(strTemp);
+        //    }
 
-            if (!string.IsNullOrEmpty(ID))
-            {
-                FrmProductionLineEdit dlg = new FrmProductionLineEdit();
-                dlg.ID = ID;
-                dlg.IDList = IDList;
-                dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
+        //    if (!string.IsNullOrEmpty(ID))
+        //    {
+        //        FrmProductionLineEdit dlg = new FrmProductionLineEdit();
+        //        dlg.ID = ID;
+        //        dlg.IDList = IDList;
+        //        dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
 
-                if (DialogResult.OK == dlg.ShowDialog())
-                {
-                    LoadDepartments();
-                }
-            }
-        }
+        //        if (DialogResult.OK == dlg.ShowDialog())
+        //        {
+        //            LoadDepartments();
+        //        }
+        //    }
+        //}
 
         /// <summary>
         /// 菜单 - 删除产线
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void menuDeleteLine_Click(object sender, EventArgs e)
-        {
-            string id = this.wgvProductionLine.gridView1.GetFocusedRowCellDisplayText("Id");
-            if (string.IsNullOrEmpty(id))
-                return;
+        //private void menuDeleteLine_Click(object sender, EventArgs e)
+        //{
+        //    string id = this.wgvProductionLine.gridView1.GetFocusedRowCellDisplayText("Id");
+        //    if (string.IsNullOrEmpty(id))
+        //        return;
 
-            if (MessageDxUtil.ShowYesNoAndTips("您确定删除选定的产线么？") == DialogResult.No)
-            {
-                return;
-            }
+        //    if (MessageDxUtil.ShowYesNoAndTips("您确定删除选定的产线么？") == DialogResult.No)
+        //    {
+        //        return;
+        //    }
 
-            CallerFactory<IProductionLineService>.Instance.MarkDelete(id);
-            LoadDepartments();
-        }
+        //    CallerFactory<IProductionLineService>.Instance.MarkDelete(id);
+        //    LoadDepartments();
+        //}
 
         /// <summary>
         /// 菜单 - 新增班组
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void menuAddTeam_Click(object sender, EventArgs e)
-        {
-            FrmWorkTeamEdit dlg = new FrmWorkTeamEdit();
-            dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
-            dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
+        //private void menuAddTeam_Click(object sender, EventArgs e)
+        //{
+        //    FrmWorkTeamEdit dlg = new FrmWorkTeamEdit();
+        //    dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
+        //    dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
 
-            if (DialogResult.OK == dlg.ShowDialog())
-            {
-                LoadDepartments();
-            }
-        }
+        //    if (DialogResult.OK == dlg.ShowDialog())
+        //    {
+        //        LoadDepartments();
+        //    }
+        //}
 
         /// <summary>
         /// 菜单 - 编辑班组
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void menuEditTeam_Click(object sender, EventArgs e)
-        {
-            string ID = this.wgvWorkTeam.gridView1.GetFocusedRowCellDisplayText("Id");
-            List<string> IDList = new List<string>();
-            for (int i = 0; i < this.wgvWorkTeam.gridView1.RowCount; i++)
-            {
-                string strTemp = this.wgvWorkTeam.GridView1.GetRowCellDisplayText(i, "Id");
-                IDList.Add(strTemp);
-            }
+        //private void menuEditTeam_Click(object sender, EventArgs e)
+        //{
+        //    string ID = this.wgvWorkTeam.gridView1.GetFocusedRowCellDisplayText("Id");
+        //    List<string> IDList = new List<string>();
+        //    for (int i = 0; i < this.wgvWorkTeam.gridView1.RowCount; i++)
+        //    {
+        //        string strTemp = this.wgvWorkTeam.GridView1.GetRowCellDisplayText(i, "Id");
+        //        IDList.Add(strTemp);
+        //    }
 
-            if (!string.IsNullOrEmpty(ID))
-            {
-                FrmWorkTeamEdit dlg = new FrmWorkTeamEdit();
-                dlg.ID = ID;
-                dlg.IDList = IDList;
-                dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
+        //    if (!string.IsNullOrEmpty(ID))
+        //    {
+        //        FrmWorkTeamEdit dlg = new FrmWorkTeamEdit();
+        //        dlg.ID = ID;
+        //        dlg.IDList = IDList;
+        //        dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
 
-                if (DialogResult.OK == dlg.ShowDialog())
-                {
-                    LoadDepartments();
-                }
-            }
-        }
+        //        if (DialogResult.OK == dlg.ShowDialog())
+        //        {
+        //            LoadDepartments();
+        //        }
+        //    }
+        //}
 
         /// <summary>
         /// 菜单 - 删除班组
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void menuDeleteTeam_Click(object sender, EventArgs e)
-        {
-            string id = this.wgvWorkTeam.gridView1.GetFocusedRowCellDisplayText("Id");
-            if (string.IsNullOrEmpty(id))
-                return;
+        //private void menuDeleteTeam_Click(object sender, EventArgs e)
+        //{
+        //    string id = this.wgvWorkTeam.gridView1.GetFocusedRowCellDisplayText("Id");
+        //    if (string.IsNullOrEmpty(id))
+        //        return;
 
-            if (MessageDxUtil.ShowYesNoAndTips("您确定删除选定的产线么？") == DialogResult.No)
-            {
-                return;
-            }
+        //    if (MessageDxUtil.ShowYesNoAndTips("您确定删除选定的产线么？") == DialogResult.No)
+        //    {
+        //        return;
+        //    }
 
-            CallerFactory<IWorkTeamService>.Instance.MarkDelete(id);
-            LoadDepartments();
-        }
+        //    CallerFactory<IWorkTeamService>.Instance.MarkDelete(id);
+        //    LoadDepartments();
+        //}
 
         /// <summary>
         /// 菜单 - 查看仓库

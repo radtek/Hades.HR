@@ -54,6 +54,7 @@ namespace Hades.HR.DALSQL
             info.OuterPhone = reader.GetString("OuterPhone");
             info.Fax = reader.GetString("Fax");
             info.Principal = reader.GetString("Principal");
+            info.Quota = reader.GetInt32("Quota");
             info.Remark = reader.GetString("Remark");
             info.FoundDate = reader.GetDateTime("FoundDate");
             info.CloseDate = reader.GetDateTime("CloseDate");
@@ -90,6 +91,7 @@ namespace Hades.HR.DALSQL
             hash.Add("OuterPhone", info.OuterPhone);
             hash.Add("Fax", info.Fax);
             hash.Add("Principal", info.Principal);
+            hash.Add("Quota", info.Quota);
             hash.Add("Remark", info.Remark);
             hash.Add("FoundDate", info.FoundDate);
             hash.Add("CloseDate", info.CloseDate);
@@ -125,6 +127,7 @@ namespace Hades.HR.DALSQL
             dict.Add("OuterPhone", "外线电话");
             dict.Add("Fax", "传真");
             dict.Add("Principal", "负责人");
+            dict.Add("Quota", "定额人数");
             dict.Add("Remark", "备注");
             dict.Add("FoundDate", "");
             dict.Add("CloseDate", "");

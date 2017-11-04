@@ -127,7 +127,7 @@ namespace Hades.HR.BLL
         /// <returns></returns>
         public bool CheckDuplicate(DepartmentInfo entity)
         {
-            string message = "";
+            //string message = "";
             string sql = "";
             if (string.IsNullOrEmpty(entity.Id))
             {
@@ -140,12 +140,12 @@ namespace Hades.HR.BLL
             var result = base.Find(sql);
             if (result.Count > 0)
             {
-                message = "部门编码已存在";
+                //message = "部门编码已存在";
                 return false;
             }
             else
             {
-                message = "";
+                //message = "";
                 return true;
             }
         }
