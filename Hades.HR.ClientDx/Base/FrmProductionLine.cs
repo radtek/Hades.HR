@@ -90,23 +90,27 @@ namespace Hades.HR.UI
         }
 
         /// <summary>
-        /// 载入公司包含工段
+        /// 查看班组
         /// </summary>
-        /// <param name="workTeamId"></param>
-        //private void LoadWorkSections()
-        //{
-        //    List<WorkSectionInfo> workSections;
-        //    if (string.IsNullOrEmpty(this.currentWorkTeamId))
-        //        workSections = new List<WorkSectionInfo>();
-        //    else
-        //        workSections = CallerFactory<IWorkSectionService>.Instance.Find2(string.Format("WorkTeamId='{0}' AND Deleted=0", currentWorkTeamId), "ORDER BY SortCode");
+        private void ViewWorkTeam()
+        {
+            string ID = this.wgvWorkTeam.gridView1.GetFocusedRowCellDisplayText("Id");
+            List<string> IDList = new List<string>();
+            for (int i = 0; i < this.wgvWorkTeam.gridView1.RowCount; i++)
+            {
+                string strTemp = this.wgvWorkTeam.GridView1.GetRowCellDisplayText(i, "Id");
+                IDList.Add(strTemp);
+            }
 
-        //    this.wgvWorkSection.DisplayColumns = "Name,Number,WorkTeamId,SortCode,Remark,Enabled";
-        //    this.wgvWorkSection.ColumnNameAlias = CallerFactory<IWorkSectionService>.Instance.GetColumnNameAlias();
-
-        //    this.wgvWorkSection.DataSource = workSections;
-        //    this.wgvWorkSection.PrintTitle = "工段报表";
-        //}
+            if (!string.IsNullOrEmpty(ID))
+            {
+                FrmWorkTeamView dlg = new FrmWorkTeamView();
+                dlg.ID = ID;
+                dlg.IDList = IDList;
+                dlg.InitFunction(LoginUserInfo, FunctionDict);
+                dlg.ShowDialog();
+            }
+        }
         #endregion //Function
 
 
@@ -121,17 +125,20 @@ namespace Hades.HR.UI
             LoadDepartments();
 
             this.depTree.Expand();
-          
+
             this.wgvWorkTeam.AppendedMenu = this.contextMenuStrip2;
             this.wgvWorkTeam.ShowLineNumber = true;
             this.wgvWorkTeam.BestFitColumnWith = true;
             this.wgvWorkTeam.gridView1.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(wgvWorkTeam_CustomColumnDisplayText);
+            this.wgvWorkTeam.OnGridViewMouseDoubleClick += WgvWorkTeam_OnGridViewMouseDoubleClick;
 
             //this.wgvWorkSection.AppendedMenu = this.contextMenuStrip3;
             //this.wgvWorkSection.ShowLineNumber = true;
             //this.wgvWorkSection.BestFitColumnWith = true;
             //this.wgvWorkSection.gridView1.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(wgvWorkSection_CustomColumnDisplayText);
         }
+
+       
         #endregion //Method
 
         #region Event
@@ -144,53 +151,32 @@ namespace Hades.HR.UI
         {
             var department = this.depTree.GetSelectedObject();
             if (department != null)
-            {              
+            {
                 this.txtDepartmentName.Text = department.Name;
                 this.txtDepartmentNumber.Text = department.Number;
 
-                this.currentDepartmentId = department.Id;                
-                                             
+                this.currentDepartmentId = department.Id;
+
                 LoadWorkTeams();
             }
         }
 
-  
+
         void workTeam_OnDataSaved(object sender, EventArgs e)
         {
             LoadWorkTeams();
         }
 
-        void workSection_OnDataSaved(object sender, EventArgs e)
-        {
-            //LoadWorkSections();
-        }
 
         #region Menu Event
         /// <summary>
-        /// 菜单 - 新增产线
+        /// 查看班组
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void menuAddLine_Click(object sender, EventArgs e)
-        {       
-        }
-
-        /// <summary>
-        /// 菜单 - 编辑产线
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void menuEditLine_Click(object sender, EventArgs e)
-        {           
-        }
-
-        /// <summary>
-        /// 菜单 - 删除产线
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void menuDeleteLine_Click(object sender, EventArgs e)
-        {          
+        private void menuViewTeam_Click(object sender, EventArgs e)
+        {
+            ViewWorkTeam();
         }
 
         /// <summary>
@@ -266,7 +252,7 @@ namespace Hades.HR.UI
         /// <param name="e"></param>
         private void menuAddSection_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         /// <summary>
@@ -276,7 +262,7 @@ namespace Hades.HR.UI
         /// <param name="e"></param>
         private void menuEditSection_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         /// <summary>
@@ -289,6 +275,16 @@ namespace Hades.HR.UI
 
         }
         #endregion //Menu Event
+
+        /// <summary>
+        /// 双击班组表格
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void WgvWorkTeam_OnGridViewMouseDoubleClick(object sender, EventArgs e)
+        {
+            ViewWorkTeam();
+        }
 
 
         /// <summary>

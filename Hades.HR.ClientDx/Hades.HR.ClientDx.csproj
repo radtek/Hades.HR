@@ -729,12 +729,6 @@
     <Compile Include="Base\FrmWorkTeamEdit.Designer.cs">
       <DependentUpon>FrmWorkTeamEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="Base\FrmProductionLineEdit.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Base\FrmProductionLineEdit.Designer.cs">
-      <DependentUpon>FrmProductionLineEdit.cs</DependentUpon>
-    </Compile>
     <Compile Include="Base\FrmStaffView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -764,6 +758,12 @@
     </Compile>
     <Compile Include="Attendance\FrmMonthAttendance.Designer.cs">
       <DependentUpon>FrmMonthAttendance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Base\FrmWorkTeamView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Base\FrmWorkTeamView.Designer.cs">
+      <DependentUpon>FrmWorkTeamView.cs</DependentUpon>
     </Compile>
     <Compile Include="Salary\FrmBonusDefine.cs">
       <SubType>Form</SubType>
@@ -901,6 +901,9 @@
     <EmbeddedResource Include="Base\FrmWarehouseEdit.resx">
       <DependentUpon>FrmWarehouseEdit.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Base\FrmWorkTeamView.resx">
+      <DependentUpon>FrmWorkTeamView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Control\DepartmentLookup.resx">
       <DependentUpon>DepartmentLookup.cs</DependentUpon>
     </EmbeddedResource>
@@ -924,9 +927,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Base\FrmDepartmentView.resx">
       <DependentUpon>FrmDepartmentView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Base\FrmProductionLineEdit.resx">
-      <DependentUpon>FrmProductionLineEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Base\FrmPosition.resx">
       <DependentUpon>FrmPosition.cs</DependentUpon>

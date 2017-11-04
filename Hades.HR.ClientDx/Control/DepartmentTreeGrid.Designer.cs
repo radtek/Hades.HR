@@ -36,6 +36,8 @@
             this.colSortCode = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.colType = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.colAddress = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.colPrincipal = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.colFax = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.colInnerPhone = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.colOuterPhone = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.colRemark = new DevExpress.XtraTreeList.Columns.TreeListColumn();
@@ -49,8 +51,6 @@
             this.menuEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.menuDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.bsDepartment = new System.Windows.Forms.BindingSource(this.components);
-            this.colFax = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.colPrincipal = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             ((System.ComponentModel.ISupportInitialize)(this.tlView)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bsDepartment)).BeginInit();
@@ -111,6 +111,7 @@
             this.colName.Caption = "部门名称";
             this.colName.FieldName = "Name";
             this.colName.Name = "colName";
+            this.colName.OptionsColumn.AllowSort = false;
             this.colName.Visible = true;
             this.colName.VisibleIndex = 1;
             this.colName.Width = 44;
@@ -143,6 +144,22 @@
             this.colAddress.Visible = true;
             this.colAddress.VisibleIndex = 4;
             this.colAddress.Width = 45;
+            // 
+            // colPrincipal
+            // 
+            this.colPrincipal.Caption = "负责人";
+            this.colPrincipal.FieldName = "Principal";
+            this.colPrincipal.Name = "colPrincipal";
+            this.colPrincipal.Visible = true;
+            this.colPrincipal.VisibleIndex = 5;
+            // 
+            // colFax
+            // 
+            this.colFax.Caption = "传真";
+            this.colFax.FieldName = "Fax";
+            this.colFax.Name = "colFax";
+            this.colFax.Visible = true;
+            this.colFax.VisibleIndex = 6;
             // 
             // colInnerPhone
             // 
@@ -245,22 +262,6 @@
             // bsDepartment
             // 
             this.bsDepartment.DataSource = typeof(Hades.HR.Entity.DepartmentInfo);
-            // 
-            // colFax
-            // 
-            this.colFax.Caption = "传真";
-            this.colFax.FieldName = "Fax";
-            this.colFax.Name = "colFax";
-            this.colFax.Visible = true;
-            this.colFax.VisibleIndex = 6;
-            // 
-            // colPrincipal
-            // 
-            this.colPrincipal.Caption = "负责人";
-            this.colPrincipal.FieldName = "Principal";
-            this.colPrincipal.Name = "colPrincipal";
-            this.colPrincipal.Visible = true;
-            this.colPrincipal.VisibleIndex = 5;
             // 
             // DepartmentTreeGrid
             // 
