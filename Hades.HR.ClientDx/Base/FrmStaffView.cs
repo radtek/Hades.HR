@@ -78,6 +78,17 @@ namespace Hades.HR.UI
                         var pos = CallerFactory<IPositionService>.Instance.FindByID(info.PositionId);
                         txtPosition.Text = pos.Name;
                     }
+                    if (!string.IsNullOrEmpty(info.WorkTeamId))
+                    {
+                        var team = CallerFactory<IWorkTeamService>.Instance.FindByID(info.WorkTeamId);
+                        txtWorkTeam.Text = team.Name;
+                    }
+
+                    txtStaffType.Text = info.StaffType == 1 ? "管理员工" : "计件员工";
+                    txtJobStatus.Text = info.JobStatus == 1 ? "在职" : "离职";
+
+                    txtOnJobTime.Text = info.OnJobTime.ToDateString();
+                    txtOffJobTime.Text = info.OffJobTime.ToDateString();
 
                     txtGender.Text = info.Gender;
                     txtBirthday.Text = info.Birthday.ToDateString();

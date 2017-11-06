@@ -87,6 +87,16 @@
             this.layoutControlItem14 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem21 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem17 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.txtStaffType = new DevExpress.XtraEditors.TextEdit();
+            this.layoutControlItem18 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.txtWorkTeam = new DevExpress.XtraEditors.TextEdit();
+            this.layoutControlItem26 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.txtOnJobTime = new DevExpress.XtraEditors.TextEdit();
+            this.layoutControlItem31 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.txtOffJobTime = new DevExpress.XtraEditors.TextEdit();
+            this.layoutControlItem32 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.txtJobStatus = new DevExpress.XtraEditors.TextEdit();
+            this.layoutControlItem33 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.picPrint)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
@@ -149,29 +159,39 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem21)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtStaffType.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtWorkTeam.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem26)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtOnJobTime.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem31)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtOffJobTime.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem32)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtJobStatus.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem33)).BeginInit();
             this.SuspendLayout();
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(568, 452);
+            this.btnOK.Location = new System.Drawing.Point(568, 509);
             this.btnOK.Visible = false;
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(667, 452);
+            this.btnCancel.Location = new System.Drawing.Point(667, 509);
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(481, 452);
+            this.btnAdd.Location = new System.Drawing.Point(481, 509);
             this.btnAdd.Visible = false;
             // 
             // dataNavigator1
             // 
-            this.dataNavigator1.Location = new System.Drawing.Point(12, 447);
+            this.dataNavigator1.Location = new System.Drawing.Point(12, 504);
             // 
             // picPrint
             // 
-            this.picPrint.Location = new System.Drawing.Point(202, 449);
+            this.picPrint.Location = new System.Drawing.Point(202, 506);
             // 
             // groupControl1
             // 
@@ -179,12 +199,17 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(754, 431);
+            this.groupControl1.Size = new System.Drawing.Size(754, 485);
             this.groupControl1.TabIndex = 6;
             this.groupControl1.Text = "职员信息";
             // 
             // layoutControl1
             // 
+            this.layoutControl1.Controls.Add(this.txtJobStatus);
+            this.layoutControl1.Controls.Add(this.txtOffJobTime);
+            this.layoutControl1.Controls.Add(this.txtOnJobTime);
+            this.layoutControl1.Controls.Add(this.txtWorkTeam);
+            this.layoutControl1.Controls.Add(this.txtStaffType);
             this.layoutControl1.Controls.Add(this.txtEnabled);
             this.layoutControl1.Controls.Add(this.txtDuty);
             this.layoutControl1.Controls.Add(this.txtTitles);
@@ -217,22 +242,22 @@
             this.layoutControl1.Location = new System.Drawing.Point(2, 21);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(750, 408);
+            this.layoutControl1.Size = new System.Drawing.Size(750, 462);
             this.layoutControl1.TabIndex = 7;
             this.layoutControl1.Text = "layoutControl1";
             // 
             // txtEnabled
             // 
-            this.txtEnabled.Location = new System.Drawing.Point(87, 376);
+            this.txtEnabled.Location = new System.Drawing.Point(452, 430);
             this.txtEnabled.Name = "txtEnabled";
             this.txtEnabled.Properties.ReadOnly = true;
-            this.txtEnabled.Size = new System.Drawing.Size(651, 20);
+            this.txtEnabled.Size = new System.Drawing.Size(286, 20);
             this.txtEnabled.StyleController = this.layoutControl1;
             this.txtEnabled.TabIndex = 66;
             // 
             // txtDuty
             // 
-            this.txtDuty.Location = new System.Drawing.Point(452, 252);
+            this.txtDuty.Location = new System.Drawing.Point(452, 300);
             this.txtDuty.Name = "txtDuty";
             this.txtDuty.Properties.ReadOnly = true;
             this.txtDuty.Size = new System.Drawing.Size(286, 20);
@@ -241,7 +266,7 @@
             // 
             // txtTitles
             // 
-            this.txtTitles.Location = new System.Drawing.Point(87, 252);
+            this.txtTitles.Location = new System.Drawing.Point(87, 300);
             this.txtTitles.Name = "txtTitles";
             this.txtTitles.Properties.ReadOnly = true;
             this.txtTitles.Size = new System.Drawing.Size(286, 20);
@@ -250,7 +275,7 @@
             // 
             // txtJobType
             // 
-            this.txtJobType.Location = new System.Drawing.Point(452, 228);
+            this.txtJobType.Location = new System.Drawing.Point(452, 276);
             this.txtJobType.Name = "txtJobType";
             this.txtJobType.Properties.ReadOnly = true;
             this.txtJobType.Size = new System.Drawing.Size(286, 20);
@@ -259,7 +284,7 @@
             // 
             // txtWorkingDate
             // 
-            this.txtWorkingDate.Location = new System.Drawing.Point(87, 228);
+            this.txtWorkingDate.Location = new System.Drawing.Point(87, 276);
             this.txtWorkingDate.Name = "txtWorkingDate";
             this.txtWorkingDate.Properties.ReadOnly = true;
             this.txtWorkingDate.Size = new System.Drawing.Size(286, 20);
@@ -268,7 +293,7 @@
             // 
             // txtChildStatus
             // 
-            this.txtChildStatus.Location = new System.Drawing.Point(452, 204);
+            this.txtChildStatus.Location = new System.Drawing.Point(452, 252);
             this.txtChildStatus.Name = "txtChildStatus";
             this.txtChildStatus.Properties.ReadOnly = true;
             this.txtChildStatus.Size = new System.Drawing.Size(286, 20);
@@ -277,7 +302,7 @@
             // 
             // txtMarriage
             // 
-            this.txtMarriage.Location = new System.Drawing.Point(87, 204);
+            this.txtMarriage.Location = new System.Drawing.Point(87, 252);
             this.txtMarriage.Name = "txtMarriage";
             this.txtMarriage.Properties.ReadOnly = true;
             this.txtMarriage.Size = new System.Drawing.Size(286, 20);
@@ -286,7 +311,7 @@
             // 
             // txtDegree
             // 
-            this.txtDegree.Location = new System.Drawing.Point(452, 180);
+            this.txtDegree.Location = new System.Drawing.Point(452, 228);
             this.txtDegree.Name = "txtDegree";
             this.txtDegree.Properties.ReadOnly = true;
             this.txtDegree.Size = new System.Drawing.Size(286, 20);
@@ -295,7 +320,7 @@
             // 
             // txtEducation
             // 
-            this.txtEducation.Location = new System.Drawing.Point(87, 180);
+            this.txtEducation.Location = new System.Drawing.Point(87, 228);
             this.txtEducation.Name = "txtEducation";
             this.txtEducation.Properties.ReadOnly = true;
             this.txtEducation.Size = new System.Drawing.Size(286, 20);
@@ -304,7 +329,7 @@
             // 
             // txtPartyDate
             // 
-            this.txtPartyDate.Location = new System.Drawing.Point(452, 156);
+            this.txtPartyDate.Location = new System.Drawing.Point(452, 204);
             this.txtPartyDate.Name = "txtPartyDate";
             this.txtPartyDate.Properties.ReadOnly = true;
             this.txtPartyDate.Size = new System.Drawing.Size(286, 20);
@@ -313,7 +338,7 @@
             // 
             // txtPolitical
             // 
-            this.txtPolitical.Location = new System.Drawing.Point(87, 156);
+            this.txtPolitical.Location = new System.Drawing.Point(87, 204);
             this.txtPolitical.Name = "txtPolitical";
             this.txtPolitical.Properties.ReadOnly = true;
             this.txtPolitical.Size = new System.Drawing.Size(286, 20);
@@ -322,7 +347,7 @@
             // 
             // txtNationality
             // 
-            this.txtNationality.Location = new System.Drawing.Point(634, 84);
+            this.txtNationality.Location = new System.Drawing.Point(634, 132);
             this.txtNationality.Name = "txtNationality";
             this.txtNationality.Properties.ReadOnly = true;
             this.txtNationality.Size = new System.Drawing.Size(104, 20);
@@ -331,7 +356,7 @@
             // 
             // txtBirthday
             // 
-            this.txtBirthday.Location = new System.Drawing.Point(269, 84);
+            this.txtBirthday.Location = new System.Drawing.Point(269, 132);
             this.txtBirthday.Name = "txtBirthday";
             this.txtBirthday.Properties.ReadOnly = true;
             this.txtBirthday.Size = new System.Drawing.Size(104, 20);
@@ -340,7 +365,7 @@
             // 
             // txtNativePlace
             // 
-            this.txtNativePlace.Location = new System.Drawing.Point(452, 84);
+            this.txtNativePlace.Location = new System.Drawing.Point(452, 132);
             this.txtNativePlace.Name = "txtNativePlace";
             this.txtNativePlace.Properties.ReadOnly = true;
             this.txtNativePlace.Size = new System.Drawing.Size(103, 20);
@@ -349,7 +374,7 @@
             // 
             // txtGender
             // 
-            this.txtGender.Location = new System.Drawing.Point(87, 84);
+            this.txtGender.Location = new System.Drawing.Point(87, 132);
             this.txtGender.Name = "txtGender";
             this.txtGender.Properties.ReadOnly = true;
             this.txtGender.Size = new System.Drawing.Size(103, 20);
@@ -385,25 +410,25 @@
             // 
             // txtIntroduce
             // 
-            this.txtIntroduce.Location = new System.Drawing.Point(87, 276);
+            this.txtIntroduce.Location = new System.Drawing.Point(87, 324);
             this.txtIntroduce.Name = "txtIntroduce";
             this.txtIntroduce.Properties.ReadOnly = true;
-            this.txtIntroduce.Size = new System.Drawing.Size(651, 40);
+            this.txtIntroduce.Size = new System.Drawing.Size(651, 49);
             this.txtIntroduce.StyleController = this.layoutControl1;
             this.txtIntroduce.TabIndex = 47;
             // 
             // txtRemark
             // 
-            this.txtRemark.Location = new System.Drawing.Point(87, 320);
+            this.txtRemark.Location = new System.Drawing.Point(87, 377);
             this.txtRemark.Name = "txtRemark";
             this.txtRemark.Properties.ReadOnly = true;
-            this.txtRemark.Size = new System.Drawing.Size(651, 52);
+            this.txtRemark.Size = new System.Drawing.Size(651, 49);
             this.txtRemark.StyleController = this.layoutControl1;
             this.txtRemark.TabIndex = 46;
             // 
             // txtQQ
             // 
-            this.txtQQ.Location = new System.Drawing.Point(452, 132);
+            this.txtQQ.Location = new System.Drawing.Point(452, 180);
             this.txtQQ.Name = "txtQQ";
             this.txtQQ.Properties.ReadOnly = true;
             this.txtQQ.Size = new System.Drawing.Size(103, 20);
@@ -430,7 +455,7 @@
             // 
             // txtIdentityCard
             // 
-            this.txtIdentityCard.Location = new System.Drawing.Point(87, 108);
+            this.txtIdentityCard.Location = new System.Drawing.Point(87, 156);
             this.txtIdentityCard.Name = "txtIdentityCard";
             this.txtIdentityCard.Properties.ReadOnly = true;
             this.txtIdentityCard.Size = new System.Drawing.Size(286, 20);
@@ -439,7 +464,7 @@
             // 
             // txtPhone
             // 
-            this.txtPhone.Location = new System.Drawing.Point(87, 132);
+            this.txtPhone.Location = new System.Drawing.Point(87, 180);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Properties.ReadOnly = true;
             this.txtPhone.Size = new System.Drawing.Size(103, 20);
@@ -448,7 +473,7 @@
             // 
             // txtOfficePhone
             // 
-            this.txtOfficePhone.Location = new System.Drawing.Point(269, 132);
+            this.txtOfficePhone.Location = new System.Drawing.Point(269, 180);
             this.txtOfficePhone.Name = "txtOfficePhone";
             this.txtOfficePhone.Properties.ReadOnly = true;
             this.txtOfficePhone.Size = new System.Drawing.Size(104, 20);
@@ -457,7 +482,7 @@
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(634, 132);
+            this.txtEmail.Location = new System.Drawing.Point(634, 180);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Properties.ReadOnly = true;
             this.txtEmail.Size = new System.Drawing.Size(104, 20);
@@ -466,7 +491,7 @@
             // 
             // txtHomeAddress
             // 
-            this.txtHomeAddress.Location = new System.Drawing.Point(452, 108);
+            this.txtHomeAddress.Location = new System.Drawing.Point(452, 156);
             this.txtHomeAddress.Name = "txtHomeAddress";
             this.txtHomeAddress.Properties.ReadOnly = true;
             this.txtHomeAddress.Size = new System.Drawing.Size(286, 20);
@@ -505,10 +530,15 @@
             this.layoutControlItem16,
             this.layoutControlItem14,
             this.layoutControlItem21,
-            this.layoutControlItem17});
+            this.layoutControlItem17,
+            this.layoutControlItem18,
+            this.layoutControlItem26,
+            this.layoutControlItem31,
+            this.layoutControlItem32,
+            this.layoutControlItem33});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(750, 408);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(750, 462);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem1
@@ -523,7 +553,7 @@
             // layoutControlItem7
             // 
             this.layoutControlItem7.Control = this.txtIdentityCard;
-            this.layoutControlItem7.Location = new System.Drawing.Point(0, 96);
+            this.layoutControlItem7.Location = new System.Drawing.Point(0, 144);
             this.layoutControlItem7.Name = "layoutControlItem7";
             this.layoutControlItem7.Size = new System.Drawing.Size(365, 24);
             this.layoutControlItem7.Text = "身份证号";
@@ -532,7 +562,7 @@
             // layoutControlItem8
             // 
             this.layoutControlItem8.Control = this.txtPhone;
-            this.layoutControlItem8.Location = new System.Drawing.Point(0, 120);
+            this.layoutControlItem8.Location = new System.Drawing.Point(0, 168);
             this.layoutControlItem8.Name = "layoutControlItem8";
             this.layoutControlItem8.Size = new System.Drawing.Size(182, 24);
             this.layoutControlItem8.Text = "手机";
@@ -550,16 +580,16 @@
             // layoutControlItem25
             // 
             this.layoutControlItem25.Control = this.txtRemark;
-            this.layoutControlItem25.Location = new System.Drawing.Point(0, 308);
+            this.layoutControlItem25.Location = new System.Drawing.Point(0, 365);
             this.layoutControlItem25.Name = "layoutControlItem25";
-            this.layoutControlItem25.Size = new System.Drawing.Size(730, 56);
+            this.layoutControlItem25.Size = new System.Drawing.Size(730, 53);
             this.layoutControlItem25.Text = "备注";
             this.layoutControlItem25.TextSize = new System.Drawing.Size(72, 14);
             // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.txtQQ;
-            this.layoutControlItem3.Location = new System.Drawing.Point(365, 120);
+            this.layoutControlItem3.Location = new System.Drawing.Point(365, 168);
             this.layoutControlItem3.Name = "layoutControlItem3";
             this.layoutControlItem3.Size = new System.Drawing.Size(182, 24);
             this.layoutControlItem3.Text = "QQ";
@@ -568,7 +598,7 @@
             // layoutControlItem9
             // 
             this.layoutControlItem9.Control = this.txtOfficePhone;
-            this.layoutControlItem9.Location = new System.Drawing.Point(182, 120);
+            this.layoutControlItem9.Location = new System.Drawing.Point(182, 168);
             this.layoutControlItem9.Name = "layoutControlItem9";
             this.layoutControlItem9.Size = new System.Drawing.Size(183, 24);
             this.layoutControlItem9.Text = "办公电话";
@@ -577,7 +607,7 @@
             // layoutControlItem10
             // 
             this.layoutControlItem10.Control = this.txtEmail;
-            this.layoutControlItem10.Location = new System.Drawing.Point(547, 120);
+            this.layoutControlItem10.Location = new System.Drawing.Point(547, 168);
             this.layoutControlItem10.Name = "layoutControlItem10";
             this.layoutControlItem10.Size = new System.Drawing.Size(183, 24);
             this.layoutControlItem10.Text = "Email";
@@ -586,7 +616,7 @@
             // layoutControlItem11
             // 
             this.layoutControlItem11.Control = this.txtHomeAddress;
-            this.layoutControlItem11.Location = new System.Drawing.Point(365, 96);
+            this.layoutControlItem11.Location = new System.Drawing.Point(365, 144);
             this.layoutControlItem11.Name = "layoutControlItem11";
             this.layoutControlItem11.Size = new System.Drawing.Size(365, 24);
             this.layoutControlItem11.Text = "家庭地址";
@@ -595,9 +625,9 @@
             // layoutControlItem23
             // 
             this.layoutControlItem23.Control = this.txtIntroduce;
-            this.layoutControlItem23.Location = new System.Drawing.Point(0, 264);
+            this.layoutControlItem23.Location = new System.Drawing.Point(0, 312);
             this.layoutControlItem23.Name = "layoutControlItem23";
-            this.layoutControlItem23.Size = new System.Drawing.Size(730, 44);
+            this.layoutControlItem23.Size = new System.Drawing.Size(730, 53);
             this.layoutControlItem23.Text = "个人介绍";
             this.layoutControlItem23.TextSize = new System.Drawing.Size(72, 14);
             // 
@@ -631,7 +661,7 @@
             // layoutControlItem27
             // 
             this.layoutControlItem27.Control = this.txtGender;
-            this.layoutControlItem27.Location = new System.Drawing.Point(0, 72);
+            this.layoutControlItem27.Location = new System.Drawing.Point(0, 120);
             this.layoutControlItem27.Name = "layoutControlItem27";
             this.layoutControlItem27.Size = new System.Drawing.Size(182, 24);
             this.layoutControlItem27.Text = "性别";
@@ -640,7 +670,7 @@
             // layoutControlItem28
             // 
             this.layoutControlItem28.Control = this.txtNativePlace;
-            this.layoutControlItem28.Location = new System.Drawing.Point(365, 72);
+            this.layoutControlItem28.Location = new System.Drawing.Point(365, 120);
             this.layoutControlItem28.Name = "layoutControlItem28";
             this.layoutControlItem28.Size = new System.Drawing.Size(182, 24);
             this.layoutControlItem28.Text = "籍贯";
@@ -649,7 +679,7 @@
             // layoutControlItem29
             // 
             this.layoutControlItem29.Control = this.txtBirthday;
-            this.layoutControlItem29.Location = new System.Drawing.Point(182, 72);
+            this.layoutControlItem29.Location = new System.Drawing.Point(182, 120);
             this.layoutControlItem29.Name = "layoutControlItem29";
             this.layoutControlItem29.Size = new System.Drawing.Size(183, 24);
             this.layoutControlItem29.Text = "出生日期";
@@ -658,7 +688,7 @@
             // layoutControlItem30
             // 
             this.layoutControlItem30.Control = this.txtNationality;
-            this.layoutControlItem30.Location = new System.Drawing.Point(547, 72);
+            this.layoutControlItem30.Location = new System.Drawing.Point(547, 120);
             this.layoutControlItem30.Name = "layoutControlItem30";
             this.layoutControlItem30.Size = new System.Drawing.Size(183, 24);
             this.layoutControlItem30.Text = "民族";
@@ -667,7 +697,7 @@
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.txtPolitical;
-            this.layoutControlItem4.Location = new System.Drawing.Point(0, 144);
+            this.layoutControlItem4.Location = new System.Drawing.Point(0, 192);
             this.layoutControlItem4.Name = "layoutControlItem4";
             this.layoutControlItem4.Size = new System.Drawing.Size(365, 24);
             this.layoutControlItem4.Text = "政治面貌";
@@ -676,7 +706,7 @@
             // layoutControlItem5
             // 
             this.layoutControlItem5.Control = this.txtPartyDate;
-            this.layoutControlItem5.Location = new System.Drawing.Point(365, 144);
+            this.layoutControlItem5.Location = new System.Drawing.Point(365, 192);
             this.layoutControlItem5.Name = "layoutControlItem5";
             this.layoutControlItem5.Size = new System.Drawing.Size(365, 24);
             this.layoutControlItem5.Text = "入党日期";
@@ -685,7 +715,7 @@
             // layoutControlItem6
             // 
             this.layoutControlItem6.Control = this.txtEducation;
-            this.layoutControlItem6.Location = new System.Drawing.Point(0, 168);
+            this.layoutControlItem6.Location = new System.Drawing.Point(0, 216);
             this.layoutControlItem6.Name = "layoutControlItem6";
             this.layoutControlItem6.Size = new System.Drawing.Size(365, 24);
             this.layoutControlItem6.Text = "学历";
@@ -694,7 +724,7 @@
             // layoutControlItem13
             // 
             this.layoutControlItem13.Control = this.txtDegree;
-            this.layoutControlItem13.Location = new System.Drawing.Point(365, 168);
+            this.layoutControlItem13.Location = new System.Drawing.Point(365, 216);
             this.layoutControlItem13.Name = "layoutControlItem13";
             this.layoutControlItem13.Size = new System.Drawing.Size(365, 24);
             this.layoutControlItem13.Text = "学位";
@@ -703,7 +733,7 @@
             // layoutControlItem12
             // 
             this.layoutControlItem12.Control = this.txtMarriage;
-            this.layoutControlItem12.Location = new System.Drawing.Point(0, 192);
+            this.layoutControlItem12.Location = new System.Drawing.Point(0, 240);
             this.layoutControlItem12.Name = "layoutControlItem12";
             this.layoutControlItem12.Size = new System.Drawing.Size(365, 24);
             this.layoutControlItem12.Text = "婚姻情况";
@@ -712,7 +742,7 @@
             // layoutControlItem19
             // 
             this.layoutControlItem19.Control = this.txtChildStatus;
-            this.layoutControlItem19.Location = new System.Drawing.Point(365, 192);
+            this.layoutControlItem19.Location = new System.Drawing.Point(365, 240);
             this.layoutControlItem19.Name = "layoutControlItem19";
             this.layoutControlItem19.Size = new System.Drawing.Size(365, 24);
             this.layoutControlItem19.Text = "是否独生子女";
@@ -721,7 +751,7 @@
             // layoutControlItem15
             // 
             this.layoutControlItem15.Control = this.txtWorkingDate;
-            this.layoutControlItem15.Location = new System.Drawing.Point(0, 216);
+            this.layoutControlItem15.Location = new System.Drawing.Point(0, 264);
             this.layoutControlItem15.Name = "layoutControlItem15";
             this.layoutControlItem15.Size = new System.Drawing.Size(365, 24);
             this.layoutControlItem15.Text = "参加工作时间";
@@ -730,7 +760,7 @@
             // layoutControlItem16
             // 
             this.layoutControlItem16.Control = this.txtJobType;
-            this.layoutControlItem16.Location = new System.Drawing.Point(365, 216);
+            this.layoutControlItem16.Location = new System.Drawing.Point(365, 264);
             this.layoutControlItem16.Name = "layoutControlItem16";
             this.layoutControlItem16.Size = new System.Drawing.Size(365, 24);
             this.layoutControlItem16.Text = "工种";
@@ -739,7 +769,7 @@
             // layoutControlItem14
             // 
             this.layoutControlItem14.Control = this.txtTitles;
-            this.layoutControlItem14.Location = new System.Drawing.Point(0, 240);
+            this.layoutControlItem14.Location = new System.Drawing.Point(0, 288);
             this.layoutControlItem14.Name = "layoutControlItem14";
             this.layoutControlItem14.Size = new System.Drawing.Size(365, 24);
             this.layoutControlItem14.Text = "职称";
@@ -748,7 +778,7 @@
             // layoutControlItem21
             // 
             this.layoutControlItem21.Control = this.txtDuty;
-            this.layoutControlItem21.Location = new System.Drawing.Point(365, 240);
+            this.layoutControlItem21.Location = new System.Drawing.Point(365, 288);
             this.layoutControlItem21.Name = "layoutControlItem21";
             this.layoutControlItem21.Size = new System.Drawing.Size(365, 24);
             this.layoutControlItem21.Text = "职务";
@@ -757,17 +787,107 @@
             // layoutControlItem17
             // 
             this.layoutControlItem17.Control = this.txtEnabled;
-            this.layoutControlItem17.Location = new System.Drawing.Point(0, 364);
+            this.layoutControlItem17.Location = new System.Drawing.Point(365, 418);
             this.layoutControlItem17.Name = "layoutControlItem17";
-            this.layoutControlItem17.Size = new System.Drawing.Size(730, 24);
+            this.layoutControlItem17.Size = new System.Drawing.Size(365, 24);
             this.layoutControlItem17.Text = "是否启用";
             this.layoutControlItem17.TextSize = new System.Drawing.Size(72, 14);
+            // 
+            // txtStaffType
+            // 
+            this.txtStaffType.Location = new System.Drawing.Point(87, 84);
+            this.txtStaffType.Name = "txtStaffType";
+            this.txtStaffType.Properties.ReadOnly = true;
+            this.txtStaffType.Size = new System.Drawing.Size(286, 20);
+            this.txtStaffType.StyleController = this.layoutControl1;
+            this.txtStaffType.TabIndex = 67;
+            // 
+            // layoutControlItem18
+            // 
+            this.layoutControlItem18.Control = this.txtStaffType;
+            this.layoutControlItem18.Location = new System.Drawing.Point(0, 72);
+            this.layoutControlItem18.Name = "layoutControlItem18";
+            this.layoutControlItem18.Size = new System.Drawing.Size(365, 24);
+            this.layoutControlItem18.Text = "职员类型";
+            this.layoutControlItem18.TextSize = new System.Drawing.Size(72, 14);
+            // 
+            // txtWorkTeam
+            // 
+            this.txtWorkTeam.Location = new System.Drawing.Point(452, 84);
+            this.txtWorkTeam.Name = "txtWorkTeam";
+            this.txtWorkTeam.Properties.ReadOnly = true;
+            this.txtWorkTeam.Size = new System.Drawing.Size(286, 20);
+            this.txtWorkTeam.StyleController = this.layoutControl1;
+            this.txtWorkTeam.TabIndex = 68;
+            // 
+            // layoutControlItem26
+            // 
+            this.layoutControlItem26.Control = this.txtWorkTeam;
+            this.layoutControlItem26.Location = new System.Drawing.Point(365, 72);
+            this.layoutControlItem26.Name = "layoutControlItem26";
+            this.layoutControlItem26.Size = new System.Drawing.Size(365, 24);
+            this.layoutControlItem26.Text = "所属班组";
+            this.layoutControlItem26.TextSize = new System.Drawing.Size(72, 14);
+            // 
+            // txtOnJobTime
+            // 
+            this.txtOnJobTime.Location = new System.Drawing.Point(87, 108);
+            this.txtOnJobTime.Name = "txtOnJobTime";
+            this.txtOnJobTime.Properties.ReadOnly = true;
+            this.txtOnJobTime.Size = new System.Drawing.Size(286, 20);
+            this.txtOnJobTime.StyleController = this.layoutControl1;
+            this.txtOnJobTime.TabIndex = 69;
+            // 
+            // layoutControlItem31
+            // 
+            this.layoutControlItem31.Control = this.txtOnJobTime;
+            this.layoutControlItem31.Location = new System.Drawing.Point(0, 96);
+            this.layoutControlItem31.Name = "layoutControlItem31";
+            this.layoutControlItem31.Size = new System.Drawing.Size(365, 24);
+            this.layoutControlItem31.Text = "入职时间";
+            this.layoutControlItem31.TextSize = new System.Drawing.Size(72, 14);
+            // 
+            // txtOffJobTime
+            // 
+            this.txtOffJobTime.Location = new System.Drawing.Point(452, 108);
+            this.txtOffJobTime.Name = "txtOffJobTime";
+            this.txtOffJobTime.Properties.ReadOnly = true;
+            this.txtOffJobTime.Size = new System.Drawing.Size(286, 20);
+            this.txtOffJobTime.StyleController = this.layoutControl1;
+            this.txtOffJobTime.TabIndex = 70;
+            // 
+            // layoutControlItem32
+            // 
+            this.layoutControlItem32.Control = this.txtOffJobTime;
+            this.layoutControlItem32.Location = new System.Drawing.Point(365, 96);
+            this.layoutControlItem32.Name = "layoutControlItem32";
+            this.layoutControlItem32.Size = new System.Drawing.Size(365, 24);
+            this.layoutControlItem32.Text = "离职时间";
+            this.layoutControlItem32.TextSize = new System.Drawing.Size(72, 14);
+            // 
+            // txtJobStatus
+            // 
+            this.txtJobStatus.Location = new System.Drawing.Point(87, 430);
+            this.txtJobStatus.Name = "txtJobStatus";
+            this.txtJobStatus.Properties.ReadOnly = true;
+            this.txtJobStatus.Size = new System.Drawing.Size(286, 20);
+            this.txtJobStatus.StyleController = this.layoutControl1;
+            this.txtJobStatus.TabIndex = 71;
+            // 
+            // layoutControlItem33
+            // 
+            this.layoutControlItem33.Control = this.txtJobStatus;
+            this.layoutControlItem33.Location = new System.Drawing.Point(0, 418);
+            this.layoutControlItem33.Name = "layoutControlItem33";
+            this.layoutControlItem33.Size = new System.Drawing.Size(365, 24);
+            this.layoutControlItem33.Text = "在职状态";
+            this.layoutControlItem33.TextSize = new System.Drawing.Size(72, 14);
             // 
             // FrmStaffView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(754, 487);
+            this.ClientSize = new System.Drawing.Size(754, 544);
             this.Controls.Add(this.groupControl1);
             this.Name = "FrmStaffView";
             this.Text = "FrmStaffView";
@@ -839,6 +959,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem21)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtStaffType.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtWorkTeam.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem26)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtOnJobTime.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem31)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtOffJobTime.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem32)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtJobStatus.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem33)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -905,5 +1035,15 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem14;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem21;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem17;
+        private DevExpress.XtraEditors.TextEdit txtWorkTeam;
+        private DevExpress.XtraEditors.TextEdit txtStaffType;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem18;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem26;
+        private DevExpress.XtraEditors.TextEdit txtOffJobTime;
+        private DevExpress.XtraEditors.TextEdit txtOnJobTime;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem31;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem32;
+        private DevExpress.XtraEditors.TextEdit txtJobStatus;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem33;
     }
 }

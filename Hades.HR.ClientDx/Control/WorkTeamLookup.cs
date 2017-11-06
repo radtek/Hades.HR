@@ -30,12 +30,12 @@ namespace Hades.HR.UI
         /// <summary>
         /// 初始化数据
         /// </summary>
-        /// <param name="productionLineId">所属产线ID</param>
-        public void Init(string productionLineId)
+        /// <param name="companyId">所属公司ID</param>
+        public void Init(string companyId)
         {
-            var data = CallerFactory<IWorkTeamService>.Instance.Find2(string.Format("ProductionLineId='{0}' AND Deleted=0", productionLineId), "ORDER BY SortCode");
+            var data = CallerFactory<IWorkTeamService>.Instance.Find2(string.Format("CompanyId='{0}' AND Deleted=0", companyId), "ORDER BY SortCode");
             this.bsWorkTeam.DataSource = data;
-        }
+        }        
 
         /// <summary>
         /// 设置选中班组

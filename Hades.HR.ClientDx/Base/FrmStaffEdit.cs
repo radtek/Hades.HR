@@ -66,7 +66,6 @@ namespace Hades.HR.UI
             info.DepartmentId = luDepartment.GetSelectedId();
             info.PositionId = luPosition.GetSelectedId();
             info.CompanyId = luCompany.GetSelectedId();
-            info.ProductionLineId = luProductionLine.GetSelectedId();
             info.WorkTeamId = luWorkTeam.GetSelectedId();
 
             info.Gender = cmbGender.Text;
@@ -93,6 +92,8 @@ namespace Hades.HR.UI
             info.Remark = txtRemark.Text;
 
             info.JobStatus = Convert.ToInt32(cmbJobStatus.EditValue);
+            info.OnJobTime = dpOnJobTime.DateTime;
+            info.OffJobTime = dpOffJobTime.DateTime;
             info.Enabled = Convert.ToInt32(cmbEnabled.EditValue);
 
             info.Editor = this.LoginUserInfo.Name;
@@ -135,7 +136,6 @@ namespace Hades.HR.UI
                     luCompany.SetSelected(info.CompanyId);
                     luDepartment.SetSelected(info.DepartmentId);                    
                     luPosition.SetSelected(info.PositionId);
-                    luProductionLine.SetSelected(info.ProductionLineId);
                     luWorkTeam.SetSelected(info.WorkTeamId);
 
                     cmbGender.Text = info.Gender;
@@ -161,6 +161,10 @@ namespace Hades.HR.UI
                     txtIntroduce.Text = info.Introduce;
                     txtRemark.Text = info.Remark;
                     cmbJobStatus.EditValue = info.JobStatus;
+
+                    dpOnJobTime.SetDateTime(info.OnJobTime);
+                    dpOffJobTime.SetDateTime(info.OffJobTime);
+
                     cmbEnabled.EditValue = info.Enabled;
                 }
                 //this.btnOK.Enabled = HasFunction("Staff/Edit");             
@@ -316,8 +320,7 @@ namespace Hades.HR.UI
             if (!string.IsNullOrEmpty(compId))
             {
                 this.luDepartment.Init(compId);
-
-                this.luProductionLine.Init(compId);
+                this.luWorkTeam.Init(compId);
             }
         }
 
@@ -332,23 +335,25 @@ namespace Hades.HR.UI
             if (!string.IsNullOrEmpty(depId))
             {
                 this.luPosition.Init(depId);
+                
             }
         }
 
         /// <summary>
-        /// 产线选择
+        /// 职员类型选择
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void luProductionLine_ProductionLineSelect(object sender, EventArgs e)
+        private void cmbStaffType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var lineId = this.luProductionLine.GetSelectedId();
-            if (!string.IsNullOrEmpty(lineId))
+            if (this.cmbStaffType.SelectedIndex == 0)
             {
-                this.luWorkTeam.Init(lineId);
+                this.luWorkTeam.SetSelected("");
+                this.luWorkTeam.Enabled = false;
             }
+            else
+                this.luWorkTeam.Enabled = true;
         }
-
         #endregion //Event
 
         //private void SetAttachInfo(StaffInfo info)

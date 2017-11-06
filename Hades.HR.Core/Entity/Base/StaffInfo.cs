@@ -116,13 +116,19 @@ namespace Hades.HR.Entity
         public virtual string PositionId { get; set; }
 
         [DataMember]
-        public virtual string ProductionLineId { get; set; }
-
-        [DataMember]
         public virtual string WorkTeamId { get; set; }
 
         [DataMember]
         public virtual int JobStatus { get; set; }
+
+        [DataMember]
+        public virtual DateTime OnJobTime { get; set; }
+
+        [DataMember]
+        public virtual DateTime OffJobTime { get; set; }
+
+        [DataMember]
+        public virtual bool IsSystem { get; set; }
 
         [DataMember]
         public virtual string Creator { get; set; }
