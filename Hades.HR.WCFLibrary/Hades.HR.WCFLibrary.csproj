@@ -95,11 +95,20 @@
     <Compile Include="..\Hades.HR.Caller\Facade\Attendance\ILaborAttendanceRecordService.cs">
       <Link>Facade\Attendance\ILaborAttendanceRecordService.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Caller\Facade\Attendance\ILaborDailyAttendanceService.cs">
+      <Link>Facade\Attendance\ILaborDailyAttendanceService.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Caller\Facade\Attendance\ILaborDailyWorkloadService.cs">
+      <Link>Facade\Attendance\ILaborDailyWorkloadService.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Caller\Facade\Attendance\ILaborMonthAttendanceService.cs">
       <Link>Facade\Attendance\ILaborMonthAttendanceService.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Caller\Facade\Attendance\IWorkSectionLaborService.cs">
       <Link>Facade\Attendance\IWorkSectionLaborService.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Caller\Facade\Attendance\IWorkTeamDailyWorkloadService.cs">
+      <Link>Facade\Attendance\IWorkTeamDailyWorkloadService.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Caller\Facade\Base\IDepartmentService.cs">
       <Link>Facade\Base\IDepartmentService.cs</Link>
@@ -155,11 +164,20 @@
     <Compile Include="..\Hades.HR.Core\BLL\Attendance\LaborAttendanceRecord.cs">
       <Link>Biz\BLL\Attendance\LaborAttendanceRecord.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Core\BLL\Attendance\LaborDailyAttendance.cs">
+      <Link>Biz\BLL\Attendance\LaborDailyAttendance.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\BLL\Attendance\LaborDailyWorkload.cs">
+      <Link>Biz\BLL\Attendance\LaborDailyWorkload.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Core\BLL\Attendance\LaborMonthAttendance.cs">
       <Link>Biz\BLL\Attendance\LaborMonthAttendance.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\BLL\Attendance\WorkSectionLabor.cs">
       <Link>Biz\BLL\Attendance\WorkSectionLabor.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\BLL\Attendance\WorkTeamDailyWorkload.cs">
+      <Link>Biz\BLL\Attendance\WorkTeamDailyWorkload.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\BLL\Base\Department.cs">
       <Link>Biz\BLL\Base\Department.cs</Link>
@@ -215,11 +233,20 @@
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Attendance\LaborAttendanceRecord.cs">
       <Link>Biz\DAL\DALSQL\Attendance\LaborAttendanceRecord.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Attendance\LaborDailyAttendance.cs">
+      <Link>Biz\DAL\DALSQL\Attendance\LaborDailyAttendance.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Attendance\LaborDailyWorkload.cs">
+      <Link>Biz\DAL\DALSQL\Attendance\LaborDailyWorkload.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Attendance\LaborMonthAttendance.cs">
       <Link>Biz\DAL\DALSQL\Attendance\LaborMonthAttendance.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Attendance\WorkSectionLabor.cs">
       <Link>Biz\DAL\DALSQL\Attendance\WorkSectionLabor.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Attendance\WorkTeamDailyWorkload.cs">
+      <Link>Biz\DAL\DALSQL\Attendance\WorkTeamDailyWorkload.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Base\Department.cs">
       <Link>Biz\DAL\DALSQL\Base\Department.cs</Link>
@@ -275,11 +302,20 @@
     <Compile Include="..\Hades.HR.Core\Entity\Attendance\LaborAttendanceRecordInfo.cs">
       <Link>Biz\Entity\Attendance\LaborAttendanceRecordInfo.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Core\Entity\Attendance\LaborDailyAttendanceInfo.cs">
+      <Link>Biz\Entity\Attendance\LaborDailyAttendanceInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\Entity\Attendance\LaborDailyWorkloadInfo.cs">
+      <Link>Biz\Entity\Attendance\LaborDailyWorkloadInfo.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Core\Entity\Attendance\LaborMonthAttendanceInfo.cs">
       <Link>Biz\Entity\Attendance\LaborMonthAttendanceInfo.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\Entity\Attendance\WorkSectionLaborInfo.cs">
       <Link>Biz\Entity\Attendance\WorkSectionLaborInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\Entity\Attendance\WorkTeamDailyWorkloadInfo.cs">
+      <Link>Biz\Entity\Attendance\WorkTeamDailyWorkloadInfo.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\Entity\Base\DepartmentInfo.cs">
       <Link>Biz\Entity\Base\DepartmentInfo.cs</Link>
@@ -335,11 +371,20 @@
     <Compile Include="..\Hades.HR.Core\IDAL\Attendance\ILaborAttendanceRecord.cs">
       <Link>Biz\IDAL\Attendance\ILaborAttendanceRecord.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Core\IDAL\Attendance\ILaborDailyAttendance.cs">
+      <Link>Biz\IDAL\Attendance\ILaborDailyAttendance.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\IDAL\Attendance\ILaborDailyWorkload.cs">
+      <Link>Biz\IDAL\Attendance\ILaborDailyWorkload.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Core\IDAL\Attendance\ILaborMonthAttendance.cs">
       <Link>Biz\IDAL\Attendance\ILaborMonthAttendance.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\IDAL\Attendance\IWorkSectionLabor.cs">
       <Link>Biz\IDAL\Attendance\IWorkSectionLabor.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\IDAL\Attendance\IWorkTeamDailyWorkload.cs">
+      <Link>Biz\IDAL\Attendance\IWorkTeamDailyWorkload.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\IDAL\Base\IDepartment.cs">
       <Link>Biz\IDAL\Base\IDepartment.cs</Link>
@@ -393,8 +438,11 @@
     <Compile Include="WCFLibrary\Attendance\AttendanceRecordService.cs" />
     <Compile Include="WCFLibrary\Attendance\AttendanceService.cs" />
     <Compile Include="WCFLibrary\Attendance\LaborAttendanceRecordService.cs" />
+    <Compile Include="WCFLibrary\Attendance\LaborDailyAttendanceService.cs" />
+    <Compile Include="WCFLibrary\Attendance\LaborDailyWorkloadService.cs" />
     <Compile Include="WCFLibrary\Attendance\LaborMonthAttendanceService.cs" />
     <Compile Include="WCFLibrary\Attendance\WorkSectionLaborService.cs" />
+    <Compile Include="WCFLibrary\Attendance\WorkTeamDailyWorkloadService.cs" />
     <Compile Include="WCFLibrary\Base\StaffLevelService.cs" />
     <Compile Include="WCFLibrary\Base\WarehouseManagerService.cs" />
     <Compile Include="WCFLibrary\Base\WarehouseService.cs" />

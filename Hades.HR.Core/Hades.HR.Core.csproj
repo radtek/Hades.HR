@@ -111,8 +111,11 @@
     <Compile Include="BLL\Attendance\Attendance.cs" />
     <Compile Include="BLL\Attendance\AttendanceRecord.cs" />
     <Compile Include="BLL\Attendance\LaborAttendanceRecord.cs" />
+    <Compile Include="BLL\Attendance\LaborDailyAttendance.cs" />
+    <Compile Include="BLL\Attendance\LaborDailyWorkload.cs" />
     <Compile Include="BLL\Attendance\LaborMonthAttendance.cs" />
     <Compile Include="BLL\Attendance\WorkSectionLabor.cs" />
+    <Compile Include="BLL\Attendance\WorkTeamDailyWorkload.cs" />
     <Compile Include="BLL\Base\StaffLevel.cs" />
     <Compile Include="BLL\Base\Warehouse.cs" />
     <Compile Include="BLL\Base\WarehouseManager.cs" />
@@ -130,8 +133,11 @@
     <Compile Include="DAL\DALSQL\Attendance\Attendance.cs" />
     <Compile Include="DAL\DALSQL\Attendance\AttendanceRecord.cs" />
     <Compile Include="DAL\DALSQL\Attendance\LaborAttendanceRecord.cs" />
+    <Compile Include="DAL\DALSQL\Attendance\LaborDailyAttendance.cs" />
+    <Compile Include="DAL\DALSQL\Attendance\LaborDailyWorkload.cs" />
     <Compile Include="DAL\DALSQL\Attendance\LaborMonthAttendance.cs" />
     <Compile Include="DAL\DALSQL\Attendance\WorkSectionLabor.cs" />
+    <Compile Include="DAL\DALSQL\Attendance\WorkTeamDailyWorkload.cs" />
     <Compile Include="DAL\DALSQL\Base\StaffLevel.cs" />
     <Compile Include="DAL\DALSQL\Base\Warehouse.cs" />
     <Compile Include="DAL\DALSQL\Base\WarehouseManager.cs" />
@@ -149,8 +155,11 @@
     <Compile Include="Entity\Attendance\AttendanceInfo.cs" />
     <Compile Include="Entity\Attendance\AttendanceRecordInfo.cs" />
     <Compile Include="Entity\Attendance\LaborAttendanceRecordInfo.cs" />
+    <Compile Include="Entity\Attendance\LaborDailyAttendanceInfo.cs" />
+    <Compile Include="Entity\Attendance\LaborDailyWorkloadInfo.cs" />
     <Compile Include="Entity\Attendance\LaborMonthAttendanceInfo.cs" />
     <Compile Include="Entity\Attendance\WorkSectionLaborInfo.cs" />
+    <Compile Include="Entity\Attendance\WorkTeamDailyWorkloadInfo.cs" />
     <Compile Include="Entity\Base\StaffLevelInfo.cs" />
     <Compile Include="Entity\Base\WarehouseInfo.cs" />
     <Compile Include="Entity\Base\WarehouseManagerInfo.cs" />
@@ -168,8 +177,11 @@
     <Compile Include="IDAL\Attendance\IAttendance.cs" />
     <Compile Include="IDAL\Attendance\IAttendanceRecord.cs" />
     <Compile Include="IDAL\Attendance\ILaborAttendanceRecord.cs" />
+    <Compile Include="IDAL\Attendance\ILaborDailyAttendance.cs" />
+    <Compile Include="IDAL\Attendance\ILaborDailyWorkload.cs" />
     <Compile Include="IDAL\Attendance\ILaborMonthAttendance.cs" />
     <Compile Include="IDAL\Attendance\IWorkSectionLabor.cs" />
+    <Compile Include="IDAL\Attendance\IWorkTeamDailyWorkload.cs" />
     <Compile Include="IDAL\Base\IStaffLevel.cs" />
     <Compile Include="IDAL\Base\IWarehouse.cs" />
     <Compile Include="IDAL\Base\IWarehouseManager.cs" />

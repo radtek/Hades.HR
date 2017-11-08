@@ -38,6 +38,10 @@ namespace Hades.HR.ServiceCaller
         public const string LaborMonthAttendanceService = "WSHttpBinding_ILaborMonthAttendanceService";
 
         public const string WorkSectionLaborService = "WSHttpBinding_IWorkSectionLaborService";
+
+        public const string LaborDailyAttendanceService = "WSHttpBinding_ILaborDailyAttendanceService";
+        public const string LaborDailyWorkloadService = "WSHttpBinding_ILaborDailyWorkloadService";
+        public const string WorkTeamDailyWorkloadService = "WSHttpBinding_IWorkTeamDailyWorkloadService";
         #endregion //Attendance
 
         #region Salary      

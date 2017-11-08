@@ -80,8 +80,11 @@
     <Compile Include="Facade\Attendance\IAttendanceRecordService.cs" />
     <Compile Include="Facade\Attendance\IAttendanceService.cs" />
     <Compile Include="Facade\Attendance\ILaborAttendanceRecordService.cs" />
+    <Compile Include="Facade\Attendance\ILaborDailyAttendanceService.cs" />
+    <Compile Include="Facade\Attendance\ILaborDailyWorkloadService.cs" />
     <Compile Include="Facade\Attendance\ILaborMonthAttendanceService.cs" />
     <Compile Include="Facade\Attendance\IWorkSectionLaborService.cs" />
+    <Compile Include="Facade\Attendance\IWorkTeamDailyWorkloadService.cs" />
     <Compile Include="Facade\Base\IStaffLevelService.cs" />
     <Compile Include="Facade\Base\IWarehouseManagerService.cs" />
     <Compile Include="Facade\Base\IWarehouseService.cs" />
@@ -100,8 +103,11 @@
     <Compile Include="ServiceCaller\Attendance\AttendanceCaller.cs" />
     <Compile Include="ServiceCaller\Attendance\AttendanceRecordCaller.cs" />
     <Compile Include="ServiceCaller\Attendance\LaborAttendanceRecordCaller.cs" />
+    <Compile Include="ServiceCaller\Attendance\LaborDailyAttendanceCaller.cs" />
+    <Compile Include="ServiceCaller\Attendance\LaborDailyWorkloadCaller.cs" />
     <Compile Include="ServiceCaller\Attendance\LaborMonthAttendanceCaller.cs" />
     <Compile Include="ServiceCaller\Attendance\WorkSectionLaborCaller.cs" />
+    <Compile Include="ServiceCaller\Attendance\WorkTeamDailyWorkloadCaller.cs" />
     <Compile Include="ServiceCaller\Base\StaffLevelCaller.cs" />
     <Compile Include="ServiceCaller\Base\WarehouseCaller.cs" />
     <Compile Include="ServiceCaller\Base\WarehouseManagerCaller.cs" />
@@ -120,8 +126,11 @@
     <Compile Include="WinformCaller\Attendance\AttendanceCaller.cs" />
     <Compile Include="WinformCaller\Attendance\AttendanceRecordCaller.cs" />
     <Compile Include="WinformCaller\Attendance\LaborAttendanceRecordCaller.cs" />
+    <Compile Include="WinformCaller\Attendance\LaborDailyAttendanceCaller.cs" />
+    <Compile Include="WinformCaller\Attendance\LaborDailyWorkloadCaller.cs" />
     <Compile Include="WinformCaller\Attendance\LaborMonthAttendanceCaller.cs" />
     <Compile Include="WinformCaller\Attendance\WorkSectionLaborCaller.cs" />
+    <Compile Include="WinformCaller\Attendance\WorkTeamDailyWorkloadCaller.cs" />
     <Compile Include="WinformCaller\Base\StaffLevelCaller.cs" />
     <Compile Include="WinformCaller\Base\WarehouseCaller.cs" />
     <Compile Include="WinformCaller\Base\WarehouseManagerCaller.cs" />
