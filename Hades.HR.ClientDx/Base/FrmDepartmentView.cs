@@ -65,7 +65,7 @@ namespace Hades.HR.UI
                     txtRemark.Text = info.Remark;
                     txtEnabled.Text = info.Enabled == 1 ? "已启用" : "未启用";
 
-                    if (!string.IsNullOrEmpty(info.PID))
+                    if (!string.IsNullOrEmpty(info.PID) && info.PID != "-1")
                     {
                         var parent = CallerFactory<IDepartmentService>.Instance.FindByID(info.PID.ToString());
                         txtParent.Text = parent.Name;

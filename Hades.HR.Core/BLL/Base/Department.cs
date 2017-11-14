@@ -158,6 +158,9 @@ namespace Hades.HR.BLL
         /// <returns></returns>
         public override bool Insert(DepartmentInfo obj, DbTransaction trans = null)
         {
+            string sql = string.Format("INSERT INTO dbo.ACL_OU (ID, PID, HandNo, Name, SortCode, Category, Deleted, Enabled) VALUES()");
+            //base.SqlExecute(sql);
+
             obj.Id = Guid.NewGuid().ToString();
             return base.Insert(obj, trans);
         }

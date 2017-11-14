@@ -66,7 +66,7 @@ namespace Hades.HR.UI
         /// <param name="departmentId"></param>
         public void SetSelected(string departmentId)
         {
-            if (string.IsNullOrEmpty(departmentId))
+            if (string.IsNullOrEmpty(departmentId) || departmentId == "-1")
                 this.luDepartment.EditValue = null;
             else
                 this.luDepartment.EditValue = departmentId;
@@ -94,7 +94,7 @@ namespace Hades.HR.UI
         public string GetSelectedId()
         {
             if (this.luDepartment.EditValue == null)
-                return "";
+                return "-1";
             else
             {
                 var dep = this.luDepartment.GetSelectedDataRow() as DepartmentInfo;
