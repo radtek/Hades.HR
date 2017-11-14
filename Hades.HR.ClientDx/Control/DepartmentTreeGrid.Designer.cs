@@ -81,11 +81,12 @@
             this.tlView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlView.KeyFieldName = "Id";
             this.tlView.Location = new System.Drawing.Point(0, 0);
+            this.tlView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tlView.Name = "tlView";
             this.tlView.OptionsBehavior.Editable = false;
             this.tlView.OptionsBehavior.PopulateServiceColumns = true;
             this.tlView.ParentFieldName = "PID";
-            this.tlView.Size = new System.Drawing.Size(665, 387);
+            this.tlView.Size = new System.Drawing.Size(760, 498);
             this.tlView.TabIndex = 0;
             this.tlView.GetNodeDisplayValue += new DevExpress.XtraTreeList.GetNodeDisplayValueEventHandler(this.tlView_GetNodeDisplayValue);
             this.tlView.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.tlView_FocusedNodeChanged);
@@ -102,6 +103,7 @@
             this.colNumber.Caption = "部门代码";
             this.colNumber.FieldName = "Number";
             this.colNumber.Name = "colNumber";
+            this.colNumber.OptionsColumn.AllowSort = false;
             this.colNumber.Visible = true;
             this.colNumber.VisibleIndex = 0;
             this.colNumber.Width = 43;
@@ -132,6 +134,7 @@
             this.colType.Caption = "部门类型";
             this.colType.FieldName = "Type";
             this.colType.Name = "colType";
+            this.colType.OptionsColumn.AllowSort = false;
             this.colType.Visible = true;
             this.colType.VisibleIndex = 3;
             this.colType.Width = 44;
@@ -141,6 +144,7 @@
             this.colAddress.Caption = "地址";
             this.colAddress.FieldName = "Address";
             this.colAddress.Name = "colAddress";
+            this.colAddress.OptionsColumn.AllowSort = false;
             this.colAddress.Visible = true;
             this.colAddress.VisibleIndex = 4;
             this.colAddress.Width = 45;
@@ -150,6 +154,7 @@
             this.colPrincipal.Caption = "负责人";
             this.colPrincipal.FieldName = "Principal";
             this.colPrincipal.Name = "colPrincipal";
+            this.colPrincipal.OptionsColumn.AllowSort = false;
             this.colPrincipal.Visible = true;
             this.colPrincipal.VisibleIndex = 5;
             // 
@@ -158,6 +163,7 @@
             this.colFax.Caption = "传真";
             this.colFax.FieldName = "Fax";
             this.colFax.Name = "colFax";
+            this.colFax.OptionsColumn.AllowSort = false;
             this.colFax.Visible = true;
             this.colFax.VisibleIndex = 6;
             // 
@@ -166,6 +172,7 @@
             this.colInnerPhone.Caption = "内线电话";
             this.colInnerPhone.FieldName = "InnerPhone";
             this.colInnerPhone.Name = "colInnerPhone";
+            this.colInnerPhone.OptionsColumn.AllowSort = false;
             this.colInnerPhone.Visible = true;
             this.colInnerPhone.VisibleIndex = 7;
             this.colInnerPhone.Width = 45;
@@ -175,6 +182,7 @@
             this.colOuterPhone.Caption = "外线电话";
             this.colOuterPhone.FieldName = "OuterPhone";
             this.colOuterPhone.Name = "colOuterPhone";
+            this.colOuterPhone.OptionsColumn.AllowSort = false;
             this.colOuterPhone.Visible = true;
             this.colOuterPhone.VisibleIndex = 8;
             this.colOuterPhone.Width = 45;
@@ -184,6 +192,7 @@
             this.colRemark.Caption = "备注";
             this.colRemark.FieldName = "Remark";
             this.colRemark.Name = "colRemark";
+            this.colRemark.OptionsColumn.AllowSort = false;
             this.colRemark.Visible = true;
             this.colRemark.VisibleIndex = 9;
             this.colRemark.Width = 45;
@@ -216,6 +225,7 @@
             this.colEnabled.Caption = "启用标志";
             this.colEnabled.FieldName = "Enabled";
             this.colEnabled.Name = "colEnabled";
+            this.colEnabled.OptionsColumn.AllowSort = false;
             this.colEnabled.Visible = true;
             this.colEnabled.VisibleIndex = 10;
             this.colEnabled.Width = 44;
@@ -229,33 +239,33 @@
             this.menuEdit,
             this.menuDelete});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(125, 92);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(139, 100);
             // 
             // menuView
             // 
             this.menuView.Name = "menuView";
-            this.menuView.Size = new System.Drawing.Size(124, 22);
+            this.menuView.Size = new System.Drawing.Size(138, 24);
             this.menuView.Text = "查看部门";
             this.menuView.Click += new System.EventHandler(this.menuView_Click);
             // 
             // menuCreate
             // 
             this.menuCreate.Name = "menuCreate";
-            this.menuCreate.Size = new System.Drawing.Size(124, 22);
+            this.menuCreate.Size = new System.Drawing.Size(138, 24);
             this.menuCreate.Text = "新增部门";
             this.menuCreate.Click += new System.EventHandler(this.menuCreate_Click);
             // 
             // menuEdit
             // 
             this.menuEdit.Name = "menuEdit";
-            this.menuEdit.Size = new System.Drawing.Size(124, 22);
+            this.menuEdit.Size = new System.Drawing.Size(138, 24);
             this.menuEdit.Text = "编辑部门";
             this.menuEdit.Click += new System.EventHandler(this.menuEdit_Click);
             // 
             // menuDelete
             // 
             this.menuDelete.Name = "menuDelete";
-            this.menuDelete.Size = new System.Drawing.Size(124, 22);
+            this.menuDelete.Size = new System.Drawing.Size(138, 24);
             this.menuDelete.Text = "删除部门";
             this.menuDelete.Click += new System.EventHandler(this.menuDelete_Click);
             // 
@@ -265,11 +275,12 @@
             // 
             // DepartmentTreeGrid
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tlView);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "DepartmentTreeGrid";
-            this.Size = new System.Drawing.Size(665, 387);
+            this.Size = new System.Drawing.Size(760, 498);
             this.Load += new System.EventHandler(this.DepartmentTreeGrid_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tlView)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);

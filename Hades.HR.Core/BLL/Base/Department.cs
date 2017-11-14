@@ -158,11 +158,64 @@ namespace Hades.HR.BLL
         /// <returns></returns>
         public override bool Insert(DepartmentInfo obj, DbTransaction trans = null)
         {
-            string sql = string.Format("INSERT INTO dbo.ACL_OU (ID, PID, HandNo, Name, SortCode, Category, Deleted, Enabled) VALUES()");
-            //base.SqlExecute(sql);
+            string type = "";
+            switch (obj.Type)
+            {
+                case 1:
+                    type = "集团";
+                    break;
+                case 2:
+                    type = "公司";
+                    break;
+                case 3:
+                    type = "部门";
+                    break;
+                case 4:
+                    type = "工作组";
+                    break;
+            }
+
+            string sql = string.Format("INSERT INTO dbo.ACL_OU (ID, PID, HandNo, Name, SortCode, Category, Deleted, Enabled)" +
+                " VALUES('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', {6}, {7}", 
+                obj.Id, obj.PID, obj.Number, obj.Name, obj.SortCode, type, obj.Deleted, obj.Enabled);
+            base.SqlExecute(sql);
 
             obj.Id = Guid.NewGuid().ToString();
             return base.Insert(obj, trans);
+        }
+
+        /// <summary>
+        /// 更新部门
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="primaryKeyValue"></param>
+        /// <param name="trans"></param>
+        /// <returns></returns>
+        public override bool Update(DepartmentInfo obj, object primaryKeyValue, DbTransaction trans = null)
+        {
+            string type = "";
+            switch(obj.Type)
+            {
+                case 1:
+                    type = "集团";
+                    break;
+                case 2:
+                    type = "公司";
+                    break;
+                case 3:
+                    type = "部门";
+                    break;
+                case 4:
+                    type = "工作组";
+                    break;
+            }
+
+            string sql = string.Format("UPDATE dbo.ACL_OU SET PID='{0}', HandNo='{1}', Name='{2}', SortCode='{3}', Category='{4}'," +
+                "Deleted={5}, Enabled={6} WHERE ID='{7}'",
+                obj.PID, obj.Number, obj.Name, obj.SortCode, type, obj.Deleted, obj.Enabled, primaryKeyValue);
+            base.SqlExecute(sql);
+
+            return base.Update(obj, primaryKeyValue, trans);
         }
 
         /// <summary>
