@@ -37,24 +37,27 @@ namespace Hades.HR.UI
             this.winGridViewPager1 = new Hades.Pager.WinControl.WinGridViewPager();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.txtWorkTeamId = new DevExpress.XtraEditors.TextEdit();
+            this.txtAttendanceDate1 = new DevExpress.XtraEditors.DateEdit();
+            this.txtAttendanceDate2 = new DevExpress.XtraEditors.DateEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtWorkTeamId = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtAttendanceDate1 = new DevExpress.XtraEditors.DateEdit();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtAttendanceDate2 = new DevExpress.XtraEditors.DateEdit();
+            this.menuProduction = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuChange = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtWorkTeamId.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAttendanceDate1.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAttendanceDate1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAttendanceDate2.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAttendanceDate2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             this.SuspendLayout();
             // 
             // btnAddNew
@@ -121,8 +124,12 @@ namespace Hades.HR.UI
             // 
             // contextMenuStrip1
             // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuProduction,
+            this.menuChange});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(176, 80);
             // 
             // layoutControl1
             // 
@@ -138,6 +145,48 @@ namespace Hades.HR.UI
             this.layoutControl1.Size = new System.Drawing.Size(980, 53);
             this.layoutControl1.TabIndex = 12;
             this.layoutControl1.Text = "layoutControl1";
+            // 
+            // txtWorkTeamId
+            // 
+            this.txtWorkTeamId.Location = new System.Drawing.Point(141, 14);
+            this.txtWorkTeamId.Name = "txtWorkTeamId";
+            this.txtWorkTeamId.Size = new System.Drawing.Size(153, 24);
+            this.txtWorkTeamId.StyleController = this.layoutControl1;
+            this.txtWorkTeamId.TabIndex = 1;
+            // 
+            // txtAttendanceDate1
+            // 
+            this.txtAttendanceDate1.EditValue = new System.DateTime(2017, 11, 8, 0, 0, 0, 0);
+            this.txtAttendanceDate1.Location = new System.Drawing.Point(425, 14);
+            this.txtAttendanceDate1.Name = "txtAttendanceDate1";
+            this.txtAttendanceDate1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtAttendanceDate1.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.txtAttendanceDate1.Properties.CalendarTimeProperties.DisplayFormat.FormatString = "yyyy-MM-dd";
+            this.txtAttendanceDate1.Properties.CalendarTimeProperties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.txtAttendanceDate1.Properties.DisplayFormat.FormatString = "yyyy-MM-dd";
+            this.txtAttendanceDate1.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.txtAttendanceDate1.Size = new System.Drawing.Size(205, 24);
+            this.txtAttendanceDate1.StyleController = this.layoutControl1;
+            this.txtAttendanceDate1.TabIndex = 2;
+            // 
+            // txtAttendanceDate2
+            // 
+            this.txtAttendanceDate2.EditValue = new System.DateTime(2017, 11, 8, 0, 0, 0, 0);
+            this.txtAttendanceDate2.Location = new System.Drawing.Point(761, 14);
+            this.txtAttendanceDate2.Name = "txtAttendanceDate2";
+            this.txtAttendanceDate2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtAttendanceDate2.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.txtAttendanceDate2.Properties.CalendarTimeProperties.DisplayFormat.FormatString = "yyyy-MM-dd";
+            this.txtAttendanceDate2.Properties.CalendarTimeProperties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.txtAttendanceDate2.Properties.DisplayFormat.FormatString = "yyyy-MM-dd";
+            this.txtAttendanceDate2.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.txtAttendanceDate2.Size = new System.Drawing.Size(205, 24);
+            this.txtAttendanceDate2.StyleController = this.layoutControl1;
+            this.txtAttendanceDate2.TabIndex = 3;
             // 
             // layoutControlGroup1
             // 
@@ -157,72 +206,43 @@ namespace Hades.HR.UI
             this.layoutControlItem1.Control = this.txtWorkTeamId;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(285, 33);
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(105, 14);
-            // 
-            // txtWorkTeamId
-            // 
-            this.txtWorkTeamId.Location = new System.Drawing.Point(120, 12);
-            this.txtWorkTeamId.Name = "txtWorkTeamId";
-            this.txtWorkTeamId.Size = new System.Drawing.Size(173, 20);
-            this.txtWorkTeamId.StyleController = this.layoutControl1;
-            this.txtWorkTeamId.TabIndex = 1;
+            this.layoutControlItem1.Size = new System.Drawing.Size(284, 29);
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(124, 18);
             // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.txtAttendanceDate1;
             this.layoutControlItem2.CustomizationFormText = "1";
-            this.layoutControlItem2.Location = new System.Drawing.Point(285, 0);
+            this.layoutControlItem2.Location = new System.Drawing.Point(284, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(338, 33);
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(105, 14);
-            // 
-            // txtAttendanceDate1
-            // 
-            this.txtAttendanceDate1.EditValue = new System.DateTime(2017, 11, 8, 0, 0, 0, 0);
-            this.txtAttendanceDate1.Location = new System.Drawing.Point(405, 12);
-            this.txtAttendanceDate1.Name = "txtAttendanceDate1";
-            this.txtAttendanceDate1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtAttendanceDate1.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.txtAttendanceDate1.Properties.CalendarTimeProperties.DisplayFormat.FormatString = "yyyy-MM-dd";
-            this.txtAttendanceDate1.Properties.CalendarTimeProperties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.txtAttendanceDate1.Properties.DisplayFormat.FormatString = "yyyy-MM-dd";
-            this.txtAttendanceDate1.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.txtAttendanceDate1.Size = new System.Drawing.Size(226, 20);
-            this.txtAttendanceDate1.StyleController = this.layoutControl1;
-            this.txtAttendanceDate1.TabIndex = 2;
+            this.layoutControlItem2.Size = new System.Drawing.Size(336, 29);
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(124, 18);
             // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.txtAttendanceDate2;
             this.layoutControlItem3.CustomizationFormText = "2";
-            this.layoutControlItem3.Location = new System.Drawing.Point(623, 0);
+            this.layoutControlItem3.Location = new System.Drawing.Point(620, 0);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(337, 33);
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(105, 14);
+            this.layoutControlItem3.Size = new System.Drawing.Size(336, 29);
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(124, 18);
             // 
-            // txtAttendanceDate2
+            // menuProduction
             // 
-            this.txtAttendanceDate2.EditValue = new System.DateTime(2017, 11, 8, 0, 0, 0, 0);
-            this.txtAttendanceDate2.Location = new System.Drawing.Point(743, 12);
-            this.txtAttendanceDate2.Name = "txtAttendanceDate2";
-            this.txtAttendanceDate2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtAttendanceDate2.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.txtAttendanceDate2.Properties.CalendarTimeProperties.DisplayFormat.FormatString = "yyyy-MM-dd";
-            this.txtAttendanceDate2.Properties.CalendarTimeProperties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.txtAttendanceDate2.Properties.DisplayFormat.FormatString = "yyyy-MM-dd";
-            this.txtAttendanceDate2.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.txtAttendanceDate2.Size = new System.Drawing.Size(225, 20);
-            this.txtAttendanceDate2.StyleController = this.layoutControl1;
-            this.txtAttendanceDate2.TabIndex = 3;
+            this.menuProduction.Name = "menuProduction";
+            this.menuProduction.Size = new System.Drawing.Size(175, 24);
+            this.menuProduction.Text = "编辑产量工时";
+            this.menuProduction.Click += new System.EventHandler(this.menuProduction_Click);
+            // 
+            // menuChange
+            // 
+            this.menuChange.Name = "menuChange";
+            this.menuChange.Size = new System.Drawing.Size(175, 24);
+            this.menuChange.Text = "编辑换机工时";
             // 
             // FrmWorkTeamDailyWorkload
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1004, 680);
             this.Controls.Add(this.layoutControl1);
@@ -233,17 +253,18 @@ namespace Hades.HR.UI
             this.Controls.Add(this.btnImport);
             this.Name = "FrmWorkTeamDailyWorkload";
             this.Text = "班组日工作量";
+            this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtWorkTeamId.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAttendanceDate1.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAttendanceDate1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAttendanceDate2.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAttendanceDate2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -268,7 +289,8 @@ namespace Hades.HR.UI
  
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;    
          private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;    
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;  
- 
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
+        private System.Windows.Forms.ToolStripMenuItem menuProduction;
+        private System.Windows.Forms.ToolStripMenuItem menuChange;
     }
 }

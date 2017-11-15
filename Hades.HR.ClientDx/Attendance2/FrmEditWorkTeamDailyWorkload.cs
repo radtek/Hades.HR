@@ -43,27 +43,26 @@ namespace Hades.HR.UI
             //初始化代码
         }
 
-
         /// <summary>
-        /// 编辑或者保存状态下取值函数
+        /// 生成完工单列表
         /// </summary>
-        /// <param name="info"></param>
-        private void SetInfo(WorkTeamDailyWorkloadInfo info)
+        /// <param name="dt"></param>
+        private void GenerateList(DateTime dt)
         {
-            info.WorkTeamId = txtWorkTeamId.Text;
-            info.AttendanceDate = txtAttendanceDate.DateTime;
-            info.ProductionHours = txtProductionHours.Value;
-            info.ChangeHours = txtChangeHours.Value;
-            info.RepairHours = txtRepairHours.Value;
-            info.ElectricHours = txtElectricHours.Value;
-            info.PersonCount = Convert.ToInt32(txtPersonCount.Value);
-            info.Remark = txtRemark.Text;
+            Random random = new Random(dt.Day);
 
-            info.Editor = this.LoginUserInfo.Name;
-            info.EditorId = this.LoginUserInfo.ID;
-            info.EditTime = DateTime.Now;
+            this.lvComplete.Items.Clear();
+            int days = random.Next(2, 6);
+            for (int i = 0; i < days; i++)
+            {
+                string number = string.Format("{0:D4}{1:D2}{2:D3}-{3:D3}", dt.Year, dt.Month, dt.Day, i);
+                this.lvComplete.Items.Add(number);
+            }
         }
-
+        
+        /// <summary>
+        /// 生成完工数据
+        /// </summary>
         private void GenerateComplete()
         {
             Random random = new Random(DateTime.Now.Millisecond);
@@ -91,6 +90,24 @@ namespace Hades.HR.UI
             this.wgvComplete.DisplayColumns = "Name,Production,Quota,Workload";
             this.wgvComplete.DataSource = data;
         }
+
+        /// <summary>
+        /// 编辑或者保存状态下取值函数
+        /// </summary>
+        /// <param name="info"></param>
+        private void SetInfo(WorkTeamDailyWorkloadInfo info)
+        {
+            info.WorkTeamId = luWorkTeam.GetSelectedId();
+            info.AttendanceDate = txtAttendanceDate.DateTime;
+            info.ProductionHours = txtProductionHours.Value;
+
+            info.PersonCount = Convert.ToInt32(txtPersonCount.Value);
+            info.Remark = txtRemark.Text;
+
+            info.Editor = this.LoginUserInfo.Name;
+            info.EditorId = this.LoginUserInfo.ID;
+            info.EditTime = DateTime.Now;
+        }
         #endregion //Function
 
         #region Method
@@ -109,20 +126,17 @@ namespace Hades.HR.UI
         {
             bool result = true;//默认是可以通过
 
-            #region MyRegion
-            if (this.txtWorkTeamId.Text.Trim().Length == 0)
+            if (string.IsNullOrEmpty(this.luWorkTeam.GetSelectedId()))
             {
-                MessageDxUtil.ShowTips("请输入");
-                this.txtWorkTeamId.Focus();
+                MessageDxUtil.ShowTips("请选择班组");
                 result = false;
             }
-             else if (this.txtAttendanceDate.Text.Trim().Length == 0)
+            else if (this.txtAttendanceDate.Text.Trim().Length == 0)
             {
                 MessageDxUtil.ShowTips("请输入");
                 this.txtAttendanceDate.Focus();
                 result = false;
             }
-            #endregion
 
             return result;
         }
@@ -143,12 +157,9 @@ namespace Hades.HR.UI
                 {                    
                     tempInfo = info;//重新给临时对象赋值，使之指向存在的记录对象
 
-                    txtWorkTeamId.Text = info.WorkTeamId;
+                   // txtWorkTeamId.Text = info.WorkTeamId;
                     txtAttendanceDate.SetDateTime(info.AttendanceDate);
                     txtProductionHours.Value = info.ProductionHours;
-                    txtChangeHours.Value = info.ChangeHours;
-                    txtRepairHours.Value = info.RepairHours;
-                    txtElectricHours.Value = info.ElectricHours;
                     txtPersonCount.Value = info.PersonCount;
                     txtRemark.Text = info.Remark;
                  
@@ -230,6 +241,26 @@ namespace Hades.HR.UI
            return false;
         }
         #endregion //Method
+
+        #region Event
+        private void txtAttendanceDate_EditValueChanged(object sender, EventArgs e)
+        {
+            GenerateList(this.txtAttendanceDate.DateTime);
+        }
+        
+        /// <summary>
+        /// 完工单选择
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void lvComplete_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.lvComplete.SelectedIndex != -1)
+            {
+                GenerateComplete();
+            }
+        }
+        #endregion //Event
     }
 
     public class CompleteForm

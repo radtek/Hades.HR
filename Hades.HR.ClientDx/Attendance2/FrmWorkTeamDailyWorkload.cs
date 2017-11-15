@@ -23,6 +23,13 @@ namespace Hades.HR.UI
     /// </summary>	
     public partial class FrmWorkTeamDailyWorkload : BaseDock
     {
+        #region Field
+        /// <summary>
+        /// 高级查询条件语句对象
+        /// </summary>
+        private SearchCondition advanceCondition;
+        #endregion //Field
+
         #region Constructor
         public FrmWorkTeamDailyWorkload()
         {
@@ -50,6 +57,42 @@ namespace Hades.HR.UI
             }
         }
         #endregion //Constructor
+
+        #region Function
+        /// <summary>
+        /// 绑定列表数据
+        /// </summary>
+        private void BindData()
+        {
+            //entity
+            this.winGridViewPager1.DisplayColumns = "Id,WorkTeamId,AttendanceDate,ProductionHours,ChangeHours,RepairHours,ElectricHours,PersonCount,Remark,Editor,EditorId,EditTime";
+            this.winGridViewPager1.ColumnNameAlias = CallerFactory<IWorkTeamDailyWorkloadService>.Instance.GetColumnNameAlias();//字段列显示名称转义
+            
+            string where = GetConditionSql();
+            PagerInfo pagerInfo = this.winGridViewPager1.PagerInfo;
+            List<WorkTeamDailyWorkloadInfo> list = CallerFactory<IWorkTeamDailyWorkloadService>.Instance.FindWithPager(where, ref pagerInfo);
+            this.winGridViewPager1.PagerInfo.RecordCount = pagerInfo.RecordCount;
+            this.winGridViewPager1.DataSource = new Hades.Pager.WinControl.SortableBindingList<WorkTeamDailyWorkloadInfo>(list);
+            this.winGridViewPager1.PrintTitle = "WorkTeamDailyWorkload报表";
+        }
+        #endregion //Function
+
+        #region Method
+        /// <summary>
+        /// 编写初始化窗体的实现，可以用于刷新
+        /// </summary>
+        public override void FormOnLoad()
+        {
+            BindData();
+        }
+        #endregion //Method
+
+        #region Event
+        private void menuProduction_Click(object sender, EventArgs e)
+        {
+
+        }
+        #endregion //Event
 
         #region System
         void gridView1_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
@@ -120,14 +163,6 @@ namespace Hades.HR.UI
             {
                 column.Width = width;
             }
-        }
-
-        /// <summary>
-        /// 编写初始化窗体的实现，可以用于刷新
-        /// </summary>
-        public override void  FormOnLoad()
-        {   
-            BindData();
         }
         
         /// <summary>
@@ -224,10 +259,7 @@ namespace Hades.HR.UI
             BindData();
         }
         
-        /// <summary>
-        /// 高级查询条件语句对象
-        /// </summary>
-        private SearchCondition advanceCondition;
+        
         
         /// <summary>
         /// 根据查询条件构造查询语句
@@ -246,39 +278,7 @@ namespace Hades.HR.UI
             return where;
         }
         
-        /// <summary>
-        /// 绑定列表数据
-        /// </summary>
-        private void BindData()
-        {
-        	//entity
-            this.winGridViewPager1.DisplayColumns = "Id,WorkTeamId,AttendanceDate,ProductionHours,ChangeHours,RepairHours,ElectricHours,PersonCount,Remark,Editor,EditorId,EditTime";
-            this.winGridViewPager1.ColumnNameAlias = CallerFactory<IWorkTeamDailyWorkloadService>.Instance.GetColumnNameAlias();//字段列显示名称转义
-
-            #region 添加别名解析
-
-            //this.winGridViewPager1.AddColumnAlias("Id", "Id");
-            //this.winGridViewPager1.AddColumnAlias("WorkTeamId", "WorkTeamId");
-            //this.winGridViewPager1.AddColumnAlias("AttendanceDate", "AttendanceDate");
-            //this.winGridViewPager1.AddColumnAlias("ProductionHours", "ProductionHours");
-            //this.winGridViewPager1.AddColumnAlias("ChangeHours", "ChangeHours");
-            //this.winGridViewPager1.AddColumnAlias("RepairHours", "RepairHours");
-            //this.winGridViewPager1.AddColumnAlias("ElectricHours", "ElectricHours");
-            //this.winGridViewPager1.AddColumnAlias("PersonCount", "PersonCount");
-            //this.winGridViewPager1.AddColumnAlias("Remark", "Remark");
-            //this.winGridViewPager1.AddColumnAlias("Editor", "Editor");
-            //this.winGridViewPager1.AddColumnAlias("EditorId", "EditorId");
-            //this.winGridViewPager1.AddColumnAlias("EditTime", "EditTime");
-
-            #endregion
-
-            string where = GetConditionSql();
-            PagerInfo pagerInfo = this.winGridViewPager1.PagerInfo;
-               List<WorkTeamDailyWorkloadInfo> list = CallerFactory<IWorkTeamDailyWorkloadService>.Instance.FindWithPager(where, ref pagerInfo);
-            this.winGridViewPager1.PagerInfo.RecordCount = pagerInfo.RecordCount;
-            this.winGridViewPager1.DataSource = new Hades.Pager.WinControl.SortableBindingList<WorkTeamDailyWorkloadInfo>(list);
-               this.winGridViewPager1.PrintTitle = "WorkTeamDailyWorkload报表";
-         }
+       
         
         /// <summary>
         /// 查询数据操作
@@ -313,9 +313,10 @@ namespace Hades.HR.UI
             {
                 btnSearch_Click(null, null);
             }
-        }        
+        }
 
-		 		 		 		 		 		 		 		 		  		  
+
+        #region Export                                                                     
         private string moduleName = "WorkTeamDailyWorkload";
         /// <summary>
         /// 导入Excel的操作
@@ -469,6 +470,10 @@ namespace Hades.HR.UI
             advanceCondition = condition;
             BindData();
         }
+        #endregion //Export
+
         #endregion //System
+
+
     }
 }
