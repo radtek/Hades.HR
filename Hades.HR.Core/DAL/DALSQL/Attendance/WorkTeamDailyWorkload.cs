@@ -95,14 +95,14 @@ namespace Hades.HR.DALSQL
             #region 添加别名解析
             //dict.Add("ID", "编号");
             dict.Add("Id", "");
-             dict.Add("WorkTeamId", "");
-             dict.Add("AttendanceDate", "");
-             dict.Add("ProductionHours", "");
-             dict.Add("ChangeHours", "");
-             dict.Add("RepairHours", "");
-             dict.Add("ElectricHours", "");
-             dict.Add("PersonCount", "");
-             dict.Add("Remark", "");
+             dict.Add("WorkTeamId", "班组");
+             dict.Add("AttendanceDate", "考勤日期");
+             dict.Add("ProductionHours", "产量工时");
+             dict.Add("ChangeHours", "换机工时");
+             dict.Add("RepairHours", "机修工时");
+             dict.Add("ElectricHours", "电修工时");
+             dict.Add("PersonCount", "本日人数");
+             dict.Add("Remark", "备注");
              dict.Add("Editor", "");
              dict.Add("EditorId", "");
              dict.Add("EditTime", "");

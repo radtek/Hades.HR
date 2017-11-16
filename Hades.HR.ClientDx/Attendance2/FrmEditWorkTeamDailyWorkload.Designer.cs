@@ -40,8 +40,8 @@ namespace Hades.HR.UI
             this.txtPersonCount = new DevExpress.XtraEditors.SpinEdit();
             this.layoutControlGroup3 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
@@ -66,8 +66,8 @@ namespace Hades.HR.UI
             ((System.ComponentModel.ISupportInitialize)(this.txtPersonCount.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
@@ -107,10 +107,10 @@ namespace Hades.HR.UI
             this.layoutControl2.Controls.Add(this.luWorkTeam);
             this.layoutControl2.Controls.Add(this.txtAttendanceDate);
             this.layoutControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutControl2.Location = new System.Drawing.Point(2, 25);
+            this.layoutControl2.Location = new System.Drawing.Point(2, 21);
             this.layoutControl2.Name = "layoutControl2";
             this.layoutControl2.Root = this.layoutControlGroup2;
-            this.layoutControl2.Size = new System.Drawing.Size(974, 67);
+            this.layoutControl2.Size = new System.Drawing.Size(974, 71);
             this.layoutControl2.TabIndex = 0;
             this.layoutControl2.Text = "layoutControl2";
             // 
@@ -118,14 +118,15 @@ namespace Hades.HR.UI
             // 
             this.txtAttendanceDate.EditValue = null;
             this.txtAttendanceDate.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txtAttendanceDate.Location = new System.Drawing.Point(552, 14);
+            this.txtAttendanceDate.Location = new System.Drawing.Point(540, 12);
             this.txtAttendanceDate.Name = "txtAttendanceDate";
             this.txtAttendanceDate.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
             this.txtAttendanceDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtAttendanceDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.txtAttendanceDate.Size = new System.Drawing.Size(408, 24);
+            this.txtAttendanceDate.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.txtAttendanceDate.Size = new System.Drawing.Size(422, 20);
             this.txtAttendanceDate.StyleController = this.layoutControl2;
             this.txtAttendanceDate.TabIndex = 2;
             this.txtAttendanceDate.EditValueChanged += new System.EventHandler(this.txtAttendanceDate_EditValueChanged);
@@ -140,24 +141,24 @@ namespace Hades.HR.UI
             this.emptySpaceItem1});
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup2.Name = "layoutControlGroup2";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(974, 67);
+            this.layoutControlGroup2.Size = new System.Drawing.Size(974, 71);
             this.layoutControlGroup2.TextVisible = false;
             // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.txtAttendanceDate;
-            this.layoutControlItem2.Location = new System.Drawing.Point(475, 0);
+            this.layoutControlItem2.Location = new System.Drawing.Point(477, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(475, 28);
+            this.layoutControlItem2.Size = new System.Drawing.Size(477, 24);
             this.layoutControlItem2.Text = "考勤日期";
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(60, 18);
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(48, 14);
             // 
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 28);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 24);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(950, 15);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(954, 27);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // txtProductionHours
@@ -168,13 +169,15 @@ namespace Hades.HR.UI
             0,
             0});
             this.txtProductionHours.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txtProductionHours.Location = new System.Drawing.Point(92, 14);
+            this.txtProductionHours.Location = new System.Drawing.Point(75, 12);
             this.txtProductionHours.Name = "txtProductionHours";
             this.txtProductionHours.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.txtProductionHours.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
             this.txtProductionHours.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.txtProductionHours.Size = new System.Drawing.Size(393, 24);
+            this.txtProductionHours.Properties.ReadOnly = true;
+            this.txtProductionHours.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.txtProductionHours.Size = new System.Drawing.Size(410, 20);
             this.txtProductionHours.StyleController = this.layoutControl3;
             this.txtProductionHours.TabIndex = 3;
             // 
@@ -184,18 +187,18 @@ namespace Hades.HR.UI
             this.layoutControl3.Controls.Add(this.txtPersonCount);
             this.layoutControl3.Controls.Add(this.txtProductionHours);
             this.layoutControl3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutControl3.Location = new System.Drawing.Point(2, 25);
+            this.layoutControl3.Location = new System.Drawing.Point(2, 21);
             this.layoutControl3.Name = "layoutControl3";
             this.layoutControl3.Root = this.layoutControlGroup3;
-            this.layoutControl3.Size = new System.Drawing.Size(974, 142);
+            this.layoutControl3.Size = new System.Drawing.Size(974, 146);
             this.layoutControl3.TabIndex = 0;
             this.layoutControl3.Text = "layoutControl3";
             // 
             // txtRemark
             // 
-            this.txtRemark.Location = new System.Drawing.Point(92, 42);
+            this.txtRemark.Location = new System.Drawing.Point(75, 36);
             this.txtRemark.Name = "txtRemark";
-            this.txtRemark.Size = new System.Drawing.Size(868, 86);
+            this.txtRemark.Size = new System.Drawing.Size(887, 98);
             this.txtRemark.StyleController = this.layoutControl3;
             this.txtRemark.TabIndex = 8;
             // 
@@ -207,13 +210,13 @@ namespace Hades.HR.UI
             0,
             0});
             this.txtPersonCount.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txtPersonCount.Location = new System.Drawing.Point(567, 14);
+            this.txtPersonCount.Location = new System.Drawing.Point(552, 12);
             this.txtPersonCount.Name = "txtPersonCount";
             this.txtPersonCount.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.txtPersonCount.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
             this.txtPersonCount.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.txtPersonCount.Size = new System.Drawing.Size(393, 24);
+            this.txtPersonCount.Size = new System.Drawing.Size(410, 20);
             this.txtPersonCount.StyleController = this.layoutControl3;
             this.txtPersonCount.TabIndex = 7;
             // 
@@ -227,7 +230,7 @@ namespace Hades.HR.UI
             this.layoutControlItem7});
             this.layoutControlGroup3.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup3.Name = "layoutControlGroup3";
-            this.layoutControlGroup3.Size = new System.Drawing.Size(974, 142);
+            this.layoutControlGroup3.Size = new System.Drawing.Size(974, 146);
             this.layoutControlGroup3.TextVisible = false;
             // 
             // layoutControlItem3
@@ -235,27 +238,27 @@ namespace Hades.HR.UI
             this.layoutControlItem3.Control = this.txtProductionHours;
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(475, 28);
+            this.layoutControlItem3.Size = new System.Drawing.Size(477, 24);
             this.layoutControlItem3.Text = "产量总工时";
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(75, 18);
-            // 
-            // layoutControlItem7
-            // 
-            this.layoutControlItem7.Control = this.txtPersonCount;
-            this.layoutControlItem7.Location = new System.Drawing.Point(475, 0);
-            this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(475, 28);
-            this.layoutControlItem7.Text = "员工人数";
-            this.layoutControlItem7.TextSize = new System.Drawing.Size(75, 18);
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(60, 14);
             // 
             // layoutControlItem8
             // 
             this.layoutControlItem8.Control = this.txtRemark;
-            this.layoutControlItem8.Location = new System.Drawing.Point(0, 28);
+            this.layoutControlItem8.Location = new System.Drawing.Point(0, 24);
             this.layoutControlItem8.Name = "layoutControlItem8";
-            this.layoutControlItem8.Size = new System.Drawing.Size(950, 90);
+            this.layoutControlItem8.Size = new System.Drawing.Size(954, 102);
             this.layoutControlItem8.Text = "备注";
-            this.layoutControlItem8.TextSize = new System.Drawing.Size(75, 18);
+            this.layoutControlItem8.TextSize = new System.Drawing.Size(60, 14);
+            // 
+            // layoutControlItem7
+            // 
+            this.layoutControlItem7.Control = this.txtPersonCount;
+            this.layoutControlItem7.Location = new System.Drawing.Point(477, 0);
+            this.layoutControlItem7.Name = "layoutControlItem7";
+            this.layoutControlItem7.Size = new System.Drawing.Size(477, 24);
+            this.layoutControlItem7.Text = "员工人数";
+            this.layoutControlItem7.TextSize = new System.Drawing.Size(60, 14);
             // 
             // tableLayoutPanel1
             // 
@@ -305,7 +308,7 @@ namespace Hades.HR.UI
             this.wgvComplete.DisplayColumns = "";
             this.wgvComplete.Dock = System.Windows.Forms.DockStyle.Fill;
             this.wgvComplete.FixedColumns = null;
-            this.wgvComplete.Location = new System.Drawing.Point(2, 25);
+            this.wgvComplete.Location = new System.Drawing.Point(2, 21);
             this.wgvComplete.Name = "wgvComplete";
             this.wgvComplete.PrintTitle = "";
             this.wgvComplete.ShowAddMenu = true;
@@ -313,7 +316,7 @@ namespace Hades.HR.UI
             this.wgvComplete.ShowDeleteMenu = true;
             this.wgvComplete.ShowEditMenu = true;
             this.wgvComplete.ShowExportButton = true;
-            this.wgvComplete.Size = new System.Drawing.Size(674, 228);
+            this.wgvComplete.Size = new System.Drawing.Size(674, 232);
             this.wgvComplete.TabIndex = 0;
             // 
             // groupControl3
@@ -340,18 +343,18 @@ namespace Hades.HR.UI
             // lvComplete
             // 
             this.lvComplete.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lvComplete.Location = new System.Drawing.Point(2, 25);
+            this.lvComplete.Location = new System.Drawing.Point(2, 21);
             this.lvComplete.Name = "lvComplete";
-            this.lvComplete.Size = new System.Drawing.Size(290, 228);
+            this.lvComplete.Size = new System.Drawing.Size(290, 232);
             this.lvComplete.TabIndex = 0;
             this.lvComplete.SelectedIndexChanged += new System.EventHandler(this.lvComplete_SelectedIndexChanged);
             // 
             // luWorkTeam
             // 
-            this.luWorkTeam.Location = new System.Drawing.Point(77, 14);
+            this.luWorkTeam.Location = new System.Drawing.Point(63, 12);
             this.luWorkTeam.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.luWorkTeam.Name = "luWorkTeam";
-            this.luWorkTeam.Size = new System.Drawing.Size(408, 24);
+            this.luWorkTeam.Size = new System.Drawing.Size(422, 20);
             this.luWorkTeam.TabIndex = 4;
             // 
             // layoutControlItem1
@@ -359,13 +362,13 @@ namespace Hades.HR.UI
             this.layoutControlItem1.Control = this.luWorkTeam;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(475, 28);
+            this.layoutControlItem1.Size = new System.Drawing.Size(477, 24);
             this.layoutControlItem1.Text = "班组选择";
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(60, 18);
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(48, 14);
             // 
             // FrmEditWorkTeamDailyWorkload
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 598);
             this.Controls.Add(this.tableLayoutPanel1);
@@ -392,8 +395,8 @@ namespace Hades.HR.UI
             ((System.ComponentModel.ISupportInitialize)(this.txtPersonCount.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);

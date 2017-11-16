@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.ComponentModel;
 using System.Collections.Generic;
+using System.Linq;
 
 using Hades.Pager.Entity;
 using Hades.Dictionary;
@@ -28,6 +29,11 @@ namespace Hades.HR.UI
         /// 高级查询条件语句对象
         /// </summary>
         private SearchCondition advanceCondition;
+
+        /// <summary>
+        /// 缓存班组信息
+        /// </summary>
+        private List<WorkTeamInfo> workTeamList;
         #endregion //Field
 
         #region Constructor
@@ -51,21 +57,38 @@ namespace Hades.HR.UI
             this.winGridViewPager1.gridView1.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(gridView1_RowCellStyle);
 
             //关联回车键进行查询
-            foreach (Control control in this.layoutControl1.Controls)
-            {
-                control.KeyUp += new System.Windows.Forms.KeyEventHandler(this.SearchControl_KeyUp);
-            }
+            //foreach (Control control in this.layoutControl1.Controls)
+            //{
+            //    control.KeyUp += new System.Windows.Forms.KeyEventHandler(this.SearchControl_KeyUp);
+            //}
         }
         #endregion //Constructor
 
         #region Function
+        /// <summary>
+        /// 根据查询条件构造查询语句
+        /// </summary> 
+        private string GetConditionSql()
+        {
+            //如果存在高级查询对象信息，则使用高级查询条件，否则使用主表条件查询
+            SearchCondition condition = advanceCondition;
+            if (condition == null)
+            {
+                condition = new SearchCondition();
+               // condition.AddCondition("WorkTeamId", this.txtWorkTeamId.Text.Trim(), SqlOperator.Like);
+               // condition.AddDateCondition("AttendanceDate", this.txtAttendanceDate1, this.txtAttendanceDate2); //日期类型
+            }
+            string where = condition.BuildConditionSql().Replace("Where", "");
+            return where;
+        }
+
         /// <summary>
         /// 绑定列表数据
         /// </summary>
         private void BindData()
         {
             //entity
-            this.winGridViewPager1.DisplayColumns = "Id,WorkTeamId,AttendanceDate,ProductionHours,ChangeHours,RepairHours,ElectricHours,PersonCount,Remark,Editor,EditorId,EditTime";
+            this.winGridViewPager1.DisplayColumns = "WorkTeamId,AttendanceDate,ProductionHours,ChangeHours,RepairHours,ElectricHours,PersonCount,Remark";
             this.winGridViewPager1.ColumnNameAlias = CallerFactory<IWorkTeamDailyWorkloadService>.Instance.GetColumnNameAlias();//字段列显示名称转义
             
             string where = GetConditionSql();
@@ -83,6 +106,9 @@ namespace Hades.HR.UI
         /// </summary>
         public override void FormOnLoad()
         {
+            this.workTeamList = CallerFactory<IWorkTeamService>.Instance.Find2("", "");
+
+            this.depTree.Init(2);
             BindData();
         }
         #endregion //Method
@@ -90,7 +116,27 @@ namespace Hades.HR.UI
         #region Event
         private void menuProduction_Click(object sender, EventArgs e)
         {
+            string ID = this.winGridViewPager1.gridView1.GetFocusedRowCellDisplayText("Id");
+            List<string> IDList = new List<string>();
+            for (int i = 0; i < this.winGridViewPager1.gridView1.RowCount; i++)
+            {
+                string strTemp = this.winGridViewPager1.GridView1.GetRowCellDisplayText(i, "Id");
+                IDList.Add(strTemp);
+            }
 
+            if (!string.IsNullOrEmpty(ID))
+            {
+                FrmEditWorkTeamDailyWorkload dlg = new FrmEditWorkTeamDailyWorkload();
+                dlg.ID = ID;
+                dlg.IDList = IDList;
+                dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
+                dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
+
+                if (DialogResult.OK == dlg.ShowDialog())
+                {
+                    BindData();
+                }
+            }
         }
         #endregion //Event
 
@@ -121,20 +167,29 @@ namespace Hades.HR.UI
                     }
                     else
                     {
-                        e.DisplayText = Convert.ToDateTime(e.Value).ToString("yyyy-MM-dd HH:mm");//yyyy-MM-dd
+                        e.DisplayText = Convert.ToDateTime(e.Value).ToString("yyyy-MM-dd");//yyyy-MM-dd
+                    }
+                }
+            }
+            else if (columnName == "WorkTeamId")
+            {
+                if (e.Value != null && !string.IsNullOrEmpty(e.Value.ToString()))
+                {
+                    var wt = this.workTeamList.SingleOrDefault(r => r.Id == e.Value.ToString());
+                    if (wt != null)
+                    {
+                        e.DisplayText = wt.Name;
+                    }
+                    else
+                    {
+                        var wt2 = CallerFactory<IWorkTeamService>.Instance.FindByID(e.Value.ToString());
+                        e.DisplayText = wt2.Name;
                     }
                 }
             }
             //else if (columnName == "Age")
             //{
             //    e.DisplayText = string.Format("{0}岁", e.Value);
-            //}
-            //else if (columnName == "ReceivedMoney")
-            //{
-            //    if (e.Value != null)
-            //    {
-            //        e.DisplayText = e.Value.ToString().ToDecimal().ToString("C");
-            //    }
             //}
         }
         
@@ -258,27 +313,6 @@ namespace Hades.HR.UI
         {
             BindData();
         }
-        
-        
-        
-        /// <summary>
-        /// 根据查询条件构造查询语句
-        /// </summary> 
-        private string GetConditionSql()
-        {
-            //如果存在高级查询对象信息，则使用高级查询条件，否则使用主表条件查询
-            SearchCondition condition = advanceCondition;
-            if (condition == null)
-            {
-                condition = new SearchCondition();
-                condition.AddCondition("WorkTeamId", this.txtWorkTeamId.Text.Trim(), SqlOperator.Like);
-                condition.AddDateCondition("AttendanceDate", this.txtAttendanceDate1, this.txtAttendanceDate2); //日期类型
-            }
-            string where = condition.BuildConditionSql().Replace("Where", "");
-            return where;
-        }
-        
-       
         
         /// <summary>
         /// 查询数据操作
@@ -473,7 +507,5 @@ namespace Hades.HR.UI
         #endregion //Export
 
         #endregion //System
-
-
     }
 }

@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.ComponentModel;
 using System.Collections.Generic;
+using System.Linq;
 
 using Hades.Pager.Entity;
 using Hades.Dictionary;
@@ -59,7 +60,7 @@ namespace Hades.HR.UI
                 this.lvComplete.Items.Add(number);
             }
         }
-        
+
         /// <summary>
         /// 生成完工数据
         /// </summary>
@@ -71,16 +72,19 @@ namespace Hades.HR.UI
             form1.Name = "桶身圈圆";
             form1.Production = 1700 * (decimal)(random.Next(50, 100) / 100m);
             form1.Quota = 196;
+            form1.Workload = Math.Round(form1.Production / form1.Quota, 2);
 
             CompleteForm form2 = new CompleteForm();
             form2.Name = "桶身点焊";
             form2.Production = 1700 * (decimal)(random.Next(50, 100) / 100m);
             form2.Quota = 98;
+            form2.Workload = Math.Round(form2.Production / form2.Quota, 2);
 
             CompleteForm form3 = new CompleteForm();
             form3.Name = "桶身缝焊";
             form3.Production = 1700 * (decimal)(random.Next(50, 100) / 100m);
             form3.Quota = 196;
+            form3.Workload = Math.Round(form3.Production / form3.Quota, 2);
 
             List<CompleteForm> data = new List<CompleteForm>();
             data.Add(form1);
@@ -88,7 +92,15 @@ namespace Hades.HR.UI
             data.Add(form3);
 
             this.wgvComplete.DisplayColumns = "Name,Production,Quota,Workload";
+
+            this.wgvComplete.AddColumnAlias("Name", "工序名称");
+            this.wgvComplete.AddColumnAlias("Production", "实际产量");
+            this.wgvComplete.AddColumnAlias("Quota", "计件定额");
+            this.wgvComplete.AddColumnAlias("Workload", "产量工时");
             this.wgvComplete.DataSource = data;
+
+            var totalWorkload = data.Sum(r => r.Workload);
+            this.txtProductionHours.Text = totalWorkload.ToString();
         }
 
         /// <summary>
@@ -150,19 +162,21 @@ namespace Hades.HR.UI
 
             this.Text = "编辑班组日工作量";
 
+            this.luWorkTeam.Init();
             if (!string.IsNullOrEmpty(ID))
             {
                 WorkTeamDailyWorkloadInfo info = CallerFactory<IWorkTeamDailyWorkloadService>.Instance.FindByID(ID);
                 if (info != null)
-                {                    
+                {
                     tempInfo = info;//重新给临时对象赋值，使之指向存在的记录对象
 
-                   // txtWorkTeamId.Text = info.WorkTeamId;
+                    // txtWorkTeamId.Text = info.WorkTeamId;
+                    this.luWorkTeam.SetSelected(info.WorkTeamId);
                     txtAttendanceDate.SetDateTime(info.AttendanceDate);
                     txtProductionHours.Value = info.ProductionHours;
                     txtPersonCount.Value = info.PersonCount;
                     txtRemark.Text = info.Remark;
-                 
+
                 }
 
                 //this.btnOK.Enabled = HasFunction("WorkTeamDailyWorkload/Edit");             
@@ -172,12 +186,10 @@ namespace Hades.HR.UI
                 //this.btnOK.Enabled = Portal.gc.HasFunction("WorkTeamDailyWorkload/Add");  
             }
 
-            GenerateComplete();
-
             //tempInfo在对象存在则为指定对象，新建则是全新的对象，但有一些初始化的GUID用于附件上传
             //SetAttachInfo(tempInfo);
         }
-         
+
         /// <summary>
         /// 新增状态下的数据保存
         /// </summary>
@@ -206,7 +218,7 @@ namespace Hades.HR.UI
                 MessageDxUtil.ShowError(ex.Message);
             }
             return false;
-        }                 
+        }
 
         /// <summary>
         /// 编辑状态下的数据保存
@@ -227,7 +239,7 @@ namespace Hades.HR.UI
                     if (succeed)
                     {
                         //可添加其他关联操作
-                       
+
                         return true;
                     }
                     #endregion
@@ -238,7 +250,7 @@ namespace Hades.HR.UI
                     MessageDxUtil.ShowError(ex.Message);
                 }
             }
-           return false;
+            return false;
         }
         #endregion //Method
 
@@ -247,7 +259,7 @@ namespace Hades.HR.UI
         {
             GenerateList(this.txtAttendanceDate.DateTime);
         }
-        
+
         /// <summary>
         /// 完工单选择
         /// </summary>
