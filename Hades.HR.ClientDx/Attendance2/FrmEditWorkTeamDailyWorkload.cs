@@ -123,7 +123,6 @@ namespace Hades.HR.UI
         #endregion //Function
 
         #region Method
-
         public override void ClearScreen()
         {
             this.tempInfo = new WorkTeamDailyWorkloadInfo();
@@ -226,7 +225,6 @@ namespace Hades.HR.UI
         /// <returns></returns>
         public override bool SaveUpdated()
         {
-
             WorkTeamDailyWorkloadInfo info = CallerFactory<IWorkTeamDailyWorkloadService>.Instance.FindByID(ID);
             if (info != null)
             {

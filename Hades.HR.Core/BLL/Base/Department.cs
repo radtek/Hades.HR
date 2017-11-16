@@ -175,12 +175,13 @@ namespace Hades.HR.BLL
                     break;
             }
 
+            obj.Id = Guid.NewGuid().ToString();
             string sql = string.Format("INSERT INTO dbo.ACL_OU (ID, PID, HandNo, Name, SortCode, Category, Deleted, Enabled)" +
-                " VALUES('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', {6}, {7}", 
+                " VALUES('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', {6}, {7})", 
                 obj.Id, obj.PID, obj.Number, obj.Name, obj.SortCode, type, obj.Deleted, obj.Enabled);
             base.SqlExecute(sql);
 
-            obj.Id = Guid.NewGuid().ToString();
+            
             return base.Insert(obj, trans);
         }
 

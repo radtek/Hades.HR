@@ -114,6 +114,11 @@ namespace Hades.HR.UI
         #endregion //Method
 
         #region Event
+        /// <summary>
+        /// 编辑产量工时
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void menuProduction_Click(object sender, EventArgs e)
         {
             string ID = this.winGridViewPager1.gridView1.GetFocusedRowCellDisplayText("Id");
@@ -127,6 +132,36 @@ namespace Hades.HR.UI
             if (!string.IsNullOrEmpty(ID))
             {
                 FrmEditWorkTeamDailyWorkload dlg = new FrmEditWorkTeamDailyWorkload();
+                dlg.ID = ID;
+                dlg.IDList = IDList;
+                dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
+                dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
+
+                if (DialogResult.OK == dlg.ShowDialog())
+                {
+                    BindData();
+                }
+            }
+        }
+
+        /// <summary>
+        /// 编辑换机工时
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void menuChange_Click(object sender, EventArgs e)
+        {
+            string ID = this.winGridViewPager1.gridView1.GetFocusedRowCellDisplayText("Id");
+            List<string> IDList = new List<string>();
+            for (int i = 0; i < this.winGridViewPager1.gridView1.RowCount; i++)
+            {
+                string strTemp = this.winGridViewPager1.GridView1.GetRowCellDisplayText(i, "Id");
+                IDList.Add(strTemp);
+            }
+
+            if (!string.IsNullOrEmpty(ID))
+            {
+                FrmEditWorkTeamDailyChange dlg = new FrmEditWorkTeamDailyChange();
                 dlg.ID = ID;
                 dlg.IDList = IDList;
                 dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);

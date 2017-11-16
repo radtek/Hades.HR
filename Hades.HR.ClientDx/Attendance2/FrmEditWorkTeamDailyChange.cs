@@ -46,10 +46,22 @@ namespace Hades.HR.UI
         {
             //初始化代码
         }
+
+        /// <summary>
+        /// 编辑或者保存状态下取值函数
+        /// </summary>
+        /// <param name="info"></param>
+        private void SetInfo(WorkTeamDailyWorkloadInfo info)
+        {
+            info.ChangeHours = this.spChangeHours.Value;
+
+            info.Editor = this.LoginUserInfo.Name;
+            info.EditorId = this.LoginUserInfo.ID;
+            info.EditTime = DateTime.Now;
+        }
         #endregion //Function
 
         #region Method
-
         public override void ClearScreen()
         {
             this.tempInfo = new WorkTeamDailyWorkloadInfo();
@@ -98,13 +110,7 @@ namespace Hades.HR.UI
 
                     var team = CallerFactory<IWorkTeamService>.Instance.FindByID(info.WorkTeamId);
                     this.txtWorkTeam.Text = team.Name;
-                    // txtWorkTeamId.Text = info.WorkTeamId;
-                    //this.luWorkTeam.SetSelected(info.WorkTeamId);
-                    //txtAttendanceDate.SetDateTime(info.AttendanceDate);
-                    //txtProductionHours.Value = info.ProductionHours;
-                    //txtPersonCount.Value = info.PersonCount;
-                    //txtRemark.Text = info.Remark;
-
+                    this.txtAttendanceDate.Text = info.AttendanceDate.ToString("yyyy-MM-dd");
                 }
 
                 //this.btnOK.Enabled = HasFunction("WorkTeamDailyWorkload/Edit");             
@@ -116,6 +122,38 @@ namespace Hades.HR.UI
 
             //tempInfo在对象存在则为指定对象，新建则是全新的对象，但有一些初始化的GUID用于附件上传
             //SetAttachInfo(tempInfo);
+        }
+
+        /// <summary>
+        /// 编辑状态下的数据保存
+        /// </summary>
+        /// <returns></returns>
+        public override bool SaveUpdated()
+        {
+            WorkTeamDailyWorkloadInfo info = CallerFactory<IWorkTeamDailyWorkloadService>.Instance.FindByID(ID);
+            if (info != null)
+            {
+                SetInfo(info);
+
+                try
+                {
+                    #region 更新数据
+                    bool succeed = CallerFactory<IWorkTeamDailyWorkloadService>.Instance.Update(info, info.Id);
+                    if (succeed)
+                    {
+                        //可添加其他关联操作
+
+                        return true;
+                    }
+                    #endregion
+                }
+                catch (Exception ex)
+                {
+                    LogTextHelper.Error(ex);
+                    MessageDxUtil.ShowError(ex.Message);
+                }
+            }
+            return false;
         }
         #endregion //Method
     }

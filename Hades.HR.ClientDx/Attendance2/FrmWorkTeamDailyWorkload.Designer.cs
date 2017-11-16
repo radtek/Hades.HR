@@ -39,20 +39,20 @@ namespace Hades.HR.UI
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.dpAttendance = new DevExpress.XtraEditors.DateEdit();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
             this.depTree = new Hades.HR.UI.DepartmentTreeGrid();
-            this.dpAttendance = new DevExpress.XtraEditors.DateEdit();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.contextMenuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
-            this.groupControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dpAttendance.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dpAttendance.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
+            this.groupControl3.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnAddNew
@@ -83,16 +83,16 @@ namespace Hades.HR.UI
             this.winGridViewPager1.DisplayColumns = "";
             this.winGridViewPager1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.winGridViewPager1.FixedColumns = null;
-            this.winGridViewPager1.Location = new System.Drawing.Point(2, 21);
+            this.winGridViewPager1.Location = new System.Drawing.Point(2, 25);
             this.winGridViewPager1.MinimumSize = new System.Drawing.Size(540, 0);
             this.winGridViewPager1.Name = "winGridViewPager1";
             this.winGridViewPager1.PrintTitle = "";
-            this.winGridViewPager1.ShowAddMenu = true;
+            this.winGridViewPager1.ShowAddMenu = false;
             this.winGridViewPager1.ShowCheckBox = false;
-            this.winGridViewPager1.ShowDeleteMenu = true;
-            this.winGridViewPager1.ShowEditMenu = true;
+            this.winGridViewPager1.ShowDeleteMenu = false;
+            this.winGridViewPager1.ShowEditMenu = false;
             this.winGridViewPager1.ShowExportButton = true;
-            this.winGridViewPager1.Size = new System.Drawing.Size(694, 511);
+            this.winGridViewPager1.Size = new System.Drawing.Size(694, 547);
             this.winGridViewPager1.TabIndex = 11;
             // 
             // contextMenuStrip1
@@ -102,20 +102,21 @@ namespace Hades.HR.UI
             this.menuProduction,
             this.menuChange});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(149, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(169, 52);
             // 
             // menuProduction
             // 
             this.menuProduction.Name = "menuProduction";
-            this.menuProduction.Size = new System.Drawing.Size(148, 22);
+            this.menuProduction.Size = new System.Drawing.Size(168, 24);
             this.menuProduction.Text = "编辑产量工时";
             this.menuProduction.Click += new System.EventHandler(this.menuProduction_Click);
             // 
             // menuChange
             // 
             this.menuChange.Name = "menuChange";
-            this.menuChange.Size = new System.Drawing.Size(148, 22);
+            this.menuChange.Size = new System.Drawing.Size(168, 24);
             this.menuChange.Text = "编辑换机工时";
+            this.menuChange.Click += new System.EventHandler(this.menuChange_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -129,7 +130,7 @@ namespace Hades.HR.UI
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 140F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1004, 680);
             this.tableLayoutPanel1.TabIndex = 16;
@@ -154,35 +155,17 @@ namespace Hades.HR.UI
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl2.Location = new System.Drawing.Point(303, 3);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(698, 134);
+            this.groupControl2.Size = new System.Drawing.Size(698, 94);
             this.groupControl2.TabIndex = 1;
             this.groupControl2.Text = "操作";
             // 
-            // groupControl3
+            // labelControl1
             // 
-            this.groupControl3.Controls.Add(this.winGridViewPager1);
-            this.groupControl3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl3.Location = new System.Drawing.Point(303, 143);
-            this.groupControl3.Name = "groupControl3";
-            this.groupControl3.Size = new System.Drawing.Size(698, 534);
-            this.groupControl3.TabIndex = 2;
-            this.groupControl3.Text = "工作量记录";
-            // 
-            // depTree
-            // 
-            this.depTree.DataSource = null;
-            this.depTree.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.depTree.EnableFocusCellStyle = false;
-            this.depTree.Location = new System.Drawing.Point(2, 21);
-            this.depTree.Name = "depTree";
-            this.depTree.ShowContextMenu = false;
-            this.depTree.ShowMenuCreate = false;
-            this.depTree.ShowMenuDelete = false;
-            this.depTree.ShowMenuEdit = false;
-            this.depTree.ShowMenuView = false;
-            this.depTree.ShowNameOnly = true;
-            this.depTree.Size = new System.Drawing.Size(290, 651);
-            this.depTree.TabIndex = 0;
+            this.labelControl1.Location = new System.Drawing.Point(19, 41);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(60, 18);
+            this.labelControl1.TabIndex = 17;
+            this.labelControl1.Text = "日期选择";
             // 
             // dpAttendance
             // 
@@ -195,20 +178,39 @@ namespace Hades.HR.UI
             this.dpAttendance.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dpAttendance.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.dpAttendance.Size = new System.Drawing.Size(221, 20);
+            this.dpAttendance.Size = new System.Drawing.Size(221, 24);
             this.dpAttendance.TabIndex = 16;
             // 
-            // labelControl1
+            // groupControl3
             // 
-            this.labelControl1.Location = new System.Drawing.Point(19, 41);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(48, 14);
-            this.labelControl1.TabIndex = 17;
-            this.labelControl1.Text = "日期选择";
+            this.groupControl3.Controls.Add(this.winGridViewPager1);
+            this.groupControl3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupControl3.Location = new System.Drawing.Point(303, 103);
+            this.groupControl3.Name = "groupControl3";
+            this.groupControl3.Size = new System.Drawing.Size(698, 574);
+            this.groupControl3.TabIndex = 2;
+            this.groupControl3.Text = "工作量记录";
+            // 
+            // depTree
+            // 
+            this.depTree.DataSource = null;
+            this.depTree.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.depTree.EnableFocusCellStyle = false;
+            this.depTree.Location = new System.Drawing.Point(2, 25);
+            this.depTree.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.depTree.Name = "depTree";
+            this.depTree.ShowContextMenu = false;
+            this.depTree.ShowMenuCreate = false;
+            this.depTree.ShowMenuDelete = false;
+            this.depTree.ShowMenuEdit = false;
+            this.depTree.ShowMenuView = false;
+            this.depTree.ShowNameOnly = true;
+            this.depTree.Size = new System.Drawing.Size(290, 647);
+            this.depTree.TabIndex = 0;
             // 
             // FrmWorkTeamDailyWorkload
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1004, 680);
             this.Controls.Add(this.tableLayoutPanel1);
@@ -221,10 +223,10 @@ namespace Hades.HR.UI
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             this.groupControl2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
-            this.groupControl3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dpAttendance.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dpAttendance.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
+            this.groupControl3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
