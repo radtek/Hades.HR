@@ -30,9 +30,11 @@ namespace Hades.HR.UI
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEditWorkTeamDailyWorkload));
             this.layoutControl2 = new DevExpress.XtraLayout.LayoutControl();
+            this.luWorkTeam = new Hades.HR.UI.WorkTeamLookup();
             this.txtAttendanceDate = new DevExpress.XtraEditors.DateEdit();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.txtProductionHours = new DevExpress.XtraEditors.SpinEdit();
             this.layoutControl3 = new DevExpress.XtraLayout.LayoutControl();
@@ -49,8 +51,6 @@ namespace Hades.HR.UI
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
             this.lvComplete = new DevExpress.XtraEditors.ListBoxControl();
-            this.luWorkTeam = new Hades.HR.UI.WorkTeamLookup();
-            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.picPrint)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).BeginInit();
             this.layoutControl2.SuspendLayout();
@@ -58,6 +58,7 @@ namespace Hades.HR.UI
             ((System.ComponentModel.ISupportInitialize)(this.txtAttendanceDate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtProductionHours.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl3)).BeginInit();
@@ -78,7 +79,6 @@ namespace Hades.HR.UI
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
             this.groupControl4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lvComplete)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnOK
@@ -113,6 +113,14 @@ namespace Hades.HR.UI
             this.layoutControl2.Size = new System.Drawing.Size(974, 71);
             this.layoutControl2.TabIndex = 0;
             this.layoutControl2.Text = "layoutControl2";
+            // 
+            // luWorkTeam
+            // 
+            this.luWorkTeam.Location = new System.Drawing.Point(63, 12);
+            this.luWorkTeam.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.luWorkTeam.Name = "luWorkTeam";
+            this.luWorkTeam.Size = new System.Drawing.Size(422, 20);
+            this.luWorkTeam.TabIndex = 4;
             // 
             // txtAttendanceDate
             // 
@@ -152,6 +160,15 @@ namespace Hades.HR.UI
             this.layoutControlItem2.Size = new System.Drawing.Size(477, 24);
             this.layoutControlItem2.Text = "考勤日期";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(48, 14);
+            // 
+            // layoutControlItem1
+            // 
+            this.layoutControlItem1.Control = this.luWorkTeam;
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem1.Name = "layoutControlItem1";
+            this.layoutControlItem1.Size = new System.Drawing.Size(477, 24);
+            this.layoutControlItem1.Text = "班组选择";
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(48, 14);
             // 
             // emptySpaceItem1
             // 
@@ -349,23 +366,6 @@ namespace Hades.HR.UI
             this.lvComplete.TabIndex = 0;
             this.lvComplete.SelectedIndexChanged += new System.EventHandler(this.lvComplete_SelectedIndexChanged);
             // 
-            // luWorkTeam
-            // 
-            this.luWorkTeam.Location = new System.Drawing.Point(63, 12);
-            this.luWorkTeam.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.luWorkTeam.Name = "luWorkTeam";
-            this.luWorkTeam.Size = new System.Drawing.Size(422, 20);
-            this.luWorkTeam.TabIndex = 4;
-            // 
-            // layoutControlItem1
-            // 
-            this.layoutControlItem1.Control = this.luWorkTeam;
-            this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(477, 24);
-            this.layoutControlItem1.Text = "班组选择";
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(48, 14);
-            // 
             // FrmEditWorkTeamDailyWorkload
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -387,6 +387,7 @@ namespace Hades.HR.UI
             ((System.ComponentModel.ISupportInitialize)(this.txtAttendanceDate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtProductionHours.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl3)).EndInit();
@@ -407,7 +408,6 @@ namespace Hades.HR.UI
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
             this.groupControl4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.lvComplete)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

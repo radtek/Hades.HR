@@ -864,6 +864,12 @@
     <Compile Include="Base\FrmWorkTeamView.Designer.cs">
       <DependentUpon>FrmWorkTeamView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Attendance2\FrmEditWorkTeamDailyChange.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Attendance2\FrmEditWorkTeamDailyChange.Designer.cs">
+      <DependentUpon>FrmEditWorkTeamDailyChange.cs</DependentUpon>
+    </Compile>
     <Compile Include="Salary\FrmBonusDefine.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -952,6 +958,9 @@
     <Compile Include="Util\ControlUtil.cs" />
     <Compile Include="Util\DepartmentType.cs" />
     <Compile Include="Util\ExtensionMethod.cs" />
+    <EmbeddedResource Include="Attendance2\FrmEditWorkTeamDailyChange.resx">
+      <DependentUpon>FrmEditWorkTeamDailyChange.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Attendance2\FrmEditWorkTeamDailyWorkload.resx">
       <DependentUpon>FrmEditWorkTeamDailyWorkload.cs</DependentUpon>
     </EmbeddedResource>
