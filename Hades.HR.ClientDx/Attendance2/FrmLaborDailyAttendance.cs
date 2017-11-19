@@ -23,6 +23,7 @@ namespace Hades.HR.UI
     /// </summary>	
     public partial class FrmLaborDailyAttendance : BaseDock
     {
+        #region Constructor
         public FrmLaborDailyAttendance()
         {
             InitializeComponent();
@@ -48,6 +49,9 @@ namespace Hades.HR.UI
                 control.KeyUp += new System.Windows.Forms.KeyEventHandler(this.SearchControl_KeyUp);
             }
         }
+        #endregion //Constructor
+
+        #region System
         void gridView1_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
         {
             //if (e.Column.FieldName == "OrderStatus")
@@ -177,7 +181,7 @@ namespace Hades.HR.UI
 
             if (!string.IsNullOrEmpty(ID))
             {
-                FrmEditLaborDailyAttendance dlg = new FrmEditLaborDailyAttendance();
+                FrmSetDailyLabor dlg = new FrmSetDailyLabor();
                 dlg.ID = ID;
                 dlg.IDList = IDList;
                 dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
@@ -287,7 +291,7 @@ namespace Hades.HR.UI
         /// </summary>
         private void btnAddNew_Click(object sender, EventArgs e)
         {
-            FrmEditLaborDailyAttendance dlg = new FrmEditLaborDailyAttendance();
+            FrmSetDailyLabor dlg = new FrmSetDailyLabor();
             dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
             dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
             
@@ -448,5 +452,6 @@ namespace Hades.HR.UI
             advanceCondition = condition;
             BindData();
         }
+        #endregion //System
     }
 }

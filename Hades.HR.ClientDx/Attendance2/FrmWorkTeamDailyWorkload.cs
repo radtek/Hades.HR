@@ -115,6 +115,23 @@ namespace Hades.HR.UI
 
         #region Event
         /// <summary>
+        /// 初始化
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnInit_Click(object sender, EventArgs e)
+        {
+            if (this.dpAttendance.EditValue == null)
+            {
+                MessageDxUtil.ShowWarning("请选择考勤日期");
+
+                return;
+            }
+            FrmSetDailyLabor frm = new FrmSetDailyLabor();
+            frm.ShowDialog();
+        }
+
+        /// <summary>
         /// 编辑产量工时
         /// </summary>
         /// <param name="sender"></param>
@@ -542,5 +559,7 @@ namespace Hades.HR.UI
         #endregion //Export
 
         #endregion //System
+
+  
     }
 }

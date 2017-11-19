@@ -660,11 +660,11 @@
     <Compile Include="..\Hades.HR.Core\Util\HREnum.cs">
       <Link>Util\HREnum.cs</Link>
     </Compile>
-    <Compile Include="Attendance2\FrmEditLaborDailyAttendance.cs">
+    <Compile Include="Attendance2\FrmSetDailyLabor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Attendance2\FrmEditLaborDailyAttendance.Designer.cs">
-      <DependentUpon>FrmEditLaborDailyAttendance.cs</DependentUpon>
+    <Compile Include="Attendance2\FrmSetDailyLabor.Designer.cs">
+      <DependentUpon>FrmSetDailyLabor.cs</DependentUpon>
     </Compile>
     <Compile Include="Attendance2\FrmEditLaborDailyWorkload.cs">
       <SubType>Form</SubType>
@@ -958,14 +958,17 @@
     <Compile Include="Util\ControlUtil.cs" />
     <Compile Include="Util\DepartmentType.cs" />
     <Compile Include="Util\ExtensionMethod.cs" />
-    <EmbeddedResource Include="Attendance2\FrmEditLaborDailyAttendance.resx">
-      <DependentUpon>FrmEditLaborDailyAttendance.cs</DependentUpon>
+    <EmbeddedResource Include="Attendance2\FrmSetDailyLabor.resx">
+      <DependentUpon>FrmSetDailyLabor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Attendance2\FrmEditWorkTeamDailyChange.resx">
       <DependentUpon>FrmEditWorkTeamDailyChange.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Attendance2\FrmEditWorkTeamDailyWorkload.resx">
       <DependentUpon>FrmEditWorkTeamDailyWorkload.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Attendance2\FrmLaborDailyAttendance.resx">
+      <DependentUpon>FrmLaborDailyAttendance.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Attendance2\FrmWorkTeamDailyWorkload.resx">
       <DependentUpon>FrmWorkTeamDailyWorkload.cs</DependentUpon>

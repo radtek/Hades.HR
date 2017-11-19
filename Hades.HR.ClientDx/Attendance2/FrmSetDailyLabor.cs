@@ -18,7 +18,7 @@ using Hades.HR.Entity;
 
 namespace Hades.HR.UI
 {
-    public partial class FrmEditLaborDailyAttendance : BaseEditForm
+    public partial class FrmSetDailyLabor : BaseEditForm
     {
         #region Field
         /// <summary>
@@ -38,12 +38,12 @@ namespace Hades.HR.UI
         #endregion //Field
 
         #region Constructor
-        public FrmEditLaborDailyAttendance()
+        public FrmSetDailyLabor()
         {
             InitializeComponent();
         }
 
-        public FrmEditLaborDailyAttendance(DateTime attendanceDate, string workTeamId)
+        public FrmSetDailyLabor(DateTime attendanceDate, string workTeamId)
         {
             this.attendanceDate = attendanceDate;
             this.currentWorkTeamId = workTeamId;
@@ -66,7 +66,7 @@ namespace Hades.HR.UI
         /// </summary>
         private void LoadDefaultStaff()
         {
-            var staffs = CallerFactory<IStaffService>.Instance.Find(string.Format("WorkTeamId='{0}' AND Delete=0", this.currentWorkTeamId);
+            var staffs = CallerFactory<IStaffService>.Instance.Find(string.Format("WorkTeamId='{0}' AND Delete=0", this.currentWorkTeamId));
 
 
         }

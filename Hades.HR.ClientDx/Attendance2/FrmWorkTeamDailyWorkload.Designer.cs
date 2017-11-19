@@ -38,11 +38,12 @@ namespace Hades.HR.UI
             this.menuChange = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.depTree = new Hades.HR.UI.DepartmentTreeGrid();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.dpAttendance = new DevExpress.XtraEditors.DateEdit();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
-            this.depTree = new Hades.HR.UI.DepartmentTreeGrid();
+            this.btnInit = new DevExpress.XtraEditors.SimpleButton();
             this.contextMenuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
@@ -58,7 +59,7 @@ namespace Hades.HR.UI
             // btnAddNew
             // 
             this.btnAddNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddNew.Location = new System.Drawing.Point(421, 36);
+            this.btnAddNew.Location = new System.Drawing.Point(443, 37);
             this.btnAddNew.Name = "btnAddNew";
             this.btnAddNew.Size = new System.Drawing.Size(69, 22);
             this.btnAddNew.TabIndex = 15;
@@ -68,7 +69,7 @@ namespace Hades.HR.UI
             // btnSearch
             // 
             this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSearch.Location = new System.Drawing.Point(346, 36);
+            this.btnSearch.Location = new System.Drawing.Point(543, 36);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(69, 22);
             this.btnSearch.TabIndex = 14;
@@ -146,8 +147,26 @@ namespace Hades.HR.UI
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "公司列表";
             // 
+            // depTree
+            // 
+            this.depTree.DataSource = null;
+            this.depTree.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.depTree.EnableFocusCellStyle = false;
+            this.depTree.Location = new System.Drawing.Point(2, 25);
+            this.depTree.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.depTree.Name = "depTree";
+            this.depTree.ShowContextMenu = false;
+            this.depTree.ShowMenuCreate = false;
+            this.depTree.ShowMenuDelete = false;
+            this.depTree.ShowMenuEdit = false;
+            this.depTree.ShowMenuView = false;
+            this.depTree.ShowNameOnly = true;
+            this.depTree.Size = new System.Drawing.Size(290, 647);
+            this.depTree.TabIndex = 0;
+            // 
             // groupControl2
             // 
+            this.groupControl2.Controls.Add(this.btnInit);
             this.groupControl2.Controls.Add(this.labelControl1);
             this.groupControl2.Controls.Add(this.dpAttendance);
             this.groupControl2.Controls.Add(this.btnSearch);
@@ -170,7 +189,7 @@ namespace Hades.HR.UI
             // dpAttendance
             // 
             this.dpAttendance.EditValue = null;
-            this.dpAttendance.Location = new System.Drawing.Point(73, 38);
+            this.dpAttendance.Location = new System.Drawing.Point(85, 38);
             this.dpAttendance.Name = "dpAttendance";
             this.dpAttendance.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
             this.dpAttendance.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -191,22 +210,15 @@ namespace Hades.HR.UI
             this.groupControl3.TabIndex = 2;
             this.groupControl3.Text = "工作量记录";
             // 
-            // depTree
+            // btnInit
             // 
-            this.depTree.DataSource = null;
-            this.depTree.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.depTree.EnableFocusCellStyle = false;
-            this.depTree.Location = new System.Drawing.Point(2, 25);
-            this.depTree.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.depTree.Name = "depTree";
-            this.depTree.ShowContextMenu = false;
-            this.depTree.ShowMenuCreate = false;
-            this.depTree.ShowMenuDelete = false;
-            this.depTree.ShowMenuEdit = false;
-            this.depTree.ShowMenuView = false;
-            this.depTree.ShowNameOnly = true;
-            this.depTree.Size = new System.Drawing.Size(290, 647);
-            this.depTree.TabIndex = 0;
+            this.btnInit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnInit.Location = new System.Drawing.Point(336, 37);
+            this.btnInit.Name = "btnInit";
+            this.btnInit.Size = new System.Drawing.Size(69, 22);
+            this.btnInit.TabIndex = 18;
+            this.btnInit.Text = "初始化";
+            this.btnInit.Click += new System.EventHandler(this.btnInit_Click);
             // 
             // FrmWorkTeamDailyWorkload
             // 
@@ -246,5 +258,6 @@ namespace Hades.HR.UI
         private DevExpress.XtraEditors.GroupControl groupControl3;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.DateEdit dpAttendance;
+        private DevExpress.XtraEditors.SimpleButton btnInit;
     }
 }

@@ -1,6 +1,6 @@
 namespace Hades.HR.UI
 {
-    partial class FrmEditLaborDailyAttendance
+    partial class FrmSetDailyLabor
     {
         /// <summary>
         /// Required designer variable.
