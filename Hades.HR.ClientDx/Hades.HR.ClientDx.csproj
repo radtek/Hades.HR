@@ -958,6 +958,9 @@
     <Compile Include="Util\ControlUtil.cs" />
     <Compile Include="Util\DepartmentType.cs" />
     <Compile Include="Util\ExtensionMethod.cs" />
+    <EmbeddedResource Include="Attendance2\FrmEditLaborDailyAttendance.resx">
+      <DependentUpon>FrmEditLaborDailyAttendance.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Attendance2\FrmEditWorkTeamDailyChange.resx">
       <DependentUpon>FrmEditWorkTeamDailyChange.cs</DependentUpon>
     </EmbeddedResource>
@@ -1093,6 +1096,7 @@
     <None Include="Properties\DataSources\Hades.HR.Entity.PositionInfo.datasource" />
     <None Include="Properties\DataSources\Hades.HR.Entity.ProductionLineInfo.datasource" />
     <None Include="Properties\DataSources\Hades.HR.Entity.StaffBonusInfo.datasource" />
+    <None Include="Properties\DataSources\Hades.HR.Entity.StaffInfo.datasource" />
     <None Include="Properties\DataSources\Hades.HR.Entity.WorkSectionLaborInfo.datasource" />
     <None Include="Properties\DataSources\Hades.HR.Entity.WorkTeamInfo.datasource" />
     <None Include="Properties\licenses.licx" />
