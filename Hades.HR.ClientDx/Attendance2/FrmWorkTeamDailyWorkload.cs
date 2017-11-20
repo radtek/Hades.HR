@@ -34,6 +34,11 @@ namespace Hades.HR.UI
         /// 缓存班组信息
         /// </summary>
         private List<WorkTeamInfo> workTeamList;
+
+        /// <summary>
+        /// 缓存职员信息
+        /// </summary>
+        private List<StaffInfo> staffList;
         #endregion //Field
 
         #region Constructor
@@ -43,28 +48,34 @@ namespace Hades.HR.UI
 
             InitDictItem();
 
-            this.winGridViewPager1.OnPageChanged += new EventHandler(winGridViewPager1_OnPageChanged);
-            this.winGridViewPager1.OnStartExport += new EventHandler(winGridViewPager1_OnStartExport);
-            this.winGridViewPager1.OnEditSelected += new EventHandler(winGridViewPager1_OnEditSelected);
-            this.winGridViewPager1.OnAddNew += new EventHandler(winGridViewPager1_OnAddNew);
-            this.winGridViewPager1.OnDeleteSelected += new EventHandler(winGridViewPager1_OnDeleteSelected);
-            this.winGridViewPager1.OnRefresh += new EventHandler(winGridViewPager1_OnRefresh);
-            this.winGridViewPager1.AppendedMenu = this.contextMenuStrip1;
-            this.winGridViewPager1.ShowLineNumber = true;
-            this.winGridViewPager1.BestFitColumnWith = false;//是否设置为自动调整宽度，false为不设置
-			this.winGridViewPager1.gridView1.DataSourceChanged +=new EventHandler(gridView1_DataSourceChanged);
-            this.winGridViewPager1.gridView1.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(gridView1_CustomColumnDisplayText);
-            this.winGridViewPager1.gridView1.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(gridView1_RowCellStyle);
+            this.wgvWorkload.gridView1.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(wgvWorkload_CustomColumnDisplayText);
 
-            //关联回车键进行查询
-            //foreach (Control control in this.layoutControl1.Controls)
-            //{
-            //    control.KeyUp += new System.Windows.Forms.KeyEventHandler(this.SearchControl_KeyUp);
-            //}
+            this.wgvLabor.gridView1.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(wgvLabor_CustomColumnDisplayText);
+            //         this.winGridViewPager1.OnPageChanged += new EventHandler(winGridViewPager1_OnPageChanged);
+            //         this.winGridViewPager1.OnStartExport += new EventHandler(winGridViewPager1_OnStartExport);
+            //         this.winGridViewPager1.OnEditSelected += new EventHandler(winGridViewPager1_OnEditSelected);
+            //         this.winGridViewPager1.OnAddNew += new EventHandler(winGridViewPager1_OnAddNew);
+            //         this.winGridViewPager1.OnDeleteSelected += new EventHandler(winGridViewPager1_OnDeleteSelected);
+            //         this.winGridViewPager1.OnRefresh += new EventHandler(winGridViewPager1_OnRefresh);
+            //         this.winGridViewPager1.AppendedMenu = this.contextMenuStrip1;
+            //         this.winGridViewPager1.ShowLineNumber = true;
+            //         this.winGridViewPager1.BestFitColumnWith = false;//是否设置为自动调整宽度，false为不设置
+            //this.winGridViewPager1.gridView1.DataSourceChanged +=new EventHandler(gridView1_DataSourceChanged);
+            //         this.winGridViewPager1.gridView1.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(gridView1_CustomColumnDisplayText);
+            //         this.winGridViewPager1.gridView1.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(gridView1_RowCellStyle);
+            
         }
         #endregion //Constructor
 
         #region Function
+        /// <summary>
+        /// 初始化字典列表内容
+        /// </summary>
+        private void InitDictItem()
+        {
+            //初始化代码
+        }
+
         /// <summary>
         /// 根据查询条件构造查询语句
         /// </summary> 
@@ -88,20 +99,40 @@ namespace Hades.HR.UI
         private void BindData()
         {
             //entity
-            this.winGridViewPager1.DisplayColumns = "WorkTeamId,AttendanceDate,ProductionHours,ChangeHours,RepairHours,ElectricHours,PersonCount,Remark";
-            this.winGridViewPager1.ColumnNameAlias = CallerFactory<IWorkTeamDailyWorkloadService>.Instance.GetColumnNameAlias();//字段列显示名称转义
+            //this.winGridViewPager1.DisplayColumns = "WorkTeamId,AttendanceDate,ProductionHours,ChangeHours,RepairHours,ElectricHours,PersonCount,Remark";
+            //this.winGridViewPager1.ColumnNameAlias = CallerFactory<IWorkTeamDailyWorkloadService>.Instance.GetColumnNameAlias();//字段列显示名称转义
             
-            string where = GetConditionSql();
-            PagerInfo pagerInfo = this.winGridViewPager1.PagerInfo;
-            List<WorkTeamDailyWorkloadInfo> list = CallerFactory<IWorkTeamDailyWorkloadService>.Instance.FindWithPager(where, ref pagerInfo);
-            this.winGridViewPager1.PagerInfo.RecordCount = pagerInfo.RecordCount;
-            this.winGridViewPager1.DataSource = new Hades.Pager.WinControl.SortableBindingList<WorkTeamDailyWorkloadInfo>(list);
-            this.winGridViewPager1.PrintTitle = "WorkTeamDailyWorkload报表";
+            //string where = GetConditionSql();
+            //PagerInfo pagerInfo = this.winGridViewPager1.PagerInfo;
+            //List<WorkTeamDailyWorkloadInfo> list = CallerFactory<IWorkTeamDailyWorkloadService>.Instance.FindWithPager(where, ref pagerInfo);
+            //this.winGridViewPager1.PagerInfo.RecordCount = pagerInfo.RecordCount;
+            //this.winGridViewPager1.DataSource = new Hades.Pager.WinControl.SortableBindingList<WorkTeamDailyWorkloadInfo>(list);
+            //this.winGridViewPager1.PrintTitle = "WorkTeamDailyWorkload报表";
         }
 
+        /// <summary>
+        /// 载入班组工作量数据
+        /// </summary>
+        /// <param name="attendanceDate"></param>
+        /// <param name="workTeamId"></param>
+        private void LoadWorkTeamWorkload(DateTime attendanceDate, string workTeamId)
+        {
+            this.wgvWorkload.DisplayColumns = "WorkTeamId,AttendanceDate,ProductionHours,ChangeHours,RepairHours,ElectricHours,PersonCount,Remark";
+            this.wgvWorkload.ColumnNameAlias = CallerFactory<IWorkTeamDailyWorkloadService>.Instance.GetColumnNameAlias();//字段列显示名称转义
+
+
+            var data = CallerFactory<IWorkTeamDailyWorkloadService>.Instance.Find(string.Format("AttendanceDate='{0}' AND WorkTeamId='{1}'", attendanceDate, workTeamId));
+            this.wgvWorkload.DataSource = data;
+        }
+
+        /// <summary>
+        /// 载入员工工作量
+        /// </summary>
+        /// <param name="attendanceDate"></param>
+        /// <param name="workTeamId"></param>
         private void LoadLaborWorkload(DateTime attendanceDate, string workTeamId)
         {
-            this.wgvLabor.DisplayColumns = "WorkTeamId,ActualTeamId,StaffId,ProductionHours,ChangeHours,RepairHours,ElectricHours,LeaveHours,AllowanceHours,Remark";
+            this.wgvLabor.DisplayColumns = "WorkTeamId,ActualWorkTeamId,StaffId,ProductionHours,ChangeHours,RepairHours,ElectricHours,LeaveHours,AllowanceHours,Remark";
             this.wgvLabor.ColumnNameAlias = CallerFactory<ILaborDailyWorkloadService>.Instance.GetColumnNameAlias();
 
             var data = CallerFactory<ILaborDailyWorkloadService>.Instance.Find(string.Format("AttendanceDate='{0}' AND WorkTeamId='{1}'", attendanceDate, workTeamId));
@@ -117,9 +148,9 @@ namespace Hades.HR.UI
         public override void FormOnLoad()
         {
             this.workTeamList = CallerFactory<IWorkTeamService>.Instance.Find2("", "");
-
+            this.staffList = CallerFactory<IStaffService>.Instance.Find("StaffType = 2");
             this.wtTree.Init();
-            //this.depTree.Init(2);
+        
             BindData();
         }
         #endregion //Method
@@ -139,6 +170,7 @@ namespace Hades.HR.UI
             if (string.IsNullOrEmpty(teamId))
                 return;
 
+            LoadWorkTeamWorkload(this.dpAttendance.DateTime, teamId);
             LoadLaborWorkload(this.dpAttendance.DateTime, teamId);
         }
 
@@ -163,6 +195,7 @@ namespace Hades.HR.UI
             }
 
             FrmSetDailyLabor frm = new FrmSetDailyLabor(this.dpAttendance.DateTime, teamId);
+            frm.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
             frm.ShowDialog();
         }
 
@@ -173,27 +206,27 @@ namespace Hades.HR.UI
         /// <param name="e"></param>
         private void menuProduction_Click(object sender, EventArgs e)
         {
-            string ID = this.winGridViewPager1.gridView1.GetFocusedRowCellDisplayText("Id");
-            List<string> IDList = new List<string>();
-            for (int i = 0; i < this.winGridViewPager1.gridView1.RowCount; i++)
-            {
-                string strTemp = this.winGridViewPager1.GridView1.GetRowCellDisplayText(i, "Id");
-                IDList.Add(strTemp);
-            }
+            //string ID = this.winGridViewPager1.gridView1.GetFocusedRowCellDisplayText("Id");
+            //List<string> IDList = new List<string>();
+            //for (int i = 0; i < this.winGridViewPager1.gridView1.RowCount; i++)
+            //{
+            //    string strTemp = this.winGridViewPager1.GridView1.GetRowCellDisplayText(i, "Id");
+            //    IDList.Add(strTemp);
+            //}
 
-            if (!string.IsNullOrEmpty(ID))
-            {
-                FrmEditWorkTeamDailyWorkload dlg = new FrmEditWorkTeamDailyWorkload();
-                dlg.ID = ID;
-                dlg.IDList = IDList;
-                dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
-                dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
+            //if (!string.IsNullOrEmpty(ID))
+            //{
+            //    FrmEditWorkTeamDailyWorkload dlg = new FrmEditWorkTeamDailyWorkload();
+            //    dlg.ID = ID;
+            //    dlg.IDList = IDList;
+            //    dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
+            //    dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
 
-                if (DialogResult.OK == dlg.ShowDialog())
-                {
-                    BindData();
-                }
-            }
+            //    if (DialogResult.OK == dlg.ShowDialog())
+            //    {
+            //        BindData();
+            //    }
+            //}
         }
 
         /// <summary>
@@ -203,49 +236,36 @@ namespace Hades.HR.UI
         /// <param name="e"></param>
         private void menuChange_Click(object sender, EventArgs e)
         {
-            string ID = this.winGridViewPager1.gridView1.GetFocusedRowCellDisplayText("Id");
-            List<string> IDList = new List<string>();
-            for (int i = 0; i < this.winGridViewPager1.gridView1.RowCount; i++)
-            {
-                string strTemp = this.winGridViewPager1.GridView1.GetRowCellDisplayText(i, "Id");
-                IDList.Add(strTemp);
-            }
-
-            if (!string.IsNullOrEmpty(ID))
-            {
-                FrmEditWorkTeamDailyChange dlg = new FrmEditWorkTeamDailyChange();
-                dlg.ID = ID;
-                dlg.IDList = IDList;
-                dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
-                dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
-
-                if (DialogResult.OK == dlg.ShowDialog())
-                {
-                    BindData();
-                }
-            }
-        }
-        #endregion //Event
-
-        #region System
-        void gridView1_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
-        {
-            //if (e.Column.FieldName == "OrderStatus")
+            //string ID = this.winGridViewPager1.gridView1.GetFocusedRowCellDisplayText("Id");
+            //List<string> IDList = new List<string>();
+            //for (int i = 0; i < this.winGridViewPager1.gridView1.RowCount; i++)
             //{
-            //    string status = this.winGridViewPager1.gridView1.GetRowCellValue(e.RowHandle, "OrderStatus").ToString();
-            //    Color color = Color.White;
-            //    if (status == "已审核")
+            //    string strTemp = this.winGridViewPager1.GridView1.GetRowCellDisplayText(i, "Id");
+            //    IDList.Add(strTemp);
+            //}
+
+            //if (!string.IsNullOrEmpty(ID))
+            //{
+            //    FrmEditWorkTeamDailyChange dlg = new FrmEditWorkTeamDailyChange();
+            //    dlg.ID = ID;
+            //    dlg.IDList = IDList;
+            //    dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
+            //    dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
+
+            //    if (DialogResult.OK == dlg.ShowDialog())
             //    {
-            //        e.Appearance.BackColor = Color.Red;
-            //        e.Appearance.BackColor2 = Color.LightCyan;
+            //        BindData();
             //    }
             //}
         }
-        void gridView1_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+        #endregion //Event
+
+        #region Grid
+        void wgvWorkload_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
         {
-        	string columnName = e.Column.FieldName;
+            string columnName = e.Column.FieldName;
             if (e.Column.ColumnType == typeof(DateTime))
-            {   
+            {
                 if (e.Value != null)
                 {
                     if (e.Value == DBNull.Value || Convert.ToDateTime(e.Value) <= Convert.ToDateTime("1900-1-1"))
@@ -279,41 +299,118 @@ namespace Hades.HR.UI
             //    e.DisplayText = string.Format("{0}岁", e.Value);
             //}
         }
+
+        void wgvLabor_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+        {
+            string columnName = e.Column.FieldName;
+            if (e.Column.ColumnType == typeof(DateTime))
+            {
+                if (e.Value != null)
+                {
+                    if (e.Value == DBNull.Value || Convert.ToDateTime(e.Value) <= Convert.ToDateTime("1900-1-1"))
+                    {
+                        e.DisplayText = "";
+                    }
+                    else
+                    {
+                        e.DisplayText = Convert.ToDateTime(e.Value).ToString("yyyy-MM-dd");//yyyy-MM-dd
+                    }
+                }
+            }
+            else if (columnName == "WorkTeamId")
+            {
+                if (e.Value != null && !string.IsNullOrEmpty(e.Value.ToString()))
+                {
+                    var wt = this.workTeamList.SingleOrDefault(r => r.Id == e.Value.ToString());
+                    if (wt != null)
+                    {
+                        e.DisplayText = wt.Name;
+                    }
+                    else
+                    {
+                        var wt2 = CallerFactory<IWorkTeamService>.Instance.FindByID(e.Value.ToString());
+                        e.DisplayText = wt2.Name;
+                    }
+                }
+            }
+            else if (columnName == "ActualWorkTeamId")
+            {
+                if (e.Value != null && !string.IsNullOrEmpty(e.Value.ToString()))
+                {
+                    var wt = this.workTeamList.SingleOrDefault(r => r.Id == e.Value.ToString());
+                    if (wt != null)
+                    {
+                        e.DisplayText = wt.Name;
+                    }
+                    else
+                    {
+                        var wt2 = CallerFactory<IWorkTeamService>.Instance.FindByID(e.Value.ToString());
+                        e.DisplayText = wt2.Name;
+                    }
+                }
+            }
+            else if (columnName == "StaffId")
+            {
+                if (e.Value != null && !string.IsNullOrEmpty(e.Value.ToString()))
+                {
+                    var st = this.staffList.SingleOrDefault(r => r.Id == e.Value.ToString());
+                    if (st != null)
+                    {
+                        e.DisplayText = st.Name;
+                    }
+                    else
+                    {
+                        var st2 = CallerFactory<IStaffService>.Instance.FindByID(e.Value.ToString());
+                        e.DisplayText = st2.Name;
+                    }
+                }
+            }
+        }
+        #endregion //Grid
+
+        #region System
+        void gridView1_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
+        {
+            //if (e.Column.FieldName == "OrderStatus")
+            //{
+            //    string status = this.winGridViewPager1.gridView1.GetRowCellValue(e.RowHandle, "OrderStatus").ToString();
+            //    Color color = Color.White;
+            //    if (status == "已审核")
+            //    {
+            //        e.Appearance.BackColor = Color.Red;
+            //        e.Appearance.BackColor2 = Color.LightCyan;
+            //    }
+            //}
+        }
+        
         
         /// <summary>
         /// 绑定数据后，分配各列的宽度
         /// </summary>
         private void gridView1_DataSourceChanged(object sender, EventArgs e)
         {
-            if (this.winGridViewPager1.gridView1.Columns.Count > 0 && this.winGridViewPager1.gridView1.RowCount > 0)
-            {
-                //统一设置100宽度
-                foreach (DevExpress.XtraGrid.Columns.GridColumn column in this.winGridViewPager1.gridView1.Columns)
-                {
-                    column.Width = 100;
-                }
+            //if (this.winGridViewPager1.gridView1.Columns.Count > 0 && this.winGridViewPager1.gridView1.RowCount > 0)
+            //{
+            //    //统一设置100宽度
+            //    foreach (DevExpress.XtraGrid.Columns.GridColumn column in this.winGridViewPager1.gridView1.Columns)
+            //    {
+            //        column.Width = 100;
+            //    }
 
-                //可特殊设置特别的宽度
-                //SetGridColumWidth("Note", 200);
-            }
+            //    //可特殊设置特别的宽度
+            //    //SetGridColumWidth("Note", 200);
+            //}
         }
 
         private void SetGridColumWidth(string columnName, int width)
         {
-            DevExpress.XtraGrid.Columns.GridColumn column = this.winGridViewPager1.gridView1.Columns.ColumnByFieldName(columnName);
-            if (column != null)
-            {
-                column.Width = width;
-            }
+            //DevExpress.XtraGrid.Columns.GridColumn column = this.winGridViewPager1.gridView1.Columns.ColumnByFieldName(columnName);
+            //if (column != null)
+            //{
+            //    column.Width = width;
+            //}
         }
-        
-        /// <summary>
-        /// 初始化字典列表内容
-        /// </summary>
-        private void InitDictItem()
-        {
-			//初始化代码
-        }
+      
         
         /// <summary>
         /// 分页控件刷新操作
@@ -333,14 +430,14 @@ namespace Hades.HR.UI
                 return;
             }
 
-            int[] rowSelected = this.winGridViewPager1.GridView1.GetSelectedRows();
-            foreach (int iRow in rowSelected)
-            {
-                string ID = this.winGridViewPager1.GridView1.GetRowCellDisplayText(iRow, "ID");
-                CallerFactory<IWorkTeamDailyWorkloadService>.Instance.Delete(ID);
-            }	 
+            //int[] rowSelected = this.winGridViewPager1.GridView1.GetSelectedRows();
+            //foreach (int iRow in rowSelected)
+            //{
+            //    string ID = this.winGridViewPager1.GridView1.GetRowCellDisplayText(iRow, "ID");
+            //    CallerFactory<IWorkTeamDailyWorkloadService>.Instance.Delete(ID);
+            //}	 
              
-            BindData();
+            //BindData();
         }
         
         /// <summary>
@@ -389,8 +486,8 @@ namespace Hades.HR.UI
         /// </summary> 
         private void winGridViewPager1_OnStartExport(object sender, EventArgs e)
         {
-            string where = GetConditionSql();
-            this.winGridViewPager1.AllToExport = CallerFactory<IWorkTeamDailyWorkloadService>.Instance.FindToDataTable(where);
+            //string where = GetConditionSql();
+            //this.winGridViewPager1.AllToExport = CallerFactory<IWorkTeamDailyWorkloadService>.Instance.FindToDataTable(where);
          }
 
         /// <summary>
@@ -435,166 +532,6 @@ namespace Hades.HR.UI
                 btnSearch_Click(null, null);
             }
         }
-
-
-        #region Export                                                                     
-        private string moduleName = "WorkTeamDailyWorkload";
-        /// <summary>
-        /// 导入Excel的操作
-        /// </summary>          
-        private void btnImport_Click(object sender, EventArgs e)
-        {
-            string templateFile = string.Format("{0}-模板.xls", moduleName);
-            FrmImportExcelData dlg = new FrmImportExcelData();
-            dlg.SetTemplate(templateFile, System.IO.Path.Combine(Application.StartupPath, templateFile));
-            dlg.OnDataSave += new FrmImportExcelData.SaveDataHandler(ExcelData_OnDataSave);
-            dlg.OnRefreshData += new EventHandler(ExcelData_OnRefreshData);
-            dlg.ShowDialog();
-        }
-
-        void ExcelData_OnRefreshData(object sender, EventArgs e)
-        {
-            BindData();
-        }
-
-        /// <summary>
-        /// 如果字段存在，则获取对应的值，否则返回默认空
-        /// </summary>
-        /// <param name="row">DataRow对象</param>
-        /// <param name="columnName">字段列名</param>
-        /// <returns></returns>
-        private string GetRowData(DataRow row, string columnName)
-        {
-            string result = "";
-            if (row.Table.Columns.Contains(columnName))
-            {
-                result = row[columnName].ToString();
-            }
-            return result;
-        }
-        
-        bool ExcelData_OnDataSave(DataRow dr)
-        {
-            bool success = false;
-            bool converted = false;
-            DateTime dtDefault = Convert.ToDateTime("1900-01-01");
-            DateTime dt;
-            WorkTeamDailyWorkloadInfo info = new WorkTeamDailyWorkloadInfo();
-            info.Id = GetRowData(dr, "Id");
-              info.WorkTeamId = GetRowData(dr, "WorkTeamId");
-  
-            string AttendanceDate = GetRowData(dr, "AttendanceDate");
-            if (!string.IsNullOrEmpty(AttendanceDate))
-            {
-				converted = DateTime.TryParse(AttendanceDate, out dt);
-                if (converted && dt > dtDefault)
-                {
-                    info.AttendanceDate = dt;
-                }
-			}
-            else
-            {
-                info.AttendanceDate = DateTime.Now;
-            }
-
-              info.ProductionHours = GetRowData(dr, "ProductionHours").ToDecimal();
-              info.ChangeHours = GetRowData(dr, "ChangeHours").ToDecimal();
-              info.RepairHours = GetRowData(dr, "RepairHours").ToDecimal();
-              info.ElectricHours = GetRowData(dr, "ElectricHours").ToDecimal();
-              info.PersonCount = GetRowData(dr, "PersonCount").ToInt32();
-              info.Remark = GetRowData(dr, "Remark");
-               info.EditorId = GetRowData(dr, "EditorId");
-   
-            success = CallerFactory<IWorkTeamDailyWorkloadService>.Instance.Insert(info);
-             return success;
-        }
-
-        /// <summary>
-        /// 导出Excel的操作
-        /// </summary>
-        private void btnExport_Click(object sender, EventArgs e)
-        {
-            string file = FileDialogHelper.SaveExcel(string.Format("{0}.xls", moduleName));
-            if (!string.IsNullOrEmpty(file))
-            {
-                string where = GetConditionSql();
-                List<WorkTeamDailyWorkloadInfo> list = CallerFactory<IWorkTeamDailyWorkloadService>.Instance.Find(where);
-                 DataTable dtNew = DataTableHelper.CreateTable("序号|int,Id,WorkTeamId,AttendanceDate,ProductionHours,ChangeHours,RepairHours,ElectricHours,PersonCount,Remark,EditorId");
-                DataRow dr;
-                int j = 1;
-                for (int i = 0; i < list.Count; i++)
-                {
-                    dr = dtNew.NewRow();
-                    dr["序号"] = j++;
-                    dr["Id"] = list[i].Id;
-                     dr["WorkTeamId"] = list[i].WorkTeamId;
-                     dr["AttendanceDate"] = list[i].AttendanceDate;
-                     dr["ProductionHours"] = list[i].ProductionHours;
-                     dr["ChangeHours"] = list[i].ChangeHours;
-                     dr["RepairHours"] = list[i].RepairHours;
-                     dr["ElectricHours"] = list[i].ElectricHours;
-                     dr["PersonCount"] = list[i].PersonCount;
-                     dr["Remark"] = list[i].Remark;
-                      dr["EditorId"] = list[i].EditorId;
-                      dtNew.Rows.Add(dr);
-                }
-
-                try
-                {
-                    string error = "";
-                    AsposeExcelTools.DataTableToExcel2(dtNew, file, out error);
-                    if (!string.IsNullOrEmpty(error))
-                    {
-                        MessageDxUtil.ShowError(string.Format("导出Excel出现错误：{0}", error));
-                    }
-                    else
-                    {
-                        if (MessageDxUtil.ShowYesNoAndTips("导出成功，是否打开文件？") == System.Windows.Forms.DialogResult.Yes)
-                        {
-                            System.Diagnostics.Process.Start(file);
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    LogTextHelper.Error(ex);
-                    MessageDxUtil.ShowError(ex.Message);
-                }
-            }
-         }
-         
-        private FrmAdvanceSearch dlg;
-        private void btnAdvanceSearch_Click(object sender, EventArgs e)
-        {
-            if (dlg == null)
-            {
-                dlg = new FrmAdvanceSearch();
-                dlg.FieldTypeTable = CallerFactory<IWorkTeamDailyWorkloadService>.Instance.GetFieldTypeList();
-                dlg.ColumnNameAlias = CallerFactory<IWorkTeamDailyWorkloadService>.Instance.GetColumnNameAlias();                
-                 dlg.DisplayColumns = "Id,WorkTeamId,AttendanceDate,ProductionHours,ChangeHours,RepairHours,ElectricHours,PersonCount,Remark,EditorId";
-
-                #region 下拉列表数据
-
-                //dlg.AddColumnListItem("UserType", Portal.gc.GetDictData("人员类型"));//字典列表
-                //dlg.AddColumnListItem("Sex", "男,女");//固定列表
-                //dlg.AddColumnListItem("Credit", BLLFactory<WorkTeamDailyWorkload>.Instance.GetFieldList("Credit"));//动态列表
-
-                #endregion
-
-                dlg.ConditionChanged += new FrmAdvanceSearch.ConditionChangedEventHandler(dlg_ConditionChanged);
-            }
-            dlg.ShowDialog();
-        }
-
-        void dlg_ConditionChanged(SearchCondition condition)
-        {
-            advanceCondition = condition;
-            BindData();
-        }
-
-        #endregion //Export
-
         #endregion //System
-
     }
 }
