@@ -37,9 +37,9 @@ namespace Hades.HR.UI
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
-            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.dgcStaff = new DevExpress.XtraGrid.GridControl();
             this.bsStaff = new System.Windows.Forms.BindingSource(this.components);
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.dgvStaff = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colNumber = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colName = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -55,9 +55,9 @@ namespace Hades.HR.UI
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgcStaff)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsStaff)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStaff)).BeginInit();
             this.SuspendLayout();
             // 
             // btnOK
@@ -71,14 +71,17 @@ namespace Hades.HR.UI
             // btnAdd
             // 
             this.btnAdd.Location = new System.Drawing.Point(550, 443);
+            this.btnAdd.Visible = false;
             // 
             // dataNavigator1
             // 
             this.dataNavigator1.Location = new System.Drawing.Point(12, 438);
+            this.dataNavigator1.Visible = false;
             // 
             // picPrint
             // 
             this.picPrint.Location = new System.Drawing.Point(202, 440);
+            this.picPrint.Visible = false;
             // 
             // groupControl1
             // 
@@ -86,7 +89,7 @@ namespace Hades.HR.UI
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(823, 100);
+            this.groupControl1.Size = new System.Drawing.Size(823, 74);
             this.groupControl1.TabIndex = 6;
             this.groupControl1.Text = "班组信息";
             // 
@@ -98,7 +101,7 @@ namespace Hades.HR.UI
             this.layoutControl1.Location = new System.Drawing.Point(2, 21);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(819, 77);
+            this.layoutControl1.Size = new System.Drawing.Size(819, 51);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -106,6 +109,7 @@ namespace Hades.HR.UI
             // 
             this.txtWorkTeamName.Location = new System.Drawing.Point(463, 12);
             this.txtWorkTeamName.Name = "txtWorkTeamName";
+            this.txtWorkTeamName.Properties.ReadOnly = true;
             this.txtWorkTeamName.Size = new System.Drawing.Size(344, 20);
             this.txtWorkTeamName.StyleController = this.layoutControl1;
             this.txtWorkTeamName.TabIndex = 5;
@@ -114,6 +118,7 @@ namespace Hades.HR.UI
             // 
             this.txtAttendanceDate.Location = new System.Drawing.Point(63, 12);
             this.txtAttendanceDate.Name = "txtAttendanceDate";
+            this.txtAttendanceDate.Properties.ReadOnly = true;
             this.txtAttendanceDate.Size = new System.Drawing.Size(345, 20);
             this.txtAttendanceDate.StyleController = this.layoutControl1;
             this.txtAttendanceDate.TabIndex = 4;
@@ -127,7 +132,7 @@ namespace Hades.HR.UI
             this.layoutControlItem2});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(819, 77);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(819, 51);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem1
@@ -135,7 +140,7 @@ namespace Hades.HR.UI
             this.layoutControlItem1.Control = this.txtAttendanceDate;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(400, 57);
+            this.layoutControlItem1.Size = new System.Drawing.Size(400, 31);
             this.layoutControlItem1.Text = "考勤日期";
             this.layoutControlItem1.TextSize = new System.Drawing.Size(48, 14);
             // 
@@ -144,54 +149,54 @@ namespace Hades.HR.UI
             this.layoutControlItem2.Control = this.txtWorkTeamName;
             this.layoutControlItem2.Location = new System.Drawing.Point(400, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(399, 57);
+            this.layoutControlItem2.Size = new System.Drawing.Size(399, 31);
             this.layoutControlItem2.Text = "班组名称";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(48, 14);
             // 
             // groupControl2
             // 
-            this.groupControl2.Controls.Add(this.gridControl1);
+            this.groupControl2.Controls.Add(this.dgcStaff);
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupControl2.Location = new System.Drawing.Point(0, 100);
+            this.groupControl2.Location = new System.Drawing.Point(0, 74);
             this.groupControl2.Name = "groupControl2";
             this.groupControl2.Size = new System.Drawing.Size(823, 312);
             this.groupControl2.TabIndex = 7;
             this.groupControl2.Text = "本日员工";
             // 
-            // gridControl1
+            // dgcStaff
             // 
-            this.gridControl1.DataSource = this.bsStaff;
-            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.Location = new System.Drawing.Point(2, 21);
-            this.gridControl1.MainView = this.gridView1;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(819, 289);
-            this.gridControl1.TabIndex = 0;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
+            this.dgcStaff.DataSource = this.bsStaff;
+            this.dgcStaff.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgcStaff.Location = new System.Drawing.Point(2, 21);
+            this.dgcStaff.MainView = this.dgvStaff;
+            this.dgcStaff.Name = "dgcStaff";
+            this.dgcStaff.Size = new System.Drawing.Size(819, 289);
+            this.dgcStaff.TabIndex = 0;
+            this.dgcStaff.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.dgvStaff});
             // 
             // bsStaff
             // 
             this.bsStaff.DataSource = typeof(Hades.HR.Entity.StaffInfo);
             // 
-            // gridView1
+            // dgvStaff
             // 
-            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.dgvStaff.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colId,
             this.colNumber,
             this.colName});
-            this.gridView1.GridControl = this.gridControl1;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
-            this.gridView1.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
-            this.gridView1.OptionsCustomization.AllowFilter = false;
-            this.gridView1.OptionsCustomization.AllowGroup = false;
-            this.gridView1.OptionsCustomization.AllowSort = false;
-            this.gridView1.OptionsMenu.EnableColumnMenu = false;
-            this.gridView1.OptionsMenu.EnableGroupPanelMenu = false;
-            this.gridView1.OptionsSelection.MultiSelect = true;
-            this.gridView1.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
-            this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.dgvStaff.GridControl = this.dgcStaff;
+            this.dgvStaff.Name = "dgvStaff";
+            this.dgvStaff.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
+            this.dgvStaff.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
+            this.dgvStaff.OptionsCustomization.AllowFilter = false;
+            this.dgvStaff.OptionsCustomization.AllowGroup = false;
+            this.dgvStaff.OptionsCustomization.AllowSort = false;
+            this.dgvStaff.OptionsMenu.EnableColumnMenu = false;
+            this.dgvStaff.OptionsMenu.EnableGroupPanelMenu = false;
+            this.dgvStaff.OptionsSelection.MultiSelect = true;
+            this.dgvStaff.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
+            this.dgvStaff.OptionsView.ShowGroupPanel = false;
             // 
             // colId
             // 
@@ -214,14 +219,14 @@ namespace Hades.HR.UI
             this.colName.Visible = true;
             this.colName.VisibleIndex = 2;
             // 
-            // FrmEditLaborDailyAttendance
+            // FrmSetDailyLabor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(823, 478);
             this.Controls.Add(this.groupControl2);
             this.Controls.Add(this.groupControl1);
-            this.Name = "FrmEditLaborDailyAttendance";
+            this.Name = "FrmSetDailyLabor";
             this.Text = "本日班组排班";
             this.Controls.SetChildIndex(this.btnCancel, 0);
             this.Controls.SetChildIndex(this.btnOK, 0);
@@ -242,9 +247,9 @@ namespace Hades.HR.UI
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgcStaff)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsStaff)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStaff)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -260,9 +265,9 @@ namespace Hades.HR.UI
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
-        private DevExpress.XtraGrid.GridControl gridControl1;
+        private DevExpress.XtraGrid.GridControl dgcStaff;
         private System.Windows.Forms.BindingSource bsStaff;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Views.Grid.GridView dgvStaff;
         private DevExpress.XtraGrid.Columns.GridColumn colId;
         private DevExpress.XtraGrid.Columns.GridColumn colNumber;
         private DevExpress.XtraGrid.Columns.GridColumn colName;

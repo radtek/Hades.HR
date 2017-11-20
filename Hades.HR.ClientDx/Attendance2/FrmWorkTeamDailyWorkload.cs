@@ -98,6 +98,16 @@ namespace Hades.HR.UI
             this.winGridViewPager1.DataSource = new Hades.Pager.WinControl.SortableBindingList<WorkTeamDailyWorkloadInfo>(list);
             this.winGridViewPager1.PrintTitle = "WorkTeamDailyWorkload报表";
         }
+
+        private void LoadLaborWorkload(DateTime attendanceDate, string workTeamId)
+        {
+            this.wgvLabor.DisplayColumns = "WorkTeamId,ActualTeamId,StaffId,ProductionHours,ChangeHours,RepairHours,ElectricHours,LeaveHours,AllowanceHours,Remark";
+            this.wgvLabor.ColumnNameAlias = CallerFactory<ILaborDailyWorkloadService>.Instance.GetColumnNameAlias();
+
+            var data = CallerFactory<ILaborDailyWorkloadService>.Instance.Find(string.Format("AttendanceDate='{0}' AND WorkTeamId='{1}'", attendanceDate, workTeamId));
+
+            this.wgvLabor.DataSource = data;
+        }
         #endregion //Function
 
         #region Method
@@ -108,12 +118,30 @@ namespace Hades.HR.UI
         {
             this.workTeamList = CallerFactory<IWorkTeamService>.Instance.Find2("", "");
 
-            this.depTree.Init(2);
+            this.wtTree.Init();
+            //this.depTree.Init(2);
             BindData();
         }
         #endregion //Method
 
         #region Event
+        /// <summary>
+        /// 考勤日期选择
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dpAttendance_EditValueChanged(object sender, EventArgs e)
+        {
+            if (this.dpAttendance.EditValue == null)
+                return;
+
+            string teamId = this.wtTree.GetSelectedTeamId();
+            if (string.IsNullOrEmpty(teamId))
+                return;
+
+            LoadLaborWorkload(this.dpAttendance.DateTime, teamId);
+        }
+
         /// <summary>
         /// 初始化
         /// </summary>
@@ -124,10 +152,17 @@ namespace Hades.HR.UI
             if (this.dpAttendance.EditValue == null)
             {
                 MessageDxUtil.ShowWarning("请选择考勤日期");
-
                 return;
             }
-            FrmSetDailyLabor frm = new FrmSetDailyLabor();
+
+            string teamId = this.wtTree.GetSelectedTeamId();
+            if (string.IsNullOrEmpty(teamId))
+            {
+                MessageDxUtil.ShowWarning("请选择班组");
+                return;
+            }
+
+            FrmSetDailyLabor frm = new FrmSetDailyLabor(this.dpAttendance.DateTime, teamId);
             frm.ShowDialog();
         }
 
@@ -313,27 +348,27 @@ namespace Hades.HR.UI
         /// </summary>
         private void winGridViewPager1_OnEditSelected(object sender, EventArgs e)
         {
-            string ID = this.winGridViewPager1.gridView1.GetFocusedRowCellDisplayText("ID");
-            List<string> IDList = new List<string>();
-            for (int i = 0; i < this.winGridViewPager1.gridView1.RowCount; i++)
-            {
-                string strTemp = this.winGridViewPager1.GridView1.GetRowCellDisplayText(i, "ID");
-                IDList.Add(strTemp);
-            }
+            //string ID = this.winGridViewPager1.gridView1.GetFocusedRowCellDisplayText("ID");
+            //List<string> IDList = new List<string>();
+            //for (int i = 0; i < this.winGridViewPager1.gridView1.RowCount; i++)
+            //{
+            //    string strTemp = this.winGridViewPager1.GridView1.GetRowCellDisplayText(i, "ID");
+            //    IDList.Add(strTemp);
+            //}
 
-            if (!string.IsNullOrEmpty(ID))
-            {
-                FrmEditWorkTeamDailyWorkload dlg = new FrmEditWorkTeamDailyWorkload();
-                dlg.ID = ID;
-                dlg.IDList = IDList;
-                dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
-                dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
+            //if (!string.IsNullOrEmpty(ID))
+            //{
+            //    FrmEditWorkTeamDailyWorkload dlg = new FrmEditWorkTeamDailyWorkload();
+            //    dlg.ID = ID;
+            //    dlg.IDList = IDList;
+            //    dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
+            //    dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
                 
-                if (DialogResult.OK == dlg.ShowDialog())
-                {
-                    BindData();
-                }
-            }
+            //    if (DialogResult.OK == dlg.ShowDialog())
+            //    {
+            //        BindData();
+            //    }
+            //}
         }        
         
         void dlg_OnDataSaved(object sender, EventArgs e)
@@ -556,10 +591,10 @@ namespace Hades.HR.UI
             advanceCondition = condition;
             BindData();
         }
+
         #endregion //Export
 
         #endregion //System
 
-  
     }
 }

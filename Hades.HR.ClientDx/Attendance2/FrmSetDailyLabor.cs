@@ -22,9 +22,9 @@ namespace Hades.HR.UI
     {
         #region Field
         /// <summary>
-        /// 创建一个临时对象，方便在附件管理中获取存在的GUID
+        /// 临时对象
         /// </summary>
-        private LaborDailyAttendanceInfo tempInfo = new LaborDailyAttendanceInfo();
+        private WorkTeamDailyWorkloadInfo tempInfo = new WorkTeamDailyWorkloadInfo();
 
         /// <summary>
         /// 考勤日期
@@ -35,6 +35,11 @@ namespace Hades.HR.UI
         /// 当前关联班组
         /// </summary>
         private string currentWorkTeamId;
+
+        /// <summary>
+        /// 班组日工作量记录ID
+        /// </summary>
+        private string dailyWorkloadId = "";
         #endregion //Field
 
         #region Constructor
@@ -66,9 +71,19 @@ namespace Hades.HR.UI
         /// </summary>
         private void LoadDefaultStaff()
         {
-            var staffs = CallerFactory<IStaffService>.Instance.Find(string.Format("WorkTeamId='{0}' AND Delete=0", this.currentWorkTeamId));
+            var staffs = CallerFactory<IStaffService>.Instance.Find(string.Format("WorkTeamId='{0}' AND Enabled=1 AND Deleted=0", this.currentWorkTeamId));
 
+            this.bsStaff.DataSource = staffs;
+        }
 
+        /// <summary>
+        /// 载入选择员工
+        /// </summary>
+        private void LoadDailyStaff()
+        {
+            var staffs = CallerFactory<IStaffService>.Instance.Find(string.Format("WorkTeamId='{0}' AND Enabled=1 AND Deleted=0", this.currentWorkTeamId));
+
+            this.bsStaff.DataSource = staffs;
         }
 
         /// <summary>
@@ -87,12 +102,38 @@ namespace Hades.HR.UI
             //info.IsHoliday = txtIsHoliday.Text.ToBoolean();
             //info.Remark = txtRemark.Text;
         }
+
+        /// <summary>
+        /// 设置选择员工
+        /// </summary>
+        private List<LaborDailyWorkloadInfo> SetSelectStaff(WorkTeamDailyWorkloadInfo wt)
+        {
+            var indexs = this.dgvStaff.GetSelectedRows();
+
+            List<LaborDailyWorkloadInfo> data = new List<LaborDailyWorkloadInfo>();
+            for (int i = 0; i < indexs.Length; i++)
+            {
+                int dsIndex = this.dgvStaff.GetDataSourceRowIndex(indexs[i]);
+                var staff = this.bsStaff[dsIndex] as StaffInfo;
+
+                LaborDailyWorkloadInfo info = new LaborDailyWorkloadInfo();
+                info.WorkTeamWorkloadId = wt.Id;
+                info.WorkTeamId = wt.WorkTeamId;
+                info.ActualWorkTeamId = staff.WorkTeamId;
+                info.StaffId = staff.Id;
+                info.AttendanceDate = wt.AttendanceDate;
+
+                data.Add(info);
+            }
+
+            return data;
+        }
         #endregion //Function
 
         #region Method
         public override void ClearScreen()
         {
-            this.tempInfo = new LaborDailyAttendanceInfo();
+            this.tempInfo = new WorkTeamDailyWorkloadInfo();
             base.ClearScreen();
         }
 
@@ -104,124 +145,66 @@ namespace Hades.HR.UI
             InitDictItem();//数据字典加载（公用）
 
             WorkTeamInfo workTeam = CallerFactory<IWorkTeamService>.Instance.FindByID(this.currentWorkTeamId);
-            
+            this.txtWorkTeamName.Text = workTeam.Name;
+            this.txtAttendanceDate.Text = this.attendanceDate.ToString("yyyy-MM-dd");
 
-            if (!string.IsNullOrEmpty(ID))
+            this.tempInfo = CallerFactory<IWorkTeamDailyWorkloadService>.Instance.FindSingle(string.Format("WorkTeamId='{0}' AND AttendanceDate='{1}'", currentWorkTeamId, attendanceDate));
+            if (tempInfo == null)
             {
-                #region 显示信息
-                LaborDailyAttendanceInfo info = CallerFactory<ILaborDailyAttendanceService>.Instance.FindByID(ID);
-                if (info != null)
-                {
-                    tempInfo = info;//重新给临时对象赋值，使之指向存在的记录对象
-
-                    //txtWorkTeamId.Text = info.WorkTeamId;
-                    //txtAttendanceDate.Text = info.AttendanceDate;
-                    //txtStaffId.Text = info.StaffId;
-                    //txtStaffLevelId.Text = info.StaffLevelId;
-                    //txtAbsentType.Value = info.AbsentType;
-                    //txtTotalHours.Value = info.TotalHours;
-                    //txtIsWeekend.Text = info.IsWeekend.ToString();
-                    //txtIsHoliday.Text = info.IsHoliday.ToString();
-                    //txtRemark.Text = info.Remark;
-                }
-                #endregion
-                //this.btnOK.Enabled = HasFunction("LaborDailyAttendance/Edit");             
+                LoadDefaultStaff();
             }
             else
             {
-                //this.btnOK.Enabled = Portal.gc.HasFunction("LaborDailyAttendance/Add");  
+                this.dailyWorkloadId = tempInfo.Id;
+
+                LoadDailyStaff();
             }
+
         }
 
-        /// <summary>
-        /// 实现控件输入检查的函数
-        /// </summary>
-        /// <returns></returns>
-        public override bool CheckInput()
-        {
-            bool result = true;//默认是可以通过
-
-            //if (this.txtAttendanceDate.Text.Trim().Length == 0)
-            //{
-            //    MessageDxUtil.ShowTips("请输入");
-            //    this.txtAttendanceDate.Focus();
-            //    result = false;
-            //}
-            //else if (this.txtStaffId.Text.Trim().Length == 0)
-            //{
-            //    MessageDxUtil.ShowTips("请输入");
-            //    this.txtStaffId.Focus();
-            //    result = false;
-            //}
-
-            return result;
-        }
-        #endregion //Method
-
-        
-
-         
         /// <summary>
         /// 新增状态下的数据保存
         /// </summary>
         /// <returns></returns>
         public override bool SaveAddNew()
         {
-            LaborDailyAttendanceInfo info = tempInfo;//必须使用存在的局部变量，因为部分信息可能被附件使用
-            SetInfo(info);
-
             try
             {
-                #region 新增数据
-
-                bool succeed = CallerFactory<ILaborDailyAttendanceService>.Instance.Insert(info);
-                if (succeed)
+                if (string.IsNullOrEmpty(dailyWorkloadId))  //新增
                 {
-                    //可添加其他关联操作
+                    WorkTeamDailyWorkloadInfo info = new WorkTeamDailyWorkloadInfo();
+                    info.Id = Guid.NewGuid().ToString();
+                    info.WorkTeamId = this.currentWorkTeamId;
+                    info.AttendanceDate = this.attendanceDate;
+                    info.Editor = this.LoginUserInfo.Name;
+                    info.EditorId = this.LoginUserInfo.ID;
+                    info.EditTime = DateTime.Now;
 
-                    return true;
+                    var data = SetSelectStaff(info);
+                    info.PersonCount = data.Count;
+
+                    CallerFactory<IWorkTeamDailyWorkloadService>.Instance.Insert(info);
+
+                    foreach (var item in data)
+                    {
+                        CallerFactory<ILaborDailyWorkloadService>.Instance.Insert(item);
+                    }
                 }
-                #endregion
+                else
+                {
+
+                }
+
+                return true;
             }
             catch (Exception ex)
             {
                 LogTextHelper.Error(ex);
                 MessageDxUtil.ShowError(ex.Message);
             }
+
             return false;
-        }                 
-
-        /// <summary>
-        /// 编辑状态下的数据保存
-        /// </summary>
-        /// <returns></returns>
-        public override bool SaveUpdated()
-        {
-
-            LaborDailyAttendanceInfo info = CallerFactory<ILaborDailyAttendanceService>.Instance.FindByID(ID);
-            if (info != null)
-            {
-                SetInfo(info);
-
-                try
-                {
-                    #region 更新数据
-                    bool succeed = CallerFactory<ILaborDailyAttendanceService>.Instance.Update(info, info.Id);
-                    if (succeed)
-                    {
-                        //可添加其他关联操作
-                       
-                        return true;
-                    }
-                    #endregion
-                }
-                catch (Exception ex)
-                {
-                    LogTextHelper.Error(ex);
-                    MessageDxUtil.ShowError(ex.Message);
-                }
-            }
-           return false;
         }
+        #endregion //Method
     }
 }

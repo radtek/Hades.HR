@@ -958,6 +958,12 @@
     <Compile Include="Util\ControlUtil.cs" />
     <Compile Include="Util\DepartmentType.cs" />
     <Compile Include="Util\ExtensionMethod.cs" />
+    <Compile Include="Control\WorkTeamTree.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\WorkTeamTree.Designer.cs">
+      <DependentUpon>WorkTeamTree.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Attendance2\FrmSetDailyLabor.resx">
       <DependentUpon>FrmSetDailyLabor.cs</DependentUpon>
     </EmbeddedResource>
@@ -1068,6 +1074,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Control\WorkTeamLookup.resx">
       <DependentUpon>WorkTeamLookup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\WorkTeamTree.resx">
+      <DependentUpon>WorkTeamTree.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Salary\FrmEditLaborSalaryRecord.resx">
       <DependentUpon>FrmEditLaborSalaryRecord.cs</DependentUpon>
