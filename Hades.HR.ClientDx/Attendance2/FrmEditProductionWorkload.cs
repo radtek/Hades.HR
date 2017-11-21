@@ -19,7 +19,10 @@ using Hades.HR.Entity;
 
 namespace Hades.HR.UI
 {
-    public partial class FrmEditWorkTeamDailyWorkload : BaseEditForm
+    /// <summary>
+    /// 编辑产量工时
+    /// </summary>
+    public partial class FrmEditProductionWorkload : BaseEditForm
     {
         #region Field
         /// <summary>
@@ -29,7 +32,7 @@ namespace Hades.HR.UI
         #endregion //Field
 
         #region Constructor
-        public FrmEditWorkTeamDailyWorkload()
+        public FrmEditProductionWorkload()
         {
             InitializeComponent();
         }
@@ -109,8 +112,8 @@ namespace Hades.HR.UI
         /// <param name="info"></param>
         private void SetInfo(WorkTeamDailyWorkloadInfo info)
         {
-            info.WorkTeamId = luWorkTeam.GetSelectedId();
-            info.AttendanceDate = txtAttendanceDate.DateTime;
+            //info.WorkTeamId = luWorkTeam.GetSelectedId();
+            //info.AttendanceDate = txtAttendanceDate.DateTime;
             info.ProductionHours = txtProductionHours.Value;
 
             info.PersonCount = Convert.ToInt32(txtPersonCount.Value);
@@ -137,18 +140,6 @@ namespace Hades.HR.UI
         {
             bool result = true;//默认是可以通过
 
-            if (string.IsNullOrEmpty(this.luWorkTeam.GetSelectedId()))
-            {
-                MessageDxUtil.ShowTips("请选择班组");
-                result = false;
-            }
-            else if (this.txtAttendanceDate.Text.Trim().Length == 0)
-            {
-                MessageDxUtil.ShowTips("请输入");
-                this.txtAttendanceDate.Focus();
-                result = false;
-            }
-
             return result;
         }
 
@@ -159,9 +150,8 @@ namespace Hades.HR.UI
         {
             InitDictItem();//数据字典加载（公用）
 
-            this.Text = "编辑班组日工作量";
+            this.Text = "编辑班组产量工时";
 
-            this.luWorkTeam.Init();
             if (!string.IsNullOrEmpty(ID))
             {
                 WorkTeamDailyWorkloadInfo info = CallerFactory<IWorkTeamDailyWorkloadService>.Instance.FindByID(ID);
@@ -169,9 +159,13 @@ namespace Hades.HR.UI
                 {
                     tempInfo = info;//重新给临时对象赋值，使之指向存在的记录对象
 
+                    var workTeam = CallerFactory<IWorkTeamService>.Instance.FindByID(info.WorkTeamId);
+
+                    this.txtWorkTeamName.Text = workTeam.Name;
+                    txtAttendanceDate.Text = info.AttendanceDate.ToString("yyyy-MM-dd");
+
                     // txtWorkTeamId.Text = info.WorkTeamId;
-                    this.luWorkTeam.SetSelected(info.WorkTeamId);
-                    txtAttendanceDate.SetDateTime(info.AttendanceDate);
+                  
                     txtProductionHours.Value = info.ProductionHours;
                     txtPersonCount.Value = info.PersonCount;
                     txtRemark.Text = info.Remark;
@@ -255,7 +249,7 @@ namespace Hades.HR.UI
         #region Event
         private void txtAttendanceDate_EditValueChanged(object sender, EventArgs e)
         {
-            GenerateList(this.txtAttendanceDate.DateTime);
+            //GenerateList(this.txtAttendanceDate.DateTime);
         }
 
         /// <summary>

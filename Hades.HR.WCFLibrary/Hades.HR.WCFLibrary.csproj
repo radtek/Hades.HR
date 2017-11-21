@@ -95,6 +95,9 @@
     <Compile Include="..\Hades.HR.Caller\Facade\Attendance\ILaborAttendanceRecordService.cs">
       <Link>Facade\Attendance\ILaborAttendanceRecordService.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Caller\Facade\Attendance\ILaborChangeWorkloadService.cs">
+      <Link>Facade\Attendance\ILaborChangeWorkloadService.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Caller\Facade\Attendance\ILaborDailyAttendanceService.cs">
       <Link>Facade\Attendance\ILaborDailyAttendanceService.cs</Link>
     </Compile>
@@ -103,6 +106,9 @@
     </Compile>
     <Compile Include="..\Hades.HR.Caller\Facade\Attendance\ILaborMonthAttendanceService.cs">
       <Link>Facade\Attendance\ILaborMonthAttendanceService.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Caller\Facade\Attendance\ILaborProductionWorkloadService.cs">
+      <Link>Facade\Attendance\ILaborProductionWorkloadService.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Caller\Facade\Attendance\IWorkSectionLaborService.cs">
       <Link>Facade\Attendance\IWorkSectionLaborService.cs</Link>
@@ -164,6 +170,9 @@
     <Compile Include="..\Hades.HR.Core\BLL\Attendance\LaborAttendanceRecord.cs">
       <Link>Biz\BLL\Attendance\LaborAttendanceRecord.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Core\BLL\Attendance\LaborChangeWorkload.cs">
+      <Link>Biz\BLL\Attendance\LaborChangeWorkload.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Core\BLL\Attendance\LaborDailyAttendance.cs">
       <Link>Biz\BLL\Attendance\LaborDailyAttendance.cs</Link>
     </Compile>
@@ -172,6 +181,9 @@
     </Compile>
     <Compile Include="..\Hades.HR.Core\BLL\Attendance\LaborMonthAttendance.cs">
       <Link>Biz\BLL\Attendance\LaborMonthAttendance.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\BLL\Attendance\LaborProductionWorkload.cs">
+      <Link>Biz\BLL\Attendance\LaborProductionWorkload.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\BLL\Attendance\WorkSectionLabor.cs">
       <Link>Biz\BLL\Attendance\WorkSectionLabor.cs</Link>
@@ -233,6 +245,9 @@
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Attendance\LaborAttendanceRecord.cs">
       <Link>Biz\DAL\DALSQL\Attendance\LaborAttendanceRecord.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Attendance\LaborChangeWorkload.cs">
+      <Link>Biz\DAL\DALSQL\Attendance\LaborChangeWorkload.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Attendance\LaborDailyAttendance.cs">
       <Link>Biz\DAL\DALSQL\Attendance\LaborDailyAttendance.cs</Link>
     </Compile>
@@ -241,6 +256,9 @@
     </Compile>
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Attendance\LaborMonthAttendance.cs">
       <Link>Biz\DAL\DALSQL\Attendance\LaborMonthAttendance.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Attendance\LaborProductionWorkload.cs">
+      <Link>Biz\DAL\DALSQL\Attendance\LaborProductionWorkload.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Attendance\WorkSectionLabor.cs">
       <Link>Biz\DAL\DALSQL\Attendance\WorkSectionLabor.cs</Link>
@@ -302,6 +320,9 @@
     <Compile Include="..\Hades.HR.Core\Entity\Attendance\LaborAttendanceRecordInfo.cs">
       <Link>Biz\Entity\Attendance\LaborAttendanceRecordInfo.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Core\Entity\Attendance\LaborChangeWorkloadInfo.cs">
+      <Link>Biz\Entity\Attendance\LaborChangeWorkloadInfo.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Core\Entity\Attendance\LaborDailyAttendanceInfo.cs">
       <Link>Biz\Entity\Attendance\LaborDailyAttendanceInfo.cs</Link>
     </Compile>
@@ -310,6 +331,9 @@
     </Compile>
     <Compile Include="..\Hades.HR.Core\Entity\Attendance\LaborMonthAttendanceInfo.cs">
       <Link>Biz\Entity\Attendance\LaborMonthAttendanceInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\Entity\Attendance\LaborProductionWorkloadInfo.cs">
+      <Link>Biz\Entity\Attendance\LaborProductionWorkloadInfo.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\Entity\Attendance\WorkSectionLaborInfo.cs">
       <Link>Biz\Entity\Attendance\WorkSectionLaborInfo.cs</Link>
@@ -371,6 +395,9 @@
     <Compile Include="..\Hades.HR.Core\IDAL\Attendance\ILaborAttendanceRecord.cs">
       <Link>Biz\IDAL\Attendance\ILaborAttendanceRecord.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Core\IDAL\Attendance\ILaborChangeWorkload.cs">
+      <Link>Biz\IDAL\Attendance\ILaborChangeWorkload.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Core\IDAL\Attendance\ILaborDailyAttendance.cs">
       <Link>Biz\IDAL\Attendance\ILaborDailyAttendance.cs</Link>
     </Compile>
@@ -379,6 +406,9 @@
     </Compile>
     <Compile Include="..\Hades.HR.Core\IDAL\Attendance\ILaborMonthAttendance.cs">
       <Link>Biz\IDAL\Attendance\ILaborMonthAttendance.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\IDAL\Attendance\ILaborProductionWorkload.cs">
+      <Link>Biz\IDAL\Attendance\ILaborProductionWorkload.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\IDAL\Attendance\IWorkSectionLabor.cs">
       <Link>Biz\IDAL\Attendance\IWorkSectionLabor.cs</Link>
@@ -438,9 +468,11 @@
     <Compile Include="WCFLibrary\Attendance\AttendanceRecordService.cs" />
     <Compile Include="WCFLibrary\Attendance\AttendanceService.cs" />
     <Compile Include="WCFLibrary\Attendance\LaborAttendanceRecordService.cs" />
+    <Compile Include="WCFLibrary\Attendance\LaborChangeWorkloadService.cs" />
     <Compile Include="WCFLibrary\Attendance\LaborDailyAttendanceService.cs" />
     <Compile Include="WCFLibrary\Attendance\LaborDailyWorkloadService.cs" />
     <Compile Include="WCFLibrary\Attendance\LaborMonthAttendanceService.cs" />
+    <Compile Include="WCFLibrary\Attendance\LaborProductionWorkloadService.cs" />
     <Compile Include="WCFLibrary\Attendance\WorkSectionLaborService.cs" />
     <Compile Include="WCFLibrary\Attendance\WorkTeamDailyWorkloadService.cs" />
     <Compile Include="WCFLibrary\Base\StaffLevelService.cs" />

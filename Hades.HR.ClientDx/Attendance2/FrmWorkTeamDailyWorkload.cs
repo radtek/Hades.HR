@@ -49,6 +49,7 @@ namespace Hades.HR.UI
             InitDictItem();
 
             this.wgvWorkload.gridView1.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(wgvWorkload_CustomColumnDisplayText);
+            this.wgvWorkload.AppendedMenu = this.contextMenuStrip1;
 
             this.wgvLabor.gridView1.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(wgvLabor_CustomColumnDisplayText);
             //         this.winGridViewPager1.OnPageChanged += new EventHandler(winGridViewPager1_OnPageChanged);
@@ -113,29 +114,40 @@ namespace Hades.HR.UI
         /// <summary>
         /// 载入班组工作量数据
         /// </summary>
-        /// <param name="attendanceDate"></param>
-        /// <param name="workTeamId"></param>
-        private void LoadWorkTeamWorkload(DateTime attendanceDate, string workTeamId)
+        private void LoadWorkTeamWorkload()
         {
+            if (this.dpAttendance.EditValue == null)
+                return;
+            DateTime attendanceDate = this.dpAttendance.DateTime;
+
+            string teamId = this.wtTree.GetSelectedTeamId();
+            if (string.IsNullOrEmpty(teamId))
+                return;
+
             this.wgvWorkload.DisplayColumns = "WorkTeamId,AttendanceDate,ProductionHours,ChangeHours,RepairHours,ElectricHours,PersonCount,Remark";
             this.wgvWorkload.ColumnNameAlias = CallerFactory<IWorkTeamDailyWorkloadService>.Instance.GetColumnNameAlias();//字段列显示名称转义
-
-
-            var data = CallerFactory<IWorkTeamDailyWorkloadService>.Instance.Find(string.Format("AttendanceDate='{0}' AND WorkTeamId='{1}'", attendanceDate, workTeamId));
+            
+            var data = CallerFactory<IWorkTeamDailyWorkloadService>.Instance.Find(string.Format("AttendanceDate='{0}' AND WorkTeamId='{1}'", attendanceDate, teamId));
             this.wgvWorkload.DataSource = data;
         }
 
         /// <summary>
         /// 载入员工工作量
         /// </summary>
-        /// <param name="attendanceDate"></param>
-        /// <param name="workTeamId"></param>
-        private void LoadLaborWorkload(DateTime attendanceDate, string workTeamId)
+        private void LoadLaborWorkload()
         {
+            if (this.dpAttendance.EditValue == null)
+                return;
+            DateTime attendanceDate = this.dpAttendance.DateTime;
+
+            string teamId = this.wtTree.GetSelectedTeamId();
+            if (string.IsNullOrEmpty(teamId))
+                return;
+
             this.wgvLabor.DisplayColumns = "WorkTeamId,ActualWorkTeamId,StaffId,ProductionHours,ChangeHours,RepairHours,ElectricHours,LeaveHours,AllowanceHours,Remark";
             this.wgvLabor.ColumnNameAlias = CallerFactory<ILaborDailyWorkloadService>.Instance.GetColumnNameAlias();
 
-            var data = CallerFactory<ILaborDailyWorkloadService>.Instance.Find(string.Format("AttendanceDate='{0}' AND WorkTeamId='{1}'", attendanceDate, workTeamId));
+            var data = CallerFactory<ILaborDailyWorkloadService>.Instance.Find(string.Format("AttendanceDate='{0}' AND WorkTeamId='{1}'", attendanceDate, teamId));
 
             this.wgvLabor.DataSource = data;
         }
@@ -163,15 +175,8 @@ namespace Hades.HR.UI
         /// <param name="e"></param>
         private void dpAttendance_EditValueChanged(object sender, EventArgs e)
         {
-            if (this.dpAttendance.EditValue == null)
-                return;
-
-            string teamId = this.wtTree.GetSelectedTeamId();
-            if (string.IsNullOrEmpty(teamId))
-                return;
-
-            LoadWorkTeamWorkload(this.dpAttendance.DateTime, teamId);
-            LoadLaborWorkload(this.dpAttendance.DateTime, teamId);
+            LoadWorkTeamWorkload();
+            LoadLaborWorkload();
         }
 
         /// <summary>
@@ -197,6 +202,9 @@ namespace Hades.HR.UI
             FrmSetDailyLabor frm = new FrmSetDailyLabor(this.dpAttendance.DateTime, teamId);
             frm.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
             frm.ShowDialog();
+
+            LoadWorkTeamWorkload();
+            LoadLaborWorkload();
         }
 
         /// <summary>
@@ -206,6 +214,20 @@ namespace Hades.HR.UI
         /// <param name="e"></param>
         private void menuProduction_Click(object sender, EventArgs e)
         {
+            string ID = this.wgvWorkload.gridView1.GetFocusedRowCellDisplayText("Id");
+            if (!string.IsNullOrEmpty(ID))
+            {
+                FrmEditProductionWorkload dlg = new FrmEditProductionWorkload();
+                dlg.ID = ID;
+                dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
+
+                if (DialogResult.OK == dlg.ShowDialog())
+                {
+                    LoadWorkTeamWorkload();
+                    LoadLaborWorkload();
+                }
+            }
+
             //string ID = this.winGridViewPager1.gridView1.GetFocusedRowCellDisplayText("Id");
             //List<string> IDList = new List<string>();
             //for (int i = 0; i < this.winGridViewPager1.gridView1.RowCount; i++)
@@ -512,7 +534,7 @@ namespace Hades.HR.UI
         /// </summary>
         private void btnAddNew_Click(object sender, EventArgs e)
         {
-            FrmEditWorkTeamDailyWorkload dlg = new FrmEditWorkTeamDailyWorkload();
+            FrmEditProductionWorkload dlg = new FrmEditProductionWorkload();
             dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
             dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
             

@@ -128,9 +128,11 @@
     <Content Include="HR\Attendance\AttendanceRecordService.svc" />
     <Content Include="HR\Attendance\AttendanceService.svc" />
     <Content Include="HR\Attendance\LaborAttendanceRecordService.svc" />
+    <Content Include="HR\Attendance\LaborChangeWorkloadService.svc" />
     <Content Include="HR\Attendance\LaborDailyAttendanceService.svc" />
     <Content Include="HR\Attendance\LaborDailyWorkloadService.svc" />
     <Content Include="HR\Attendance\LaborMonthAttendanceService.svc" />
+    <Content Include="HR\Attendance\LaborProductionWorkloadService.svc" />
     <Content Include="HR\Attendance\WorkSectionLaborService.svc" />
     <Content Include="HR\Attendance\WorkTeamDailyWorkloadService.svc" />
     <Content Include="HR\Base\StaffLevelService.svc" />

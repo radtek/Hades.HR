@@ -45,12 +45,12 @@ namespace Hades.HR.UI
             this.menuChange = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.wtTree = new Hades.HR.UI.WorkTeamTree();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
+            this.wgvWorkload = new Hades.Pager.WinControl.WinGridView();
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
             this.wgvLabor = new Hades.Pager.WinControl.WinGridView();
-            this.wgvWorkload = new Hades.Pager.WinControl.WinGridView();
+            this.wtTree = new Hades.HR.UI.WorkTeamTree();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dpAttendance.Properties.CalendarTimeProperties)).BeginInit();
@@ -75,9 +75,9 @@ namespace Hades.HR.UI
             // btnAddNew
             // 
             this.btnAddNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddNew.Location = new System.Drawing.Point(338, 42);
+            this.btnAddNew.Location = new System.Drawing.Point(348, 36);
             this.btnAddNew.Name = "btnAddNew";
-            this.btnAddNew.Size = new System.Drawing.Size(158, 27);
+            this.btnAddNew.Size = new System.Drawing.Size(164, 22);
             this.btnAddNew.StyleController = this.layoutControl1;
             this.btnAddNew.TabIndex = 15;
             this.btnAddNew.Text = "新建";
@@ -90,19 +90,19 @@ namespace Hades.HR.UI
             this.layoutControl1.Controls.Add(this.btnAddNew);
             this.layoutControl1.Controls.Add(this.dpAttendance);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutControl1.Location = new System.Drawing.Point(2, 25);
+            this.layoutControl1.Location = new System.Drawing.Point(2, 21);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(694, 67);
+            this.layoutControl1.Size = new System.Drawing.Size(694, 71);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
             // btnSearch
             // 
             this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSearch.Location = new System.Drawing.Point(500, 42);
+            this.btnSearch.Location = new System.Drawing.Point(516, 36);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(159, 27);
+            this.btnSearch.Size = new System.Drawing.Size(166, 22);
             this.btnSearch.StyleController = this.layoutControl1;
             this.btnSearch.TabIndex = 14;
             this.btnSearch.Text = "查询";
@@ -111,9 +111,9 @@ namespace Hades.HR.UI
             // btnInit
             // 
             this.btnInit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnInit.Location = new System.Drawing.Point(14, 42);
+            this.btnInit.Location = new System.Drawing.Point(12, 36);
             this.btnInit.Name = "btnInit";
-            this.btnInit.Size = new System.Drawing.Size(320, 27);
+            this.btnInit.Size = new System.Drawing.Size(332, 22);
             this.btnInit.StyleController = this.layoutControl1;
             this.btnInit.TabIndex = 18;
             this.btnInit.Text = "设置员工";
@@ -122,7 +122,7 @@ namespace Hades.HR.UI
             // dpAttendance
             // 
             this.dpAttendance.EditValue = null;
-            this.dpAttendance.Location = new System.Drawing.Point(77, 14);
+            this.dpAttendance.Location = new System.Drawing.Point(63, 12);
             this.dpAttendance.Name = "dpAttendance";
             this.dpAttendance.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
             this.dpAttendance.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -130,7 +130,7 @@ namespace Hades.HR.UI
             this.dpAttendance.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dpAttendance.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.dpAttendance.Size = new System.Drawing.Size(582, 24);
+            this.dpAttendance.Size = new System.Drawing.Size(619, 20);
             this.dpAttendance.StyleController = this.layoutControl1;
             this.dpAttendance.TabIndex = 16;
             this.dpAttendance.EditValueChanged += new System.EventHandler(this.dpAttendance_EditValueChanged);
@@ -146,7 +146,7 @@ namespace Hades.HR.UI
             this.layoutControlItem4});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(673, 83);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(694, 71);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem2
@@ -154,34 +154,34 @@ namespace Hades.HR.UI
             this.layoutControlItem2.Control = this.dpAttendance;
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(649, 28);
+            this.layoutControlItem2.Size = new System.Drawing.Size(674, 24);
             this.layoutControlItem2.Text = "日期选择";
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(60, 18);
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(48, 14);
             // 
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.btnInit;
-            this.layoutControlItem1.Location = new System.Drawing.Point(0, 28);
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 24);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(324, 31);
+            this.layoutControlItem1.Size = new System.Drawing.Size(336, 27);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.btnAddNew;
-            this.layoutControlItem3.Location = new System.Drawing.Point(324, 28);
+            this.layoutControlItem3.Location = new System.Drawing.Point(336, 24);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(162, 31);
+            this.layoutControlItem3.Size = new System.Drawing.Size(168, 27);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.btnSearch;
-            this.layoutControlItem4.Location = new System.Drawing.Point(486, 28);
+            this.layoutControlItem4.Location = new System.Drawing.Point(504, 24);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(163, 31);
+            this.layoutControlItem4.Size = new System.Drawing.Size(170, 27);
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
             // 
@@ -192,19 +192,19 @@ namespace Hades.HR.UI
             this.menuProduction,
             this.menuChange});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(169, 52);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(149, 48);
             // 
             // menuProduction
             // 
             this.menuProduction.Name = "menuProduction";
-            this.menuProduction.Size = new System.Drawing.Size(168, 24);
+            this.menuProduction.Size = new System.Drawing.Size(148, 22);
             this.menuProduction.Text = "编辑产量工时";
             this.menuProduction.Click += new System.EventHandler(this.menuProduction_Click);
             // 
             // menuChange
             // 
             this.menuChange.Name = "menuChange";
-            this.menuChange.Size = new System.Drawing.Size(168, 24);
+            this.menuChange.Size = new System.Drawing.Size(148, 22);
             this.menuChange.Text = "编辑换机工时";
             this.menuChange.Click += new System.EventHandler(this.menuChange_Click);
             // 
@@ -238,15 +238,6 @@ namespace Hades.HR.UI
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "班组列表";
             // 
-            // wtTree
-            // 
-            this.wtTree.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.wtTree.Location = new System.Drawing.Point(2, 25);
-            this.wtTree.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.wtTree.Name = "wtTree";
-            this.wtTree.Size = new System.Drawing.Size(290, 647);
-            this.wtTree.TabIndex = 0;
-            // 
             // groupControl2
             // 
             this.groupControl2.Controls.Add(this.layoutControl1);
@@ -267,6 +258,25 @@ namespace Hades.HR.UI
             this.groupControl3.TabIndex = 2;
             this.groupControl3.Text = "工作量记录";
             // 
+            // wgvWorkload
+            // 
+            this.wgvWorkload.AppendedMenu = null;
+            this.wgvWorkload.ColumnNameAlias = ((System.Collections.Generic.Dictionary<string, string>)(resources.GetObject("wgvWorkload.ColumnNameAlias")));
+            this.wgvWorkload.DataSource = null;
+            this.wgvWorkload.DisplayColumns = "";
+            this.wgvWorkload.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.wgvWorkload.FixedColumns = null;
+            this.wgvWorkload.Location = new System.Drawing.Point(2, 21);
+            this.wgvWorkload.Name = "wgvWorkload";
+            this.wgvWorkload.PrintTitle = "";
+            this.wgvWorkload.ShowAddMenu = false;
+            this.wgvWorkload.ShowCheckBox = false;
+            this.wgvWorkload.ShowDeleteMenu = false;
+            this.wgvWorkload.ShowEditMenu = false;
+            this.wgvWorkload.ShowExportButton = true;
+            this.wgvWorkload.Size = new System.Drawing.Size(694, 261);
+            this.wgvWorkload.TabIndex = 1;
+            // 
             // groupControl4
             // 
             this.groupControl4.Controls.Add(this.wgvLabor);
@@ -285,7 +295,7 @@ namespace Hades.HR.UI
             this.wgvLabor.DisplayColumns = "";
             this.wgvLabor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.wgvLabor.FixedColumns = null;
-            this.wgvLabor.Location = new System.Drawing.Point(2, 25);
+            this.wgvLabor.Location = new System.Drawing.Point(2, 21);
             this.wgvLabor.Name = "wgvLabor";
             this.wgvLabor.PrintTitle = "";
             this.wgvLabor.ShowAddMenu = true;
@@ -293,31 +303,21 @@ namespace Hades.HR.UI
             this.wgvLabor.ShowDeleteMenu = true;
             this.wgvLabor.ShowEditMenu = true;
             this.wgvLabor.ShowExportButton = true;
-            this.wgvLabor.Size = new System.Drawing.Size(694, 257);
+            this.wgvLabor.Size = new System.Drawing.Size(694, 261);
             this.wgvLabor.TabIndex = 0;
             // 
-            // wgvWorkload
+            // wtTree
             // 
-            this.wgvWorkload.AppendedMenu = null;
-            this.wgvWorkload.ColumnNameAlias = ((System.Collections.Generic.Dictionary<string, string>)(resources.GetObject("wgvWorkload.ColumnNameAlias")));
-            this.wgvWorkload.DataSource = null;
-            this.wgvWorkload.DisplayColumns = "";
-            this.wgvWorkload.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.wgvWorkload.FixedColumns = null;
-            this.wgvWorkload.Location = new System.Drawing.Point(2, 25);
-            this.wgvWorkload.Name = "wgvWorkload";
-            this.wgvWorkload.PrintTitle = "";
-            this.wgvWorkload.ShowAddMenu = true;
-            this.wgvWorkload.ShowCheckBox = false;
-            this.wgvWorkload.ShowDeleteMenu = true;
-            this.wgvWorkload.ShowEditMenu = true;
-            this.wgvWorkload.ShowExportButton = true;
-            this.wgvWorkload.Size = new System.Drawing.Size(694, 257);
-            this.wgvWorkload.TabIndex = 1;
+            this.wtTree.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.wtTree.Location = new System.Drawing.Point(2, 21);
+            this.wtTree.Margin = new System.Windows.Forms.Padding(4);
+            this.wtTree.Name = "wtTree";
+            this.wtTree.Size = new System.Drawing.Size(290, 651);
+            this.wtTree.TabIndex = 0;
             // 
             // FrmWorkTeamDailyWorkload
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1004, 680);
             this.Controls.Add(this.tableLayoutPanel1);

@@ -180,6 +180,9 @@
     <Compile Include="..\Hades.HR.Caller\Facade\Attendance\ILaborAttendanceRecordService.cs">
       <Link>Facade\Attendance\ILaborAttendanceRecordService.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Caller\Facade\Attendance\ILaborChangeWorkloadService.cs">
+      <Link>Facade\Attendance\ILaborChangeWorkloadService.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Caller\Facade\Attendance\ILaborDailyAttendanceService.cs">
       <Link>Facade\Attendance\ILaborDailyAttendanceService.cs</Link>
     </Compile>
@@ -188,6 +191,9 @@
     </Compile>
     <Compile Include="..\Hades.HR.Caller\Facade\Attendance\ILaborMonthAttendanceService.cs">
       <Link>Facade\Attendance\ILaborMonthAttendanceService.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Caller\Facade\Attendance\ILaborProductionWorkloadService.cs">
+      <Link>Facade\Attendance\ILaborProductionWorkloadService.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Caller\Facade\Attendance\IWorkSectionLaborService.cs">
       <Link>Facade\Attendance\IWorkSectionLaborService.cs</Link>
@@ -249,6 +255,9 @@
     <Compile Include="..\Hades.HR.Caller\ServiceCaller\Attendance\LaborAttendanceRecordCaller.cs">
       <Link>Caller\ServiceCaller\Attendance\LaborAttendanceRecordCaller.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Caller\ServiceCaller\Attendance\LaborChangeWorkloadCaller.cs">
+      <Link>Caller\ServiceCaller\Attendance\LaborChangeWorkloadCaller.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Caller\ServiceCaller\Attendance\LaborDailyAttendanceCaller.cs">
       <Link>Caller\ServiceCaller\Attendance\LaborDailyAttendanceCaller.cs</Link>
     </Compile>
@@ -257,6 +266,9 @@
     </Compile>
     <Compile Include="..\Hades.HR.Caller\ServiceCaller\Attendance\LaborMonthAttendanceCaller.cs">
       <Link>Caller\ServiceCaller\Attendance\LaborMonthAttendanceCaller.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Caller\ServiceCaller\Attendance\LaborProductionWorkloadCaller.cs">
+      <Link>Caller\ServiceCaller\Attendance\LaborProductionWorkloadCaller.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Caller\ServiceCaller\Attendance\WorkSectionLaborCaller.cs">
       <Link>Caller\ServiceCaller\Attendance\WorkSectionLaborCaller.cs</Link>
@@ -321,6 +333,9 @@
     <Compile Include="..\Hades.HR.Caller\WinformCaller\Attendance\LaborAttendanceRecordCaller.cs">
       <Link>Caller\WinformCaller\Attendance\LaborAttendanceRecordCaller.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Caller\WinformCaller\Attendance\LaborChangeWorkloadCaller.cs">
+      <Link>Caller\WinformCaller\Attendance\LaborChangeWorkloadCaller.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Caller\WinformCaller\Attendance\LaborDailyAttendanceCaller.cs">
       <Link>Caller\WinformCaller\Attendance\LaborDailyAttendanceCaller.cs</Link>
     </Compile>
@@ -329,6 +344,9 @@
     </Compile>
     <Compile Include="..\Hades.HR.Caller\WinformCaller\Attendance\LaborMonthAttendanceCaller.cs">
       <Link>Caller\WinformCaller\Attendance\LaborMonthAttendanceCaller.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Caller\WinformCaller\Attendance\LaborProductionWorkloadCaller.cs">
+      <Link>Caller\WinformCaller\Attendance\LaborProductionWorkloadCaller.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Caller\WinformCaller\Attendance\WorkSectionLaborCaller.cs">
       <Link>Caller\WinformCaller\Attendance\WorkSectionLaborCaller.cs</Link>
@@ -390,6 +408,9 @@
     <Compile Include="..\Hades.HR.Core\BLL\Attendance\LaborAttendanceRecord.cs">
       <Link>Biz\BLL\Attendance\LaborAttendanceRecord.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Core\BLL\Attendance\LaborChangeWorkload.cs">
+      <Link>Biz\BLL\Attendance\LaborChangeWorkload.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Core\BLL\Attendance\LaborDailyAttendance.cs">
       <Link>Biz\BLL\Attendance\LaborDailyAttendance.cs</Link>
     </Compile>
@@ -398,6 +419,9 @@
     </Compile>
     <Compile Include="..\Hades.HR.Core\BLL\Attendance\LaborMonthAttendance.cs">
       <Link>Biz\BLL\Attendance\LaborMonthAttendance.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\BLL\Attendance\LaborProductionWorkload.cs">
+      <Link>Biz\BLL\Attendance\LaborProductionWorkload.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\BLL\Attendance\WorkSectionLabor.cs">
       <Link>Biz\BLL\Attendance\WorkSectionLabor.cs</Link>
@@ -459,6 +483,9 @@
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Attendance\LaborAttendanceRecord.cs">
       <Link>Biz\DAL\DALSQL\Attendance\LaborAttendanceRecord.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Attendance\LaborChangeWorkload.cs">
+      <Link>Biz\DAL\DALSQL\Attendance\LaborChangeWorkload.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Attendance\LaborDailyAttendance.cs">
       <Link>Biz\DAL\DALSQL\Attendance\LaborDailyAttendance.cs</Link>
     </Compile>
@@ -467,6 +494,9 @@
     </Compile>
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Attendance\LaborMonthAttendance.cs">
       <Link>Biz\DAL\DALSQL\Attendance\LaborMonthAttendance.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Attendance\LaborProductionWorkload.cs">
+      <Link>Biz\DAL\DALSQL\Attendance\LaborProductionWorkload.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Attendance\WorkSectionLabor.cs">
       <Link>Biz\DAL\DALSQL\Attendance\WorkSectionLabor.cs</Link>
@@ -528,6 +558,9 @@
     <Compile Include="..\Hades.HR.Core\Entity\Attendance\LaborAttendanceRecordInfo.cs">
       <Link>Biz\Entity\Attendance\LaborAttendanceRecordInfo.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Core\Entity\Attendance\LaborChangeWorkloadInfo.cs">
+      <Link>Biz\Entity\Attendance\LaborChangeWorkloadInfo.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Core\Entity\Attendance\LaborDailyAttendanceInfo.cs">
       <Link>Biz\Entity\Attendance\LaborDailyAttendanceInfo.cs</Link>
     </Compile>
@@ -536,6 +569,9 @@
     </Compile>
     <Compile Include="..\Hades.HR.Core\Entity\Attendance\LaborMonthAttendanceInfo.cs">
       <Link>Biz\Entity\Attendance\LaborMonthAttendanceInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\Entity\Attendance\LaborProductionWorkloadInfo.cs">
+      <Link>Biz\Entity\Attendance\LaborProductionWorkloadInfo.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\Entity\Attendance\WorkSectionLaborInfo.cs">
       <Link>Biz\Entity\Attendance\WorkSectionLaborInfo.cs</Link>
@@ -597,6 +633,9 @@
     <Compile Include="..\Hades.HR.Core\IDAL\Attendance\ILaborAttendanceRecord.cs">
       <Link>Biz\IDAL\Attendance\ILaborAttendanceRecord.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Core\IDAL\Attendance\ILaborChangeWorkload.cs">
+      <Link>Biz\IDAL\Attendance\ILaborChangeWorkload.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Core\IDAL\Attendance\ILaborDailyAttendance.cs">
       <Link>Biz\IDAL\Attendance\ILaborDailyAttendance.cs</Link>
     </Compile>
@@ -605,6 +644,9 @@
     </Compile>
     <Compile Include="..\Hades.HR.Core\IDAL\Attendance\ILaborMonthAttendance.cs">
       <Link>Biz\IDAL\Attendance\ILaborMonthAttendance.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\IDAL\Attendance\ILaborProductionWorkload.cs">
+      <Link>Biz\IDAL\Attendance\ILaborProductionWorkload.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\IDAL\Attendance\IWorkSectionLabor.cs">
       <Link>Biz\IDAL\Attendance\IWorkSectionLabor.cs</Link>
@@ -672,11 +714,11 @@
     <Compile Include="Attendance2\FrmEditLaborDailyWorkload.Designer.cs">
       <DependentUpon>FrmEditLaborDailyWorkload.cs</DependentUpon>
     </Compile>
-    <Compile Include="Attendance2\FrmEditWorkTeamDailyWorkload.cs">
+    <Compile Include="Attendance2\FrmEditProductionWorkload.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Attendance2\FrmEditWorkTeamDailyWorkload.Designer.cs">
-      <DependentUpon>FrmEditWorkTeamDailyWorkload.cs</DependentUpon>
+    <Compile Include="Attendance2\FrmEditProductionWorkload.Designer.cs">
+      <DependentUpon>FrmEditProductionWorkload.cs</DependentUpon>
     </Compile>
     <Compile Include="Attendance2\FrmLaborDailyAttendance.cs">
       <SubType>Form</SubType>
@@ -970,8 +1012,8 @@
     <EmbeddedResource Include="Attendance2\FrmEditWorkTeamDailyChange.resx">
       <DependentUpon>FrmEditWorkTeamDailyChange.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Attendance2\FrmEditWorkTeamDailyWorkload.resx">
-      <DependentUpon>FrmEditWorkTeamDailyWorkload.cs</DependentUpon>
+    <EmbeddedResource Include="Attendance2\FrmEditProductionWorkload.resx">
+      <DependentUpon>FrmEditProductionWorkload.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Attendance2\FrmLaborDailyAttendance.resx">
       <DependentUpon>FrmLaborDailyAttendance.cs</DependentUpon>
