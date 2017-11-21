@@ -45,12 +45,12 @@ namespace Hades.HR.UI
             this.menuChange = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.wtTree = new Hades.HR.UI.WorkTeamTree();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
             this.wgvWorkload = new Hades.Pager.WinControl.WinGridView();
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
             this.wgvLabor = new Hades.Pager.WinControl.WinGridView();
-            this.wtTree = new Hades.HR.UI.WorkTeamTree();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dpAttendance.Properties.CalendarTimeProperties)).BeginInit();
@@ -238,6 +238,15 @@ namespace Hades.HR.UI
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "°à×éÁÐ±í";
             // 
+            // wtTree
+            // 
+            this.wtTree.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.wtTree.Location = new System.Drawing.Point(2, 21);
+            this.wtTree.Margin = new System.Windows.Forms.Padding(4);
+            this.wtTree.Name = "wtTree";
+            this.wtTree.Size = new System.Drawing.Size(290, 651);
+            this.wtTree.TabIndex = 0;
+            // 
             // groupControl2
             // 
             this.groupControl2.Controls.Add(this.layoutControl1);
@@ -305,15 +314,6 @@ namespace Hades.HR.UI
             this.wgvLabor.ShowExportButton = true;
             this.wgvLabor.Size = new System.Drawing.Size(694, 261);
             this.wgvLabor.TabIndex = 0;
-            // 
-            // wtTree
-            // 
-            this.wtTree.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.wtTree.Location = new System.Drawing.Point(2, 21);
-            this.wtTree.Margin = new System.Windows.Forms.Padding(4);
-            this.wtTree.Name = "wtTree";
-            this.wtTree.Size = new System.Drawing.Size(290, 651);
-            this.wtTree.TabIndex = 0;
             // 
             // FrmWorkTeamDailyWorkload
             // 

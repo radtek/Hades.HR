@@ -1146,6 +1146,7 @@
     <None Include="Properties\DataSources\Hades.HR.Entity.AttendanceRecordInfo.datasource" />
     <None Include="Properties\DataSources\Hades.HR.Entity.DepartmentInfo.datasource" />
     <None Include="Properties\DataSources\Hades.HR.Entity.LaborAttendanceRecordInfo.datasource" />
+    <None Include="Properties\DataSources\Hades.HR.Entity.LaborProductionWorkloadInfo.datasource" />
     <None Include="Properties\DataSources\Hades.HR.Entity.LaborSalaryRecordInfo.datasource" />
     <None Include="Properties\DataSources\Hades.HR.Entity.PositionInfo.datasource" />
     <None Include="Properties\DataSources\Hades.HR.Entity.ProductionLineInfo.datasource" />
