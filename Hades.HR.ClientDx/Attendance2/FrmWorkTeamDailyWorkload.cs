@@ -227,28 +227,6 @@ namespace Hades.HR.UI
                     LoadLaborWorkload();
                 }
             }
-
-            //string ID = this.winGridViewPager1.gridView1.GetFocusedRowCellDisplayText("Id");
-            //List<string> IDList = new List<string>();
-            //for (int i = 0; i < this.winGridViewPager1.gridView1.RowCount; i++)
-            //{
-            //    string strTemp = this.winGridViewPager1.GridView1.GetRowCellDisplayText(i, "Id");
-            //    IDList.Add(strTemp);
-            //}
-
-            //if (!string.IsNullOrEmpty(ID))
-            //{
-            //    FrmEditWorkTeamDailyWorkload dlg = new FrmEditWorkTeamDailyWorkload();
-            //    dlg.ID = ID;
-            //    dlg.IDList = IDList;
-            //    dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
-            //    dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
-
-            //    if (DialogResult.OK == dlg.ShowDialog())
-            //    {
-            //        BindData();
-            //    }
-            //}
         }
 
         /// <summary>
@@ -423,16 +401,6 @@ namespace Hades.HR.UI
             //    //SetGridColumWidth("Note", 200);
             //}
         }
-
-        private void SetGridColumWidth(string columnName, int width)
-        {
-            //DevExpress.XtraGrid.Columns.GridColumn column = this.winGridViewPager1.gridView1.Columns.ColumnByFieldName(columnName);
-            //if (column != null)
-            //{
-            //    column.Width = width;
-            //}
-        }
-      
         
         /// <summary>
         /// 分页控件刷新操作
@@ -496,14 +464,6 @@ namespace Hades.HR.UI
         }
         
         /// <summary>
-        /// 分页控件新增操作
-        /// </summary>        
-        private void winGridViewPager1_OnAddNew(object sender, EventArgs e)
-        {
-            btnAddNew_Click(null, null);
-        }
-        
-        /// <summary>
         /// 分页控件全部导出操作前的操作
         /// </summary> 
         private void winGridViewPager1_OnStartExport(object sender, EventArgs e)
@@ -527,32 +487,6 @@ namespace Hades.HR.UI
         {
         	advanceCondition = null;//必须重置查询条件，否则可能会使用高级查询条件了
             BindData();
-        }
-        
-        /// <summary>
-        /// 新增数据操作
-        /// </summary>
-        private void btnAddNew_Click(object sender, EventArgs e)
-        {
-            FrmEditProductionWorkload dlg = new FrmEditProductionWorkload();
-            dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
-            dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
-            
-            if (DialogResult.OK == dlg.ShowDialog())
-            {
-                BindData();
-            }
-        }
-        
-        /// <summary>
-        /// 提供给控件回车执行查询的操作
-        /// </summary>
-        private void SearchControl_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                btnSearch_Click(null, null);
-            }
         }
         #endregion //System
     }

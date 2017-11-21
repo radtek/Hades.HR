@@ -43,7 +43,12 @@ namespace Hades.HR.UI
         /// <summary>
         /// 暂存产量工时数据
         /// </summary>
-        private List<LaborProductionWorkloadInfo> laborWorkloads = new List<LaborProductionWorkloadInfo>();
+        private List<LaborProductionWorkloadInfo> laborProductions = new List<LaborProductionWorkloadInfo>();
+
+        /// <summary>
+        /// 缓存员工日工作量
+        /// </summary>
+        private List<LaborDailyWorkloadInfo> laborWorkloads = new List<LaborDailyWorkloadInfo>();
 
         /// <summary>
         /// 缓存职员数据
@@ -139,7 +144,7 @@ namespace Hades.HR.UI
             {
                 var data = CallerFactory<ILaborProductionWorkloadService>.Instance.Find(string.Format("CompleteId = '{0}'", item.Id));
 
-                this.laborWorkloads.AddRange(data);
+                this.laborProductions.AddRange(data);
             }
         }
 
@@ -166,7 +171,7 @@ namespace Hades.HR.UI
         /// <param name="completeId">完工单ID</param>
         private void DisplayLaborProduction(string completeId)
         {
-            var find = this.laborWorkloads.Where(r => r.CompleteId == completeId);
+            var find = this.laborProductions.Where(r => r.CompleteId == completeId).ToList();
             if (find.Count() == 0)
             {
                 var staffs = CallerFactory<ILaborDailyWorkloadService>.Instance.Find(string.Format("WorkTeamWorkloadId='{0}'", this.ID));
@@ -187,6 +192,17 @@ namespace Hades.HR.UI
             else
             {
                 this.bsLaborWorkload.DataSource = find;
+
+                this.dgvStaff.SelectionChanged -= new DevExpress.Data.SelectionChangedEventHandler(this.dgvStaff_SelectionChanged);
+                for (int i = 0;i < find.Count; i++)
+                {
+                    if (find[i].ProductionHours !=0)
+                    {
+                        this.dgvStaff.SelectRow(i);
+                    }
+                }
+
+                this.dgvStaff.SelectionChanged += new DevExpress.Data.SelectionChangedEventHandler(this.dgvStaff_SelectionChanged);
             }
         }
 
@@ -230,7 +246,7 @@ namespace Hades.HR.UI
         /// <param name="completeId">完工单ID</param>
         private void StoreCompleteForm(string completeId)
         {
-            this.laborWorkloads.RemoveAll(r => r.CompleteId == completeId);
+            this.laborProductions.RemoveAll(r => r.CompleteId == completeId);
 
             var data = this.bsLaborWorkload.DataSource as List<LaborProductionWorkloadInfo>;
 
@@ -239,25 +255,7 @@ namespace Hades.HR.UI
                 item.AssignType = 1;
                 item.Remark = item.Remark ?? "";
             }
-            this.laborWorkloads.AddRange(data);
-        }
-
-        /// <summary>
-        /// 编辑或者保存状态下取值函数
-        /// </summary>
-        /// <param name="info"></param>
-        private void SetInfo(WorkTeamDailyWorkloadInfo info)
-        {
-            //info.WorkTeamId = luWorkTeam.GetSelectedId();
-            //info.AttendanceDate = txtAttendanceDate.DateTime;
-            info.ProductionHours = txtProductionHours.Value;
-
-            //info.PersonCount = Convert.ToInt32(txtPersonCount.Value);
-
-
-            info.Editor = this.LoginUserInfo.Name;
-            info.EditorId = this.LoginUserInfo.ID;
-            info.EditTime = DateTime.Now;
+            this.laborProductions.AddRange(data);
         }
         #endregion //Function
 
@@ -300,7 +298,8 @@ namespace Hades.HR.UI
                     this.txtAttendanceDate.Text = info.AttendanceDate.ToString("yyyy-MM-dd");
 
                     this.staffs = CallerFactory<IStaffService>.Instance.Find("StaffType = 2");
-
+                    this.laborWorkloads = CallerFactory<ILaborDailyWorkloadService>.Instance.Find(string.Format("WorkTeamWorkloadId='{0}'", ID));
+                    
                     GenerateForm(info.AttendanceDate);
 
                     LoadLaborProduction();
@@ -322,26 +321,30 @@ namespace Hades.HR.UI
         /// <returns></returns>
         public override bool SaveUpdated()
         {
-            var data = this.laborWorkloads;
-            //MessageBox.Show("update");
-            return true;
-
             WorkTeamDailyWorkloadInfo info = CallerFactory<IWorkTeamDailyWorkloadService>.Instance.FindByID(ID);
             if (info != null)
             {
-                SetInfo(info);
-
                 try
                 {
-                    #region 更新数据
-                    bool succeed = CallerFactory<IWorkTeamDailyWorkloadService>.Instance.Update(info, info.Id);
-                    if (succeed)
-                    {
-                        //可添加其他关联操作
+                    info.ProductionHours = this.completeDetails.Sum(r => r.Workload);
 
-                        return true;
+                    bool succeed = CallerFactory<IWorkTeamDailyWorkloadService>.Instance.Update(info, info.Id);
+                  
+                    foreach(var item in this.laborProductions)
+                    {
+                        // 增加产量工时分配
+                        CallerFactory<ILaborProductionWorkloadService>.Instance.Insert(item);
                     }
-                    #endregion
+
+                    foreach(var item in this.laborWorkloads)
+                    {
+                        var hours = this.laborProductions.Where(r => r.StaffId == item.StaffId).Sum(r => r.ProductionHours);
+                        item.ProductionHours = hours;
+
+                        CallerFactory<ILaborDailyWorkloadService>.Instance.Update(item, item.Id);
+                    }
+
+                    return true;
                 }
                 catch (Exception ex)
                 {
