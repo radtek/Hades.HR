@@ -28,6 +28,7 @@ namespace Hades.HR.UI
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEditChangeWorkload));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
@@ -39,11 +40,12 @@ namespace Hades.HR.UI
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.wgvChange = new Hades.Pager.WinControl.WinGridView();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
             this.dgcStaff = new DevExpress.XtraGrid.GridControl();
-            this.bsLaborWorkload = new System.Windows.Forms.BindingSource();
+            this.bsLaborWorkload = new System.Windows.Forms.BindingSource(this.components);
             this.dgvStaff = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colChangeId = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -53,7 +55,6 @@ namespace Hades.HR.UI
             this.colChangeHours = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAssignType = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colRemark = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             ((System.ComponentModel.ISupportInitialize)(this.picPrint)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
@@ -67,6 +68,7 @@ namespace Hades.HR.UI
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
@@ -74,30 +76,30 @@ namespace Hades.HR.UI
             ((System.ComponentModel.ISupportInitialize)(this.dgcStaff)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsLaborWorkload)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStaff)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(679, 518);
+            this.btnOK.Location = new System.Drawing.Point(679, 493);
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(778, 518);
+            this.btnCancel.Location = new System.Drawing.Point(778, 493);
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(592, 518);
+            this.btnAdd.Location = new System.Drawing.Point(592, 493);
             this.btnAdd.Visible = false;
             // 
             // dataNavigator1
             // 
-            this.dataNavigator1.Location = new System.Drawing.Point(12, 513);
+            this.dataNavigator1.Location = new System.Drawing.Point(12, 488);
+            this.dataNavigator1.Size = new System.Drawing.Size(191, 30);
             this.dataNavigator1.Visible = false;
             // 
             // picPrint
             // 
-            this.picPrint.Location = new System.Drawing.Point(202, 515);
+            this.picPrint.Location = new System.Drawing.Point(202, 490);
             // 
             // tableLayoutPanel1
             // 
@@ -133,10 +135,10 @@ namespace Hades.HR.UI
             this.layoutControl1.Controls.Add(this.txtAttendanceDate);
             this.layoutControl1.Controls.Add(this.txtWorkTeamName);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutControl1.Location = new System.Drawing.Point(2, 21);
+            this.layoutControl1.Location = new System.Drawing.Point(2, 25);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(855, 71);
+            this.layoutControl1.Size = new System.Drawing.Size(855, 67);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -147,30 +149,30 @@ namespace Hades.HR.UI
             0,
             0,
             0});
-            this.spChangeHours.Location = new System.Drawing.Point(652, 12);
+            this.spChangeHours.Location = new System.Drawing.Point(666, 14);
             this.spChangeHours.Name = "spChangeHours";
             this.spChangeHours.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.spChangeHours.Properties.ReadOnly = true;
-            this.spChangeHours.Size = new System.Drawing.Size(191, 20);
+            this.spChangeHours.Size = new System.Drawing.Size(175, 24);
             this.spChangeHours.StyleController = this.layoutControl1;
             this.spChangeHours.TabIndex = 6;
             // 
             // txtAttendanceDate
             // 
-            this.txtAttendanceDate.Location = new System.Drawing.Point(348, 12);
+            this.txtAttendanceDate.Location = new System.Drawing.Point(364, 14);
             this.txtAttendanceDate.Name = "txtAttendanceDate";
             this.txtAttendanceDate.Properties.ReadOnly = true;
-            this.txtAttendanceDate.Size = new System.Drawing.Size(237, 20);
+            this.txtAttendanceDate.Size = new System.Drawing.Size(220, 24);
             this.txtAttendanceDate.StyleController = this.layoutControl1;
             this.txtAttendanceDate.TabIndex = 5;
             // 
             // txtWorkTeamName
             // 
-            this.txtWorkTeamName.Location = new System.Drawing.Point(75, 12);
+            this.txtWorkTeamName.Location = new System.Drawing.Point(92, 14);
             this.txtWorkTeamName.Name = "txtWorkTeamName";
             this.txtWorkTeamName.Properties.ReadOnly = true;
-            this.txtWorkTeamName.Size = new System.Drawing.Size(206, 20);
+            this.txtWorkTeamName.Size = new System.Drawing.Size(190, 24);
             this.txtWorkTeamName.StyleController = this.layoutControl1;
             this.txtWorkTeamName.TabIndex = 4;
             // 
@@ -185,7 +187,7 @@ namespace Hades.HR.UI
             this.emptySpaceItem1});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(855, 71);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(855, 67);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem1
@@ -193,27 +195,35 @@ namespace Hades.HR.UI
             this.layoutControlItem1.Control = this.txtWorkTeamName;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(273, 24);
+            this.layoutControlItem1.Size = new System.Drawing.Size(272, 28);
             this.layoutControlItem1.Text = "班组名称";
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(60, 14);
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(75, 18);
             // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.txtAttendanceDate;
-            this.layoutControlItem2.Location = new System.Drawing.Point(273, 0);
+            this.layoutControlItem2.Location = new System.Drawing.Point(272, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(304, 24);
+            this.layoutControlItem2.Size = new System.Drawing.Size(302, 28);
             this.layoutControlItem2.Text = "考勤日期";
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(60, 14);
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(75, 18);
             // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.spChangeHours;
-            this.layoutControlItem3.Location = new System.Drawing.Point(577, 0);
+            this.layoutControlItem3.Location = new System.Drawing.Point(574, 0);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(258, 24);
+            this.layoutControlItem3.Size = new System.Drawing.Size(257, 28);
             this.layoutControlItem3.Text = "换机总工时";
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(60, 14);
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(75, 18);
+            // 
+            // emptySpaceItem1
+            // 
+            this.emptySpaceItem1.AllowHotTrack = false;
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 28);
+            this.emptySpaceItem1.Name = "emptySpaceItem1";
+            this.emptySpaceItem1.Size = new System.Drawing.Size(831, 15);
+            this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // groupControl2
             // 
@@ -233,7 +243,7 @@ namespace Hades.HR.UI
             this.wgvChange.DisplayColumns = "";
             this.wgvChange.Dock = System.Windows.Forms.DockStyle.Fill;
             this.wgvChange.FixedColumns = null;
-            this.wgvChange.Location = new System.Drawing.Point(2, 21);
+            this.wgvChange.Location = new System.Drawing.Point(2, 25);
             this.wgvChange.Name = "wgvChange";
             this.wgvChange.PrintTitle = "";
             this.wgvChange.ShowAddMenu = true;
@@ -241,7 +251,7 @@ namespace Hades.HR.UI
             this.wgvChange.ShowDeleteMenu = true;
             this.wgvChange.ShowEditMenu = true;
             this.wgvChange.ShowExportButton = true;
-            this.wgvChange.Size = new System.Drawing.Size(422, 344);
+            this.wgvChange.Size = new System.Drawing.Size(422, 340);
             this.wgvChange.TabIndex = 0;
             // 
             // groupControl3
@@ -258,10 +268,10 @@ namespace Hades.HR.UI
             // 
             this.dgcStaff.DataSource = this.bsLaborWorkload;
             this.dgcStaff.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgcStaff.Location = new System.Drawing.Point(2, 21);
+            this.dgcStaff.Location = new System.Drawing.Point(2, 25);
             this.dgcStaff.MainView = this.dgvStaff;
             this.dgcStaff.Name = "dgcStaff";
-            this.dgcStaff.Size = new System.Drawing.Size(423, 344);
+            this.dgcStaff.Size = new System.Drawing.Size(423, 340);
             this.dgcStaff.TabIndex = 0;
             this.dgcStaff.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.dgvStaff});
@@ -336,6 +346,8 @@ namespace Hades.HR.UI
             this.colChangeHours.Caption = "换机工时";
             this.colChangeHours.FieldName = "ChangeHours";
             this.colChangeHours.Name = "colChangeHours";
+            this.colChangeHours.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "ChangeHours", "合计={0:0.##}")});
             this.colChangeHours.Visible = true;
             this.colChangeHours.VisibleIndex = 2;
             // 
@@ -353,19 +365,11 @@ namespace Hades.HR.UI
             this.colRemark.Visible = true;
             this.colRemark.VisibleIndex = 3;
             // 
-            // emptySpaceItem1
-            // 
-            this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 24);
-            this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(835, 27);
-            this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
-            // 
             // FrmEditChangeWorkload
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(865, 553);
+            this.ClientSize = new System.Drawing.Size(865, 528);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "FrmEditChangeWorkload";
             this.Text = "编辑班组换机工时";
@@ -388,6 +392,7 @@ namespace Hades.HR.UI
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
@@ -395,7 +400,6 @@ namespace Hades.HR.UI
             ((System.ComponentModel.ISupportInitialize)(this.dgcStaff)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsLaborWorkload)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStaff)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

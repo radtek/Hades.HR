@@ -46,6 +46,11 @@ namespace Hades.HR.UI
         private List<LaborChangeWorkloadInfo> laborChanges = new List<LaborChangeWorkloadInfo>();
 
         /// <summary>
+        /// 缓存员工日工作量
+        /// </summary>
+        private List<LaborDailyWorkloadInfo> laborWorkloads = new List<LaborDailyWorkloadInfo>();
+        
+        /// <summary>
         /// 缓存职员数据
         /// </summary>
         private List<StaffInfo> staffs;
@@ -214,6 +219,8 @@ namespace Hades.HR.UI
 
                     this.spChangeHours.Value = this.changeDetails.Sum(r => r.Workload);
 
+                    this.laborWorkloads = CallerFactory<ILaborDailyWorkloadService>.Instance.Find(string.Format("WorkTeamWorkloadId='{0}'", ID));
+
                     LoadLaborChanges(this.changeId);
                     DisplayLaborChange();
                 }
@@ -266,23 +273,39 @@ namespace Hades.HR.UI
         /// <returns></returns>
         public override bool SaveUpdated()
         {
-
-            LaborChangeWorkloadInfo info = CallerFactory<ILaborChangeWorkloadService>.Instance.FindByID(ID);
+            WorkTeamDailyWorkloadInfo info = CallerFactory<IWorkTeamDailyWorkloadService>.Instance.FindByID(ID);
+            
             if (info != null)
             {
-                //SetInfo(info);
-
                 try
                 {
-                    #region 更新数据
-                    bool succeed = CallerFactory<ILaborChangeWorkloadService>.Instance.Update(info, info.Id);
-                    if (succeed)
+                    this.laborChanges = this.bsLaborWorkload.DataSource as List<LaborChangeWorkloadInfo>;
+
+                    info.ChangeHours = this.changeDetails.Sum(r => r.Workload);
+
+                    if (laborChanges.Sum(r => r.ChangeHours) > info.ChangeHours)
                     {
-                        //可添加其他关联操作
-                       
-                        return true;
+                        MessageDxUtil.ShowWarning("分配换机工时操作总数");
+                        return false;
                     }
-                    #endregion
+
+                    bool succeed = CallerFactory<IWorkTeamDailyWorkloadService>.Instance.Update(info, info.Id);
+
+                    foreach (var item in this.laborChanges)
+                    {
+                        // 增加换机工时分配
+                        CallerFactory<ILaborChangeWorkloadService>.Instance.Insert(item);
+                    }
+
+                    foreach (var item in this.laborWorkloads)
+                    {
+                        var hours = this.laborChanges.Where(r => r.StaffId == item.StaffId).Sum(r => r.ChangeHours);
+                        item.ChangeHours = hours;
+
+                        CallerFactory<ILaborDailyWorkloadService>.Instance.Update(item, item.Id);
+                    }
+
+                    return true;
                 }
                 catch (Exception ex)
                 {
@@ -291,6 +314,27 @@ namespace Hades.HR.UI
                 }
             }
            return false;
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (!(ActiveControl is Button))
+            {
+                if (keyData == Keys.Down || keyData == Keys.Enter)
+                {
+                    return false;
+                }
+                else if (keyData == Keys.Up)
+                {
+                    return false;
+                }
+
+                return false;
+            }
+            else
+            {
+                return base.ProcessCmdKey(ref msg, keyData);
+            }
         }
         #endregion //Method
 
