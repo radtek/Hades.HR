@@ -180,7 +180,18 @@ namespace Hades.HR.UI
         }
 
         /// <summary>
-        /// 初始化
+        /// 班组选择
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void wtTree_TeamSeleted(object sender, EventArgs e)
+        {
+            LoadWorkTeamWorkload();
+            LoadLaborWorkload();
+        }
+
+        /// <summary>
+        /// 设置员工
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -236,27 +247,19 @@ namespace Hades.HR.UI
         /// <param name="e"></param>
         private void menuChange_Click(object sender, EventArgs e)
         {
-            //string ID = this.winGridViewPager1.gridView1.GetFocusedRowCellDisplayText("Id");
-            //List<string> IDList = new List<string>();
-            //for (int i = 0; i < this.winGridViewPager1.gridView1.RowCount; i++)
-            //{
-            //    string strTemp = this.winGridViewPager1.GridView1.GetRowCellDisplayText(i, "Id");
-            //    IDList.Add(strTemp);
-            //}
+            string ID = this.wgvWorkload.gridView1.GetFocusedRowCellDisplayText("Id");
+            if (!string.IsNullOrEmpty(ID))
+            {
+                FrmEditChangeWorkload dlg = new FrmEditChangeWorkload();
+                dlg.ID = ID;
+                dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
 
-            //if (!string.IsNullOrEmpty(ID))
-            //{
-            //    FrmEditWorkTeamDailyChange dlg = new FrmEditWorkTeamDailyChange();
-            //    dlg.ID = ID;
-            //    dlg.IDList = IDList;
-            //    dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
-            //    dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
-
-            //    if (DialogResult.OK == dlg.ShowDialog())
-            //    {
-            //        BindData();
-            //    }
-            //}
+                if (DialogResult.OK == dlg.ShowDialog())
+                {
+                    LoadWorkTeamWorkload();
+                    LoadLaborWorkload();
+                }
+            }
         }
         #endregion //Event
 
@@ -489,5 +492,6 @@ namespace Hades.HR.UI
             BindData();
         }
         #endregion //System
+       
     }
 }

@@ -28,7 +28,6 @@ namespace Hades.HR.UI
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmWorkTeamDailyWorkload));
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.btnSearch = new DevExpress.XtraEditors.SimpleButton();
@@ -38,7 +37,7 @@ namespace Hades.HR.UI
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip();
             this.menuProduction = new System.Windows.Forms.ToolStripMenuItem();
             this.menuChange = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -221,6 +220,7 @@ namespace Hades.HR.UI
             this.wtTree.Name = "wtTree";
             this.wtTree.Size = new System.Drawing.Size(290, 651);
             this.wtTree.TabIndex = 0;
+            this.wtTree.TeamSeleted += new System.EventHandler(this.wtTree_TeamSeleted);
             // 
             // groupControl2
             // 

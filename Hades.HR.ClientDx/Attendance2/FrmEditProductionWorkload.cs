@@ -405,7 +405,7 @@ namespace Hades.HR.UI
         }
 
         /// <summary>
-        /// 绑定数据显示
+        /// 自定义数据显示
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
