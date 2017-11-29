@@ -189,11 +189,17 @@
     <Compile Include="..\Hades.HR.Caller\Facade\Attendance\ILaborDailyWorkloadService.cs">
       <Link>Facade\Attendance\ILaborDailyWorkloadService.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Caller\Facade\Attendance\ILaborElectricWorkloadService.cs">
+      <Link>Facade\Attendance\ILaborElectricWorkloadService.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Caller\Facade\Attendance\ILaborMonthAttendanceService.cs">
       <Link>Facade\Attendance\ILaborMonthAttendanceService.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Caller\Facade\Attendance\ILaborProductionWorkloadService.cs">
       <Link>Facade\Attendance\ILaborProductionWorkloadService.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Caller\Facade\Attendance\ILaborRepairWorkloadService.cs">
+      <Link>Facade\Attendance\ILaborRepairWorkloadService.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Caller\Facade\Attendance\IWorkSectionLaborService.cs">
       <Link>Facade\Attendance\IWorkSectionLaborService.cs</Link>
@@ -264,11 +270,17 @@
     <Compile Include="..\Hades.HR.Caller\ServiceCaller\Attendance\LaborDailyWorkloadCaller.cs">
       <Link>Caller\ServiceCaller\Attendance\LaborDailyWorkloadCaller.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Caller\ServiceCaller\Attendance\LaborElectricWorkloadCaller.cs">
+      <Link>Caller\ServiceCaller\Attendance\LaborElectricWorkloadCaller.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Caller\ServiceCaller\Attendance\LaborMonthAttendanceCaller.cs">
       <Link>Caller\ServiceCaller\Attendance\LaborMonthAttendanceCaller.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Caller\ServiceCaller\Attendance\LaborProductionWorkloadCaller.cs">
       <Link>Caller\ServiceCaller\Attendance\LaborProductionWorkloadCaller.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Caller\ServiceCaller\Attendance\LaborRepairWorkloadCaller.cs">
+      <Link>Caller\ServiceCaller\Attendance\LaborRepairWorkloadCaller.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Caller\ServiceCaller\Attendance\WorkSectionLaborCaller.cs">
       <Link>Caller\ServiceCaller\Attendance\WorkSectionLaborCaller.cs</Link>
@@ -342,11 +354,17 @@
     <Compile Include="..\Hades.HR.Caller\WinformCaller\Attendance\LaborDailyWorkloadCaller.cs">
       <Link>Caller\WinformCaller\Attendance\LaborDailyWorkloadCaller.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Caller\WinformCaller\Attendance\LaborElectricWorkloadCaller.cs">
+      <Link>Caller\WinformCaller\Attendance\LaborElectricWorkloadCaller.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Caller\WinformCaller\Attendance\LaborMonthAttendanceCaller.cs">
       <Link>Caller\WinformCaller\Attendance\LaborMonthAttendanceCaller.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Caller\WinformCaller\Attendance\LaborProductionWorkloadCaller.cs">
       <Link>Caller\WinformCaller\Attendance\LaborProductionWorkloadCaller.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Caller\WinformCaller\Attendance\LaborRepairWorkloadCaller.cs">
+      <Link>Caller\WinformCaller\Attendance\LaborRepairWorkloadCaller.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Caller\WinformCaller\Attendance\WorkSectionLaborCaller.cs">
       <Link>Caller\WinformCaller\Attendance\WorkSectionLaborCaller.cs</Link>
@@ -417,11 +435,17 @@
     <Compile Include="..\Hades.HR.Core\BLL\Attendance\LaborDailyWorkload.cs">
       <Link>Biz\BLL\Attendance\LaborDailyWorkload.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Core\BLL\Attendance\LaborElectricWorkload.cs">
+      <Link>Biz\BLL\Attendance\LaborElectricWorkload.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Core\BLL\Attendance\LaborMonthAttendance.cs">
       <Link>Biz\BLL\Attendance\LaborMonthAttendance.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\BLL\Attendance\LaborProductionWorkload.cs">
       <Link>Biz\BLL\Attendance\LaborProductionWorkload.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\BLL\Attendance\LaborRepairWorkload.cs">
+      <Link>Biz\BLL\Attendance\LaborRepairWorkload.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\BLL\Attendance\WorkSectionLabor.cs">
       <Link>Biz\BLL\Attendance\WorkSectionLabor.cs</Link>
@@ -492,11 +516,17 @@
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Attendance\LaborDailyWorkload.cs">
       <Link>Biz\DAL\DALSQL\Attendance\LaborDailyWorkload.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Attendance\LaborElectricWorkload.cs">
+      <Link>Biz\DAL\DALSQL\Attendance\LaborElectricWorkload.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Attendance\LaborMonthAttendance.cs">
       <Link>Biz\DAL\DALSQL\Attendance\LaborMonthAttendance.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Attendance\LaborProductionWorkload.cs">
       <Link>Biz\DAL\DALSQL\Attendance\LaborProductionWorkload.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Attendance\LaborRepairWorkload.cs">
+      <Link>Biz\DAL\DALSQL\Attendance\LaborRepairWorkload.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Attendance\WorkSectionLabor.cs">
       <Link>Biz\DAL\DALSQL\Attendance\WorkSectionLabor.cs</Link>
@@ -567,11 +597,17 @@
     <Compile Include="..\Hades.HR.Core\Entity\Attendance\LaborDailyWorkloadInfo.cs">
       <Link>Biz\Entity\Attendance\LaborDailyWorkloadInfo.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Core\Entity\Attendance\LaborElectricWorkloadInfo.cs">
+      <Link>Biz\Entity\Attendance\LaborElectricWorkloadInfo.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Core\Entity\Attendance\LaborMonthAttendanceInfo.cs">
       <Link>Biz\Entity\Attendance\LaborMonthAttendanceInfo.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\Entity\Attendance\LaborProductionWorkloadInfo.cs">
       <Link>Biz\Entity\Attendance\LaborProductionWorkloadInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\Entity\Attendance\LaborRepairWorkloadInfo.cs">
+      <Link>Biz\Entity\Attendance\LaborRepairWorkloadInfo.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\Entity\Attendance\WorkSectionLaborInfo.cs">
       <Link>Biz\Entity\Attendance\WorkSectionLaborInfo.cs</Link>
@@ -642,11 +678,17 @@
     <Compile Include="..\Hades.HR.Core\IDAL\Attendance\ILaborDailyWorkload.cs">
       <Link>Biz\IDAL\Attendance\ILaborDailyWorkload.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Core\IDAL\Attendance\ILaborElectricWorkload.cs">
+      <Link>Biz\IDAL\Attendance\ILaborElectricWorkload.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Core\IDAL\Attendance\ILaborMonthAttendance.cs">
       <Link>Biz\IDAL\Attendance\ILaborMonthAttendance.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\IDAL\Attendance\ILaborProductionWorkload.cs">
       <Link>Biz\IDAL\Attendance\ILaborProductionWorkload.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\IDAL\Attendance\ILaborRepairWorkload.cs">
+      <Link>Biz\IDAL\Attendance\ILaborRepairWorkload.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\IDAL\Attendance\IWorkSectionLabor.cs">
       <Link>Biz\IDAL\Attendance\IWorkSectionLabor.cs</Link>
