@@ -744,6 +744,12 @@
     <Compile Include="..\Hades.HR.Core\Util\HREnum.cs">
       <Link>Util\HREnum.cs</Link>
     </Compile>
+    <Compile Include="Attendance2\FrmEditRepairWorkload.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Attendance2\FrmEditRepairWorkload.Designer.cs">
+      <DependentUpon>FrmEditRepairWorkload.cs</DependentUpon>
+    </Compile>
     <Compile Include="Attendance2\FrmEditChangeWorkload.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1054,6 +1060,9 @@
     <Compile Include="Control\WorkTeamTree.Designer.cs">
       <DependentUpon>WorkTeamTree.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Attendance2\FrmEditRepairWorkload.resx">
+      <DependentUpon>FrmEditRepairWorkload.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Attendance2\FrmEditChangeWorkload.resx">
       <DependentUpon>FrmEditChangeWorkload.cs</DependentUpon>
     </EmbeddedResource>
@@ -1199,6 +1208,7 @@
     <None Include="Properties\DataSources\Hades.HR.Entity.LaborAttendanceRecordInfo.datasource" />
     <None Include="Properties\DataSources\Hades.HR.Entity.LaborChangeWorkloadInfo.datasource" />
     <None Include="Properties\DataSources\Hades.HR.Entity.LaborProductionWorkloadInfo.datasource" />
+    <None Include="Properties\DataSources\Hades.HR.Entity.LaborRepairWorkloadInfo.datasource" />
     <None Include="Properties\DataSources\Hades.HR.Entity.LaborSalaryRecordInfo.datasource" />
     <None Include="Properties\DataSources\Hades.HR.Entity.PositionInfo.datasource" />
     <None Include="Properties\DataSources\Hades.HR.Entity.ProductionLineInfo.datasource" />

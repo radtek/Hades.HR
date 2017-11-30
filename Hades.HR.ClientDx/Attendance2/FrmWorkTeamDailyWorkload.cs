@@ -261,6 +261,28 @@ namespace Hades.HR.UI
                 }
             }
         }
+
+        /// <summary>
+        /// 编辑机修工时
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void menuRepair_Click(object sender, EventArgs e)
+        {
+            string ID = this.wgvWorkload.gridView1.GetFocusedRowCellDisplayText("Id");
+            if (!string.IsNullOrEmpty(ID))
+            {
+                FrmEditRepairWorkload dlg = new FrmEditRepairWorkload();
+                dlg.ID = ID;
+                dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
+
+                if (DialogResult.OK == dlg.ShowDialog())
+                {
+                    LoadWorkTeamWorkload();
+                    LoadLaborWorkload();
+                }
+            }
+        }
         #endregion //Event
 
         #region Grid
@@ -492,6 +514,6 @@ namespace Hades.HR.UI
             BindData();
         }
         #endregion //System
-       
+
     }
 }

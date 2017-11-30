@@ -48,6 +48,7 @@ namespace Hades.HR.UI
             this.wgvWorkload = new Hades.Pager.WinControl.WinGridView();
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
             this.wgvLabor = new Hades.Pager.WinControl.WinGridView();
+            this.menuRepair = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dpAttendance.Properties.CalendarTimeProperties)).BeginInit();
@@ -164,21 +165,22 @@ namespace Hades.HR.UI
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuProduction,
-            this.menuChange});
+            this.menuChange,
+            this.menuRepair});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(149, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 92);
             // 
             // menuProduction
             // 
             this.menuProduction.Name = "menuProduction";
-            this.menuProduction.Size = new System.Drawing.Size(148, 22);
+            this.menuProduction.Size = new System.Drawing.Size(152, 22);
             this.menuProduction.Text = "编辑产量工时";
             this.menuProduction.Click += new System.EventHandler(this.menuProduction_Click);
             // 
             // menuChange
             // 
             this.menuChange.Name = "menuChange";
-            this.menuChange.Size = new System.Drawing.Size(148, 22);
+            this.menuChange.Size = new System.Drawing.Size(152, 22);
             this.menuChange.Text = "编辑换机工时";
             this.menuChange.Click += new System.EventHandler(this.menuChange_Click);
             // 
@@ -290,6 +292,13 @@ namespace Hades.HR.UI
             this.wgvLabor.Size = new System.Drawing.Size(694, 261);
             this.wgvLabor.TabIndex = 0;
             // 
+            // menuRepair
+            // 
+            this.menuRepair.Name = "menuRepair";
+            this.menuRepair.Size = new System.Drawing.Size(152, 22);
+            this.menuRepair.Text = "编辑机修工时";
+            this.menuRepair.Click += new System.EventHandler(this.menuRepair_Click);
+            // 
             // FrmWorkTeamDailyWorkload
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -341,5 +350,6 @@ namespace Hades.HR.UI
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         private Pager.WinControl.WinGridView wgvWorkload;
+        private System.Windows.Forms.ToolStripMenuItem menuRepair;
     }
 }
