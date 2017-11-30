@@ -20,31 +20,28 @@ namespace Hades.HR.WCFLibrary
 	/// </summary>
     public class WorkTeamDailyWorkloadService : BaseLocalService<WorkTeamDailyWorkloadInfo>, IWorkTeamDailyWorkloadService
     {
+        #region Field
         private WorkTeamDailyWorkload bll = null;
+        #endregion //Field
 
+        #region Constructor
         public WorkTeamDailyWorkloadService() : base(BLLFactory<WorkTeamDailyWorkload>.Instance)
         {
             bll = baseBLL as WorkTeamDailyWorkload;
         }
+        #endregion //Constructor
 
-        ///// <summary>
-        ///// 根据名称查找对象(自定义接口使用范例)
-        ///// </summary>
-        //public List<WorkTeamDailyWorkloadInfo> FindByName(string name)
-        //{
-        //    return bll.FindByName(name);
-        //}
-
-        ///// <summary>
-        ///// 根据名称查找对象(自定义接口使用范例)
-        ///// </summary>
-        //public async Task<List<WorkTeamDailyWorkloadInfo>> FindByNameAsyn(string name)
-        //{
-        //   return await Task.Factory.StartNew(() =>
-        //   {
-        //       return bll.FindByName(name);
-	//   }
-        //}
-
+        #region Method
+        /// <summary>
+        /// 初始化班组日工作量及本班人员
+        /// </summary>
+        /// <param name="workTeam">班组日考勤</param>
+        /// <param name="labors">员工日考勤</param>
+        /// <returns></returns>
+        public bool InsertDailyLabor(WorkTeamDailyWorkloadInfo workTeam, List<LaborDailyWorkloadInfo> labors)
+        {
+            return bll.InsertDailyLabor(workTeam, labors);
+        }
+        #endregion //Method
     }
 }

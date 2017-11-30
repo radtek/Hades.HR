@@ -110,6 +110,5 @@ namespace Hades.HR.DALSQL
 
             return dict;
         }
-
     }
 }

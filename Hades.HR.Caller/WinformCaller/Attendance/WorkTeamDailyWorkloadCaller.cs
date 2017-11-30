@@ -27,5 +27,18 @@ namespace Hades.HR.WinformCaller
             bll = baseBLL as WorkTeamDailyWorkload;
         }
         #endregion //Constructor
+
+        #region Method
+        /// <summary>
+        /// 初始化班组日工作量及本班人员
+        /// </summary>
+        /// <param name="workTeam">班组日考勤</param>
+        /// <param name="labors">员工日考勤</param>
+        /// <returns></returns>
+        public bool InsertDailyLabor(WorkTeamDailyWorkloadInfo workTeam, List<LaborDailyWorkloadInfo> labors)
+        {
+            return bll.InsertDailyLabor(workTeam, labors);
+        }
+        #endregion //Method
     }
 }

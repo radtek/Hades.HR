@@ -181,21 +181,15 @@ namespace Hades.HR.UI
                     info.EditTime = DateTime.Now;
 
                     var data = SetSelectStaff(info);
-                    info.PersonCount = data.Count;
 
-                    CallerFactory<IWorkTeamDailyWorkloadService>.Instance.Insert(info);
-
-                    foreach (var item in data)
-                    {
-                        CallerFactory<ILaborDailyWorkloadService>.Instance.Insert(item);
-                    }
+                    bool result = CallerFactory<IWorkTeamDailyWorkloadService>.Instance.InsertDailyLabor(info, data);
+                    if (result)
+                        return true;
                 }
                 else
                 {
 
                 }
-
-                return true;
             }
             catch (Exception ex)
             {
@@ -203,6 +197,7 @@ namespace Hades.HR.UI
                 MessageDxUtil.ShowError(ex.Message);
             }
 
+            MessageDxUtil.ShowError("±£¥Ê ß∞‹");
             return false;
         }
         #endregion //Method
