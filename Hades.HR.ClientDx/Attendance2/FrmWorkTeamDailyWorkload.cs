@@ -64,7 +64,7 @@ namespace Hades.HR.UI
             //this.winGridViewPager1.gridView1.DataSourceChanged +=new EventHandler(gridView1_DataSourceChanged);
             //         this.winGridViewPager1.gridView1.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(gridView1_CustomColumnDisplayText);
             //         this.winGridViewPager1.gridView1.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(gridView1_RowCellStyle);
-            
+
         }
         #endregion //Constructor
 
@@ -87,8 +87,8 @@ namespace Hades.HR.UI
             if (condition == null)
             {
                 condition = new SearchCondition();
-               // condition.AddCondition("WorkTeamId", this.txtWorkTeamId.Text.Trim(), SqlOperator.Like);
-               // condition.AddDateCondition("AttendanceDate", this.txtAttendanceDate1, this.txtAttendanceDate2); //日期类型
+                // condition.AddCondition("WorkTeamId", this.txtWorkTeamId.Text.Trim(), SqlOperator.Like);
+                // condition.AddDateCondition("AttendanceDate", this.txtAttendanceDate1, this.txtAttendanceDate2); //日期类型
             }
             string where = condition.BuildConditionSql().Replace("Where", "");
             return where;
@@ -102,7 +102,7 @@ namespace Hades.HR.UI
             //entity
             //this.winGridViewPager1.DisplayColumns = "WorkTeamId,AttendanceDate,ProductionHours,ChangeHours,RepairHours,ElectricHours,PersonCount,Remark";
             //this.winGridViewPager1.ColumnNameAlias = CallerFactory<IWorkTeamDailyWorkloadService>.Instance.GetColumnNameAlias();//字段列显示名称转义
-            
+
             //string where = GetConditionSql();
             //PagerInfo pagerInfo = this.winGridViewPager1.PagerInfo;
             //List<WorkTeamDailyWorkloadInfo> list = CallerFactory<IWorkTeamDailyWorkloadService>.Instance.FindWithPager(where, ref pagerInfo);
@@ -126,7 +126,7 @@ namespace Hades.HR.UI
 
             this.wgvWorkload.DisplayColumns = "WorkTeamId,AttendanceDate,ProductionHours,ChangeHours,RepairHours,ElectricHours,PersonCount,Remark";
             this.wgvWorkload.ColumnNameAlias = CallerFactory<IWorkTeamDailyWorkloadService>.Instance.GetColumnNameAlias();//字段列显示名称转义
-            
+
             var data = CallerFactory<IWorkTeamDailyWorkloadService>.Instance.Find(string.Format("AttendanceDate='{0}' AND WorkTeamId='{1}'", attendanceDate, teamId));
             this.wgvWorkload.DataSource = data;
         }
@@ -162,7 +162,7 @@ namespace Hades.HR.UI
             this.workTeamList = CallerFactory<IWorkTeamService>.Instance.Find2("", "");
             this.staffList = CallerFactory<IStaffService>.Instance.Find("StaffType = 2");
             this.wtTree.Init();
-        
+
             BindData();
         }
         #endregion //Method
@@ -273,6 +273,28 @@ namespace Hades.HR.UI
             if (!string.IsNullOrEmpty(ID))
             {
                 FrmEditRepairWorkload dlg = new FrmEditRepairWorkload();
+                dlg.ID = ID;
+                dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
+
+                if (DialogResult.OK == dlg.ShowDialog())
+                {
+                    LoadWorkTeamWorkload();
+                    LoadLaborWorkload();
+                }
+            }
+        }
+
+        /// <summary>
+        /// 编辑电修工时
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void menuElectric_Click(object sender, EventArgs e)
+        {
+            string ID = this.wgvWorkload.gridView1.GetFocusedRowCellDisplayText("Id");
+            if (!string.IsNullOrEmpty(ID))
+            {
+                FrmEditElectricWorkload dlg = new FrmEditElectricWorkload();
                 dlg.ID = ID;
                 dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
 
@@ -407,8 +429,8 @@ namespace Hades.HR.UI
             //    }
             //}
         }
-        
-        
+
+
         /// <summary>
         /// 绑定数据后，分配各列的宽度
         /// </summary>
@@ -426,7 +448,7 @@ namespace Hades.HR.UI
             //    //SetGridColumWidth("Note", 200);
             //}
         }
-        
+
         /// <summary>
         /// 分页控件刷新操作
         /// </summary>
@@ -434,7 +456,7 @@ namespace Hades.HR.UI
         {
             BindData();
         }
-        
+
         /// <summary>
         /// 分页控件删除操作
         /// </summary>
@@ -451,10 +473,10 @@ namespace Hades.HR.UI
             //    string ID = this.winGridViewPager1.GridView1.GetRowCellDisplayText(iRow, "ID");
             //    CallerFactory<IWorkTeamDailyWorkloadService>.Instance.Delete(ID);
             //}	 
-             
+
             //BindData();
         }
-        
+
         /// <summary>
         /// 分页控件编辑项操作
         /// </summary>
@@ -475,19 +497,19 @@ namespace Hades.HR.UI
             //    dlg.IDList = IDList;
             //    dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
             //    dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
-                
+
             //    if (DialogResult.OK == dlg.ShowDialog())
             //    {
             //        BindData();
             //    }
             //}
-        }        
-        
+        }
+
         void dlg_OnDataSaved(object sender, EventArgs e)
         {
             BindData();
         }
-        
+
         /// <summary>
         /// 分页控件全部导出操作前的操作
         /// </summary> 
@@ -495,7 +517,7 @@ namespace Hades.HR.UI
         {
             //string where = GetConditionSql();
             //this.winGridViewPager1.AllToExport = CallerFactory<IWorkTeamDailyWorkloadService>.Instance.FindToDataTable(where);
-         }
+        }
 
         /// <summary>
         /// 分页控件翻页的操作
@@ -504,16 +526,15 @@ namespace Hades.HR.UI
         {
             BindData();
         }
-        
+
         /// <summary>
         /// 查询数据操作
         /// </summary>
         private void btnSearch_Click(object sender, EventArgs e)
         {
-        	advanceCondition = null;//必须重置查询条件，否则可能会使用高级查询条件了
+            advanceCondition = null;//必须重置查询条件，否则可能会使用高级查询条件了
             BindData();
         }
         #endregion //System
-
     }
 }

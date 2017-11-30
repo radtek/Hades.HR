@@ -20,9 +20,9 @@ using Hades.HR.Entity;
 namespace Hades.HR.UI
 {
     /// <summary>
-    /// 编辑机修工时窗体
+    /// 编辑电修工时窗体
     /// </summary>
-    public partial class FrmEditRepairWorkload : BaseEditForm
+    public partial class FrmEditElectricWorkload : BaseEditForm
     {
         #region Field
         /// <summary>
@@ -31,14 +31,14 @@ namespace Hades.HR.UI
         private WorkTeamDailyWorkloadInfo tempInfo = new WorkTeamDailyWorkloadInfo();
         
         /// <summary>
-        /// 缓存机修单
+        /// 缓存电修单
         /// </summary>
-        public RepairForm repairForm = new RepairForm();
+        public ElectricForm electricForm = new ElectricForm();
 
         /// <summary>
-        /// 暂存机修工时数据
+        /// 暂存电修工时数据
         /// </summary>
-        private List<LaborRepairWorkloadInfo> laborRepairs = new List<LaborRepairWorkloadInfo>();
+        private List<LaborElectricWorkloadInfo> laborElectric = new List<LaborElectricWorkloadInfo>();
 
         /// <summary>
         /// 缓存员工日工作量
@@ -52,7 +52,7 @@ namespace Hades.HR.UI
         #endregion //Field
 
         #region Constructor
-        public FrmEditRepairWorkload()
+        public FrmEditElectricWorkload()
         {
             InitializeComponent();
         }
@@ -68,40 +68,40 @@ namespace Hades.HR.UI
         }
 
         /// <summary>
-        /// 生成机修数据
+        /// 生成电修数据
         /// </summary>
-        private void GenerateRepair()
+        private void GenerateElectric()
         {
             Random random = new Random(DateTime.Now.Millisecond);
           
-            repairForm.Id = Guid.NewGuid().ToString();
-            repairForm.Workload = Math.Round(Convert.ToDecimal(random.NextDouble() * 10), 2);        
-        }
-  
-        /// <summary>
-        /// 载入已存员工相关机修工时
-        /// </summary>
-        /// <param name="repairId"></param>
-        private void LoadLaborRepair(string repairId)
-        {
-            var data = CallerFactory<ILaborRepairWorkloadService>.Instance.Find(string.Format("RepairId = '{0}'", repairId));
-            this.laborRepairs.AddRange(data);
+            electricForm.Id = Guid.NewGuid().ToString();
+            electricForm.Workload = Math.Round(Convert.ToDecimal(random.NextDouble() * 10), 2);        
         }
 
         /// <summary>
-        /// 显示员工换机数据
+        /// 载入已存员工相关电修工时
+        /// </summary>
+        /// <param name="electricId"></param>
+        private void LoadLaborElectric(string electricId)
+        {
+            var data = CallerFactory<ILaborElectricWorkloadService>.Instance.Find(string.Format("ElectricId = '{0}'", electricId));
+            this.laborElectric.AddRange(data);
+        }
+
+        /// <summary>
+        /// 显示员工电机数据
         /// </summary>
         private void DisplayLaborRepair()
         {
-            if (this.laborRepairs.Count == 0)
+            if (this.laborElectric.Count == 0)
             {
                 var staffs = CallerFactory<ILaborDailyWorkloadService>.Instance.Find(string.Format("WorkTeamWorkloadId='{0}'", this.ID));
 
-                List<LaborRepairWorkloadInfo> data = new List<LaborRepairWorkloadInfo>();
+                List<LaborElectricWorkloadInfo> data = new List<LaborElectricWorkloadInfo>();
                 foreach (var item in staffs)
                 {
-                    LaborRepairWorkloadInfo info = new LaborRepairWorkloadInfo();
-                    info.RepairId = this.repairForm.Id;
+                    LaborElectricWorkloadInfo info = new LaborElectricWorkloadInfo();
+                    info.ElectricId = this.electricForm.Id;
                     info.WorkTeamId = this.tempInfo.WorkTeamId;
                     info.StaffId = item.StaffId;                    
 
@@ -112,7 +112,7 @@ namespace Hades.HR.UI
             }
             else
             {
-                this.bsLaborWorkload.DataSource = this.laborRepairs;
+                this.bsLaborWorkload.DataSource = this.laborElectric;
             }
         }
 
@@ -121,7 +121,7 @@ namespace Hades.HR.UI
         /// </summary>
         private void CalculateHours()
         {
-            var totalHours = this.repairForm.Workload;
+            var totalHours = this.electricForm.Workload;
 
             var selected = this.dgvStaff.GetSelectedRows();
             if (selected.Length == 0)
@@ -132,14 +132,14 @@ namespace Hades.HR.UI
             for (int i = 0; i < this.dgvStaff.RowCount; i++)
             {
                 int dsIndex = this.dgvStaff.GetDataSourceRowIndex(i);
-                var workload = this.bsLaborWorkload[dsIndex] as LaborRepairWorkloadInfo;
+                var workload = this.bsLaborWorkload[dsIndex] as LaborElectricWorkloadInfo;
                 if (dgvStaff.IsRowSelected(i))
                 {
-                    workload.RepairHours = one;
+                    workload.ElectricHours = one;
                 }
                 else
                 {
-                    workload.RepairHours = 0;
+                    workload.ElectricHours = 0;
                 }
             }
 
@@ -199,14 +199,14 @@ namespace Hades.HR.UI
 
                     this.staffs = CallerFactory<IStaffService>.Instance.Find("StaffType = 2");
 
-                    GenerateRepair();
+                    GenerateElectric();
 
-                    this.spRepairHours.Value = this.repairForm.Workload;
-                    this.txtRemark.Text = this.repairForm.Remark;
+                    this.spElectricHours.Value = this.electricForm.Workload;
+                    this.txtRemark.Text = this.electricForm.Remark;
                     
                     this.laborWorkloads = CallerFactory<ILaborDailyWorkloadService>.Instance.Find(string.Format("WorkTeamWorkloadId='{0}'", ID));
 
-                    LoadLaborRepair(this.repairForm.Id);
+                    LoadLaborElectric(this.electricForm.Id);
 
                     DisplayLaborRepair();
                 }
@@ -262,27 +262,27 @@ namespace Hades.HR.UI
             {
                 try
                 {
-                    this.laborRepairs = this.bsLaborWorkload.DataSource as List<LaborRepairWorkloadInfo>;
-                    info.RepairHours = this.repairForm.Workload;
+                    this.laborElectric = this.bsLaborWorkload.DataSource as List<LaborElectricWorkloadInfo>;
+                    info.ElectricHours = this.electricForm.Workload;
                     
-                    if (this.laborRepairs.Sum(r => r.RepairHours) == 0)
+                    if (this.laborElectric.Sum(r => r.ElectricHours) == 0)
                     {
-                        MessageDxUtil.ShowWarning("机修工时未分配");
+                        MessageDxUtil.ShowWarning("电修工时未分配");
                         return false;
                     }
 
                     bool succeed = CallerFactory<IWorkTeamDailyWorkloadService>.Instance.Update(info, info.Id);
 
-                    foreach (var item in this.laborRepairs)
+                    foreach (var item in this.laborElectric)
                     {
-                        // 增加机修工时分配
-                        CallerFactory<ILaborRepairWorkloadService>.Instance.Insert(item);
+                        // 增加电修工时分配
+                        CallerFactory<ILaborElectricWorkloadService>.Instance.Insert(item);
                     }
 
                     foreach (var item in this.laborWorkloads)
                     {
-                        var hours = this.laborRepairs.Single(r => r.StaffId == item.StaffId).RepairHours;
-                        item.RepairHours = hours;
+                        var hours = this.laborElectric.Single(r => r.StaffId == item.StaffId).ElectricHours;
+                        item.ElectricHours = hours;
 
                         CallerFactory<ILaborDailyWorkloadService>.Instance.Update(item, item.Id);
                     }
@@ -353,7 +353,7 @@ namespace Hades.HR.UI
             if (rowIndex < 0 || rowIndex >= this.bsLaborWorkload.Count)
                 return;
 
-            var record = this.bsLaborWorkload[rowIndex] as LaborRepairWorkloadInfo;
+            var record = this.bsLaborWorkload[rowIndex] as LaborElectricWorkloadInfo;
 
             if (e.Column.FieldName == "StaffNumber" && e.IsGetData)
             {
@@ -378,12 +378,12 @@ namespace Hades.HR.UI
     }
 
     /// <summary>
-    /// 机修单
+    /// 电修单
     /// </summary>
-    public class RepairForm
+    public class ElectricForm
     {
         /// <summary>
-        /// 机修单ID
+        /// 电修单ID
         /// </summary>
         public string Id { get; set; }
 
