@@ -26,7 +26,7 @@ namespace Hades.HR.UI
 
         private string workTeamId;
 
-        private List<WorkSectionLaborViewInfo> sectionLabors;
+        //private List<WorkSectionLaborViewInfo> sectionLabors;
 
         private List<StaffLevelInfo> staffLevels;
         #endregion //Field
@@ -70,7 +70,7 @@ namespace Hades.HR.UI
             this.txtWorkTeamName.Text = workTeam.Name;
             this.txtSalaryTime.Text = attendance.Year + "Äê" + attendance.Month + "ÔÂ";
 
-            this.sectionLabors = CallerFactory<IWorkSectionLaborViewService>.Instance.Find(string.Format("WorkTeamId = '{0}'", this.workTeamId));
+            //this.sectionLabors = CallerFactory<IWorkSectionLaborViewService>.Instance.Find(string.Format("WorkTeamId = '{0}'", this.workTeamId));
             this.staffLevels = CallerFactory<IStaffLevelService>.Instance.Find("");
 
             var records = CallerFactory<ILaborSalaryRecordService>.Instance.CalcLaborSalary(this.attendanceId, this.workTeamId);
@@ -159,11 +159,11 @@ namespace Hades.HR.UI
             string columnName = e.Column.FieldName;
             if (columnName == "StaffId")
             {
-                var s = this.sectionLabors.FirstOrDefault(r => r.StaffId == e.Value.ToString());
-                if (s == null)
-                    e.DisplayText = "";
-                else
-                    e.DisplayText = s.Name;
+                //var s = this.sectionLabors.FirstOrDefault(r => r.StaffId == e.Value.ToString());
+                //if (s == null)
+                //    e.DisplayText = "";
+                //else
+                //    e.DisplayText = s.Name;
             }
             else if (columnName == "StaffLevelId")
             {
@@ -190,11 +190,11 @@ namespace Hades.HR.UI
 
             if (e.Column.FieldName == "StaffNumber" && e.IsGetData)
             {
-                var s = this.sectionLabors.FirstOrDefault(r => r.StaffId == record.StaffId);
-                if (s == null)
-                    e.Value = "";
-                else
-                    e.Value = s.Number;
+                //var s = this.sectionLabors.FirstOrDefault(r => r.StaffId == record.StaffId);
+                //if (s == null)
+                //    e.Value = "";
+                //else
+                //    e.Value = s.Number;
             }
         }
         #endregion //Event

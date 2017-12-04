@@ -109,16 +109,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BLL\Attendance\Attendance.cs" />
-    <Compile Include="BLL\Attendance\AttendanceRecord.cs" />
-    <Compile Include="BLL\Attendance\LaborAttendanceRecord.cs" />
     <Compile Include="BLL\Attendance\LaborChangeWorkload.cs" />
     <Compile Include="BLL\Attendance\LaborDailyAttendance.cs" />
     <Compile Include="BLL\Attendance\LaborDailyWorkload.cs" />
     <Compile Include="BLL\Attendance\LaborElectricWorkload.cs" />
-    <Compile Include="BLL\Attendance\LaborMonthAttendance.cs" />
     <Compile Include="BLL\Attendance\LaborProductionWorkload.cs" />
     <Compile Include="BLL\Attendance\LaborRepairWorkload.cs" />
-    <Compile Include="BLL\Attendance\WorkSectionLabor.cs" />
     <Compile Include="BLL\Attendance\WorkTeamDailyWorkload.cs" />
     <Compile Include="BLL\Base\StaffLevel.cs" />
     <Compile Include="BLL\Base\Warehouse.cs" />
@@ -129,22 +125,15 @@
     <Compile Include="BLL\Base\ProductionLine.cs" />
     <Compile Include="BLL\Base\Staff.cs" />
     <Compile Include="BLL\Salary\LaborSalaryRecord.cs" />
-    <Compile Include="BLL\View\LaborAttendanceRecordView.cs" />
-    <Compile Include="BLL\View\StaffAttendanceView.cs" />
     <Compile Include="BLL\Salary\StaffSalaryBase.cs" />
     <Compile Include="BLL\Base\WorkTeam.cs" />
-    <Compile Include="BLL\View\WorkSectionLaborView.cs" />
     <Compile Include="DAL\DALSQL\Attendance\Attendance.cs" />
-    <Compile Include="DAL\DALSQL\Attendance\AttendanceRecord.cs" />
-    <Compile Include="DAL\DALSQL\Attendance\LaborAttendanceRecord.cs" />
     <Compile Include="DAL\DALSQL\Attendance\LaborChangeWorkload.cs" />
     <Compile Include="DAL\DALSQL\Attendance\LaborDailyAttendance.cs" />
     <Compile Include="DAL\DALSQL\Attendance\LaborDailyWorkload.cs" />
     <Compile Include="DAL\DALSQL\Attendance\LaborElectricWorkload.cs" />
-    <Compile Include="DAL\DALSQL\Attendance\LaborMonthAttendance.cs" />
     <Compile Include="DAL\DALSQL\Attendance\LaborProductionWorkload.cs" />
     <Compile Include="DAL\DALSQL\Attendance\LaborRepairWorkload.cs" />
-    <Compile Include="DAL\DALSQL\Attendance\WorkSectionLabor.cs" />
     <Compile Include="DAL\DALSQL\Attendance\WorkTeamDailyWorkload.cs" />
     <Compile Include="DAL\DALSQL\Base\StaffLevel.cs" />
     <Compile Include="DAL\DALSQL\Base\Warehouse.cs" />
@@ -155,22 +144,15 @@
     <Compile Include="DAL\DALSQL\Base\ProductionLine.cs" />
     <Compile Include="DAL\DALSQL\Base\Staff.cs" />
     <Compile Include="DAL\DALSQL\Salary\LaborSalaryRecord.cs" />
-    <Compile Include="DAL\DALSQL\View\LaborAttendanceRecordView.cs" />
-    <Compile Include="DAL\DALSQL\View\StaffAttendanceView.cs" />
     <Compile Include="DAL\DALSQL\Salary\StaffSalaryBase.cs" />
     <Compile Include="DAL\DALSQL\Base\WorkTeam.cs" />
-    <Compile Include="DAL\DALSQL\View\WorkSectionLaborView.cs" />
     <Compile Include="Entity\Attendance\AttendanceInfo.cs" />
-    <Compile Include="Entity\Attendance\AttendanceRecordInfo.cs" />
-    <Compile Include="Entity\Attendance\LaborAttendanceRecordInfo.cs" />
     <Compile Include="Entity\Attendance\LaborChangeWorkloadInfo.cs" />
     <Compile Include="Entity\Attendance\LaborDailyAttendanceInfo.cs" />
     <Compile Include="Entity\Attendance\LaborDailyWorkloadInfo.cs" />
     <Compile Include="Entity\Attendance\LaborElectricWorkloadInfo.cs" />
-    <Compile Include="Entity\Attendance\LaborMonthAttendanceInfo.cs" />
     <Compile Include="Entity\Attendance\LaborProductionWorkloadInfo.cs" />
     <Compile Include="Entity\Attendance\LaborRepairWorkloadInfo.cs" />
-    <Compile Include="Entity\Attendance\WorkSectionLaborInfo.cs" />
     <Compile Include="Entity\Attendance\WorkTeamDailyWorkloadInfo.cs" />
     <Compile Include="Entity\Base\StaffLevelInfo.cs" />
     <Compile Include="Entity\Base\WarehouseInfo.cs" />
@@ -180,23 +162,16 @@
     <Compile Include="Entity\Base\DepartmentInfo.cs" />
     <Compile Include="Entity\Base\ProductionLineInfo.cs" />
     <Compile Include="Entity\Salary\LaborSalaryRecordInfo.cs" />
-    <Compile Include="Entity\View\LaborAttendanceRecordViewInfo.cs" />
-    <Compile Include="Entity\View\StaffAttendanceViewInfo.cs" />
     <Compile Include="Entity\Base\StaffInfo.cs" />
     <Compile Include="Entity\Salary\StaffSalaryBaseInfo.cs" />
     <Compile Include="Entity\Base\WorkTeamInfo.cs" />
-    <Compile Include="Entity\View\WorkSectionLaborViewInfo.cs" />
     <Compile Include="IDAL\Attendance\IAttendance.cs" />
-    <Compile Include="IDAL\Attendance\IAttendanceRecord.cs" />
-    <Compile Include="IDAL\Attendance\ILaborAttendanceRecord.cs" />
     <Compile Include="IDAL\Attendance\ILaborChangeWorkload.cs" />
     <Compile Include="IDAL\Attendance\ILaborDailyAttendance.cs" />
     <Compile Include="IDAL\Attendance\ILaborDailyWorkload.cs" />
     <Compile Include="IDAL\Attendance\ILaborElectricWorkload.cs" />
-    <Compile Include="IDAL\Attendance\ILaborMonthAttendance.cs" />
     <Compile Include="IDAL\Attendance\ILaborProductionWorkload.cs" />
     <Compile Include="IDAL\Attendance\ILaborRepairWorkload.cs" />
-    <Compile Include="IDAL\Attendance\IWorkSectionLabor.cs" />
     <Compile Include="IDAL\Attendance\IWorkTeamDailyWorkload.cs" />
     <Compile Include="IDAL\Base\IStaffLevel.cs" />
     <Compile Include="IDAL\Base\IWarehouse.cs" />
@@ -207,11 +182,8 @@
     <Compile Include="IDAL\Base\IProductionLine.cs" />
     <Compile Include="IDAL\Base\IStaff.cs" />
     <Compile Include="IDAL\Salary\ILaborSalaryRecord.cs" />
-    <Compile Include="IDAL\View\ILaborAttendanceRecordView.cs" />
-    <Compile Include="IDAL\View\IStaffAttendanceView.cs" />
     <Compile Include="IDAL\Salary\IStaffSalaryBase.cs" />
     <Compile Include="IDAL\Base\IWorkTeam.cs" />
-    <Compile Include="IDAL\View\IWorkSectionLaborView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BLL\Base\Position.cs" />
     <Compile Include="DAL\DALSQL\Base\Position.cs" />
@@ -219,7 +191,12 @@
     <Compile Include="IDAL\Base\IPosition.cs" />
     <Compile Include="Util\HREnum.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="BLL\View\" />
+    <Folder Include="DAL\DALSQL\View\" />
+    <Folder Include="Entity\View\" />
+    <Folder Include="IDAL\View\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

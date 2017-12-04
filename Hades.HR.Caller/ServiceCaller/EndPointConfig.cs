@@ -32,12 +32,6 @@ namespace Hades.HR.ServiceCaller
 
         #region Attendance
         public const string AttendanceService = "WSHttpBinding_IAttendanceService";
-        public const string AttendanceRecordService = "WSHttpBinding_IAttendanceRecordService";
-
-        public const string LaborAttendanceRecordService = "WSHttpBinding_ILaborAttendanceRecordService";
-        public const string LaborMonthAttendanceService = "WSHttpBinding_ILaborMonthAttendanceService";
-
-        public const string WorkSectionLaborService = "WSHttpBinding_IWorkSectionLaborService";
 
         public const string LaborDailyAttendanceService = "WSHttpBinding_ILaborDailyAttendanceService";
         public const string LaborDailyWorkloadService = "WSHttpBinding_ILaborDailyWorkloadService";
@@ -56,9 +50,7 @@ namespace Hades.HR.ServiceCaller
         #endregion //Salary
 
         #region View
-        public const string StaffAttendanceViewService = "WSHttpBinding_IStaffAttendanceViewService";
-        public const string LaborAttendanceRecordViewService = "WSHttpBinding_ILaborAttendanceRecordViewService";
-        public const string WorkSectionLaborViewService = "WSHttpBinding_IWorkSectionLaborViewService";
+      
         #endregion //View
     }
 }

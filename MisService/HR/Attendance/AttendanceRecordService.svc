@@ -1,2 +1,0 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="Hades.HR.WCFLibrary.AttendanceRecordService" %>
-<%@ Assembly Name="Hades.HR.WCFLibrary" %>

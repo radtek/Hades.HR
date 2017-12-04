@@ -77,17 +77,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Facade\Attendance\IAttendanceRecordService.cs" />
     <Compile Include="Facade\Attendance\IAttendanceService.cs" />
-    <Compile Include="Facade\Attendance\ILaborAttendanceRecordService.cs" />
     <Compile Include="Facade\Attendance\ILaborChangeWorkloadService.cs" />
     <Compile Include="Facade\Attendance\ILaborDailyAttendanceService.cs" />
     <Compile Include="Facade\Attendance\ILaborDailyWorkloadService.cs" />
     <Compile Include="Facade\Attendance\ILaborElectricWorkloadService.cs" />
-    <Compile Include="Facade\Attendance\ILaborMonthAttendanceService.cs" />
     <Compile Include="Facade\Attendance\ILaborProductionWorkloadService.cs" />
     <Compile Include="Facade\Attendance\ILaborRepairWorkloadService.cs" />
-    <Compile Include="Facade\Attendance\IWorkSectionLaborService.cs" />
     <Compile Include="Facade\Attendance\IWorkTeamDailyWorkloadService.cs" />
     <Compile Include="Facade\Base\IStaffLevelService.cs" />
     <Compile Include="Facade\Base\IWarehouseManagerService.cs" />
@@ -97,24 +93,17 @@
     <Compile Include="Facade\Base\IDepartmentService.cs" />
     <Compile Include="Facade\Base\IProductionLineService.cs" />
     <Compile Include="Facade\Salary\ILaborSalaryRecordService.cs" />
-    <Compile Include="Facade\View\ILaborAttendanceRecordViewService.cs" />
-    <Compile Include="Facade\View\IStaffAttendanceViewService.cs" />
     <Compile Include="Facade\Salary\IStaffSalaryBaseService.cs" />
     <Compile Include="Facade\Base\IStaffService.cs" />
     <Compile Include="Facade\Base\IWorkTeamService.cs" />
-    <Compile Include="Facade\View\IWorkSectionLaborViewService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceCaller\Attendance\AttendanceCaller.cs" />
-    <Compile Include="ServiceCaller\Attendance\AttendanceRecordCaller.cs" />
-    <Compile Include="ServiceCaller\Attendance\LaborAttendanceRecordCaller.cs" />
     <Compile Include="ServiceCaller\Attendance\LaborChangeWorkloadCaller.cs" />
     <Compile Include="ServiceCaller\Attendance\LaborDailyAttendanceCaller.cs" />
     <Compile Include="ServiceCaller\Attendance\LaborDailyWorkloadCaller.cs" />
     <Compile Include="ServiceCaller\Attendance\LaborElectricWorkloadCaller.cs" />
-    <Compile Include="ServiceCaller\Attendance\LaborMonthAttendanceCaller.cs" />
     <Compile Include="ServiceCaller\Attendance\LaborProductionWorkloadCaller.cs" />
     <Compile Include="ServiceCaller\Attendance\LaborRepairWorkloadCaller.cs" />
-    <Compile Include="ServiceCaller\Attendance\WorkSectionLaborCaller.cs" />
     <Compile Include="ServiceCaller\Attendance\WorkTeamDailyWorkloadCaller.cs" />
     <Compile Include="ServiceCaller\Base\StaffLevelCaller.cs" />
     <Compile Include="ServiceCaller\Base\WarehouseCaller.cs" />
@@ -125,23 +114,16 @@
     <Compile Include="ServiceCaller\EndPointConfig.cs" />
     <Compile Include="ServiceCaller\Base\ProductionLineCaller.cs" />
     <Compile Include="ServiceCaller\Salary\LaborSalaryRecordCaller.cs" />
-    <Compile Include="ServiceCaller\View\LaborAttendanceRecordViewCaller.cs" />
-    <Compile Include="ServiceCaller\View\StaffAttendanceViewCaller.cs" />
     <Compile Include="ServiceCaller\Base\StaffCaller.cs" />
     <Compile Include="ServiceCaller\Salary\StaffSalaryBaseCaller.cs" />
     <Compile Include="ServiceCaller\Base\WorkTeamCaller.cs" />
-    <Compile Include="ServiceCaller\View\WorkSectionLaborViewCaller.cs" />
     <Compile Include="WinformCaller\Attendance\AttendanceCaller.cs" />
-    <Compile Include="WinformCaller\Attendance\AttendanceRecordCaller.cs" />
-    <Compile Include="WinformCaller\Attendance\LaborAttendanceRecordCaller.cs" />
     <Compile Include="WinformCaller\Attendance\LaborChangeWorkloadCaller.cs" />
     <Compile Include="WinformCaller\Attendance\LaborDailyAttendanceCaller.cs" />
     <Compile Include="WinformCaller\Attendance\LaborDailyWorkloadCaller.cs" />
     <Compile Include="WinformCaller\Attendance\LaborElectricWorkloadCaller.cs" />
-    <Compile Include="WinformCaller\Attendance\LaborMonthAttendanceCaller.cs" />
     <Compile Include="WinformCaller\Attendance\LaborProductionWorkloadCaller.cs" />
     <Compile Include="WinformCaller\Attendance\LaborRepairWorkloadCaller.cs" />
-    <Compile Include="WinformCaller\Attendance\WorkSectionLaborCaller.cs" />
     <Compile Include="WinformCaller\Attendance\WorkTeamDailyWorkloadCaller.cs" />
     <Compile Include="WinformCaller\Base\StaffLevelCaller.cs" />
     <Compile Include="WinformCaller\Base\WarehouseCaller.cs" />
@@ -154,18 +136,20 @@
     <Compile Include="WinformCaller\Base\PositionCaller.cs" />
     <Compile Include="WinformCaller\Base\ProductionLineCaller.cs" />
     <Compile Include="WinformCaller\Salary\LaborSalaryRecordCaller.cs" />
-    <Compile Include="WinformCaller\View\LaborAttendanceRecordViewCaller.cs" />
-    <Compile Include="WinformCaller\View\StaffAttendanceViewCaller.cs" />
     <Compile Include="WinformCaller\Base\StaffCaller.cs" />
     <Compile Include="WinformCaller\Salary\StaffSalaryBaseCaller.cs" />
     <Compile Include="WinformCaller\Base\WorkTeamCaller.cs" />
-    <Compile Include="WinformCaller\View\WorkSectionLaborViewCaller.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Hades.HR.Core\Hades.HR.Core.csproj">
       <Project>{DCDBCAD0-065D-41D6-AD37-868396364FF7}</Project>
       <Name>Hades.HR.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Facade\View\" />
+    <Folder Include="ServiceCaller\View\" />
+    <Folder Include="WinformCaller\View\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

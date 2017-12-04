@@ -171,14 +171,8 @@
     <Reference Include="UIAutomationClient" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Hades.HR.Caller\Facade\Attendance\IAttendanceRecordService.cs">
-      <Link>Facade\Attendance\IAttendanceRecordService.cs</Link>
-    </Compile>
     <Compile Include="..\Hades.HR.Caller\Facade\Attendance\IAttendanceService.cs">
       <Link>Facade\Attendance\IAttendanceService.cs</Link>
-    </Compile>
-    <Compile Include="..\Hades.HR.Caller\Facade\Attendance\ILaborAttendanceRecordService.cs">
-      <Link>Facade\Attendance\ILaborAttendanceRecordService.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Caller\Facade\Attendance\ILaborChangeWorkloadService.cs">
       <Link>Facade\Attendance\ILaborChangeWorkloadService.cs</Link>
@@ -192,17 +186,11 @@
     <Compile Include="..\Hades.HR.Caller\Facade\Attendance\ILaborElectricWorkloadService.cs">
       <Link>Facade\Attendance\ILaborElectricWorkloadService.cs</Link>
     </Compile>
-    <Compile Include="..\Hades.HR.Caller\Facade\Attendance\ILaborMonthAttendanceService.cs">
-      <Link>Facade\Attendance\ILaborMonthAttendanceService.cs</Link>
-    </Compile>
     <Compile Include="..\Hades.HR.Caller\Facade\Attendance\ILaborProductionWorkloadService.cs">
       <Link>Facade\Attendance\ILaborProductionWorkloadService.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Caller\Facade\Attendance\ILaborRepairWorkloadService.cs">
       <Link>Facade\Attendance\ILaborRepairWorkloadService.cs</Link>
-    </Compile>
-    <Compile Include="..\Hades.HR.Caller\Facade\Attendance\IWorkSectionLaborService.cs">
-      <Link>Facade\Attendance\IWorkSectionLaborService.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Caller\Facade\Attendance\IWorkTeamDailyWorkloadService.cs">
       <Link>Facade\Attendance\IWorkTeamDailyWorkloadService.cs</Link>
@@ -243,23 +231,8 @@
     <Compile Include="..\Hades.HR.Caller\Facade\Salary\IStaffSalaryBaseService.cs">
       <Link>Facade\Salary\IStaffSalaryBaseService.cs</Link>
     </Compile>
-    <Compile Include="..\Hades.HR.Caller\Facade\View\ILaborAttendanceRecordViewService.cs">
-      <Link>Facade\View\ILaborAttendanceRecordViewService.cs</Link>
-    </Compile>
-    <Compile Include="..\Hades.HR.Caller\Facade\View\IStaffAttendanceViewService.cs">
-      <Link>Facade\View\IStaffAttendanceViewService.cs</Link>
-    </Compile>
-    <Compile Include="..\Hades.HR.Caller\Facade\View\IWorkSectionLaborViewService.cs">
-      <Link>Facade\View\IWorkSectionLaborViewService.cs</Link>
-    </Compile>
     <Compile Include="..\Hades.HR.Caller\ServiceCaller\Attendance\AttendanceCaller.cs">
       <Link>Caller\ServiceCaller\Attendance\AttendanceCaller.cs</Link>
-    </Compile>
-    <Compile Include="..\Hades.HR.Caller\ServiceCaller\Attendance\AttendanceRecordCaller.cs">
-      <Link>Caller\ServiceCaller\Attendance\AttendanceRecordCaller.cs</Link>
-    </Compile>
-    <Compile Include="..\Hades.HR.Caller\ServiceCaller\Attendance\LaborAttendanceRecordCaller.cs">
-      <Link>Caller\ServiceCaller\Attendance\LaborAttendanceRecordCaller.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Caller\ServiceCaller\Attendance\LaborChangeWorkloadCaller.cs">
       <Link>Caller\ServiceCaller\Attendance\LaborChangeWorkloadCaller.cs</Link>
@@ -273,17 +246,11 @@
     <Compile Include="..\Hades.HR.Caller\ServiceCaller\Attendance\LaborElectricWorkloadCaller.cs">
       <Link>Caller\ServiceCaller\Attendance\LaborElectricWorkloadCaller.cs</Link>
     </Compile>
-    <Compile Include="..\Hades.HR.Caller\ServiceCaller\Attendance\LaborMonthAttendanceCaller.cs">
-      <Link>Caller\ServiceCaller\Attendance\LaborMonthAttendanceCaller.cs</Link>
-    </Compile>
     <Compile Include="..\Hades.HR.Caller\ServiceCaller\Attendance\LaborProductionWorkloadCaller.cs">
       <Link>Caller\ServiceCaller\Attendance\LaborProductionWorkloadCaller.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Caller\ServiceCaller\Attendance\LaborRepairWorkloadCaller.cs">
       <Link>Caller\ServiceCaller\Attendance\LaborRepairWorkloadCaller.cs</Link>
-    </Compile>
-    <Compile Include="..\Hades.HR.Caller\ServiceCaller\Attendance\WorkSectionLaborCaller.cs">
-      <Link>Caller\ServiceCaller\Attendance\WorkSectionLaborCaller.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Caller\ServiceCaller\Attendance\WorkTeamDailyWorkloadCaller.cs">
       <Link>Caller\ServiceCaller\Attendance\WorkTeamDailyWorkloadCaller.cs</Link>
@@ -327,23 +294,8 @@
     <Compile Include="..\Hades.HR.Caller\ServiceCaller\Salary\StaffSalaryBaseCaller.cs">
       <Link>Caller\ServiceCaller\Salary\StaffSalaryBaseCaller.cs</Link>
     </Compile>
-    <Compile Include="..\Hades.HR.Caller\ServiceCaller\View\LaborAttendanceRecordViewCaller.cs">
-      <Link>Caller\ServiceCaller\View\LaborAttendanceRecordViewCaller.cs</Link>
-    </Compile>
-    <Compile Include="..\Hades.HR.Caller\ServiceCaller\View\StaffAttendanceViewCaller.cs">
-      <Link>Caller\ServiceCaller\View\StaffAttendanceViewCaller.cs</Link>
-    </Compile>
-    <Compile Include="..\Hades.HR.Caller\ServiceCaller\View\WorkSectionLaborViewCaller.cs">
-      <Link>Caller\ServiceCaller\View\WorkSectionLaborViewCaller.cs</Link>
-    </Compile>
     <Compile Include="..\Hades.HR.Caller\WinformCaller\Attendance\AttendanceCaller.cs">
       <Link>Caller\WinformCaller\Attendance\AttendanceCaller.cs</Link>
-    </Compile>
-    <Compile Include="..\Hades.HR.Caller\WinformCaller\Attendance\AttendanceRecordCaller.cs">
-      <Link>Caller\WinformCaller\Attendance\AttendanceRecordCaller.cs</Link>
-    </Compile>
-    <Compile Include="..\Hades.HR.Caller\WinformCaller\Attendance\LaborAttendanceRecordCaller.cs">
-      <Link>Caller\WinformCaller\Attendance\LaborAttendanceRecordCaller.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Caller\WinformCaller\Attendance\LaborChangeWorkloadCaller.cs">
       <Link>Caller\WinformCaller\Attendance\LaborChangeWorkloadCaller.cs</Link>
@@ -357,17 +309,11 @@
     <Compile Include="..\Hades.HR.Caller\WinformCaller\Attendance\LaborElectricWorkloadCaller.cs">
       <Link>Caller\WinformCaller\Attendance\LaborElectricWorkloadCaller.cs</Link>
     </Compile>
-    <Compile Include="..\Hades.HR.Caller\WinformCaller\Attendance\LaborMonthAttendanceCaller.cs">
-      <Link>Caller\WinformCaller\Attendance\LaborMonthAttendanceCaller.cs</Link>
-    </Compile>
     <Compile Include="..\Hades.HR.Caller\WinformCaller\Attendance\LaborProductionWorkloadCaller.cs">
       <Link>Caller\WinformCaller\Attendance\LaborProductionWorkloadCaller.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Caller\WinformCaller\Attendance\LaborRepairWorkloadCaller.cs">
       <Link>Caller\WinformCaller\Attendance\LaborRepairWorkloadCaller.cs</Link>
-    </Compile>
-    <Compile Include="..\Hades.HR.Caller\WinformCaller\Attendance\WorkSectionLaborCaller.cs">
-      <Link>Caller\WinformCaller\Attendance\WorkSectionLaborCaller.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Caller\WinformCaller\Attendance\WorkTeamDailyWorkloadCaller.cs">
       <Link>Caller\WinformCaller\Attendance\WorkTeamDailyWorkloadCaller.cs</Link>
@@ -408,23 +354,8 @@
     <Compile Include="..\Hades.HR.Caller\WinformCaller\Salary\StaffSalaryBaseCaller.cs">
       <Link>Caller\WinformCaller\Salary\StaffSalaryBaseCaller.cs</Link>
     </Compile>
-    <Compile Include="..\Hades.HR.Caller\WinformCaller\View\LaborAttendanceRecordViewCaller.cs">
-      <Link>Caller\WinformCaller\View\LaborAttendanceRecordViewCaller.cs</Link>
-    </Compile>
-    <Compile Include="..\Hades.HR.Caller\WinformCaller\View\StaffAttendanceViewCaller.cs">
-      <Link>Caller\WinformCaller\View\StaffAttendanceViewCaller.cs</Link>
-    </Compile>
-    <Compile Include="..\Hades.HR.Caller\WinformCaller\View\WorkSectionLaborViewCaller.cs">
-      <Link>Caller\WinformCaller\View\WorkSectionLaborViewCaller.cs</Link>
-    </Compile>
     <Compile Include="..\Hades.HR.Core\BLL\Attendance\Attendance.cs">
       <Link>Biz\BLL\Attendance\Attendance.cs</Link>
-    </Compile>
-    <Compile Include="..\Hades.HR.Core\BLL\Attendance\AttendanceRecord.cs">
-      <Link>Biz\BLL\Attendance\AttendanceRecord.cs</Link>
-    </Compile>
-    <Compile Include="..\Hades.HR.Core\BLL\Attendance\LaborAttendanceRecord.cs">
-      <Link>Biz\BLL\Attendance\LaborAttendanceRecord.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\BLL\Attendance\LaborChangeWorkload.cs">
       <Link>Biz\BLL\Attendance\LaborChangeWorkload.cs</Link>
@@ -438,17 +369,11 @@
     <Compile Include="..\Hades.HR.Core\BLL\Attendance\LaborElectricWorkload.cs">
       <Link>Biz\BLL\Attendance\LaborElectricWorkload.cs</Link>
     </Compile>
-    <Compile Include="..\Hades.HR.Core\BLL\Attendance\LaborMonthAttendance.cs">
-      <Link>Biz\BLL\Attendance\LaborMonthAttendance.cs</Link>
-    </Compile>
     <Compile Include="..\Hades.HR.Core\BLL\Attendance\LaborProductionWorkload.cs">
       <Link>Biz\BLL\Attendance\LaborProductionWorkload.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\BLL\Attendance\LaborRepairWorkload.cs">
       <Link>Biz\BLL\Attendance\LaborRepairWorkload.cs</Link>
-    </Compile>
-    <Compile Include="..\Hades.HR.Core\BLL\Attendance\WorkSectionLabor.cs">
-      <Link>Biz\BLL\Attendance\WorkSectionLabor.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\BLL\Attendance\WorkTeamDailyWorkload.cs">
       <Link>Biz\BLL\Attendance\WorkTeamDailyWorkload.cs</Link>
@@ -489,23 +414,8 @@
     <Compile Include="..\Hades.HR.Core\BLL\Salary\StaffSalaryBase.cs">
       <Link>Biz\BLL\Salary\StaffSalaryBase.cs</Link>
     </Compile>
-    <Compile Include="..\Hades.HR.Core\BLL\View\LaborAttendanceRecordView.cs">
-      <Link>Biz\BLL\View\LaborAttendanceRecordView.cs</Link>
-    </Compile>
-    <Compile Include="..\Hades.HR.Core\BLL\View\StaffAttendanceView.cs">
-      <Link>Biz\BLL\View\StaffAttendanceView.cs</Link>
-    </Compile>
-    <Compile Include="..\Hades.HR.Core\BLL\View\WorkSectionLaborView.cs">
-      <Link>Biz\BLL\View\WorkSectionLaborView.cs</Link>
-    </Compile>
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Attendance\Attendance.cs">
       <Link>Biz\DAL\DALSQL\Attendance\Attendance.cs</Link>
-    </Compile>
-    <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Attendance\AttendanceRecord.cs">
-      <Link>Biz\DAL\DALSQL\Attendance\AttendanceRecord.cs</Link>
-    </Compile>
-    <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Attendance\LaborAttendanceRecord.cs">
-      <Link>Biz\DAL\DALSQL\Attendance\LaborAttendanceRecord.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Attendance\LaborChangeWorkload.cs">
       <Link>Biz\DAL\DALSQL\Attendance\LaborChangeWorkload.cs</Link>
@@ -519,17 +429,11 @@
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Attendance\LaborElectricWorkload.cs">
       <Link>Biz\DAL\DALSQL\Attendance\LaborElectricWorkload.cs</Link>
     </Compile>
-    <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Attendance\LaborMonthAttendance.cs">
-      <Link>Biz\DAL\DALSQL\Attendance\LaborMonthAttendance.cs</Link>
-    </Compile>
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Attendance\LaborProductionWorkload.cs">
       <Link>Biz\DAL\DALSQL\Attendance\LaborProductionWorkload.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Attendance\LaborRepairWorkload.cs">
       <Link>Biz\DAL\DALSQL\Attendance\LaborRepairWorkload.cs</Link>
-    </Compile>
-    <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Attendance\WorkSectionLabor.cs">
-      <Link>Biz\DAL\DALSQL\Attendance\WorkSectionLabor.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Attendance\WorkTeamDailyWorkload.cs">
       <Link>Biz\DAL\DALSQL\Attendance\WorkTeamDailyWorkload.cs</Link>
@@ -570,23 +474,8 @@
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Salary\StaffSalaryBase.cs">
       <Link>Biz\DAL\DALSQL\Salary\StaffSalaryBase.cs</Link>
     </Compile>
-    <Compile Include="..\Hades.HR.Core\DAL\DALSQL\View\LaborAttendanceRecordView.cs">
-      <Link>Biz\DAL\DALSQL\View\LaborAttendanceRecordView.cs</Link>
-    </Compile>
-    <Compile Include="..\Hades.HR.Core\DAL\DALSQL\View\StaffAttendanceView.cs">
-      <Link>Biz\DAL\DALSQL\View\StaffAttendanceView.cs</Link>
-    </Compile>
-    <Compile Include="..\Hades.HR.Core\DAL\DALSQL\View\WorkSectionLaborView.cs">
-      <Link>Biz\DAL\DALSQL\View\WorkSectionLaborView.cs</Link>
-    </Compile>
     <Compile Include="..\Hades.HR.Core\Entity\Attendance\AttendanceInfo.cs">
       <Link>Biz\Entity\Attendance\AttendanceInfo.cs</Link>
-    </Compile>
-    <Compile Include="..\Hades.HR.Core\Entity\Attendance\AttendanceRecordInfo.cs">
-      <Link>Biz\Entity\Attendance\AttendanceRecordInfo.cs</Link>
-    </Compile>
-    <Compile Include="..\Hades.HR.Core\Entity\Attendance\LaborAttendanceRecordInfo.cs">
-      <Link>Biz\Entity\Attendance\LaborAttendanceRecordInfo.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\Entity\Attendance\LaborChangeWorkloadInfo.cs">
       <Link>Biz\Entity\Attendance\LaborChangeWorkloadInfo.cs</Link>
@@ -600,17 +489,11 @@
     <Compile Include="..\Hades.HR.Core\Entity\Attendance\LaborElectricWorkloadInfo.cs">
       <Link>Biz\Entity\Attendance\LaborElectricWorkloadInfo.cs</Link>
     </Compile>
-    <Compile Include="..\Hades.HR.Core\Entity\Attendance\LaborMonthAttendanceInfo.cs">
-      <Link>Biz\Entity\Attendance\LaborMonthAttendanceInfo.cs</Link>
-    </Compile>
     <Compile Include="..\Hades.HR.Core\Entity\Attendance\LaborProductionWorkloadInfo.cs">
       <Link>Biz\Entity\Attendance\LaborProductionWorkloadInfo.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\Entity\Attendance\LaborRepairWorkloadInfo.cs">
       <Link>Biz\Entity\Attendance\LaborRepairWorkloadInfo.cs</Link>
-    </Compile>
-    <Compile Include="..\Hades.HR.Core\Entity\Attendance\WorkSectionLaborInfo.cs">
-      <Link>Biz\Entity\Attendance\WorkSectionLaborInfo.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\Entity\Attendance\WorkTeamDailyWorkloadInfo.cs">
       <Link>Biz\Entity\Attendance\WorkTeamDailyWorkloadInfo.cs</Link>
@@ -651,23 +534,8 @@
     <Compile Include="..\Hades.HR.Core\Entity\Salary\StaffSalaryBaseInfo.cs">
       <Link>Biz\Entity\Salary\StaffSalaryBaseInfo.cs</Link>
     </Compile>
-    <Compile Include="..\Hades.HR.Core\Entity\View\LaborAttendanceRecordViewInfo.cs">
-      <Link>Biz\Entity\View\LaborAttendanceRecordViewInfo.cs</Link>
-    </Compile>
-    <Compile Include="..\Hades.HR.Core\Entity\View\StaffAttendanceViewInfo.cs">
-      <Link>Biz\Entity\View\StaffAttendanceViewInfo.cs</Link>
-    </Compile>
-    <Compile Include="..\Hades.HR.Core\Entity\View\WorkSectionLaborViewInfo.cs">
-      <Link>Biz\Entity\View\WorkSectionLaborViewInfo.cs</Link>
-    </Compile>
     <Compile Include="..\Hades.HR.Core\IDAL\Attendance\IAttendance.cs">
       <Link>Biz\IDAL\Attendance\IAttendance.cs</Link>
-    </Compile>
-    <Compile Include="..\Hades.HR.Core\IDAL\Attendance\IAttendanceRecord.cs">
-      <Link>Biz\IDAL\Attendance\IAttendanceRecord.cs</Link>
-    </Compile>
-    <Compile Include="..\Hades.HR.Core\IDAL\Attendance\ILaborAttendanceRecord.cs">
-      <Link>Biz\IDAL\Attendance\ILaborAttendanceRecord.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\IDAL\Attendance\ILaborChangeWorkload.cs">
       <Link>Biz\IDAL\Attendance\ILaborChangeWorkload.cs</Link>
@@ -681,17 +549,11 @@
     <Compile Include="..\Hades.HR.Core\IDAL\Attendance\ILaborElectricWorkload.cs">
       <Link>Biz\IDAL\Attendance\ILaborElectricWorkload.cs</Link>
     </Compile>
-    <Compile Include="..\Hades.HR.Core\IDAL\Attendance\ILaborMonthAttendance.cs">
-      <Link>Biz\IDAL\Attendance\ILaborMonthAttendance.cs</Link>
-    </Compile>
     <Compile Include="..\Hades.HR.Core\IDAL\Attendance\ILaborProductionWorkload.cs">
       <Link>Biz\IDAL\Attendance\ILaborProductionWorkload.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\IDAL\Attendance\ILaborRepairWorkload.cs">
       <Link>Biz\IDAL\Attendance\ILaborRepairWorkload.cs</Link>
-    </Compile>
-    <Compile Include="..\Hades.HR.Core\IDAL\Attendance\IWorkSectionLabor.cs">
-      <Link>Biz\IDAL\Attendance\IWorkSectionLabor.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\IDAL\Attendance\IWorkTeamDailyWorkload.cs">
       <Link>Biz\IDAL\Attendance\IWorkTeamDailyWorkload.cs</Link>
@@ -732,119 +594,68 @@
     <Compile Include="..\Hades.HR.Core\IDAL\Salary\IStaffSalaryBase.cs">
       <Link>Biz\IDAL\Salary\IStaffSalaryBase.cs</Link>
     </Compile>
-    <Compile Include="..\Hades.HR.Core\IDAL\View\ILaborAttendanceRecordView.cs">
-      <Link>Biz\IDAL\View\ILaborAttendanceRecordView.cs</Link>
-    </Compile>
-    <Compile Include="..\Hades.HR.Core\IDAL\View\IStaffAttendanceView.cs">
-      <Link>Biz\IDAL\View\IStaffAttendanceView.cs</Link>
-    </Compile>
-    <Compile Include="..\Hades.HR.Core\IDAL\View\IWorkSectionLaborView.cs">
-      <Link>Biz\IDAL\View\IWorkSectionLaborView.cs</Link>
-    </Compile>
     <Compile Include="..\Hades.HR.Core\Util\HREnum.cs">
       <Link>Util\HREnum.cs</Link>
     </Compile>
-    <Compile Include="Attendance2\FrmEditElectricWorkload.cs">
+    <Compile Include="Attendance\FrmEditElectricWorkload.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Attendance2\FrmEditElectricWorkload.Designer.cs">
+    <Compile Include="Attendance\FrmEditElectricWorkload.Designer.cs">
       <DependentUpon>FrmEditElectricWorkload.cs</DependentUpon>
     </Compile>
-    <Compile Include="Attendance2\FrmEditRepairWorkload.cs">
+    <Compile Include="Attendance\FrmEditRepairWorkload.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Attendance2\FrmEditRepairWorkload.Designer.cs">
+    <Compile Include="Attendance\FrmEditRepairWorkload.Designer.cs">
       <DependentUpon>FrmEditRepairWorkload.cs</DependentUpon>
     </Compile>
-    <Compile Include="Attendance2\FrmEditChangeWorkload.cs">
+    <Compile Include="Attendance\FrmEditChangeWorkload.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Attendance2\FrmEditChangeWorkload.Designer.cs">
+    <Compile Include="Attendance\FrmEditChangeWorkload.Designer.cs">
       <DependentUpon>FrmEditChangeWorkload.cs</DependentUpon>
     </Compile>
-    <Compile Include="Attendance2\FrmSetDailyLabor.cs">
+    <Compile Include="Attendance\FrmSetDailyLabor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Attendance2\FrmSetDailyLabor.Designer.cs">
+    <Compile Include="Attendance\FrmSetDailyLabor.Designer.cs">
       <DependentUpon>FrmSetDailyLabor.cs</DependentUpon>
     </Compile>
-    <Compile Include="Attendance2\FrmEditLaborDailyWorkload.cs">
+    <Compile Include="Attendance\FrmEditLaborDailyWorkload.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Attendance2\FrmEditLaborDailyWorkload.Designer.cs">
+    <Compile Include="Attendance\FrmEditLaborDailyWorkload.Designer.cs">
       <DependentUpon>FrmEditLaborDailyWorkload.cs</DependentUpon>
     </Compile>
-    <Compile Include="Attendance2\FrmEditProductionWorkload.cs">
+    <Compile Include="Attendance\FrmEditProductionWorkload.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Attendance2\FrmEditProductionWorkload.Designer.cs">
+    <Compile Include="Attendance\FrmEditProductionWorkload.Designer.cs">
       <DependentUpon>FrmEditProductionWorkload.cs</DependentUpon>
     </Compile>
-    <Compile Include="Attendance2\FrmLaborDailyAttendance.cs">
+    <Compile Include="Attendance\FrmLaborDailyAttendance.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Attendance2\FrmLaborDailyAttendance.Designer.cs">
+    <Compile Include="Attendance\FrmLaborDailyAttendance.Designer.cs">
       <DependentUpon>FrmLaborDailyAttendance.cs</DependentUpon>
     </Compile>
-    <Compile Include="Attendance2\FrmLaborDailyWorkload.cs">
+    <Compile Include="Attendance\FrmLaborDailyWorkload.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Attendance2\FrmLaborDailyWorkload.Designer.cs">
+    <Compile Include="Attendance\FrmLaborDailyWorkload.Designer.cs">
       <DependentUpon>FrmLaborDailyWorkload.cs</DependentUpon>
     </Compile>
-    <Compile Include="Attendance2\FrmWorkTeamDailyWorkload.cs">
+    <Compile Include="Attendance\FrmWorkTeamDailyWorkload.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Attendance2\FrmWorkTeamDailyWorkload.Designer.cs">
+    <Compile Include="Attendance\FrmWorkTeamDailyWorkload.Designer.cs">
       <DependentUpon>FrmWorkTeamDailyWorkload.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Attendance\FrmStaffAttendance.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Attendance\FrmStaffAttendance.Designer.cs">
-      <DependentUpon>FrmStaffAttendance.cs</DependentUpon>
     </Compile>
     <Compile Include="Attendance\FrmEditAttendance.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Attendance\FrmEditAttendance.Designer.cs">
       <DependentUpon>FrmEditAttendance.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Attendance\FrmEditLaborAttendanceRecord.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Attendance\FrmEditLaborAttendanceRecord.Designer.cs">
-      <DependentUpon>FrmEditLaborAttendanceRecord.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Attendance\FrmEditLaborMonthAttendance.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Attendance\FrmEditLaborMonthAttendance.Designer.cs">
-      <DependentUpon>FrmEditLaborMonthAttendance.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Attendance\FrmEditWorkSectionLabor.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Attendance\FrmEditWorkSectionLabor.Designer.cs">
-      <DependentUpon>FrmEditWorkSectionLabor.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Attendance\FrmLaborAttendance.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Attendance\FrmLaborAttendance.Designer.cs">
-      <DependentUpon>FrmLaborAttendance.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Attendance\FrmLaborMonthAttendance.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Attendance\FrmLaborMonthAttendance.Designer.cs">
-      <DependentUpon>FrmLaborMonthAttendance.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Attendance\FrmWorkSectionLabor.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Attendance\FrmWorkSectionLabor.Designer.cs">
-      <DependentUpon>FrmWorkSectionLabor.cs</DependentUpon>
     </Compile>
     <Compile Include="Base\FrmEditStaffLevel.cs">
       <SubType>Form</SubType>
@@ -918,12 +729,6 @@
     <Compile Include="Control\ProductionLineLookup.Designer.cs">
       <DependentUpon>ProductionLineLookup.cs</DependentUpon>
     </Compile>
-    <Compile Include="Attendance\FrmAttendanceRecordEdit.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Attendance\FrmAttendanceRecordEdit.Designer.cs">
-      <DependentUpon>FrmAttendanceRecordEdit.cs</DependentUpon>
-    </Compile>
     <Compile Include="Base\FrmWorkTeamEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -954,22 +759,16 @@
     <Compile Include="Control\ProductionLineTree.Designer.cs">
       <DependentUpon>ProductionLineTree.cs</DependentUpon>
     </Compile>
-    <Compile Include="Attendance\FrmMonthAttendance.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Attendance\FrmMonthAttendance.Designer.cs">
-      <DependentUpon>FrmMonthAttendance.cs</DependentUpon>
-    </Compile>
     <Compile Include="Base\FrmWorkTeamView.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Base\FrmWorkTeamView.Designer.cs">
       <DependentUpon>FrmWorkTeamView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Attendance2\FrmEditWorkTeamDailyChange.cs">
+    <Compile Include="Attendance\FrmEditWorkTeamDailyChange.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Attendance2\FrmEditWorkTeamDailyChange.Designer.cs">
+    <Compile Include="Attendance\FrmEditWorkTeamDailyChange.Designer.cs">
       <DependentUpon>FrmEditWorkTeamDailyChange.cs</DependentUpon>
     </Compile>
     <Compile Include="Salary\FrmBonusDefine.cs">
@@ -1066,56 +865,32 @@
     <Compile Include="Control\WorkTeamTree.Designer.cs">
       <DependentUpon>WorkTeamTree.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Attendance2\FrmEditElectricWorkload.resx">
+    <EmbeddedResource Include="Attendance\FrmEditElectricWorkload.resx">
       <DependentUpon>FrmEditElectricWorkload.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Attendance2\FrmEditRepairWorkload.resx">
+    <EmbeddedResource Include="Attendance\FrmEditRepairWorkload.resx">
       <DependentUpon>FrmEditRepairWorkload.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Attendance2\FrmEditChangeWorkload.resx">
+    <EmbeddedResource Include="Attendance\FrmEditChangeWorkload.resx">
       <DependentUpon>FrmEditChangeWorkload.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Attendance2\FrmSetDailyLabor.resx">
+    <EmbeddedResource Include="Attendance\FrmSetDailyLabor.resx">
       <DependentUpon>FrmSetDailyLabor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Attendance2\FrmEditWorkTeamDailyChange.resx">
+    <EmbeddedResource Include="Attendance\FrmEditWorkTeamDailyChange.resx">
       <DependentUpon>FrmEditWorkTeamDailyChange.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Attendance2\FrmEditProductionWorkload.resx">
+    <EmbeddedResource Include="Attendance\FrmEditProductionWorkload.resx">
       <DependentUpon>FrmEditProductionWorkload.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Attendance2\FrmLaborDailyAttendance.resx">
+    <EmbeddedResource Include="Attendance\FrmLaborDailyAttendance.resx">
       <DependentUpon>FrmLaborDailyAttendance.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Attendance2\FrmWorkTeamDailyWorkload.resx">
+    <EmbeddedResource Include="Attendance\FrmWorkTeamDailyWorkload.resx">
       <DependentUpon>FrmWorkTeamDailyWorkload.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Attendance\FrmMonthAttendance.resx">
-      <DependentUpon>FrmMonthAttendance.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Attendance\FrmStaffAttendance.resx">
-      <DependentUpon>FrmStaffAttendance.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Attendance\FrmAttendanceRecordEdit.resx">
-      <DependentUpon>FrmAttendanceRecordEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Attendance\FrmEditAttendance.resx">
       <DependentUpon>FrmEditAttendance.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Attendance\FrmEditLaborAttendanceRecord.resx">
-      <DependentUpon>FrmEditLaborAttendanceRecord.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Attendance\FrmEditWorkSectionLabor.resx">
-      <DependentUpon>FrmEditWorkSectionLabor.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Attendance\FrmLaborAttendance.resx">
-      <DependentUpon>FrmLaborAttendance.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Attendance\FrmLaborMonthAttendance.resx">
-      <DependentUpon>FrmLaborMonthAttendance.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Attendance\FrmWorkSectionLabor.resx">
-      <DependentUpon>FrmWorkSectionLabor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Base\FrmEditStaffLevel.resx">
       <DependentUpon>FrmEditStaffLevel.cs</DependentUpon>
@@ -1247,7 +1022,15 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Biz\BLL\View\" />
+    <Folder Include="Biz\DAL\DALSQL\View\" />
+    <Folder Include="Biz\Entity\View\" />
+    <Folder Include="Biz\IDAL\View\" />
+    <Folder Include="Caller\ServiceCaller\View\" />
+    <Folder Include="Caller\WinformCaller\View\" />
+    <Folder Include="Facade\View\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

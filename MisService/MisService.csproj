@@ -125,17 +125,13 @@
     <Content Include="Base\Mail\MailSendHistoryService.svc" />
     <Content Include="Base\Mail\MailSendService.svc" />
     <Content Include="Base\Mail\MailUnifiedConfigService.svc" />
-    <Content Include="HR\Attendance\AttendanceRecordService.svc" />
     <Content Include="HR\Attendance\AttendanceService.svc" />
-    <Content Include="HR\Attendance\LaborAttendanceRecordService.svc" />
     <Content Include="HR\Attendance\LaborChangeWorkloadService.svc" />
     <Content Include="HR\Attendance\LaborDailyAttendanceService.svc" />
     <Content Include="HR\Attendance\LaborDailyWorkloadService.svc" />
     <Content Include="HR\Attendance\LaborElectricWorkloadService.svc" />
-    <Content Include="HR\Attendance\LaborMonthAttendanceService.svc" />
     <Content Include="HR\Attendance\LaborProductionWorkloadService.svc" />
     <Content Include="HR\Attendance\LaborRepairWorkloadService.svc" />
-    <Content Include="HR\Attendance\WorkSectionLaborService.svc" />
     <Content Include="HR\Attendance\WorkTeamDailyWorkloadService.svc" />
     <Content Include="HR\Base\StaffLevelService.svc" />
     <Content Include="HR\Base\WarehouseManagerService.svc" />
@@ -146,12 +142,9 @@
     <Content Include="HR\Base\PositionService.svc" />
     <Content Include="HR\Base\ProductionLineService.svc" />
     <Content Include="HR\Salary\LaborSalaryRecordService.svc" />
-    <Content Include="HR\View\LaborAttendanceRecordViewService.svc" />
-    <Content Include="HR\View\StaffAttendanceViewService.svc" />
     <Content Include="HR\Salary\StaffSalaryBaseService.svc" />
     <Content Include="HR\Base\StaffService.svc" />
     <Content Include="HR\Base\WorkTeamService.svc" />
-    <Content Include="HR\View\WorkSectionLaborViewService.svc" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -186,6 +179,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="HR\View\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Hades.HR.WCFLibrary\Hades.HR.WCFLibrary.csproj">
