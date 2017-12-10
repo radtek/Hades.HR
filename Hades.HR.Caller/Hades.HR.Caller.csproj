@@ -96,6 +96,12 @@
     <Compile Include="Facade\Salary\IStaffSalaryBaseService.cs" />
     <Compile Include="Facade\Base\IStaffService.cs" />
     <Compile Include="Facade\Base\IWorkTeamService.cs" />
+    <Compile Include="Facade\Wp\ICompletionListService.cs" />
+    <Compile Include="Facade\Wp\IElectricMaintenanceManHoursService.cs" />
+    <Compile Include="Facade\Wp\IMachineMaintenanceManHoursService.cs" />
+    <Compile Include="Facade\Wp\IReplaceMachineCategoryService.cs" />
+    <Compile Include="Facade\Wp\IReplaceMachineManHoursService.cs" />
+    <Compile Include="Facade\Wp\IReplaceMachineStandardManHoursService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceCaller\Attendance\AttendanceCaller.cs" />
     <Compile Include="ServiceCaller\Attendance\LaborChangeWorkloadCaller.cs" />
@@ -117,6 +123,12 @@
     <Compile Include="ServiceCaller\Base\StaffCaller.cs" />
     <Compile Include="ServiceCaller\Salary\StaffSalaryBaseCaller.cs" />
     <Compile Include="ServiceCaller\Base\WorkTeamCaller.cs" />
+    <Compile Include="ServiceCaller\Wp\CompletionListCaller.cs" />
+    <Compile Include="ServiceCaller\Wp\ElectricMaintenanceManHoursCaller.cs" />
+    <Compile Include="ServiceCaller\Wp\MachineMaintenanceManHoursCaller.cs" />
+    <Compile Include="ServiceCaller\Wp\ReplaceMachineCategoryCaller.cs" />
+    <Compile Include="ServiceCaller\Wp\ReplaceMachineManHoursCaller.cs" />
+    <Compile Include="ServiceCaller\Wp\ReplaceMachineStandardManHoursCaller.cs" />
     <Compile Include="WinformCaller\Attendance\AttendanceCaller.cs" />
     <Compile Include="WinformCaller\Attendance\LaborChangeWorkloadCaller.cs" />
     <Compile Include="WinformCaller\Attendance\LaborDailyAttendanceCaller.cs" />
@@ -139,6 +151,12 @@
     <Compile Include="WinformCaller\Base\StaffCaller.cs" />
     <Compile Include="WinformCaller\Salary\StaffSalaryBaseCaller.cs" />
     <Compile Include="WinformCaller\Base\WorkTeamCaller.cs" />
+    <Compile Include="WinformCaller\Wp\CompletionListCaller.cs" />
+    <Compile Include="WinformCaller\Wp\ElectricMaintenanceManHoursCaller.cs" />
+    <Compile Include="WinformCaller\Wp\MachineMaintenanceManHoursCaller.cs" />
+    <Compile Include="WinformCaller\Wp\ReplaceMachineCategoryCaller.cs" />
+    <Compile Include="WinformCaller\Wp\ReplaceMachineManHoursCaller.cs" />
+    <Compile Include="WinformCaller\Wp\ReplaceMachineStandardManHoursCaller.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Hades.HR.Core\Hades.HR.Core.csproj">

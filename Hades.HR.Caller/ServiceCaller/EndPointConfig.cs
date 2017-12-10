@@ -49,8 +49,17 @@ namespace Hades.HR.ServiceCaller
         public const string LaborSalaryRecordService = "WSHttpBinding_ILaborSalaryRecordService";
         #endregion //Salary
 
+        #region Wp
+        public const string CompletionListService = "WSHttpBinding_ICompletionListService";
+        public const string ElectricMaintenanceManHoursService = "WSHttpBinding_IElectricMaintenanceManHoursService";
+        public const string MachineMaintenanceManHoursService = "WSHttpBinding_IMachineMaintenanceManHoursService";
+        public const string ReplaceMachineCategoryService = "WSHttpBinding_IReplaceMachineCategoryService";
+        public const string ReplaceMachineManHoursService = "WSHttpBinding_IReplaceMachineManHoursService";
+        public const string ReplaceMachineStandardManHoursService = "WSHttpBinding_IReplaceMachineStandardManHoursService";
+        #endregion //Wp
+
         #region View
-      
+
         #endregion //View
     }
 }

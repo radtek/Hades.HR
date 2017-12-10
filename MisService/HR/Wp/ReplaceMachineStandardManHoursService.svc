@@ -1,0 +1,2 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="Hades.HR.WCFLibrary.ReplaceMachineStandardManHoursService" %>
+<%@ Assembly Name="Hades.HR.WCFLibrary" %>
