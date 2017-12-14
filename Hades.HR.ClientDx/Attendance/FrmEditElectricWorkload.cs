@@ -29,11 +29,11 @@ namespace Hades.HR.UI
         /// 创建一个临时对象，方便在附件管理中获取存在的GUID
         /// </summary>
         private WorkTeamDailyWorkloadInfo tempInfo = new WorkTeamDailyWorkloadInfo();
-        
+
         /// <summary>
         /// 缓存电修单
         /// </summary>
-        public ElectricForm electricForm = new ElectricForm();
+        public ElectricMaintenanceManHoursInfo electricInfo;
 
         /// <summary>
         /// 暂存电修工时数据
@@ -44,7 +44,7 @@ namespace Hades.HR.UI
         /// 缓存员工日工作量
         /// </summary>
         private List<LaborDailyWorkloadInfo> laborWorkloads = new List<LaborDailyWorkloadInfo>();
-        
+
         /// <summary>
         /// 缓存职员数据
         /// </summary>
@@ -73,9 +73,18 @@ namespace Hades.HR.UI
         private void GenerateElectric()
         {
             Random random = new Random(DateTime.Now.Millisecond);
-          
-            electricForm.Id = Guid.NewGuid().ToString();
-            electricForm.Workload = Math.Round(Convert.ToDecimal(random.NextDouble() * 10), 2);        
+
+            electricInfo.ID = Guid.NewGuid().ToString();
+            electricInfo.ManHours = Convert.ToInt32(Math.Round(Convert.ToDecimal(random.NextDouble() * 10), 2));
+        }
+
+        /// <summary>
+        /// 载入电修单
+        /// </summary>
+        private void LoadElectric()
+        {
+            string sql = string.Format("WorkTeamId = '{0}' AND WorkingDate = '{1}'", this.tempInfo.WorkTeamId, this.tempInfo.AttendanceDate);
+            this.electricInfo = CallerFactory<IElectricMaintenanceManHoursService>.Instance.FindSingle(sql);
         }
 
         /// <summary>
@@ -101,9 +110,9 @@ namespace Hades.HR.UI
                 foreach (var item in staffs)
                 {
                     LaborElectricWorkloadInfo info = new LaborElectricWorkloadInfo();
-                    info.ElectricId = this.electricForm.Id;
+                    info.ElectricId = this.electricInfo.ID;
                     info.WorkTeamId = this.tempInfo.WorkTeamId;
-                    info.StaffId = item.StaffId;                    
+                    info.StaffId = item.StaffId;
 
                     data.Add(info);
                 }
@@ -121,7 +130,7 @@ namespace Hades.HR.UI
         /// </summary>
         private void CalculateHours()
         {
-            var totalHours = this.electricForm.Workload;
+            decimal totalHours = this.electricInfo.ManHours;
 
             var selected = this.dgvStaff.GetSelectedRows();
             if (selected.Length == 0)
@@ -174,7 +183,7 @@ namespace Hades.HR.UI
         public override bool CheckInput()
         {
             bool result = true;//默认是可以通过
-            
+
             return result;
         }
 
@@ -188,7 +197,7 @@ namespace Hades.HR.UI
             if (!string.IsNullOrEmpty(ID))
             {
                 WorkTeamDailyWorkloadInfo info = CallerFactory<IWorkTeamDailyWorkloadService>.Instance.FindByID(ID);
-              
+
                 if (info != null)
                 {
                     tempInfo = info;//重新给临时对象赋值，使之指向存在的记录对象
@@ -199,16 +208,24 @@ namespace Hades.HR.UI
 
                     this.staffs = CallerFactory<IStaffService>.Instance.Find("StaffType = 2");
 
-                    GenerateElectric();
+                    LoadElectric();
 
-                    this.spElectricHours.Value = this.electricForm.Workload;
-                    this.txtRemark.Text = this.electricForm.Remark;
-                    
-                    this.laborWorkloads = CallerFactory<ILaborDailyWorkloadService>.Instance.Find(string.Format("WorkTeamWorkloadId='{0}'", ID));
+                    if (this.electricInfo != null)
+                    {
+                        this.spElectricHours.Value = this.electricInfo.ManHours;
+                        this.txtRemark.Text = this.electricInfo.Remark;
 
-                    LoadLaborElectric(this.electricForm.Id);
+                        this.laborWorkloads = CallerFactory<ILaborDailyWorkloadService>.Instance.Find(string.Format("WorkTeamWorkloadId='{0}'", ID));
 
-                    DisplayLaborRepair();
+                        LoadLaborElectric(this.electricInfo.ID);
+
+                        DisplayLaborRepair();
+                    }
+                    else
+                    {
+                        this.spElectricHours.Value = 0;
+                        this.txtRemark.Text = "";
+                    }
                 }
 
                 //this.btnOK.Enabled = HasFunction("LaborChangeWorkload/Edit");             
@@ -222,7 +239,7 @@ namespace Hades.HR.UI
             //tempInfo在对象存在则为指定对象，新建则是全新的对象，但有一些初始化的GUID用于附件上传
             //SetAttachInfo(tempInfo);
         }
-         
+
         /// <summary>
         /// 新增状态下的数据保存
         /// </summary>
@@ -248,7 +265,7 @@ namespace Hades.HR.UI
                 MessageDxUtil.ShowError(ex.Message);
             }
             return false;
-        }                 
+        }
 
         /// <summary>
         /// 编辑状态下的数据保存
@@ -257,14 +274,14 @@ namespace Hades.HR.UI
         public override bool SaveUpdated()
         {
             WorkTeamDailyWorkloadInfo info = CallerFactory<IWorkTeamDailyWorkloadService>.Instance.FindByID(ID);
-            
+
             if (info != null)
             {
                 try
                 {
                     this.laborElectric = this.bsLaborWorkload.DataSource as List<LaborElectricWorkloadInfo>;
-                    info.ElectricHours = this.electricForm.Workload;
-                    
+                    info.ElectricHours = this.electricInfo.ManHours;
+
                     if (this.laborElectric.Sum(r => r.ElectricHours) == 0)
                     {
                         MessageDxUtil.ShowWarning("电修工时未分配");
@@ -295,7 +312,7 @@ namespace Hades.HR.UI
                     MessageDxUtil.ShowError(ex.Message);
                 }
             }
-           return false;
+            return false;
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -364,7 +381,7 @@ namespace Hades.HR.UI
                     e.Value = s.Number;
             }
         }
-        
+
         /// <summary>
         /// 员工选择
         /// </summary>
@@ -375,31 +392,5 @@ namespace Hades.HR.UI
             CalculateHours();
         }
         #endregion //Event
-    }
-
-    /// <summary>
-    /// 电修单
-    /// </summary>
-    public class ElectricForm
-    {
-        /// <summary>
-        /// 电修单ID
-        /// </summary>
-        public string Id { get; set; }
-
-        /// <summary>
-        /// 项目名称
-        /// </summary>
-        public string Name { get; set; }
-
-        /// <summary>
-        /// 工时
-        /// </summary>
-        public decimal Workload { get; set; }
-
-        /// <summary>
-        /// 备注
-        /// </summary>
-        public string Remark { get; set; }
     }
 }

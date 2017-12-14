@@ -231,6 +231,24 @@
     <Compile Include="..\Hades.HR.Caller\Facade\Salary\IStaffSalaryBaseService.cs">
       <Link>Facade\Salary\IStaffSalaryBaseService.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Caller\Facade\Wp\ICompletionListService.cs">
+      <Link>Facade\Wp\ICompletionListService.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Caller\Facade\Wp\IElectricMaintenanceManHoursService.cs">
+      <Link>Facade\Wp\IElectricMaintenanceManHoursService.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Caller\Facade\Wp\IMachineMaintenanceManHoursService.cs">
+      <Link>Facade\Wp\IMachineMaintenanceManHoursService.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Caller\Facade\Wp\IReplaceMachineCategoryService.cs">
+      <Link>Facade\Wp\IReplaceMachineCategoryService.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Caller\Facade\Wp\IReplaceMachineManHoursService.cs">
+      <Link>Facade\Wp\IReplaceMachineManHoursService.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Caller\Facade\Wp\IReplaceMachineStandardManHoursService.cs">
+      <Link>Facade\Wp\IReplaceMachineStandardManHoursService.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Caller\ServiceCaller\Attendance\AttendanceCaller.cs">
       <Link>Caller\ServiceCaller\Attendance\AttendanceCaller.cs</Link>
     </Compile>
@@ -294,6 +312,24 @@
     <Compile Include="..\Hades.HR.Caller\ServiceCaller\Salary\StaffSalaryBaseCaller.cs">
       <Link>Caller\ServiceCaller\Salary\StaffSalaryBaseCaller.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Caller\ServiceCaller\Wp\CompletionListCaller.cs">
+      <Link>Caller\ServiceCaller\Wp\CompletionListCaller.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Caller\ServiceCaller\Wp\ElectricMaintenanceManHoursCaller.cs">
+      <Link>Caller\ServiceCaller\Wp\ElectricMaintenanceManHoursCaller.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Caller\ServiceCaller\Wp\MachineMaintenanceManHoursCaller.cs">
+      <Link>Caller\ServiceCaller\Wp\MachineMaintenanceManHoursCaller.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Caller\ServiceCaller\Wp\ReplaceMachineCategoryCaller.cs">
+      <Link>Caller\ServiceCaller\Wp\ReplaceMachineCategoryCaller.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Caller\ServiceCaller\Wp\ReplaceMachineManHoursCaller.cs">
+      <Link>Caller\ServiceCaller\Wp\ReplaceMachineManHoursCaller.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Caller\ServiceCaller\Wp\ReplaceMachineStandardManHoursCaller.cs">
+      <Link>Caller\ServiceCaller\Wp\ReplaceMachineStandardManHoursCaller.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Caller\WinformCaller\Attendance\AttendanceCaller.cs">
       <Link>Caller\WinformCaller\Attendance\AttendanceCaller.cs</Link>
     </Compile>
@@ -353,6 +389,24 @@
     </Compile>
     <Compile Include="..\Hades.HR.Caller\WinformCaller\Salary\StaffSalaryBaseCaller.cs">
       <Link>Caller\WinformCaller\Salary\StaffSalaryBaseCaller.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Caller\WinformCaller\Wp\CompletionListCaller.cs">
+      <Link>Caller\WinformCaller\Wp\CompletionListCaller.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Caller\WinformCaller\Wp\ElectricMaintenanceManHoursCaller.cs">
+      <Link>Caller\WinformCaller\Wp\ElectricMaintenanceManHoursCaller.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Caller\WinformCaller\Wp\MachineMaintenanceManHoursCaller.cs">
+      <Link>Caller\WinformCaller\Wp\MachineMaintenanceManHoursCaller.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Caller\WinformCaller\Wp\ReplaceMachineCategoryCaller.cs">
+      <Link>Caller\WinformCaller\Wp\ReplaceMachineCategoryCaller.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Caller\WinformCaller\Wp\ReplaceMachineManHoursCaller.cs">
+      <Link>Caller\WinformCaller\Wp\ReplaceMachineManHoursCaller.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Caller\WinformCaller\Wp\ReplaceMachineStandardManHoursCaller.cs">
+      <Link>Caller\WinformCaller\Wp\ReplaceMachineStandardManHoursCaller.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\BLL\Attendance\Attendance.cs">
       <Link>Biz\BLL\Attendance\Attendance.cs</Link>
@@ -414,6 +468,24 @@
     <Compile Include="..\Hades.HR.Core\BLL\Salary\StaffSalaryBase.cs">
       <Link>Biz\BLL\Salary\StaffSalaryBase.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Core\BLL\Wp\CompletionList.cs">
+      <Link>Biz\BLL\Wp\CompletionList.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\BLL\Wp\ElectricMaintenanceManHours.cs">
+      <Link>Biz\BLL\Wp\ElectricMaintenanceManHours.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\BLL\Wp\MachineMaintenanceManHours.cs">
+      <Link>Biz\BLL\Wp\MachineMaintenanceManHours.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\BLL\Wp\ReplaceMachineCategory.cs">
+      <Link>Biz\BLL\Wp\ReplaceMachineCategory.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\BLL\Wp\ReplaceMachineManHours.cs">
+      <Link>Biz\BLL\Wp\ReplaceMachineManHours.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\BLL\Wp\ReplaceMachineStandardManHours.cs">
+      <Link>Biz\BLL\Wp\ReplaceMachineStandardManHours.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Attendance\Attendance.cs">
       <Link>Biz\DAL\DALSQL\Attendance\Attendance.cs</Link>
     </Compile>
@@ -473,6 +545,24 @@
     </Compile>
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Salary\StaffSalaryBase.cs">
       <Link>Biz\DAL\DALSQL\Salary\StaffSalaryBase.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Wp\CompletionList.cs">
+      <Link>Biz\DAL\DALSQL\Wp\CompletionList.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Wp\ElectricMaintenanceManHours.cs">
+      <Link>Biz\DAL\DALSQL\Wp\ElectricMaintenanceManHours.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Wp\MachineMaintenanceManHours.cs">
+      <Link>Biz\DAL\DALSQL\Wp\MachineMaintenanceManHours.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Wp\ReplaceMachineCategory.cs">
+      <Link>Biz\DAL\DALSQL\Wp\ReplaceMachineCategory.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Wp\ReplaceMachineManHours.cs">
+      <Link>Biz\DAL\DALSQL\Wp\ReplaceMachineManHours.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Wp\ReplaceMachineStandardManHours.cs">
+      <Link>Biz\DAL\DALSQL\Wp\ReplaceMachineStandardManHours.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\Entity\Attendance\AttendanceInfo.cs">
       <Link>Biz\Entity\Attendance\AttendanceInfo.cs</Link>
@@ -534,6 +624,24 @@
     <Compile Include="..\Hades.HR.Core\Entity\Salary\StaffSalaryBaseInfo.cs">
       <Link>Biz\Entity\Salary\StaffSalaryBaseInfo.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Core\Entity\Wp\CompletionListInfo.cs">
+      <Link>Biz\Entity\Wp\CompletionListInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\Entity\Wp\ElectricMaintenanceManHoursInfo.cs">
+      <Link>Biz\Entity\Wp\ElectricMaintenanceManHoursInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\Entity\Wp\MachineMaintenanceManHoursInfo.cs">
+      <Link>Biz\Entity\Wp\MachineMaintenanceManHoursInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\Entity\Wp\ReplaceMachineCategoryInfo.cs">
+      <Link>Biz\Entity\Wp\ReplaceMachineCategoryInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\Entity\Wp\ReplaceMachineManHoursInfo.cs">
+      <Link>Biz\Entity\Wp\ReplaceMachineManHoursInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\Entity\Wp\ReplaceMachineStandardManHoursInfo.cs">
+      <Link>Biz\Entity\Wp\ReplaceMachineStandardManHoursInfo.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Core\IDAL\Attendance\IAttendance.cs">
       <Link>Biz\IDAL\Attendance\IAttendance.cs</Link>
     </Compile>
@@ -593,6 +701,24 @@
     </Compile>
     <Compile Include="..\Hades.HR.Core\IDAL\Salary\IStaffSalaryBase.cs">
       <Link>Biz\IDAL\Salary\IStaffSalaryBase.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\IDAL\Wp\ICompletionList.cs">
+      <Link>Biz\IDAL\Wp\ICompletionList.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\IDAL\Wp\IElectricMaintenanceManHours.cs">
+      <Link>Biz\IDAL\Wp\IElectricMaintenanceManHours.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\IDAL\Wp\IMachineMaintenanceManHours.cs">
+      <Link>Biz\IDAL\Wp\IMachineMaintenanceManHours.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\IDAL\Wp\IReplaceMachineCategory.cs">
+      <Link>Biz\IDAL\Wp\IReplaceMachineCategory.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\IDAL\Wp\IReplaceMachineManHours.cs">
+      <Link>Biz\IDAL\Wp\IReplaceMachineManHours.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\IDAL\Wp\IReplaceMachineStandardManHours.cs">
+      <Link>Biz\IDAL\Wp\IReplaceMachineStandardManHours.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\Util\HREnum.cs">
       <Link>Util\HREnum.cs</Link>
