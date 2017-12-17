@@ -10,87 +10,86 @@ namespace Hades.HR.Entity
     /// </summary>
     [DataContract]
     public class CompletionListInfo : BaseEntity
-    { 
+    {
         /// <summary>
         /// 默认构造函数（需要初始化属性的在此处理）
         /// </summary>
-	    public CompletionListInfo()
-		{
-            this.ID= System.Guid.NewGuid().ToString();
-                     this.AcceptanceAmount= 0;
-             this.UnqualifiedAmount= 0;
-             this.DiscardAmount= 0;
-                this.ReceiveAmount= 0;
-             this.ReturnAmount= 0;
-       
-		}
+        public CompletionListInfo()
+        {
+            this.ID = System.Guid.NewGuid().ToString();
+            this.AcceptanceAmount = 0;
+            this.UnqualifiedAmount = 0;
+            this.DiscardAmount = 0;
+            this.ReceiveAmount = 0;
+            this.ReturnAmount = 0;
+        }
 
         #region Property Members
-        
-		[DataMember]
+
+        [DataMember]
         public virtual string ID { get; set; }
 
-		[DataMember]
+        [DataMember]
         public virtual string CompletionListID { get; set; }
 
-		[DataMember]
+        [DataMember]
         public virtual string DispatchListNumber { get; set; }
 
-		[DataMember]
+        [DataMember]
         public virtual string PPrSetId { get; set; }
 
-		[DataMember]
+        [DataMember]
         public virtual string WorkteamId { get; set; }
 
-		[DataMember]
+        [DataMember]
         public virtual string WorkteamName { get; set; }
 
-		[DataMember]
+        [DataMember]
         public virtual DateTime StartTime { get; set; }
 
-		[DataMember]
+        [DataMember]
         public virtual DateTime EndTime { get; set; }
 
-		[DataMember]
+        [DataMember]
         public virtual string Status { get; set; }
 
-		[DataMember]
+        [DataMember]
         public virtual int AcceptanceAmount { get; set; }
 
-		[DataMember]
+        [DataMember]
         public virtual int UnqualifiedAmount { get; set; }
 
-		[DataMember]
+        [DataMember]
         public virtual int DiscardAmount { get; set; }
 
-		[DataMember]
+        [DataMember]
         public virtual string NextProcess { get; set; }
 
-		[DataMember]
+        [DataMember]
         public virtual string NextWorkteamId { get; set; }
 
-		[DataMember]
+        [DataMember]
         public virtual string Receiver { get; set; }
 
-		[DataMember]
+        [DataMember]
         public virtual int ReceiveAmount { get; set; }
 
-		[DataMember]
+        [DataMember]
         public virtual int ReturnAmount { get; set; }
 
-		[DataMember]
+        [DataMember]
         public virtual string Drawer { get; set; }
 
-		[DataMember]
+        [DataMember]
         public virtual DateTime BillingDate { get; set; }
 
-		[DataMember]
+        [DataMember]
         public virtual string Auditor { get; set; }
 
-		[DataMember]
+        [DataMember]
         public virtual DateTime AuditTime { get; set; }
 
-		[DataMember]
+        [DataMember]
         public virtual string Remark { get; set; }
 
 

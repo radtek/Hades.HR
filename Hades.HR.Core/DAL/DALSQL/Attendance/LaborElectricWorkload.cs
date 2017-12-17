@@ -46,6 +46,7 @@ namespace Hades.HR.DALSQL
             info.Id = reader.GetString("Id");
             info.ElectricId = reader.GetString("ElectricId");
             info.WorkTeamId = reader.GetString("WorkTeamId");
+            info.AttendanceDate = reader.GetDateTime("AttendanceDate");
             info.StaffId = reader.GetString("StaffId");
             info.ElectricHours = reader.GetDecimal("ElectricHours");
             info.AssignType = reader.GetInt32("AssignType");
@@ -67,6 +68,7 @@ namespace Hades.HR.DALSQL
             hash.Add("Id", info.Id);
             hash.Add("ElectricId", info.ElectricId);
             hash.Add("WorkTeamId", info.WorkTeamId);
+            hash.Add("AttendanceDate", info.AttendanceDate);
             hash.Add("StaffId", info.StaffId);
             hash.Add("ElectricHours", info.ElectricHours);
             hash.Add("AssignType", info.AssignType);
@@ -87,6 +89,7 @@ namespace Hades.HR.DALSQL
             dict.Add("Id", "");
             dict.Add("ElectricId", "");
             dict.Add("WorkTeamId", "");
+            dict.Add("AttendanceDate", "");
             dict.Add("StaffId", "");
             dict.Add("ElectricHours", "");
             dict.Add("AssignType", "");

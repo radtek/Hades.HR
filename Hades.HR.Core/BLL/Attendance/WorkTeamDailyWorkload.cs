@@ -178,7 +178,7 @@ namespace Hades.HR.BLL
                 foreach (var item in productWorkloads)
                 {
                     // 增加产量工时分配
-                    productBll.Insert(item);
+                    productBll.Insert(item, trans);
                 }
 
                 LaborDailyWorkload laborWorkloadBll = new LaborDailyWorkload();
@@ -200,6 +200,75 @@ namespace Hades.HR.BLL
                     trans.Rollback();
                 }
                 LogTextHelper.Error("初始化班组日考勤", e);
+                return false;
+            }
+            finally
+            {
+                if (isLocalTrans)
+                {
+                    trans = null;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 保存员工电修工时信息
+        /// </summary>
+        /// <param name="workTeamWorkloadId">班组日工作量ID</param>
+        /// <param name="totalHours">电修总工时</param>
+        /// <param name="electricWorkloads">员工电修工时信息</param>
+        /// <param name="trans"></param>
+        /// <returns></returns>
+        public bool SaveElectric(string workTeamWorkloadId, decimal totalHours, List<LaborElectricWorkloadInfo> electricWorkloads, DbTransaction trans = null)
+        {
+            var dal = this.baseDal as IWorkTeamDailyWorkload;
+
+            bool isLocalTrans = trans == null;
+            if (isLocalTrans)
+            {
+                trans = dal.CreateTransaction();
+            }
+
+            try
+            {
+                var workTeamWorkload = dal.FindByID(workTeamWorkloadId, trans);
+
+                // 更新班组日工作量表
+                workTeamWorkload.ElectricHours = totalHours;
+                dal.Update(workTeamWorkload, workTeamWorkload.Id, trans);
+                                
+                LaborElectricWorkload electricBll = new LaborElectricWorkload();
+
+                // 删除已有员工电修分配记录
+                electricBll.DeleteByCondition(string.Format("WorkTeamId = '{0]' AND AttendanceDate = '{1}'", workTeamWorkload.WorkTeamId, workTeamWorkload.AttendanceDate), trans);
+
+                // 增加员工电修记录
+                foreach(var item in electricWorkloads)
+                {
+                    electricBll.Insert(item, trans);
+                }
+
+                LaborDailyWorkload laborWorkloadBll = new LaborDailyWorkload();
+                List<LaborDailyWorkloadInfo> laborWorkloads = laborWorkloadBll.Find(string.Format("WorkTeamWorkloadId='{0}'", workTeamWorkloadId));
+
+                // 更新员工日工作量内电修数据
+                foreach (var item in laborWorkloads)
+                {
+                    var hours = electricWorkloads.Where(r => r.StaffId == item.StaffId).Sum(r => r.ElectricHours);
+                    item.ElectricHours = hours;
+
+                    laborWorkloadBll.Update(item, item.Id, trans);
+                }
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                if (isLocalTrans)
+                {
+                    trans.Rollback();
+                }
+                LogTextHelper.Error("更新员工电修工作量", e);
                 return false;
             }
             finally

@@ -16,9 +16,11 @@ namespace Hades.HR.BLL
     /// </summary>
 	public class LaborElectricWorkload : BaseBLL<LaborElectricWorkloadInfo>
     {
+        #region Constructor
         public LaborElectricWorkload() : base()
         {
             base.Init(this.GetType().FullName, System.Reflection.Assembly.GetExecutingAssembly().GetName().Name);
         }
+        #endregion //Constructor
     }
 }

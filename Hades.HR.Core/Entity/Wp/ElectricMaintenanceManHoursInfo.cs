@@ -10,45 +10,42 @@ namespace Hades.HR.Entity
     /// </summary>
     [DataContract]
     public class ElectricMaintenanceManHoursInfo : BaseEntity
-    { 
+    {
         /// <summary>
         /// 默认构造函数（需要初始化属性的在此处理）
         /// </summary>
-	    public ElectricMaintenanceManHoursInfo()
-		{
-            this.ID= System.Guid.NewGuid().ToString();
-              this.ManHours= 0;
-       
-		}
+        public ElectricMaintenanceManHoursInfo()
+        {
+            this.ID = System.Guid.NewGuid().ToString();
+            this.ManHours = 0;
+
+        }
 
         #region Property Members
-        
-		[DataMember]
+
+        [DataMember]
         public virtual string ID { get; set; }
 
-		[DataMember]
+        [DataMember]
         public virtual string WorkTeamId { get; set; }
 
-		[DataMember]
-        public virtual int ManHours { get; set; }
+        [DataMember]
+        public virtual decimal ManHours { get; set; }
 
-		[DataMember]
+        [DataMember]
         public virtual DateTime WorkingDate { get; set; }
 
-		[DataMember]
+        [DataMember]
         public virtual string CreatorId { get; set; }
 
-		[DataMember]
+        [DataMember]
         public virtual string Creator { get; set; }
 
-		[DataMember]
+        [DataMember]
         public virtual DateTime CreateTime { get; set; }
 
-		[DataMember]
+        [DataMember]
         public virtual string Remark { get; set; }
-
-
         #endregion
-
     }
 }
