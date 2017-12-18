@@ -43,6 +43,8 @@ namespace Hades.HR.UI
             this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colNumber = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
+            this.txtRemark = new DevExpress.XtraEditors.MemoEdit();
             ((System.ComponentModel.ISupportInitialize)(this.picPrint)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
@@ -58,6 +60,9 @@ namespace Hades.HR.UI
             ((System.ComponentModel.ISupportInitialize)(this.dgcStaff)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsStaff)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStaff)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
+            this.groupControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtRemark.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // btnOK
@@ -159,7 +164,7 @@ namespace Hades.HR.UI
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupControl2.Location = new System.Drawing.Point(0, 74);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(823, 312);
+            this.groupControl2.Size = new System.Drawing.Size(823, 244);
             this.groupControl2.TabIndex = 7;
             this.groupControl2.Text = "本日员工";
             // 
@@ -170,7 +175,7 @@ namespace Hades.HR.UI
             this.dgcStaff.Location = new System.Drawing.Point(2, 21);
             this.dgcStaff.MainView = this.dgvStaff;
             this.dgcStaff.Name = "dgcStaff";
-            this.dgcStaff.Size = new System.Drawing.Size(819, 289);
+            this.dgcStaff.Size = new System.Drawing.Size(819, 221);
             this.dgcStaff.TabIndex = 0;
             this.dgcStaff.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.dgvStaff});
@@ -189,6 +194,7 @@ namespace Hades.HR.UI
             this.dgvStaff.Name = "dgvStaff";
             this.dgvStaff.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
             this.dgvStaff.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
+            this.dgvStaff.OptionsBehavior.Editable = false;
             this.dgvStaff.OptionsCustomization.AllowFilter = false;
             this.dgvStaff.OptionsCustomization.AllowGroup = false;
             this.dgvStaff.OptionsCustomization.AllowSort = false;
@@ -219,11 +225,30 @@ namespace Hades.HR.UI
             this.colName.Visible = true;
             this.colName.VisibleIndex = 2;
             // 
+            // groupControl3
+            // 
+            this.groupControl3.Controls.Add(this.txtRemark);
+            this.groupControl3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupControl3.Location = new System.Drawing.Point(0, 318);
+            this.groupControl3.Name = "groupControl3";
+            this.groupControl3.Size = new System.Drawing.Size(823, 77);
+            this.groupControl3.TabIndex = 8;
+            this.groupControl3.Text = "备注";
+            // 
+            // txtRemark
+            // 
+            this.txtRemark.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtRemark.Location = new System.Drawing.Point(2, 21);
+            this.txtRemark.Name = "txtRemark";
+            this.txtRemark.Size = new System.Drawing.Size(819, 54);
+            this.txtRemark.TabIndex = 0;
+            // 
             // FrmSetDailyLabor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(823, 478);
+            this.Controls.Add(this.groupControl3);
             this.Controls.Add(this.groupControl2);
             this.Controls.Add(this.groupControl1);
             this.Name = "FrmSetDailyLabor";
@@ -235,6 +260,7 @@ namespace Hades.HR.UI
             this.Controls.SetChildIndex(this.picPrint, 0);
             this.Controls.SetChildIndex(this.groupControl1, 0);
             this.Controls.SetChildIndex(this.groupControl2, 0);
+            this.Controls.SetChildIndex(this.groupControl3, 0);
             ((System.ComponentModel.ISupportInitialize)(this.picPrint)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
@@ -250,6 +276,9 @@ namespace Hades.HR.UI
             ((System.ComponentModel.ISupportInitialize)(this.dgcStaff)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsStaff)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStaff)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
+            this.groupControl3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtRemark.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -271,5 +300,7 @@ namespace Hades.HR.UI
         private DevExpress.XtraGrid.Columns.GridColumn colId;
         private DevExpress.XtraGrid.Columns.GridColumn colNumber;
         private DevExpress.XtraGrid.Columns.GridColumn colName;
+        private DevExpress.XtraEditors.GroupControl groupControl3;
+        private DevExpress.XtraEditors.MemoEdit txtRemark;
     }
 }

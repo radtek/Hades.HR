@@ -52,6 +52,26 @@ namespace Hades.HR.ServiceCaller
 
         #region Method
         /// <summary>
+        /// 设置班组日工作量及本班人员
+        /// </summary>
+        /// <param name="workTeamWorkload">班组日考勤</param>
+        /// <param name="labors">员工日考勤</param>
+        /// <returns></returns>
+        public bool SetDailyLabor(WorkTeamDailyWorkloadInfo workTeamWorkload, List<LaborDailyWorkloadInfo> labors)
+        {
+            bool result = false;
+
+            IWorkTeamDailyWorkloadService service = CreateSubClient();
+            ICommunicationObject comm = service as ICommunicationObject;
+            comm.Using(client =>
+            {
+                result = service.SetDailyLabor(workTeamWorkload, labors);
+            });
+
+            return result;
+        }
+
+        /// <summary>
         /// 初始化班组日工作量及本班人员
         /// </summary>
         /// <param name="workTeam">班组日考勤</param>

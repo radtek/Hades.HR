@@ -46,9 +46,6 @@ namespace Hades.HR.Entity
 
         [DataMember]
         public virtual string Remark { get; set; }
-
-
         #endregion
-
     }
 }

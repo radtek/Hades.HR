@@ -33,7 +33,7 @@ namespace Hades.HR.BLL
         /// <returns></returns>
         public bool CheckLaborDailyExist(DateTime date, string workTeamId, string laborId)
         {
-            var labors = this.Find(string.Format("AttendanceDate = '{0}' AND ActualWorkTeamId != '{1}' AND StaffId = '{2}'", date, workTeamId, laborId));
+            var labors = this.Find(string.Format("AttendanceDate = '{0}' AND WorkTeamId != '{1}' AND StaffId = '{2}'", date, workTeamId, laborId));
             if (labors.Count > 0)
                 return true;
             else

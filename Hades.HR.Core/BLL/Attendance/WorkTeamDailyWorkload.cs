@@ -27,6 +27,71 @@ namespace Hades.HR.BLL
 
         #region Method
         /// <summary>
+        /// 设置班组日工作量及本班人员
+        /// </summary>
+        /// <param name="workTeamWorkload">班组日考勤</param>
+        /// <param name="labors">员工日考勤</param>
+        /// <param name="trans"></param>
+        public bool SetDailyLabor(WorkTeamDailyWorkloadInfo workTeamWorkload, List<LaborDailyWorkloadInfo> labors, DbTransaction trans = null)
+        {
+            var dal = this.baseDal as IWorkTeamDailyWorkload;
+
+            bool isLocalTrans = trans == null;
+            if (isLocalTrans)
+            {
+                trans = dal.CreateTransaction();
+            }
+
+            try
+            {
+                //检查员工本日是否在其它班组
+                LaborDailyWorkload laborDailyWorkloadBll = new LaborDailyWorkload();
+                foreach (var item in labors)
+                {
+                    var exist = laborDailyWorkloadBll.CheckLaborDailyExist(workTeamWorkload.AttendanceDate, workTeamWorkload.WorkTeamId, item.StaffId);
+                    if (exist)
+                        return false;
+                }
+
+                // 新增班组日工作量记录
+                workTeamWorkload.PersonCount = labors.Count;
+                dal.InsertUpdate(workTeamWorkload, workTeamWorkload.Id, trans);
+
+                // 删除已有工人日工作量记录
+                laborDailyWorkloadBll.DeleteByCondition(string.Format("WorkTeamWorkloadId = '{0}'", workTeamWorkload.Id), trans);
+
+                // 重新添加工人日工作量记录
+                foreach (var item in labors)
+                {
+                    laborDailyWorkloadBll.Insert(item, trans);
+                }
+
+                if (isLocalTrans)
+                {
+                    trans.Commit();
+                }
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                if (isLocalTrans)
+                {
+                    trans.Rollback();
+                }
+                LogTextHelper.Error("初始化班组日考勤", e);
+                return false;
+            }
+            finally
+            {
+                if (isLocalTrans)
+                {
+                    trans = null;
+                }
+            }
+        }
+
+        /// <summary>
         /// 初始化班组日工作量及本班人员
         /// </summary>
         /// <param name="workTeam">班组日考勤</param>

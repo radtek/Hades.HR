@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.ComponentModel;
 using System.Collections.Generic;
+using System.Linq;
 
 using Hades.Pager.Entity;
 using Hades.Dictionary;
@@ -81,26 +82,22 @@ namespace Hades.HR.UI
         /// </summary>
         private void LoadDailyStaff()
         {
-            var staffs = CallerFactory<IStaffService>.Instance.Find(string.Format("WorkTeamId='{0}' AND Enabled=1 AND Deleted=0", this.currentWorkTeamId));
+            List<StaffInfo> staffs = new List<StaffInfo>();
+           
+            var team = CallerFactory<IStaffService>.Instance.Find(string.Format("WorkTeamId='{0}' AND Enabled=1 AND Deleted=0", this.currentWorkTeamId));
+            staffs.AddRange(team);                      
 
             this.bsStaff.DataSource = staffs;
-        }
+            this.bsStaff.ResetBindings(false);
 
-        /// <summary>
-        /// 编辑或者保存状态下取值函数
-        /// </summary>
-        /// <param name="info"></param>
-        private void SetInfo(LaborDailyAttendanceInfo info)
-        {
-            //info.WorkTeamId = txtWorkTeamId.Text;
-            //info.AttendanceDate = txtAttendanceDate.Text;
-            //info.StaffId = txtStaffId.Text;
-            //info.StaffLevelId = txtStaffLevelId.Text;
-            //info.AbsentType = Convert.ToInt32(txtAbsentType.Value);
-            //info.TotalHours = txtTotalHours.Value;
-            //info.IsWeekend = txtIsWeekend.Text.ToBoolean();
-            //info.IsHoliday = txtIsHoliday.Text.ToBoolean();
-            //info.Remark = txtRemark.Text;
+            var selected = CallerFactory<ILaborDailyWorkloadService>.Instance.Find(string.Format("WorkTeamWorkloadId = '{0}'", this.dailyWorkloadId));
+
+            foreach (var item in selected)
+            {
+                int index = this.dgvStaff.GetRowHandle(staffs.FindIndex(r => r.Id == item.StaffId));
+               
+                this.dgvStaff.SelectRow(index);
+            }
         }
 
         /// <summary>
@@ -176,19 +173,33 @@ namespace Hades.HR.UI
                     info.Id = Guid.NewGuid().ToString();
                     info.WorkTeamId = this.currentWorkTeamId;
                     info.AttendanceDate = this.attendanceDate;
+                    info.Remark = this.txtRemark.Text;
                     info.Editor = this.LoginUserInfo.Name;
                     info.EditorId = this.LoginUserInfo.ID;
                     info.EditTime = DateTime.Now;
 
                     var data = SetSelectStaff(info);
 
-                    bool result = CallerFactory<IWorkTeamDailyWorkloadService>.Instance.InsertDailyLabor(info, data);
+                    bool result = CallerFactory<IWorkTeamDailyWorkloadService>.Instance.SetDailyLabor(info, data);
                     if (result)
                         return true;
                 }
                 else
                 {
+                    WorkTeamDailyWorkloadInfo info = tempInfo;
+                  
+                    info.WorkTeamId = this.currentWorkTeamId;
+                    info.AttendanceDate = this.attendanceDate;
+                    info.Remark = this.txtRemark.Text;
+                    info.Editor = this.LoginUserInfo.Name;
+                    info.EditorId = this.LoginUserInfo.ID;
+                    info.EditTime = DateTime.Now;
 
+                    var data = SetSelectStaff(info);
+
+                    bool result = CallerFactory<IWorkTeamDailyWorkloadService>.Instance.SetDailyLabor(info, data);
+                    if (result)
+                        return true;
                 }
             }
             catch (Exception ex)
