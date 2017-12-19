@@ -113,6 +113,7 @@ namespace Hades.HR.UI
                     info.RepairId = this.machineInfo.ID;
                     info.WorkTeamId = this.tempInfo.WorkTeamId;
                     info.StaffId = item.StaffId;
+                    info.AttendanceDate = this.tempInfo.AttendanceDate;
 
                     data.Add(info);
                 }
@@ -290,23 +291,9 @@ namespace Hades.HR.UI
                         return false;
                     }
 
-                    bool succeed = CallerFactory<IWorkTeamDailyWorkloadService>.Instance.Update(info, info.Id);
-
-                    foreach (var item in this.laborRepairs)
-                    {
-                        // 增加机修工时分配
-                        CallerFactory<ILaborRepairWorkloadService>.Instance.Insert(item);
-                    }
-
-                    foreach (var item in this.laborWorkloads)
-                    {
-                        var hours = this.laborRepairs.Single(r => r.StaffId == item.StaffId).RepairHours;
-                        item.RepairHours = hours;
-
-                        CallerFactory<ILaborDailyWorkloadService>.Instance.Update(item, item.Id);
-                    }
-
-                    return true;
+                    bool succeed = CallerFactory<IWorkTeamDailyWorkloadService>.Instance.SaveRepair(this.ID, this.machineInfo.ManHours, laborRepairs);
+                       
+                    return succeed;
                 }
                 catch (Exception ex)
                 {

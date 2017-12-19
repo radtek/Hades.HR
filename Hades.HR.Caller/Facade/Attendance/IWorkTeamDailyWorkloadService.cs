@@ -14,14 +14,6 @@ namespace Hades.HR.Facade
     public interface IWorkTeamDailyWorkloadService : IBaseService<WorkTeamDailyWorkloadInfo>
     {
         /// <summary>
-        /// 初始化班组日工作量及本班人员
-        /// </summary>
-        /// <param name="workTeam">班组日考勤</param>
-        /// <param name="labors">员工日考勤</param>
-        /// <returns></returns>
-        bool InsertDailyLabor(WorkTeamDailyWorkloadInfo workTeam, List<LaborDailyWorkloadInfo> labors);
-
-        /// <summary>
         /// 设置班组日工作量及本班人员
         /// </summary>
         /// <param name="workTeamWorkload">班组日考勤</param>
@@ -29,5 +21,25 @@ namespace Hades.HR.Facade
         /// <returns></returns>
         [OperationContract]
         bool SetDailyLabor(WorkTeamDailyWorkloadInfo workTeamWorkload, List<LaborDailyWorkloadInfo> labors);
+
+        /// <summary>
+        /// 保存产量工时信息
+        /// </summary>
+        /// <param name="workTeamWorkloadId">班组日工作量ID</param>
+        /// <param name="totalHours">产量总工时</param>
+        /// <param name="productWorkloads">员工产量工作量信息</param>
+        /// <returns></returns>
+        [OperationContract]
+        bool SaveProduction(string workTeamWorkloadId, decimal totalHours, List<LaborProductionWorkloadInfo> productWorkloads);
+
+        /// <summary>
+        /// 保存员工机修工时信息
+        /// </summary>
+        /// <param name="workTeamWorkloadId">班组日工作量ID</param>
+        /// <param name="totalHours">机修总工时</param>
+        /// <param name="repairWorkloads">员工机修工时信息</param>
+        /// <returns></returns>
+        [OperationContract]
+        bool SaveRepair(string workTeamWorkloadId, decimal totalHours, List<LaborRepairWorkloadInfo> repairWorkloads);
     }
 }
