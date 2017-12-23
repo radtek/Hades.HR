@@ -122,6 +122,17 @@ namespace Hades.HR.UI
             else
             {
                 this.bsLaborWorkload.DataSource = this.laborElectric;
+
+                this.dgvStaff.SelectionChanged -= new DevExpress.Data.SelectionChangedEventHandler(this.dgvStaff_SelectionChanged);
+                for (int i = 0; i < laborElectric.Count; i++)
+                {
+                    if (this.laborElectric[i].ElectricHours != 0)
+                    {
+                        this.dgvStaff.SelectRow(i);
+                    }
+                }
+
+                this.dgvStaff.SelectionChanged += new DevExpress.Data.SelectionChangedEventHandler(this.dgvStaff_SelectionChanged);
             }
         }
 
@@ -219,12 +230,8 @@ namespace Hades.HR.UI
             }
             else
             {
-
                 //this.btnOK.Enabled = Portal.gc.HasFunction("LaborChangeWorkload/Add");  
             }
-
-            //tempInfo在对象存在则为指定对象，新建则是全新的对象，但有一些初始化的GUID用于附件上传
-            //SetAttachInfo(tempInfo);
         }
 
         /// <summary>
@@ -239,6 +246,12 @@ namespace Hades.HR.UI
             {
                 try
                 {
+                    if (this.electricInfo == null)
+                    {
+                        MessageDxUtil.ShowWarning("本日无电修工时");
+                        return false;
+                    }
+
                     this.laborElectric = this.bsLaborWorkload.DataSource as List<LaborElectricWorkloadInfo>;
                     info.ElectricHours = this.electricInfo.ManHours;
 
@@ -248,23 +261,9 @@ namespace Hades.HR.UI
                         return false;
                     }
 
-                    bool succeed = CallerFactory<IWorkTeamDailyWorkloadService>.Instance.Update(info, info.Id);
+                    bool succeed = CallerFactory<IWorkTeamDailyWorkloadService>.Instance.SaveElectric(this.ID, this.electricInfo.ManHours, laborElectric);
 
-                    foreach (var item in this.laborElectric)
-                    {
-                        // 增加电修工时分配
-                        CallerFactory<ILaborElectricWorkloadService>.Instance.Insert(item);
-                    }
-
-                    foreach (var item in this.laborWorkloads)
-                    {
-                        var hours = this.laborElectric.Single(r => r.StaffId == item.StaffId).ElectricHours;
-                        item.ElectricHours = hours;
-
-                        CallerFactory<ILaborDailyWorkloadService>.Instance.Update(item, item.Id);
-                    }
-
-                    return true;
+                    return succeed;
                 }
                 catch (Exception ex)
                 {

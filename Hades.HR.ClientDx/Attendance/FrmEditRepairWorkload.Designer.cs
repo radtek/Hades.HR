@@ -150,7 +150,7 @@ namespace Hades.HR.UI
             this.btnLoad.Size = new System.Drawing.Size(831, 22);
             this.btnLoad.StyleController = this.layoutControl1;
             this.btnLoad.TabIndex = 8;
-            this.btnLoad.Text = "simpleButton1";
+            this.btnLoad.Text = "载入保存数据";
             this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
             // 
             // txtRemark

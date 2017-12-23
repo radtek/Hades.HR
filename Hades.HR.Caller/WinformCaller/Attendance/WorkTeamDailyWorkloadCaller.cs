@@ -63,6 +63,18 @@ namespace Hades.HR.WinformCaller
         {
             return bll.SaveRepair(workTeamWorkloadId, totalHours, repairWorkloads);
         }
+
+        /// <summary>
+        /// 保存员工电修工时信息
+        /// </summary>
+        /// <param name="workTeamWorkloadId">班组日工作量ID</param>
+        /// <param name="totalHours">电修总工时</param>
+        /// <param name="electricWorkloads">员工电修工时信息</param>
+        /// <returns></returns>      
+        public bool SaveElectric(string workTeamWorkloadId, decimal totalHours, List<LaborElectricWorkloadInfo> electricWorkloads)
+        {
+            return bll.SaveElectric(workTeamWorkloadId, totalHours, electricWorkloads);
+        }
         #endregion //Method
     }
 }

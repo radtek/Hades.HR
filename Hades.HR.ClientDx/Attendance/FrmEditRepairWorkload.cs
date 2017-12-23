@@ -124,7 +124,6 @@ namespace Hades.HR.UI
             {
                 this.bsLaborWorkload.DataSource = this.laborRepairs;
 
-                this.dgvStaff.BeginUpdate();
                 this.dgvStaff.SelectionChanged -= new DevExpress.Data.SelectionChangedEventHandler(this.dgvStaff_SelectionChanged);
                 for (int i = 0; i < laborRepairs.Count; i++)
                 {
@@ -135,8 +134,6 @@ namespace Hades.HR.UI
                 }
 
                 this.dgvStaff.SelectionChanged += new DevExpress.Data.SelectionChangedEventHandler(this.dgvStaff_SelectionChanged);
-
-                this.dgvStaff.EndUpdate();
             }
         }
 
@@ -209,7 +206,7 @@ namespace Hades.HR.UI
                     this.txtAttendanceDate.Text = info.AttendanceDate.ToString("yyyy-MM-dd");
 
                     this.staffs = CallerFactory<IStaffService>.Instance.Find("StaffType = 2");
-                    
+
                     // 载入机修数据
                     LoadMachineInfo();
 
@@ -251,6 +248,12 @@ namespace Hades.HR.UI
             {
                 try
                 {
+                    if (this.machineInfo == null)
+                    {
+                        MessageDxUtil.ShowWarning("本日无电修工时");
+                        return false;
+                    }
+
                     this.laborRepairs = this.bsLaborWorkload.DataSource as List<LaborRepairWorkloadInfo>;
                     info.RepairHours = this.machineInfo.ManHours;
 
@@ -261,7 +264,7 @@ namespace Hades.HR.UI
                     }
 
                     bool succeed = CallerFactory<IWorkTeamDailyWorkloadService>.Instance.SaveRepair(this.ID, this.machineInfo.ManHours, laborRepairs);
-                       
+
                     return succeed;
                 }
                 catch (Exception ex)

@@ -41,6 +41,11 @@ namespace Hades.HR.UI
         private List<ChangeDetails> changeDetails = new List<ChangeDetails>();
 
         /// <summary>
+        /// 缓存换机数据
+        /// </summary>
+        public List<ReplaceMachineManHoursInfo> replaceInfo;
+
+        /// <summary>
         /// 暂存换机工时数据
         /// </summary>
         private List<LaborChangeWorkloadInfo> laborChanges = new List<LaborChangeWorkloadInfo>();
@@ -109,6 +114,15 @@ namespace Hades.HR.UI
             changeDetails.Add(details2);
             changeDetails.Add(details3);
             changeDetails.Add(details4);
+        }
+
+        /// <summary>
+        /// 载入换机数据
+        /// </summary>
+        private void LoadChangeDetails()
+        {
+            string sql = string.Format("WorkTeamId = '{0}' AND WorkingDate = '{1}'", this.tempInfo.WorkTeamId, this.tempInfo.AttendanceDate);
+            this.replaceInfo = CallerFactory<IReplaceMachineManHoursService>.Instance.Find(sql);
         }
 
         /// <summary>

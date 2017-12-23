@@ -112,6 +112,28 @@ namespace Hades.HR.ServiceCaller
 
             return result;
         }
+
+        /// <summary>
+        /// 保存员工电修工时信息
+        /// </summary>
+        /// <param name="workTeamWorkloadId">班组日工作量ID</param>
+        /// <param name="totalHours">电修总工时</param>
+        /// <param name="electricWorkloads">员工电修工时信息</param>
+        /// <returns></returns>
+        [OperationContract]
+        public bool SaveElectric(string workTeamWorkloadId, decimal totalHours, List<LaborElectricWorkloadInfo> electricWorkloads)
+        {
+            bool result = false;
+
+            IWorkTeamDailyWorkloadService service = CreateSubClient();
+            ICommunicationObject comm = service as ICommunicationObject;
+            comm.Using(client =>
+            {
+                result = service.SaveElectric(workTeamWorkloadId, totalHours, electricWorkloads);
+            });
+
+            return result;
+        }
         #endregion //Method
     }
 }
