@@ -156,7 +156,6 @@ namespace Hades.HR.UI
 
                 LoadDailyStaff();
             }
-
         }
 
         /// <summary>

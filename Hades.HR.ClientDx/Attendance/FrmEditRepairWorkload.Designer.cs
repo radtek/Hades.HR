@@ -28,9 +28,11 @@ namespace Hades.HR.UI
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.btnLoad = new DevExpress.XtraEditors.SimpleButton();
             this.txtRemark = new DevExpress.XtraEditors.MemoEdit();
             this.spRepairHours = new DevExpress.XtraEditors.SpinEdit();
             this.txtAttendanceDate = new DevExpress.XtraEditors.TextEdit();
@@ -40,18 +42,19 @@ namespace Hades.HR.UI
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
             this.dgcStaff = new DevExpress.XtraGrid.GridControl();
+            this.bsLaborWorkload = new System.Windows.Forms.BindingSource(this.components);
             this.dgvStaff = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.bsLaborWorkload = new System.Windows.Forms.BindingSource();
             this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colRepairId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colWorkTeamId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colStaffNumber = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colStaffId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colRepairHours = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAssignType = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colRemark = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colStaffNumber = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.picPrint)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
@@ -67,11 +70,12 @@ namespace Hades.HR.UI
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.groupControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgcStaff)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvStaff)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsLaborWorkload)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStaff)).BeginInit();
             this.SuspendLayout();
             // 
             // btnOK
@@ -126,6 +130,7 @@ namespace Hades.HR.UI
             // 
             // layoutControl1
             // 
+            this.layoutControl1.Controls.Add(this.btnLoad);
             this.layoutControl1.Controls.Add(this.txtRemark);
             this.layoutControl1.Controls.Add(this.spRepairHours);
             this.layoutControl1.Controls.Add(this.txtAttendanceDate);
@@ -138,12 +143,22 @@ namespace Hades.HR.UI
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
+            // btnLoad
+            // 
+            this.btnLoad.Location = new System.Drawing.Point(12, 77);
+            this.btnLoad.Name = "btnLoad";
+            this.btnLoad.Size = new System.Drawing.Size(831, 22);
+            this.btnLoad.StyleController = this.layoutControl1;
+            this.btnLoad.TabIndex = 8;
+            this.btnLoad.Text = "simpleButton1";
+            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
+            // 
             // txtRemark
             // 
             this.txtRemark.Location = new System.Drawing.Point(75, 36);
             this.txtRemark.Name = "txtRemark";
             this.txtRemark.Properties.ReadOnly = true;
-            this.txtRemark.Size = new System.Drawing.Size(768, 63);
+            this.txtRemark.Size = new System.Drawing.Size(768, 37);
             this.txtRemark.StyleController = this.layoutControl1;
             this.txtRemark.TabIndex = 7;
             // 
@@ -189,7 +204,8 @@ namespace Hades.HR.UI
             this.layoutControlItem1,
             this.layoutControlItem2,
             this.layoutControlItem3,
-            this.layoutControlItem4});
+            this.layoutControlItem4,
+            this.layoutControlItem5});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
             this.layoutControlGroup1.Size = new System.Drawing.Size(855, 111);
@@ -227,9 +243,18 @@ namespace Hades.HR.UI
             this.layoutControlItem4.Control = this.txtRemark;
             this.layoutControlItem4.Location = new System.Drawing.Point(0, 24);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(835, 67);
+            this.layoutControlItem4.Size = new System.Drawing.Size(835, 41);
             this.layoutControlItem4.Text = "备注";
             this.layoutControlItem4.TextSize = new System.Drawing.Size(60, 14);
+            // 
+            // layoutControlItem5
+            // 
+            this.layoutControlItem5.Control = this.btnLoad;
+            this.layoutControlItem5.Location = new System.Drawing.Point(0, 65);
+            this.layoutControlItem5.Name = "layoutControlItem5";
+            this.layoutControlItem5.Size = new System.Drawing.Size(835, 26);
+            this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem5.TextVisible = false;
             // 
             // groupControl3
             // 
@@ -253,6 +278,10 @@ namespace Hades.HR.UI
             this.dgcStaff.TabIndex = 0;
             this.dgcStaff.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.dgvStaff});
+            // 
+            // bsLaborWorkload
+            // 
+            this.bsLaborWorkload.DataSource = typeof(Hades.HR.Entity.LaborRepairWorkloadInfo);
             // 
             // dgvStaff
             // 
@@ -284,10 +313,6 @@ namespace Hades.HR.UI
             this.dgvStaff.CustomUnboundColumnData += new DevExpress.XtraGrid.Views.Base.CustomColumnDataEventHandler(this.dgvStaff_CustomUnboundColumnData);
             this.dgvStaff.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.dgvStaff_CustomColumnDisplayText);
             // 
-            // bsLaborWorkload
-            // 
-            this.bsLaborWorkload.DataSource = typeof(Hades.HR.Entity.LaborRepairWorkloadInfo);
-            // 
             // colId
             // 
             this.colId.FieldName = "Id";
@@ -302,6 +327,16 @@ namespace Hades.HR.UI
             // 
             this.colWorkTeamId.FieldName = "WorkTeamId";
             this.colWorkTeamId.Name = "colWorkTeamId";
+            // 
+            // colStaffNumber
+            // 
+            this.colStaffNumber.Caption = "员工工号";
+            this.colStaffNumber.FieldName = "StaffNumber";
+            this.colStaffNumber.Name = "colStaffNumber";
+            this.colStaffNumber.OptionsColumn.AllowEdit = false;
+            this.colStaffNumber.UnboundType = DevExpress.Data.UnboundColumnType.String;
+            this.colStaffNumber.Visible = true;
+            this.colStaffNumber.VisibleIndex = 1;
             // 
             // colStaffId
             // 
@@ -335,16 +370,6 @@ namespace Hades.HR.UI
             this.colRemark.Visible = true;
             this.colRemark.VisibleIndex = 4;
             // 
-            // colStaffNumber
-            // 
-            this.colStaffNumber.Caption = "员工工号";
-            this.colStaffNumber.FieldName = "StaffNumber";
-            this.colStaffNumber.Name = "colStaffNumber";
-            this.colStaffNumber.OptionsColumn.AllowEdit = false;
-            this.colStaffNumber.UnboundType = DevExpress.Data.UnboundColumnType.String;
-            this.colStaffNumber.Visible = true;
-            this.colStaffNumber.VisibleIndex = 1;
-            // 
             // FrmEditRepairWorkload
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -374,11 +399,12 @@ namespace Hades.HR.UI
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
             this.groupControl3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgcStaff)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvStaff)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsLaborWorkload)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStaff)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -410,5 +436,7 @@ namespace Hades.HR.UI
         private DevExpress.XtraGrid.Columns.GridColumn colAssignType;
         private DevExpress.XtraGrid.Columns.GridColumn colRemark;
         private DevExpress.XtraGrid.Columns.GridColumn colStaffNumber;
+        private DevExpress.XtraEditors.SimpleButton btnLoad;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
     }
 }

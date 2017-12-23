@@ -28,6 +28,7 @@ namespace Hades.HR.UI
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
@@ -42,7 +43,7 @@ namespace Hades.HR.UI
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
             this.dgcStaff = new DevExpress.XtraGrid.GridControl();
-            this.bsLaborWorkload = new System.Windows.Forms.BindingSource();
+            this.bsLaborWorkload = new System.Windows.Forms.BindingSource(this.components);
             this.dgvStaff = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colElectricId = new DevExpress.XtraGrid.Columns.GridColumn();

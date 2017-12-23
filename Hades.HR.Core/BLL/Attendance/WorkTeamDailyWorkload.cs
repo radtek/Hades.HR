@@ -200,6 +200,11 @@ namespace Hades.HR.BLL
                     laborWorkloadBll.Update(item, item.Id);
                 }
 
+                if (isLocalTrans)
+                {
+                    trans.Commit();
+                }
+
                 return true;
             }
             catch (Exception e)
@@ -269,6 +274,11 @@ namespace Hades.HR.BLL
                     laborWorkloadBll.Update(item, item.Id, trans);
                 }
 
+                if (isLocalTrans)
+                {
+                    trans.Commit();
+                }
+
                 return true;
             }
             catch (Exception e)
@@ -336,6 +346,11 @@ namespace Hades.HR.BLL
                     item.ElectricHours = hours;
 
                     laborWorkloadBll.Update(item, item.Id, trans);
+                }
+
+                if (isLocalTrans)
+                {
+                    trans.Commit();
                 }
 
                 return true;

@@ -154,19 +154,6 @@ namespace Hades.HR.UI
 
             this.dgvStaff.RefreshData();
         }
-
-        /// <summary>
-        /// 编辑或者保存状态下取值函数
-        /// </summary>
-        /// <param name="info"></param>
-        private void SetInfo(WorkTeamDailyWorkloadInfo info)
-        {
-            //info.WorkTeamId = txtWorkTeamId.Text;
-            //info.StaffId = txtStaffId.Text;
-            //info.ChangeHours = txtChangeHours.Value;
-            //info.AssignType = Convert.ToInt32(txtAssignType.Value);
-            //info.Remark = txtRemark.Text;
-        }
         #endregion //Function
 
         #region Method
@@ -238,33 +225,6 @@ namespace Hades.HR.UI
 
             //tempInfo在对象存在则为指定对象，新建则是全新的对象，但有一些初始化的GUID用于附件上传
             //SetAttachInfo(tempInfo);
-        }
-
-        /// <summary>
-        /// 新增状态下的数据保存
-        /// </summary>
-        /// <returns></returns>
-        public override bool SaveAddNew()
-        {
-            WorkTeamDailyWorkloadInfo info = tempInfo;//必须使用存在的局部变量，因为部分信息可能被附件使用
-            SetInfo(info);
-
-            try
-            {
-                //bool succeed = CallerFactory<ILaborChangeWorkloadService>.Instance.Insert(info);
-                //if (succeed)
-                //{
-                //    //可添加其他关联操作
-
-                //    return true;
-                //}
-            }
-            catch (Exception ex)
-            {
-                LogTextHelper.Error(ex);
-                MessageDxUtil.ShowError(ex.Message);
-            }
-            return false;
         }
 
         /// <summary>

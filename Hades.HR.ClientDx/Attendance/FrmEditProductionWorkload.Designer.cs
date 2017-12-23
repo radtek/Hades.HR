@@ -28,6 +28,7 @@ namespace Hades.HR.UI
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEditProductionWorkload));
             this.layoutControl2 = new DevExpress.XtraLayout.LayoutControl();
             this.txtAttendanceDate = new DevExpress.XtraEditors.TextEdit();
@@ -51,7 +52,7 @@ namespace Hades.HR.UI
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.btnSaveCurrent = new DevExpress.XtraEditors.SimpleButton();
             this.dgcStaff = new DevExpress.XtraGrid.GridControl();
-            this.bsLaborWorkload = new System.Windows.Forms.BindingSource();
+            this.bsLaborWorkload = new System.Windows.Forms.BindingSource(this.components);
             this.dgvStaff = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCompleteId = new DevExpress.XtraGrid.Columns.GridColumn();
