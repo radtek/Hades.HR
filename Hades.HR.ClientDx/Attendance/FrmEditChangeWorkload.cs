@@ -34,12 +34,7 @@ namespace Hades.HR.UI
         /// 相关换机单ID
         /// </summary>
         private string changeId = "";
-
-        /// <summary>
-        /// 缓存换机数据明细
-        /// </summary>
-        private List<ChangeDetails> changeDetails = new List<ChangeDetails>();
-
+        
         /// <summary>
         /// 缓存换机数据
         /// </summary>
@@ -76,46 +71,7 @@ namespace Hades.HR.UI
         {
             //初始化代码
         }
-
-        /// <summary>
-        /// 生成完工数据
-        /// </summary>
-        private void GenerateChangeDetails()
-        {
-            Random random = new Random(DateTime.Now.Millisecond);
-
-            this.changeId = Guid.NewGuid().ToString();
-
-            ChangeDetails details1 = new ChangeDetails();
-            details1.Name = "换波纹轮";
-            details1.Quota = 8m;
-            details1.Number = random.Next(1, 8);
-            details1.Workload = Math.Round(details1.Quota * details1.Number / 60, 2);
-           
-            ChangeDetails details2 = new ChangeDetails();
-            details2.Name = "开档调整10mm以内";
-            details2.Quota = 8m;
-            details2.Number = random.Next(1, 7);
-            details2.Workload = Math.Round(details2.Quota * details2.Number / 60, 2);
-
-            ChangeDetails details3 = new ChangeDetails();
-            details3.Name = "换1只翻边盘";
-            details3.Quota = 10m;
-            details3.Number = random.Next(1, 5);
-            details3.Workload = Math.Round(details3.Quota * details3.Number / 60, 2);
-
-            ChangeDetails details4 = new ChangeDetails();
-            details4.Name = "换1只卷边轮";
-            details4.Quota = 10m;
-            details4.Number = random.Next(1, 9);
-            details4.Workload = Math.Round(details4.Quota * details4.Number / 60, 2);
-
-            changeDetails.Add(details1);
-            changeDetails.Add(details2);
-            changeDetails.Add(details3);
-            changeDetails.Add(details4);
-        }
-
+        
         /// <summary>
         /// 载入换机数据
         /// </summary>
@@ -128,23 +84,22 @@ namespace Hades.HR.UI
         /// <summary>
         /// 显示换机记录
         /// </summary>
-        private void DisplayDetails()
+        private void DisplayChangeDetails()
         {
-            this.wgvChange.DisplayColumns = "Name,Quota,Number,Workload";
+            this.wgvChange.DisplayColumns = "ItemId,Amount,ManHour";
 
-            this.wgvChange.AddColumnAlias("Name", "名称");
-            this.wgvChange.AddColumnAlias("Quota", "标准定额(m)");
-            this.wgvChange.AddColumnAlias("Number", "数量");
-            this.wgvChange.AddColumnAlias("Workload", "换机工时(h)");
+            this.wgvChange.AddColumnAlias("ItemId", "名称");
+            this.wgvChange.AddColumnAlias("Amount", "数量");
+            this.wgvChange.AddColumnAlias("ManHour", "换机工时(h)");
 
-            var data = this.changeDetails;
+            var data = this.replaceInfo;
             this.wgvChange.DataSource = data;
         }
 
         /// <summary>
         /// 载入员工相关换机工时
         /// </summary>
-        private void LoadLaborChanges(string changeId)
+        private void LoadLaborChanges()
         {
             var data = CallerFactory<ILaborChangeWorkloadService>.Instance.Find(string.Format("ChangeId = '{0}'", changeId));
 
@@ -173,19 +128,6 @@ namespace Hades.HR.UI
 
                 this.bsLaborWorkload.DataSource = data;
             }
-        }
-
-        /// <summary>
-        /// 编辑或者保存状态下取值函数
-        /// </summary>
-        /// <param name="info"></param>
-        private void SetInfo(WorkTeamDailyWorkloadInfo info)
-        {
-            //info.WorkTeamId = txtWorkTeamId.Text;
-            //info.StaffId = txtStaffId.Text;
-            //info.ChangeHours = txtChangeHours.Value;
-            //info.AssignType = Convert.ToInt32(txtAssignType.Value);
-            //info.Remark = txtRemark.Text;
         }
         #endregion //Function
 
@@ -227,59 +169,40 @@ namespace Hades.HR.UI
                     this.txtAttendanceDate.Text = info.AttendanceDate.ToString("yyyy-MM-dd");
 
                     this.staffs = CallerFactory<IStaffService>.Instance.Find("StaffType = 2");
+                                        
+                    LoadChangeDetails();
 
-                    GenerateChangeDetails();
-                    DisplayDetails();
+                    if (this.replaceInfo.Count > 0)
+                    {
+                        this.spChangeHours.Value = this.replaceInfo.Sum(r => r.ManHour);
+                        this.txtRemark.Text = "";
 
-                    this.spChangeHours.Value = this.changeDetails.Sum(r => r.Workload);
+                        this.laborWorkloads = CallerFactory<ILaborDailyWorkloadService>.Instance.Find(string.Format("WorkTeamWorkloadId='{0}'", ID));
 
-                    this.laborWorkloads = CallerFactory<ILaborDailyWorkloadService>.Instance.Find(string.Format("WorkTeamWorkloadId='{0}'", ID));
+                        DisplayChangeDetails();
+                        // LoadLaborChanges(this.changeId);
+                        DisplayLaborChange();
+                    }
+                    else
+                    {
+                        this.spChangeHours.Value = 0;
+                        this.txtRemark.Text = "";
+                    }
 
-                    LoadLaborChanges(this.changeId);
-                    DisplayLaborChange();
+                    //DisplayDetails();
+
+                  
                 }
 
                 //this.btnOK.Enabled = HasFunction("LaborChangeWorkload/Edit");             
             }
             else
             {
-
                 //this.btnOK.Enabled = Portal.gc.HasFunction("LaborChangeWorkload/Add");  
             }
 
-            //tempInfo在对象存在则为指定对象，新建则是全新的对象，但有一些初始化的GUID用于附件上传
-            //SetAttachInfo(tempInfo);
         }
-         
-        /// <summary>
-        /// 新增状态下的数据保存
-        /// </summary>
-        /// <returns></returns>
-        public override bool SaveAddNew()
-        {
-            WorkTeamDailyWorkloadInfo info = tempInfo;//必须使用存在的局部变量，因为部分信息可能被附件使用
-            SetInfo(info);
-
-            try
-            {
-                #region 新增数据
-
-                //bool succeed = CallerFactory<ILaborChangeWorkloadService>.Instance.Insert(info);
-                //if (succeed)
-                //{
-                //    //可添加其他关联操作
-
-                //    return true;
-                //}
-                #endregion
-            }
-            catch (Exception ex)
-            {
-                LogTextHelper.Error(ex);
-                MessageDxUtil.ShowError(ex.Message);
-            }
-            return false;
-        }                 
+       
 
         /// <summary>
         /// 编辑状态下的数据保存
@@ -295,7 +218,7 @@ namespace Hades.HR.UI
                 {
                     this.laborChanges = this.bsLaborWorkload.DataSource as List<LaborChangeWorkloadInfo>;
 
-                    info.ChangeHours = this.changeDetails.Sum(r => r.Workload);
+                    info.ChangeHours = this.replaceInfo.Sum(r => r.ManHour);
 
                     if (laborChanges.Sum(r => r.ChangeHours) > info.ChangeHours)
                     {
@@ -353,6 +276,12 @@ namespace Hades.HR.UI
         #endregion //Method
 
         #region Event
+
+        private void btnSaveAssign_Click(object sender, EventArgs e)
+        {
+
+        }
+
         /// <summary>
         /// 格式化数据显示
         /// </summary>
