@@ -10,54 +10,51 @@ namespace Hades.HR.Entity
     /// </summary>
     [DataContract]
     public class LaborDailyAttendanceInfo : BaseEntity
-    { 
+    {
         /// <summary>
         /// 默认构造函数（需要初始化属性的在此处理）
         /// </summary>
-	    public LaborDailyAttendanceInfo()
-		{
-            this.Id= System.Guid.NewGuid().ToString();
-                 this.AbsentType= 0;
-             this.TotalHours= 0;
-             this.IsWeekend= false;
-             this.IsHoliday= false;
-   
-		}
+        public LaborDailyAttendanceInfo()
+        {
+            this.Id = System.Guid.NewGuid().ToString();
+            this.AbsentType = 0;
+            this.WorkHours = 0;
+            this.AbsentHours = 0;
+            this.IsWeekend = false;
+            this.IsHoliday = false;
+        }
 
         #region Property Members
-        
-		[DataMember]
+
+        [DataMember]
         public virtual string Id { get; set; }
 
-		[DataMember]
+        [DataMember]
         public virtual string WorkTeamId { get; set; }
 
-		[DataMember]
-        public virtual string AttendanceDate { get; set; }
+        [DataMember]
+        public virtual DateTime AttendanceDate { get; set; }
 
-		[DataMember]
+        [DataMember]
         public virtual string StaffId { get; set; }
 
-		[DataMember]
-        public virtual string StaffLevelId { get; set; }
-
-		[DataMember]
+        [DataMember]
         public virtual int AbsentType { get; set; }
 
-		[DataMember]
-        public virtual decimal TotalHours { get; set; }
+        [DataMember]
+        public virtual decimal WorkHours { get; set; }
 
-		[DataMember]
+        [DataMember]
+        public virtual decimal AbsentHours { get; set; }
+
+        [DataMember]
         public virtual bool IsWeekend { get; set; }
 
-		[DataMember]
+        [DataMember]
         public virtual bool IsHoliday { get; set; }
 
-		[DataMember]
+        [DataMember]
         public virtual string Remark { get; set; }
-
-
         #endregion
-
     }
 }

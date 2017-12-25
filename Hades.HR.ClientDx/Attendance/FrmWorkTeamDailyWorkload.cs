@@ -219,6 +219,31 @@ namespace Hades.HR.UI
         }
 
         /// <summary>
+        /// 考勤登记
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnDailyAttendance_Click(object sender, EventArgs e)
+        {
+            if (this.dpAttendance.EditValue == null)
+            {
+                MessageDxUtil.ShowWarning("请选择考勤日期");
+                return;
+            }
+
+            string teamId = this.wtTree.GetSelectedTeamId();
+            if (string.IsNullOrEmpty(teamId))
+            {
+                MessageDxUtil.ShowWarning("请选择班组");
+                return;
+            }
+
+            FrmEditLaborDailyAttendance frm = new FrmEditLaborDailyAttendance(teamId, this.dpAttendance.DateTime);
+            frm.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
+            frm.ShowDialog();
+        }
+
+        /// <summary>
         /// 编辑产量工时
         /// </summary>
         /// <param name="sender"></param>
@@ -536,5 +561,6 @@ namespace Hades.HR.UI
             BindData();
         }
         #endregion //System
+
     }
 }

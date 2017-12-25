@@ -55,6 +55,7 @@ namespace Hades.HR.DALSQL
             info.ElectricHours = reader.GetDecimal("ElectricHours");
             info.LeaveHours = reader.GetDecimal("LeaveHours");
             info.AllowanceHours = reader.GetDecimal("AllowanceHours");
+            info.AuditHours = reader.GetDecimal("AuditHours");
             info.Remark = reader.GetString("Remark");
 
             return info;
@@ -82,6 +83,7 @@ namespace Hades.HR.DALSQL
             hash.Add("ElectricHours", info.ElectricHours);
             hash.Add("LeaveHours", info.LeaveHours);
             hash.Add("AllowanceHours", info.AllowanceHours);
+            hash.Add("AuditHours", info.AuditHours);
             hash.Add("Remark", info.Remark);
 
             return hash;
@@ -108,6 +110,7 @@ namespace Hades.HR.DALSQL
             dict.Add("ElectricHours", "电修工时");
             dict.Add("LeaveHours", "请假工时");
             dict.Add("AllowanceHours", "补贴工时");
+            dict.Add("AuditHours", "审批工时");
             dict.Add("Remark", "备注");
             #endregion
 

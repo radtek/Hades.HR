@@ -897,6 +897,12 @@
     <Compile Include="Attendance\FrmEditWorkTeamDailyChange.Designer.cs">
       <DependentUpon>FrmEditWorkTeamDailyChange.cs</DependentUpon>
     </Compile>
+    <Compile Include="Attendance\FrmEditLaborDailyAttendance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Attendance\FrmEditLaborDailyAttendance.Designer.cs">
+      <DependentUpon>FrmEditLaborDailyAttendance.cs</DependentUpon>
+    </Compile>
     <Compile Include="Salary\FrmBonusDefine.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -994,11 +1000,17 @@
     <EmbeddedResource Include="Attendance\FrmEditElectricWorkload.resx">
       <DependentUpon>FrmEditElectricWorkload.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Attendance\FrmEditLaborDailyAttendance.resx">
+      <DependentUpon>FrmEditLaborDailyAttendance.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Attendance\FrmEditRepairWorkload.resx">
       <DependentUpon>FrmEditRepairWorkload.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Attendance\FrmEditChangeWorkload.resx">
       <DependentUpon>FrmEditChangeWorkload.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Attendance\FrmLaborDailyWorkload.resx">
+      <DependentUpon>FrmLaborDailyWorkload.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Attendance\FrmSetDailyLabor.resx">
       <DependentUpon>FrmSetDailyLabor.cs</DependentUpon>
@@ -1117,6 +1129,7 @@
     <None Include="Properties\DataSources\Hades.HR.Entity.DepartmentInfo.datasource" />
     <None Include="Properties\DataSources\Hades.HR.Entity.LaborAttendanceRecordInfo.datasource" />
     <None Include="Properties\DataSources\Hades.HR.Entity.LaborChangeWorkloadInfo.datasource" />
+    <None Include="Properties\DataSources\Hades.HR.Entity.LaborDailyAttendanceInfo.datasource" />
     <None Include="Properties\DataSources\Hades.HR.Entity.LaborElectricWorkloadInfo.datasource" />
     <None Include="Properties\DataSources\Hades.HR.Entity.LaborProductionWorkloadInfo.datasource" />
     <None Include="Properties\DataSources\Hades.HR.Entity.LaborRepairWorkloadInfo.datasource" />

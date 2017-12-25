@@ -44,10 +44,10 @@ namespace Hades.HR.UI
             this.winGridViewPager1.gridView1.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(gridView1_RowCellStyle);
 
             //关联回车键进行查询
-            foreach (Control control in this.layoutControl1.Controls)
-            {
-                control.KeyUp += new System.Windows.Forms.KeyEventHandler(this.SearchControl_KeyUp);
-            }
+            //foreach (Control control in this.layoutControl1.Controls)
+            //{
+            //    control.KeyUp += new System.Windows.Forms.KeyEventHandler(this.SearchControl_KeyUp);
+            //}
         }
         #endregion //Constructor
 
@@ -239,8 +239,8 @@ namespace Hades.HR.UI
             if (condition == null)
             {
                 condition = new SearchCondition();
-                condition.AddCondition("WorkTeamId", this.txtWorkTeamId.Text.Trim(), SqlOperator.Like);
-                condition.AddCondition("AttendanceDate", this.txtAttendanceDate.Text.Trim(), SqlOperator.Like);
+                //condition.AddCondition("WorkTeamId", this.txtWorkTeamId.Text.Trim(), SqlOperator.Like);
+                //condition.AddCondition("AttendanceDate", this.txtAttendanceDate.Text.Trim(), SqlOperator.Like);
             }
             string where = condition.BuildConditionSql().Replace("Where", "");
             return where;
@@ -357,11 +357,10 @@ namespace Hades.HR.UI
             LaborDailyAttendanceInfo info = new LaborDailyAttendanceInfo();
             info.Id = GetRowData(dr, "Id");
               info.WorkTeamId = GetRowData(dr, "WorkTeamId");
-              info.AttendanceDate = GetRowData(dr, "AttendanceDate");
+              //info.AttendanceDate = GetRowData(dr, "AttendanceDate");
               info.StaffId = GetRowData(dr, "StaffId");
-              info.StaffLevelId = GetRowData(dr, "StaffLevelId");
               info.AbsentType = GetRowData(dr, "AbsentType").ToInt32();
-              info.TotalHours = GetRowData(dr, "TotalHours").ToDecimal();
+              info.WorkHours = GetRowData(dr, "TotalHours").ToDecimal();
               info.IsWeekend = GetRowData(dr, "IsWeekend").ToBoolean();
               info.IsHoliday = GetRowData(dr, "IsHoliday").ToBoolean();
               info.Remark = GetRowData(dr, "Remark");
@@ -391,9 +390,8 @@ namespace Hades.HR.UI
                      dr["WorkTeamId"] = list[i].WorkTeamId;
                      dr["AttendanceDate"] = list[i].AttendanceDate;
                      dr["StaffId"] = list[i].StaffId;
-                     dr["StaffLevelId"] = list[i].StaffLevelId;
                      dr["AbsentType"] = list[i].AbsentType;
-                     dr["TotalHours"] = list[i].TotalHours;
+                     dr["TotalHours"] = list[i].WorkHours;
                      dr["IsWeekend"] = list[i].IsWeekend;
                      dr["IsHoliday"] = list[i].IsHoliday;
                      dr["Remark"] = list[i].Remark;

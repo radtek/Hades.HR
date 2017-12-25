@@ -23,7 +23,7 @@ namespace Hades.HR.Entity
             this.ElectricHours = 0;
             this.LeaveHours = 0;
             this.AllowanceHours = 0;
-
+            this.AuditHours = 0;
         }
 
         #region Property Members
@@ -63,6 +63,9 @@ namespace Hades.HR.Entity
 
         [DataMember]
         public virtual decimal AllowanceHours { get; set; }
+
+        [DataMember]
+        public virtual decimal AuditHours { get; set; }
 
         [DataMember]
         public virtual string Remark { get; set; }
