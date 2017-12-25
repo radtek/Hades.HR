@@ -53,6 +53,18 @@ namespace Hades.HR.WinformCaller
         }
 
         /// <summary>
+        /// 保存员工换机工时信息
+        /// </summary>
+        /// <param name="workTeamWorkloadId">班组日工作量ID</param>
+        /// <param name="totalHours">换机总工时</param>
+        /// <param name="changeWorkloads">员工换机工时信息</param>
+        /// <returns></returns>
+        public bool SaveChange(string workTeamWorkloadId, decimal totalHours, List<LaborChangeWorkloadInfo> changeWorkloads)
+        {
+            return bll.SaveChange(workTeamWorkloadId, totalHours, changeWorkloads);
+        }
+
+        /// <summary>
         /// 保存员工机修工时信息
         /// </summary>
         /// <param name="workTeamWorkloadId">班组日工作量ID</param>

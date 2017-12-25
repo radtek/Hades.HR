@@ -92,6 +92,28 @@ namespace Hades.HR.ServiceCaller
             return result;
         }
 
+
+        /// <summary>
+        /// 保存员工换机工时信息
+        /// </summary>
+        /// <param name="workTeamWorkloadId">班组日工作量ID</param>
+        /// <param name="totalHours">换机总工时</param>
+        /// <param name="changeWorkloads">员工换机工时信息</param>
+        /// <returns></returns>
+        public bool SaveChange(string workTeamWorkloadId, decimal totalHours, List<LaborChangeWorkloadInfo> changeWorkloads)
+        {
+            bool result = false;
+
+            IWorkTeamDailyWorkloadService service = CreateSubClient();
+            ICommunicationObject comm = service as ICommunicationObject;
+            comm.Using(client =>
+            {
+                result = service.SaveChange(workTeamWorkloadId, totalHours, changeWorkloads);
+            });
+
+            return result;
+        }
+
         /// <summary>
         /// 保存员工机修工时信息
         /// </summary>

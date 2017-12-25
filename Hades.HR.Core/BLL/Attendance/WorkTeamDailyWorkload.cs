@@ -90,66 +90,6 @@ namespace Hades.HR.BLL
                 }
             }
         }
-
-        /// <summary>
-        /// 初始化班组日工作量及本班人员
-        /// </summary>
-        /// <param name="workTeam">班组日考勤</param>
-        /// <param name="labors">员工日考勤</param>
-        /// <param name="trans"></param>
-        public bool InsertDailyLabor(WorkTeamDailyWorkloadInfo workTeam, List<LaborDailyWorkloadInfo> labors, DbTransaction trans = null)
-        {
-            var dal = this.baseDal as IWorkTeamDailyWorkload;
-
-            bool isLocalTrans = trans == null;
-            if (isLocalTrans)
-            {
-                trans = dal.CreateTransaction();
-            }
-
-            try
-            {
-                //check labors not in other team
-                LaborDailyWorkload laborDailyWorkload = new LaborDailyWorkload();
-                foreach(var item in labors)
-                {
-                    var exist = laborDailyWorkload.CheckLaborDailyExist(workTeam.AttendanceDate, workTeam.Id, item.StaffId);
-                    if (exist)
-                        return false;
-                }
-
-                workTeam.PersonCount = labors.Count;
-                dal.Insert(workTeam, trans);
-
-                foreach (var item in labors)
-                {
-                    laborDailyWorkload.Insert(item, trans);
-                }
-
-                if (isLocalTrans)
-                {
-                    trans.Commit();
-                }
-
-                return true;
-            }
-            catch (Exception e)
-            {
-                if (isLocalTrans)
-                {
-                    trans.Rollback();
-                }
-                LogTextHelper.Error("初始化班组日考勤", e);
-                return false;
-            }
-            finally
-            {
-                if (isLocalTrans)
-                {
-                    trans = null;
-                }
-            }
-        }
         
         /// <summary>
         /// 保存产量工时信息
@@ -214,6 +154,80 @@ namespace Hades.HR.BLL
                     trans.Rollback();
                 }
                 LogTextHelper.Error("保存员工产量工时", e);
+                return false;
+            }
+            finally
+            {
+                if (isLocalTrans)
+                {
+                    trans = null;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 保存员工换机工时信息
+        /// </summary>
+        /// <param name="workTeamWorkloadId">班组日工作量ID</param>
+        /// <param name="totalHours">换机总工时</param>
+        /// <param name="changeWorkloads">员工换机工时信息</param>
+        /// <param name="trans"></param>
+        /// <returns></returns>
+        public bool SaveChange(string workTeamWorkloadId, decimal totalHours, List<LaborChangeWorkloadInfo> changeWorkloads, DbTransaction trans = null)
+        {
+            var dal = this.baseDal as IWorkTeamDailyWorkload;
+
+            bool isLocalTrans = trans == null;
+            if (isLocalTrans)
+            {
+                trans = dal.CreateTransaction();
+            }
+
+            try
+            {
+                var workTeamWorkload = dal.FindByID(workTeamWorkloadId, trans);
+
+                // 更新班组日工作量表
+                workTeamWorkload.ChangeHours = totalHours;
+                dal.Update(workTeamWorkload, workTeamWorkload.Id, trans);
+                
+                LaborChangeWorkload changeBll = new LaborChangeWorkload();
+
+                // 删除已有员工换机分配记录
+                changeBll.DeleteByCondition(string.Format("WorkTeamId = '{0}' AND AttendanceDate = '{1}'", workTeamWorkload.WorkTeamId, workTeamWorkload.AttendanceDate), trans);
+
+                // 增加员工换机记录
+                foreach (var item in changeWorkloads)
+                {
+                    changeBll.Insert(item, trans);
+                }
+
+                LaborDailyWorkload laborWorkloadBll = new LaborDailyWorkload();
+                List<LaborDailyWorkloadInfo> laborWorkloads = laborWorkloadBll.Find(string.Format("WorkTeamWorkloadId='{0}'", workTeamWorkloadId), trans);
+
+                // 更新员工日工作量内换机数据
+                foreach (var item in laborWorkloads)
+                {
+                    var hours = changeWorkloads.Where(r => r.StaffId == item.StaffId).Sum(r => r.ChangeHours);
+                    item.RepairHours = hours;
+
+                    laborWorkloadBll.Update(item, item.Id, trans);
+                }
+
+                if (isLocalTrans)
+                {
+                    trans.Commit();
+                }
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                if (isLocalTrans)
+                {
+                    trans.Rollback();
+                }
+                LogTextHelper.Error("更新员工机修工时", e);
                 return false;
             }
             finally

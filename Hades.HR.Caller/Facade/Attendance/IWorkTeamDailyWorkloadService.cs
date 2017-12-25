@@ -33,6 +33,16 @@ namespace Hades.HR.Facade
         bool SaveProduction(string workTeamWorkloadId, decimal totalHours, List<LaborProductionWorkloadInfo> productWorkloads);
 
         /// <summary>
+        /// 保存员工换机工时信息
+        /// </summary>
+        /// <param name="workTeamWorkloadId">班组日工作量ID</param>
+        /// <param name="totalHours">换机总工时</param>
+        /// <param name="changeWorkloads">员工换机工时信息</param>
+        /// <returns></returns>
+        [OperationContract]
+        bool SaveChange(string workTeamWorkloadId, decimal totalHours, List<LaborChangeWorkloadInfo> changeWorkloads);
+
+        /// <summary>
         /// 保存员工机修工时信息
         /// </summary>
         /// <param name="workTeamWorkloadId">班组日工作量ID</param>
