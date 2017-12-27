@@ -32,8 +32,14 @@ namespace Hades.HR.Util
         [Display(Name = "婚产丧假")]
         MarriageLeave = 6,
 
+        [Display(Name = "产假")]
+        MaternityLeave = 7,
+
+        [Display(Name = "丧假")]
+        FuneralLeave = 8,
+
         [Display(Name = "旷工")]
-        AbsentLeave = 7
+        AbsentLeave = 9
     }
 
     /// <summary>

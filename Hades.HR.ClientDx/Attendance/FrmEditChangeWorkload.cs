@@ -174,7 +174,7 @@ namespace Hades.HR.UI
 
                     if (this.replaceInfo.Count > 0)
                     {
-                        this.spChangeHours.Value = this.replaceInfo.Sum(r => r.ManHour);
+                        this.spChangeHours.Value = this.replaceInfo.Sum(r => r.ManHours);
                         this.txtRemark.Text = "";
 
                         this.laborWorkloads = CallerFactory<ILaborDailyWorkloadService>.Instance.Find(string.Format("WorkTeamWorkloadId='{0}'", ID));
@@ -218,7 +218,7 @@ namespace Hades.HR.UI
                 {
                     this.laborChanges = this.bsLaborWorkload.DataSource as List<LaborChangeWorkloadInfo>;
 
-                    info.ChangeHours = this.replaceInfo.Sum(r => r.ManHour);
+                    info.ChangeHours = this.replaceInfo.Sum(r => r.ManHours);
 
                     if (laborChanges.Sum(r => r.ChangeHours) > info.ChangeHours)
                     {

@@ -55,6 +55,7 @@
             this.colIsWeekend = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colIsHoliday = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colRemark = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repoAbsent = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.picPrint)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
@@ -74,6 +75,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgcLabor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsLabor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLabor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repoAbsent)).BeginInit();
             this.SuspendLayout();
             // 
             // btnOK
@@ -117,48 +119,48 @@
             this.layoutControl1.Controls.Add(this.txtAttendanceDate);
             this.layoutControl1.Controls.Add(this.txtWorkTeamName);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutControl1.Location = new System.Drawing.Point(2, 25);
+            this.layoutControl1.Location = new System.Drawing.Point(2, 21);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(849, 78);
+            this.layoutControl1.Size = new System.Drawing.Size(849, 82);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
             // chkIsHoliday
             // 
-            this.chkIsHoliday.Location = new System.Drawing.Point(426, 42);
+            this.chkIsHoliday.Location = new System.Drawing.Point(426, 36);
             this.chkIsHoliday.Name = "chkIsHoliday";
             this.chkIsHoliday.Properties.Caption = "是否节假日";
-            this.chkIsHoliday.Size = new System.Drawing.Size(409, 22);
+            this.chkIsHoliday.Size = new System.Drawing.Size(411, 19);
             this.chkIsHoliday.StyleController = this.layoutControl1;
             this.chkIsHoliday.TabIndex = 7;
             this.chkIsHoliday.CheckedChanged += new System.EventHandler(this.chkIsHoliday_CheckedChanged);
             // 
             // chkIsWeekend
             // 
-            this.chkIsWeekend.Location = new System.Drawing.Point(14, 42);
+            this.chkIsWeekend.Location = new System.Drawing.Point(12, 36);
             this.chkIsWeekend.Name = "chkIsWeekend";
             this.chkIsWeekend.Properties.Caption = "是否周末";
-            this.chkIsWeekend.Size = new System.Drawing.Size(408, 22);
+            this.chkIsWeekend.Size = new System.Drawing.Size(410, 19);
             this.chkIsWeekend.StyleController = this.layoutControl1;
             this.chkIsWeekend.TabIndex = 6;
             this.chkIsWeekend.CheckedChanged += new System.EventHandler(this.chkIsWeekend_CheckedChanged);
             // 
             // txtAttendanceDate
             // 
-            this.txtAttendanceDate.Location = new System.Drawing.Point(489, 14);
+            this.txtAttendanceDate.Location = new System.Drawing.Point(477, 12);
             this.txtAttendanceDate.Name = "txtAttendanceDate";
             this.txtAttendanceDate.Properties.ReadOnly = true;
-            this.txtAttendanceDate.Size = new System.Drawing.Size(346, 24);
+            this.txtAttendanceDate.Size = new System.Drawing.Size(360, 20);
             this.txtAttendanceDate.StyleController = this.layoutControl1;
             this.txtAttendanceDate.TabIndex = 5;
             // 
             // txtWorkTeamName
             // 
-            this.txtWorkTeamName.Location = new System.Drawing.Point(77, 14);
+            this.txtWorkTeamName.Location = new System.Drawing.Point(63, 12);
             this.txtWorkTeamName.Name = "txtWorkTeamName";
             this.txtWorkTeamName.Properties.ReadOnly = true;
-            this.txtWorkTeamName.Size = new System.Drawing.Size(345, 24);
+            this.txtWorkTeamName.Size = new System.Drawing.Size(359, 20);
             this.txtWorkTeamName.StyleController = this.layoutControl1;
             this.txtWorkTeamName.TabIndex = 4;
             // 
@@ -173,7 +175,7 @@
             this.layoutControlItem4});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(849, 78);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(849, 82);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem1
@@ -181,34 +183,34 @@
             this.layoutControlItem1.Control = this.txtWorkTeamName;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(412, 28);
+            this.layoutControlItem1.Size = new System.Drawing.Size(414, 24);
             this.layoutControlItem1.Text = "班组名称";
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(60, 18);
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(48, 14);
             // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.txtAttendanceDate;
-            this.layoutControlItem2.Location = new System.Drawing.Point(412, 0);
+            this.layoutControlItem2.Location = new System.Drawing.Point(414, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(413, 28);
+            this.layoutControlItem2.Size = new System.Drawing.Size(415, 24);
             this.layoutControlItem2.Text = "考勤日期";
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(60, 18);
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(48, 14);
             // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.chkIsWeekend;
-            this.layoutControlItem3.Location = new System.Drawing.Point(0, 28);
+            this.layoutControlItem3.Location = new System.Drawing.Point(0, 24);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(412, 26);
+            this.layoutControlItem3.Size = new System.Drawing.Size(414, 38);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.chkIsHoliday;
-            this.layoutControlItem4.Location = new System.Drawing.Point(412, 28);
+            this.layoutControlItem4.Location = new System.Drawing.Point(414, 24);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(413, 26);
+            this.layoutControlItem4.Size = new System.Drawing.Size(415, 38);
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
             // 
@@ -226,10 +228,12 @@
             // 
             this.dgcLabor.DataSource = this.bsLabor;
             this.dgcLabor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgcLabor.Location = new System.Drawing.Point(2, 25);
+            this.dgcLabor.Location = new System.Drawing.Point(2, 21);
             this.dgcLabor.MainView = this.dgvLabor;
             this.dgcLabor.Name = "dgcLabor";
-            this.dgcLabor.Size = new System.Drawing.Size(849, 322);
+            this.dgcLabor.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repoAbsent});
+            this.dgcLabor.Size = new System.Drawing.Size(849, 326);
             this.dgcLabor.TabIndex = 0;
             this.dgcLabor.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.dgvLabor});
@@ -309,6 +313,7 @@
             // colAbsentType
             // 
             this.colAbsentType.Caption = "缺勤类型";
+            this.colAbsentType.ColumnEdit = this.repoAbsent;
             this.colAbsentType.FieldName = "AbsentType";
             this.colAbsentType.Name = "colAbsentType";
             this.colAbsentType.Visible = true;
@@ -357,9 +362,16 @@
             this.colRemark.Visible = true;
             this.colRemark.VisibleIndex = 9;
             // 
+            // repoAbsent
+            // 
+            this.repoAbsent.AutoHeight = false;
+            this.repoAbsent.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repoAbsent.Name = "repoAbsent";
+            // 
             // FrmEditLaborDailyAttendance
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(853, 523);
             this.Controls.Add(this.groupControl2);
@@ -392,6 +404,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgcLabor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsLabor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLabor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repoAbsent)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -425,5 +438,6 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         private DevExpress.XtraGrid.Columns.GridColumn colAbsentHours;
         private DevExpress.XtraGrid.Columns.GridColumn colStaffNumber;
+        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repoAbsent;
     }
 }

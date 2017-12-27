@@ -48,7 +48,7 @@ namespace Hades.HR.DALSQL
             info.ItemId = reader.GetString("ItemId");
             info.WorkingDate = reader.GetDateTime("WorkingDate");
             info.Amount = reader.GetDecimal("Amount");
-            info.ManHour = reader.GetDecimal("ManHour");
+            info.ManHours = reader.GetDecimal("ManHours");
             info.CreatorId = reader.GetString("CreatorId");
             info.Creator = reader.GetString("Creator");
             info.CreateTime = reader.GetDateTime("CreateTime");
@@ -72,7 +72,7 @@ namespace Hades.HR.DALSQL
             hash.Add("ItemId", info.ItemId);
             hash.Add("WorkingDate", info.WorkingDate);
             hash.Add("Amount", info.Amount);
-            hash.Add("ManHour", info.ManHour);
+            hash.Add("ManHours", info.ManHours);
             hash.Add("CreatorId", info.CreatorId);
             hash.Add("Creator", info.Creator);
             hash.Add("CreateTime", info.CreateTime);
@@ -95,7 +95,7 @@ namespace Hades.HR.DALSQL
             dict.Add("ItemId", "");
             dict.Add("WorkingDate", "");
             dict.Add("Amount", "");
-            dict.Add("ManHour", "");
+            dict.Add("ManHours", "");
             dict.Add("CreatorId", "");
             dict.Add("Creator", "");
             dict.Add("CreateTime", "");

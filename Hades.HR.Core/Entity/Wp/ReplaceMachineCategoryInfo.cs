@@ -16,8 +16,7 @@ namespace Hades.HR.Entity
         /// </summary>
 	    public ReplaceMachineCategoryInfo()
 		{
-            this.ID= System.Guid.NewGuid().ToString();
-    
+            this.ID= System.Guid.NewGuid().ToString();    
 		}
 
         #region Property Members
@@ -26,13 +25,10 @@ namespace Hades.HR.Entity
         public virtual string ID { get; set; }
 
 		[DataMember]
-        public virtual string MasterCateogoryId { get; set; }
+        public virtual string MasterCategoryId { get; set; }
 
 		[DataMember]
         public virtual string MasterCategoryName { get; set; }
-
-
         #endregion
-
     }
 }

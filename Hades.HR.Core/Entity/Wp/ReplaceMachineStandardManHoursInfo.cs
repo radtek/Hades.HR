@@ -10,38 +10,35 @@ namespace Hades.HR.Entity
     /// </summary>
     [DataContract]
     public class ReplaceMachineStandardManHoursInfo : BaseEntity
-    { 
+    {
         /// <summary>
         /// 默认构造函数（需要初始化属性的在此处理）
         /// </summary>
-	    public ReplaceMachineStandardManHoursInfo()
-		{
-            this.ID= System.Guid.NewGuid().ToString();
-                this.StandardManHours= 0;
-   
-		}
+        public ReplaceMachineStandardManHoursInfo()
+        {
+            this.ID = System.Guid.NewGuid().ToString();
+            this.StandardManHours = 0;
+        }
 
         #region Property Members
-        
-		[DataMember]
+
+        [DataMember]
         public virtual string ID { get; set; }
 
-		[DataMember]
-        public virtual string MasterCateogoryId { get; set; }
+        [DataMember]
+        public virtual string MasterCategoryId { get; set; }
 
-		[DataMember]
+        [DataMember]
         public virtual string ItemId { get; set; }
 
-		[DataMember]
+        [DataMember]
         public virtual string ItemName { get; set; }
 
-		[DataMember]
+        [DataMember]
         public virtual int StandardManHours { get; set; }
 
-		[DataMember]
+        [DataMember]
         public virtual string Remark { get; set; }
-
-
         #endregion
 
     }

@@ -16,6 +16,8 @@ using Hades.Framework.ControlUtil;
 using Hades.Framework.ControlUtil.Facade;
 using Hades.HR.Facade;
 using Hades.HR.Entity;
+using Hades.HR.Util;
+
 
 namespace Hades.HR.UI
 {
@@ -53,6 +55,15 @@ namespace Hades.HR.UI
         #endregion //Constructor
 
         #region Function
+        /// <summary>
+        /// 初始化数据字典
+        /// </summary>
+        private void InitDictItem()
+        {
+            //初始化代码
+            this.repoAbsent.Items.AddEnum(typeof(AbsentType), true);
+        }
+
         /// <summary>
         /// 载入考勤数据
         /// </summary>
@@ -109,6 +120,27 @@ namespace Hades.HR.UI
 
             base.FormOnLoad();
         }
+
+        /// <summary>
+        /// 显示数据
+        /// </summary>
+        public override void DisplayData()
+        {
+            InitDictItem();
+        }
+
+        /// <summary>
+        /// 保存数据
+        /// </summary>
+        /// <returns></returns>
+        public override bool SaveAddNew()
+        {
+            MessageDxUtil.ShowTips("new");
+
+            return false;
+        }
+
+       
         #endregion //Method
 
         #region Event
@@ -171,13 +203,13 @@ namespace Hades.HR.UI
         private void chkIsWeekend_CheckedChanged(object sender, EventArgs e)
         {
             var data = this.bsLabor.DataSource as List<LaborDailyAttendanceInfo>;
-            foreach(var item in data)
+            foreach (var item in data)
             {
                 item.IsWeekend = this.chkIsWeekend.Checked;
             }
             this.bsLabor.ResetBindings(false);
         }
-               
+
         /// <summary>
         /// 选择节假日
         /// </summary>

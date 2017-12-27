@@ -38,7 +38,7 @@ namespace Hades.HR.Entity
         public virtual decimal Amount { get; set; }
 
         [DataMember]
-        public virtual decimal ManHour { get; set; }
+        public virtual decimal ManHours { get; set; }
 
         [DataMember]
         public virtual string CreatorId { get; set; }
