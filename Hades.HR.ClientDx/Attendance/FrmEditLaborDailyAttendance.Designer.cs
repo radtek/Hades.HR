@@ -50,12 +50,12 @@
             this.colStaffNumber = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colStaffId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAbsentType = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repoAbsent = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.colWorkHours = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAbsentHours = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colIsWeekend = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colIsHoliday = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colRemark = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repoAbsent = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.picPrint)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
@@ -319,6 +319,13 @@
             this.colAbsentType.Visible = true;
             this.colAbsentType.VisibleIndex = 4;
             // 
+            // repoAbsent
+            // 
+            this.repoAbsent.AutoHeight = false;
+            this.repoAbsent.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repoAbsent.Name = "repoAbsent";
+            // 
             // colWorkHours
             // 
             this.colWorkHours.Caption = "工作工时";
@@ -361,13 +368,6 @@
             this.colRemark.Name = "colRemark";
             this.colRemark.Visible = true;
             this.colRemark.VisibleIndex = 9;
-            // 
-            // repoAbsent
-            // 
-            this.repoAbsent.AutoHeight = false;
-            this.repoAbsent.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repoAbsent.Name = "repoAbsent";
             // 
             // FrmEditLaborDailyAttendance
             // 

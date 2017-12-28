@@ -102,6 +102,13 @@ namespace Hades.HR.UI
                 this.bsLabor.DataSource = data;
             }
         }
+
+        private List<LaborDailyAttendanceInfo> SetAttendance()
+        {
+            var data = this.bsLabor.DataSource as List<LaborDailyAttendanceInfo>;
+
+            return data;
+        }
         #endregion //Function
 
         #region Method
@@ -135,12 +142,22 @@ namespace Hades.HR.UI
         /// <returns></returns>
         public override bool SaveAddNew()
         {
-            MessageDxUtil.ShowTips("new");
+            try
+            {
+                var attendance = this.bsLabor.DataSource as List<LaborDailyAttendanceInfo>;
 
-            return false;
+                var result = CallerFactory<ILaborDailyAttendanceService>.Instance.SaveAttendance(this.workTeamId, this.attendanceDate, attendance);
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                LogTextHelper.Error(ex);
+                MessageDxUtil.ShowError(ex.Message);
+
+                return false;
+            }
         }
-
-       
         #endregion //Method
 
         #region Event

@@ -21,12 +21,15 @@ namespace Hades.HR.ServiceCaller
 	/// </summary>
     public class LaborDailyAttendanceCaller : BaseWCFService<LaborDailyAttendanceInfo>, ILaborDailyAttendanceService
     {
+        #region Constructor
         public LaborDailyAttendanceCaller()  : base()
         {	
             this.configurationPath = EndPointConfig.WcfConfig; //WCF配置文件
             this.endpointConfigurationName = EndPointConfig.LaborDailyAttendanceService;
         }
+        #endregion //Constructor
 
+        #region Function
         /// <summary>
         /// 子类构造一个IChannel对象转换为基类接口，方便给基类进行调用通用的API
         /// </summary>
@@ -45,32 +48,29 @@ namespace Hades.HR.ServiceCaller
             CustomClientChannel<ILaborDailyAttendanceService> factory = new CustomClientChannel<ILaborDailyAttendanceService>(endpointConfigurationName, configurationPath);
             return factory.CreateChannel();
         }
+        #endregion //Function
 
-        ///// <summary>
-        ///// 根据名称查找对象(自定义接口使用范例)
-        ///// </summary>
-        //public List<LaborDailyAttendanceInfo> FindByName(string name)
-        //{
-        //    List<LaborDailyAttendanceInfo> result = new List<LaborDailyAttendanceInfo>();
+        #region Method
+        /// <summary>
+        /// 保存员工日考勤记录
+        /// </summary>
+        /// <param name="workTeamId">班组ID</param>
+        /// <param name="attendaceDate">考勤日期</param>
+        /// <param name="data">考勤记录</param>
+        /// <returns></returns>
+        public bool SaveAttendance(string workTeamId, DateTime attendaceDate, List<LaborDailyAttendanceInfo> data)
+        {
+            bool result = false;
 
-        //    ILaborDailyAttendanceService service = CreateSubClient();
-        //    ICommunicationObject comm = service as ICommunicationObject;
-        //    comm.Using(client =>
-        //    {
-        //        result = service.FindByName(name);
-        //    });
+            ILaborDailyAttendanceService service = CreateSubClient();
+            ICommunicationObject comm = service as ICommunicationObject;
+            comm.Using(client =>
+            {
+                result = service.SaveAttendance(workTeamId, attendaceDate, data);
+            });
 
-        //    return result;
-        //}
-
-
-        ///// <summary>
-        ///// 根据名称查找对象Asyn(自定义接口使用范例)
-        ///// </summary>
-        //public Task<List<LaborDailyAttendanceInfo>> FindByNameAsyn(string name)
-        //{
-        //    ILaborDailyAttendanceService service = CreateSubClient();       
-        //    return service.FindByNameAsyn(name);  
-        //}
+            return result;
+        }
+        #endregion //Method
     }
 }

@@ -20,31 +20,29 @@ namespace Hades.HR.WCFLibrary
 	/// </summary>
     public class LaborDailyAttendanceService : BaseLocalService<LaborDailyAttendanceInfo>, ILaborDailyAttendanceService
     {
+        #region Field
         private LaborDailyAttendance bll = null;
+        #endregion //Field
 
+        #region Constructor
         public LaborDailyAttendanceService() : base(BLLFactory<LaborDailyAttendance>.Instance)
         {
             bll = baseBLL as LaborDailyAttendance;
         }
+        #endregion //Constructor
 
-        ///// <summary>
-        ///// 根据名称查找对象(自定义接口使用范例)
-        ///// </summary>
-        //public List<LaborDailyAttendanceInfo> FindByName(string name)
-        //{
-        //    return bll.FindByName(name);
-        //}
-
-        ///// <summary>
-        ///// 根据名称查找对象(自定义接口使用范例)
-        ///// </summary>
-        //public async Task<List<LaborDailyAttendanceInfo>> FindByNameAsyn(string name)
-        //{
-        //   return await Task.Factory.StartNew(() =>
-        //   {
-        //       return bll.FindByName(name);
-	//   }
-        //}
-
+        #region Method
+        /// <summary>
+        /// 保存员工日考勤记录
+        /// </summary>
+        /// <param name="workTeamId">班组ID</param>
+        /// <param name="attendaceDate">考勤日期</param>
+        /// <param name="data">考勤记录</param>
+        /// <returns></returns>
+        public bool SaveAttendance(string workTeamId, DateTime attendaceDate, List<LaborDailyAttendanceInfo> data)
+        {
+            return bll.SaveAttendance(workTeamId, attendaceDate, data);
+        }
+        #endregion //Method
     }
 }

@@ -27,5 +27,19 @@ namespace Hades.HR.WinformCaller
             bll = baseBLL as LaborDailyAttendance;
         }
         #endregion //Constructor
+
+        #region Method
+        /// <summary>
+        /// 保存员工日考勤记录
+        /// </summary>
+        /// <param name="workTeamId">班组ID</param>
+        /// <param name="attendaceDate">考勤日期</param>
+        /// <param name="data">考勤记录</param>
+        /// <returns></returns>
+        public bool SaveAttendance(string workTeamId, DateTime attendaceDate, List<LaborDailyAttendanceInfo> data)
+        {
+            return bll.SaveAttendance(workTeamId, attendaceDate, data);
+        }
+        #endregion //Method
     }
 }
