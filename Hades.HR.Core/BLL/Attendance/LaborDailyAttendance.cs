@@ -24,6 +24,14 @@ namespace Hades.HR.BLL
         #endregion //Constructor
 
         #region Method
+        /// <summary>
+        /// 保存员工考勤记录
+        /// </summary>
+        /// <param name="workTeamId">班组ID</param>
+        /// <param name="attendaceDate">考勤日期</param>
+        /// <param name="data">考勤记录</param>
+        /// <param name="trans"></param>
+        /// <returns></returns>
         public bool SaveAttendance(string workTeamId, DateTime attendaceDate, List<LaborDailyAttendanceInfo> data, DbTransaction trans = null)
         {
             var dal = this.baseDal as ILaborDailyAttendance;
@@ -37,7 +45,7 @@ namespace Hades.HR.BLL
             try
             {
                 // 删除已有工人日考勤记录
-                dal.DeleteByCondition(string.Format("WorkTeamId = '{0}' AND AttendanceDate = '{1}", workTeamId, attendaceDate), trans);
+                dal.DeleteByCondition(string.Format("WorkTeamId = '{0}' AND AttendanceDate = '{1}'", workTeamId, attendaceDate), trans);
 
                 foreach(var item in data)
                 {

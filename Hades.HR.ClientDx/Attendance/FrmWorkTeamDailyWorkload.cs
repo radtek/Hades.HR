@@ -16,6 +16,7 @@ using Hades.Framework.ControlUtil;
 using Hades.Framework.ControlUtil.Facade;
 using Hades.HR.Facade;
 using Hades.HR.Entity;
+using Hades.HR.Util;
 
 namespace Hades.HR.UI
 {
@@ -52,6 +53,8 @@ namespace Hades.HR.UI
             this.wgvWorkload.AppendedMenu = this.contextMenuStrip1;
 
             this.wgvLabor.gridView1.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(wgvLabor_CustomColumnDisplayText);
+            this.wgvAttendance.gridView1.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(wgvAttendance_CustomColumnDisplayText);
+
             //         this.winGridViewPager1.OnPageChanged += new EventHandler(winGridViewPager1_OnPageChanged);
             //         this.winGridViewPager1.OnStartExport += new EventHandler(winGridViewPager1_OnStartExport);
             //         this.winGridViewPager1.OnEditSelected += new EventHandler(winGridViewPager1_OnEditSelected);
@@ -151,6 +154,28 @@ namespace Hades.HR.UI
 
             this.wgvLabor.DataSource = data;
         }
+
+        /// <summary>
+        /// 载入员工考勤记录
+        /// </summary>
+        private void LoadLaborAttendance()
+        {
+            if (this.dpAttendance.EditValue == null)
+                return;
+            DateTime attendanceDate = this.dpAttendance.DateTime;
+
+            string teamId = this.wtTree.GetSelectedTeamId();
+            if (string.IsNullOrEmpty(teamId))
+                return;
+
+
+            this.wgvAttendance.DisplayColumns = "WorkTeamId,AttendanceDate,StaffId,AbsentType,WorkHours,AbsentHours,IsWeekend,IsHoliday,Remark";
+            this.wgvAttendance.ColumnNameAlias = CallerFactory<ILaborDailyAttendanceService>.Instance.GetColumnNameAlias();
+
+            var data = CallerFactory<ILaborDailyAttendanceService>.Instance.Find(string.Format("AttendanceDate='{0}' AND WorkTeamId='{1}'", attendanceDate, teamId));
+
+            this.wgvAttendance.DataSource = data;
+        }
         #endregion //Function
 
         #region Method
@@ -162,8 +187,6 @@ namespace Hades.HR.UI
             this.workTeamList = CallerFactory<IWorkTeamService>.Instance.Find2("", "");
             this.staffList = CallerFactory<IStaffService>.Instance.Find("StaffType = 2");
             this.wtTree.Init();
-
-            BindData();
         }
         #endregion //Method
 
@@ -177,6 +200,7 @@ namespace Hades.HR.UI
         {
             LoadWorkTeamWorkload();
             LoadLaborWorkload();
+            LoadLaborAttendance();
         }
 
         /// <summary>
@@ -188,6 +212,7 @@ namespace Hades.HR.UI
         {
             LoadWorkTeamWorkload();
             LoadLaborWorkload();
+            LoadLaborAttendance();
         }
 
         /// <summary>
@@ -435,6 +460,64 @@ namespace Hades.HR.UI
                         var st2 = CallerFactory<IStaffService>.Instance.FindByID(e.Value.ToString());
                         e.DisplayText = st2.Name;
                     }
+                }
+            }
+        }
+
+        public void wgvAttendance_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+        {
+            string columnName = e.Column.FieldName;
+            if (e.Column.ColumnType == typeof(DateTime))
+            {
+                if (e.Value != null)
+                {
+                    if (e.Value == DBNull.Value || Convert.ToDateTime(e.Value) <= Convert.ToDateTime("1900-1-1"))
+                    {
+                        e.DisplayText = "";
+                    }
+                    else
+                    {
+                        e.DisplayText = Convert.ToDateTime(e.Value).ToString("yyyy-MM-dd");//yyyy-MM-dd
+                    }
+                }
+            }
+            else if (columnName == "WorkTeamId")
+            {
+                if (e.Value != null && !string.IsNullOrEmpty(e.Value.ToString()))
+                {
+                    var wt = this.workTeamList.SingleOrDefault(r => r.Id == e.Value.ToString());
+                    if (wt != null)
+                    {
+                        e.DisplayText = wt.Name;
+                    }
+                    else
+                    {
+                        var wt2 = CallerFactory<IWorkTeamService>.Instance.FindByID(e.Value.ToString());
+                        e.DisplayText = wt2.Name;
+                    }
+                }
+            }
+            else if (columnName == "StaffId")
+            {
+                if (e.Value != null && !string.IsNullOrEmpty(e.Value.ToString()))
+                {
+                    var st = this.staffList.SingleOrDefault(r => r.Id == e.Value.ToString());
+                    if (st != null)
+                    {
+                        e.DisplayText = st.Name;
+                    }
+                    else
+                    {
+                        var st2 = CallerFactory<IStaffService>.Instance.FindByID(e.Value.ToString());
+                        e.DisplayText = st2.Name;
+                    }
+                }
+            }
+            else if (columnName == "AbsentType")
+            {
+                if (e.Value != null)
+                {
+                    e.DisplayText = ((AbsentType)e.Value).DisplayName();
                 }
             }
         }

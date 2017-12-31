@@ -91,15 +91,15 @@ namespace Hades.HR.DALSQL
             #region 添加别名解析
             //dict.Add("ID", "编号");
             dict.Add("Id", "");
-            dict.Add("WorkTeamId", "");
-            dict.Add("AttendanceDate", "");
-            dict.Add("StaffId", "");
-            dict.Add("AbsentType", "");
-            dict.Add("WorkHours", "");
-            dict.Add("AbsentHours", "");
-            dict.Add("IsWeekend", "");
-            dict.Add("IsHoliday", "");
-            dict.Add("Remark", "");
+            dict.Add("WorkTeamId", "班组名称");
+            dict.Add("AttendanceDate", "考勤日期");
+            dict.Add("StaffId", "职员姓名");
+            dict.Add("AbsentType", "缺勤类型");
+            dict.Add("WorkHours", "工作工时");
+            dict.Add("AbsentHours", "请假工时");
+            dict.Add("IsWeekend", "是否周末");
+            dict.Add("IsHoliday", "是否节假日");
+            dict.Add("Remark", "备注");
             #endregion
 
             return dict;
