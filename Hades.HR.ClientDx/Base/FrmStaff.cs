@@ -209,7 +209,7 @@ namespace Hades.HR.UI
 
             if (!string.IsNullOrEmpty(ID))
             {
-                FrmEditStaffSalaryBase dlg = new FrmEditStaffSalaryBase();
+                FrmEditSalaryBase dlg = new FrmEditSalaryBase();
                 dlg.ID = ID;
                 dlg.IDList = IDList;
                 dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);

@@ -41,11 +41,13 @@ namespace Hades.HR.ServiceCaller
         public const string LaborProductionWorkloadService = "WSHttpBinding_ILaborProductionWorkloadService";
         public const string LaborElectricWorkloadService = "WSHttpBinding_ILaborElectricWorkloadService";
         public const string LaborRepairWorkloadService = "WSHttpBinding_ILaborRepairWorkloadService";
+
+        public const string LaborMonthAttendanceService = "WSHttpBinding_ILaborMonthAttendanceService";
         #endregion //Attendance
 
-        #region Salary      
-        public const string BonusDefineService = "WSHttpBinding_IBonusDefineService";
-        public const string StaffSalaryBaseService = "WSHttpBinding_IStaffSalaryBaseService";
+        #region Salary
+        public const string SalaryBaseService = "WSHttpBinding_ISalaryBaseService";
+              
         public const string LaborSalaryRecordService = "WSHttpBinding_ILaborSalaryRecordService";
         #endregion //Salary
 
@@ -59,7 +61,7 @@ namespace Hades.HR.ServiceCaller
         #endregion //Wp
 
         #region View
-
+        
         #endregion //View
     }
 }

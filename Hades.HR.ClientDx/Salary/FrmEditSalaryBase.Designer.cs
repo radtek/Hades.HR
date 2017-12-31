@@ -1,6 +1,6 @@
 namespace Hades.HR.UI
 {
-    partial class FrmEditStaffSalaryBase
+    partial class FrmEditSalaryBase
     {
         /// <summary>
         /// Required designer variable.

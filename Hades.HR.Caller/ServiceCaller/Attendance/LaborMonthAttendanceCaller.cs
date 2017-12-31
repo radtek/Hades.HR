@@ -5,6 +5,7 @@ using System.Text;
 using System.ServiceModel;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+using System.Threading.Tasks;
 
 using Hades.Framework.Commons;
 using Hades.Framework.ControlUtil;
@@ -18,19 +19,19 @@ namespace Hades.HR.ServiceCaller
 	/// <summary>
 	/// 基于WCF服务的Facade接口实现类
 	/// </summary>
-    public class StaffSalaryBaseCaller : BaseWCFService<StaffSalaryBaseInfo>, IStaffSalaryBaseService
+    public class LaborMonthAttendanceCaller : BaseWCFService<LaborMonthAttendanceInfo>, ILaborMonthAttendanceService
     {
-        public StaffSalaryBaseCaller()  : base()
+        public LaborMonthAttendanceCaller()  : base()
         {	
             this.configurationPath = EndPointConfig.WcfConfig; //WCF配置文件
-            this.endpointConfigurationName = EndPointConfig.StaffSalaryBaseService;
+            this.endpointConfigurationName = EndPointConfig.LaborMonthAttendanceService;
         }
 
         /// <summary>
         /// 子类构造一个IChannel对象转换为基类接口，方便给基类进行调用通用的API
         /// </summary>
         /// <returns></returns>
-        protected override IBaseService<StaffSalaryBaseInfo> CreateClient()
+        protected override IBaseService<LaborMonthAttendanceInfo> CreateClient()
         {
             return CreateSubClient();
         }
@@ -39,20 +40,20 @@ namespace Hades.HR.ServiceCaller
         /// 创建一个强类型接口对象，供本地调用
         /// </summary>
         /// <returns></returns>
-        private IStaffSalaryBaseService CreateSubClient()
+        private ILaborMonthAttendanceService CreateSubClient()
         {
-            CustomClientChannel<IStaffSalaryBaseService> factory = new CustomClientChannel<IStaffSalaryBaseService>(endpointConfigurationName, configurationPath);
+            CustomClientChannel<ILaborMonthAttendanceService> factory = new CustomClientChannel<ILaborMonthAttendanceService>(endpointConfigurationName, configurationPath);
             return factory.CreateChannel();
         }
 
         ///// <summary>
         ///// 根据名称查找对象(自定义接口使用范例)
         ///// </summary>
-        //public List<StaffSalaryDefineInfo> FindByName(string name)
+        //public List<LaborMonthAttendanceInfo> FindByName(string name)
         //{
-        //    List<StaffSalaryDefineInfo> result = new List<StaffSalaryDefineInfo>();
+        //    List<LaborMonthAttendanceInfo> result = new List<LaborMonthAttendanceInfo>();
 
-        //    IStaffSalaryDefineService service = CreateSubClient();
+        //    ILaborMonthAttendanceService service = CreateSubClient();
         //    ICommunicationObject comm = service as ICommunicationObject;
         //    comm.Using(client =>
         //    {
@@ -62,5 +63,14 @@ namespace Hades.HR.ServiceCaller
         //    return result;
         //}
 
+
+        ///// <summary>
+        ///// 根据名称查找对象Asyn(自定义接口使用范例)
+        ///// </summary>
+        //public Task<List<LaborMonthAttendanceInfo>> FindByNameAsyn(string name)
+        //{
+        //    ILaborMonthAttendanceService service = CreateSubClient();       
+        //    return service.FindByNameAsyn(name);  
+        //}
     }
 }

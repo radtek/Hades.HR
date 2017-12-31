@@ -186,6 +186,9 @@
     <Compile Include="..\Hades.HR.Caller\Facade\Attendance\ILaborElectricWorkloadService.cs">
       <Link>Facade\Attendance\ILaborElectricWorkloadService.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Caller\Facade\Attendance\ILaborMonthAttendanceService.cs">
+      <Link>Facade\Attendance\ILaborMonthAttendanceService.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Caller\Facade\Attendance\ILaborProductionWorkloadService.cs">
       <Link>Facade\Attendance\ILaborProductionWorkloadService.cs</Link>
     </Compile>
@@ -222,14 +225,11 @@
     <Compile Include="..\Hades.HR.Caller\Facade\Base\IWorkTeamService.cs">
       <Link>Facade\Base\IWorkTeamService.cs</Link>
     </Compile>
-    <Compile Include="..\Hades.HR.Caller\Facade\Salary\IBonusDefineService.cs">
-      <Link>Facade\Salary\IBonusDefineService.cs</Link>
-    </Compile>
     <Compile Include="..\Hades.HR.Caller\Facade\Salary\ILaborSalaryRecordService.cs">
       <Link>Facade\Salary\ILaborSalaryRecordService.cs</Link>
     </Compile>
-    <Compile Include="..\Hades.HR.Caller\Facade\Salary\IStaffSalaryBaseService.cs">
-      <Link>Facade\Salary\IStaffSalaryBaseService.cs</Link>
+    <Compile Include="..\Hades.HR.Caller\Facade\Salary\ISalaryBaseService.cs">
+      <Link>Facade\Salary\ISalaryBaseService.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Caller\Facade\Wp\ICompletionListService.cs">
       <Link>Facade\Wp\ICompletionListService.cs</Link>
@@ -263,6 +263,9 @@
     </Compile>
     <Compile Include="..\Hades.HR.Caller\ServiceCaller\Attendance\LaborElectricWorkloadCaller.cs">
       <Link>Caller\ServiceCaller\Attendance\LaborElectricWorkloadCaller.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Caller\ServiceCaller\Attendance\LaborMonthAttendanceCaller.cs">
+      <Link>Caller\ServiceCaller\Attendance\LaborMonthAttendanceCaller.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Caller\ServiceCaller\Attendance\LaborProductionWorkloadCaller.cs">
       <Link>Caller\ServiceCaller\Attendance\LaborProductionWorkloadCaller.cs</Link>
@@ -303,14 +306,11 @@
     <Compile Include="..\Hades.HR.Caller\ServiceCaller\EndPointConfig.cs">
       <Link>Caller\ServiceCaller\EndPointConfig.cs</Link>
     </Compile>
-    <Compile Include="..\Hades.HR.Caller\ServiceCaller\Salary\BonusDefineCaller.cs">
-      <Link>Caller\ServiceCaller\Salary\BonusDefineCaller.cs</Link>
-    </Compile>
     <Compile Include="..\Hades.HR.Caller\ServiceCaller\Salary\LaborSalaryRecordCaller.cs">
       <Link>Caller\ServiceCaller\Salary\LaborSalaryRecordCaller.cs</Link>
     </Compile>
-    <Compile Include="..\Hades.HR.Caller\ServiceCaller\Salary\StaffSalaryBaseCaller.cs">
-      <Link>Caller\ServiceCaller\Salary\StaffSalaryBaseCaller.cs</Link>
+    <Compile Include="..\Hades.HR.Caller\ServiceCaller\Salary\SalaryBaseCaller.cs">
+      <Link>Caller\ServiceCaller\Salary\SalaryBaseCaller.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Caller\ServiceCaller\Wp\CompletionListCaller.cs">
       <Link>Caller\ServiceCaller\Wp\CompletionListCaller.cs</Link>
@@ -344,6 +344,9 @@
     </Compile>
     <Compile Include="..\Hades.HR.Caller\WinformCaller\Attendance\LaborElectricWorkloadCaller.cs">
       <Link>Caller\WinformCaller\Attendance\LaborElectricWorkloadCaller.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Caller\WinformCaller\Attendance\LaborMonthAttendanceCaller.cs">
+      <Link>Caller\WinformCaller\Attendance\LaborMonthAttendanceCaller.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Caller\WinformCaller\Attendance\LaborProductionWorkloadCaller.cs">
       <Link>Caller\WinformCaller\Attendance\LaborProductionWorkloadCaller.cs</Link>
@@ -381,14 +384,11 @@
     <Compile Include="..\Hades.HR.Caller\WinformCaller\Base\WorkTeamCaller.cs">
       <Link>Caller\WinformCaller\Base\WorkTeamCaller.cs</Link>
     </Compile>
-    <Compile Include="..\Hades.HR.Caller\WinformCaller\Salary\BonusDefineCaller.cs">
-      <Link>Caller\WinformCaller\Salary\BonusDefineCaller.cs</Link>
-    </Compile>
     <Compile Include="..\Hades.HR.Caller\WinformCaller\Salary\LaborSalaryRecordCaller.cs">
       <Link>Caller\WinformCaller\Salary\LaborSalaryRecordCaller.cs</Link>
     </Compile>
-    <Compile Include="..\Hades.HR.Caller\WinformCaller\Salary\StaffSalaryBaseCaller.cs">
-      <Link>Caller\WinformCaller\Salary\StaffSalaryBaseCaller.cs</Link>
+    <Compile Include="..\Hades.HR.Caller\WinformCaller\Salary\SalaryBaseCaller.cs">
+      <Link>Caller\WinformCaller\Salary\SalaryBaseCaller.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Caller\WinformCaller\Wp\CompletionListCaller.cs">
       <Link>Caller\WinformCaller\Wp\CompletionListCaller.cs</Link>
@@ -422,6 +422,9 @@
     </Compile>
     <Compile Include="..\Hades.HR.Core\BLL\Attendance\LaborElectricWorkload.cs">
       <Link>Biz\BLL\Attendance\LaborElectricWorkload.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\BLL\Attendance\LaborMonthAttendance.cs">
+      <Link>Biz\BLL\Attendance\LaborMonthAttendance.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\BLL\Attendance\LaborProductionWorkload.cs">
       <Link>Biz\BLL\Attendance\LaborProductionWorkload.cs</Link>
@@ -459,14 +462,11 @@
     <Compile Include="..\Hades.HR.Core\BLL\Base\WorkTeam.cs">
       <Link>Biz\BLL\Base\WorkTeam.cs</Link>
     </Compile>
-    <Compile Include="..\Hades.HR.Core\BLL\Salary\BonusDefine.cs">
-      <Link>Biz\BLL\Salary\BonusDefine.cs</Link>
-    </Compile>
     <Compile Include="..\Hades.HR.Core\BLL\Salary\LaborSalaryRecord.cs">
       <Link>Biz\BLL\Salary\LaborSalaryRecord.cs</Link>
     </Compile>
-    <Compile Include="..\Hades.HR.Core\BLL\Salary\StaffSalaryBase.cs">
-      <Link>Biz\BLL\Salary\StaffSalaryBase.cs</Link>
+    <Compile Include="..\Hades.HR.Core\BLL\Salary\SalaryBase.cs">
+      <Link>Biz\BLL\Salary\SalaryBase.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\BLL\Wp\CompletionList.cs">
       <Link>Biz\BLL\Wp\CompletionList.cs</Link>
@@ -500,6 +500,9 @@
     </Compile>
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Attendance\LaborElectricWorkload.cs">
       <Link>Biz\DAL\DALSQL\Attendance\LaborElectricWorkload.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Attendance\LaborMonthAttendance.cs">
+      <Link>Biz\DAL\DALSQL\Attendance\LaborMonthAttendance.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Attendance\LaborProductionWorkload.cs">
       <Link>Biz\DAL\DALSQL\Attendance\LaborProductionWorkload.cs</Link>
@@ -537,14 +540,11 @@
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Base\WorkTeam.cs">
       <Link>Biz\DAL\DALSQL\Base\WorkTeam.cs</Link>
     </Compile>
-    <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Salary\BonusDefine.cs">
-      <Link>Biz\DAL\DALSQL\Salary\BonusDefine.cs</Link>
-    </Compile>
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Salary\LaborSalaryRecord.cs">
       <Link>Biz\DAL\DALSQL\Salary\LaborSalaryRecord.cs</Link>
     </Compile>
-    <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Salary\StaffSalaryBase.cs">
-      <Link>Biz\DAL\DALSQL\Salary\StaffSalaryBase.cs</Link>
+    <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Salary\SalaryBase.cs">
+      <Link>Biz\DAL\DALSQL\Salary\SalaryBase.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Wp\CompletionList.cs">
       <Link>Biz\DAL\DALSQL\Wp\CompletionList.cs</Link>
@@ -578,6 +578,9 @@
     </Compile>
     <Compile Include="..\Hades.HR.Core\Entity\Attendance\LaborElectricWorkloadInfo.cs">
       <Link>Biz\Entity\Attendance\LaborElectricWorkloadInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\Entity\Attendance\LaborMonthAttendanceInfo.cs">
+      <Link>Biz\Entity\Attendance\LaborMonthAttendanceInfo.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\Entity\Attendance\LaborProductionWorkloadInfo.cs">
       <Link>Biz\Entity\Attendance\LaborProductionWorkloadInfo.cs</Link>
@@ -615,14 +618,11 @@
     <Compile Include="..\Hades.HR.Core\Entity\Base\WorkTeamInfo.cs">
       <Link>Biz\Entity\Base\WorkTeamInfo.cs</Link>
     </Compile>
-    <Compile Include="..\Hades.HR.Core\Entity\Salary\BonusDefineInfo.cs">
-      <Link>Biz\Entity\Salary\BonusDefineInfo.cs</Link>
-    </Compile>
     <Compile Include="..\Hades.HR.Core\Entity\Salary\LaborSalaryRecordInfo.cs">
       <Link>Biz\Entity\Salary\LaborSalaryRecordInfo.cs</Link>
     </Compile>
-    <Compile Include="..\Hades.HR.Core\Entity\Salary\StaffSalaryBaseInfo.cs">
-      <Link>Biz\Entity\Salary\StaffSalaryBaseInfo.cs</Link>
+    <Compile Include="..\Hades.HR.Core\Entity\Salary\SalaryBaseInfo.cs">
+      <Link>Biz\Entity\Salary\SalaryBaseInfo.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\Entity\Wp\CompletionListInfo.cs">
       <Link>Biz\Entity\Wp\CompletionListInfo.cs</Link>
@@ -656,6 +656,9 @@
     </Compile>
     <Compile Include="..\Hades.HR.Core\IDAL\Attendance\ILaborElectricWorkload.cs">
       <Link>Biz\IDAL\Attendance\ILaborElectricWorkload.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\IDAL\Attendance\ILaborMonthAttendance.cs">
+      <Link>Biz\IDAL\Attendance\ILaborMonthAttendance.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\IDAL\Attendance\ILaborProductionWorkload.cs">
       <Link>Biz\IDAL\Attendance\ILaborProductionWorkload.cs</Link>
@@ -693,14 +696,11 @@
     <Compile Include="..\Hades.HR.Core\IDAL\Base\IWorkTeam.cs">
       <Link>Biz\IDAL\Base\IWorkTeam.cs</Link>
     </Compile>
-    <Compile Include="..\Hades.HR.Core\IDAL\Salary\IBonusDefine.cs">
-      <Link>Biz\IDAL\Salary\IBonusDefine.cs</Link>
-    </Compile>
     <Compile Include="..\Hades.HR.Core\IDAL\Salary\ILaborSalaryRecord.cs">
       <Link>Biz\IDAL\Salary\ILaborSalaryRecord.cs</Link>
     </Compile>
-    <Compile Include="..\Hades.HR.Core\IDAL\Salary\IStaffSalaryBase.cs">
-      <Link>Biz\IDAL\Salary\IStaffSalaryBase.cs</Link>
+    <Compile Include="..\Hades.HR.Core\IDAL\Salary\ISalaryBase.cs">
+      <Link>Biz\IDAL\Salary\ISalaryBase.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\IDAL\Wp\ICompletionList.cs">
       <Link>Biz\IDAL\Wp\ICompletionList.cs</Link>
@@ -903,29 +903,17 @@
     <Compile Include="Attendance\FrmEditLaborDailyAttendance.Designer.cs">
       <DependentUpon>FrmEditLaborDailyAttendance.cs</DependentUpon>
     </Compile>
-    <Compile Include="Salary\FrmBonusDefine.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Salary\FrmBonusDefine.Designer.cs">
-      <DependentUpon>FrmBonusDefine.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Salary\FrmEditBonusDefine.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Salary\FrmEditBonusDefine.Designer.cs">
-      <DependentUpon>FrmEditBonusDefine.cs</DependentUpon>
-    </Compile>
     <Compile Include="Salary\FrmEditLaborSalaryRecord.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Salary\FrmEditLaborSalaryRecord.Designer.cs">
       <DependentUpon>FrmEditLaborSalaryRecord.cs</DependentUpon>
     </Compile>
-    <Compile Include="Salary\FrmEditStaffSalaryBase.cs">
+    <Compile Include="Salary\FrmEditSalaryBase.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Salary\FrmEditStaffSalaryBase.Designer.cs">
-      <DependentUpon>FrmEditStaffSalaryBase.cs</DependentUpon>
+    <Compile Include="Salary\FrmEditSalaryBase.Designer.cs">
+      <DependentUpon>FrmEditSalaryBase.cs</DependentUpon>
     </Compile>
     <Compile Include="Salary\FrmLaborSalary.cs">
       <SubType>Form</SubType>
@@ -933,11 +921,11 @@
     <Compile Include="Salary\FrmLaborSalary.Designer.cs">
       <DependentUpon>FrmLaborSalary.cs</DependentUpon>
     </Compile>
-    <Compile Include="Salary\FrmStaffSalaryBase.cs">
+    <Compile Include="Salary\FrmSalaryBase.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Salary\FrmStaffSalaryBase.Designer.cs">
-      <DependentUpon>FrmStaffSalaryBase.cs</DependentUpon>
+    <Compile Include="Salary\FrmSalaryBase.Designer.cs">
+      <DependentUpon>FrmSalaryBase.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\FrmStaffOverview.cs">
       <SubType>Form</SubType>
@@ -1105,14 +1093,11 @@
     <EmbeddedResource Include="Salary\FrmEditLaborSalaryRecord.resx">
       <DependentUpon>FrmEditLaborSalaryRecord.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Salary\FrmEditStaffSalaryBase.resx">
-      <DependentUpon>FrmEditStaffSalaryBase.cs</DependentUpon>
+    <EmbeddedResource Include="Salary\FrmEditSalaryBase.resx">
+      <DependentUpon>FrmEditSalaryBase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Salary\FrmLaborSalary.resx">
       <DependentUpon>FrmLaborSalary.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Salary\FrmStaffSalaryBase.resx">
-      <DependentUpon>FrmStaffSalaryBase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmStaffOverview.resx">
       <DependentUpon>FrmStaffOverview.cs</DependentUpon>

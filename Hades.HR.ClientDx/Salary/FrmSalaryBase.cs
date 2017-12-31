@@ -12,18 +12,17 @@ using Hades.Framework.BaseUI;
 using Hades.Framework.Commons;
 using Hades.Framework.ControlUtil;
 
-using Hades.Framework.ControlUtil.Facade;
-using Hades.HR.Facade;
+using Hades.HR.BLL;
 using Hades.HR.Entity;
 
 namespace Hades.HR.UI
 {
     /// <summary>
-    /// StaffSalaryDefine
+    /// SalaryBase
     /// </summary>	
-    public partial class FrmStaffSalaryBase : BaseDock
+    public partial class FrmSalaryBase : BaseDock
     {
-        public FrmStaffSalaryBase()
+        public FrmSalaryBase()
         {
             InitializeComponent();
 
@@ -33,6 +32,7 @@ namespace Hades.HR.UI
             this.winGridViewPager1.OnStartExport += new EventHandler(winGridViewPager1_OnStartExport);
             this.winGridViewPager1.OnEditSelected += new EventHandler(winGridViewPager1_OnEditSelected);
             this.winGridViewPager1.OnAddNew += new EventHandler(winGridViewPager1_OnAddNew);
+            this.winGridViewPager1.OnDeleteSelected += new EventHandler(winGridViewPager1_OnDeleteSelected);
             this.winGridViewPager1.OnRefresh += new EventHandler(winGridViewPager1_OnRefresh);
             this.winGridViewPager1.AppendedMenu = this.contextMenuStrip1;
             this.winGridViewPager1.ShowLineNumber = true;
@@ -140,7 +140,26 @@ namespace Hades.HR.UI
         {
             BindData();
         }
-    
+        
+        /// <summary>
+        /// 分页控件删除操作
+        /// </summary>
+        private void winGridViewPager1_OnDeleteSelected(object sender, EventArgs e)
+        {
+            if (MessageDxUtil.ShowYesNoAndTips("您确定删除选定的记录么？") == DialogResult.No)
+            {
+                return;
+            }
+
+            int[] rowSelected = this.winGridViewPager1.GridView1.GetSelectedRows();
+            foreach (int iRow in rowSelected)
+            {
+                string ID = this.winGridViewPager1.GridView1.GetRowCellDisplayText(iRow, "ID");
+                BLLFactory<SalaryBase>.Instance.Delete(ID);
+            }
+             
+            BindData();
+        }
         
         /// <summary>
         /// 分页控件编辑项操作
@@ -157,7 +176,7 @@ namespace Hades.HR.UI
 
             if (!string.IsNullOrEmpty(ID))
             {
-                FrmEditStaffSalaryBase dlg = new FrmEditStaffSalaryBase();
+                FrmEditSalaryBase dlg = new FrmEditSalaryBase();
                 dlg.ID = ID;
                 dlg.IDList = IDList;
                 dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
@@ -189,7 +208,7 @@ namespace Hades.HR.UI
         private void winGridViewPager1_OnStartExport(object sender, EventArgs e)
         {
             string where = GetConditionSql();
-            this.winGridViewPager1.AllToExport = CallerFactory<IStaffSalaryBaseService>.Instance.FindToDataTable(where);
+            this.winGridViewPager1.AllToExport = BLLFactory<SalaryBase>.Instance.FindToDataTable(where);
          }
 
         /// <summary>
@@ -215,7 +234,7 @@ namespace Hades.HR.UI
             if (condition == null)
             {
                 condition = new SearchCondition();
-                condition.AddCondition("CardNumber", this.txtCardNumber.Text.Trim(), SqlOperator.Like);
+                condition.AddCondition("StaffId", this.txtStaffId.Text.Trim(), SqlOperator.Like);
             }
             string where = condition.BuildConditionSql().Replace("Where", "");
             return where;
@@ -227,19 +246,20 @@ namespace Hades.HR.UI
         private void BindData()
         {
         	//entity
-            this.winGridViewPager1.DisplayColumns = "Id,FinanceDepartment,CardNumber,SalaryLevel,BaseBonus,DepartmentBonus,ReserveFund,Insurance,Remark,Editor,EditorId,EditTime";
-            this.winGridViewPager1.ColumnNameAlias = CallerFactory<IStaffSalaryBaseService>.Instance.GetColumnNameAlias();//字段列显示名称转义
+            this.winGridViewPager1.DisplayColumns = "StaffId,FinanceDepartmentId,CardNumber,StaffLevelId,BaseBonus,DepartmentBonus,ReserveFund,Insurance,HighTemp,Remark,Editor,EditorId,EditTime";
+            this.winGridViewPager1.ColumnNameAlias = BLLFactory<SalaryBase>.Instance.GetColumnNameAlias();//字段列显示名称转义
 
             #region 添加别名解析
 
-            //this.winGridViewPager1.AddColumnAlias("Id", "Id");
-            //this.winGridViewPager1.AddColumnAlias("FinanceDepartment", "FinanceDepartment");
+            //this.winGridViewPager1.AddColumnAlias("StaffId", "StaffId");
+            //this.winGridViewPager1.AddColumnAlias("FinanceDepartmentId", "FinanceDepartmentId");
             //this.winGridViewPager1.AddColumnAlias("CardNumber", "CardNumber");
-            //this.winGridViewPager1.AddColumnAlias("SalaryLevel", "SalaryLevel");
+            //this.winGridViewPager1.AddColumnAlias("StaffLevelId", "StaffLevelId");
             //this.winGridViewPager1.AddColumnAlias("BaseBonus", "BaseBonus");
             //this.winGridViewPager1.AddColumnAlias("DepartmentBonus", "DepartmentBonus");
             //this.winGridViewPager1.AddColumnAlias("ReserveFund", "ReserveFund");
             //this.winGridViewPager1.AddColumnAlias("Insurance", "Insurance");
+            //this.winGridViewPager1.AddColumnAlias("HighTemp", "HighTemp");
             //this.winGridViewPager1.AddColumnAlias("Remark", "Remark");
             //this.winGridViewPager1.AddColumnAlias("Editor", "Editor");
             //this.winGridViewPager1.AddColumnAlias("EditorId", "EditorId");
@@ -248,11 +268,9 @@ namespace Hades.HR.UI
             #endregion
 
             string where = GetConditionSql();
-            PagerInfo pagerInfo = this.winGridViewPager1.PagerInfo;
-               List<StaffSalaryBaseInfo> list = CallerFactory<IStaffSalaryBaseService>.Instance.FindWithPager(where, ref pagerInfo);
-            this.winGridViewPager1.PagerInfo.RecordCount = pagerInfo.RecordCount;
-            this.winGridViewPager1.DataSource = new Hades.Pager.WinControl.SortableBindingList<StaffSalaryBaseInfo>(list);
-               this.winGridViewPager1.PrintTitle = "StaffSalaryDefine报表";
+	            List<SalaryBaseInfo> list = BLLFactory<SalaryBase>.Instance.FindWithPager(where, this.winGridViewPager1.PagerInfo);
+            this.winGridViewPager1.DataSource = list;//new WHC.Pager.WinControl.SortableBindingList<SalaryBaseInfo>(list);
+                this.winGridViewPager1.PrintTitle = "SalaryBase报表";
          }
         
         /// <summary>
@@ -269,7 +287,7 @@ namespace Hades.HR.UI
         /// </summary>
         private void btnAddNew_Click(object sender, EventArgs e)
         {
-            FrmEditStaffSalaryBase dlg = new FrmEditStaffSalaryBase();
+            FrmEditSalaryBase dlg = new FrmEditSalaryBase();
             dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
             dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
             
@@ -290,9 +308,149 @@ namespace Hades.HR.UI
             }
         }        
 
-		 		 		 		 		 		 		 		 		  		  
-        private string moduleName = "StaffSalaryDefine";
- 
+		 		 		 		 		 		 		 		 		 		 		  		  
+        private string moduleName = "SalaryBase";
+        /// <summary>
+        /// 导入Excel的操作
+        /// </summary>          
+        private void btnImport_Click(object sender, EventArgs e)
+        {
+            string templateFile = string.Format("{0}-模板.xls", moduleName);
+            FrmImportExcelData dlg = new FrmImportExcelData();
+            dlg.SetTemplate(templateFile, System.IO.Path.Combine(Application.StartupPath, templateFile));
+            dlg.OnDataSave += new FrmImportExcelData.SaveDataHandler(ExcelData_OnDataSave);
+            dlg.OnRefreshData += new EventHandler(ExcelData_OnRefreshData);
+            dlg.ShowDialog();
+        }
 
+        void ExcelData_OnRefreshData(object sender, EventArgs e)
+        {
+            BindData();
+        }
+
+        /// <summary>
+        /// 如果字段存在，则获取对应的值，否则返回默认空
+        /// </summary>
+        /// <param name="row">DataRow对象</param>
+        /// <param name="columnName">字段列名</param>
+        /// <returns></returns>
+        private string GetRowData(DataRow row, string columnName)
+        {
+            string result = "";
+            if (row.Table.Columns.Contains(columnName))
+            {
+                result = row[columnName].ToString();
+            }
+            return result;
+        }
+        
+        bool ExcelData_OnDataSave(DataRow dr)
+        {
+            bool success = false;
+            bool converted = false;
+            DateTime dtDefault = Convert.ToDateTime("1900-01-01");
+            DateTime dt;
+            SalaryBaseInfo info = new SalaryBaseInfo();
+            info.Id = GetRowData(dr, "Id");
+              info.StaffId = GetRowData(dr, "StaffId");
+              info.FinanceDepartmentId = GetRowData(dr, "FinanceDepartmentId");
+              info.CardNumber = GetRowData(dr, "CardNumber");
+              info.StaffLevelId = GetRowData(dr, "StaffLevelId");
+              info.BaseBonus = GetRowData(dr, "BaseBonus").ToDecimal();
+              info.DepartmentBonus = GetRowData(dr, "DepartmentBonus").ToDecimal();
+              info.ReserveFund = GetRowData(dr, "ReserveFund").ToDecimal();
+              info.Insurance = GetRowData(dr, "Insurance").ToDecimal();
+              info.HighTemp = GetRowData(dr, "HighTemp").ToDecimal();
+              info.Remark = GetRowData(dr, "Remark");
+               info.EditorId = GetRowData(dr, "EditorId");
+   
+            success = BLLFactory<SalaryBase>.Instance.Insert(info);
+             return success;
+        }
+
+        /// <summary>
+        /// 导出Excel的操作
+        /// </summary>
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            string file = FileDialogHelper.SaveExcel(string.Format("{0}.xls", moduleName));
+            if (!string.IsNullOrEmpty(file))
+            {
+                string where = GetConditionSql();
+                List<SalaryBaseInfo> list = BLLFactory<SalaryBase>.Instance.Find(where);
+                 DataTable dtNew = DataTableHelper.CreateTable("序号|int,Id,StaffId,FinanceDepartmentId,CardNumber,StaffLevelId,BaseBonus,DepartmentBonus,ReserveFund,Insurance,HighTemp,Remark,EditorId");
+                DataRow dr;
+                int j = 1;
+                for (int i = 0; i < list.Count; i++)
+                {
+                    dr = dtNew.NewRow();
+                    dr["序号"] = j++;
+                    dr["Id"] = list[i].Id;
+                     dr["StaffId"] = list[i].StaffId;
+                     dr["FinanceDepartmentId"] = list[i].FinanceDepartmentId;
+                     dr["CardNumber"] = list[i].CardNumber;
+                     dr["StaffLevelId"] = list[i].StaffLevelId;
+                     dr["BaseBonus"] = list[i].BaseBonus;
+                     dr["DepartmentBonus"] = list[i].DepartmentBonus;
+                     dr["ReserveFund"] = list[i].ReserveFund;
+                     dr["Insurance"] = list[i].Insurance;
+                     dr["HighTemp"] = list[i].HighTemp;
+                     dr["Remark"] = list[i].Remark;
+                      dr["EditorId"] = list[i].EditorId;
+                      dtNew.Rows.Add(dr);
+                }
+
+                try
+                {
+                    string error = "";
+                    AsposeExcelTools.DataTableToExcel2(dtNew, file, out error);
+                    if (!string.IsNullOrEmpty(error))
+                    {
+                        MessageDxUtil.ShowError(string.Format("导出Excel出现错误：{0}", error));
+                    }
+                    else
+                    {
+                        if (MessageDxUtil.ShowYesNoAndTips("导出成功，是否打开文件？") == System.Windows.Forms.DialogResult.Yes)
+                        {
+                            System.Diagnostics.Process.Start(file);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    LogTextHelper.Error(ex);
+                    MessageDxUtil.ShowError(ex.Message);
+                }
+            }
+         }
+         
+        private FrmAdvanceSearch dlg;
+        private void btnAdvanceSearch_Click(object sender, EventArgs e)
+        {
+            if (dlg == null)
+            {
+                dlg = new FrmAdvanceSearch();
+                dlg.FieldTypeTable = BLLFactory<SalaryBase>.Instance.GetFieldTypeList();
+                dlg.ColumnNameAlias = BLLFactory<SalaryBase>.Instance.GetColumnNameAlias();                
+                 dlg.DisplayColumns = "Id,StaffId,FinanceDepartmentId,CardNumber,StaffLevelId,BaseBonus,DepartmentBonus,ReserveFund,Insurance,HighTemp,Remark,EditorId";
+
+                #region 下拉列表数据
+
+                //dlg.AddColumnListItem("UserType", Portal.gc.GetDictData("人员类型"));//字典列表
+                //dlg.AddColumnListItem("Sex", "男,女");//固定列表
+                //dlg.AddColumnListItem("Credit", BLLFactory<SalaryBase>.Instance.GetFieldList("Credit"));//动态列表
+
+                #endregion
+
+                dlg.ConditionChanged += new FrmAdvanceSearch.ConditionChangedEventHandler(dlg_ConditionChanged);
+            }
+            dlg.ShowDialog();
+        }
+
+        void dlg_ConditionChanged(SearchCondition condition)
+        {
+            advanceCondition = condition;
+            BindData();
+        }
     }
 }

@@ -11,7 +11,7 @@ using Hades.HR.Entity;
 namespace Hades.HR.Facade
 {
     [ServiceContract]
-    public interface IStaffSalaryBaseService : IBaseService<StaffSalaryBaseInfo>
+    public interface ISalaryBaseService : IBaseService<SalaryBaseInfo>
     {
 
     }
