@@ -25,7 +25,7 @@ namespace Hades.HR.ServiceCaller
         public const string WorkSectionService = "WSHttpBinding_IWorkSectionService";
 
         public const string StaffLevelService = "WSHttpBinding_IStaffLevelService";
-       
+
         public const string WarehouseService = "WSHttpBinding_IWarehouseService";
         public const string WarehouseManagerService = "WSHttpBinding_IWarehouseManagerService";
         #endregion //Base
@@ -47,7 +47,9 @@ namespace Hades.HR.ServiceCaller
 
         #region Salary
         public const string SalaryBaseService = "WSHttpBinding_ISalaryBaseService";
-              
+
+        public const string LaborSalaryService = "WSHttpBinding_ILaborSalaryService";
+
         public const string LaborSalaryRecordService = "WSHttpBinding_ILaborSalaryRecordService";
         #endregion //Salary
 
@@ -61,7 +63,7 @@ namespace Hades.HR.ServiceCaller
         #endregion //Wp
 
         #region View
-        
+
         #endregion //View
     }
 }

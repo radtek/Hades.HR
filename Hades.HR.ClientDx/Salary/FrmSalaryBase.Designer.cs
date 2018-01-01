@@ -37,14 +37,14 @@ namespace Hades.HR.UI
             this.winGridViewPager1 = new Hades.Pager.WinControl.WinGridViewPager();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.txtStaffId = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtStaffId = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtStaffId.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtStaffId.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // btnAddNew
@@ -127,6 +127,14 @@ namespace Hades.HR.UI
             this.layoutControl1.TabIndex = 12;
             this.layoutControl1.Text = "layoutControl1";
             // 
+            // txtStaffId
+            // 
+            this.txtStaffId.Location = new System.Drawing.Point(120, 12);
+            this.txtStaffId.Name = "txtStaffId";
+            this.txtStaffId.Size = new System.Drawing.Size(848, 20);
+            this.txtStaffId.StyleController = this.layoutControl1;
+            this.txtStaffId.TabIndex = 1;
+            // 
             // layoutControlGroup1
             // 
             this.layoutControlGroup1.CustomizationFormText = "layoutControlGroup1";
@@ -146,14 +154,6 @@ namespace Hades.HR.UI
             this.layoutControlItem1.Size = new System.Drawing.Size(960, 33);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(105, 14);
             // 
-            // txtStaffId
-            // 
-            this.txtStaffId.Location = new System.Drawing.Point(120, 12);
-            this.txtStaffId.Name = "txtStaffId";
-            this.txtStaffId.Size = new System.Drawing.Size(848, 20);
-            this.txtStaffId.StyleController = this.layoutControl1;
-            this.txtStaffId.TabIndex = 1;
-            // 
             // FrmSalaryBase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -169,9 +169,9 @@ namespace Hades.HR.UI
             this.Text = "基本工资信息";
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtStaffId.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtStaffId.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
