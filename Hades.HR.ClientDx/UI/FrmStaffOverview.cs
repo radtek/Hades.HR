@@ -73,7 +73,7 @@ namespace Hades.HR.UI
             string where = GetConditionSql();
             var page = this.wgvStaff.PagerInfo;
             List<StaffInfo> list = CallerFactory<IStaffService>.Instance.FindWithPager(where, ref page);
-            this.wgvStaff.DataSource = list;//new WHC.Pager.WinControl.SortableBindingList<StaffInfo>(list);
+            this.wgvStaff.DataSource = list;//new Hades.Pager.WinControl.SortableBindingList<StaffInfo>(list);
             this.wgvStaff.PrintTitle = "职员报表";
         }
 

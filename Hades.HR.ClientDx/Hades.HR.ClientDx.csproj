@@ -750,6 +750,12 @@
     <Compile Include="Attendance\FrmEditElectricWorkload.Designer.cs">
       <DependentUpon>FrmEditElectricWorkload.cs</DependentUpon>
     </Compile>
+    <Compile Include="Attendance\FrmEditLaborMonthAttendance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Attendance\FrmEditLaborMonthAttendance.Designer.cs">
+      <DependentUpon>FrmEditLaborMonthAttendance.cs</DependentUpon>
+    </Compile>
     <Compile Include="Attendance\FrmEditRepairWorkload.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -761,6 +767,12 @@
     </Compile>
     <Compile Include="Attendance\FrmEditChangeWorkload.Designer.cs">
       <DependentUpon>FrmEditChangeWorkload.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Attendance\FrmLaborMonthAttendance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Attendance\FrmLaborMonthAttendance.Designer.cs">
+      <DependentUpon>FrmLaborMonthAttendance.cs</DependentUpon>
     </Compile>
     <Compile Include="Attendance\FrmSetDailyLabor.cs">
       <SubType>Form</SubType>
@@ -1018,6 +1030,9 @@
     <EmbeddedResource Include="Attendance\FrmEditLaborDailyAttendance.resx">
       <DependentUpon>FrmEditLaborDailyAttendance.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Attendance\FrmEditLaborMonthAttendance.resx">
+      <DependentUpon>FrmEditLaborMonthAttendance.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Attendance\FrmEditRepairWorkload.resx">
       <DependentUpon>FrmEditRepairWorkload.cs</DependentUpon>
     </EmbeddedResource>
@@ -1026,6 +1041,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Attendance\FrmLaborDailyWorkload.resx">
       <DependentUpon>FrmLaborDailyWorkload.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Attendance\FrmLaborMonthAttendance.resx">
+      <DependentUpon>FrmLaborMonthAttendance.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Attendance\FrmSetDailyLabor.resx">
       <DependentUpon>FrmSetDailyLabor.cs</DependentUpon>
@@ -1146,6 +1164,7 @@
     <None Include="Properties\DataSources\Hades.HR.Entity.LaborChangeWorkloadInfo.datasource" />
     <None Include="Properties\DataSources\Hades.HR.Entity.LaborDailyAttendanceInfo.datasource" />
     <None Include="Properties\DataSources\Hades.HR.Entity.LaborElectricWorkloadInfo.datasource" />
+    <None Include="Properties\DataSources\Hades.HR.Entity.LaborMonthAttendanceInfo.datasource" />
     <None Include="Properties\DataSources\Hades.HR.Entity.LaborProductionWorkloadInfo.datasource" />
     <None Include="Properties\DataSources\Hades.HR.Entity.LaborRepairWorkloadInfo.datasource" />
     <None Include="Properties\DataSources\Hades.HR.Entity.LaborSalaryRecordInfo.datasource" />

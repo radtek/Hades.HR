@@ -101,7 +101,7 @@ namespace Hades.HR.UI
             
             string where = GetConditionSql();
             List<SalaryBaseInfo> list = BLLFactory<SalaryBase>.Instance.FindWithPager(where, this.winGridViewPager1.PagerInfo);
-            this.winGridViewPager1.DataSource = list;//new WHC.Pager.WinControl.SortableBindingList<SalaryBaseInfo>(list);
+            this.winGridViewPager1.DataSource = list;//new Hades.Pager.WinControl.SortableBindingList<SalaryBaseInfo>(list);
             this.winGridViewPager1.PrintTitle = "SalaryBase±¨±í";
         }
 

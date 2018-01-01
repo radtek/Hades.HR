@@ -5,24 +5,40 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.ComponentModel;
 using System.Collections.Generic;
+using System.Linq;
 
 using Hades.Pager.Entity;
 using Hades.Dictionary;
 using Hades.Framework.BaseUI;
 using Hades.Framework.Commons;
 using Hades.Framework.ControlUtil;
+using Hades.Framework.ControlUtil.Facade;
 
-using Hades.HR.BLL;
+using Hades.HR.Facade;
 using Hades.HR.Entity;
+using Hades.HR.Util;
 
 namespace Hades.HR.UI
 {
     /// <summary>
-    /// LaborSalary
+    /// LaborMonthAttendance
     /// </summary>	
-    public partial class FrmLaborSalary : BaseDock
+    public partial class FrmLaborMonthAttendance : BaseDock
     {
-        public FrmLaborSalary()
+        #region Field
+        /// <summary>
+        /// 缓存班组信息
+        /// </summary>
+        private List<WorkTeamInfo> workTeamList;
+
+        /// <summary>
+        /// 缓存职员信息
+        /// </summary>
+        private List<StaffInfo> staffList;
+        #endregion //Field
+
+        #region Constructor
+        public FrmLaborMonthAttendance()
         {
             InitializeComponent();
 
@@ -47,6 +63,32 @@ namespace Hades.HR.UI
                 control.KeyUp += new System.Windows.Forms.KeyEventHandler(this.SearchControl_KeyUp);
             }
         }
+        #endregion //Constructor
+
+        #region Function
+        /// <summary>
+        /// 初始化字典列表内容
+        /// </summary>
+        private void InitDictItem()
+        {
+            //初始化代码
+        }
+        #endregion //Function
+
+        #region Method
+        /// <summary>
+        /// 编写初始化窗体的实现，可以用于刷新
+        /// </summary>
+        public override void FormOnLoad()
+        {
+            this.workTeamList = CallerFactory<IWorkTeamService>.Instance.Find2("", "");
+            this.staffList = CallerFactory<IStaffService>.Instance.Find("StaffType = 2");
+            this.wtTree.Init();
+            
+        }
+        #endregion //Method
+
+        #region System
         void gridView1_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
         {
             //if (e.Column.FieldName == "OrderStatus")
@@ -117,22 +159,9 @@ namespace Hades.HR.UI
             }
         }
 
-        /// <summary>
-        /// 编写初始化窗体的实现，可以用于刷新
-        /// </summary>
-        public override void  FormOnLoad()
-        {   
-            BindData();
-        }
+     
         
-        /// <summary>
-        /// 初始化字典列表内容
-        /// </summary>
-        private void InitDictItem()
-        {
-			//初始化代码
-        }
-        
+       
         /// <summary>
         /// 分页控件刷新操作
         /// </summary>
@@ -155,7 +184,7 @@ namespace Hades.HR.UI
             foreach (int iRow in rowSelected)
             {
                 string ID = this.winGridViewPager1.GridView1.GetRowCellDisplayText(iRow, "ID");
-                BLLFactory<LaborSalary>.Instance.Delete(ID);
+                CallerFactory<ILaborMonthAttendanceService>.Instance.Delete(ID);
             }
              
             BindData();
@@ -176,7 +205,7 @@ namespace Hades.HR.UI
 
             if (!string.IsNullOrEmpty(ID))
             {
-                FrmEditLaborSalary dlg = new FrmEditLaborSalary();
+                FrmEditLaborMonthAttendance dlg = new FrmEditLaborMonthAttendance();
                 dlg.ID = ID;
                 dlg.IDList = IDList;
                 dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
@@ -208,7 +237,7 @@ namespace Hades.HR.UI
         private void winGridViewPager1_OnStartExport(object sender, EventArgs e)
         {
             string where = GetConditionSql();
-            this.winGridViewPager1.AllToExport = BLLFactory<LaborSalary>.Instance.FindToDataTable(where);
+            this.winGridViewPager1.AllToExport = CallerFactory<ILaborMonthAttendanceService>.Instance.FindToDataTable(where);
          }
 
         /// <summary>
@@ -234,9 +263,8 @@ namespace Hades.HR.UI
             if (condition == null)
             {
                 condition = new SearchCondition();
-                condition.AddCondition("StaffId", this.txtStaffId.Text.Trim(), SqlOperator.Like);
-                condition.AddNumericCondition("Year", this.txtYear1, this.txtYear2); //数值类型
-                condition.AddNumericCondition("Month", this.txtMonth1, this.txtMonth2); //数值类型
+                //condition.AddNumericCondition("Year", this.txtYear1, this.txtYear2); //数值类型
+                //condition.AddNumericCondition("Month", this.txtMonth1, this.txtMonth2); //数值类型
             }
             string where = condition.BuildConditionSql().Replace("Where", "");
             return where;
@@ -248,36 +276,14 @@ namespace Hades.HR.UI
         private void BindData()
         {
         	//entity
-            this.winGridViewPager1.DisplayColumns = "StaffId,Year,Month,StaffLevelId,LevelSalary,BaseSalary,OverSalary,WeekendSalary,HolidaySalary,Estimation,Allowance,TotalSalary,NoonShift,NightShift,OtherNoon,OtherNight,ShiftAmount,Remark";
-            this.winGridViewPager1.ColumnNameAlias = BLLFactory<LaborSalary>.Instance.GetColumnNameAlias();//字段列显示名称转义
+            this.winGridViewPager1.DisplayColumns = "Year,Month,StaffId,WorkTeamId,AttendanceDays,AnnualLeave,SickLeave,CasualLeave,InjuryLeave,MarriageLeave,MaternityLeave,FuneralLeave,AbsentLeave,MonthWorkload,BaseWorkload,OverWorkload,WeekendWorkload,HolidayWorkload,NoonShift,NightShift,OtherNoon,OtherNight,Remark";
+            this.winGridViewPager1.ColumnNameAlias = CallerFactory<ILaborMonthAttendanceService>.Instance.GetColumnNameAlias();//字段列显示名称转义
 
-            #region 添加别名解析
-
-            //this.winGridViewPager1.AddColumnAlias("StaffId", "StaffId");
-            //this.winGridViewPager1.AddColumnAlias("Year", "Year");
-            //this.winGridViewPager1.AddColumnAlias("Month", "Month");
-            //this.winGridViewPager1.AddColumnAlias("StaffLevelId", "StaffLevelId");
-            //this.winGridViewPager1.AddColumnAlias("LevelSalary", "LevelSalary");
-            //this.winGridViewPager1.AddColumnAlias("BaseSalary", "BaseSalary");
-            //this.winGridViewPager1.AddColumnAlias("OverSalary", "OverSalary");
-            //this.winGridViewPager1.AddColumnAlias("WeekendSalary", "WeekendSalary");
-            //this.winGridViewPager1.AddColumnAlias("HolidaySalary", "HolidaySalary");
-            //this.winGridViewPager1.AddColumnAlias("Estimation", "Estimation");
-            //this.winGridViewPager1.AddColumnAlias("Allowance", "Allowance");
-            //this.winGridViewPager1.AddColumnAlias("TotalSalary", "TotalSalary");
-            //this.winGridViewPager1.AddColumnAlias("NoonShift", "NoonShift");
-            //this.winGridViewPager1.AddColumnAlias("NightShift", "NightShift");
-            //this.winGridViewPager1.AddColumnAlias("OtherNoon", "OtherNoon");
-            //this.winGridViewPager1.AddColumnAlias("OtherNight", "OtherNight");
-            //this.winGridViewPager1.AddColumnAlias("ShiftAmount", "ShiftAmount");
-            //this.winGridViewPager1.AddColumnAlias("Remark", "Remark");
-
-            #endregion
 
             string where = GetConditionSql();
-	            List<LaborSalaryInfo> list = BLLFactory<LaborSalary>.Instance.FindWithPager(where, this.winGridViewPager1.PagerInfo);
-            this.winGridViewPager1.DataSource = list;//new Hades.Pager.WinControl.SortableBindingList<LaborSalaryInfo>(list);
-                this.winGridViewPager1.PrintTitle = "LaborSalary报表";
+	           // List<LaborMonthAttendanceInfo> list = CallerFactory<ILaborMonthAttendanceService>.Instance.FindWithPager(where, ref this.winGridViewPager1.PagerInfo);
+            //this.winGridViewPager1.DataSource = list;//new Hades.Pager.WinControl.SortableBindingList<LaborMonthAttendanceInfo>(list);
+            //    this.winGridViewPager1.PrintTitle = "LaborMonthAttendance报表";
          }
         
         /// <summary>
@@ -294,7 +300,7 @@ namespace Hades.HR.UI
         /// </summary>
         private void btnAddNew_Click(object sender, EventArgs e)
         {
-            FrmEditLaborSalary dlg = new FrmEditLaborSalary();
+            FrmEditLaborMonthAttendance dlg = new FrmEditLaborMonthAttendance();
             dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
             dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
             
@@ -315,8 +321,8 @@ namespace Hades.HR.UI
             }
         }        
 
-		 		 		 		 		 		 		 		 		 		 		 		 		 		 		 		 		 		 		  		  
-        private string moduleName = "LaborSalary";
+		 		 		 		 		 		 		 		 		 		 		 		 		 		 		 		 		 		 		 		 		 		 		 		 
+        private string moduleName = "LaborMonthAttendance";
         /// <summary>
         /// 导入Excel的操作
         /// </summary>          
@@ -357,29 +363,33 @@ namespace Hades.HR.UI
             bool converted = false;
             DateTime dtDefault = Convert.ToDateTime("1900-01-01");
             DateTime dt;
-            LaborSalaryInfo info = new LaborSalaryInfo();
+            LaborMonthAttendanceInfo info = new LaborMonthAttendanceInfo();
             info.Id = GetRowData(dr, "Id");
-              info.StaffId = GetRowData(dr, "StaffId");
               info.Year = GetRowData(dr, "Year").ToInt32();
               info.Month = GetRowData(dr, "Month").ToInt32();
-              info.StaffLevelId = GetRowData(dr, "StaffLevelId");
-              info.LevelSalary = GetRowData(dr, "LevelSalary").ToDecimal();
-              info.BaseSalary = GetRowData(dr, "BaseSalary").ToDecimal();
-              info.OverSalary = GetRowData(dr, "OverSalary").ToDecimal();
-              info.WeekendSalary = GetRowData(dr, "WeekendSalary").ToDecimal();
-              info.HolidaySalary = GetRowData(dr, "HolidaySalary").ToDecimal();
-              info.Estimation = GetRowData(dr, "Estimation").ToDecimal();
-              info.Allowance = GetRowData(dr, "Allowance").ToDecimal();
-              info.TotalSalary = GetRowData(dr, "TotalSalary").ToDecimal();
+              info.StaffId = GetRowData(dr, "StaffId");
+              info.WorkTeamId = GetRowData(dr, "WorkTeamId");
+              info.AttendanceDays = GetRowData(dr, "AttendanceDays").ToInt32();
+              info.AnnualLeave = GetRowData(dr, "AnnualLeave").ToInt32();
+              info.SickLeave = GetRowData(dr, "SickLeave").ToInt32();
+              info.CasualLeave = GetRowData(dr, "CasualLeave").ToInt32();
+              info.InjuryLeave = GetRowData(dr, "InjuryLeave").ToInt32();
+              info.MarriageLeave = GetRowData(dr, "MarriageLeave").ToInt32();
+              info.MaternityLeave = GetRowData(dr, "MaternityLeave").ToInt32();
+              info.FuneralLeave = GetRowData(dr, "FuneralLeave").ToInt32();
+              info.AbsentLeave = GetRowData(dr, "AbsentLeave").ToInt32();
+              info.MonthWorkload = GetRowData(dr, "MonthWorkload").ToDecimal();
+              info.BaseWorkload = GetRowData(dr, "BaseWorkload").ToDecimal();
+              info.OverWorkload = GetRowData(dr, "OverWorkload").ToDecimal();
+              info.WeekendWorkload = GetRowData(dr, "WeekendWorkload").ToDecimal();
+              info.HolidayWorkload = GetRowData(dr, "HolidayWorkload").ToDecimal();
               info.NoonShift = GetRowData(dr, "NoonShift").ToInt32();
               info.NightShift = GetRowData(dr, "NightShift").ToInt32();
               info.OtherNoon = GetRowData(dr, "OtherNoon").ToInt32();
               info.OtherNight = GetRowData(dr, "OtherNight").ToInt32();
-              info.ShiftAmount = GetRowData(dr, "ShiftAmount").ToDecimal();
               info.Remark = GetRowData(dr, "Remark");
-               info.EditorId = GetRowData(dr, "EditorId");
-   
-            success = BLLFactory<LaborSalary>.Instance.Insert(info);
+  
+            success = CallerFactory<ILaborMonthAttendanceService>.Instance.Insert(info);
              return success;
         }
 
@@ -392,8 +402,8 @@ namespace Hades.HR.UI
             if (!string.IsNullOrEmpty(file))
             {
                 string where = GetConditionSql();
-                List<LaborSalaryInfo> list = BLLFactory<LaborSalary>.Instance.Find(where);
-                 DataTable dtNew = DataTableHelper.CreateTable("序号|int,Id,StaffId,Year,Month,StaffLevelId,LevelSalary,BaseSalary,OverSalary,WeekendSalary,HolidaySalary,Estimation,Allowance,TotalSalary,NoonShift,NightShift,OtherNoon,OtherNight,ShiftAmount,Remark,EditorId");
+                List<LaborMonthAttendanceInfo> list = CallerFactory<ILaborMonthAttendanceService>.Instance.Find(where);
+                 DataTable dtNew = DataTableHelper.CreateTable("序号|int,Id,Year,Month,StaffId,WorkTeamId,AttendanceDays,AnnualLeave,SickLeave,CasualLeave,InjuryLeave,MarriageLeave,MaternityLeave,FuneralLeave,AbsentLeave,MonthWorkload,BaseWorkload,OverWorkload,WeekendWorkload,HolidayWorkload,NoonShift,NightShift,OtherNoon,OtherNight,Remark");
                 DataRow dr;
                 int j = 1;
                 for (int i = 0; i < list.Count; i++)
@@ -401,26 +411,30 @@ namespace Hades.HR.UI
                     dr = dtNew.NewRow();
                     dr["序号"] = j++;
                     dr["Id"] = list[i].Id;
-                     dr["StaffId"] = list[i].StaffId;
                      dr["Year"] = list[i].Year;
                      dr["Month"] = list[i].Month;
-                     dr["StaffLevelId"] = list[i].StaffLevelId;
-                     dr["LevelSalary"] = list[i].LevelSalary;
-                     dr["BaseSalary"] = list[i].BaseSalary;
-                     dr["OverSalary"] = list[i].OverSalary;
-                     dr["WeekendSalary"] = list[i].WeekendSalary;
-                     dr["HolidaySalary"] = list[i].HolidaySalary;
-                     dr["Estimation"] = list[i].Estimation;
-                     dr["Allowance"] = list[i].Allowance;
-                     dr["TotalSalary"] = list[i].TotalSalary;
+                     dr["StaffId"] = list[i].StaffId;
+                     dr["WorkTeamId"] = list[i].WorkTeamId;
+                     dr["AttendanceDays"] = list[i].AttendanceDays;
+                     dr["AnnualLeave"] = list[i].AnnualLeave;
+                     dr["SickLeave"] = list[i].SickLeave;
+                     dr["CasualLeave"] = list[i].CasualLeave;
+                     dr["InjuryLeave"] = list[i].InjuryLeave;
+                     dr["MarriageLeave"] = list[i].MarriageLeave;
+                     dr["MaternityLeave"] = list[i].MaternityLeave;
+                     dr["FuneralLeave"] = list[i].FuneralLeave;
+                     dr["AbsentLeave"] = list[i].AbsentLeave;
+                     dr["MonthWorkload"] = list[i].MonthWorkload;
+                     dr["BaseWorkload"] = list[i].BaseWorkload;
+                     dr["OverWorkload"] = list[i].OverWorkload;
+                     dr["WeekendWorkload"] = list[i].WeekendWorkload;
+                     dr["HolidayWorkload"] = list[i].HolidayWorkload;
                      dr["NoonShift"] = list[i].NoonShift;
                      dr["NightShift"] = list[i].NightShift;
                      dr["OtherNoon"] = list[i].OtherNoon;
                      dr["OtherNight"] = list[i].OtherNight;
-                     dr["ShiftAmount"] = list[i].ShiftAmount;
                      dr["Remark"] = list[i].Remark;
-                      dr["EditorId"] = list[i].EditorId;
-                      dtNew.Rows.Add(dr);
+                     dtNew.Rows.Add(dr);
                 }
 
                 try
@@ -453,15 +467,15 @@ namespace Hades.HR.UI
             if (dlg == null)
             {
                 dlg = new FrmAdvanceSearch();
-                dlg.FieldTypeTable = BLLFactory<LaborSalary>.Instance.GetFieldTypeList();
-                dlg.ColumnNameAlias = BLLFactory<LaborSalary>.Instance.GetColumnNameAlias();                
-                 dlg.DisplayColumns = "Id,StaffId,Year,Month,StaffLevelId,LevelSalary,BaseSalary,OverSalary,WeekendSalary,HolidaySalary,Estimation,Allowance,TotalSalary,NoonShift,NightShift,OtherNoon,OtherNight,ShiftAmount,Remark,EditorId";
+                dlg.FieldTypeTable = CallerFactory<ILaborMonthAttendanceService>.Instance.GetFieldTypeList();
+                dlg.ColumnNameAlias = CallerFactory<ILaborMonthAttendanceService>.Instance.GetColumnNameAlias();                
+                 dlg.DisplayColumns = "Id,Year,Month,StaffId,WorkTeamId,AttendanceDays,AnnualLeave,SickLeave,CasualLeave,InjuryLeave,MarriageLeave,MaternityLeave,FuneralLeave,AbsentLeave,MonthWorkload,BaseWorkload,OverWorkload,WeekendWorkload,HolidayWorkload,NoonShift,NightShift,OtherNoon,OtherNight,Remark";
 
                 #region 下拉列表数据
 
                 //dlg.AddColumnListItem("UserType", Portal.gc.GetDictData("人员类型"));//字典列表
                 //dlg.AddColumnListItem("Sex", "男,女");//固定列表
-                //dlg.AddColumnListItem("Credit", BLLFactory<LaborSalary>.Instance.GetFieldList("Credit"));//动态列表
+                //dlg.AddColumnListItem("Credit", BLLFactory<LaborMonthAttendance>.Instance.GetFieldList("Credit"));//动态列表
 
                 #endregion
 
@@ -475,5 +489,6 @@ namespace Hades.HR.UI
             advanceCondition = condition;
             BindData();
         }
+        #endregion //System
     }
 }
