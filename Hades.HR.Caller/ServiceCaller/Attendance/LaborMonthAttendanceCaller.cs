@@ -21,12 +21,15 @@ namespace Hades.HR.ServiceCaller
 	/// </summary>
     public class LaborMonthAttendanceCaller : BaseWCFService<LaborMonthAttendanceInfo>, ILaborMonthAttendanceService
     {
+        #region Constructor
         public LaborMonthAttendanceCaller()  : base()
         {	
             this.configurationPath = EndPointConfig.WcfConfig; //WCF配置文件
             this.endpointConfigurationName = EndPointConfig.LaborMonthAttendanceService;
         }
+        #endregion //Constructor
 
+        #region Function
         /// <summary>
         /// 子类构造一个IChannel对象转换为基类接口，方便给基类进行调用通用的API
         /// </summary>
@@ -45,32 +48,51 @@ namespace Hades.HR.ServiceCaller
             CustomClientChannel<ILaborMonthAttendanceService> factory = new CustomClientChannel<ILaborMonthAttendanceService>(endpointConfigurationName, configurationPath);
             return factory.CreateChannel();
         }
+        #endregion //Function
 
-        ///// <summary>
-        ///// 根据名称查找对象(自定义接口使用范例)
-        ///// </summary>
-        //public List<LaborMonthAttendanceInfo> FindByName(string name)
-        //{
-        //    List<LaborMonthAttendanceInfo> result = new List<LaborMonthAttendanceInfo>();
+        #region Method
+        /// <summary>
+        /// 获取班组员工月考勤记录
+        /// </summary>
+        /// <param name="year">年</param>
+        /// <param name="month">月</param>
+        /// <param name="workTeamId">班组ID</param>
+        /// <returns></returns>
+        public List<LaborMonthAttendanceInfo> GetRecords(int year, int month, string workTeamId)
+        {
+            List<LaborMonthAttendanceInfo> result = new List<LaborMonthAttendanceInfo>();
 
-        //    ILaborMonthAttendanceService service = CreateSubClient();
-        //    ICommunicationObject comm = service as ICommunicationObject;
-        //    comm.Using(client =>
-        //    {
-        //        result = service.FindByName(name);
-        //    });
+            ILaborMonthAttendanceService service = CreateSubClient();
+            ICommunicationObject comm = service as ICommunicationObject;
+            comm.Using(client =>
+            {
+                result = service.GetRecords(year, month, workTeamId);
+            });
 
-        //    return result;
-        //}
+            return result;
+        }
 
+        /// <summary>
+        /// 保存员工月考勤记录
+        /// </summary>
+        /// <param name="data">考勤记录</param>
+        /// <param name="year">年度</param>
+        /// <param name="month">月度</param>
+        /// <param name="workTeamId">班组ID</param>
+        /// <returns></returns>
+        public bool SaveRecords(List<LaborMonthAttendanceInfo> data, int year, int month, string workTeamId)
+        {
+            bool result = false;
 
-        ///// <summary>
-        ///// 根据名称查找对象Asyn(自定义接口使用范例)
-        ///// </summary>
-        //public Task<List<LaborMonthAttendanceInfo>> FindByNameAsyn(string name)
-        //{
-        //    ILaborMonthAttendanceService service = CreateSubClient();       
-        //    return service.FindByNameAsyn(name);  
-        //}
+            ILaborMonthAttendanceService service = CreateSubClient();
+            ICommunicationObject comm = service as ICommunicationObject;
+            comm.Using(client =>
+            {
+                result = service.SaveRecords(data, year, month, workTeamId);
+            });
+
+            return result;
+        }
+        #endregion //Method
     }
 }

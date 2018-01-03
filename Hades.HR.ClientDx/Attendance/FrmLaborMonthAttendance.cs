@@ -27,6 +27,11 @@ namespace Hades.HR.UI
     {
         #region Field
         /// <summary>
+        /// 高级查询条件语句对象
+        /// </summary>
+        private SearchCondition advanceCondition;
+
+        /// <summary>
         /// 缓存班组信息
         /// </summary>
         private List<WorkTeamInfo> workTeamList;
@@ -53,7 +58,7 @@ namespace Hades.HR.UI
             this.winGridViewPager1.AppendedMenu = this.contextMenuStrip1;
             this.winGridViewPager1.ShowLineNumber = true;
             this.winGridViewPager1.BestFitColumnWith = false;//是否设置为自动调整宽度，false为不设置
-			this.winGridViewPager1.gridView1.DataSourceChanged +=new EventHandler(gridView1_DataSourceChanged);
+            this.winGridViewPager1.gridView1.DataSourceChanged += new EventHandler(gridView1_DataSourceChanged);
             this.winGridViewPager1.gridView1.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(gridView1_CustomColumnDisplayText);
             this.winGridViewPager1.gridView1.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(gridView1_RowCellStyle);
 
@@ -73,6 +78,51 @@ namespace Hades.HR.UI
         {
             //初始化代码
         }
+
+        /// <summary>
+        /// 根据查询条件构造查询语句
+        /// </summary> 
+        private string GetConditionSql()
+        {
+            //如果存在高级查询对象信息，则使用高级查询条件，否则使用主表条件查询
+            SearchCondition condition = advanceCondition;
+            if (condition == null)
+            {
+                condition = new SearchCondition();
+                DateTime month = this.dpMonth.DateTime;
+                string teamId = this.wtTree.GetSelectedTeamId();
+
+                condition.AddCondition("Year", month.Year, SqlOperator.Equal);
+                condition.AddCondition("Month", month.Month, SqlOperator.Equal);
+                condition.AddCondition("WorkTeamId", teamId, SqlOperator.Equal);
+            }
+            string where = condition.BuildConditionSql().Replace("Where", "");
+            return where;
+        }
+
+        /// <summary>
+        /// 绑定列表数据
+        /// </summary>
+        private void BindData()
+        {
+            if (this.dpMonth.EditValue == null)
+                return;
+
+            string teamId = this.wtTree.GetSelectedTeamId();
+            if (string.IsNullOrEmpty(teamId))
+                return;
+
+            //entity
+            this.winGridViewPager1.DisplayColumns = "StaffId,WorkTeamId,AttendanceDays,AnnualLeave,SickLeave,CasualLeave,InjuryLeave,MarriageLeave,MaternityLeave,FuneralLeave,AbsentLeave,MonthWorkload,BaseWorkload,OverWorkload,WeekendWorkload,HolidayWorkload,NoonShift,NightShift,OtherNoon,OtherNight,Remark";            
+            this.winGridViewPager1.ColumnNameAlias = CallerFactory<ILaborMonthAttendanceService>.Instance.GetColumnNameAlias();//字段列显示名称转义
+
+            string where = GetConditionSql();
+            var pageInfo = this.winGridViewPager1.PagerInfo;
+            List<LaborMonthAttendanceInfo> list = CallerFactory<ILaborMonthAttendanceService>.Instance.FindWithPager(where, ref pageInfo);
+
+            this.winGridViewPager1.DataSource = list;
+            //    this.winGridViewPager1.PrintTitle = "LaborMonthAttendance报表";
+        }
         #endregion //Function
 
         #region Method
@@ -84,9 +134,102 @@ namespace Hades.HR.UI
             this.workTeamList = CallerFactory<IWorkTeamService>.Instance.Find2("", "");
             this.staffList = CallerFactory<IStaffService>.Instance.Find("StaffType = 2");
             this.wtTree.Init();
-            
         }
         #endregion //Method
+
+        #region Event
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (this.dpMonth.EditValue == null)
+            {
+                MessageDxUtil.ShowWarning("请选择考勤月份");
+                return;
+            }
+
+            string teamId = this.wtTree.GetSelectedTeamId();
+            if (string.IsNullOrEmpty(teamId))
+            {
+                MessageDxUtil.ShowWarning("请选择班组");
+                return;
+            }
+
+            FrmEditLaborMonthAttendance frm = new FrmEditLaborMonthAttendance(this.dpMonth.DateTime.Year, this.dpMonth.DateTime.Month, teamId);
+            frm.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
+            frm.ShowDialog();
+
+        }
+
+        /// <summary>
+        /// 日期选择
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dpMonth_EditValueChanged(object sender, EventArgs e)
+        {
+            BindData();
+        }
+
+        /// <summary>
+        /// 班组选择
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void wtTree_TeamSeleted(object sender, EventArgs e)
+        {
+            BindData();
+        }
+
+        void gridView1_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+        {
+            string columnName = e.Column.FieldName;
+            if (e.Column.ColumnType == typeof(DateTime))
+            {
+                if (e.Value != null)
+                {
+                    if (e.Value == DBNull.Value || Convert.ToDateTime(e.Value) <= Convert.ToDateTime("1900-1-1"))
+                    {
+                        e.DisplayText = "";
+                    }
+                    else
+                    {
+                        e.DisplayText = Convert.ToDateTime(e.Value).ToString("yyyy-MM-dd HH:mm");//yyyy-MM-dd
+                    }
+                }
+            }
+            else if (columnName == "StaffId")
+            {
+                if (e.Value != null && !string.IsNullOrEmpty(e.Value.ToString()))
+                {
+                    var st = this.staffList.SingleOrDefault(r => r.Id == e.Value.ToString());
+                    if (st != null)
+                    {
+                        e.DisplayText = st.Name;
+                    }
+                    else
+                    {
+                        var st2 = CallerFactory<IStaffService>.Instance.FindByID(e.Value.ToString());
+                        e.DisplayText = st2.Name;
+                    }
+                }
+            }
+            else if (columnName == "WorkTeamId")
+            {
+                if (e.Value != null && !string.IsNullOrEmpty(e.Value.ToString()))
+                {
+                    var wt = this.workTeamList.SingleOrDefault(r => r.Id == e.Value.ToString());
+                    if (wt != null)
+                    {
+                        e.DisplayText = wt.Name;
+                    }
+                    else
+                    {
+                        var wt2 = CallerFactory<IWorkTeamService>.Instance.FindByID(e.Value.ToString());
+                        e.DisplayText = wt2.Name;
+                    }
+                }
+            }
+        }
+        #endregion //Event
 
         #region System
         void gridView1_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
@@ -102,36 +245,7 @@ namespace Hades.HR.UI
             //    }
             //}
         }
-        void gridView1_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
-        {
-        	string columnName = e.Column.FieldName;
-            if (e.Column.ColumnType == typeof(DateTime))
-            {   
-                if (e.Value != null)
-                {
-                    if (e.Value == DBNull.Value || Convert.ToDateTime(e.Value) <= Convert.ToDateTime("1900-1-1"))
-                    {
-                        e.DisplayText = "";
-                    }
-                    else
-                    {
-                        e.DisplayText = Convert.ToDateTime(e.Value).ToString("yyyy-MM-dd HH:mm");//yyyy-MM-dd
-                    }
-                }
-            }
-            //else if (columnName == "Age")
-            //{
-            //    e.DisplayText = string.Format("{0}岁", e.Value);
-            //}
-            //else if (columnName == "ReceivedMoney")
-            //{
-            //    if (e.Value != null)
-            //    {
-            //        e.DisplayText = e.Value.ToString().ToDecimal().ToString("C");
-            //    }
-            //}
-        }
-        
+
         /// <summary>
         /// 绑定数据后，分配各列的宽度
         /// </summary>
@@ -159,9 +273,7 @@ namespace Hades.HR.UI
             }
         }
 
-     
-        
-       
+
         /// <summary>
         /// 分页控件刷新操作
         /// </summary>
@@ -169,7 +281,7 @@ namespace Hades.HR.UI
         {
             BindData();
         }
-        
+
         /// <summary>
         /// 分页控件删除操作
         /// </summary>
@@ -186,10 +298,10 @@ namespace Hades.HR.UI
                 string ID = this.winGridViewPager1.GridView1.GetRowCellDisplayText(iRow, "ID");
                 CallerFactory<ILaborMonthAttendanceService>.Instance.Delete(ID);
             }
-             
+
             BindData();
         }
-        
+
         /// <summary>
         /// 分页控件编辑项操作
         /// </summary>
@@ -210,19 +322,19 @@ namespace Hades.HR.UI
                 dlg.IDList = IDList;
                 dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
                 dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
-                
+
                 if (DialogResult.OK == dlg.ShowDialog())
                 {
                     BindData();
                 }
             }
-        }        
-        
+        }
+
         void dlg_OnDataSaved(object sender, EventArgs e)
         {
             BindData();
         }
-        
+
         /// <summary>
         /// 分页控件新增操作
         /// </summary>        
@@ -230,7 +342,7 @@ namespace Hades.HR.UI
         {
             btnAddNew_Click(null, null);
         }
-        
+
         /// <summary>
         /// 分页控件全部导出操作前的操作
         /// </summary> 
@@ -238,7 +350,7 @@ namespace Hades.HR.UI
         {
             string where = GetConditionSql();
             this.winGridViewPager1.AllToExport = CallerFactory<ILaborMonthAttendanceService>.Instance.FindToDataTable(where);
-         }
+        }
 
         /// <summary>
         /// 分页控件翻页的操作
@@ -247,54 +359,16 @@ namespace Hades.HR.UI
         {
             BindData();
         }
-        
-        /// <summary>
-        /// 高级查询条件语句对象
-        /// </summary>
-        private SearchCondition advanceCondition;
-        
-        /// <summary>
-        /// 根据查询条件构造查询语句
-        /// </summary> 
-        private string GetConditionSql()
-        {
-            //如果存在高级查询对象信息，则使用高级查询条件，否则使用主表条件查询
-            SearchCondition condition = advanceCondition;
-            if (condition == null)
-            {
-                condition = new SearchCondition();
-                //condition.AddNumericCondition("Year", this.txtYear1, this.txtYear2); //数值类型
-                //condition.AddNumericCondition("Month", this.txtMonth1, this.txtMonth2); //数值类型
-            }
-            string where = condition.BuildConditionSql().Replace("Where", "");
-            return where;
-        }
-        
-        /// <summary>
-        /// 绑定列表数据
-        /// </summary>
-        private void BindData()
-        {
-        	//entity
-            this.winGridViewPager1.DisplayColumns = "Year,Month,StaffId,WorkTeamId,AttendanceDays,AnnualLeave,SickLeave,CasualLeave,InjuryLeave,MarriageLeave,MaternityLeave,FuneralLeave,AbsentLeave,MonthWorkload,BaseWorkload,OverWorkload,WeekendWorkload,HolidayWorkload,NoonShift,NightShift,OtherNoon,OtherNight,Remark";
-            this.winGridViewPager1.ColumnNameAlias = CallerFactory<ILaborMonthAttendanceService>.Instance.GetColumnNameAlias();//字段列显示名称转义
 
-
-            string where = GetConditionSql();
-	           // List<LaborMonthAttendanceInfo> list = CallerFactory<ILaborMonthAttendanceService>.Instance.FindWithPager(where, ref this.winGridViewPager1.PagerInfo);
-            //this.winGridViewPager1.DataSource = list;//new Hades.Pager.WinControl.SortableBindingList<LaborMonthAttendanceInfo>(list);
-            //    this.winGridViewPager1.PrintTitle = "LaborMonthAttendance报表";
-         }
-        
         /// <summary>
         /// 查询数据操作
         /// </summary>
         private void btnSearch_Click(object sender, EventArgs e)
         {
-        	advanceCondition = null;//必须重置查询条件，否则可能会使用高级查询条件了
+            advanceCondition = null;//必须重置查询条件，否则可能会使用高级查询条件了
             BindData();
         }
-        
+
         /// <summary>
         /// 新增数据操作
         /// </summary>
@@ -303,13 +377,13 @@ namespace Hades.HR.UI
             FrmEditLaborMonthAttendance dlg = new FrmEditLaborMonthAttendance();
             dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
             dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
-            
+
             if (DialogResult.OK == dlg.ShowDialog())
             {
                 BindData();
             }
         }
-        
+
         /// <summary>
         /// 提供给控件回车执行查询的操作
         /// </summary>
@@ -319,9 +393,9 @@ namespace Hades.HR.UI
             {
                 btnSearch_Click(null, null);
             }
-        }        
+        }
 
-		 		 		 		 		 		 		 		 		 		 		 		 		 		 		 		 		 		 		 		 		 		 		 		 
+
         private string moduleName = "LaborMonthAttendance";
         /// <summary>
         /// 导入Excel的操作
@@ -356,7 +430,7 @@ namespace Hades.HR.UI
             }
             return result;
         }
-        
+
         bool ExcelData_OnDataSave(DataRow dr)
         {
             bool success = false;
@@ -365,32 +439,32 @@ namespace Hades.HR.UI
             DateTime dt;
             LaborMonthAttendanceInfo info = new LaborMonthAttendanceInfo();
             info.Id = GetRowData(dr, "Id");
-              info.Year = GetRowData(dr, "Year").ToInt32();
-              info.Month = GetRowData(dr, "Month").ToInt32();
-              info.StaffId = GetRowData(dr, "StaffId");
-              info.WorkTeamId = GetRowData(dr, "WorkTeamId");
-              info.AttendanceDays = GetRowData(dr, "AttendanceDays").ToInt32();
-              info.AnnualLeave = GetRowData(dr, "AnnualLeave").ToInt32();
-              info.SickLeave = GetRowData(dr, "SickLeave").ToInt32();
-              info.CasualLeave = GetRowData(dr, "CasualLeave").ToInt32();
-              info.InjuryLeave = GetRowData(dr, "InjuryLeave").ToInt32();
-              info.MarriageLeave = GetRowData(dr, "MarriageLeave").ToInt32();
-              info.MaternityLeave = GetRowData(dr, "MaternityLeave").ToInt32();
-              info.FuneralLeave = GetRowData(dr, "FuneralLeave").ToInt32();
-              info.AbsentLeave = GetRowData(dr, "AbsentLeave").ToInt32();
-              info.MonthWorkload = GetRowData(dr, "MonthWorkload").ToDecimal();
-              info.BaseWorkload = GetRowData(dr, "BaseWorkload").ToDecimal();
-              info.OverWorkload = GetRowData(dr, "OverWorkload").ToDecimal();
-              info.WeekendWorkload = GetRowData(dr, "WeekendWorkload").ToDecimal();
-              info.HolidayWorkload = GetRowData(dr, "HolidayWorkload").ToDecimal();
-              info.NoonShift = GetRowData(dr, "NoonShift").ToInt32();
-              info.NightShift = GetRowData(dr, "NightShift").ToInt32();
-              info.OtherNoon = GetRowData(dr, "OtherNoon").ToInt32();
-              info.OtherNight = GetRowData(dr, "OtherNight").ToInt32();
-              info.Remark = GetRowData(dr, "Remark");
-  
+            info.Year = GetRowData(dr, "Year").ToInt32();
+            info.Month = GetRowData(dr, "Month").ToInt32();
+            info.StaffId = GetRowData(dr, "StaffId");
+            info.WorkTeamId = GetRowData(dr, "WorkTeamId");
+            info.AttendanceDays = GetRowData(dr, "AttendanceDays").ToInt32();
+            info.AnnualLeave = GetRowData(dr, "AnnualLeave").ToInt32();
+            info.SickLeave = GetRowData(dr, "SickLeave").ToInt32();
+            info.CasualLeave = GetRowData(dr, "CasualLeave").ToInt32();
+            info.InjuryLeave = GetRowData(dr, "InjuryLeave").ToInt32();
+            info.MarriageLeave = GetRowData(dr, "MarriageLeave").ToInt32();
+            info.MaternityLeave = GetRowData(dr, "MaternityLeave").ToInt32();
+            info.FuneralLeave = GetRowData(dr, "FuneralLeave").ToInt32();
+            info.AbsentLeave = GetRowData(dr, "AbsentLeave").ToInt32();
+            info.MonthWorkload = GetRowData(dr, "MonthWorkload").ToDecimal();
+            info.BaseWorkload = GetRowData(dr, "BaseWorkload").ToDecimal();
+            info.OverWorkload = GetRowData(dr, "OverWorkload").ToDecimal();
+            info.WeekendWorkload = GetRowData(dr, "WeekendWorkload").ToDecimal();
+            info.HolidayWorkload = GetRowData(dr, "HolidayWorkload").ToDecimal();
+            info.NoonShift = GetRowData(dr, "NoonShift").ToInt32();
+            info.NightShift = GetRowData(dr, "NightShift").ToInt32();
+            info.OtherNoon = GetRowData(dr, "OtherNoon").ToInt32();
+            info.OtherNight = GetRowData(dr, "OtherNight").ToInt32();
+            info.Remark = GetRowData(dr, "Remark");
+
             success = CallerFactory<ILaborMonthAttendanceService>.Instance.Insert(info);
-             return success;
+            return success;
         }
 
         /// <summary>
@@ -403,7 +477,7 @@ namespace Hades.HR.UI
             {
                 string where = GetConditionSql();
                 List<LaborMonthAttendanceInfo> list = CallerFactory<ILaborMonthAttendanceService>.Instance.Find(where);
-                 DataTable dtNew = DataTableHelper.CreateTable("序号|int,Id,Year,Month,StaffId,WorkTeamId,AttendanceDays,AnnualLeave,SickLeave,CasualLeave,InjuryLeave,MarriageLeave,MaternityLeave,FuneralLeave,AbsentLeave,MonthWorkload,BaseWorkload,OverWorkload,WeekendWorkload,HolidayWorkload,NoonShift,NightShift,OtherNoon,OtherNight,Remark");
+                DataTable dtNew = DataTableHelper.CreateTable("序号|int,Id,Year,Month,StaffId,WorkTeamId,AttendanceDays,AnnualLeave,SickLeave,CasualLeave,InjuryLeave,MarriageLeave,MaternityLeave,FuneralLeave,AbsentLeave,MonthWorkload,BaseWorkload,OverWorkload,WeekendWorkload,HolidayWorkload,NoonShift,NightShift,OtherNoon,OtherNight,Remark");
                 DataRow dr;
                 int j = 1;
                 for (int i = 0; i < list.Count; i++)
@@ -411,30 +485,30 @@ namespace Hades.HR.UI
                     dr = dtNew.NewRow();
                     dr["序号"] = j++;
                     dr["Id"] = list[i].Id;
-                     dr["Year"] = list[i].Year;
-                     dr["Month"] = list[i].Month;
-                     dr["StaffId"] = list[i].StaffId;
-                     dr["WorkTeamId"] = list[i].WorkTeamId;
-                     dr["AttendanceDays"] = list[i].AttendanceDays;
-                     dr["AnnualLeave"] = list[i].AnnualLeave;
-                     dr["SickLeave"] = list[i].SickLeave;
-                     dr["CasualLeave"] = list[i].CasualLeave;
-                     dr["InjuryLeave"] = list[i].InjuryLeave;
-                     dr["MarriageLeave"] = list[i].MarriageLeave;
-                     dr["MaternityLeave"] = list[i].MaternityLeave;
-                     dr["FuneralLeave"] = list[i].FuneralLeave;
-                     dr["AbsentLeave"] = list[i].AbsentLeave;
-                     dr["MonthWorkload"] = list[i].MonthWorkload;
-                     dr["BaseWorkload"] = list[i].BaseWorkload;
-                     dr["OverWorkload"] = list[i].OverWorkload;
-                     dr["WeekendWorkload"] = list[i].WeekendWorkload;
-                     dr["HolidayWorkload"] = list[i].HolidayWorkload;
-                     dr["NoonShift"] = list[i].NoonShift;
-                     dr["NightShift"] = list[i].NightShift;
-                     dr["OtherNoon"] = list[i].OtherNoon;
-                     dr["OtherNight"] = list[i].OtherNight;
-                     dr["Remark"] = list[i].Remark;
-                     dtNew.Rows.Add(dr);
+                    dr["Year"] = list[i].Year;
+                    dr["Month"] = list[i].Month;
+                    dr["StaffId"] = list[i].StaffId;
+                    dr["WorkTeamId"] = list[i].WorkTeamId;
+                    dr["AttendanceDays"] = list[i].AttendanceDays;
+                    dr["AnnualLeave"] = list[i].AnnualLeave;
+                    dr["SickLeave"] = list[i].SickLeave;
+                    dr["CasualLeave"] = list[i].CasualLeave;
+                    dr["InjuryLeave"] = list[i].InjuryLeave;
+                    dr["MarriageLeave"] = list[i].MarriageLeave;
+                    dr["MaternityLeave"] = list[i].MaternityLeave;
+                    dr["FuneralLeave"] = list[i].FuneralLeave;
+                    dr["AbsentLeave"] = list[i].AbsentLeave;
+                    dr["MonthWorkload"] = list[i].MonthWorkload;
+                    dr["BaseWorkload"] = list[i].BaseWorkload;
+                    dr["OverWorkload"] = list[i].OverWorkload;
+                    dr["WeekendWorkload"] = list[i].WeekendWorkload;
+                    dr["HolidayWorkload"] = list[i].HolidayWorkload;
+                    dr["NoonShift"] = list[i].NoonShift;
+                    dr["NightShift"] = list[i].NightShift;
+                    dr["OtherNoon"] = list[i].OtherNoon;
+                    dr["OtherNight"] = list[i].OtherNight;
+                    dr["Remark"] = list[i].Remark;
+                    dtNew.Rows.Add(dr);
                 }
 
                 try
@@ -459,8 +533,8 @@ namespace Hades.HR.UI
                     MessageDxUtil.ShowError(ex.Message);
                 }
             }
-         }
-         
+        }
+
         private FrmAdvanceSearch dlg;
         private void btnAdvanceSearch_Click(object sender, EventArgs e)
         {
@@ -468,8 +542,8 @@ namespace Hades.HR.UI
             {
                 dlg = new FrmAdvanceSearch();
                 dlg.FieldTypeTable = CallerFactory<ILaborMonthAttendanceService>.Instance.GetFieldTypeList();
-                dlg.ColumnNameAlias = CallerFactory<ILaborMonthAttendanceService>.Instance.GetColumnNameAlias();                
-                 dlg.DisplayColumns = "Id,Year,Month,StaffId,WorkTeamId,AttendanceDays,AnnualLeave,SickLeave,CasualLeave,InjuryLeave,MarriageLeave,MaternityLeave,FuneralLeave,AbsentLeave,MonthWorkload,BaseWorkload,OverWorkload,WeekendWorkload,HolidayWorkload,NoonShift,NightShift,OtherNoon,OtherNight,Remark";
+                dlg.ColumnNameAlias = CallerFactory<ILaborMonthAttendanceService>.Instance.GetColumnNameAlias();
+                dlg.DisplayColumns = "Id,Year,Month,StaffId,WorkTeamId,AttendanceDays,AnnualLeave,SickLeave,CasualLeave,InjuryLeave,MarriageLeave,MaternityLeave,FuneralLeave,AbsentLeave,MonthWorkload,BaseWorkload,OverWorkload,WeekendWorkload,HolidayWorkload,NoonShift,NightShift,OtherNoon,OtherNight,Remark";
 
                 #region 下拉列表数据
 
@@ -489,6 +563,7 @@ namespace Hades.HR.UI
             advanceCondition = condition;
             BindData();
         }
+
         #endregion //System
     }
 }

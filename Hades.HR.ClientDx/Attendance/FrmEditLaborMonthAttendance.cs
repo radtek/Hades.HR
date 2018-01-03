@@ -5,14 +5,16 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.ComponentModel;
 using System.Collections.Generic;
+using System.Linq;
 
 using Hades.Pager.Entity;
 using Hades.Dictionary;
 using Hades.Framework.BaseUI;
 using Hades.Framework.Commons;
 using Hades.Framework.ControlUtil;
+using Hades.Framework.ControlUtil.Facade;
 
-using Hades.HR.BLL;
+using Hades.HR.Facade;
 using Hades.HR.Entity;
 
 namespace Hades.HR.UI
@@ -30,6 +32,11 @@ namespace Hades.HR.UI
         private int month;
 
         private string workTeamId;
+
+        /// <summary>
+        /// 缓存职员数据
+        /// </summary>
+        private List<StaffInfo> staffs;
         #endregion //Field
 
         #region Constructor
@@ -66,21 +73,6 @@ namespace Hades.HR.UI
         {
             bool result = true;//默认是可以通过
 
-            #region MyRegion
-            //if (this.txtYear.Text.Trim().Length == 0)
-            //{
-            //    MessageDxUtil.ShowTips("请输入");
-            //    this.txtYear.Focus();
-            //    result = false;
-            //}
-            // else if (this.txtMonth.Text.Trim().Length == 0)
-            //{
-            //    MessageDxUtil.ShowTips("请输入");
-            //    this.txtMonth.Focus();
-            //    result = false;
-            //}
-            #endregion
-
             return result;
         }
 
@@ -96,49 +88,32 @@ namespace Hades.HR.UI
         public override void DisplayData()
         {
             InitDictItem();//数据字典加载（公用）
-    
+            this.Text = "编辑员工月考勤";
 
+            this.staffs = CallerFactory<IStaffService>.Instance.Find("StaffType = 2");
+
+            var data = CallerFactory<ILaborMonthAttendanceService>.Instance.GetRecords(this.year, this.month, this.workTeamId);
+            this.bsAttendance.DataSource = data;
         }
-        #endregion //Method
 
-
-
-
-
-
-
-
-
-        /// <summary>
-        /// 编辑或者保存状态下取值函数
-        /// </summary>
-        /// <param name="info"></param>
-        private void SetInfo(LaborMonthAttendanceInfo info)
-        {
-
-        }
-         
         /// <summary>
         /// 新增状态下的数据保存
         /// </summary>
         /// <returns></returns>
         public override bool SaveAddNew()
         {
-            LaborMonthAttendanceInfo info = tempInfo;//必须使用存在的局部变量，因为部分信息可能被附件使用
-            SetInfo(info);
-
             try
             {
-                #region 新增数据
+                var data = this.bsAttendance.DataSource as List<LaborMonthAttendanceInfo>;
 
-                bool succeed = BLLFactory<LaborMonthAttendance>.Instance.Insert(info);
+                bool succeed = CallerFactory<ILaborMonthAttendanceService>.Instance.SaveRecords(data, this.year, this.month, this.workTeamId);
                 if (succeed)
                 {
                     //可添加其他关联操作
 
                     return true;
                 }
-                #endregion
+
             }
             catch (Exception ex)
             {
@@ -146,39 +121,30 @@ namespace Hades.HR.UI
                 MessageDxUtil.ShowError(ex.Message);
             }
             return false;
-        }                 
+        }
+        #endregion //Method
 
+        #region Event
         /// <summary>
-        /// 编辑状态下的数据保存
+        /// 格式化数据显示
         /// </summary>
-        /// <returns></returns>
-        public override bool SaveUpdated()
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dgvAttendance_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
         {
-
-            LaborMonthAttendanceInfo info = BLLFactory<LaborMonthAttendance>.Instance.FindByID(ID);
-            if (info != null)
+            string columnName = e.Column.FieldName;
+            if (columnName == "StaffId")
             {
-                SetInfo(info);
-
-                try
+                if (e.Value != null)
                 {
-                    #region 更新数据
-                    bool succeed = BLLFactory<LaborMonthAttendance>.Instance.Update(info, info.Id);
-                    if (succeed)
-                    {
-                        //可添加其他关联操作
-                       
-                        return true;
-                    }
-                    #endregion
-                }
-                catch (Exception ex)
-                {
-                    LogTextHelper.Error(ex);
-                    MessageDxUtil.ShowError(ex.Message);
+                    var s = this.staffs.SingleOrDefault(r => r.Id == e.Value.ToString());
+                    if (s == null)
+                        e.DisplayText = "";
+                    else
+                        e.DisplayText = s.Name;
                 }
             }
-           return false;
         }
+        #endregion /Event
     }
 }
