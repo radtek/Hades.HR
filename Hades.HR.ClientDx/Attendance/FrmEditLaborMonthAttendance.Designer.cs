@@ -31,8 +31,8 @@ namespace Hades.HR.UI
             this.components = new System.ComponentModel.Container();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.layoutControl2 = new DevExpress.XtraLayout.LayoutControl();
-            this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
-            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
+            this.txtWorkTeam = new DevExpress.XtraEditors.TextEdit();
+            this.txtMonth = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -67,8 +67,8 @@ namespace Hades.HR.UI
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).BeginInit();
             this.layoutControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtWorkTeam.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMonth.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
@@ -114,8 +114,8 @@ namespace Hades.HR.UI
             // 
             // layoutControl2
             // 
-            this.layoutControl2.Controls.Add(this.textEdit2);
-            this.layoutControl2.Controls.Add(this.textEdit1);
+            this.layoutControl2.Controls.Add(this.txtWorkTeam);
+            this.layoutControl2.Controls.Add(this.txtMonth);
             this.layoutControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl2.Location = new System.Drawing.Point(2, 21);
             this.layoutControl2.Name = "layoutControl2";
@@ -124,23 +124,23 @@ namespace Hades.HR.UI
             this.layoutControl2.TabIndex = 0;
             this.layoutControl2.Text = "layoutControl2";
             // 
-            // textEdit2
+            // txtWorkTeam
             // 
-            this.textEdit2.Location = new System.Drawing.Point(462, 12);
-            this.textEdit2.Name = "textEdit2";
-            this.textEdit2.Properties.ReadOnly = true;
-            this.textEdit2.Size = new System.Drawing.Size(506, 20);
-            this.textEdit2.StyleController = this.layoutControl2;
-            this.textEdit2.TabIndex = 5;
+            this.txtWorkTeam.Location = new System.Drawing.Point(462, 12);
+            this.txtWorkTeam.Name = "txtWorkTeam";
+            this.txtWorkTeam.Properties.ReadOnly = true;
+            this.txtWorkTeam.Size = new System.Drawing.Size(506, 20);
+            this.txtWorkTeam.StyleController = this.layoutControl2;
+            this.txtWorkTeam.TabIndex = 5;
             // 
-            // textEdit1
+            // txtMonth
             // 
-            this.textEdit1.Location = new System.Drawing.Point(39, 12);
-            this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Properties.ReadOnly = true;
-            this.textEdit1.Size = new System.Drawing.Size(392, 20);
-            this.textEdit1.StyleController = this.layoutControl2;
-            this.textEdit1.TabIndex = 4;
+            this.txtMonth.Location = new System.Drawing.Point(39, 12);
+            this.txtMonth.Name = "txtMonth";
+            this.txtMonth.Properties.ReadOnly = true;
+            this.txtMonth.Size = new System.Drawing.Size(392, 20);
+            this.txtMonth.StyleController = this.layoutControl2;
+            this.txtMonth.TabIndex = 4;
             // 
             // layoutControlGroup2
             // 
@@ -156,7 +156,7 @@ namespace Hades.HR.UI
             // 
             // layoutControlItem1
             // 
-            this.layoutControlItem1.Control = this.textEdit1;
+            this.layoutControlItem1.Control = this.txtMonth;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
             this.layoutControlItem1.Size = new System.Drawing.Size(423, 26);
@@ -165,7 +165,7 @@ namespace Hades.HR.UI
             // 
             // layoutControlItem2
             // 
-            this.layoutControlItem2.Control = this.textEdit2;
+            this.layoutControlItem2.Control = this.txtWorkTeam;
             this.layoutControlItem2.Location = new System.Drawing.Point(423, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
             this.layoutControlItem2.Size = new System.Drawing.Size(537, 26);
@@ -441,8 +441,8 @@ namespace Hades.HR.UI
             this.groupControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).EndInit();
             this.layoutControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtWorkTeam.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMonth.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
@@ -460,8 +460,8 @@ namespace Hades.HR.UI
         private DevExpress.XtraEditors.GroupControl groupControl1;
         private DevExpress.XtraEditors.GroupControl groupControl2;
         private DevExpress.XtraLayout.LayoutControl layoutControl2;
-        private DevExpress.XtraEditors.TextEdit textEdit2;
-        private DevExpress.XtraEditors.TextEdit textEdit1;
+        private DevExpress.XtraEditors.TextEdit txtWorkTeam;
+        private DevExpress.XtraEditors.TextEdit txtMonth;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup2;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;

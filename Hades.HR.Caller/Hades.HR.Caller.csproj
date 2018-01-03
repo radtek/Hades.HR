@@ -92,7 +92,6 @@
     <Compile Include="Facade\Base\IWorkSectionService.cs" />
     <Compile Include="Facade\Base\IDepartmentService.cs" />
     <Compile Include="Facade\Base\IProductionLineService.cs" />
-    <Compile Include="Facade\Salary\ILaborSalaryRecordService.cs" />
     <Compile Include="Facade\Salary\ILaborSalaryService.cs" />
     <Compile Include="Facade\Salary\ISalaryBaseService.cs" />
     <Compile Include="Facade\Base\IStaffService.cs" />
@@ -121,7 +120,6 @@
     <Compile Include="ServiceCaller\EndPointConfig.cs" />
     <Compile Include="ServiceCaller\Base\ProductionLineCaller.cs" />
     <Compile Include="ServiceCaller\Salary\LaborSalaryCaller.cs" />
-    <Compile Include="ServiceCaller\Salary\LaborSalaryRecordCaller.cs" />
     <Compile Include="ServiceCaller\Base\StaffCaller.cs" />
     <Compile Include="ServiceCaller\Salary\SalaryBaseCaller.cs" />
     <Compile Include="ServiceCaller\Base\WorkTeamCaller.cs" />
@@ -150,7 +148,6 @@
     <Compile Include="WinformCaller\Base\PositionCaller.cs" />
     <Compile Include="WinformCaller\Base\ProductionLineCaller.cs" />
     <Compile Include="WinformCaller\Salary\LaborSalaryCaller.cs" />
-    <Compile Include="WinformCaller\Salary\LaborSalaryRecordCaller.cs" />
     <Compile Include="WinformCaller\Base\StaffCaller.cs" />
     <Compile Include="WinformCaller\Salary\SalaryBaseCaller.cs" />
     <Compile Include="WinformCaller\Base\WorkTeamCaller.cs" />

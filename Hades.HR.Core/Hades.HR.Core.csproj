@@ -125,7 +125,6 @@
     <Compile Include="BLL\Base\ProductionLine.cs" />
     <Compile Include="BLL\Base\Staff.cs" />
     <Compile Include="BLL\Salary\LaborSalary.cs" />
-    <Compile Include="BLL\Salary\LaborSalaryRecord.cs" />
     <Compile Include="BLL\Base\WorkTeam.cs" />
     <Compile Include="BLL\Salary\SalaryBase.cs" />
     <Compile Include="BLL\Wp\CompletionList.cs" />
@@ -151,7 +150,6 @@
     <Compile Include="DAL\DALSQL\Base\ProductionLine.cs" />
     <Compile Include="DAL\DALSQL\Base\Staff.cs" />
     <Compile Include="DAL\DALSQL\Salary\LaborSalary.cs" />
-    <Compile Include="DAL\DALSQL\Salary\LaborSalaryRecord.cs" />
     <Compile Include="DAL\DALSQL\Base\WorkTeam.cs" />
     <Compile Include="DAL\DALSQL\Salary\SalaryBase.cs" />
     <Compile Include="DAL\DALSQL\Wp\CompletionList.cs" />
@@ -176,7 +174,6 @@
     <Compile Include="Entity\Base\DepartmentInfo.cs" />
     <Compile Include="Entity\Base\ProductionLineInfo.cs" />
     <Compile Include="Entity\Salary\LaborSalaryInfo.cs" />
-    <Compile Include="Entity\Salary\LaborSalaryRecordInfo.cs" />
     <Compile Include="Entity\Base\StaffInfo.cs" />
     <Compile Include="Entity\Base\WorkTeamInfo.cs" />
     <Compile Include="Entity\Salary\SalaryBaseInfo.cs" />
@@ -203,7 +200,6 @@
     <Compile Include="IDAL\Base\IProductionLine.cs" />
     <Compile Include="IDAL\Base\IStaff.cs" />
     <Compile Include="IDAL\Salary\ILaborSalary.cs" />
-    <Compile Include="IDAL\Salary\ILaborSalaryRecord.cs" />
     <Compile Include="IDAL\Base\IWorkTeam.cs" />
     <Compile Include="IDAL\Salary\ISalaryBase.cs" />
     <Compile Include="IDAL\Wp\ICompletionList.cs" />

@@ -13,6 +13,6 @@ namespace Hades.HR.Facade
     [ServiceContract]
     public interface ISalaryBaseService : IBaseService<SalaryBaseInfo>
     {
-
+       
     }
 }

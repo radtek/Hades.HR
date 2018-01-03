@@ -20,31 +20,43 @@ namespace Hades.HR.WCFLibrary
 	/// </summary>
     public class LaborSalaryService : BaseLocalService<LaborSalaryInfo>, ILaborSalaryService
     {
+        #region Field
         private LaborSalary bll = null;
+        #endregion //Field
 
+        #region Constructor
         public LaborSalaryService() : base(BLLFactory<LaborSalary>.Instance)
         {
             bll = baseBLL as LaborSalary;
         }
+        #endregion //Constructor
 
-        ///// <summary>
-        ///// 根据名称查找对象(自定义接口使用范例)
-        ///// </summary>
-        //public List<LaborSalaryInfo> FindByName(string name)
-        //{
-        //    return bll.FindByName(name);
-        //}
+        #region Method
+        /// <summary>
+        /// 获取计算工资记录
+        /// </summary>
+        /// <param name="year">年</param>
+        /// <param name="month">月</param>
+        /// <param name="workTeamId">班组ID</param>
+        /// <returns></returns>
 
-        ///// <summary>
-        ///// 根据名称查找对象(自定义接口使用范例)
-        ///// </summary>
-        //public async Task<List<LaborSalaryInfo>> FindByNameAsyn(string name)
-        //{
-        //   return await Task.Factory.StartNew(() =>
-        //   {
-        //       return bll.FindByName(name);
-	//   }
-        //}
+        public List<LaborSalaryInfo> GetRecords(int year, int month, string workTeamId)
+        {
+            return bll.GetRecords(year, month, workTeamId);
+        }
 
+        /// <summary>
+        /// 保存工资记录
+        /// </summary>
+        /// <param name="data">工资记录</param>
+        /// <param name="year">年</param>
+        /// <param name="month">月</param>
+        /// <param name="workTeamId">班组ID</param>
+        /// <returns></returns>
+        public bool SaveRecords(List<LaborSalaryInfo> data, int year, int month, string workTeamId)
+        {
+            return bll.SaveRecords(data, year, month, workTeamId);
+        }
+        #endregion //Method
     }
 }

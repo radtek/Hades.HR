@@ -156,7 +156,6 @@ namespace Hades.HR.UI
             FrmEditLaborMonthAttendance frm = new FrmEditLaborMonthAttendance(this.dpMonth.DateTime.Year, this.dpMonth.DateTime.Month, teamId);
             frm.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
             frm.ShowDialog();
-
         }
 
         /// <summary>

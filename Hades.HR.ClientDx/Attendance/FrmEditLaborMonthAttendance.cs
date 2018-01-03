@@ -90,6 +90,11 @@ namespace Hades.HR.UI
             InitDictItem();//数据字典加载（公用）
             this.Text = "编辑员工月考勤";
 
+            this.txtMonth.Text = $"{this.year}年{this.month}月";
+
+            var team = CallerFactory<IWorkTeamService>.Instance.FindByID(this.workTeamId);
+            this.txtWorkTeam.Text = team.Name;
+
             this.staffs = CallerFactory<IStaffService>.Instance.Find("StaffType = 2");
 
             var data = CallerFactory<ILaborMonthAttendanceService>.Instance.GetRecords(this.year, this.month, this.workTeamId);
