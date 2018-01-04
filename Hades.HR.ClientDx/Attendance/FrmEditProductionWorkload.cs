@@ -33,13 +33,18 @@ namespace Hades.HR.UI
         /// <summary>
         /// 完工单数据
         /// </summary>
-        private List<CompleteForm> completeForms = new List<CompleteForm>();
+        //private List<CompleteForm> completeForms = new List<CompleteForm>();
 
         /// <summary>
         /// 完工单详细信息
         /// </summary>
-        private List<CompleteDetails> completeDetails = new List<CompleteDetails>();
+        //private List<CompleteDetails> completeDetails = new List<CompleteDetails>();
 
+        /// <summary>
+        /// 缓存完工数据
+        /// </summary>
+        private List<CompletionListInfo> completionList = new List<CompletionListInfo>();
+        
         /// <summary>
         /// 暂存产量工时数据
         /// </summary>
@@ -73,33 +78,52 @@ namespace Hades.HR.UI
         }
 
         /// <summary>
+        /// 载入完工单数据
+        /// </summary>
+        private void LoadCompletions()
+        {
+            string sql = string.Format("WorkteamId = '{0}' AND EndTime = '{1}'", this.tempInfo.WorkTeamId, this.tempInfo.AttendanceDate);
+            this.completionList = CallerFactory<ICompletionListService>.Instance.Find(sql);
+        }
+
+        /// <summary>
+        /// 显示完工单列表
+        /// </summary>
+        private void DisplayCompletionList()
+        {
+            this.lvComplete.DataSource = completionList;
+            this.lvComplete.DisplayMember = "CompletionListID";
+            this.lvComplete.ValueMember = "Id";
+        }
+
+        /// <summary>
         /// 生成完工单列表
         /// </summary>
         /// <param name="dt"></param>
         private void GenerateForm(DateTime dt)
         {
-            Random random = new Random(dt.Day);
+            //Random random = new Random(dt.Day);
 
-            this.lvComplete.Items.Clear();
+            //this.lvComplete.Items.Clear();
 
-            int days = random.Next(2, 6);
-            for (int i = 0; i < days; i++)
-            {
-                string id = Guid.NewGuid().ToString();
-                string number = string.Format("{0:D4}{1:D2}{2:D3}-{3:D3}", dt.Year, dt.Month, dt.Day, i);
+            //int days = random.Next(2, 6);
+            //for (int i = 0; i < days; i++)
+            //{
+            //    string id = Guid.NewGuid().ToString();
+            //    string number = string.Format("{0:D4}{1:D2}{2:D3}-{3:D3}", dt.Year, dt.Month, dt.Day, i);
 
-                CompleteForm form = new CompleteForm();
-                form.Id = id;
-                form.Number = number;
+            //    CompleteForm form = new CompleteForm();
+            //    form.Id = id;
+            //    form.Number = number;
 
-                completeForms.Add(form);
+            //    completeForms.Add(form);
 
-                GenerateCompleteDetails(form.Id, i);
-            }
+            //    GenerateCompleteDetails(form.Id, i);
+            //}
 
-            this.lvComplete.DataSource = completeForms;
-            this.lvComplete.DisplayMember = "Number";
-            this.lvComplete.ValueMember = "Id";
+            //this.lvComplete.DataSource = completeForms;
+            //this.lvComplete.DisplayMember = "Number";
+            //this.lvComplete.ValueMember = "Id";
         }
 
         /// <summary>
@@ -107,32 +131,32 @@ namespace Hades.HR.UI
         /// </summary>
         private void GenerateCompleteDetails(string completeId, int index)
         {
-            Random random = new Random(DateTime.Now.Millisecond + index);
+            //Random random = new Random(DateTime.Now.Millisecond + index);
 
-            CompleteDetails form1 = new CompleteDetails();
-            form1.CompleteId = completeId;
-            form1.Name = "桶身圈圆";
-            form1.Production = 1700 * (decimal)(random.Next(50, 100) / 100m);
-            form1.Quota = 196;
-            form1.Workload = Math.Round(form1.Production / form1.Quota, 2);
+            //CompleteDetails form1 = new CompleteDetails();
+            //form1.CompleteId = completeId;
+            //form1.Name = "桶身圈圆";
+            //form1.Production = 1700 * (decimal)(random.Next(50, 100) / 100m);
+            //form1.Quota = 196;
+            //form1.Workload = Math.Round(form1.Production / form1.Quota, 2);
 
-            CompleteDetails form2 = new CompleteDetails();
-            form2.CompleteId = completeId;
-            form2.Name = "桶身点焊";
-            form2.Production = 1700 * (decimal)(random.Next(50, 100) / 100m);
-            form2.Quota = 98;
-            form2.Workload = Math.Round(form2.Production / form2.Quota, 2);
+            //CompleteDetails form2 = new CompleteDetails();
+            //form2.CompleteId = completeId;
+            //form2.Name = "桶身点焊";
+            //form2.Production = 1700 * (decimal)(random.Next(50, 100) / 100m);
+            //form2.Quota = 98;
+            //form2.Workload = Math.Round(form2.Production / form2.Quota, 2);
 
-            CompleteDetails form3 = new CompleteDetails();
-            form3.CompleteId = completeId;
-            form3.Name = "桶身缝焊";
-            form3.Production = 1700 * (decimal)(random.Next(50, 100) / 100m);
-            form3.Quota = 196;
-            form3.Workload = Math.Round(form3.Production / form3.Quota, 2);
+            //CompleteDetails form3 = new CompleteDetails();
+            //form3.CompleteId = completeId;
+            //form3.Name = "桶身缝焊";
+            //form3.Production = 1700 * (decimal)(random.Next(50, 100) / 100m);
+            //form3.Quota = 196;
+            //form3.Workload = Math.Round(form3.Production / form3.Quota, 2);
 
-            completeDetails.Add(form1);
-            completeDetails.Add(form2);
-            completeDetails.Add(form3);
+            //completeDetails.Add(form1);
+            //completeDetails.Add(form2);
+            //completeDetails.Add(form3);
         }
 
         /// <summary>
@@ -140,9 +164,9 @@ namespace Hades.HR.UI
         /// </summary>
         private void LoadLaborProduction()
         {
-            foreach (var item in this.completeForms)
+            foreach (var item in this.completionList)
             {
-                var data = CallerFactory<ILaborProductionWorkloadService>.Instance.Find(string.Format("CompleteId = '{0}'", item.Id));
+                var data = CallerFactory<ILaborProductionWorkloadService>.Instance.Find(string.Format("CompleteId = '{0}'", item.ID));
 
                 this.laborProductions.AddRange(data);
             }
@@ -154,14 +178,12 @@ namespace Hades.HR.UI
         /// <param name="completeId"></param>
         private void DisplayDetails(string completeId)
         {
-            this.wgvComplete.DisplayColumns = "Name,Production,Quota,Workload";
+            this.wgvComplete.DisplayColumns = "CompletionListID,AcceptanceAmount";
 
-            this.wgvComplete.AddColumnAlias("Name", "工序名称");
-            this.wgvComplete.AddColumnAlias("Production", "实际产量");
-            this.wgvComplete.AddColumnAlias("Quota", "计件定额");
-            this.wgvComplete.AddColumnAlias("Workload", "产量工时");
+            this.wgvComplete.AddColumnAlias("CompletionListID", "完工单编号");
+            this.wgvComplete.AddColumnAlias("AcceptanceAmount", "产量工时");
 
-            var data = this.completeDetails.Where(r => r.CompleteId == completeId);
+            var data = this.completionList.Where(r => r.ID == completeId);
             this.wgvComplete.DataSource = data;
         }
 
@@ -183,6 +205,7 @@ namespace Hades.HR.UI
                     info.CompleteId = completeId;
                     info.WorkTeamId = this.tempInfo.WorkTeamId;
                     info.StaffId = item.StaffId;
+                    info.AttendanceDate = this.tempInfo.AttendanceDate;
 
                     data.Add(info);
                 }
@@ -214,8 +237,8 @@ namespace Hades.HR.UI
             if (this.lvComplete.SelectedIndex == -1 || this.lvComplete.SelectedItem == null)
                 return;
 
-            var form = this.lvComplete.SelectedItem as CompleteForm;
-            var totalHours = this.completeDetails.Where(r => r.CompleteId == form.Id).Sum(r => r.Workload);
+            var form = this.lvComplete.SelectedItem as CompletionListInfo;
+            decimal totalHours = this.completionList.Where(r => r.ID == form.ID).Sum(r => r.AcceptanceAmount);
 
             var selected = this.dgvStaff.GetSelectedRows();
             if (selected.Length == 0)
@@ -299,12 +322,21 @@ namespace Hades.HR.UI
 
                     this.staffs = CallerFactory<IStaffService>.Instance.Find("StaffType = 2");
                     this.laborWorkloads = CallerFactory<ILaborDailyWorkloadService>.Instance.Find(string.Format("WorkTeamWorkloadId='{0}'", ID));
-                    
-                    GenerateForm(info.AttendanceDate);
 
-                    LoadLaborProduction();
+                    LoadCompletions();
 
-                    txtProductionHours.Value = this.completeDetails.Sum(r => r.Workload);
+                    if (this.completionList.Count > 0)
+                    {
+                        DisplayCompletionList();
+
+                        LoadLaborProduction();
+
+                        txtProductionHours.Value = this.completionList.Sum(r => r.AcceptanceAmount);
+                    }
+                    else
+                    {
+                        this.txtProductionHours.Value = 0;                        
+                    }
                 }
 
                 //this.btnOK.Enabled = HasFunction("WorkTeamDailyWorkload/Edit");             
@@ -326,25 +358,17 @@ namespace Hades.HR.UI
             {
                 try
                 {
-                    info.ProductionHours = this.completeDetails.Sum(r => r.Workload);
+                    var totalHours = this.completionList.Sum(r => r.AcceptanceAmount);
 
-                    bool succeed = CallerFactory<IWorkTeamDailyWorkloadService>.Instance.Update(info, info.Id);
-                  
-                    foreach(var item in this.laborProductions)
+                    if (laborProductions.Sum(r => r.ProductionHours) != totalHours)
                     {
-                        // 增加产量工时分配
-                        CallerFactory<ILaborProductionWorkloadService>.Instance.Insert(item);
+                        MessageDxUtil.ShowWarning("分配产量工时与总数不等");
+                        return false;
                     }
 
-                    foreach(var item in this.laborWorkloads)
-                    {
-                        var hours = this.laborProductions.Where(r => r.StaffId == item.StaffId).Sum(r => r.ProductionHours);
-                        item.ProductionHours = hours;
-
-                        CallerFactory<ILaborDailyWorkloadService>.Instance.Update(item, item.Id);
-                    }
-
-                    return true;
+                    bool succeed = CallerFactory<IWorkTeamDailyWorkloadService>.Instance.SaveProduction(this.ID, totalHours, this.laborProductions);
+                    
+                    return succeed;
                 }
                 catch (Exception ex)
                 {
@@ -366,9 +390,9 @@ namespace Hades.HR.UI
         {
             if (this.lvComplete.SelectedIndex != -1 && this.lvComplete.SelectedItem != null)
             {
-                var form = this.lvComplete.SelectedItem as CompleteForm;
-                DisplayDetails(form.Id);
-                DisplayLaborProduction(form.Id);
+                var form = this.lvComplete.SelectedItem as CompletionListInfo;
+                DisplayDetails(form.ID);
+                DisplayLaborProduction(form.ID);
             }
         }
 
@@ -395,11 +419,11 @@ namespace Hades.HR.UI
             {
                 if (e.Value != null)
                 {
-                    var s = this.completeForms.SingleOrDefault(r => r.Id == e.Value.ToString());
+                    var s = this.completionList.SingleOrDefault(r => r.ID == e.Value.ToString());
                     if (s == null)
                         e.DisplayText = "";
                     else
-                        e.DisplayText = s.Number;
+                        e.DisplayText = s.CompletionListID;
                 }
             }
         }
@@ -446,57 +470,10 @@ namespace Hades.HR.UI
         {
             if (this.lvComplete.SelectedIndex != -1 && this.lvComplete.SelectedItem != null)
             {
-                var form = this.lvComplete.SelectedItem as CompleteForm;
-                StoreCompleteForm(form.Id);
+                var form = this.lvComplete.SelectedItem as CompletionListInfo;
+                StoreCompleteForm(form.ID);
             }
         }
         #endregion //Event
-    }
-
-    /// <summary>
-    /// 完工单
-    /// </summary>
-    public class CompleteForm
-    {
-        /// <summary>
-        /// ID
-        /// </summary>
-        public string Id { get; set; }
-
-        /// <summary>
-        /// 编号
-        /// </summary>
-        public string Number { get; set; }
-    }
-
-    /// <summary>
-    /// 完工信息
-    /// </summary>
-    public class CompleteDetails
-    {
-        /// <summary>
-        /// 完工单ID
-        /// </summary>
-        public string CompleteId { get; set; }
-
-        /// <summary>
-        /// 工序名称
-        /// </summary>
-        public string Name { get; set; }
-
-        /// <summary>
-        /// 工序产量
-        /// </summary>
-        public decimal Production { get; set; }
-
-        /// <summary>
-        /// 计件定额
-        /// </summary>
-        public decimal Quota { get; set; }
-
-        /// <summary>
-        /// 工序产量工时
-        /// </summary>
-        public decimal Workload { get; set; }
     }
 }

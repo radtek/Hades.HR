@@ -120,7 +120,7 @@ namespace Hades.HR.BLL
                 LaborProductionWorkload productBll = new LaborProductionWorkload();
 
                 // 删除已有员工产量工时分配记录
-                productBll.DeleteByCondition(string.Format("WorkTeamId = '{0]' AND AttendanceDate = '{1}'", workTeamWorkload.WorkTeamId, workTeamWorkload.AttendanceDate), trans);
+                productBll.DeleteByCondition(string.Format("WorkTeamId = '{0}' AND AttendanceDate = '{1}'", workTeamWorkload.WorkTeamId, workTeamWorkload.AttendanceDate), trans);
 
                 // 增加产量工时分配
                 foreach (var item in productWorkloads)

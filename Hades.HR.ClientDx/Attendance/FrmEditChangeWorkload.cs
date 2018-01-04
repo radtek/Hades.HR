@@ -86,11 +86,11 @@ namespace Hades.HR.UI
         /// </summary>
         private void DisplayChangeDetails()
         {
-            this.wgvChange.DisplayColumns = "ItemId,Amount,ManHour";
+            this.wgvChange.DisplayColumns = "ItemId,Amount,ManHours";
 
             this.wgvChange.AddColumnAlias("ItemId", "名称");
             this.wgvChange.AddColumnAlias("Amount", "数量");
-            this.wgvChange.AddColumnAlias("ManHour", "换机工时(h)");
+            this.wgvChange.AddColumnAlias("ManHours", "换机工时(h)");
 
             var data = this.replaceInfo;
             this.wgvChange.DataSource = data;
@@ -180,7 +180,7 @@ namespace Hades.HR.UI
                         this.laborWorkloads = CallerFactory<ILaborDailyWorkloadService>.Instance.Find(string.Format("WorkTeamWorkloadId='{0}'", ID));
 
                         DisplayChangeDetails();
-                        // LoadLaborChanges(this.changeId);
+                        //LoadLaborChanges();
                         DisplayLaborChange();
                     }
                     else
@@ -188,10 +188,6 @@ namespace Hades.HR.UI
                         this.spChangeHours.Value = 0;
                         this.txtRemark.Text = "";
                     }
-
-                    //DisplayDetails();
-
-                  
                 }
 
                 //this.btnOK.Enabled = HasFunction("LaborChangeWorkload/Edit");             
@@ -201,8 +197,7 @@ namespace Hades.HR.UI
                 //this.btnOK.Enabled = Portal.gc.HasFunction("LaborChangeWorkload/Add");  
             }
 
-        }
-       
+        }       
 
         /// <summary>
         /// 编辑状态下的数据保存
@@ -218,31 +213,17 @@ namespace Hades.HR.UI
                 {
                     this.laborChanges = this.bsLaborWorkload.DataSource as List<LaborChangeWorkloadInfo>;
 
-                    info.ChangeHours = this.replaceInfo.Sum(r => r.ManHours);
+                    var totalHours = this.replaceInfo.Sum(r => r.ManHours);
 
-                    if (laborChanges.Sum(r => r.ChangeHours) > info.ChangeHours)
+                    if (laborChanges.Sum(r => r.ChangeHours) != totalHours)
                     {
-                        MessageDxUtil.ShowWarning("分配换机工时操作总数");
+                        MessageDxUtil.ShowWarning("分配换机工时与总数不等");
                         return false;
                     }
 
-                    bool succeed = CallerFactory<IWorkTeamDailyWorkloadService>.Instance.Update(info, info.Id);
+                    bool succeed = CallerFactory<IWorkTeamDailyWorkloadService>.Instance.SaveChange(this.ID, totalHours, this.laborChanges);
 
-                    foreach (var item in this.laborChanges)
-                    {
-                        // 增加换机工时分配
-                        CallerFactory<ILaborChangeWorkloadService>.Instance.Insert(item);
-                    }
-
-                    foreach (var item in this.laborWorkloads)
-                    {
-                        var hours = this.laborChanges.Where(r => r.StaffId == item.StaffId).Sum(r => r.ChangeHours);
-                        item.ChangeHours = hours;
-
-                        CallerFactory<ILaborDailyWorkloadService>.Instance.Update(item, item.Id);
-                    }
-
-                    return true;
+                    return succeed;
                 }
                 catch (Exception ex)
                 {
