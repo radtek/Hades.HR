@@ -327,30 +327,4 @@ namespace Hades.HR.UI
         }
         #endregion //Event
     }
-
-    /// <summary>
-    /// 换机信息
-    /// </summary>
-    public class ChangeDetails
-    {
-        /// <summary>
-        /// 项目名称
-        /// </summary>
-        public string Name { get; set; }
-
-        /// <summary>
-        /// 标准定额
-        /// </summary>
-        public decimal Quota { get; set; }
-
-        /// <summary>
-        /// 数量
-        /// </summary>
-        public decimal Number { get; set; }
-
-        /// <summary>
-        /// 工时
-        /// </summary>
-        public decimal Workload { get; set; }
-    }
 }

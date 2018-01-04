@@ -105,6 +105,9 @@ namespace Hades.HR.BLL
 
                 foreach (var item in data)
                 {
+                    item.TotalSalary = item.BaseSalary + item.OverSalary + item.WeekendSalary + item.HolidaySalary +
+                        item.Estimation + item.Allowance;
+                         
                     dal.Insert(item, trans);
                 }
 

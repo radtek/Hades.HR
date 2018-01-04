@@ -112,6 +112,7 @@ namespace Hades.HR.UI
                     LaborElectricWorkloadInfo info = new LaborElectricWorkloadInfo();
                     info.ElectricId = this.electricInfo.ID;
                     info.WorkTeamId = this.tempInfo.WorkTeamId;
+                    info.AttendanceDate = this.tempInfo.AttendanceDate;
                     info.StaffId = item.StaffId;
 
                     data.Add(info);

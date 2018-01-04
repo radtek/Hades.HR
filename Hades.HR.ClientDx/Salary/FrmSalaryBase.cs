@@ -35,6 +35,16 @@ namespace Hades.HR.UI
         /// 缓存部门列表
         /// </summary>
         private List<DepartmentInfo> departments;
+        
+        /// <summary>
+        /// 缓存职员信息
+        /// </summary>
+        private List<StaffInfo> staffList;
+
+        /// <summary>
+        /// 缓存级别数据
+        /// </summary>
+        private List<StaffLevelInfo> levels;
         #endregion //Field
 
         #region Constructor
@@ -114,6 +124,8 @@ namespace Hades.HR.UI
         public override void FormOnLoad()
         {
             this.departments = CallerFactory<IDepartmentService>.Instance.Find("");
+            this.staffList = CallerFactory<IStaffService>.Instance.Find("");
+            this.levels = CallerFactory<IStaffLevelService>.Instance.Find("");
 
             BindData();
         }
@@ -145,6 +157,28 @@ namespace Hades.HR.UI
                     if (dep != null)
                     {
                         e.DisplayText = dep.Name;
+                    }
+                }
+            }
+            else if (columnName == "Id")
+            {
+                if (e.Value != null && !string.IsNullOrEmpty(e.Value.ToString()))
+                {
+                    var staff = this.staffList.SingleOrDefault(r => r.Id == e.Value.ToString());
+                    if (staff != null)
+                    {
+                        e.DisplayText = staff.Name;
+                    }
+                }
+            }
+            else if (columnName == "StaffLevelId")
+            {
+                if (e.Value != null && !string.IsNullOrEmpty(e.Value.ToString()))
+                {
+                    var level = this.levels.SingleOrDefault(r => r.Id == e.Value.ToString());
+                    if (level != null)
+                    {
+                        e.DisplayText = level.Name;
                     }
                 }
             }

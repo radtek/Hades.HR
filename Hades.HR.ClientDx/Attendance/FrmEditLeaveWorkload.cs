@@ -105,6 +105,7 @@ namespace Hades.HR.UI
                     info.WorkTeamId = this.tempInfo.WorkTeamId;
                     info.StaffId = item.StaffId;
                     info.AttendanceDate = this.tempInfo.AttendanceDate;
+                    info.AssignType = 1;
 
                     data.Add(info);
                 }
@@ -144,7 +145,6 @@ namespace Hades.HR.UI
             }
             else
             {
-
                 //this.btnOK.Enabled = Portal.gc.HasFunction("LaborLeaveWorkload/Add");  
             }
         }      
@@ -168,24 +168,8 @@ namespace Hades.HR.UI
         public override bool CheckInput()
         {
             bool result = true;//默认是可以通过
-
-         
+            
             return result;
-        }
-
-        /// <summary>
-        /// 编辑或者保存状态下取值函数
-        /// </summary>
-        /// <param name="info"></param>
-        private void SetInfo(LaborLeaveWorkloadInfo info)
-        {
-            //info.WorkTeamId = txtWorkTeamId.Text;
-            //info.AttendanceDate = txtAttendanceDate.DateTime;
-            //info.StaffId = txtStaffId.Text;
-            //info.LeaveHours = txtLeaveHours.Value;
-            //info.AllowanceHours = txtAllowanceHours.Value;
-            //info.AssignType = Convert.ToInt32(txtAssignType.Value);
-            //info.Remark = txtRemark.Text;
         }
 
         /// <summary>
@@ -225,5 +209,52 @@ namespace Hades.HR.UI
             return false;
         }
         #endregion
+
+        #region Event
+        /// <summary>
+        /// 格式化数据显示
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dgvLeave_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+        {
+            string columnName = e.Column.FieldName;
+            if (columnName == "StaffId")
+            {
+                if (e.Value != null)
+                {
+                    var s = this.staffs.SingleOrDefault(r => r.Id == e.Value.ToString());
+                    if (s == null)
+                        e.DisplayText = "";
+                    else
+                        e.DisplayText = s.Name;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 自定义数据显示
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dgvLeave_CustomUnboundColumnData(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDataEventArgs e)
+        {
+            int rowIndex = e.ListSourceRowIndex;
+            if (rowIndex < 0 || rowIndex >= this.bsLaborWorkload.Count)
+                return;
+
+            var record = this.bsLaborWorkload[rowIndex] as LaborLeaveWorkloadInfo;
+
+            if (e.Column.FieldName == "StaffNumber" && e.IsGetData)
+            {
+                var s = this.staffs.SingleOrDefault(r => r.Id == record.StaffId);
+                if (s == null)
+                    e.Value = "";
+                else
+                    e.Value = s.Number;
+            }
+        }
+        #endregion //Event
+
     }
 }

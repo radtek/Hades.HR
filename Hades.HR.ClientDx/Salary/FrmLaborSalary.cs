@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.ComponentModel;
 using System.Collections.Generic;
+using System.Linq;
 
 using Hades.Pager.Entity;
 using Hades.Dictionary;
@@ -38,6 +39,11 @@ namespace Hades.HR.UI
         /// 缓存职员信息
         /// </summary>
         private List<StaffInfo> staffList;
+
+        /// <summary>
+        /// 缓存职员级别
+        /// </summary>
+        private List<StaffLevelInfo> levelList;
         #endregion //Field
 
         #region Constructor
@@ -118,6 +124,7 @@ namespace Hades.HR.UI
         {
             this.workTeamList = CallerFactory<IWorkTeamService>.Instance.Find2("", "");
             this.staffList = CallerFactory<IStaffService>.Instance.Find("StaffType = 2");
+            this.levelList = CallerFactory<IStaffLevelService>.Instance.Find("");
             this.wtTree.Init();
         }
         #endregion //Method
@@ -152,22 +159,7 @@ namespace Hades.HR.UI
         {
             BindData();
         }
-        #endregion //Event
 
-        #region System
-        void gridView1_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
-        {
-            //if (e.Column.FieldName == "OrderStatus")
-            //{
-            //    string status = this.winGridViewPager1.gridView1.GetRowCellValue(e.RowHandle, "OrderStatus").ToString();
-            //    Color color = Color.White;
-            //    if (status == "已审核")
-            //    {
-            //        e.Appearance.BackColor = Color.Red;
-            //        e.Appearance.BackColor2 = Color.LightCyan;
-            //    }
-            //}
-        }
         void gridView1_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
         {
             string columnName = e.Column.FieldName;
@@ -185,18 +177,71 @@ namespace Hades.HR.UI
                     }
                 }
             }
-            //else if (columnName == "Age")
+            else if (columnName == "StaffId")
+            {
+                if (e.Value != null && !string.IsNullOrEmpty(e.Value.ToString()))
+                {
+                    var st = this.staffList.SingleOrDefault(r => r.Id == e.Value.ToString());
+                    if (st != null)
+                    {
+                        e.DisplayText = st.Name;
+                    }
+                    else
+                    {
+                        var st2 = CallerFactory<IStaffService>.Instance.FindByID(e.Value.ToString());
+                        e.DisplayText = st2.Name;
+                    }
+                }
+            }
+            else if (columnName == "WorkTeamId")
+            {
+                if (e.Value != null && !string.IsNullOrEmpty(e.Value.ToString()))
+                {
+                    var wt = this.workTeamList.SingleOrDefault(r => r.Id == e.Value.ToString());
+                    if (wt != null)
+                    {
+                        e.DisplayText = wt.Name;
+                    }
+                    else
+                    {
+                        var wt2 = CallerFactory<IWorkTeamService>.Instance.FindByID(e.Value.ToString());
+                        e.DisplayText = wt2.Name;
+                    }
+                }
+            }
+            else if (columnName == "StaffLevelId")
+            {
+                if (e.Value != null && !string.IsNullOrEmpty(e.Value.ToString()))
+                {
+                    var level = this.levelList.SingleOrDefault(r => r.Id == e.Value.ToString());
+                    if (level != null)
+                    {
+                        e.DisplayText = level.Name;
+                    }
+                    else
+                    {
+                        var level2 = CallerFactory<IStaffLevelService>.Instance.FindByID(e.Value.ToString());
+                        e.DisplayText = level2.Name;
+                    }
+                }
+            }
+        }
+        #endregion //Event
+
+        #region System
+        void gridView1_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
+        {
+            //if (e.Column.FieldName == "OrderStatus")
             //{
-            //    e.DisplayText = string.Format("{0}岁", e.Value);
-            //}
-            //else if (columnName == "ReceivedMoney")
-            //{
-            //    if (e.Value != null)
+            //    string status = this.winGridViewPager1.gridView1.GetRowCellValue(e.RowHandle, "OrderStatus").ToString();
+            //    Color color = Color.White;
+            //    if (status == "已审核")
             //    {
-            //        e.DisplayText = e.Value.ToString().ToDecimal().ToString("C");
+            //        e.Appearance.BackColor = Color.Red;
+            //        e.Appearance.BackColor2 = Color.LightCyan;
             //    }
             //}
-        }
+        }       
 
         /// <summary>
         /// 绑定数据后，分配各列的宽度

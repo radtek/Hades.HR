@@ -37,6 +37,11 @@ namespace Hades.HR.UI
         /// 缓存职员数据
         /// </summary>
         private List<StaffInfo> staffs;
+
+        /// <summary>
+        /// 缓存级别数据
+        /// </summary>
+        private List<StaffLevelInfo> levels;
         #endregion //Field
 
         #region Constructor
@@ -89,7 +94,7 @@ namespace Hades.HR.UI
         {
             InitDictItem();//数据字典加载（公用）
 
-            this.Text = "编辑员工月考勤";
+            this.Text = "编辑员工工资";
 
             this.txtMonth.Text = $"{this.year}年{this.month}月";
 
@@ -97,6 +102,7 @@ namespace Hades.HR.UI
             this.txtWorkTeam.Text = team.Name;
 
             this.staffs = CallerFactory<IStaffService>.Instance.Find("StaffType = 2");
+            this.levels = CallerFactory<IStaffLevelService>.Instance.Find("");
 
             var data = CallerFactory<ILaborSalaryService>.Instance.GetRecords(this.year, this.month, this.workTeamId);
             this.bsSalary.DataSource = data;
@@ -143,5 +149,39 @@ namespace Hades.HR.UI
             return false;
         }
         #endregion //Method
+
+        #region Event
+        /// <summary>
+        /// 格式化数据显示
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dgvSalary_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+        {
+            string columnName = e.Column.FieldName;
+            if (columnName == "StaffId")
+            {
+                if (e.Value != null)
+                {
+                    var s = this.staffs.SingleOrDefault(r => r.Id == e.Value.ToString());
+                    if (s == null)
+                        e.DisplayText = "";
+                    else
+                        e.DisplayText = s.Name;
+                }
+            }
+            else if (columnName == "StaffLevelId")
+            {
+                if (e.Value != null)
+                {
+                    var s = this.levels.SingleOrDefault(r => r.Id == e.Value.ToString());
+                    if (s == null)
+                        e.DisplayText = "";
+                    else
+                        e.DisplayText = s.Name;
+                }
+            }
+        }
+        #endregion //Event
     }
 }

@@ -342,7 +342,7 @@ namespace Hades.HR.BLL
                 LaborElectricWorkload electricBll = new LaborElectricWorkload();
 
                 // 删除已有员工电修分配记录
-                electricBll.DeleteByCondition(string.Format("WorkTeamId = '{0]' AND AttendanceDate = '{1}'", workTeamWorkload.WorkTeamId, workTeamWorkload.AttendanceDate), trans);
+                electricBll.DeleteByCondition(string.Format("WorkTeamId = '{0}' AND AttendanceDate = '{1}'", workTeamWorkload.WorkTeamId, workTeamWorkload.AttendanceDate), trans);
 
                 // 增加员工电修记录
                 foreach (var item in electricWorkloads)
@@ -411,7 +411,7 @@ namespace Hades.HR.BLL
                 LaborLeaveWorkload leaveBll = new LaborLeaveWorkload();
 
                 // 删除已有员工请假分配记录
-                leaveBll.DeleteByCondition(string.Format("WorkTeamId = '{0]' AND AttendanceDate = '{1}'", workTeamWorkload.WorkTeamId, workTeamWorkload.AttendanceDate), trans);
+                leaveBll.DeleteByCondition(string.Format("WorkTeamId = '{0}' AND AttendanceDate = '{1}'", workTeamWorkload.WorkTeamId, workTeamWorkload.AttendanceDate), trans);
 
                 // 增加员工请假记录
                 foreach (var item in leaveWorkloads)

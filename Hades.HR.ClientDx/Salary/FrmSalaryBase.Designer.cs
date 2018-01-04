@@ -101,16 +101,17 @@ namespace Hades.HR.UI
             this.winGridViewPager1.MinimumSize = new System.Drawing.Size(540, 0);
             this.winGridViewPager1.Name = "winGridViewPager1";
             this.winGridViewPager1.PrintTitle = "";
-            this.winGridViewPager1.ShowAddMenu = true;
+            this.winGridViewPager1.ShowAddMenu = false;
             this.winGridViewPager1.ShowCheckBox = false;
-            this.winGridViewPager1.ShowDeleteMenu = true;
-            this.winGridViewPager1.ShowEditMenu = true;
+            this.winGridViewPager1.ShowDeleteMenu = false;
+            this.winGridViewPager1.ShowEditMenu = false;
             this.winGridViewPager1.ShowExportButton = true;
             this.winGridViewPager1.Size = new System.Drawing.Size(980, 580);
             this.winGridViewPager1.TabIndex = 11;
             // 
             // contextMenuStrip1
             // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
@@ -129,9 +130,9 @@ namespace Hades.HR.UI
             // 
             // txtStaffId
             // 
-            this.txtStaffId.Location = new System.Drawing.Point(120, 12);
+            this.txtStaffId.Location = new System.Drawing.Point(47, 14);
             this.txtStaffId.Name = "txtStaffId";
-            this.txtStaffId.Size = new System.Drawing.Size(848, 20);
+            this.txtStaffId.Size = new System.Drawing.Size(919, 24);
             this.txtStaffId.StyleController = this.layoutControl1;
             this.txtStaffId.TabIndex = 1;
             // 
@@ -151,12 +152,13 @@ namespace Hades.HR.UI
             this.layoutControlItem1.Control = this.txtStaffId;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(960, 33);
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(105, 14);
+            this.layoutControlItem1.Size = new System.Drawing.Size(956, 29);
+            this.layoutControlItem1.Text = "ְԱ";
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(30, 18);
             // 
             // FrmSalaryBase
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1004, 680);
             this.Controls.Add(this.layoutControl1);
