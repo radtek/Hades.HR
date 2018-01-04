@@ -41,6 +41,7 @@ namespace Hades.HR.ServiceCaller
         public const string LaborProductionWorkloadService = "WSHttpBinding_ILaborProductionWorkloadService";
         public const string LaborElectricWorkloadService = "WSHttpBinding_ILaborElectricWorkloadService";
         public const string LaborRepairWorkloadService = "WSHttpBinding_ILaborRepairWorkloadService";
+        public const string LaborLeaveWorkloadService = "WSHttpBinding_ILaborLeaveWorkloadService";
 
         public const string LaborMonthAttendanceService = "WSHttpBinding_ILaborMonthAttendanceService";
         #endregion //Attendance

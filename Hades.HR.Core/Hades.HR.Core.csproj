@@ -113,6 +113,7 @@
     <Compile Include="BLL\Attendance\LaborDailyAttendance.cs" />
     <Compile Include="BLL\Attendance\LaborDailyWorkload.cs" />
     <Compile Include="BLL\Attendance\LaborElectricWorkload.cs" />
+    <Compile Include="BLL\Attendance\LaborLeaveWorkload.cs" />
     <Compile Include="BLL\Attendance\LaborMonthAttendance.cs" />
     <Compile Include="BLL\Attendance\LaborProductionWorkload.cs" />
     <Compile Include="BLL\Attendance\LaborRepairWorkload.cs" />
@@ -138,6 +139,7 @@
     <Compile Include="DAL\DALSQL\Attendance\LaborDailyAttendance.cs" />
     <Compile Include="DAL\DALSQL\Attendance\LaborDailyWorkload.cs" />
     <Compile Include="DAL\DALSQL\Attendance\LaborElectricWorkload.cs" />
+    <Compile Include="DAL\DALSQL\Attendance\LaborLeaveWorkload.cs" />
     <Compile Include="DAL\DALSQL\Attendance\LaborMonthAttendance.cs" />
     <Compile Include="DAL\DALSQL\Attendance\LaborProductionWorkload.cs" />
     <Compile Include="DAL\DALSQL\Attendance\LaborRepairWorkload.cs" />
@@ -163,6 +165,7 @@
     <Compile Include="Entity\Attendance\LaborDailyAttendanceInfo.cs" />
     <Compile Include="Entity\Attendance\LaborDailyWorkloadInfo.cs" />
     <Compile Include="Entity\Attendance\LaborElectricWorkloadInfo.cs" />
+    <Compile Include="Entity\Attendance\LaborLeaveWorkloadInfo.cs" />
     <Compile Include="Entity\Attendance\LaborMonthAttendanceInfo.cs" />
     <Compile Include="Entity\Attendance\LaborProductionWorkloadInfo.cs" />
     <Compile Include="Entity\Attendance\LaborRepairWorkloadInfo.cs" />
@@ -188,6 +191,7 @@
     <Compile Include="IDAL\Attendance\ILaborDailyAttendance.cs" />
     <Compile Include="IDAL\Attendance\ILaborDailyWorkload.cs" />
     <Compile Include="IDAL\Attendance\ILaborElectricWorkload.cs" />
+    <Compile Include="IDAL\Attendance\ILaborLeaveWorkload.cs" />
     <Compile Include="IDAL\Attendance\ILaborMonthAttendance.cs" />
     <Compile Include="IDAL\Attendance\ILaborProductionWorkload.cs" />
     <Compile Include="IDAL\Attendance\ILaborRepairWorkload.cs" />

@@ -61,5 +61,14 @@ namespace Hades.HR.Facade
         /// <returns></returns>
         [OperationContract]
         bool SaveElectric(string workTeamWorkloadId, decimal totalHours, List<LaborElectricWorkloadInfo> electricWorkloads);
+
+        /// <summary>
+        /// 保存员工请假工时信息
+        /// </summary>
+        /// <param name="workTeamWorkloadId">班组日工作量ID</param>
+        /// <param name="leaveWorkloads">员工请假工时信息</param>
+        /// <returns></returns>
+        [OperationContract]
+        bool SaveLeave(string workTeamWorkloadId, List<LaborLeaveWorkloadInfo> leaveWorkloads);
     }
 }

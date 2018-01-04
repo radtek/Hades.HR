@@ -130,6 +130,7 @@
     <Content Include="HR\Attendance\LaborDailyAttendanceService.svc" />
     <Content Include="HR\Attendance\LaborDailyWorkloadService.svc" />
     <Content Include="HR\Attendance\LaborElectricWorkloadService.svc" />
+    <Content Include="HR\Attendance\LaborLeaveWorkloadService.svc" />
     <Content Include="HR\Attendance\LaborMonthAttendanceService.svc" />
     <Content Include="HR\Attendance\LaborProductionWorkloadService.svc" />
     <Content Include="HR\Attendance\LaborRepairWorkloadService.svc" />

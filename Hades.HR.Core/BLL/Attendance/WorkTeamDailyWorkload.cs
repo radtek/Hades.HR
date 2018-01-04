@@ -90,7 +90,7 @@ namespace Hades.HR.BLL
                 }
             }
         }
-        
+
         /// <summary>
         /// 保存产量工时信息
         /// </summary>
@@ -190,7 +190,7 @@ namespace Hades.HR.BLL
                 // 更新班组日工作量表
                 workTeamWorkload.ChangeHours = totalHours;
                 dal.Update(workTeamWorkload, workTeamWorkload.Id, trans);
-                
+
                 LaborChangeWorkload changeBll = new LaborChangeWorkload();
 
                 // 删除已有员工换机分配记录
@@ -338,14 +338,14 @@ namespace Hades.HR.BLL
                 // 更新班组日工作量表
                 workTeamWorkload.ElectricHours = totalHours;
                 dal.Update(workTeamWorkload, workTeamWorkload.Id, trans);
-                                
+
                 LaborElectricWorkload electricBll = new LaborElectricWorkload();
 
                 // 删除已有员工电修分配记录
                 electricBll.DeleteByCondition(string.Format("WorkTeamId = '{0]' AND AttendanceDate = '{1}'", workTeamWorkload.WorkTeamId, workTeamWorkload.AttendanceDate), trans);
 
                 // 增加员工电修记录
-                foreach(var item in electricWorkloads)
+                foreach (var item in electricWorkloads)
                 {
                     electricBll.Insert(item, trans);
                 }
@@ -376,6 +376,75 @@ namespace Hades.HR.BLL
                     trans.Rollback();
                 }
                 LogTextHelper.Error("更新员工电修工时", e);
+                return false;
+            }
+            finally
+            {
+                if (isLocalTrans)
+                {
+                    trans = null;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 保存员工请假工时信息
+        /// </summary>
+        /// <param name="workTeamWorkloadId">班组日工作量ID</param>
+        /// <param name="leaveWorkloads">员工请假工时信息</param>
+        /// <param name="trans"></param>
+        /// <returns></returns>
+        public bool SaveLeave(string workTeamWorkloadId, List<LaborLeaveWorkloadInfo> leaveWorkloads, DbTransaction trans = null)
+        {
+            var dal = this.baseDal as IWorkTeamDailyWorkload;
+
+            bool isLocalTrans = trans == null;
+            if (isLocalTrans)
+            {
+                trans = dal.CreateTransaction();
+            }
+
+            try
+            {
+                var workTeamWorkload = dal.FindByID(workTeamWorkloadId, trans);
+
+                LaborLeaveWorkload leaveBll = new LaborLeaveWorkload();
+
+                // 删除已有员工请假分配记录
+                leaveBll.DeleteByCondition(string.Format("WorkTeamId = '{0]' AND AttendanceDate = '{1}'", workTeamWorkload.WorkTeamId, workTeamWorkload.AttendanceDate), trans);
+
+                // 增加员工请假记录
+                foreach (var item in leaveWorkloads)
+                {
+                    leaveBll.Insert(item, trans);
+                }
+
+                LaborDailyWorkload laborWorkloadBll = new LaborDailyWorkload();
+                List<LaborDailyWorkloadInfo> laborWorkloads = laborWorkloadBll.Find(string.Format("WorkTeamWorkloadId='{0}'", workTeamWorkloadId));
+
+                // 更新员工日工作量内电修数据
+                foreach (var item in laborWorkloads)
+                {
+                    item.LeaveHours = leaveWorkloads.Where(r => r.StaffId == item.StaffId).Sum(r => r.LeaveHours);
+                    item.AllowanceHours = leaveWorkloads.Where(r => r.StaffId == item.StaffId).Sum(r => r.AllowanceHours);
+
+                    laborWorkloadBll.Update(item, item.Id, trans);
+                }
+
+                if (isLocalTrans)
+                {
+                    trans.Commit();
+                }
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                if (isLocalTrans)
+                {
+                    trans.Rollback();
+                }
+                LogTextHelper.Error("更新员工请假工时", e);
                 return false;
             }
             finally

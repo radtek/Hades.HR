@@ -355,6 +355,28 @@ namespace Hades.HR.UI
                 }
             }
         }
+
+        /// <summary>
+        /// 编辑请假工时
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void menuLeave_Click(object sender, EventArgs e)
+        {
+            string ID = this.wgvWorkload.gridView1.GetFocusedRowCellDisplayText("Id");
+            if (!string.IsNullOrEmpty(ID))
+            {
+                FrmEditLeaveWorkload dlg = new FrmEditLeaveWorkload();
+                dlg.ID = ID;
+                dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
+
+                if (DialogResult.OK == dlg.ShowDialog())
+                {
+                    LoadWorkTeamWorkload();
+                    LoadLaborWorkload();
+                }
+            }
+        }
         #endregion //Event
 
         #region Grid
