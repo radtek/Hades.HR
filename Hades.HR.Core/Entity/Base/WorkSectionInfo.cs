@@ -36,6 +36,9 @@ namespace Hades.HR.Entity
         public virtual string CompanyId { get; set; }
 
         [DataMember]
+        public virtual string Caption { get; set; }
+
+        [DataMember]
         public virtual string SortCode { get; set; }
 
         [DataMember]

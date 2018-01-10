@@ -31,9 +31,9 @@ namespace Hades.HR.UI
         private List<DepartmentInfo> departments;
 
         /// <summary>
-        /// 缓存产线列表
+        /// 缓存工段列表
         /// </summary>
-        private List<ProductionLineInfo> productionLines;
+        private List<WorkSectionInfo> workSections;
 
         /// <summary>
         /// 缓存班组列表
@@ -90,6 +90,23 @@ namespace Hades.HR.UI
         }
 
         /// <summary>
+        /// 载入公司包含工段
+        /// </summary>
+        private void LoadWorkSection()
+        {
+            if (string.IsNullOrEmpty(this.currentDepartmentId))
+                this.workSections = new List<WorkSectionInfo>();
+            else
+                this.workSections = CallerFactory<IWorkSectionService>.Instance.Find2(string.Format("CompanyId='{0}' AND Deleted=0", currentDepartmentId), "ORDER BY SortCode");
+
+            this.wgvWorkSection.DisplayColumns = "Name,Number,CompanyId,Caption,SortCode,Remark,Enabled";
+            this.wgvWorkSection.ColumnNameAlias = CallerFactory<IWorkSectionService>.Instance.GetColumnNameAlias();
+
+            this.wgvWorkSection.DataSource = workSections;
+            this.wgvWorkSection.PrintTitle = "工段报表";
+        }
+
+        /// <summary>
         /// 查看班组
         /// </summary>
         private void ViewWorkTeam()
@@ -132,13 +149,11 @@ namespace Hades.HR.UI
             this.wgvWorkTeam.gridView1.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(wgvWorkTeam_CustomColumnDisplayText);
             this.wgvWorkTeam.OnGridViewMouseDoubleClick += WgvWorkTeam_OnGridViewMouseDoubleClick;
 
-            //this.wgvWorkSection.AppendedMenu = this.contextMenuStrip3;
-            //this.wgvWorkSection.ShowLineNumber = true;
-            //this.wgvWorkSection.BestFitColumnWith = true;
-            //this.wgvWorkSection.gridView1.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(wgvWorkSection_CustomColumnDisplayText);
+            this.wgvWorkSection.AppendedMenu = this.contextMenuStrip3;
+            this.wgvWorkSection.ShowLineNumber = true;
+            this.wgvWorkSection.BestFitColumnWith = true;
+            this.wgvWorkSection.gridView1.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(wgvWorkSection_CustomColumnDisplayText);
         }
-
-       
         #endregion //Method
 
         #region Event
@@ -158,6 +173,7 @@ namespace Hades.HR.UI
                 this.currentDepartmentId = department.Id;
 
                 LoadWorkTeams();
+                LoadWorkSection();
             }
         }
 
@@ -167,6 +183,10 @@ namespace Hades.HR.UI
             LoadWorkTeams();
         }
 
+        void workSection_OnDataSaved(object sender, EventArgs e)
+        {
+            LoadWorkSection();
+        }
 
         #region Menu Event
         /// <summary>
@@ -252,7 +272,14 @@ namespace Hades.HR.UI
         /// <param name="e"></param>
         private void menuAddSection_Click(object sender, EventArgs e)
         {
+            FrmWorkSectionEdit dlg = new FrmWorkSectionEdit();
+            dlg.OnDataSaved += new EventHandler(workSection_OnDataSaved);
+            dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
 
+            if (DialogResult.OK == dlg.ShowDialog())
+            {
+                LoadWorkSection();
+            }
         }
 
         /// <summary>
@@ -293,6 +320,36 @@ namespace Hades.HR.UI
         /// <param name="sender"></param>
         /// <param name="e"></param>
         void wgvWorkTeam_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+        {
+            string columnName = e.Column.FieldName;
+            if (columnName == "CompanyId")
+            {
+                if (e.Value != null && !string.IsNullOrEmpty(e.Value.ToString()))
+                {
+                    var dep = this.departments.SingleOrDefault(r => r.Id == e.Value.ToString());
+                    if (dep != null)
+                    {
+                        e.DisplayText = dep.Name;
+                    }
+                    else
+                    {
+                        var dep2 = CallerFactory<IDepartmentService>.Instance.FindByID(e.Value.ToString());
+                        e.DisplayText = dep.Name;
+                    }
+                }
+            }
+            else if (columnName == "Enabled")
+            {
+                e.DisplayText = Convert.ToInt32(e.Value) == 1 ? "已启用" : "未启用";
+            }
+        }
+
+        /// <summary>
+        /// 格式化工段列表
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void wgvWorkSection_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
         {
             string columnName = e.Column.FieldName;
             if (columnName == "CompanyId")

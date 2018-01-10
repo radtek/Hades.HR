@@ -55,7 +55,7 @@ namespace Hades.HR.UI
             info.Name = txtName.Text;
             info.Number = txtNumber.Text;
             info.CompanyId = this.luCompany.GetSelectedId();
-
+            info.Caption = this.txtCaption.Text;
             info.SortCode = txtSortCode.Text;
             info.Remark = txtRemark.Text;
             info.Enabled = Convert.ToInt32(cmbEnabled.EditValue);
@@ -89,7 +89,7 @@ namespace Hades.HR.UI
         public override bool CheckInput()
         {
             bool result = true;//默认是可以通过
-                        
+
             if (this.txtName.Text.Trim().Length == 0)
             {
                 MessageDxUtil.ShowTips("请输入名称");
@@ -101,7 +101,7 @@ namespace Hades.HR.UI
                 MessageDxUtil.ShowTips("请选择所属公司");
                 this.luCompany.Focus();
                 result = false;
-            }          
+            }
 
             return result;
         }
@@ -122,6 +122,7 @@ namespace Hades.HR.UI
 
                     txtName.Text = info.Name;
                     txtNumber.Text = info.Number;
+                    txtCaption.Text = info.Caption;
 
                     this.luCompany.SetSelected(info.CompanyId);
 
@@ -139,7 +140,7 @@ namespace Hades.HR.UI
                 //this.btnOK.Enabled = Portal.gc.HasFunction("WorkSection/Add");  
             }
         }
-         
+
         /// <summary>
         /// 新增状态下的数据保存
         /// </summary>
@@ -158,7 +159,7 @@ namespace Hades.HR.UI
                     //可添加其他关联操作
 
                     return true;
-                }               
+                }
             }
             catch (Exception ex)
             {
@@ -166,7 +167,7 @@ namespace Hades.HR.UI
                 MessageDxUtil.ShowError(ex.Message);
             }
             return false;
-        }                 
+        }
 
         /// <summary>
         /// 编辑状态下的数据保存
@@ -180,12 +181,12 @@ namespace Hades.HR.UI
                 SetInfo(info);
 
                 try
-                {                    
+                {
                     bool succeed = CallerFactory<IWorkSectionService>.Instance.Update(info, info.Id);
                     if (succeed)
                     {
                         //可添加其他关联操作
-                       
+
                         return true;
                     }
                 }
@@ -195,12 +196,12 @@ namespace Hades.HR.UI
                     MessageDxUtil.ShowError(ex.Message);
                 }
             }
-           return false;
+            return false;
         }
         #endregion //Method
 
         #region Event
-     
+
         #endregion //Event
     }
 }

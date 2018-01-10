@@ -42,6 +42,8 @@ namespace Hades.HR.UI
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.txtCaption = new DevExpress.XtraEditors.TextEdit();
+            this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.picPrint)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -57,6 +59,8 @@ namespace Hades.HR.UI
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCaption.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             this.SuspendLayout();
             // 
             // btnOK
@@ -84,6 +88,7 @@ namespace Hades.HR.UI
             this.layoutControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.layoutControl1.Controls.Add(this.txtCaption);
             this.layoutControl1.Controls.Add(this.luCompany);
             this.layoutControl1.Controls.Add(this.cmbEnabled);
             this.layoutControl1.Controls.Add(this.txtRemark);
@@ -102,7 +107,7 @@ namespace Hades.HR.UI
             this.luCompany.Location = new System.Drawing.Point(63, 36);
             this.luCompany.Name = "luCompany";
             this.luCompany.OnlyShowCompany = true;
-            this.luCompany.Size = new System.Drawing.Size(450, 20);
+            this.luCompany.Size = new System.Drawing.Size(197, 20);
             this.luCompany.TabIndex = 10;
             // 
             // cmbEnabled
@@ -161,7 +166,8 @@ namespace Hades.HR.UI
             this.layoutControlItem3,
             this.layoutControlItem5,
             this.layoutControlItem2,
-            this.layoutControlItem6});
+            this.layoutControlItem6,
+            this.layoutControlItem7});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
             this.layoutControlGroup1.Size = new System.Drawing.Size(525, 184);
@@ -217,9 +223,26 @@ namespace Hades.HR.UI
             this.layoutControlItem6.Control = this.luCompany;
             this.layoutControlItem6.Location = new System.Drawing.Point(0, 24);
             this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(505, 24);
+            this.layoutControlItem6.Size = new System.Drawing.Size(252, 24);
             this.layoutControlItem6.Text = "所属公司";
             this.layoutControlItem6.TextSize = new System.Drawing.Size(48, 14);
+            // 
+            // txtCaption
+            // 
+            this.txtCaption.Location = new System.Drawing.Point(315, 36);
+            this.txtCaption.Name = "txtCaption";
+            this.txtCaption.Size = new System.Drawing.Size(198, 20);
+            this.txtCaption.StyleController = this.layoutControl1;
+            this.txtCaption.TabIndex = 11;
+            // 
+            // layoutControlItem7
+            // 
+            this.layoutControlItem7.Control = this.txtCaption;
+            this.layoutControlItem7.Location = new System.Drawing.Point(252, 24);
+            this.layoutControlItem7.Name = "layoutControlItem7";
+            this.layoutControlItem7.Size = new System.Drawing.Size(253, 24);
+            this.layoutControlItem7.Text = "工段长";
+            this.layoutControlItem7.TextSize = new System.Drawing.Size(48, 14);
             // 
             // FrmWorkSectionEdit
             // 
@@ -250,6 +273,8 @@ namespace Hades.HR.UI
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCaption.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -273,5 +298,7 @@ namespace Hades.HR.UI
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
         private DepartmentLookup luCompany;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
+        private DevExpress.XtraEditors.TextEdit txtCaption;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
     }
 }

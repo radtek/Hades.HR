@@ -47,6 +47,7 @@ namespace Hades.HR.DALSQL
             info.Name = reader.GetString("Name");
             info.Number = reader.GetString("Number");
             info.CompanyId = reader.GetString("CompanyId");
+            info.WorkSectionId = reader.GetString("WorkSectionId");
             info.Quota = reader.GetInt32("Quota");
             info.Principal = reader.GetString("Principal");
             info.SortCode = reader.GetString("SortCode");
@@ -77,6 +78,7 @@ namespace Hades.HR.DALSQL
             hash.Add("Name", info.Name);
             hash.Add("Number", info.Number);
             hash.Add("CompanyId", info.CompanyId);
+            hash.Add("WorkSectionId", info.WorkSectionId);
             hash.Add("Quota", info.Quota);
             hash.Add("Principal", info.Principal);
             hash.Add("SortCode", info.SortCode);
@@ -106,6 +108,7 @@ namespace Hades.HR.DALSQL
             dict.Add("Name", "班组名称");
             dict.Add("Number", "班组编号");
             dict.Add("CompanyId", "所属公司");
+            dict.Add("WorkSectionId", "所属工段");
             dict.Add("Quota", "定员人数");
             dict.Add("Principal", "负责人");
             dict.Add("SortCode", "排序码");

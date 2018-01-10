@@ -33,7 +33,10 @@ namespace Hades.HR.Entity
         public virtual string Number { get; set; }
 
         [DataMember]
-        public virtual string CompanyId { get; set; }      
+        public virtual string CompanyId { get; set; }
+
+        [DataMember]
+        public virtual string WorkSectionId { get; set; }
 
         [DataMember]
         public virtual int Quota { get; set; }
@@ -70,9 +73,6 @@ namespace Hades.HR.Entity
 
         [DataMember]
         public virtual int Enabled { get; set; }
-
-
         #endregion
-
     }
 }
