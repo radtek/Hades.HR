@@ -52,6 +52,7 @@ namespace Hades.HR.UI
             info.Name = txtName.Text;
             info.Number = txtNumber.Text;
             info.CompanyId = luCompany.GetSelectedId();
+            info.WorkSectionId = luWorkSection.GetSelectedId();
             info.Quota = Convert.ToInt32(spQuota.Value);
             info.Principal = txtPrincipal.Text;
             info.SortCode = txtSortCode.Text;
@@ -124,6 +125,7 @@ namespace Hades.HR.UI
                     spQuota.Value = info.Quota;
 
                     this.luCompany.SetSelected(info.CompanyId);
+                    this.luWorkSection.SetSelected(info.WorkSectionId);
 
                     txtPrincipal.Text = info.Principal;
                     txtSortCode.Text = info.SortCode;
@@ -210,6 +212,17 @@ namespace Hades.HR.UI
         #endregion //Method
 
         #region Event
+        /// <summary>
+        /// ≤ø√≈—°‘Ò
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void luCompany_DepartmentSelect(object sender, EventArgs e)
+        {
+            string cid = this.luCompany.GetSelectedId();
+            if (!string.IsNullOrEmpty(cid))
+                this.luWorkSection.Init(cid);
+        }
         #endregion //Event
     }
 }

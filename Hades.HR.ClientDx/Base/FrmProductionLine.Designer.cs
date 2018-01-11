@@ -37,7 +37,6 @@ namespace Hades.HR.UI
             this.menuDeleteLine = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.depTree = new Hades.HR.UI.DepartmentTreeGrid();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
             this.wgvWorkTeam = new Hades.Pager.WinControl.WinGridView();
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
@@ -47,6 +46,8 @@ namespace Hades.HR.UI
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.wgvWorkSection = new Hades.Pager.WinControl.WinGridView();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuViewTeam = new System.Windows.Forms.ToolStripMenuItem();
             this.menuAddTeam = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,8 +58,7 @@ namespace Hades.HR.UI
             this.menuAddSection = new System.Windows.Forms.ToolStripMenuItem();
             this.menuEditSection = new System.Windows.Forms.ToolStripMenuItem();
             this.menuDeleteSection = new System.Windows.Forms.ToolStripMenuItem();
-            this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
-            this.wgvWorkSection = new Hades.Pager.WinControl.WinGridView();
+            this.depTree = new Hades.HR.UI.DepartmentTreeGrid();
             this.contextMenuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
@@ -74,44 +74,45 @@ namespace Hades.HR.UI
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
-            this.contextMenuStrip2.SuspendLayout();
-            this.contextMenuStrip3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
+            this.contextMenuStrip2.SuspendLayout();
+            this.contextMenuStrip3.SuspendLayout();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
             // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuViewLine,
             this.menuAddLine,
             this.menuEditLine,
             this.menuDeleteLine});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(125, 92);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(139, 100);
             // 
             // menuViewLine
             // 
             this.menuViewLine.Name = "menuViewLine";
-            this.menuViewLine.Size = new System.Drawing.Size(124, 22);
+            this.menuViewLine.Size = new System.Drawing.Size(138, 24);
             this.menuViewLine.Text = "查看产线";
             // 
             // menuAddLine
             // 
             this.menuAddLine.Name = "menuAddLine";
-            this.menuAddLine.Size = new System.Drawing.Size(124, 22);
+            this.menuAddLine.Size = new System.Drawing.Size(138, 24);
             this.menuAddLine.Text = "新增产线";
             // 
             // menuEditLine
             // 
             this.menuEditLine.Name = "menuEditLine";
-            this.menuEditLine.Size = new System.Drawing.Size(124, 22);
+            this.menuEditLine.Size = new System.Drawing.Size(138, 24);
             this.menuEditLine.Text = "编辑产线";
             // 
             // menuDeleteLine
             // 
             this.menuDeleteLine.Name = "menuDeleteLine";
-            this.menuDeleteLine.Size = new System.Drawing.Size(124, 22);
+            this.menuDeleteLine.Size = new System.Drawing.Size(138, 24);
             this.menuDeleteLine.Text = "删除产线";
             // 
             // tableLayoutPanel1
@@ -145,24 +146,6 @@ namespace Hades.HR.UI
             this.groupControl1.TabIndex = 1;
             this.groupControl1.Text = "部门列表";
             // 
-            // depTree
-            // 
-            this.depTree.DataSource = null;
-            this.depTree.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.depTree.EnableFocusCellStyle = true;
-            this.depTree.Location = new System.Drawing.Point(2, 21);
-            this.depTree.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.depTree.Name = "depTree";
-            this.depTree.ShowContextMenu = false;
-            this.depTree.ShowMenuCreate = false;
-            this.depTree.ShowMenuDelete = false;
-            this.depTree.ShowMenuEdit = false;
-            this.depTree.ShowMenuView = false;
-            this.depTree.ShowNameOnly = true;
-            this.depTree.Size = new System.Drawing.Size(290, 651);
-            this.depTree.TabIndex = 0;
-            this.depTree.DepartmentSelect += new System.EventHandler(this.depTree_DepartmentSelect);
-            // 
             // groupControl3
             // 
             this.groupControl3.Controls.Add(this.wgvWorkTeam);
@@ -181,7 +164,7 @@ namespace Hades.HR.UI
             this.wgvWorkTeam.DisplayColumns = "";
             this.wgvWorkTeam.Dock = System.Windows.Forms.DockStyle.Fill;
             this.wgvWorkTeam.FixedColumns = null;
-            this.wgvWorkTeam.Location = new System.Drawing.Point(2, 21);
+            this.wgvWorkTeam.Location = new System.Drawing.Point(2, 25);
             this.wgvWorkTeam.Name = "wgvWorkTeam";
             this.wgvWorkTeam.PrintTitle = "";
             this.wgvWorkTeam.ShowAddMenu = false;
@@ -189,7 +172,7 @@ namespace Hades.HR.UI
             this.wgvWorkTeam.ShowDeleteMenu = false;
             this.wgvWorkTeam.ShowEditMenu = false;
             this.wgvWorkTeam.ShowExportButton = true;
-            this.wgvWorkTeam.Size = new System.Drawing.Size(644, 271);
+            this.wgvWorkTeam.Size = new System.Drawing.Size(644, 267);
             this.wgvWorkTeam.TabIndex = 0;
             // 
             // groupControl4
@@ -207,28 +190,28 @@ namespace Hades.HR.UI
             this.layoutControl1.Controls.Add(this.txtDepartmentNumber);
             this.layoutControl1.Controls.Add(this.txtDepartmentName);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutControl1.Location = new System.Drawing.Point(2, 21);
+            this.layoutControl1.Location = new System.Drawing.Point(2, 25);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(644, 51);
+            this.layoutControl1.Size = new System.Drawing.Size(644, 47);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
             // txtDepartmentNumber
             // 
-            this.txtDepartmentNumber.Location = new System.Drawing.Point(375, 12);
+            this.txtDepartmentNumber.Location = new System.Drawing.Point(377, 14);
             this.txtDepartmentNumber.Name = "txtDepartmentNumber";
             this.txtDepartmentNumber.Properties.ReadOnly = true;
-            this.txtDepartmentNumber.Size = new System.Drawing.Size(257, 20);
+            this.txtDepartmentNumber.Size = new System.Drawing.Size(232, 24);
             this.txtDepartmentNumber.StyleController = this.layoutControl1;
             this.txtDepartmentNumber.TabIndex = 5;
             // 
             // txtDepartmentName
             // 
-            this.txtDepartmentName.Location = new System.Drawing.Point(63, 12);
+            this.txtDepartmentName.Location = new System.Drawing.Point(77, 14);
             this.txtDepartmentName.Name = "txtDepartmentName";
             this.txtDepartmentName.Properties.ReadOnly = true;
-            this.txtDepartmentName.Size = new System.Drawing.Size(257, 20);
+            this.txtDepartmentName.Size = new System.Drawing.Size(233, 24);
             this.txtDepartmentName.StyleController = this.layoutControl1;
             this.txtDepartmentName.TabIndex = 4;
             // 
@@ -241,7 +224,7 @@ namespace Hades.HR.UI
             this.layoutControlItem2});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(644, 51);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(623, 52);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem1
@@ -249,93 +232,18 @@ namespace Hades.HR.UI
             this.layoutControlItem1.Control = this.txtDepartmentName;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(312, 31);
+            this.layoutControlItem1.Size = new System.Drawing.Size(300, 28);
             this.layoutControlItem1.Text = "部门名称";
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(48, 14);
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(60, 18);
             // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.txtDepartmentNumber;
-            this.layoutControlItem2.Location = new System.Drawing.Point(312, 0);
+            this.layoutControlItem2.Location = new System.Drawing.Point(300, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(312, 31);
+            this.layoutControlItem2.Size = new System.Drawing.Size(299, 28);
             this.layoutControlItem2.Text = "部门代码";
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(48, 14);
-            // 
-            // contextMenuStrip2
-            // 
-            this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuViewTeam,
-            this.menuAddTeam,
-            this.menuEditTeam,
-            this.menuDeleteTeam});
-            this.contextMenuStrip2.Name = "contextMenuStrip2";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(125, 92);
-            // 
-            // menuViewTeam
-            // 
-            this.menuViewTeam.Name = "menuViewTeam";
-            this.menuViewTeam.Size = new System.Drawing.Size(124, 22);
-            this.menuViewTeam.Text = "查看班组";
-            this.menuViewTeam.Click += new System.EventHandler(this.menuViewTeam_Click);
-            // 
-            // menuAddTeam
-            // 
-            this.menuAddTeam.Name = "menuAddTeam";
-            this.menuAddTeam.Size = new System.Drawing.Size(124, 22);
-            this.menuAddTeam.Text = "新增班组";
-            this.menuAddTeam.Click += new System.EventHandler(this.menuAddTeam_Click);
-            // 
-            // menuEditTeam
-            // 
-            this.menuEditTeam.Name = "menuEditTeam";
-            this.menuEditTeam.Size = new System.Drawing.Size(124, 22);
-            this.menuEditTeam.Text = "编辑班组";
-            this.menuEditTeam.Click += new System.EventHandler(this.menuEditTeam_Click);
-            // 
-            // menuDeleteTeam
-            // 
-            this.menuDeleteTeam.Name = "menuDeleteTeam";
-            this.menuDeleteTeam.Size = new System.Drawing.Size(124, 22);
-            this.menuDeleteTeam.Text = "删除班组";
-            this.menuDeleteTeam.Click += new System.EventHandler(this.menuDeleteTeam_Click);
-            // 
-            // contextMenuStrip3
-            // 
-            this.contextMenuStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuViewSection,
-            this.menuAddSection,
-            this.menuEditSection,
-            this.menuDeleteSection});
-            this.contextMenuStrip3.Name = "contextMenuStrip3";
-            this.contextMenuStrip3.Size = new System.Drawing.Size(125, 92);
-            // 
-            // menuViewSection
-            // 
-            this.menuViewSection.Name = "menuViewSection";
-            this.menuViewSection.Size = new System.Drawing.Size(124, 22);
-            this.menuViewSection.Text = "查看工段";
-            // 
-            // menuAddSection
-            // 
-            this.menuAddSection.Name = "menuAddSection";
-            this.menuAddSection.Size = new System.Drawing.Size(124, 22);
-            this.menuAddSection.Text = "新增工段";
-            this.menuAddSection.Click += new System.EventHandler(this.menuAddSection_Click);
-            // 
-            // menuEditSection
-            // 
-            this.menuEditSection.Name = "menuEditSection";
-            this.menuEditSection.Size = new System.Drawing.Size(124, 22);
-            this.menuEditSection.Text = "编辑工段";
-            this.menuEditSection.Click += new System.EventHandler(this.menuEditSection_Click);
-            // 
-            // menuDeleteSection
-            // 
-            this.menuDeleteSection.Name = "menuDeleteSection";
-            this.menuDeleteSection.Size = new System.Drawing.Size(124, 22);
-            this.menuDeleteSection.Text = "删除工段";
-            this.menuDeleteSection.Click += new System.EventHandler(this.menuDeleteSection_Click);
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(60, 18);
             // 
             // groupControl2
             // 
@@ -355,7 +263,7 @@ namespace Hades.HR.UI
             this.wgvWorkSection.DisplayColumns = "";
             this.wgvWorkSection.Dock = System.Windows.Forms.DockStyle.Fill;
             this.wgvWorkSection.FixedColumns = null;
-            this.wgvWorkSection.Location = new System.Drawing.Point(2, 21);
+            this.wgvWorkSection.Location = new System.Drawing.Point(2, 25);
             this.wgvWorkSection.Name = "wgvWorkSection";
             this.wgvWorkSection.PrintTitle = "";
             this.wgvWorkSection.ShowAddMenu = false;
@@ -363,12 +271,109 @@ namespace Hades.HR.UI
             this.wgvWorkSection.ShowDeleteMenu = false;
             this.wgvWorkSection.ShowEditMenu = false;
             this.wgvWorkSection.ShowExportButton = true;
-            this.wgvWorkSection.Size = new System.Drawing.Size(644, 271);
+            this.wgvWorkSection.Size = new System.Drawing.Size(644, 267);
             this.wgvWorkSection.TabIndex = 1;
+            // 
+            // contextMenuStrip2
+            // 
+            this.contextMenuStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuViewTeam,
+            this.menuAddTeam,
+            this.menuEditTeam,
+            this.menuDeleteTeam});
+            this.contextMenuStrip2.Name = "contextMenuStrip2";
+            this.contextMenuStrip2.Size = new System.Drawing.Size(139, 100);
+            // 
+            // menuViewTeam
+            // 
+            this.menuViewTeam.Name = "menuViewTeam";
+            this.menuViewTeam.Size = new System.Drawing.Size(138, 24);
+            this.menuViewTeam.Text = "查看班组";
+            this.menuViewTeam.Click += new System.EventHandler(this.menuViewTeam_Click);
+            // 
+            // menuAddTeam
+            // 
+            this.menuAddTeam.Name = "menuAddTeam";
+            this.menuAddTeam.Size = new System.Drawing.Size(138, 24);
+            this.menuAddTeam.Text = "新增班组";
+            this.menuAddTeam.Click += new System.EventHandler(this.menuAddTeam_Click);
+            // 
+            // menuEditTeam
+            // 
+            this.menuEditTeam.Name = "menuEditTeam";
+            this.menuEditTeam.Size = new System.Drawing.Size(138, 24);
+            this.menuEditTeam.Text = "编辑班组";
+            this.menuEditTeam.Click += new System.EventHandler(this.menuEditTeam_Click);
+            // 
+            // menuDeleteTeam
+            // 
+            this.menuDeleteTeam.Name = "menuDeleteTeam";
+            this.menuDeleteTeam.Size = new System.Drawing.Size(138, 24);
+            this.menuDeleteTeam.Text = "删除班组";
+            this.menuDeleteTeam.Click += new System.EventHandler(this.menuDeleteTeam_Click);
+            // 
+            // contextMenuStrip3
+            // 
+            this.contextMenuStrip3.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuViewSection,
+            this.menuAddSection,
+            this.menuEditSection,
+            this.menuDeleteSection});
+            this.contextMenuStrip3.Name = "contextMenuStrip3";
+            this.contextMenuStrip3.Size = new System.Drawing.Size(176, 128);
+            // 
+            // menuViewSection
+            // 
+            this.menuViewSection.Name = "menuViewSection";
+            this.menuViewSection.Size = new System.Drawing.Size(175, 24);
+            this.menuViewSection.Text = "查看工段";
+            this.menuViewSection.Click += new System.EventHandler(this.menuViewSection_Click);
+            // 
+            // menuAddSection
+            // 
+            this.menuAddSection.Name = "menuAddSection";
+            this.menuAddSection.Size = new System.Drawing.Size(175, 24);
+            this.menuAddSection.Text = "新增工段";
+            this.menuAddSection.Click += new System.EventHandler(this.menuAddSection_Click);
+            // 
+            // menuEditSection
+            // 
+            this.menuEditSection.Name = "menuEditSection";
+            this.menuEditSection.Size = new System.Drawing.Size(175, 24);
+            this.menuEditSection.Text = "编辑工段";
+            this.menuEditSection.Click += new System.EventHandler(this.menuEditSection_Click);
+            // 
+            // menuDeleteSection
+            // 
+            this.menuDeleteSection.Name = "menuDeleteSection";
+            this.menuDeleteSection.Size = new System.Drawing.Size(175, 24);
+            this.menuDeleteSection.Text = "删除工段";
+            this.menuDeleteSection.Visible = false;
+            this.menuDeleteSection.Click += new System.EventHandler(this.menuDeleteSection_Click);
+            // 
+            // depTree
+            // 
+            this.depTree.DataSource = null;
+            this.depTree.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.depTree.EnableFocusCellStyle = true;
+            this.depTree.Location = new System.Drawing.Point(2, 25);
+            this.depTree.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.depTree.Name = "depTree";
+            this.depTree.ShowContextMenu = false;
+            this.depTree.ShowMenuCreate = false;
+            this.depTree.ShowMenuDelete = false;
+            this.depTree.ShowMenuEdit = false;
+            this.depTree.ShowMenuView = false;
+            this.depTree.ShowNameOnly = true;
+            this.depTree.Size = new System.Drawing.Size(290, 647);
+            this.depTree.TabIndex = 0;
+            this.depTree.DepartmentSelect += new System.EventHandler(this.depTree_DepartmentSelect);
             // 
             // FrmProductionLine
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(954, 680);
             this.Controls.Add(this.tableLayoutPanel1);
@@ -389,10 +394,10 @@ namespace Hades.HR.UI
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
-            this.contextMenuStrip2.ResumeLayout(false);
-            this.contextMenuStrip3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
+            this.contextMenuStrip2.ResumeLayout(false);
+            this.contextMenuStrip3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

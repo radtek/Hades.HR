@@ -294,6 +294,10 @@ namespace Hades.HR.UI
             {
                 e.DisplayText = Convert.ToInt32(e.Value) == 1 ? "已启用" : "未启用";
             }
+            else if (columnName == "StaffType")
+            {
+                e.DisplayText = Convert.ToInt32(e.Value) == 1 ? "管理员工" : "计件员工";
+            }
         }
 
         /// <summary>
@@ -350,7 +354,7 @@ namespace Hades.HR.UI
                 return;
             }
 
-            CallerFactory<IStaffService>.Instance.MarkDelete(id);            
+            CallerFactory<IStaffService>.Instance.MarkDelete(id);
 
             BindData();
         }
@@ -383,7 +387,7 @@ namespace Hades.HR.UI
         #endregion //Grid Event
         #endregion //Event
 
-
+        #region System
         /// <summary>
         /// 分页控件全部导出操作前的操作
         /// </summary> 
@@ -623,7 +627,6 @@ namespace Hades.HR.UI
             advanceCondition = condition;
             BindData();
         }
-
-      
+        #endregion //System
     }
 }

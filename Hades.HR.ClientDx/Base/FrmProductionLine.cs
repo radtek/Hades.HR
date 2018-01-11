@@ -82,7 +82,7 @@ namespace Hades.HR.UI
             else
                 this.workTeams = CallerFactory<IWorkTeamService>.Instance.Find2(string.Format("CompanyId='{0}' AND Deleted=0", currentDepartmentId), "ORDER BY SortCode");
 
-            this.wgvWorkTeam.DisplayColumns = "Name,Number,CompanyId,Quota,Principal,SortCode,Remark,Enabled";
+            this.wgvWorkTeam.DisplayColumns = "Name,Number,CompanyId,WorkSectionId,Quota,Principal,SortCode,Remark,Enabled";
             this.wgvWorkTeam.ColumnNameAlias = CallerFactory<IWorkTeamService>.Instance.GetColumnNameAlias();
 
             this.wgvWorkTeam.DataSource = workTeams;
@@ -128,8 +128,30 @@ namespace Hades.HR.UI
                 dlg.ShowDialog();
             }
         }
-        #endregion //Function
 
+        /// <summary>
+        /// 查看工段
+        /// </summary>
+        private void ViewWorkSection()
+        {
+            string ID = this.wgvWorkSection.gridView1.GetFocusedRowCellDisplayText("Id");
+            List<string> IDList = new List<string>();
+            for (int i = 0; i < this.wgvWorkSection.gridView1.RowCount; i++)
+            {
+                string strTemp = this.wgvWorkSection.GridView1.GetRowCellDisplayText(i, "Id");
+                IDList.Add(strTemp);
+            }
+
+            if (!string.IsNullOrEmpty(ID))
+            {
+                FrmWorkSectionView dlg = new FrmWorkSectionView();
+                dlg.ID = ID;
+                dlg.IDList = IDList;
+                dlg.InitFunction(LoginUserInfo, FunctionDict);
+                dlg.ShowDialog();
+            }
+        }
+        #endregion //Function
 
         #region Method
         /// <summary>
@@ -138,6 +160,7 @@ namespace Hades.HR.UI
         public override void FormOnLoad()
         {
             this.departments = CallerFactory<IDepartmentService>.Instance.Find2("Enabled=1 AND Deleted=0", "");
+            this.workSections = CallerFactory<IWorkSectionService>.Instance.Find("");
 
             LoadDepartments();
 
@@ -152,6 +175,7 @@ namespace Hades.HR.UI
             this.wgvWorkSection.AppendedMenu = this.contextMenuStrip3;
             this.wgvWorkSection.ShowLineNumber = true;
             this.wgvWorkSection.BestFitColumnWith = true;
+            this.wgvWorkSection.OnGridViewMouseDoubleClick += WgvWorkSection_OnGridViewMouseDoubleClick;
             this.wgvWorkSection.gridView1.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(wgvWorkSection_CustomColumnDisplayText);
         }
         #endregion //Method
@@ -266,6 +290,16 @@ namespace Hades.HR.UI
         }
 
         /// <summary>
+        /// 查看工段
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void menuViewSection_Click(object sender, EventArgs e)
+        {
+            ViewWorkSection();
+        }
+
+        /// <summary>
         /// 菜单 - 新增工段
         /// </summary>
         /// <param name="sender"></param>
@@ -289,7 +323,26 @@ namespace Hades.HR.UI
         /// <param name="e"></param>
         private void menuEditSection_Click(object sender, EventArgs e)
         {
+            string ID = this.wgvWorkSection.gridView1.GetFocusedRowCellDisplayText("Id");
+            List<string> IDList = new List<string>();
+            for (int i = 0; i < this.wgvWorkSection.gridView1.RowCount; i++)
+            {
+                string strTemp = this.wgvWorkSection.GridView1.GetRowCellDisplayText(i, "Id");
+                IDList.Add(strTemp);
+            }
 
+            if (!string.IsNullOrEmpty(ID))
+            {
+                FrmWorkSectionEdit dlg = new FrmWorkSectionEdit();
+                dlg.ID = ID;
+                dlg.IDList = IDList;
+                dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
+
+                if (DialogResult.OK == dlg.ShowDialog())
+                {
+                    LoadWorkSection();
+                }
+            }
         }
 
         /// <summary>
@@ -313,6 +366,15 @@ namespace Hades.HR.UI
             ViewWorkTeam();
         }
 
+        /// <summary>
+        /// 双击工段表格
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void WgvWorkSection_OnGridViewMouseDoubleClick(object sender, EventArgs e)
+        {
+            ViewWorkSection();
+        }
 
         /// <summary>
         /// 格式化班组列表
@@ -334,7 +396,23 @@ namespace Hades.HR.UI
                     else
                     {
                         var dep2 = CallerFactory<IDepartmentService>.Instance.FindByID(e.Value.ToString());
-                        e.DisplayText = dep.Name;
+                        e.DisplayText = dep2.Name;
+                    }
+                }
+            }
+            else if (columnName == "WorkSectionId")
+            {
+                if (e.Value != null && !string.IsNullOrEmpty(e.Value.ToString()))
+                {
+                    var sec = this.workSections.SingleOrDefault(r => r.Id == e.Value.ToString());
+                    if (sec != null)
+                    {
+                        e.DisplayText = sec.Name;
+                    }
+                    else
+                    {
+                        var sec2 = CallerFactory<IWorkSectionService>.Instance.FindByID(e.Value.ToString());
+                        e.DisplayText = sec2.Name;
                     }
                 }
             }
@@ -364,7 +442,7 @@ namespace Hades.HR.UI
                     else
                     {
                         var dep2 = CallerFactory<IDepartmentService>.Instance.FindByID(e.Value.ToString());
-                        e.DisplayText = dep.Name;
+                        e.DisplayText = dep2.Name;
                     }
                 }
             }

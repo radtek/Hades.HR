@@ -17,17 +17,17 @@ using Hades.HR.Entity;
 
 namespace Hades.HR.UI
 {
-    public partial class FrmWorkTeamView : BaseEditForm
+    public partial class FrmWorkSectionView : BaseEditForm
     {
         #region Field
         /// <summary>
         /// 创建一个临时对象，方便在附件管理中获取存在的GUID
         /// </summary>
-        private WorkTeamInfo tempInfo = new WorkTeamInfo();
+        private WorkSectionInfo tempInfo = new WorkSectionInfo();
         #endregion //Field
 
         #region Constructor
-        public FrmWorkTeamView()
+        public FrmWorkSectionView()
         {
             InitializeComponent();
         }
@@ -54,26 +54,20 @@ namespace Hades.HR.UI
             if (!string.IsNullOrEmpty(ID))
             {
                 this.Text = "编辑班组";
-                WorkTeamInfo info = CallerFactory<IWorkTeamService>.Instance.FindByID(ID);
+                WorkSectionInfo info = CallerFactory<IWorkSectionService>.Instance.FindByID(ID);
                 if (info != null)
                 {
                     tempInfo = info;//重新给临时对象赋值，使之指向存在的记录对象
 
                     txtName.Text = info.Name;
                     txtNumber.Text = info.Number;
-                    txtQuota.Text = info.Quota.ToString();
+                    txtCaption.Text = info.Caption;
 
                     var department = CallerFactory<IDepartmentService>.Instance.FindByID(info.CompanyId);
                     txtCompany.Text = department.Name;
 
-                    if (!string.IsNullOrEmpty(info.WorkSectionId))
-                    {
-                        var section = CallerFactory<IWorkSectionService>.Instance.FindByID(info.WorkSectionId);
-                        txtWorkSection.Text = section.Name;
-                    }
 
-                    txtPrincipal.Text = info.Principal;
-                    txtSortCode.Text = info.SortCode;
+                    txtSort.Text = info.SortCode;
                     txtRemark.Text = info.Remark;
                     txtEnabled.Text = info.Enabled == 1 ? "已启用" : "未启用";
                 }
@@ -89,7 +83,7 @@ namespace Hades.HR.UI
 
         public override void ClearScreen()
         {
-            this.tempInfo = new WorkTeamInfo();
+            this.tempInfo = new WorkSectionInfo();
             base.ClearScreen();
         }
         #endregion //Method

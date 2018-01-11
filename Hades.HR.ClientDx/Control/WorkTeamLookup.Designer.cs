@@ -39,7 +39,7 @@
             // 
             this.luWorkTeam.Dock = System.Windows.Forms.DockStyle.Fill;
             this.luWorkTeam.Location = new System.Drawing.Point(0, 0);
-            this.luWorkTeam.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.luWorkTeam.Margin = new System.Windows.Forms.Padding(4);
             this.luWorkTeam.Name = "luWorkTeam";
             this.luWorkTeam.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -63,7 +63,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.luWorkTeam);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "WorkTeamLookup";
             this.Size = new System.Drawing.Size(320, 25);
             ((System.ComponentModel.ISupportInitialize)(this.luWorkTeam.Properties)).EndInit();

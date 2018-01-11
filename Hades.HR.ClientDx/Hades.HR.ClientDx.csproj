@@ -942,6 +942,12 @@
     <Compile Include="Attendance\FrmEditLaborDailyAttendance.Designer.cs">
       <DependentUpon>FrmEditLaborDailyAttendance.cs</DependentUpon>
     </Compile>
+    <Compile Include="Base\FrmWorkSectionView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Base\FrmWorkSectionView.Designer.cs">
+      <DependentUpon>FrmWorkSectionView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Salary\FrmEditLaborSalary.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1024,6 +1030,12 @@
     <Compile Include="Control\WorkTeamTree.Designer.cs">
       <DependentUpon>WorkTeamTree.cs</DependentUpon>
     </Compile>
+    <Compile Include="Control\WorkSectionLookup.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\WorkSectionLookup.Designer.cs">
+      <DependentUpon>WorkSectionLookup.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Attendance\FrmEditElectricWorkload.resx">
       <DependentUpon>FrmEditElectricWorkload.cs</DependentUpon>
     </EmbeddedResource>
@@ -1087,6 +1099,9 @@
     <EmbeddedResource Include="Base\FrmWarehouseEdit.resx">
       <DependentUpon>FrmWarehouseEdit.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Base\FrmWorkSectionView.resx">
+      <DependentUpon>FrmWorkSectionView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Base\FrmWorkTeamView.resx">
       <DependentUpon>FrmWorkTeamView.cs</DependentUpon>
     </EmbeddedResource>
@@ -1131,6 +1146,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Control\ProductionLineTree.resx">
       <DependentUpon>ProductionLineTree.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\WorkSectionLookup.resx">
+      <DependentUpon>WorkSectionLookup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Control\WorkTeamLookup.resx">
       <DependentUpon>WorkTeamLookup.cs</DependentUpon>
@@ -1177,6 +1195,7 @@
     <None Include="Properties\DataSources\Hades.HR.Entity.ProductionLineInfo.datasource" />
     <None Include="Properties\DataSources\Hades.HR.Entity.StaffBonusInfo.datasource" />
     <None Include="Properties\DataSources\Hades.HR.Entity.StaffInfo.datasource" />
+    <None Include="Properties\DataSources\Hades.HR.Entity.WorkSectionInfo.datasource" />
     <None Include="Properties\DataSources\Hades.HR.Entity.WorkSectionLaborInfo.datasource" />
     <None Include="Properties\DataSources\Hades.HR.Entity.WorkTeamInfo.datasource" />
     <None Include="Properties\licenses.licx" />
