@@ -89,7 +89,9 @@ namespace Hades.HR.UI
                 this.txtName.Focus();
                 result = false;
             }
-            else if (string.IsNullOrEmpty(this.luCompany.GetSelectedId()))
+
+            var cid = this.luCompany.GetSelectedId();
+            if (string.IsNullOrEmpty(cid) || cid == "-1")
             {
                 MessageDxUtil.ShowTips("请选择所属公司");
                 this.luCompany.Focus();

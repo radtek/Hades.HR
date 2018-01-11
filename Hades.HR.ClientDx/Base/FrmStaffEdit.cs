@@ -134,7 +134,7 @@ namespace Hades.HR.UI
 
                     cmbStaffType.EditValue = info.StaffType;
                     luCompany.SetSelected(info.CompanyId);
-                    luDepartment.SetSelected(info.DepartmentId);                    
+                    luDepartment.SetSelected(info.DepartmentId);
                     luPosition.SetSelected(info.PositionId);
                     luWorkTeam.SetSelected(info.WorkTeamId);
 
@@ -192,7 +192,7 @@ namespace Hades.HR.UI
         public override bool CheckInput()
         {
             bool result = true;//默认是可以通过
-                        
+
             if (this.txtNumber.Text.Trim().Length == 0)
             {
                 MessageDxUtil.ShowTips("请输入工号");
@@ -335,7 +335,6 @@ namespace Hades.HR.UI
             if (!string.IsNullOrEmpty(depId))
             {
                 this.luPosition.Init(depId);
-                
             }
         }
 
