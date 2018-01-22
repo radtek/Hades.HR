@@ -117,6 +117,7 @@
     <Compile Include="BLL\Attendance\LaborMonthAttendance.cs" />
     <Compile Include="BLL\Attendance\LaborProductionWorkload.cs" />
     <Compile Include="BLL\Attendance\LaborRepairWorkload.cs" />
+    <Compile Include="BLL\Attendance\StaffMonthAttendance.cs" />
     <Compile Include="BLL\Attendance\WorkTeamDailyWorkload.cs" />
     <Compile Include="BLL\Base\StaffLevel.cs" />
     <Compile Include="BLL\Base\Warehouse.cs" />
@@ -128,6 +129,7 @@
     <Compile Include="BLL\Salary\LaborSalary.cs" />
     <Compile Include="BLL\Base\WorkTeam.cs" />
     <Compile Include="BLL\Salary\SalaryBase.cs" />
+    <Compile Include="BLL\Salary\StaffSalary.cs" />
     <Compile Include="BLL\Wp\CompletionList.cs" />
     <Compile Include="BLL\Wp\ElectricMaintenanceManHours.cs" />
     <Compile Include="BLL\Wp\MachineMaintenanceManHours.cs" />
@@ -143,6 +145,7 @@
     <Compile Include="DAL\DALSQL\Attendance\LaborMonthAttendance.cs" />
     <Compile Include="DAL\DALSQL\Attendance\LaborProductionWorkload.cs" />
     <Compile Include="DAL\DALSQL\Attendance\LaborRepairWorkload.cs" />
+    <Compile Include="DAL\DALSQL\Attendance\StaffMonthAttendance.cs" />
     <Compile Include="DAL\DALSQL\Attendance\WorkTeamDailyWorkload.cs" />
     <Compile Include="DAL\DALSQL\Base\StaffLevel.cs" />
     <Compile Include="DAL\DALSQL\Base\Warehouse.cs" />
@@ -154,6 +157,7 @@
     <Compile Include="DAL\DALSQL\Salary\LaborSalary.cs" />
     <Compile Include="DAL\DALSQL\Base\WorkTeam.cs" />
     <Compile Include="DAL\DALSQL\Salary\SalaryBase.cs" />
+    <Compile Include="DAL\DALSQL\Salary\StaffSalary.cs" />
     <Compile Include="DAL\DALSQL\Wp\CompletionList.cs" />
     <Compile Include="DAL\DALSQL\Wp\ElectricMaintenanceManHours.cs" />
     <Compile Include="DAL\DALSQL\Wp\MachineMaintenanceManHours.cs" />
@@ -169,6 +173,7 @@
     <Compile Include="Entity\Attendance\LaborMonthAttendanceInfo.cs" />
     <Compile Include="Entity\Attendance\LaborProductionWorkloadInfo.cs" />
     <Compile Include="Entity\Attendance\LaborRepairWorkloadInfo.cs" />
+    <Compile Include="Entity\Attendance\StaffMonthAttendanceInfo.cs" />
     <Compile Include="Entity\Attendance\WorkTeamDailyWorkloadInfo.cs" />
     <Compile Include="Entity\Base\StaffLevelInfo.cs" />
     <Compile Include="Entity\Base\WarehouseInfo.cs" />
@@ -180,6 +185,7 @@
     <Compile Include="Entity\Base\StaffInfo.cs" />
     <Compile Include="Entity\Base\WorkTeamInfo.cs" />
     <Compile Include="Entity\Salary\SalaryBaseInfo.cs" />
+    <Compile Include="Entity\Salary\StaffSalaryInfo.cs" />
     <Compile Include="Entity\Wp\CompletionListInfo.cs" />
     <Compile Include="Entity\Wp\ElectricMaintenanceManHoursInfo.cs" />
     <Compile Include="Entity\Wp\MachineMaintenanceManHoursInfo.cs" />
@@ -195,6 +201,7 @@
     <Compile Include="IDAL\Attendance\ILaborMonthAttendance.cs" />
     <Compile Include="IDAL\Attendance\ILaborProductionWorkload.cs" />
     <Compile Include="IDAL\Attendance\ILaborRepairWorkload.cs" />
+    <Compile Include="IDAL\Attendance\IStaffMonthAttendance.cs" />
     <Compile Include="IDAL\Attendance\IWorkTeamDailyWorkload.cs" />
     <Compile Include="IDAL\Base\IStaffLevel.cs" />
     <Compile Include="IDAL\Base\IWarehouse.cs" />
@@ -206,6 +213,7 @@
     <Compile Include="IDAL\Salary\ILaborSalary.cs" />
     <Compile Include="IDAL\Base\IWorkTeam.cs" />
     <Compile Include="IDAL\Salary\ISalaryBase.cs" />
+    <Compile Include="IDAL\Salary\IStaffSalary.cs" />
     <Compile Include="IDAL\Wp\ICompletionList.cs" />
     <Compile Include="IDAL\Wp\IElectricMaintenanceManHours.cs" />
     <Compile Include="IDAL\Wp\IMachineMaintenanceManHours.cs" />

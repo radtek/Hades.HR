@@ -86,6 +86,7 @@
     <Compile Include="Facade\Attendance\ILaborMonthAttendanceService.cs" />
     <Compile Include="Facade\Attendance\ILaborProductionWorkloadService.cs" />
     <Compile Include="Facade\Attendance\ILaborRepairWorkloadService.cs" />
+    <Compile Include="Facade\Attendance\IStaffMonthAttendanceService.cs" />
     <Compile Include="Facade\Attendance\IWorkTeamDailyWorkloadService.cs" />
     <Compile Include="Facade\Base\IStaffLevelService.cs" />
     <Compile Include="Facade\Base\IWarehouseManagerService.cs" />
@@ -97,6 +98,7 @@
     <Compile Include="Facade\Salary\ISalaryBaseService.cs" />
     <Compile Include="Facade\Base\IStaffService.cs" />
     <Compile Include="Facade\Base\IWorkTeamService.cs" />
+    <Compile Include="Facade\Salary\IStaffSalaryService.cs" />
     <Compile Include="Facade\Wp\ICompletionListService.cs" />
     <Compile Include="Facade\Wp\IElectricMaintenanceManHoursService.cs" />
     <Compile Include="Facade\Wp\IMachineMaintenanceManHoursService.cs" />
@@ -113,6 +115,7 @@
     <Compile Include="ServiceCaller\Attendance\LaborMonthAttendanceCaller.cs" />
     <Compile Include="ServiceCaller\Attendance\LaborProductionWorkloadCaller.cs" />
     <Compile Include="ServiceCaller\Attendance\LaborRepairWorkloadCaller.cs" />
+    <Compile Include="ServiceCaller\Attendance\StaffMonthAttendanceCaller.cs" />
     <Compile Include="ServiceCaller\Attendance\WorkTeamDailyWorkloadCaller.cs" />
     <Compile Include="ServiceCaller\Base\StaffLevelCaller.cs" />
     <Compile Include="ServiceCaller\Base\WarehouseCaller.cs" />
@@ -125,6 +128,7 @@
     <Compile Include="ServiceCaller\Base\StaffCaller.cs" />
     <Compile Include="ServiceCaller\Salary\SalaryBaseCaller.cs" />
     <Compile Include="ServiceCaller\Base\WorkTeamCaller.cs" />
+    <Compile Include="ServiceCaller\Salary\StaffSalaryCaller.cs" />
     <Compile Include="ServiceCaller\Wp\CompletionListCaller.cs" />
     <Compile Include="ServiceCaller\Wp\ElectricMaintenanceManHoursCaller.cs" />
     <Compile Include="ServiceCaller\Wp\MachineMaintenanceManHoursCaller.cs" />
@@ -140,6 +144,7 @@
     <Compile Include="WinformCaller\Attendance\LaborMonthAttendanceCaller.cs" />
     <Compile Include="WinformCaller\Attendance\LaborProductionWorkloadCaller.cs" />
     <Compile Include="WinformCaller\Attendance\LaborRepairWorkloadCaller.cs" />
+    <Compile Include="WinformCaller\Attendance\StaffMonthAttendanceCaller.cs" />
     <Compile Include="WinformCaller\Attendance\WorkTeamDailyWorkloadCaller.cs" />
     <Compile Include="WinformCaller\Base\StaffLevelCaller.cs" />
     <Compile Include="WinformCaller\Base\WarehouseCaller.cs" />
@@ -154,6 +159,7 @@
     <Compile Include="WinformCaller\Base\StaffCaller.cs" />
     <Compile Include="WinformCaller\Salary\SalaryBaseCaller.cs" />
     <Compile Include="WinformCaller\Base\WorkTeamCaller.cs" />
+    <Compile Include="WinformCaller\Salary\StaffSalaryCaller.cs" />
     <Compile Include="WinformCaller\Wp\CompletionListCaller.cs" />
     <Compile Include="WinformCaller\Wp\ElectricMaintenanceManHoursCaller.cs" />
     <Compile Include="WinformCaller\Wp\MachineMaintenanceManHoursCaller.cs" />

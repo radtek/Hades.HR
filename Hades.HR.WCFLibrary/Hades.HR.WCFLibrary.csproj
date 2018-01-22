@@ -113,6 +113,9 @@
     <Compile Include="..\Hades.HR.Caller\Facade\Attendance\ILaborRepairWorkloadService.cs">
       <Link>Facade\Attendance\ILaborRepairWorkloadService.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Caller\Facade\Attendance\IStaffMonthAttendanceService.cs">
+      <Link>Facade\Attendance\IStaffMonthAttendanceService.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Caller\Facade\Attendance\IWorkTeamDailyWorkloadService.cs">
       <Link>Facade\Attendance\IWorkTeamDailyWorkloadService.cs</Link>
     </Compile>
@@ -148,6 +151,9 @@
     </Compile>
     <Compile Include="..\Hades.HR.Caller\Facade\Salary\ISalaryBaseService.cs">
       <Link>Facade\Salary\ISalaryBaseService.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Caller\Facade\Salary\IStaffSalaryService.cs">
+      <Link>Facade\Salary\IStaffSalaryService.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Caller\Facade\Wp\ICompletionListService.cs">
       <Link>Facade\Wp\ICompletionListService.cs</Link>
@@ -194,6 +200,9 @@
     <Compile Include="..\Hades.HR.Core\BLL\Attendance\LaborRepairWorkload.cs">
       <Link>Biz\BLL\Attendance\LaborRepairWorkload.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Core\BLL\Attendance\StaffMonthAttendance.cs">
+      <Link>Biz\BLL\Attendance\StaffMonthAttendance.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Core\BLL\Attendance\WorkTeamDailyWorkload.cs">
       <Link>Biz\BLL\Attendance\WorkTeamDailyWorkload.cs</Link>
     </Compile>
@@ -229,6 +238,9 @@
     </Compile>
     <Compile Include="..\Hades.HR.Core\BLL\Salary\SalaryBase.cs">
       <Link>Biz\BLL\Salary\SalaryBase.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\BLL\Salary\StaffSalary.cs">
+      <Link>Biz\BLL\Salary\StaffSalary.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\BLL\Wp\CompletionList.cs">
       <Link>Biz\BLL\Wp\CompletionList.cs</Link>
@@ -275,6 +287,9 @@
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Attendance\LaborRepairWorkload.cs">
       <Link>Biz\DAL\DALSQL\Attendance\LaborRepairWorkload.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Attendance\StaffMonthAttendance.cs">
+      <Link>Biz\DAL\DALSQL\Attendance\StaffMonthAttendance.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Attendance\WorkTeamDailyWorkload.cs">
       <Link>Biz\DAL\DALSQL\Attendance\WorkTeamDailyWorkload.cs</Link>
     </Compile>
@@ -310,6 +325,9 @@
     </Compile>
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Salary\SalaryBase.cs">
       <Link>Biz\DAL\DALSQL\Salary\SalaryBase.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Salary\StaffSalary.cs">
+      <Link>Biz\DAL\DALSQL\Salary\StaffSalary.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Wp\CompletionList.cs">
       <Link>Biz\DAL\DALSQL\Wp\CompletionList.cs</Link>
@@ -356,6 +374,9 @@
     <Compile Include="..\Hades.HR.Core\Entity\Attendance\LaborRepairWorkloadInfo.cs">
       <Link>Biz\Entity\Attendance\LaborRepairWorkloadInfo.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Core\Entity\Attendance\StaffMonthAttendanceInfo.cs">
+      <Link>Biz\Entity\Attendance\StaffMonthAttendanceInfo.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Core\Entity\Attendance\WorkTeamDailyWorkloadInfo.cs">
       <Link>Biz\Entity\Attendance\WorkTeamDailyWorkloadInfo.cs</Link>
     </Compile>
@@ -391,6 +412,9 @@
     </Compile>
     <Compile Include="..\Hades.HR.Core\Entity\Salary\SalaryBaseInfo.cs">
       <Link>Biz\Entity\Salary\SalaryBaseInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\Entity\Salary\StaffSalaryInfo.cs">
+      <Link>Biz\Entity\Salary\StaffSalaryInfo.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\Entity\Wp\CompletionListInfo.cs">
       <Link>Biz\Entity\Wp\CompletionListInfo.cs</Link>
@@ -437,6 +461,9 @@
     <Compile Include="..\Hades.HR.Core\IDAL\Attendance\ILaborRepairWorkload.cs">
       <Link>Biz\IDAL\Attendance\ILaborRepairWorkload.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Core\IDAL\Attendance\IStaffMonthAttendance.cs">
+      <Link>Biz\IDAL\Attendance\IStaffMonthAttendance.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Core\IDAL\Attendance\IWorkTeamDailyWorkload.cs">
       <Link>Biz\IDAL\Attendance\IWorkTeamDailyWorkload.cs</Link>
     </Compile>
@@ -473,6 +500,9 @@
     <Compile Include="..\Hades.HR.Core\IDAL\Salary\ISalaryBase.cs">
       <Link>Biz\IDAL\Salary\ISalaryBase.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Core\IDAL\Salary\IStaffSalary.cs">
+      <Link>Biz\IDAL\Salary\IStaffSalary.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Core\IDAL\Wp\ICompletionList.cs">
       <Link>Biz\IDAL\Wp\ICompletionList.cs</Link>
     </Compile>
@@ -504,6 +534,7 @@
     <Compile Include="WCFLibrary\Attendance\LaborMonthAttendanceService.cs" />
     <Compile Include="WCFLibrary\Attendance\LaborProductionWorkloadService.cs" />
     <Compile Include="WCFLibrary\Attendance\LaborRepairWorkloadService.cs" />
+    <Compile Include="WCFLibrary\Attendance\StaffMonthAttendanceService.cs" />
     <Compile Include="WCFLibrary\Attendance\WorkTeamDailyWorkloadService.cs" />
     <Compile Include="WCFLibrary\Base\StaffLevelService.cs" />
     <Compile Include="WCFLibrary\Base\WarehouseManagerService.cs" />
@@ -516,6 +547,7 @@
     <Compile Include="WCFLibrary\Base\WorkTeamService.cs" />
     <Compile Include="WCFLibrary\Salary\LaborSalaryService.cs" />
     <Compile Include="WCFLibrary\Salary\SalaryBaseService.cs" />
+    <Compile Include="WCFLibrary\Salary\StaffSalaryService.cs" />
     <Compile Include="WCFLibrary\Wp\CompletionListService.cs" />
     <Compile Include="WCFLibrary\Wp\ElectricMaintenanceManHoursService.cs" />
     <Compile Include="WCFLibrary\Wp\MachineMaintenanceManHoursService.cs" />

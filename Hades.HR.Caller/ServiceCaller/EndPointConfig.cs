@@ -44,12 +44,16 @@ namespace Hades.HR.ServiceCaller
         public const string LaborLeaveWorkloadService = "WSHttpBinding_ILaborLeaveWorkloadService";
 
         public const string LaborMonthAttendanceService = "WSHttpBinding_ILaborMonthAttendanceService";
+
+        public const string StaffMonthAttendanceService = "WSHttpBinding_IStaffMonthAttendanceService";
         #endregion //Attendance
 
         #region Salary
         public const string SalaryBaseService = "WSHttpBinding_ISalaryBaseService";
 
         public const string LaborSalaryService = "WSHttpBinding_ILaborSalaryService";
+
+        public const string StaffSalaryService = "WSHttpBinding_IStaffSalaryService";
         #endregion //Salary
 
         #region Wp
