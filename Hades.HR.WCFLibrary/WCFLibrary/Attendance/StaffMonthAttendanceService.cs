@@ -20,31 +20,29 @@ namespace Hades.HR.WCFLibrary
 	/// </summary>
     public class StaffMonthAttendanceService : BaseLocalService<StaffMonthAttendanceInfo>, IStaffMonthAttendanceService
     {
+        #region Field
         private StaffMonthAttendance bll = null;
+        #endregion //Field
 
+        #region Constructor
         public StaffMonthAttendanceService() : base(BLLFactory<StaffMonthAttendance>.Instance)
         {
             bll = baseBLL as StaffMonthAttendance;
         }
+        #endregion //Constructor
 
-        ///// <summary>
-        ///// 根据名称查找对象(自定义接口使用范例)
-        ///// </summary>
-        //public List<StaffMonthAttendanceInfo> FindByName(string name)
-        //{
-        //    return bll.FindByName(name);
-        //}
-
-        ///// <summary>
-        ///// 根据名称查找对象(自定义接口使用范例)
-        ///// </summary>
-        //public async Task<List<StaffMonthAttendanceInfo>> FindByNameAsyn(string name)
-        //{
-        //   return await Task.Factory.StartNew(() =>
-        //   {
-        //       return bll.FindByName(name);
-	//   }
-        //}
-
+        #region Method
+        /// <summary>
+        /// 获取职员考勤记录
+        /// </summary>
+        /// <param name="year">年</param>
+        /// <param name="month">月</param>
+        /// <param name="departmentId">部门ID</param>
+        /// <returns></returns>
+        public List<StaffMonthAttendanceInfo> GetRecords(int year, int month, string departmentId)
+        {
+            return bll.GetRecords(year, month, departmentId);
+        }
+        #endregion //Method
     }
 }

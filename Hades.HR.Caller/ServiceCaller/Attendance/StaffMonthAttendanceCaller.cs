@@ -21,12 +21,15 @@ namespace Hades.HR.ServiceCaller
 	/// </summary>
     public class StaffMonthAttendanceCaller : BaseWCFService<StaffMonthAttendanceInfo>, IStaffMonthAttendanceService
     {
+        #region Constructor
         public StaffMonthAttendanceCaller()  : base()
         {	
             this.configurationPath = EndPointConfig.WcfConfig; //WCF配置文件
             this.endpointConfigurationName = EndPointConfig.StaffMonthAttendanceService;
         }
+        #endregion //Constructor
 
+        #region Function
         /// <summary>
         /// 子类构造一个IChannel对象转换为基类接口，方便给基类进行调用通用的API
         /// </summary>
@@ -45,6 +48,30 @@ namespace Hades.HR.ServiceCaller
             CustomClientChannel<IStaffMonthAttendanceService> factory = new CustomClientChannel<IStaffMonthAttendanceService>(endpointConfigurationName, configurationPath);
             return factory.CreateChannel();
         }
+        #endregion //Function
+
+        #region Method
+        /// <summary>
+        /// 获取职员考勤记录
+        /// </summary>
+        /// <param name="year">年</param>
+        /// <param name="month">月</param>
+        /// <param name="departmentId">部门ID</param>
+        /// <returns></returns>
+        public List<StaffMonthAttendanceInfo> GetRecords(int year, int month, string departmentId)
+        {
+            List<StaffMonthAttendanceInfo> result = new List<StaffMonthAttendanceInfo>();
+
+            IStaffMonthAttendanceService service = CreateSubClient();
+            ICommunicationObject comm = service as ICommunicationObject;
+            comm.Using(client =>
+            {
+                result = service.GetRecords(year, month, departmentId);
+            });
+
+            return result;
+        }
+        #endregion //Method
 
         ///// <summary>
         ///// 根据名称查找对象(自定义接口使用范例)

@@ -6,13 +6,13 @@ using System.Windows.Forms;
 using System.ComponentModel;
 using System.Collections.Generic;
 
-using WHC.Pager.Entity;
-using WHC.Dictionary;
-using WHC.Framework.BaseUI;
-using WHC.Framework.Commons;
-using WHC.Framework.ControlUtil;
+using Hades.Pager.Entity;
+using Hades.Dictionary;
+using Hades.Framework.BaseUI;
+using Hades.Framework.Commons;
+using Hades.Framework.ControlUtil;
 
-using WHC.Framework.ControlUtil.Facade;
+using Hades.Framework.ControlUtil.Facade;
 using Hades.HR.Facade;
 using Hades.HR.Entity;
 
@@ -23,6 +23,19 @@ namespace Hades.HR.UI
     /// </summary>	
     public partial class FrmStaffMonthAttendance : BaseDock
     {
+        #region Field
+        /// <summary>
+        /// 高级查询条件语句对象
+        /// </summary>
+        private SearchCondition advanceCondition;
+
+        /// <summary>
+        /// 缓存部门列表
+        /// </summary>
+        private List<DepartmentInfo> departmentList;
+        #endregion //Field
+
+        #region Constructor
         public FrmStaffMonthAttendance()
         {
             InitializeComponent();
@@ -41,13 +54,95 @@ namespace Hades.HR.UI
 			this.winGridViewPager1.gridView1.DataSourceChanged +=new EventHandler(gridView1_DataSourceChanged);
             this.winGridViewPager1.gridView1.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(gridView1_CustomColumnDisplayText);
             this.winGridViewPager1.gridView1.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(gridView1_RowCellStyle);
-
-            //关联回车键进行查询
-            foreach (Control control in this.layoutControl1.Controls)
-            {
-                control.KeyUp += new System.Windows.Forms.KeyEventHandler(this.SearchControl_KeyUp);
-            }
         }
+        #endregion //Constructor
+
+        #region Function
+        /// <summary>
+        /// 初始化字典列表内容
+        /// </summary>
+        private void InitDictItem()
+        {
+            //初始化代码
+        }
+
+        /// <summary>
+        /// 根据查询条件构造查询语句
+        /// </summary> 
+        private string GetConditionSql()
+        {
+            //如果存在高级查询对象信息，则使用高级查询条件，否则使用主表条件查询
+            SearchCondition condition = advanceCondition;
+            if (condition == null)
+            {
+                condition = new SearchCondition();
+                //condition.AddCondition("StaffId", this.txtStaffId.Text.Trim(), SqlOperator.Like);
+            }
+            string where = condition.BuildConditionSql().Replace("Where", "");
+            return where;
+        }
+
+        /// <summary>
+        /// 绑定列表数据
+        /// </summary>
+        private void BindData()
+        {
+            //entity
+            this.winGridViewPager1.DisplayColumns = "StaffId,DepartmentId,AttendanceDays,AnnualLeave,SickLeave,CasualLeave,InjuryLeave,MarriageLeave,MaternityLeave,FuneralLeave,AbsentLeave,NormalOvertime,WeekendOvertime,HolidayOvertime,NoonShift,NightShift,OtherNoon,OtherNight,Remark";
+            this.winGridViewPager1.ColumnNameAlias = CallerFactory<IStaffMonthAttendanceService>.Instance.GetColumnNameAlias();//字段列显示名称转义
+                     
+
+            string where = GetConditionSql();
+            PagerInfo pagerInfo = this.winGridViewPager1.PagerInfo;
+            List<StaffMonthAttendanceInfo> list = CallerFactory<IStaffMonthAttendanceService>.Instance.FindWithPager(where, ref pagerInfo);
+            this.winGridViewPager1.PagerInfo.RecordCount = pagerInfo.RecordCount;
+            this.winGridViewPager1.DataSource = new Hades.Pager.WinControl.SortableBindingList<StaffMonthAttendanceInfo>(list);
+            this.winGridViewPager1.PrintTitle = "StaffMonthAttendance报表";
+        }
+
+        #endregion //Function
+
+        #region Method
+        /// <summary>
+        /// 编写初始化窗体的实现，可以用于刷新
+        /// </summary>
+        public override void FormOnLoad()
+        {
+            this.departmentList = CallerFactory<IDepartmentService>.Instance.Find("Deleted = 0 AND Type > 4");
+            this.depTree.Init(3);
+
+            BindData();
+        }
+        #endregion //Method
+
+        #region Event
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (this.dpMonth.EditValue == null)
+            {
+                MessageDxUtil.ShowWarning("请选择考勤月份");
+                return;
+            }
+
+            var dep = this.depTree.GetSelectedObject();
+            if (dep == null)
+            {
+                MessageDxUtil.ShowWarning("请选择部门");
+                return;
+            }
+            if (dep.Type != (int)DepartmentType.Department)
+            {
+                MessageDxUtil.ShowWarning("请选择部门");
+                return;
+            }
+
+            FrmEditStaffMonthAttendance frm = new FrmEditStaffMonthAttendance(this.dpMonth.DateTime.Year, this.dpMonth.DateTime.Month, dep.Id);
+            frm.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
+            frm.ShowDialog();
+        }
+        #endregion //Event
+
+        #region System
         void gridView1_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
         {
             //if (e.Column.FieldName == "OrderStatus")
@@ -116,24 +211,8 @@ namespace Hades.HR.UI
             {
                 column.Width = width;
             }
-        }
-
-        /// <summary>
-        /// 编写初始化窗体的实现，可以用于刷新
-        /// </summary>
-        public override void  FormOnLoad()
-        {   
-            BindData();
-        }
-        
-        /// <summary>
-        /// 初始化字典列表内容
-        /// </summary>
-        private void InitDictItem()
-        {
-			//初始化代码
-        }
-        
+        }        
+   
         /// <summary>
         /// 分页控件刷新操作
         /// </summary>
@@ -220,68 +299,9 @@ namespace Hades.HR.UI
             BindData();
         }
         
-        /// <summary>
-        /// 高级查询条件语句对象
-        /// </summary>
-        private SearchCondition advanceCondition;
         
-        /// <summary>
-        /// 根据查询条件构造查询语句
-        /// </summary> 
-        private string GetConditionSql()
-        {
-            //如果存在高级查询对象信息，则使用高级查询条件，否则使用主表条件查询
-            SearchCondition condition = advanceCondition;
-            if (condition == null)
-            {
-                condition = new SearchCondition();
-                condition.AddCondition("StaffId", this.txtStaffId.Text.Trim(), SqlOperator.Like);
-            }
-            string where = condition.BuildConditionSql().Replace("Where", "");
-            return where;
-        }
         
-        /// <summary>
-        /// 绑定列表数据
-        /// </summary>
-        private void BindData()
-        {
-        	//entity
-            this.winGridViewPager1.DisplayColumns = "StaffId,DepartmentId,AttendanceDays,AnnualLeave,SickLeave,CasualLeave,InjuryLeave,MarriageLeave,MaternityLeave,FuneralLeave,AbsentLeave,NormalOvertime,WeekendOvertime,HolidayOvertime,NoonShift,NightShift,OtherNoon,OtherNight,Remark";
-            this.winGridViewPager1.ColumnNameAlias = CallerFactory<IStaffMonthAttendanceService>.Instance.GetColumnNameAlias();//字段列显示名称转义
-
-            #region 添加别名解析
-
-            //this.winGridViewPager1.AddColumnAlias("StaffId", "StaffId");
-            //this.winGridViewPager1.AddColumnAlias("DepartmentId", "DepartmentId");
-            //this.winGridViewPager1.AddColumnAlias("AttendanceDays", "AttendanceDays");
-            //this.winGridViewPager1.AddColumnAlias("AnnualLeave", "AnnualLeave");
-            //this.winGridViewPager1.AddColumnAlias("SickLeave", "SickLeave");
-            //this.winGridViewPager1.AddColumnAlias("CasualLeave", "CasualLeave");
-            //this.winGridViewPager1.AddColumnAlias("InjuryLeave", "InjuryLeave");
-            //this.winGridViewPager1.AddColumnAlias("MarriageLeave", "MarriageLeave");
-            //this.winGridViewPager1.AddColumnAlias("MaternityLeave", "MaternityLeave");
-            //this.winGridViewPager1.AddColumnAlias("FuneralLeave", "FuneralLeave");
-            //this.winGridViewPager1.AddColumnAlias("AbsentLeave", "AbsentLeave");
-            //this.winGridViewPager1.AddColumnAlias("NormalOvertime", "NormalOvertime");
-            //this.winGridViewPager1.AddColumnAlias("WeekendOvertime", "WeekendOvertime");
-            //this.winGridViewPager1.AddColumnAlias("HolidayOvertime", "HolidayOvertime");
-            //this.winGridViewPager1.AddColumnAlias("NoonShift", "NoonShift");
-            //this.winGridViewPager1.AddColumnAlias("NightShift", "NightShift");
-            //this.winGridViewPager1.AddColumnAlias("OtherNoon", "OtherNoon");
-            //this.winGridViewPager1.AddColumnAlias("OtherNight", "OtherNight");
-            //this.winGridViewPager1.AddColumnAlias("Remark", "Remark");
-
-            #endregion
-
-            string where = GetConditionSql();
-            PagerInfo pagerInfo = this.winGridViewPager1.PagerInfo;
-               List<StaffMonthAttendanceInfo> list = CallerFactory<IStaffMonthAttendanceService>.Instance.FindWithPager(where, ref pagerInfo);
-            this.winGridViewPager1.PagerInfo.RecordCount = pagerInfo.RecordCount;
-            this.winGridViewPager1.DataSource = new WHC.Pager.WinControl.SortableBindingList<StaffMonthAttendanceInfo>(list);
-               this.winGridViewPager1.PrintTitle = "StaffMonthAttendance报表";
-         }
-        
+      
         /// <summary>
         /// 查询数据操作
         /// </summary>
@@ -481,5 +501,7 @@ namespace Hades.HR.UI
             advanceCondition = condition;
             BindData();
         }
+        #endregion //System
+
     }
 }

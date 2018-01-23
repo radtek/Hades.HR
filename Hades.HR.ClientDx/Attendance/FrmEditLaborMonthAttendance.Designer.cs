@@ -200,6 +200,9 @@ namespace Hades.HR.UI
             // 
             // dgvAttendance
             // 
+            this.dgvAttendance.Appearance.HeaderPanel.Options.UseTextOptions = true;
+            this.dgvAttendance.Appearance.HeaderPanel.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
+            this.dgvAttendance.ColumnPanelRowHeight = 40;
             this.dgvAttendance.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colId,
             this.colStaffId,

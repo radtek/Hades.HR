@@ -816,6 +816,12 @@
     <Compile Include="Attendance\FrmEditChangeWorkload.Designer.cs">
       <DependentUpon>FrmEditChangeWorkload.cs</DependentUpon>
     </Compile>
+    <Compile Include="Attendance\FrmEditStaffMonthAttendance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Attendance\FrmEditStaffMonthAttendance.Designer.cs">
+      <DependentUpon>FrmEditStaffMonthAttendance.cs</DependentUpon>
+    </Compile>
     <Compile Include="Attendance\FrmLaborMonthAttendance.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -851,6 +857,12 @@
     </Compile>
     <Compile Include="Attendance\FrmLaborDailyWorkload.Designer.cs">
       <DependentUpon>FrmLaborDailyWorkload.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Attendance\FrmStaffMonthAttendance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Attendance\FrmStaffMonthAttendance.Designer.cs">
+      <DependentUpon>FrmStaffMonthAttendance.cs</DependentUpon>
     </Compile>
     <Compile Include="Attendance\FrmWorkTeamDailyWorkload.cs">
       <SubType>Form</SubType>
@@ -1096,6 +1108,9 @@
     <EmbeddedResource Include="Attendance\FrmEditChangeWorkload.resx">
       <DependentUpon>FrmEditChangeWorkload.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Attendance\FrmEditStaffMonthAttendance.resx">
+      <DependentUpon>FrmEditStaffMonthAttendance.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Attendance\FrmLaborDailyWorkload.resx">
       <DependentUpon>FrmLaborDailyWorkload.cs</DependentUpon>
     </EmbeddedResource>
@@ -1113,6 +1128,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Attendance\FrmLaborDailyAttendance.resx">
       <DependentUpon>FrmLaborDailyAttendance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Attendance\FrmStaffMonthAttendance.resx">
+      <DependentUpon>FrmStaffMonthAttendance.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Attendance\FrmWorkTeamDailyWorkload.resx">
       <DependentUpon>FrmWorkTeamDailyWorkload.cs</DependentUpon>
@@ -1237,6 +1255,7 @@
     <None Include="Properties\DataSources\Hades.HR.Entity.ProductionLineInfo.datasource" />
     <None Include="Properties\DataSources\Hades.HR.Entity.StaffBonusInfo.datasource" />
     <None Include="Properties\DataSources\Hades.HR.Entity.StaffInfo.datasource" />
+    <None Include="Properties\DataSources\Hades.HR.Entity.StaffMonthAttendanceInfo.datasource" />
     <None Include="Properties\DataSources\Hades.HR.Entity.WorkSectionInfo.datasource" />
     <None Include="Properties\DataSources\Hades.HR.Entity.WorkSectionLaborInfo.datasource" />
     <None Include="Properties\DataSources\Hades.HR.Entity.WorkTeamInfo.datasource" />

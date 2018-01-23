@@ -34,15 +34,15 @@ namespace Hades.HR.UI
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.wtTree = new Hades.HR.UI.WorkTeamTree();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.btnEdit = new DevExpress.XtraEditors.SimpleButton();
             this.dpMonth = new DevExpress.XtraEditors.DateEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
-            this.btnEdit = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.wtTree = new Hades.HR.UI.WorkTeamTree();
+            this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
@@ -54,9 +54,9 @@ namespace Hades.HR.UI
             ((System.ComponentModel.ISupportInitialize)(this.dpMonth.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
             this.groupControl4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             this.SuspendLayout();
             // 
             // winGridViewPager1
@@ -112,6 +112,15 @@ namespace Hades.HR.UI
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "班组列表";
             // 
+            // wtTree
+            // 
+            this.wtTree.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.wtTree.Location = new System.Drawing.Point(2, 21);
+            this.wtTree.Name = "wtTree";
+            this.wtTree.Size = new System.Drawing.Size(190, 507);
+            this.wtTree.TabIndex = 0;
+            this.wtTree.TeamSeleted += new System.EventHandler(this.wtTree_TeamSeleted);
+            // 
             // groupControl2
             // 
             this.groupControl2.Controls.Add(this.layoutControl1);
@@ -133,6 +142,16 @@ namespace Hades.HR.UI
             this.layoutControl1.Size = new System.Drawing.Size(794, 71);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Location = new System.Drawing.Point(550, 12);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(232, 22);
+            this.btnEdit.StyleController = this.layoutControl1;
+            this.btnEdit.TabIndex = 5;
+            this.btnEdit.Text = "编辑月考勤";
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // dpMonth
             // 
@@ -176,26 +195,6 @@ namespace Hades.HR.UI
             this.layoutControlItem1.Text = "月份选择";
             this.layoutControlItem1.TextSize = new System.Drawing.Size(48, 14);
             // 
-            // groupControl4
-            // 
-            this.groupControl4.Controls.Add(this.winGridViewPager1);
-            this.groupControl4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl4.Location = new System.Drawing.Point(203, 103);
-            this.groupControl4.Name = "groupControl4";
-            this.groupControl4.Size = new System.Drawing.Size(798, 430);
-            this.groupControl4.TabIndex = 3;
-            this.groupControl4.Text = "月考勤记录";
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.Location = new System.Drawing.Point(550, 12);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(232, 22);
-            this.btnEdit.StyleController = this.layoutControl1;
-            this.btnEdit.TabIndex = 5;
-            this.btnEdit.Text = "编辑月考勤";
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
-            // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.btnEdit;
@@ -205,14 +204,15 @@ namespace Hades.HR.UI
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
-            // wtTree
+            // groupControl4
             // 
-            this.wtTree.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.wtTree.Location = new System.Drawing.Point(2, 21);
-            this.wtTree.Name = "wtTree";
-            this.wtTree.Size = new System.Drawing.Size(190, 507);
-            this.wtTree.TabIndex = 0;
-            this.wtTree.TeamSeleted += new System.EventHandler(this.wtTree_TeamSeleted);
+            this.groupControl4.Controls.Add(this.winGridViewPager1);
+            this.groupControl4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupControl4.Location = new System.Drawing.Point(203, 103);
+            this.groupControl4.Name = "groupControl4";
+            this.groupControl4.Size = new System.Drawing.Size(798, 430);
+            this.groupControl4.TabIndex = 3;
+            this.groupControl4.Text = "月考勤记录";
             // 
             // FrmLaborMonthAttendance
             // 
@@ -233,9 +233,9 @@ namespace Hades.HR.UI
             ((System.ComponentModel.ISupportInitialize)(this.dpMonth.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
             this.groupControl4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             this.ResumeLayout(false);
 
         }

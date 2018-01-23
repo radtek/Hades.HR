@@ -28,703 +28,409 @@ namespace Hades.HR.UI
         /// </summary>
         private void InitializeComponent()
         {
-            this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();                
-
-            this.txtStaffId = new DevExpress.XtraEditors.TextEdit();
+            this.components = new System.ComponentModel.Container();
+            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.layoutControl2 = new DevExpress.XtraLayout.LayoutControl();
+            this.txtDepartment = new DevExpress.XtraEditors.TextEdit();
+            this.txtMonth = new DevExpress.XtraEditors.TextEdit();
+            this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-             this.txtDepartmentId = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-             this.txtAttendanceDays = new DevExpress.XtraEditors.SpinEdit();
-            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-             this.txtAnnualLeave = new DevExpress.XtraEditors.SpinEdit();
-            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
-             this.txtSickLeave = new DevExpress.XtraEditors.SpinEdit();
-            this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
-             this.txtCasualLeave = new DevExpress.XtraEditors.SpinEdit();
-            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
-             this.txtInjuryLeave = new DevExpress.XtraEditors.SpinEdit();
-            this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
-             this.txtMarriageLeave = new DevExpress.XtraEditors.SpinEdit();
-            this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
-             this.txtMaternityLeave = new DevExpress.XtraEditors.SpinEdit();
-            this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
-             this.txtFuneralLeave = new DevExpress.XtraEditors.SpinEdit();
-            this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
-             this.txtAbsentLeave = new DevExpress.XtraEditors.SpinEdit();
-            this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
-             this.txtNormalOvertime = new DevExpress.XtraEditors.SpinEdit();
-            this.layoutControlItem12 = new DevExpress.XtraLayout.LayoutControlItem();
-             this.txtWeekendOvertime = new DevExpress.XtraEditors.SpinEdit();
-            this.layoutControlItem13 = new DevExpress.XtraLayout.LayoutControlItem();
-             this.txtHolidayOvertime = new DevExpress.XtraEditors.SpinEdit();
-            this.layoutControlItem14 = new DevExpress.XtraLayout.LayoutControlItem();
-             this.txtNoonShift = new DevExpress.XtraEditors.SpinEdit();
-            this.layoutControlItem15 = new DevExpress.XtraLayout.LayoutControlItem();
-             this.txtNightShift = new DevExpress.XtraEditors.SpinEdit();
-            this.layoutControlItem16 = new DevExpress.XtraLayout.LayoutControlItem();
-             this.txtOtherNoon = new DevExpress.XtraEditors.SpinEdit();
-            this.layoutControlItem17 = new DevExpress.XtraLayout.LayoutControlItem();
-             this.txtOtherNight = new DevExpress.XtraEditors.SpinEdit();
-            this.layoutControlItem18 = new DevExpress.XtraLayout.LayoutControlItem();
-             this.txtRemark = new DevExpress.XtraEditors.TextEdit();
-            this.layoutControlItem19 = new DevExpress.XtraLayout.LayoutControlItem();
-             
+            this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.dgcAttendance = new DevExpress.XtraGrid.GridControl();
+            this.bsAttendance = new System.Windows.Forms.BindingSource(this.components);
+            this.dgvAttendance = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colYear = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colMonth = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colStaffId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDepartmentId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colAttendanceDays = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colAnnualLeave = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSickLeave = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCasualLeave = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colInjuryLeave = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colMarriageLeave = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colMaternityLeave = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colFuneralLeave = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colAbsentLeave = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colNormalOvertime = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colWeekendOvertime = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colHolidayOvertime = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colNoonShift = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colNightShift = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colOtherNoon = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colOtherNight = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colRemark = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.picPrint)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
-
-            this.layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();            
-            ((System.ComponentModel.ISupportInitialize)(this.txtStaffId.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
+            this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).BeginInit();
+            this.layoutControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDepartment.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMonth.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
-             ((System.ComponentModel.ISupportInitialize)(this.txtDepartmentId.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
-             ((System.ComponentModel.ISupportInitialize)(this.txtAttendanceDays.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
-             ((System.ComponentModel.ISupportInitialize)(this.txtAnnualLeave.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
-             ((System.ComponentModel.ISupportInitialize)(this.txtSickLeave.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
-             ((System.ComponentModel.ISupportInitialize)(this.txtCasualLeave.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
-             ((System.ComponentModel.ISupportInitialize)(this.txtInjuryLeave.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
-             ((System.ComponentModel.ISupportInitialize)(this.txtMarriageLeave.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
-             ((System.ComponentModel.ISupportInitialize)(this.txtMaternityLeave.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
-             ((System.ComponentModel.ISupportInitialize)(this.txtFuneralLeave.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
-             ((System.ComponentModel.ISupportInitialize)(this.txtAbsentLeave.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
-             ((System.ComponentModel.ISupportInitialize)(this.txtNormalOvertime.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).BeginInit();
-             ((System.ComponentModel.ISupportInitialize)(this.txtWeekendOvertime.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).BeginInit();
-             ((System.ComponentModel.ISupportInitialize)(this.txtHolidayOvertime.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).BeginInit();
-             ((System.ComponentModel.ISupportInitialize)(this.txtNoonShift.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).BeginInit();
-             ((System.ComponentModel.ISupportInitialize)(this.txtNightShift.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).BeginInit();
-             ((System.ComponentModel.ISupportInitialize)(this.txtOtherNoon.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).BeginInit();
-             ((System.ComponentModel.ISupportInitialize)(this.txtOtherNight.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).BeginInit();
-             ((System.ComponentModel.ISupportInitialize)(this.txtRemark.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem19)).BeginInit();
-             
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
+            this.groupControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgcAttendance)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsAttendance)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAttendance)).BeginInit();
             this.SuspendLayout();
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(438, 392);
+            this.btnOK.Location = new System.Drawing.Point(683, 397);
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(537, 392);
+            this.btnCancel.Location = new System.Drawing.Point(782, 397);
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(351, 392);
+            this.btnAdd.Location = new System.Drawing.Point(596, 397);
             // 
-            // layoutControl1
-            //             
-            this.layoutControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.layoutControl1.Location = new System.Drawing.Point(12, 8);
-            this.layoutControl1.Name = "layoutControl1";
-            this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(605, 363);
-            this.layoutControl1.TabIndex = 6;
-            this.layoutControl1.Text = "layoutControl1";
-
-            this.layoutControl1.Controls.Add(this.txtStaffId);
-             this.layoutControl1.Controls.Add(this.txtDepartmentId);
-             this.layoutControl1.Controls.Add(this.txtAttendanceDays);
-             this.layoutControl1.Controls.Add(this.txtAnnualLeave);
-             this.layoutControl1.Controls.Add(this.txtSickLeave);
-             this.layoutControl1.Controls.Add(this.txtCasualLeave);
-             this.layoutControl1.Controls.Add(this.txtInjuryLeave);
-             this.layoutControl1.Controls.Add(this.txtMarriageLeave);
-             this.layoutControl1.Controls.Add(this.txtMaternityLeave);
-             this.layoutControl1.Controls.Add(this.txtFuneralLeave);
-             this.layoutControl1.Controls.Add(this.txtAbsentLeave);
-             this.layoutControl1.Controls.Add(this.txtNormalOvertime);
-             this.layoutControl1.Controls.Add(this.txtWeekendOvertime);
-             this.layoutControl1.Controls.Add(this.txtHolidayOvertime);
-             this.layoutControl1.Controls.Add(this.txtNoonShift);
-             this.layoutControl1.Controls.Add(this.txtNightShift);
-             this.layoutControl1.Controls.Add(this.txtOtherNoon);
-             this.layoutControl1.Controls.Add(this.txtOtherNight);
-             this.layoutControl1.Controls.Add(this.txtRemark);
- 
+            // dataNavigator1
             // 
-            // txtStaffId
+            this.dataNavigator1.Location = new System.Drawing.Point(12, 392);
             // 
-            this.txtStaffId.Location = new System.Drawing.Point(112, 12);
-            this.txtStaffId.Name = "txtStaffId";
-            this.txtStaffId.Size = new System.Drawing.Size(481, 20);
-            this.txtStaffId.StyleController = this.layoutControl1;
-            this.txtStaffId.TabIndex = 1;
+            // picPrint
+            // 
+            this.picPrint.Location = new System.Drawing.Point(202, 394);
+            // 
+            // groupControl1
+            // 
+            this.groupControl1.Controls.Add(this.layoutControl2);
+            this.groupControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupControl1.Location = new System.Drawing.Point(0, 0);
+            this.groupControl1.Name = "groupControl1";
+            this.groupControl1.Size = new System.Drawing.Size(869, 69);
+            this.groupControl1.TabIndex = 8;
+            this.groupControl1.Text = "基本信息";
+            // 
+            // layoutControl2
+            // 
+            this.layoutControl2.Controls.Add(this.txtDepartment);
+            this.layoutControl2.Controls.Add(this.txtMonth);
+            this.layoutControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layoutControl2.Location = new System.Drawing.Point(2, 21);
+            this.layoutControl2.Name = "layoutControl2";
+            this.layoutControl2.Root = this.layoutControlGroup2;
+            this.layoutControl2.Size = new System.Drawing.Size(865, 46);
+            this.layoutControl2.TabIndex = 0;
+            this.layoutControl2.Text = "layoutControl2";
+            // 
+            // txtDepartment
+            // 
+            this.txtDepartment.Location = new System.Drawing.Point(411, 12);
+            this.txtDepartment.Name = "txtDepartment";
+            this.txtDepartment.Properties.ReadOnly = true;
+            this.txtDepartment.Size = new System.Drawing.Size(442, 20);
+            this.txtDepartment.StyleController = this.layoutControl2;
+            this.txtDepartment.TabIndex = 5;
+            // 
+            // txtMonth
+            // 
+            this.txtMonth.Location = new System.Drawing.Point(39, 12);
+            this.txtMonth.Name = "txtMonth";
+            this.txtMonth.Properties.ReadOnly = true;
+            this.txtMonth.Size = new System.Drawing.Size(341, 20);
+            this.txtMonth.StyleController = this.layoutControl2;
+            this.txtMonth.TabIndex = 4;
+            // 
+            // layoutControlGroup2
+            // 
+            this.layoutControlGroup2.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.layoutControlGroup2.GroupBordersVisible = false;
+            this.layoutControlGroup2.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem1,
+            this.layoutControlItem2});
+            this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlGroup2.Name = "layoutControlGroup2";
+            this.layoutControlGroup2.Size = new System.Drawing.Size(865, 46);
+            this.layoutControlGroup2.TextVisible = false;
             // 
             // layoutControlItem1
             // 
-            this.layoutControlItem1.Control = this.txtStaffId;
-            this.layoutControlItem1.CustomizationFormText = "";
+            this.layoutControlItem1.Control = this.txtMonth;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(585, 24);
-            this.layoutControlItem1.Text = "";
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(96, 14);  
-
-             // 
-            // txtDepartmentId
-            // 
-            this.txtDepartmentId.Location = new System.Drawing.Point(112, 36);
-            this.txtDepartmentId.Name = "txtDepartmentId";
-            this.txtDepartmentId.Size = new System.Drawing.Size(481, 20);
-            this.txtDepartmentId.StyleController = this.layoutControl1;
-            this.txtDepartmentId.TabIndex = 2;
+            this.layoutControlItem1.Size = new System.Drawing.Size(372, 26);
+            this.layoutControlItem1.Text = "月度";
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(24, 14);
             // 
             // layoutControlItem2
             // 
-            this.layoutControlItem2.Control = this.txtDepartmentId;
-            this.layoutControlItem2.CustomizationFormText = "";
-            this.layoutControlItem2.Location = new System.Drawing.Point(0, 24);
+            this.layoutControlItem2.Control = this.txtDepartment;
+            this.layoutControlItem2.Location = new System.Drawing.Point(372, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(585, 24);
-            this.layoutControlItem2.Text = "";
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(96, 14);  
-
-             this.txtAttendanceDays.EditValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.txtAttendanceDays.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txtAttendanceDays.Location = new System.Drawing.Point(112, 60);
-            this.txtAttendanceDays.Name = "txtAttendanceDays";
-            this.txtAttendanceDays.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.txtAttendanceDays.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
-            this.txtAttendanceDays.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.txtAttendanceDays.Size = new System.Drawing.Size(120, 20);
-            this.txtAttendanceDays.StyleController = this.layoutControl1;
-            this.txtAttendanceDays.TabIndex = 3;
+            this.layoutControlItem2.Size = new System.Drawing.Size(473, 26);
+            this.layoutControlItem2.Text = "部门";
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(24, 14);
             // 
-            // layoutControlItem3
+            // groupControl2
             // 
-            this.layoutControlItem3.Control = this.txtAttendanceDays;
-            this.layoutControlItem3.CustomizationFormText = "";
-            this.layoutControlItem3.Location = new System.Drawing.Point(0, 48);
-            this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(585, 24);
-            this.layoutControlItem3.Text = "";
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(96, 14);  
-
-             this.txtAnnualLeave.EditValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.txtAnnualLeave.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txtAnnualLeave.Location = new System.Drawing.Point(112, 84);
-            this.txtAnnualLeave.Name = "txtAnnualLeave";
-            this.txtAnnualLeave.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.txtAnnualLeave.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
-            this.txtAnnualLeave.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.txtAnnualLeave.Size = new System.Drawing.Size(120, 20);
-            this.txtAnnualLeave.StyleController = this.layoutControl1;
-            this.txtAnnualLeave.TabIndex = 4;
+            this.groupControl2.Controls.Add(this.dgcAttendance);
+            this.groupControl2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupControl2.Location = new System.Drawing.Point(0, 69);
+            this.groupControl2.Name = "groupControl2";
+            this.groupControl2.Size = new System.Drawing.Size(869, 303);
+            this.groupControl2.TabIndex = 9;
+            this.groupControl2.Text = "考勤信息";
             // 
-            // layoutControlItem4
+            // dgcAttendance
             // 
-            this.layoutControlItem4.Control = this.txtAnnualLeave;
-            this.layoutControlItem4.CustomizationFormText = "";
-            this.layoutControlItem4.Location = new System.Drawing.Point(0, 72);
-            this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(585, 24);
-            this.layoutControlItem4.Text = "";
-            this.layoutControlItem4.TextSize = new System.Drawing.Size(96, 14);  
-
-             this.txtSickLeave.EditValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.txtSickLeave.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txtSickLeave.Location = new System.Drawing.Point(112, 108);
-            this.txtSickLeave.Name = "txtSickLeave";
-            this.txtSickLeave.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.txtSickLeave.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
-            this.txtSickLeave.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.txtSickLeave.Size = new System.Drawing.Size(120, 20);
-            this.txtSickLeave.StyleController = this.layoutControl1;
-            this.txtSickLeave.TabIndex = 5;
+            this.dgcAttendance.DataSource = this.bsAttendance;
+            this.dgcAttendance.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgcAttendance.Location = new System.Drawing.Point(2, 21);
+            this.dgcAttendance.MainView = this.dgvAttendance;
+            this.dgcAttendance.Name = "dgcAttendance";
+            this.dgcAttendance.Size = new System.Drawing.Size(865, 280);
+            this.dgcAttendance.TabIndex = 0;
+            this.dgcAttendance.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.dgvAttendance});
             // 
-            // layoutControlItem5
+            // bsAttendance
             // 
-            this.layoutControlItem5.Control = this.txtSickLeave;
-            this.layoutControlItem5.CustomizationFormText = "";
-            this.layoutControlItem5.Location = new System.Drawing.Point(0, 96);
-            this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(585, 24);
-            this.layoutControlItem5.Text = "";
-            this.layoutControlItem5.TextSize = new System.Drawing.Size(96, 14);  
-
-             this.txtCasualLeave.EditValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.txtCasualLeave.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txtCasualLeave.Location = new System.Drawing.Point(112, 132);
-            this.txtCasualLeave.Name = "txtCasualLeave";
-            this.txtCasualLeave.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.txtCasualLeave.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
-            this.txtCasualLeave.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.txtCasualLeave.Size = new System.Drawing.Size(120, 20);
-            this.txtCasualLeave.StyleController = this.layoutControl1;
-            this.txtCasualLeave.TabIndex = 6;
+            this.bsAttendance.DataSource = typeof(Hades.HR.Entity.StaffMonthAttendanceInfo);
             // 
-            // layoutControlItem6
+            // dgvAttendance
             // 
-            this.layoutControlItem6.Control = this.txtCasualLeave;
-            this.layoutControlItem6.CustomizationFormText = "";
-            this.layoutControlItem6.Location = new System.Drawing.Point(0, 120);
-            this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(585, 24);
-            this.layoutControlItem6.Text = "";
-            this.layoutControlItem6.TextSize = new System.Drawing.Size(96, 14);  
-
-             this.txtInjuryLeave.EditValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.txtInjuryLeave.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txtInjuryLeave.Location = new System.Drawing.Point(112, 156);
-            this.txtInjuryLeave.Name = "txtInjuryLeave";
-            this.txtInjuryLeave.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.txtInjuryLeave.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
-            this.txtInjuryLeave.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.txtInjuryLeave.Size = new System.Drawing.Size(120, 20);
-            this.txtInjuryLeave.StyleController = this.layoutControl1;
-            this.txtInjuryLeave.TabIndex = 7;
+            this.dgvAttendance.Appearance.HeaderPanel.Options.UseTextOptions = true;
+            this.dgvAttendance.Appearance.HeaderPanel.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
+            this.dgvAttendance.ColumnPanelRowHeight = 40;
+            this.dgvAttendance.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colId,
+            this.colYear,
+            this.colMonth,
+            this.colStaffId,
+            this.colDepartmentId,
+            this.colAttendanceDays,
+            this.colAnnualLeave,
+            this.colSickLeave,
+            this.colCasualLeave,
+            this.colInjuryLeave,
+            this.colMarriageLeave,
+            this.colMaternityLeave,
+            this.colFuneralLeave,
+            this.colAbsentLeave,
+            this.colNormalOvertime,
+            this.colWeekendOvertime,
+            this.colHolidayOvertime,
+            this.colNoonShift,
+            this.colNightShift,
+            this.colOtherNoon,
+            this.colOtherNight,
+            this.colRemark});
+            this.dgvAttendance.GridControl = this.dgcAttendance;
+            this.dgvAttendance.Name = "dgvAttendance";
+            this.dgvAttendance.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
+            this.dgvAttendance.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
+            this.dgvAttendance.OptionsCustomization.AllowFilter = false;
+            this.dgvAttendance.OptionsCustomization.AllowGroup = false;
+            this.dgvAttendance.OptionsCustomization.AllowQuickHideColumns = false;
+            this.dgvAttendance.OptionsCustomization.AllowSort = false;
+            this.dgvAttendance.OptionsView.ShowGroupPanel = false;
             // 
-            // layoutControlItem7
+            // colId
             // 
-            this.layoutControlItem7.Control = this.txtInjuryLeave;
-            this.layoutControlItem7.CustomizationFormText = "";
-            this.layoutControlItem7.Location = new System.Drawing.Point(0, 144);
-            this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(585, 24);
-            this.layoutControlItem7.Text = "";
-            this.layoutControlItem7.TextSize = new System.Drawing.Size(96, 14);  
-
-             this.txtMarriageLeave.EditValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.txtMarriageLeave.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txtMarriageLeave.Location = new System.Drawing.Point(112, 180);
-            this.txtMarriageLeave.Name = "txtMarriageLeave";
-            this.txtMarriageLeave.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.txtMarriageLeave.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
-            this.txtMarriageLeave.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.txtMarriageLeave.Size = new System.Drawing.Size(120, 20);
-            this.txtMarriageLeave.StyleController = this.layoutControl1;
-            this.txtMarriageLeave.TabIndex = 8;
+            this.colId.FieldName = "Id";
+            this.colId.Name = "colId";
             // 
-            // layoutControlItem8
+            // colYear
             // 
-            this.layoutControlItem8.Control = this.txtMarriageLeave;
-            this.layoutControlItem8.CustomizationFormText = "";
-            this.layoutControlItem8.Location = new System.Drawing.Point(0, 168);
-            this.layoutControlItem8.Name = "layoutControlItem8";
-            this.layoutControlItem8.Size = new System.Drawing.Size(585, 24);
-            this.layoutControlItem8.Text = "";
-            this.layoutControlItem8.TextSize = new System.Drawing.Size(96, 14);  
-
-             this.txtMaternityLeave.EditValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.txtMaternityLeave.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txtMaternityLeave.Location = new System.Drawing.Point(112, 204);
-            this.txtMaternityLeave.Name = "txtMaternityLeave";
-            this.txtMaternityLeave.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.txtMaternityLeave.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
-            this.txtMaternityLeave.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.txtMaternityLeave.Size = new System.Drawing.Size(120, 20);
-            this.txtMaternityLeave.StyleController = this.layoutControl1;
-            this.txtMaternityLeave.TabIndex = 9;
+            this.colYear.FieldName = "Year";
+            this.colYear.Name = "colYear";
             // 
-            // layoutControlItem9
+            // colMonth
             // 
-            this.layoutControlItem9.Control = this.txtMaternityLeave;
-            this.layoutControlItem9.CustomizationFormText = "";
-            this.layoutControlItem9.Location = new System.Drawing.Point(0, 192);
-            this.layoutControlItem9.Name = "layoutControlItem9";
-            this.layoutControlItem9.Size = new System.Drawing.Size(585, 24);
-            this.layoutControlItem9.Text = "";
-            this.layoutControlItem9.TextSize = new System.Drawing.Size(96, 14);  
-
-             this.txtFuneralLeave.EditValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.txtFuneralLeave.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txtFuneralLeave.Location = new System.Drawing.Point(112, 228);
-            this.txtFuneralLeave.Name = "txtFuneralLeave";
-            this.txtFuneralLeave.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.txtFuneralLeave.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
-            this.txtFuneralLeave.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.txtFuneralLeave.Size = new System.Drawing.Size(120, 20);
-            this.txtFuneralLeave.StyleController = this.layoutControl1;
-            this.txtFuneralLeave.TabIndex = 10;
+            this.colMonth.FieldName = "Month";
+            this.colMonth.Name = "colMonth";
             // 
-            // layoutControlItem10
+            // colStaffId
             // 
-            this.layoutControlItem10.Control = this.txtFuneralLeave;
-            this.layoutControlItem10.CustomizationFormText = "";
-            this.layoutControlItem10.Location = new System.Drawing.Point(0, 216);
-            this.layoutControlItem10.Name = "layoutControlItem10";
-            this.layoutControlItem10.Size = new System.Drawing.Size(585, 24);
-            this.layoutControlItem10.Text = "";
-            this.layoutControlItem10.TextSize = new System.Drawing.Size(96, 14);  
-
-             this.txtAbsentLeave.EditValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.txtAbsentLeave.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txtAbsentLeave.Location = new System.Drawing.Point(112, 252);
-            this.txtAbsentLeave.Name = "txtAbsentLeave";
-            this.txtAbsentLeave.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.txtAbsentLeave.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
-            this.txtAbsentLeave.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.txtAbsentLeave.Size = new System.Drawing.Size(120, 20);
-            this.txtAbsentLeave.StyleController = this.layoutControl1;
-            this.txtAbsentLeave.TabIndex = 11;
+            this.colStaffId.Caption = "职员姓名";
+            this.colStaffId.FieldName = "StaffId";
+            this.colStaffId.Name = "colStaffId";
+            this.colStaffId.Visible = true;
+            this.colStaffId.VisibleIndex = 0;
             // 
-            // layoutControlItem11
+            // colDepartmentId
             // 
-            this.layoutControlItem11.Control = this.txtAbsentLeave;
-            this.layoutControlItem11.CustomizationFormText = "";
-            this.layoutControlItem11.Location = new System.Drawing.Point(0, 240);
-            this.layoutControlItem11.Name = "layoutControlItem11";
-            this.layoutControlItem11.Size = new System.Drawing.Size(585, 24);
-            this.layoutControlItem11.Text = "";
-            this.layoutControlItem11.TextSize = new System.Drawing.Size(96, 14);  
-
-             this.txtNormalOvertime.EditValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.txtNormalOvertime.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txtNormalOvertime.Location = new System.Drawing.Point(112, 276);
-            this.txtNormalOvertime.Name = "txtNormalOvertime";
-            this.txtNormalOvertime.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.txtNormalOvertime.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
-            this.txtNormalOvertime.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.txtNormalOvertime.Size = new System.Drawing.Size(120, 20);
-            this.txtNormalOvertime.StyleController = this.layoutControl1;
-            this.txtNormalOvertime.TabIndex = 12;
+            this.colDepartmentId.Caption = "部门名称";
+            this.colDepartmentId.FieldName = "DepartmentId";
+            this.colDepartmentId.Name = "colDepartmentId";
+            this.colDepartmentId.Visible = true;
+            this.colDepartmentId.VisibleIndex = 1;
             // 
-            // layoutControlItem12
+            // colAttendanceDays
             // 
-            this.layoutControlItem12.Control = this.txtNormalOvertime;
-            this.layoutControlItem12.CustomizationFormText = "";
-            this.layoutControlItem12.Location = new System.Drawing.Point(0, 264);
-            this.layoutControlItem12.Name = "layoutControlItem12";
-            this.layoutControlItem12.Size = new System.Drawing.Size(585, 24);
-            this.layoutControlItem12.Text = "";
-            this.layoutControlItem12.TextSize = new System.Drawing.Size(96, 14);  
-
-             this.txtWeekendOvertime.EditValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.txtWeekendOvertime.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txtWeekendOvertime.Location = new System.Drawing.Point(112, 300);
-            this.txtWeekendOvertime.Name = "txtWeekendOvertime";
-            this.txtWeekendOvertime.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.txtWeekendOvertime.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
-            this.txtWeekendOvertime.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.txtWeekendOvertime.Size = new System.Drawing.Size(120, 20);
-            this.txtWeekendOvertime.StyleController = this.layoutControl1;
-            this.txtWeekendOvertime.TabIndex = 13;
+            this.colAttendanceDays.Caption = "出勤天数";
+            this.colAttendanceDays.FieldName = "AttendanceDays";
+            this.colAttendanceDays.Name = "colAttendanceDays";
+            this.colAttendanceDays.Visible = true;
+            this.colAttendanceDays.VisibleIndex = 2;
             // 
-            // layoutControlItem13
+            // colAnnualLeave
             // 
-            this.layoutControlItem13.Control = this.txtWeekendOvertime;
-            this.layoutControlItem13.CustomizationFormText = "";
-            this.layoutControlItem13.Location = new System.Drawing.Point(0, 288);
-            this.layoutControlItem13.Name = "layoutControlItem13";
-            this.layoutControlItem13.Size = new System.Drawing.Size(585, 24);
-            this.layoutControlItem13.Text = "";
-            this.layoutControlItem13.TextSize = new System.Drawing.Size(96, 14);  
-
-             this.txtHolidayOvertime.EditValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.txtHolidayOvertime.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txtHolidayOvertime.Location = new System.Drawing.Point(112, 324);
-            this.txtHolidayOvertime.Name = "txtHolidayOvertime";
-            this.txtHolidayOvertime.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.txtHolidayOvertime.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
-            this.txtHolidayOvertime.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.txtHolidayOvertime.Size = new System.Drawing.Size(120, 20);
-            this.txtHolidayOvertime.StyleController = this.layoutControl1;
-            this.txtHolidayOvertime.TabIndex = 14;
+            this.colAnnualLeave.Caption = "年假天数";
+            this.colAnnualLeave.FieldName = "AnnualLeave";
+            this.colAnnualLeave.Name = "colAnnualLeave";
+            this.colAnnualLeave.Visible = true;
+            this.colAnnualLeave.VisibleIndex = 3;
             // 
-            // layoutControlItem14
+            // colSickLeave
             // 
-            this.layoutControlItem14.Control = this.txtHolidayOvertime;
-            this.layoutControlItem14.CustomizationFormText = "";
-            this.layoutControlItem14.Location = new System.Drawing.Point(0, 312);
-            this.layoutControlItem14.Name = "layoutControlItem14";
-            this.layoutControlItem14.Size = new System.Drawing.Size(585, 24);
-            this.layoutControlItem14.Text = "";
-            this.layoutControlItem14.TextSize = new System.Drawing.Size(96, 14);  
-
-             this.txtNoonShift.EditValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.txtNoonShift.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txtNoonShift.Location = new System.Drawing.Point(112, 348);
-            this.txtNoonShift.Name = "txtNoonShift";
-            this.txtNoonShift.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.txtNoonShift.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
-            this.txtNoonShift.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.txtNoonShift.Size = new System.Drawing.Size(120, 20);
-            this.txtNoonShift.StyleController = this.layoutControl1;
-            this.txtNoonShift.TabIndex = 15;
+            this.colSickLeave.Caption = "病假天数";
+            this.colSickLeave.FieldName = "SickLeave";
+            this.colSickLeave.Name = "colSickLeave";
+            this.colSickLeave.Visible = true;
+            this.colSickLeave.VisibleIndex = 4;
             // 
-            // layoutControlItem15
+            // colCasualLeave
             // 
-            this.layoutControlItem15.Control = this.txtNoonShift;
-            this.layoutControlItem15.CustomizationFormText = "";
-            this.layoutControlItem15.Location = new System.Drawing.Point(0, 336);
-            this.layoutControlItem15.Name = "layoutControlItem15";
-            this.layoutControlItem15.Size = new System.Drawing.Size(585, 24);
-            this.layoutControlItem15.Text = "";
-            this.layoutControlItem15.TextSize = new System.Drawing.Size(96, 14);  
-
-             this.txtNightShift.EditValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.txtNightShift.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txtNightShift.Location = new System.Drawing.Point(112, 372);
-            this.txtNightShift.Name = "txtNightShift";
-            this.txtNightShift.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.txtNightShift.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
-            this.txtNightShift.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.txtNightShift.Size = new System.Drawing.Size(120, 20);
-            this.txtNightShift.StyleController = this.layoutControl1;
-            this.txtNightShift.TabIndex = 16;
+            this.colCasualLeave.Caption = "事假天数";
+            this.colCasualLeave.FieldName = "CasualLeave";
+            this.colCasualLeave.Name = "colCasualLeave";
+            this.colCasualLeave.Visible = true;
+            this.colCasualLeave.VisibleIndex = 5;
             // 
-            // layoutControlItem16
+            // colInjuryLeave
             // 
-            this.layoutControlItem16.Control = this.txtNightShift;
-            this.layoutControlItem16.CustomizationFormText = "";
-            this.layoutControlItem16.Location = new System.Drawing.Point(0, 360);
-            this.layoutControlItem16.Name = "layoutControlItem16";
-            this.layoutControlItem16.Size = new System.Drawing.Size(585, 24);
-            this.layoutControlItem16.Text = "";
-            this.layoutControlItem16.TextSize = new System.Drawing.Size(96, 14);  
-
-             this.txtOtherNoon.EditValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.txtOtherNoon.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txtOtherNoon.Location = new System.Drawing.Point(112, 396);
-            this.txtOtherNoon.Name = "txtOtherNoon";
-            this.txtOtherNoon.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.txtOtherNoon.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
-            this.txtOtherNoon.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.txtOtherNoon.Size = new System.Drawing.Size(120, 20);
-            this.txtOtherNoon.StyleController = this.layoutControl1;
-            this.txtOtherNoon.TabIndex = 17;
+            this.colInjuryLeave.Caption = "工伤天数";
+            this.colInjuryLeave.FieldName = "InjuryLeave";
+            this.colInjuryLeave.Name = "colInjuryLeave";
+            this.colInjuryLeave.Visible = true;
+            this.colInjuryLeave.VisibleIndex = 6;
             // 
-            // layoutControlItem17
+            // colMarriageLeave
             // 
-            this.layoutControlItem17.Control = this.txtOtherNoon;
-            this.layoutControlItem17.CustomizationFormText = "";
-            this.layoutControlItem17.Location = new System.Drawing.Point(0, 384);
-            this.layoutControlItem17.Name = "layoutControlItem17";
-            this.layoutControlItem17.Size = new System.Drawing.Size(585, 24);
-            this.layoutControlItem17.Text = "";
-            this.layoutControlItem17.TextSize = new System.Drawing.Size(96, 14);  
-
-             this.txtOtherNight.EditValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.txtOtherNight.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txtOtherNight.Location = new System.Drawing.Point(112, 420);
-            this.txtOtherNight.Name = "txtOtherNight";
-            this.txtOtherNight.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.txtOtherNight.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
-            this.txtOtherNight.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.txtOtherNight.Size = new System.Drawing.Size(120, 20);
-            this.txtOtherNight.StyleController = this.layoutControl1;
-            this.txtOtherNight.TabIndex = 18;
+            this.colMarriageLeave.Caption = "婚假天数";
+            this.colMarriageLeave.FieldName = "MarriageLeave";
+            this.colMarriageLeave.Name = "colMarriageLeave";
+            this.colMarriageLeave.Visible = true;
+            this.colMarriageLeave.VisibleIndex = 7;
             // 
-            // layoutControlItem18
+            // colMaternityLeave
             // 
-            this.layoutControlItem18.Control = this.txtOtherNight;
-            this.layoutControlItem18.CustomizationFormText = "";
-            this.layoutControlItem18.Location = new System.Drawing.Point(0, 408);
-            this.layoutControlItem18.Name = "layoutControlItem18";
-            this.layoutControlItem18.Size = new System.Drawing.Size(585, 24);
-            this.layoutControlItem18.Text = "";
-            this.layoutControlItem18.TextSize = new System.Drawing.Size(96, 14);  
-
-             // 
-            // txtRemark
+            this.colMaternityLeave.Caption = "产假天数";
+            this.colMaternityLeave.FieldName = "MaternityLeave";
+            this.colMaternityLeave.Name = "colMaternityLeave";
+            this.colMaternityLeave.Visible = true;
+            this.colMaternityLeave.VisibleIndex = 8;
             // 
-            this.txtRemark.Location = new System.Drawing.Point(112, 444);
-            this.txtRemark.Name = "txtRemark";
-            this.txtRemark.Size = new System.Drawing.Size(481, 20);
-            this.txtRemark.StyleController = this.layoutControl1;
-            this.txtRemark.TabIndex = 19;
+            // colFuneralLeave
             // 
-            // layoutControlItem19
+            this.colFuneralLeave.Caption = "丧假天数";
+            this.colFuneralLeave.FieldName = "FuneralLeave";
+            this.colFuneralLeave.Name = "colFuneralLeave";
+            this.colFuneralLeave.Visible = true;
+            this.colFuneralLeave.VisibleIndex = 9;
             // 
-            this.layoutControlItem19.Control = this.txtRemark;
-            this.layoutControlItem19.CustomizationFormText = "";
-            this.layoutControlItem19.Location = new System.Drawing.Point(0, 432);
-            this.layoutControlItem19.Name = "layoutControlItem19";
-            this.layoutControlItem19.Size = new System.Drawing.Size(585, 24);
-            this.layoutControlItem19.Text = "";
-            this.layoutControlItem19.TextSize = new System.Drawing.Size(96, 14);  
-
- 
+            // colAbsentLeave
             // 
-            // layoutControlGroup1
+            this.colAbsentLeave.Caption = "旷工天数";
+            this.colAbsentLeave.FieldName = "AbsentLeave";
+            this.colAbsentLeave.Name = "colAbsentLeave";
+            this.colAbsentLeave.Visible = true;
+            this.colAbsentLeave.VisibleIndex = 10;
             // 
-            this.layoutControlGroup1.CustomizationFormText = "layoutControlGroup1";
-            this.layoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
-            this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-	        this.layoutControlItem1
-	 	       ,this.layoutControlItem2
-	 	       ,this.layoutControlItem3
-	 	       ,this.layoutControlItem4
-	 	       ,this.layoutControlItem5
-	 	       ,this.layoutControlItem6
-	 	       ,this.layoutControlItem7
-	 	       ,this.layoutControlItem8
-	 	       ,this.layoutControlItem9
-	 	       ,this.layoutControlItem10
-	 	       ,this.layoutControlItem11
-	 	       ,this.layoutControlItem12
-	 	       ,this.layoutControlItem13
-	 	       ,this.layoutControlItem14
-	 	       ,this.layoutControlItem15
-	 	       ,this.layoutControlItem16
-	 	       ,this.layoutControlItem17
-	 	       ,this.layoutControlItem18
-	 	       ,this.layoutControlItem19
-	        });
-            this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(605, 363);
-            this.layoutControlGroup1.Text = "layoutControlGroup1";
-            this.layoutControlGroup1.TextVisible = false;          
-
+            // colNormalOvertime
+            // 
+            this.colNormalOvertime.Caption = "平时加班工时";
+            this.colNormalOvertime.FieldName = "NormalOvertime";
+            this.colNormalOvertime.Name = "colNormalOvertime";
+            this.colNormalOvertime.Visible = true;
+            this.colNormalOvertime.VisibleIndex = 11;
+            // 
+            // colWeekendOvertime
+            // 
+            this.colWeekendOvertime.Caption = "周末加班工时";
+            this.colWeekendOvertime.FieldName = "WeekendOvertime";
+            this.colWeekendOvertime.Name = "colWeekendOvertime";
+            this.colWeekendOvertime.Visible = true;
+            this.colWeekendOvertime.VisibleIndex = 12;
+            // 
+            // colHolidayOvertime
+            // 
+            this.colHolidayOvertime.Caption = "节假日加班工时";
+            this.colHolidayOvertime.FieldName = "HolidayOvertime";
+            this.colHolidayOvertime.Name = "colHolidayOvertime";
+            this.colHolidayOvertime.Visible = true;
+            this.colHolidayOvertime.VisibleIndex = 13;
+            // 
+            // colNoonShift
+            // 
+            this.colNoonShift.Caption = "中班天数";
+            this.colNoonShift.FieldName = "NoonShift";
+            this.colNoonShift.Name = "colNoonShift";
+            this.colNoonShift.Visible = true;
+            this.colNoonShift.VisibleIndex = 14;
+            // 
+            // colNightShift
+            // 
+            this.colNightShift.Caption = "夜班天数";
+            this.colNightShift.FieldName = "NightShift";
+            this.colNightShift.Name = "colNightShift";
+            this.colNightShift.Visible = true;
+            this.colNightShift.VisibleIndex = 15;
+            // 
+            // colOtherNoon
+            // 
+            this.colOtherNoon.Caption = "其它中班天数";
+            this.colOtherNoon.FieldName = "OtherNoon";
+            this.colOtherNoon.Name = "colOtherNoon";
+            this.colOtherNoon.Visible = true;
+            this.colOtherNoon.VisibleIndex = 16;
+            // 
+            // colOtherNight
+            // 
+            this.colOtherNight.Caption = "其它夜班天数";
+            this.colOtherNight.FieldName = "OtherNight";
+            this.colOtherNight.Name = "colOtherNight";
+            this.colOtherNight.Visible = true;
+            this.colOtherNight.VisibleIndex = 17;
+            // 
+            // colRemark
+            // 
+            this.colRemark.Caption = "备注";
+            this.colRemark.FieldName = "Remark";
+            this.colRemark.Name = "colRemark";
+            this.colRemark.Visible = true;
+            this.colRemark.VisibleIndex = 18;
             // 
             // FrmEditStaffMonthAttendance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(624, 427);
-            this.Controls.Add(this.layoutControl1);
+            this.ClientSize = new System.Drawing.Size(869, 432);
+            this.Controls.Add(this.groupControl2);
+            this.Controls.Add(this.groupControl1);
             this.Name = "FrmEditStaffMonthAttendance";
             this.Text = "StaffMonthAttendance";
-            this.Controls.SetChildIndex(this.layoutControl1, 0);
             this.Controls.SetChildIndex(this.btnCancel, 0);
             this.Controls.SetChildIndex(this.btnOK, 0);
             this.Controls.SetChildIndex(this.btnAdd, 0);
             this.Controls.SetChildIndex(this.dataNavigator1, 0);
             this.Controls.SetChildIndex(this.picPrint, 0);
+            this.Controls.SetChildIndex(this.groupControl1, 0);
+            this.Controls.SetChildIndex(this.groupControl2, 0);
             ((System.ComponentModel.ISupportInitialize)(this.picPrint)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
-            this.layoutControl1.ResumeLayout(false);            
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
-
-            ((System.ComponentModel.ISupportInitialize)(this.txtStaffId.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();            
-             ((System.ComponentModel.ISupportInitialize)(this.txtDepartmentId.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();            
-             ((System.ComponentModel.ISupportInitialize)(this.txtAttendanceDays.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();            
-             ((System.ComponentModel.ISupportInitialize)(this.txtAnnualLeave.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();            
-             ((System.ComponentModel.ISupportInitialize)(this.txtSickLeave.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();            
-             ((System.ComponentModel.ISupportInitialize)(this.txtCasualLeave.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();            
-             ((System.ComponentModel.ISupportInitialize)(this.txtInjuryLeave.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();            
-             ((System.ComponentModel.ISupportInitialize)(this.txtMarriageLeave.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();            
-             ((System.ComponentModel.ISupportInitialize)(this.txtMaternityLeave.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();            
-             ((System.ComponentModel.ISupportInitialize)(this.txtFuneralLeave.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();            
-             ((System.ComponentModel.ISupportInitialize)(this.txtAbsentLeave.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();            
-             ((System.ComponentModel.ISupportInitialize)(this.txtNormalOvertime.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).EndInit();            
-             ((System.ComponentModel.ISupportInitialize)(this.txtWeekendOvertime.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).EndInit();            
-             ((System.ComponentModel.ISupportInitialize)(this.txtHolidayOvertime.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).EndInit();            
-             ((System.ComponentModel.ISupportInitialize)(this.txtNoonShift.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).EndInit();            
-             ((System.ComponentModel.ISupportInitialize)(this.txtNightShift.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).EndInit();            
-             ((System.ComponentModel.ISupportInitialize)(this.txtOtherNoon.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).EndInit();            
-             ((System.ComponentModel.ISupportInitialize)(this.txtOtherNight.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).EndInit();            
-             ((System.ComponentModel.ISupportInitialize)(this.txtRemark.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem19)).EndInit();            
- 
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
+            this.groupControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).EndInit();
+            this.layoutControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtDepartment.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMonth.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
+            this.groupControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgcAttendance)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsAttendance)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAttendance)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -732,48 +438,38 @@ namespace Hades.HR.UI
 
         #endregion
 
-        private DevExpress.XtraLayout.LayoutControl layoutControl1;
-        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
-
-        private DevExpress.XtraEditors.TextEdit txtStaffId;
-          private DevExpress.XtraEditors.TextEdit txtDepartmentId;
-          private DevExpress.XtraEditors.SpinEdit txtAttendanceDays;
-          private DevExpress.XtraEditors.SpinEdit txtAnnualLeave;
-          private DevExpress.XtraEditors.SpinEdit txtSickLeave;
-          private DevExpress.XtraEditors.SpinEdit txtCasualLeave;
-          private DevExpress.XtraEditors.SpinEdit txtInjuryLeave;
-          private DevExpress.XtraEditors.SpinEdit txtMarriageLeave;
-          private DevExpress.XtraEditors.SpinEdit txtMaternityLeave;
-          private DevExpress.XtraEditors.SpinEdit txtFuneralLeave;
-          private DevExpress.XtraEditors.SpinEdit txtAbsentLeave;
-          private DevExpress.XtraEditors.SpinEdit txtNormalOvertime;
-          private DevExpress.XtraEditors.SpinEdit txtWeekendOvertime;
-          private DevExpress.XtraEditors.SpinEdit txtHolidayOvertime;
-          private DevExpress.XtraEditors.SpinEdit txtNoonShift;
-          private DevExpress.XtraEditors.SpinEdit txtNightShift;
-          private DevExpress.XtraEditors.SpinEdit txtOtherNoon;
-          private DevExpress.XtraEditors.SpinEdit txtOtherNight;
-          private DevExpress.XtraEditors.TextEdit txtRemark;
-  
+        private DevExpress.XtraEditors.GroupControl groupControl1;
+        private DevExpress.XtraLayout.LayoutControl layoutControl2;
+        private DevExpress.XtraEditors.TextEdit txtDepartment;
+        private DevExpress.XtraEditors.TextEdit txtMonth;
+        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup2;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
-         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
-         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
-         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
-         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
-         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
-         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
-         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
-         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem9;
-         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem10;
-         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem11;
-         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem12;
-         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem13;
-         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem14;
-         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem15;
-         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem16;
-         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem17;
-         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem18;
-         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem19;
- 
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
+        private DevExpress.XtraEditors.GroupControl groupControl2;
+        private DevExpress.XtraGrid.GridControl dgcAttendance;
+        private System.Windows.Forms.BindingSource bsAttendance;
+        private DevExpress.XtraGrid.Views.Grid.GridView dgvAttendance;
+        private DevExpress.XtraGrid.Columns.GridColumn colId;
+        private DevExpress.XtraGrid.Columns.GridColumn colYear;
+        private DevExpress.XtraGrid.Columns.GridColumn colMonth;
+        private DevExpress.XtraGrid.Columns.GridColumn colStaffId;
+        private DevExpress.XtraGrid.Columns.GridColumn colDepartmentId;
+        private DevExpress.XtraGrid.Columns.GridColumn colAttendanceDays;
+        private DevExpress.XtraGrid.Columns.GridColumn colAnnualLeave;
+        private DevExpress.XtraGrid.Columns.GridColumn colSickLeave;
+        private DevExpress.XtraGrid.Columns.GridColumn colCasualLeave;
+        private DevExpress.XtraGrid.Columns.GridColumn colInjuryLeave;
+        private DevExpress.XtraGrid.Columns.GridColumn colMarriageLeave;
+        private DevExpress.XtraGrid.Columns.GridColumn colMaternityLeave;
+        private DevExpress.XtraGrid.Columns.GridColumn colFuneralLeave;
+        private DevExpress.XtraGrid.Columns.GridColumn colAbsentLeave;
+        private DevExpress.XtraGrid.Columns.GridColumn colNormalOvertime;
+        private DevExpress.XtraGrid.Columns.GridColumn colWeekendOvertime;
+        private DevExpress.XtraGrid.Columns.GridColumn colHolidayOvertime;
+        private DevExpress.XtraGrid.Columns.GridColumn colNoonShift;
+        private DevExpress.XtraGrid.Columns.GridColumn colNightShift;
+        private DevExpress.XtraGrid.Columns.GridColumn colOtherNoon;
+        private DevExpress.XtraGrid.Columns.GridColumn colOtherNight;
+        private DevExpress.XtraGrid.Columns.GridColumn colRemark;
     }
 }
