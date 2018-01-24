@@ -16,38 +16,46 @@ using Hades.HR.Facade;
 
 namespace Hades.HR.WinformCaller
 {
-	/// <summary>
-	/// 基于传统Winform方式，直接访问本地数据库的Facade接口实现类
-	/// </summary>
+    /// <summary>
+    /// 基于传统Winform方式，直接访问本地数据库的Facade接口实现类
+    /// </summary>
     public class StaffSalaryCaller : BaseLocalService<StaffSalaryInfo>, IStaffSalaryService
     {
+        #region Field
         private StaffSalary bll = null;
+        #endregion //Field
 
+        #region Constructor
         public StaffSalaryCaller() : base(BLLFactory<StaffSalary>.Instance)
         {
             bll = baseBLL as StaffSalary;
         }
+        #endregion //Constructor
 
-        ///// <summary>
-        ///// 根据名称查找对象(自定义接口使用范例)
-        ///// </summary>
-        //public List<StaffSalaryInfo> FindByName(string name)
-        //{
-        //    return bll.FindByName(name);
-        //}
+        #region Method
+        /// <summary>
+        /// 获取计算工资记录
+        /// </summary>
+        /// <param name="year">年</param>
+        /// <param name="month">月</param>
+        /// <param name="departmentId">部门ID</param>
+        /// <returns></returns>
+        public List<StaffSalaryInfo> GetRecords(int year, int month, string departmentId)
+        {
+            return bll.GetRecords(year, month, departmentId);
+        }
 
-
-	///// <summary>
-        ///// 根据名称查找对象Asyn(自定义接口使用范例)
-        ///// </summary>
-        //public async Task<List<StaffSalaryInfo>> FindByNameAsyn(string name)
-        //{
-	//   return await Task.Factory.StartNew(() =>
-        //   {
-        //       return bll.FindByName(name);
-	//   }
-        //}
-
-
+        /// <summary>
+        /// 保存工资记录
+        /// </summary>
+        /// <param name="year">年</param>
+        /// <param name="month">月</param>
+        /// <param name="departmentId">部门ID</param>
+        /// <returns></returns>
+        public bool SaveRecords(List<StaffSalaryInfo> data, int year, int month, string departmentId)
+        {
+            return bll.SaveRecords(data, year, month, departmentId);
+        }
+        #endregion //Method
     }
 }

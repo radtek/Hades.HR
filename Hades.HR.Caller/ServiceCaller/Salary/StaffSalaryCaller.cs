@@ -16,17 +16,20 @@ using Hades.HR.Facade;
 
 namespace Hades.HR.ServiceCaller
 {
-	/// <summary>
-	/// 基于WCF服务的Facade接口实现类
-	/// </summary>
+    /// <summary>
+    /// 基于WCF服务的Facade接口实现类
+    /// </summary>
     public class StaffSalaryCaller : BaseWCFService<StaffSalaryInfo>, IStaffSalaryService
     {
-        public StaffSalaryCaller()  : base()
-        {	
+        #region Constructor
+        public StaffSalaryCaller() : base()
+        {
             this.configurationPath = EndPointConfig.WcfConfig; //WCF配置文件
             this.endpointConfigurationName = EndPointConfig.StaffSalaryService;
         }
+        #endregion //Constructor
 
+        #region Function
         /// <summary>
         /// 子类构造一个IChannel对象转换为基类接口，方便给基类进行调用通用的API
         /// </summary>
@@ -45,32 +48,50 @@ namespace Hades.HR.ServiceCaller
             CustomClientChannel<IStaffSalaryService> factory = new CustomClientChannel<IStaffSalaryService>(endpointConfigurationName, configurationPath);
             return factory.CreateChannel();
         }
+        #endregion //Function
 
-        ///// <summary>
-        ///// 根据名称查找对象(自定义接口使用范例)
-        ///// </summary>
-        //public List<StaffSalaryInfo> FindByName(string name)
-        //{
-        //    List<StaffSalaryInfo> result = new List<StaffSalaryInfo>();
+        #region Method
+        /// <summary>
+        /// 获取计算工资记录
+        /// </summary>
+        /// <param name="year">年</param>
+        /// <param name="month">月</param>
+        /// <param name="departmentId">部门ID</param>
+        /// <returns></returns>
+        public List<StaffSalaryInfo> GetRecords(int year, int month, string departmentId)
+        {
+            List<StaffSalaryInfo> result = new List<StaffSalaryInfo>();
 
-        //    IStaffSalaryService service = CreateSubClient();
-        //    ICommunicationObject comm = service as ICommunicationObject;
-        //    comm.Using(client =>
-        //    {
-        //        result = service.FindByName(name);
-        //    });
+            IStaffSalaryService service = CreateSubClient();
+            ICommunicationObject comm = service as ICommunicationObject;
+            comm.Using(client =>
+            {
+                result = service.GetRecords(year, month, departmentId);
+            });
 
-        //    return result;
-        //}
+            return result;
+        }
 
+        /// <summary>
+        /// 保存工资记录
+        /// </summary>
+        /// <param name="year">年</param>
+        /// <param name="month">月</param>
+        /// <param name="departmentId">部门ID</param>
+        /// <returns></returns>
+        public bool SaveRecords(List<StaffSalaryInfo> data, int year, int month, string departmentId)
+        {
+            bool result = false;
 
-        ///// <summary>
-        ///// 根据名称查找对象Asyn(自定义接口使用范例)
-        ///// </summary>
-        //public Task<List<StaffSalaryInfo>> FindByNameAsyn(string name)
-        //{
-        //    IStaffSalaryService service = CreateSubClient();       
-        //    return service.FindByNameAsyn(name);  
-        //}
+            IStaffSalaryService service = CreateSubClient();
+            ICommunicationObject comm = service as ICommunicationObject;
+            comm.Using(client =>
+            {
+                result = service.SaveRecords(data, year, month, departmentId);
+            });
+
+            return result;
+        }
+        #endregion //Method
     }
 }

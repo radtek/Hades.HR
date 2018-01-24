@@ -1014,6 +1014,12 @@
     <Compile Include="Salary\FrmEditSalaryBase.Designer.cs">
       <DependentUpon>FrmEditSalaryBase.cs</DependentUpon>
     </Compile>
+    <Compile Include="Salary\FrmEditStaffSalary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Salary\FrmEditStaffSalary.Designer.cs">
+      <DependentUpon>FrmEditStaffSalary.cs</DependentUpon>
+    </Compile>
     <Compile Include="Salary\FrmLaborSalary.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1025,6 +1031,12 @@
     </Compile>
     <Compile Include="Salary\FrmSalaryBase.Designer.cs">
       <DependentUpon>FrmSalaryBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Salary\FrmStaffSalary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Salary\FrmStaffSalary.Designer.cs">
+      <DependentUpon>FrmStaffSalary.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\FrmStaffOverview.cs">
       <SubType>Form</SubType>
@@ -1222,11 +1234,17 @@
     <EmbeddedResource Include="Salary\FrmEditSalaryBase.resx">
       <DependentUpon>FrmEditSalaryBase.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Salary\FrmEditStaffSalary.resx">
+      <DependentUpon>FrmEditStaffSalary.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Salary\FrmLaborSalary.resx">
       <DependentUpon>FrmLaborSalary.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Salary\FrmSalaryBase.resx">
       <DependentUpon>FrmSalaryBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Salary\FrmStaffSalary.resx">
+      <DependentUpon>FrmStaffSalary.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmStaffOverview.resx">
       <DependentUpon>FrmStaffOverview.cs</DependentUpon>
@@ -1256,6 +1274,7 @@
     <None Include="Properties\DataSources\Hades.HR.Entity.StaffBonusInfo.datasource" />
     <None Include="Properties\DataSources\Hades.HR.Entity.StaffInfo.datasource" />
     <None Include="Properties\DataSources\Hades.HR.Entity.StaffMonthAttendanceInfo.datasource" />
+    <None Include="Properties\DataSources\Hades.HR.Entity.StaffSalaryInfo.datasource" />
     <None Include="Properties\DataSources\Hades.HR.Entity.WorkSectionInfo.datasource" />
     <None Include="Properties\DataSources\Hades.HR.Entity.WorkSectionLaborInfo.datasource" />
     <None Include="Properties\DataSources\Hades.HR.Entity.WorkTeamInfo.datasource" />

@@ -132,14 +132,6 @@ namespace Hades.HR.UI
 
                     return true;
                 }
-
-                if (succeed)
-                {
-                    //可添加其他关联操作
-
-                    return true;
-                }
-               
             }
             catch (Exception ex)
             {
