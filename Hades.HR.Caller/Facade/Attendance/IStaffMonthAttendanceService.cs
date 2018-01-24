@@ -22,5 +22,16 @@ namespace Hades.HR.Facade
         /// <returns></returns>
         [OperationContract]
         List<StaffMonthAttendanceInfo> GetRecords(int year, int month, string departmentId);
+
+        /// <summary>
+        /// 保存员工考勤记录
+        /// </summary>
+        /// <param name="data">考勤记录</param>
+        /// <param name="year">年</param>
+        /// <param name="month">月</param>
+        /// <param name="departmentId">部门ID</param>
+        /// <returns></returns>
+        [OperationContract]
+        bool SaveRecords(List<StaffMonthAttendanceInfo> data, int year, int month, string departmentId);
     }
 }

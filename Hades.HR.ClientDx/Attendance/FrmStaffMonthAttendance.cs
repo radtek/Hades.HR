@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.ComponentModel;
 using System.Collections.Generic;
+using System.Linq;
 
 using Hades.Pager.Entity;
 using Hades.Dictionary;
@@ -28,6 +29,11 @@ namespace Hades.HR.UI
         /// 高级查询条件语句对象
         /// </summary>
         private SearchCondition advanceCondition;
+
+        /// <summary>
+        /// 缓存职员信息
+        /// </summary>
+        private List<StaffInfo> staffList;
 
         /// <summary>
         /// 缓存部门列表
@@ -76,7 +82,12 @@ namespace Hades.HR.UI
             if (condition == null)
             {
                 condition = new SearchCondition();
-                //condition.AddCondition("StaffId", this.txtStaffId.Text.Trim(), SqlOperator.Like);
+                DateTime month = this.dpMonth.DateTime;
+                string depId = this.depTree.GetCurrentSelectId();
+
+                condition.AddCondition("Year", month.Year, SqlOperator.Equal);
+                condition.AddCondition("Month", month.Month, SqlOperator.Equal);
+                condition.AddCondition("DepartmentId", depId, SqlOperator.Equal);
             }
             string where = condition.BuildConditionSql().Replace("Where", "");
             return where;
@@ -91,7 +102,6 @@ namespace Hades.HR.UI
             this.winGridViewPager1.DisplayColumns = "StaffId,DepartmentId,AttendanceDays,AnnualLeave,SickLeave,CasualLeave,InjuryLeave,MarriageLeave,MaternityLeave,FuneralLeave,AbsentLeave,NormalOvertime,WeekendOvertime,HolidayOvertime,NoonShift,NightShift,OtherNoon,OtherNight,Remark";
             this.winGridViewPager1.ColumnNameAlias = CallerFactory<IStaffMonthAttendanceService>.Instance.GetColumnNameAlias();//字段列显示名称转义
                      
-
             string where = GetConditionSql();
             PagerInfo pagerInfo = this.winGridViewPager1.PagerInfo;
             List<StaffMonthAttendanceInfo> list = CallerFactory<IStaffMonthAttendanceService>.Instance.FindWithPager(where, ref pagerInfo);
@@ -99,7 +109,6 @@ namespace Hades.HR.UI
             this.winGridViewPager1.DataSource = new Hades.Pager.WinControl.SortableBindingList<StaffMonthAttendanceInfo>(list);
             this.winGridViewPager1.PrintTitle = "StaffMonthAttendance报表";
         }
-
         #endregion //Function
 
         #region Method
@@ -108,7 +117,8 @@ namespace Hades.HR.UI
         /// </summary>
         public override void FormOnLoad()
         {
-            this.departmentList = CallerFactory<IDepartmentService>.Instance.Find("Deleted = 0 AND Type > 4");
+            this.staffList = CallerFactory<IStaffService>.Instance.Find("StaffType = 1");
+            this.departmentList = CallerFactory<IDepartmentService>.Instance.Find("Type > 4");
             this.depTree.Init(3);
 
             BindData();
@@ -116,6 +126,16 @@ namespace Hades.HR.UI
         #endregion //Method
 
         #region Event
+        private void dpMonth_EditValueChanged(object sender, EventArgs e)
+        {
+            BindData();
+        }
+
+        private void depTree_DepartmentSelect(object sender, EventArgs e)
+        {
+            BindData();
+        }
+
         private void btnEdit_Click(object sender, EventArgs e)
         {
             if (this.dpMonth.EditValue == null)
@@ -140,7 +160,59 @@ namespace Hades.HR.UI
             frm.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
             frm.ShowDialog();
         }
+
+        void gridView1_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+        {
+            string columnName = e.Column.FieldName;
+            if (e.Column.ColumnType == typeof(DateTime))
+            {
+                if (e.Value != null)
+                {
+                    if (e.Value == DBNull.Value || Convert.ToDateTime(e.Value) <= Convert.ToDateTime("1900-1-1"))
+                    {
+                        e.DisplayText = "";
+                    }
+                    else
+                    {
+                        e.DisplayText = Convert.ToDateTime(e.Value).ToString("yyyy-MM-dd HH:mm");//yyyy-MM-dd
+                    }
+                }
+            }
+            else if (columnName == "StaffId")
+            {
+                if (e.Value != null && !string.IsNullOrEmpty(e.Value.ToString()))
+                {
+                    var st = this.staffList.SingleOrDefault(r => r.Id == e.Value.ToString());
+                    if (st != null)
+                    {
+                        e.DisplayText = st.Name;
+                    }
+                    else
+                    {
+                        var st2 = CallerFactory<IStaffService>.Instance.FindByID(e.Value.ToString());
+                        e.DisplayText = st2.Name;
+                    }
+                }
+            }
+            else if (columnName == "DepartmentId")
+            {
+                if (e.Value != null && !string.IsNullOrEmpty(e.Value.ToString()))
+                {
+                    var wt = this.departmentList.SingleOrDefault(r => r.Id == e.Value.ToString());
+                    if (wt != null)
+                    {
+                        e.DisplayText = wt.Name;
+                    }
+                    else
+                    {
+                        var wt2 = CallerFactory<IDepartmentService>.Instance.FindByID(e.Value.ToString());
+                        e.DisplayText = wt2.Name;
+                    }
+                }
+            }
+        }
         #endregion //Event
+
 
         #region System
         void gridView1_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
@@ -155,36 +227,7 @@ namespace Hades.HR.UI
             //        e.Appearance.BackColor2 = Color.LightCyan;
             //    }
             //}
-        }
-        void gridView1_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
-        {
-        	string columnName = e.Column.FieldName;
-            if (e.Column.ColumnType == typeof(DateTime))
-            {   
-                if (e.Value != null)
-                {
-                    if (e.Value == DBNull.Value || Convert.ToDateTime(e.Value) <= Convert.ToDateTime("1900-1-1"))
-                    {
-                        e.DisplayText = "";
-                    }
-                    else
-                    {
-                        e.DisplayText = Convert.ToDateTime(e.Value).ToString("yyyy-MM-dd HH:mm");//yyyy-MM-dd
-                    }
-                }
-            }
-            //else if (columnName == "Age")
-            //{
-            //    e.DisplayText = string.Format("{0}岁", e.Value);
-            //}
-            //else if (columnName == "ReceivedMoney")
-            //{
-            //    if (e.Value != null)
-            //    {
-            //        e.DisplayText = e.Value.ToString().ToDecimal().ToString("C");
-            //    }
-            //}
-        }
+        }       
         
         /// <summary>
         /// 绑定数据后，分配各列的宽度
@@ -298,9 +341,6 @@ namespace Hades.HR.UI
         {
             BindData();
         }
-        
-        
-        
       
         /// <summary>
         /// 查询数据操作
@@ -503,5 +543,6 @@ namespace Hades.HR.UI
         }
         #endregion //System
 
+       
     }
 }

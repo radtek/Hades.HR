@@ -8,6 +8,7 @@ using Hades.HR.Entity;
 using Hades.HR.IDAL;
 using Hades.Pager.Entity;
 using Hades.Framework.ControlUtil;
+using Hades.Framework.Commons;
 
 namespace Hades.HR.BLL
 {
@@ -43,8 +44,8 @@ namespace Hades.HR.BLL
 
             List<StaffMonthAttendanceInfo> data = new List<StaffMonthAttendanceInfo>();
 
-            var staffs = staffBll.Find("DepartmentId = '{0}' AND Deleted = 0 AND Enabled = 1", departmentId);
-            foreach(var staff in staffs)
+            var staffs = staffBll.Find(string.Format("DepartmentId = '{0}' AND Deleted = 0 AND Enabled = 1", departmentId));
+            foreach (var staff in staffs)
             {
                 StaffMonthAttendanceInfo item = new StaffMonthAttendanceInfo();
                 item.Year = year;
@@ -56,6 +57,60 @@ namespace Hades.HR.BLL
             }
 
             return data;
+        }
+
+        /// <summary>
+        /// 保存员工考勤记录
+        /// </summary>
+        /// <param name="data">考勤记录</param>
+        /// <param name="year">年</param>
+        /// <param name="month">月</param>
+        /// <param name="departmentId">部门ID</param>
+        /// <param name="trans"></param>
+        /// <returns></returns>
+        public bool SaveRecords(List<StaffMonthAttendanceInfo> data, int year, int month, string departmentId, DbTransaction trans = null)
+        {
+            var dal = this.baseDal as IStaffMonthAttendance;
+
+            bool isLocalTrans = trans == null;
+            if (isLocalTrans)
+            {
+                trans = dal.CreateTransaction();
+            }
+
+            try
+            {
+                string sql = string.Format("DepartmentId = '{0}' AND Year = {1} AND Month = {2}", departmentId, year, month);
+                dal.DeleteByCondition(sql, trans);
+
+                foreach (var item in data)
+                {
+                    dal.Insert(item, trans);
+                }
+
+                if (isLocalTrans)
+                {
+                    trans.Commit();
+                }
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                if (isLocalTrans)
+                {
+                    trans.Rollback();
+                }
+                LogTextHelper.Error("保存员工月考勤记录", e);
+                return false;
+            }
+            finally
+            {
+                if (isLocalTrans)
+                {
+                    trans = null;
+                }
+            }
         }
         #endregion //Method
     }

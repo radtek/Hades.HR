@@ -44,7 +44,6 @@ namespace Hades.HR.UI
             this.colYear = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMonth = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colStaffId = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colDepartmentId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAttendanceDays = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAnnualLeave = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSickLeave = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -90,14 +89,17 @@ namespace Hades.HR.UI
             // btnAdd
             // 
             this.btnAdd.Location = new System.Drawing.Point(596, 397);
+            this.btnAdd.Visible = false;
             // 
             // dataNavigator1
             // 
             this.dataNavigator1.Location = new System.Drawing.Point(12, 392);
+            this.dataNavigator1.Size = new System.Drawing.Size(191, 30);
             // 
             // picPrint
             // 
             this.picPrint.Location = new System.Drawing.Point(202, 394);
+            this.picPrint.Visible = false;
             // 
             // groupControl1
             // 
@@ -114,28 +116,28 @@ namespace Hades.HR.UI
             this.layoutControl2.Controls.Add(this.txtDepartment);
             this.layoutControl2.Controls.Add(this.txtMonth);
             this.layoutControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutControl2.Location = new System.Drawing.Point(2, 21);
+            this.layoutControl2.Location = new System.Drawing.Point(2, 25);
             this.layoutControl2.Name = "layoutControl2";
             this.layoutControl2.Root = this.layoutControlGroup2;
-            this.layoutControl2.Size = new System.Drawing.Size(865, 46);
+            this.layoutControl2.Size = new System.Drawing.Size(865, 42);
             this.layoutControl2.TabIndex = 0;
             this.layoutControl2.Text = "layoutControl2";
             // 
             // txtDepartment
             // 
-            this.txtDepartment.Location = new System.Drawing.Point(411, 12);
+            this.txtDepartment.Location = new System.Drawing.Point(408, 14);
             this.txtDepartment.Name = "txtDepartment";
             this.txtDepartment.Properties.ReadOnly = true;
-            this.txtDepartment.Size = new System.Drawing.Size(442, 20);
+            this.txtDepartment.Size = new System.Drawing.Size(422, 24);
             this.txtDepartment.StyleController = this.layoutControl2;
             this.txtDepartment.TabIndex = 5;
             // 
             // txtMonth
             // 
-            this.txtMonth.Location = new System.Drawing.Point(39, 12);
+            this.txtMonth.Location = new System.Drawing.Point(47, 14);
             this.txtMonth.Name = "txtMonth";
             this.txtMonth.Properties.ReadOnly = true;
-            this.txtMonth.Size = new System.Drawing.Size(341, 20);
+            this.txtMonth.Size = new System.Drawing.Size(324, 24);
             this.txtMonth.StyleController = this.layoutControl2;
             this.txtMonth.TabIndex = 4;
             // 
@@ -148,7 +150,7 @@ namespace Hades.HR.UI
             this.layoutControlItem2});
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup2.Name = "layoutControlGroup2";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(865, 46);
+            this.layoutControlGroup2.Size = new System.Drawing.Size(844, 52);
             this.layoutControlGroup2.TextVisible = false;
             // 
             // layoutControlItem1
@@ -156,18 +158,18 @@ namespace Hades.HR.UI
             this.layoutControlItem1.Control = this.txtMonth;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(372, 26);
+            this.layoutControlItem1.Size = new System.Drawing.Size(361, 28);
             this.layoutControlItem1.Text = "月度";
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(24, 14);
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(30, 18);
             // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.txtDepartment;
-            this.layoutControlItem2.Location = new System.Drawing.Point(372, 0);
+            this.layoutControlItem2.Location = new System.Drawing.Point(361, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(473, 26);
+            this.layoutControlItem2.Size = new System.Drawing.Size(459, 28);
             this.layoutControlItem2.Text = "部门";
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(24, 14);
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(30, 18);
             // 
             // groupControl2
             // 
@@ -183,10 +185,10 @@ namespace Hades.HR.UI
             // 
             this.dgcAttendance.DataSource = this.bsAttendance;
             this.dgcAttendance.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgcAttendance.Location = new System.Drawing.Point(2, 21);
+            this.dgcAttendance.Location = new System.Drawing.Point(2, 25);
             this.dgcAttendance.MainView = this.dgvAttendance;
             this.dgcAttendance.Name = "dgcAttendance";
-            this.dgcAttendance.Size = new System.Drawing.Size(865, 280);
+            this.dgcAttendance.Size = new System.Drawing.Size(865, 276);
             this.dgcAttendance.TabIndex = 0;
             this.dgcAttendance.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.dgvAttendance});
@@ -205,7 +207,6 @@ namespace Hades.HR.UI
             this.colYear,
             this.colMonth,
             this.colStaffId,
-            this.colDepartmentId,
             this.colAttendanceDays,
             this.colAnnualLeave,
             this.colSickLeave,
@@ -232,6 +233,7 @@ namespace Hades.HR.UI
             this.dgvAttendance.OptionsCustomization.AllowQuickHideColumns = false;
             this.dgvAttendance.OptionsCustomization.AllowSort = false;
             this.dgvAttendance.OptionsView.ShowGroupPanel = false;
+            this.dgvAttendance.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.dgvAttendance_CustomColumnDisplayText);
             // 
             // colId
             // 
@@ -253,16 +255,9 @@ namespace Hades.HR.UI
             this.colStaffId.Caption = "职员姓名";
             this.colStaffId.FieldName = "StaffId";
             this.colStaffId.Name = "colStaffId";
+            this.colStaffId.OptionsColumn.AllowEdit = false;
             this.colStaffId.Visible = true;
             this.colStaffId.VisibleIndex = 0;
-            // 
-            // colDepartmentId
-            // 
-            this.colDepartmentId.Caption = "部门名称";
-            this.colDepartmentId.FieldName = "DepartmentId";
-            this.colDepartmentId.Name = "colDepartmentId";
-            this.colDepartmentId.Visible = true;
-            this.colDepartmentId.VisibleIndex = 1;
             // 
             // colAttendanceDays
             // 
@@ -270,7 +265,7 @@ namespace Hades.HR.UI
             this.colAttendanceDays.FieldName = "AttendanceDays";
             this.colAttendanceDays.Name = "colAttendanceDays";
             this.colAttendanceDays.Visible = true;
-            this.colAttendanceDays.VisibleIndex = 2;
+            this.colAttendanceDays.VisibleIndex = 1;
             // 
             // colAnnualLeave
             // 
@@ -278,7 +273,7 @@ namespace Hades.HR.UI
             this.colAnnualLeave.FieldName = "AnnualLeave";
             this.colAnnualLeave.Name = "colAnnualLeave";
             this.colAnnualLeave.Visible = true;
-            this.colAnnualLeave.VisibleIndex = 3;
+            this.colAnnualLeave.VisibleIndex = 2;
             // 
             // colSickLeave
             // 
@@ -286,7 +281,7 @@ namespace Hades.HR.UI
             this.colSickLeave.FieldName = "SickLeave";
             this.colSickLeave.Name = "colSickLeave";
             this.colSickLeave.Visible = true;
-            this.colSickLeave.VisibleIndex = 4;
+            this.colSickLeave.VisibleIndex = 3;
             // 
             // colCasualLeave
             // 
@@ -294,7 +289,7 @@ namespace Hades.HR.UI
             this.colCasualLeave.FieldName = "CasualLeave";
             this.colCasualLeave.Name = "colCasualLeave";
             this.colCasualLeave.Visible = true;
-            this.colCasualLeave.VisibleIndex = 5;
+            this.colCasualLeave.VisibleIndex = 4;
             // 
             // colInjuryLeave
             // 
@@ -302,7 +297,7 @@ namespace Hades.HR.UI
             this.colInjuryLeave.FieldName = "InjuryLeave";
             this.colInjuryLeave.Name = "colInjuryLeave";
             this.colInjuryLeave.Visible = true;
-            this.colInjuryLeave.VisibleIndex = 6;
+            this.colInjuryLeave.VisibleIndex = 5;
             // 
             // colMarriageLeave
             // 
@@ -310,7 +305,7 @@ namespace Hades.HR.UI
             this.colMarriageLeave.FieldName = "MarriageLeave";
             this.colMarriageLeave.Name = "colMarriageLeave";
             this.colMarriageLeave.Visible = true;
-            this.colMarriageLeave.VisibleIndex = 7;
+            this.colMarriageLeave.VisibleIndex = 6;
             // 
             // colMaternityLeave
             // 
@@ -318,7 +313,7 @@ namespace Hades.HR.UI
             this.colMaternityLeave.FieldName = "MaternityLeave";
             this.colMaternityLeave.Name = "colMaternityLeave";
             this.colMaternityLeave.Visible = true;
-            this.colMaternityLeave.VisibleIndex = 8;
+            this.colMaternityLeave.VisibleIndex = 7;
             // 
             // colFuneralLeave
             // 
@@ -326,7 +321,7 @@ namespace Hades.HR.UI
             this.colFuneralLeave.FieldName = "FuneralLeave";
             this.colFuneralLeave.Name = "colFuneralLeave";
             this.colFuneralLeave.Visible = true;
-            this.colFuneralLeave.VisibleIndex = 9;
+            this.colFuneralLeave.VisibleIndex = 8;
             // 
             // colAbsentLeave
             // 
@@ -334,7 +329,7 @@ namespace Hades.HR.UI
             this.colAbsentLeave.FieldName = "AbsentLeave";
             this.colAbsentLeave.Name = "colAbsentLeave";
             this.colAbsentLeave.Visible = true;
-            this.colAbsentLeave.VisibleIndex = 10;
+            this.colAbsentLeave.VisibleIndex = 9;
             // 
             // colNormalOvertime
             // 
@@ -342,7 +337,7 @@ namespace Hades.HR.UI
             this.colNormalOvertime.FieldName = "NormalOvertime";
             this.colNormalOvertime.Name = "colNormalOvertime";
             this.colNormalOvertime.Visible = true;
-            this.colNormalOvertime.VisibleIndex = 11;
+            this.colNormalOvertime.VisibleIndex = 10;
             // 
             // colWeekendOvertime
             // 
@@ -350,7 +345,7 @@ namespace Hades.HR.UI
             this.colWeekendOvertime.FieldName = "WeekendOvertime";
             this.colWeekendOvertime.Name = "colWeekendOvertime";
             this.colWeekendOvertime.Visible = true;
-            this.colWeekendOvertime.VisibleIndex = 12;
+            this.colWeekendOvertime.VisibleIndex = 11;
             // 
             // colHolidayOvertime
             // 
@@ -358,7 +353,7 @@ namespace Hades.HR.UI
             this.colHolidayOvertime.FieldName = "HolidayOvertime";
             this.colHolidayOvertime.Name = "colHolidayOvertime";
             this.colHolidayOvertime.Visible = true;
-            this.colHolidayOvertime.VisibleIndex = 13;
+            this.colHolidayOvertime.VisibleIndex = 12;
             // 
             // colNoonShift
             // 
@@ -366,7 +361,7 @@ namespace Hades.HR.UI
             this.colNoonShift.FieldName = "NoonShift";
             this.colNoonShift.Name = "colNoonShift";
             this.colNoonShift.Visible = true;
-            this.colNoonShift.VisibleIndex = 14;
+            this.colNoonShift.VisibleIndex = 13;
             // 
             // colNightShift
             // 
@@ -374,7 +369,7 @@ namespace Hades.HR.UI
             this.colNightShift.FieldName = "NightShift";
             this.colNightShift.Name = "colNightShift";
             this.colNightShift.Visible = true;
-            this.colNightShift.VisibleIndex = 15;
+            this.colNightShift.VisibleIndex = 14;
             // 
             // colOtherNoon
             // 
@@ -382,7 +377,7 @@ namespace Hades.HR.UI
             this.colOtherNoon.FieldName = "OtherNoon";
             this.colOtherNoon.Name = "colOtherNoon";
             this.colOtherNoon.Visible = true;
-            this.colOtherNoon.VisibleIndex = 16;
+            this.colOtherNoon.VisibleIndex = 15;
             // 
             // colOtherNight
             // 
@@ -390,7 +385,7 @@ namespace Hades.HR.UI
             this.colOtherNight.FieldName = "OtherNight";
             this.colOtherNight.Name = "colOtherNight";
             this.colOtherNight.Visible = true;
-            this.colOtherNight.VisibleIndex = 17;
+            this.colOtherNight.VisibleIndex = 16;
             // 
             // colRemark
             // 
@@ -398,11 +393,11 @@ namespace Hades.HR.UI
             this.colRemark.FieldName = "Remark";
             this.colRemark.Name = "colRemark";
             this.colRemark.Visible = true;
-            this.colRemark.VisibleIndex = 18;
+            this.colRemark.VisibleIndex = 17;
             // 
             // FrmEditStaffMonthAttendance
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(869, 432);
             this.Controls.Add(this.groupControl2);
@@ -453,7 +448,6 @@ namespace Hades.HR.UI
         private DevExpress.XtraGrid.Columns.GridColumn colYear;
         private DevExpress.XtraGrid.Columns.GridColumn colMonth;
         private DevExpress.XtraGrid.Columns.GridColumn colStaffId;
-        private DevExpress.XtraGrid.Columns.GridColumn colDepartmentId;
         private DevExpress.XtraGrid.Columns.GridColumn colAttendanceDays;
         private DevExpress.XtraGrid.Columns.GridColumn colAnnualLeave;
         private DevExpress.XtraGrid.Columns.GridColumn colSickLeave;

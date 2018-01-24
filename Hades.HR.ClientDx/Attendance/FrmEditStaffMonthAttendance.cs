@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.ComponentModel;
 using System.Collections.Generic;
+using System.Linq;
 
 using Hades.Pager.Entity;
 using Hades.Dictionary;
@@ -124,7 +125,6 @@ namespace Hades.HR.UI
             return result;
         }
 
-
         /// <summary>
         /// 数据显示的函数
         /// </summary>
@@ -139,7 +139,7 @@ namespace Hades.HR.UI
             var dep = CallerFactory<IDepartmentService>.Instance.FindByID(this.departmentId);
             this.txtDepartment.Text = dep.Name;
 
-            this.staffs = CallerFactory<IStaffService>.Instance.Find("StaffType = 2");
+            this.staffs = CallerFactory<IStaffService>.Instance.Find("StaffType = 1");
                         
             var data = CallerFactory<IStaffMonthAttendanceService>.Instance.GetRecords(year, month, departmentId);
             this.bsAttendance.DataSource = data;
@@ -155,7 +155,7 @@ namespace Hades.HR.UI
             {
                 var data = this.bsAttendance.DataSource as List<StaffMonthAttendanceInfo>;
 
-                bool succeed = false; // CallerFactory<IStaffMonthAttendanceService>.Instance.SaveRecords(data, this.year, this.month, this.workTeamId);
+                bool succeed = CallerFactory<IStaffMonthAttendanceService>.Instance.SaveRecords(data, this.year, this.month, this.departmentId);
                 if (succeed)
                 {
                     //可添加其他关联操作
@@ -171,38 +171,45 @@ namespace Hades.HR.UI
             }
             return false;
         }
+        #endregion //Method
 
-        /// <summary>
-        /// 编辑状态下的数据保存
-        /// </summary>
-        /// <returns></returns>
-        public override bool SaveUpdated()
+        #region Event
+        private void dgvAttendance_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
         {
-            StaffMonthAttendanceInfo info = CallerFactory<IStaffMonthAttendanceService>.Instance.FindByID(ID);
-            if (info != null)
+            string columnName = e.Column.FieldName;
+            if (columnName == "StaffId")
             {
-                SetInfo(info);
-
-                try
+                if (e.Value != null)
                 {
-                    #region 更新数据
-                    bool succeed = CallerFactory<IStaffMonthAttendanceService>.Instance.Update(info, info.Id);
-                    if (succeed)
-                    {
-                        //可添加其他关联操作
-
-                        return true;
-                    }
-                    #endregion
-                }
-                catch (Exception ex)
-                {
-                    LogTextHelper.Error(ex);
-                    MessageDxUtil.ShowError(ex.Message);
+                    var s = this.staffs.SingleOrDefault(r => r.Id == e.Value.ToString());
+                    if (s == null)
+                        e.DisplayText = "";
+                    else
+                        e.DisplayText = s.Name;
                 }
             }
-            return false;
         }
-        #endregion //Method
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (!(ActiveControl is Button))
+            {
+                if (keyData == Keys.Down || keyData == Keys.Enter)
+                {
+                    return false;
+                }
+                else if (keyData == Keys.Up)
+                {
+                    return false;
+                }
+
+                return false;
+            }
+            else
+            {
+                return base.ProcessCmdKey(ref msg, keyData);
+            }
+        }
+        #endregion //Event
     }
 }

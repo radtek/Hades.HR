@@ -150,6 +150,27 @@ namespace Hades.HR.UI
                 }
             }
         }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (!(ActiveControl is Button))
+            {
+                if (keyData == Keys.Down || keyData == Keys.Enter)
+                {
+                    return false;
+                }
+                else if (keyData == Keys.Up)
+                {
+                    return false;
+                }
+
+                return false;
+            }
+            else
+            {
+                return base.ProcessCmdKey(ref msg, keyData);
+            }
+        }
         #endregion /Event
     }
 }

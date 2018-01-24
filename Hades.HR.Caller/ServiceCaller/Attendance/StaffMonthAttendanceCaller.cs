@@ -16,14 +16,14 @@ using Hades.HR.Facade;
 
 namespace Hades.HR.ServiceCaller
 {
-	/// <summary>
-	/// 基于WCF服务的Facade接口实现类
-	/// </summary>
+    /// <summary>
+    /// 基于WCF服务的Facade接口实现类
+    /// </summary>
     public class StaffMonthAttendanceCaller : BaseWCFService<StaffMonthAttendanceInfo>, IStaffMonthAttendanceService
     {
         #region Constructor
-        public StaffMonthAttendanceCaller()  : base()
-        {	
+        public StaffMonthAttendanceCaller() : base()
+        {
             this.configurationPath = EndPointConfig.WcfConfig; //WCF配置文件
             this.endpointConfigurationName = EndPointConfig.StaffMonthAttendanceService;
         }
@@ -71,33 +71,28 @@ namespace Hades.HR.ServiceCaller
 
             return result;
         }
+
+        /// <summary>
+        /// 保存员工考勤记录
+        /// </summary>
+        /// <param name="data">考勤记录</param>
+        /// <param name="year">年</param>
+        /// <param name="month">月</param>
+        /// <param name="departmentId">部门ID</param>
+        /// <returns></returns>
+        public bool SaveRecords(List<StaffMonthAttendanceInfo> data, int year, int month, string departmentId)
+        {
+            bool result = false;
+
+            IStaffMonthAttendanceService service = CreateSubClient();
+            ICommunicationObject comm = service as ICommunicationObject;
+            comm.Using(client =>
+            {
+                result = service.SaveRecords(data, year, month, departmentId);
+            });
+
+            return result;
+        }
         #endregion //Method
-
-        ///// <summary>
-        ///// 根据名称查找对象(自定义接口使用范例)
-        ///// </summary>
-        //public List<StaffMonthAttendanceInfo> FindByName(string name)
-        //{
-        //    List<StaffMonthAttendanceInfo> result = new List<StaffMonthAttendanceInfo>();
-
-        //    IStaffMonthAttendanceService service = CreateSubClient();
-        //    ICommunicationObject comm = service as ICommunicationObject;
-        //    comm.Using(client =>
-        //    {
-        //        result = service.FindByName(name);
-        //    });
-
-        //    return result;
-        //}
-
-
-        ///// <summary>
-        ///// 根据名称查找对象Asyn(自定义接口使用范例)
-        ///// </summary>
-        //public Task<List<StaffMonthAttendanceInfo>> FindByNameAsyn(string name)
-        //{
-        //    IStaffMonthAttendanceService service = CreateSubClient();       
-        //    return service.FindByNameAsyn(name);  
-        //}
     }
 }
