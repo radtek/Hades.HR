@@ -1279,6 +1279,9 @@
     <EmbeddedResource Include="Salary\FrmSalaryBase.resx">
       <DependentUpon>FrmSalaryBase.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Salary\FrmSalaryItem.resx">
+      <DependentUpon>FrmSalaryItem.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Salary\FrmStaffSalary.resx">
       <DependentUpon>FrmStaffSalary.cs</DependentUpon>
     </EmbeddedResource>

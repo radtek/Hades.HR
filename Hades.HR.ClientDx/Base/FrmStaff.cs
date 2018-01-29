@@ -5,7 +5,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.ComponentModel;
 using System.Collections.Generic;
-
+using System.Linq;
 using Hades.Pager.Entity;
 using Hades.Dictionary;
 using Hades.Framework.BaseUI;
@@ -28,6 +28,11 @@ namespace Hades.HR.UI
         /// 高级查询条件语句对象
         /// </summary>
         private SearchCondition advanceCondition;
+
+        /// <summary>
+        /// 缓存部门信息
+        /// </summary>
+        private List<DepartmentInfo> departmentList;
         #endregion //Field
 
         #region Constructor
@@ -130,6 +135,7 @@ namespace Hades.HR.UI
         /// </summary>
         public override void FormOnLoad()
         {
+            this.departmentList = CallerFactory<IDepartmentService>.Instance.Find("");
             BindData();
         }
         #endregion //Method
@@ -270,8 +276,11 @@ namespace Hades.HR.UI
             {
                 if (e.Value != null)
                 {
-                    var company = CallerFactory<IDepartmentService>.Instance.FindByID(e.Value.ToString());
-                    e.DisplayText = company.Name;
+                    var company = this.departmentList.SingleOrDefault(r => r.Id == e.Value.ToString());
+                    if (company != null)
+                    {
+                        e.DisplayText = company.Name;
+                    }
                 }
             }
             else if (columnName == "DepartmentId" && !string.IsNullOrEmpty(e.Value.ToString()))

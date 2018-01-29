@@ -23,6 +23,7 @@ namespace Hades.HR.UI
     /// </summary>	
     public partial class FrmSalaryItem : BaseDock
     {
+        #region Constructor
         public FrmSalaryItem()
         {
             InitializeComponent();
@@ -48,6 +49,55 @@ namespace Hades.HR.UI
                 control.KeyUp += new System.Windows.Forms.KeyEventHandler(this.SearchControl_KeyUp);
             }
         }
+        #endregion //Constructor
+
+        #region Function
+        /// <summary>
+        /// 根据查询条件构造查询语句
+        /// </summary> 
+        private string GetConditionSql()
+        {
+            //如果存在高级查询对象信息，则使用高级查询条件，否则使用主表条件查询
+            SearchCondition condition = advanceCondition;
+            if (condition == null)
+            {
+                condition = new SearchCondition();
+                condition.AddCondition("Name", this.txtName.Text.Trim(), SqlOperator.Like);
+                condition.AddCondition("Code", this.txtCode.Text.Trim(), SqlOperator.Like);
+            }
+            string where = condition.BuildConditionSql().Replace("Where", "");
+            return where;
+        }
+
+        /// <summary>
+        /// 绑定列表数据
+        /// </summary>
+        private void BindData()
+        {
+            //entity
+            this.winGridViewPager1.DisplayColumns = "Name,Code,Cardinal,Coefficient,Remark";
+            this.winGridViewPager1.ColumnNameAlias = CallerFactory<ISalaryItemService>.Instance.GetColumnNameAlias();//字段列显示名称转义
+            
+            string where = GetConditionSql();
+            PagerInfo pagerInfo = this.winGridViewPager1.PagerInfo;
+            List<SalaryItemInfo> list = CallerFactory<ISalaryItemService>.Instance.FindWithPager(where, ref pagerInfo);
+            this.winGridViewPager1.PagerInfo.RecordCount = pagerInfo.RecordCount;
+            this.winGridViewPager1.DataSource = new Hades.Pager.WinControl.SortableBindingList<SalaryItemInfo>(list);
+            this.winGridViewPager1.PrintTitle = "SalaryItem报表";
+        }
+        #endregion //Function
+
+        #region Method
+        /// <summary>
+        /// 编写初始化窗体的实现，可以用于刷新
+        /// </summary>
+        public override void FormOnLoad()
+        {
+            BindData();
+        }
+        #endregion //Method
+
+        #region System
         void gridView1_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
         {
             //if (e.Column.FieldName == "OrderStatus")
@@ -117,14 +167,6 @@ namespace Hades.HR.UI
                 column.Width = width;
             }
         }
-
-        /// <summary>
-        /// 编写初始化窗体的实现，可以用于刷新
-        /// </summary>
-        public override void  FormOnLoad()
-        {   
-            BindData();
-        }
         
         /// <summary>
         /// 初始化字典列表内容
@@ -155,7 +197,7 @@ namespace Hades.HR.UI
             int[] rowSelected = this.winGridViewPager1.GridView1.GetSelectedRows();
             foreach (int iRow in rowSelected)
             {
-                string ID = this.winGridViewPager1.GridView1.GetRowCellDisplayText(iRow, "ID");
+                string ID = this.winGridViewPager1.GridView1.GetRowCellDisplayText(iRow, "Id");
                 CallerFactory<ISalaryItemService>.Instance.Delete(ID);
             }	 
              
@@ -167,11 +209,11 @@ namespace Hades.HR.UI
         /// </summary>
         private void winGridViewPager1_OnEditSelected(object sender, EventArgs e)
         {
-            string ID = this.winGridViewPager1.gridView1.GetFocusedRowCellDisplayText("ID");
+            string ID = this.winGridViewPager1.gridView1.GetFocusedRowCellDisplayText("Id");
             List<string> IDList = new List<string>();
             for (int i = 0; i < this.winGridViewPager1.gridView1.RowCount; i++)
             {
-                string strTemp = this.winGridViewPager1.GridView1.GetRowCellDisplayText(i, "ID");
+                string strTemp = this.winGridViewPager1.GridView1.GetRowCellDisplayText(i, "Id");
                 IDList.Add(strTemp);
             }
 
@@ -224,51 +266,7 @@ namespace Hades.HR.UI
         /// 高级查询条件语句对象
         /// </summary>
         private SearchCondition advanceCondition;
-        
-        /// <summary>
-        /// 根据查询条件构造查询语句
-        /// </summary> 
-        private string GetConditionSql()
-        {
-            //如果存在高级查询对象信息，则使用高级查询条件，否则使用主表条件查询
-            SearchCondition condition = advanceCondition;
-            if (condition == null)
-            {
-                condition = new SearchCondition();
-                condition.AddCondition("Name", this.txtName.Text.Trim(), SqlOperator.Like);
-                condition.AddCondition("Code", this.txtCode.Text.Trim(), SqlOperator.Like);
-            }
-            string where = condition.BuildConditionSql().Replace("Where", "");
-            return where;
-        }
-        
-        /// <summary>
-        /// 绑定列表数据
-        /// </summary>
-        private void BindData()
-        {
-        	//entity
-            this.winGridViewPager1.DisplayColumns = "Name,Code,Cardinal,Coefficient,Remark";
-            this.winGridViewPager1.ColumnNameAlias = CallerFactory<ISalaryItemService>.Instance.GetColumnNameAlias();//字段列显示名称转义
-
-            #region 添加别名解析
-
-            //this.winGridViewPager1.AddColumnAlias("Name", "Name");
-            //this.winGridViewPager1.AddColumnAlias("Code", "Code");
-            //this.winGridViewPager1.AddColumnAlias("Cardinal", "Cardinal");
-            //this.winGridViewPager1.AddColumnAlias("Coefficient", "Coefficient");
-            //this.winGridViewPager1.AddColumnAlias("Remark", "Remark");
-
-            #endregion
-
-            string where = GetConditionSql();
-            PagerInfo pagerInfo = this.winGridViewPager1.PagerInfo;
-               List<SalaryItemInfo> list = CallerFactory<ISalaryItemService>.Instance.FindWithPager(where, ref pagerInfo);
-            this.winGridViewPager1.PagerInfo.RecordCount = pagerInfo.RecordCount;
-            this.winGridViewPager1.DataSource = new Hades.Pager.WinControl.SortableBindingList<SalaryItemInfo>(list);
-               this.winGridViewPager1.PrintTitle = "SalaryItem报表";
-         }
-        
+                
         /// <summary>
         /// 查询数据操作
         /// </summary>
@@ -436,5 +434,6 @@ namespace Hades.HR.UI
             advanceCondition = condition;
             BindData();
         }
+        #endregion //System
     }
 }

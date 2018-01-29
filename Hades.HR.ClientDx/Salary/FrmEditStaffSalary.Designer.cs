@@ -110,28 +110,28 @@ namespace Hades.HR.UI
             this.layoutControl2.Controls.Add(this.txtDepartment);
             this.layoutControl2.Controls.Add(this.txtMonth);
             this.layoutControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutControl2.Location = new System.Drawing.Point(2, 25);
+            this.layoutControl2.Location = new System.Drawing.Point(2, 21);
             this.layoutControl2.Name = "layoutControl2";
             this.layoutControl2.Root = this.layoutControlGroup2;
-            this.layoutControl2.Size = new System.Drawing.Size(851, 57);
+            this.layoutControl2.Size = new System.Drawing.Size(851, 61);
             this.layoutControl2.TabIndex = 0;
             this.layoutControl2.Text = "layoutControl2";
             // 
             // txtDepartment
             // 
-            this.txtDepartment.Location = new System.Drawing.Point(411, 14);
+            this.txtDepartment.Location = new System.Drawing.Point(405, 12);
             this.txtDepartment.Name = "txtDepartment";
             this.txtDepartment.Properties.ReadOnly = true;
-            this.txtDepartment.Size = new System.Drawing.Size(426, 24);
+            this.txtDepartment.Size = new System.Drawing.Size(434, 20);
             this.txtDepartment.StyleController = this.layoutControl2;
             this.txtDepartment.TabIndex = 5;
             // 
             // txtMonth
             // 
-            this.txtMonth.Location = new System.Drawing.Point(47, 14);
+            this.txtMonth.Location = new System.Drawing.Point(39, 12);
             this.txtMonth.Name = "txtMonth";
             this.txtMonth.Properties.ReadOnly = true;
-            this.txtMonth.Size = new System.Drawing.Size(327, 24);
+            this.txtMonth.Size = new System.Drawing.Size(335, 20);
             this.txtMonth.StyleController = this.layoutControl2;
             this.txtMonth.TabIndex = 4;
             // 
@@ -144,7 +144,7 @@ namespace Hades.HR.UI
             this.layoutControlItem2});
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup2.Name = "layoutControlGroup2";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(851, 57);
+            this.layoutControlGroup2.Size = new System.Drawing.Size(851, 61);
             this.layoutControlGroup2.TextVisible = false;
             // 
             // layoutControlItem1
@@ -152,18 +152,18 @@ namespace Hades.HR.UI
             this.layoutControlItem1.Control = this.txtMonth;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(364, 33);
+            this.layoutControlItem1.Size = new System.Drawing.Size(366, 41);
             this.layoutControlItem1.Text = "月度";
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(30, 18);
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(24, 14);
             // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.txtDepartment;
-            this.layoutControlItem2.Location = new System.Drawing.Point(364, 0);
+            this.layoutControlItem2.Location = new System.Drawing.Point(366, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(463, 33);
+            this.layoutControlItem2.Size = new System.Drawing.Size(465, 41);
             this.layoutControlItem2.Text = "部门";
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(30, 18);
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(24, 14);
             // 
             // groupControl2
             // 
@@ -179,10 +179,10 @@ namespace Hades.HR.UI
             // 
             this.dgcSalary.DataSource = this.bsSalary;
             this.dgcSalary.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgcSalary.Location = new System.Drawing.Point(2, 25);
+            this.dgcSalary.Location = new System.Drawing.Point(2, 21);
             this.dgcSalary.MainView = this.dgvSalary;
             this.dgcSalary.Name = "dgcSalary";
-            this.dgcSalary.Size = new System.Drawing.Size(851, 326);
+            this.dgcSalary.Size = new System.Drawing.Size(851, 330);
             this.dgcSalary.TabIndex = 0;
             this.dgcSalary.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.dgvSalary});
@@ -193,6 +193,9 @@ namespace Hades.HR.UI
             // 
             // dgvSalary
             // 
+            this.dgvSalary.Appearance.HeaderPanel.Options.UseTextOptions = true;
+            this.dgvSalary.Appearance.HeaderPanel.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
+            this.dgvSalary.ColumnPanelRowHeight = 40;
             this.dgvSalary.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colId,
             this.colStaffId,
@@ -211,6 +214,11 @@ namespace Hades.HR.UI
             this.colRemark});
             this.dgvSalary.GridControl = this.dgcSalary;
             this.dgvSalary.Name = "dgvSalary";
+            this.dgvSalary.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
+            this.dgvSalary.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
+            this.dgvSalary.OptionsCustomization.AllowFilter = false;
+            this.dgvSalary.OptionsCustomization.AllowGroup = false;
+            this.dgvSalary.OptionsCustomization.AllowSort = false;
             this.dgvSalary.OptionsView.ShowGroupPanel = false;
             this.dgvSalary.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.dgvSalary_CustomColumnDisplayText);
             // 
@@ -291,30 +299,41 @@ namespace Hades.HR.UI
             // colNormalOvertimeSalary
             // 
             this.colNormalOvertimeSalary.Caption = "平时加班工资";
+            this.colNormalOvertimeSalary.DisplayFormat.FormatString = "0.000";
+            this.colNormalOvertimeSalary.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colNormalOvertimeSalary.FieldName = "NormalOvertimeSalary";
             this.colNormalOvertimeSalary.Name = "colNormalOvertimeSalary";
+            this.colNormalOvertimeSalary.OptionsColumn.AllowEdit = false;
             this.colNormalOvertimeSalary.Visible = true;
             this.colNormalOvertimeSalary.VisibleIndex = 7;
             // 
             // colWeekendOvertimeSalary
             // 
             this.colWeekendOvertimeSalary.Caption = "周末加班工资";
+            this.colWeekendOvertimeSalary.DisplayFormat.FormatString = "0.000";
+            this.colWeekendOvertimeSalary.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colWeekendOvertimeSalary.FieldName = "WeekendOvertimeSalary";
             this.colWeekendOvertimeSalary.Name = "colWeekendOvertimeSalary";
+            this.colWeekendOvertimeSalary.OptionsColumn.AllowEdit = false;
             this.colWeekendOvertimeSalary.Visible = true;
             this.colWeekendOvertimeSalary.VisibleIndex = 8;
             // 
             // colHolidayOvertimeSalary
             // 
             this.colHolidayOvertimeSalary.Caption = "节假日加班工资";
+            this.colHolidayOvertimeSalary.DisplayFormat.FormatString = "0.000";
+            this.colHolidayOvertimeSalary.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colHolidayOvertimeSalary.FieldName = "HolidayOvertimeSalary";
             this.colHolidayOvertimeSalary.Name = "colHolidayOvertimeSalary";
+            this.colHolidayOvertimeSalary.OptionsColumn.AllowEdit = false;
             this.colHolidayOvertimeSalary.Visible = true;
             this.colHolidayOvertimeSalary.VisibleIndex = 9;
             // 
             // colTotalOverTime
             // 
             this.colTotalOverTime.Caption = "加班工资合计";
+            this.colTotalOverTime.DisplayFormat.FormatString = "0.000";
+            this.colTotalOverTime.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colTotalOverTime.FieldName = "colTotalOverTime";
             this.colTotalOverTime.Name = "colTotalOverTime";
             this.colTotalOverTime.OptionsColumn.AllowEdit = false;
@@ -326,6 +345,8 @@ namespace Hades.HR.UI
             // colTotal
             // 
             this.colTotal.Caption = "工资合计";
+            this.colTotal.DisplayFormat.FormatString = "0.000";
+            this.colTotal.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colTotal.FieldName = "colTotal";
             this.colTotal.Name = "colTotal";
             this.colTotal.OptionsColumn.AllowEdit = false;
@@ -345,7 +366,7 @@ namespace Hades.HR.UI
             // 
             // FrmEditStaffSalary
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(855, 507);
             this.Controls.Add(this.groupControl2);

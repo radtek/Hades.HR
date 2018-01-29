@@ -69,26 +69,14 @@ namespace Hades.HR.UI
             #region MyRegion
             if (this.txtName.Text.Trim().Length == 0)
             {
-                MessageDxUtil.ShowTips("«Î ‰»Î");
+                MessageDxUtil.ShowTips("«Î ‰»Î√˚≥∆");
                 this.txtName.Focus();
                 result = false;
             }
             else if (this.txtCode.Text.Trim().Length == 0)
             {
-                MessageDxUtil.ShowTips("«Î ‰»Î");
+                MessageDxUtil.ShowTips("«Î ‰»Î¥˙¬Î");
                 this.txtCode.Focus();
-                result = false;
-            }
-            else if (this.txtCardinal.Text.Trim().Length == 0)
-            {
-                MessageDxUtil.ShowTips("«Î ‰»Î");
-                this.txtCardinal.Focus();
-                result = false;
-            }
-            else if (this.txtCoefficient.Text.Trim().Length == 0)
-            {
-                MessageDxUtil.ShowTips("«Î ‰»Î");
-                this.txtCoefficient.Focus();
                 result = false;
             }
             #endregion

@@ -130,9 +130,9 @@ namespace Hades.HR.UI
             // 
             // txtStaffId
             // 
-            this.txtStaffId.Location = new System.Drawing.Point(47, 14);
+            this.txtStaffId.Location = new System.Drawing.Point(39, 12);
             this.txtStaffId.Name = "txtStaffId";
-            this.txtStaffId.Size = new System.Drawing.Size(919, 24);
+            this.txtStaffId.Size = new System.Drawing.Size(929, 20);
             this.txtStaffId.StyleController = this.layoutControl1;
             this.txtStaffId.TabIndex = 1;
             // 
@@ -152,13 +152,13 @@ namespace Hades.HR.UI
             this.layoutControlItem1.Control = this.txtStaffId;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(956, 29);
+            this.layoutControlItem1.Size = new System.Drawing.Size(960, 33);
             this.layoutControlItem1.Text = "ְԱ";
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(30, 18);
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(24, 14);
             // 
             // FrmSalaryBase
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1004, 680);
             this.Controls.Add(this.layoutControl1);

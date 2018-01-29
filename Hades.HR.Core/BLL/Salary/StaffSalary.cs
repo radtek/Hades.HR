@@ -48,6 +48,9 @@ namespace Hades.HR.BLL
             string sql = string.Format("DepartmentId = '{0}' AND Year = {1} AND Month = {2}", departmentId, year, month);
             var attendance = monthAttendBll.Find(sql);
 
+            SalaryItem salaryItemBll = new SalaryItem();
+            var overtimeBase = salaryItemBll.FindByCode("OvertimeBaseSalary");
+
             foreach (var item in attendance)
             {
                 StaffSalaryInfo info = new StaffSalaryInfo();
@@ -73,11 +76,12 @@ namespace Hades.HR.BLL
                     info.ReserveFund = sb.ReserveFund;
                     info.Insurance = sb.Insurance;
 
-
-                    //info.BaseSalary = item.BaseWorkload * info.LevelSalary;
-                    //info.WeekendSalary = info.LevelSalary * item.WeekendWorkload * 2;
-                    //info.HolidaySalary = info.LevelSalary * item.HolidayWorkload * 3;
-                    //info.OverSalary = info.LevelSalary * item.OverWorkload * 1.5m;
+                    if (overtimeBase != null)
+                    {
+                        info.NormalOvertimeSalary = item.NormalOvertime * overtimeBase.Cardinal * overtimeBase.Coefficient * 1.5m;
+                        info.WeekendOvertimeSalary = item.WeekendOvertime * overtimeBase.Cardinal * overtimeBase.Coefficient * 2;
+                        info.HolidayOvertimeSalary = item.HolidayOvertime * overtimeBase.Cardinal * overtimeBase.Coefficient * 3;
+                    }
                 }
 
                 data.Add(info);
