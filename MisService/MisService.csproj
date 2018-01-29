@@ -148,6 +148,7 @@
     <Content Include="HR\Base\WorkTeamService.svc" />
     <Content Include="HR\Salary\LaborSalaryService.svc" />
     <Content Include="HR\Salary\SalaryBaseService.svc" />
+    <Content Include="HR\Salary\SalaryItemService.svc" />
     <Content Include="HR\Salary\StaffSalaryService.svc" />
     <Content Include="HR\Wp\CompletionListService.svc" />
     <Content Include="HR\Wp\ElectricMaintenanceManHoursService.svc" />

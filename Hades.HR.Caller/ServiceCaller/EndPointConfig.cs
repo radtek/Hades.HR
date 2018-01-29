@@ -50,6 +50,7 @@ namespace Hades.HR.ServiceCaller
 
         #region Salary
         public const string SalaryBaseService = "WSHttpBinding_ISalaryBaseService";
+        public const string SalaryItemService = "WSHttpBinding_ISalaryItemService";
 
         public const string LaborSalaryService = "WSHttpBinding_ILaborSalaryService";
 

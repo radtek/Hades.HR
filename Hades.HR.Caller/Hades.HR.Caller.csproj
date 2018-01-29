@@ -98,6 +98,7 @@
     <Compile Include="Facade\Salary\ISalaryBaseService.cs" />
     <Compile Include="Facade\Base\IStaffService.cs" />
     <Compile Include="Facade\Base\IWorkTeamService.cs" />
+    <Compile Include="Facade\Salary\ISalaryItemService.cs" />
     <Compile Include="Facade\Salary\IStaffSalaryService.cs" />
     <Compile Include="Facade\Wp\ICompletionListService.cs" />
     <Compile Include="Facade\Wp\IElectricMaintenanceManHoursService.cs" />
@@ -128,6 +129,7 @@
     <Compile Include="ServiceCaller\Base\StaffCaller.cs" />
     <Compile Include="ServiceCaller\Salary\SalaryBaseCaller.cs" />
     <Compile Include="ServiceCaller\Base\WorkTeamCaller.cs" />
+    <Compile Include="ServiceCaller\Salary\SalaryItemCaller.cs" />
     <Compile Include="ServiceCaller\Salary\StaffSalaryCaller.cs" />
     <Compile Include="ServiceCaller\Wp\CompletionListCaller.cs" />
     <Compile Include="ServiceCaller\Wp\ElectricMaintenanceManHoursCaller.cs" />
@@ -159,6 +161,7 @@
     <Compile Include="WinformCaller\Base\StaffCaller.cs" />
     <Compile Include="WinformCaller\Salary\SalaryBaseCaller.cs" />
     <Compile Include="WinformCaller\Base\WorkTeamCaller.cs" />
+    <Compile Include="WinformCaller\Salary\SalaryItemCaller.cs" />
     <Compile Include="WinformCaller\Salary\StaffSalaryCaller.cs" />
     <Compile Include="WinformCaller\Wp\CompletionListCaller.cs" />
     <Compile Include="WinformCaller\Wp\ElectricMaintenanceManHoursCaller.cs" />

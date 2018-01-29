@@ -152,6 +152,9 @@
     <Compile Include="..\Hades.HR.Caller\Facade\Salary\ISalaryBaseService.cs">
       <Link>Facade\Salary\ISalaryBaseService.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Caller\Facade\Salary\ISalaryItemService.cs">
+      <Link>Facade\Salary\ISalaryItemService.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Caller\Facade\Salary\IStaffSalaryService.cs">
       <Link>Facade\Salary\IStaffSalaryService.cs</Link>
     </Compile>
@@ -238,6 +241,9 @@
     </Compile>
     <Compile Include="..\Hades.HR.Core\BLL\Salary\SalaryBase.cs">
       <Link>Biz\BLL\Salary\SalaryBase.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\BLL\Salary\SalaryItem.cs">
+      <Link>Biz\BLL\Salary\SalaryItem.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\BLL\Salary\StaffSalary.cs">
       <Link>Biz\BLL\Salary\StaffSalary.cs</Link>
@@ -326,6 +332,9 @@
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Salary\SalaryBase.cs">
       <Link>Biz\DAL\DALSQL\Salary\SalaryBase.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Salary\SalaryItem.cs">
+      <Link>Biz\DAL\DALSQL\Salary\SalaryItem.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Salary\StaffSalary.cs">
       <Link>Biz\DAL\DALSQL\Salary\StaffSalary.cs</Link>
     </Compile>
@@ -412,6 +421,9 @@
     </Compile>
     <Compile Include="..\Hades.HR.Core\Entity\Salary\SalaryBaseInfo.cs">
       <Link>Biz\Entity\Salary\SalaryBaseInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\Entity\Salary\SalaryItemInfo.cs">
+      <Link>Biz\Entity\Salary\SalaryItemInfo.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\Entity\Salary\StaffSalaryInfo.cs">
       <Link>Biz\Entity\Salary\StaffSalaryInfo.cs</Link>
@@ -500,6 +512,9 @@
     <Compile Include="..\Hades.HR.Core\IDAL\Salary\ISalaryBase.cs">
       <Link>Biz\IDAL\Salary\ISalaryBase.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Core\IDAL\Salary\ISalaryItem.cs">
+      <Link>Biz\IDAL\Salary\ISalaryItem.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Core\IDAL\Salary\IStaffSalary.cs">
       <Link>Biz\IDAL\Salary\IStaffSalary.cs</Link>
     </Compile>
@@ -547,6 +562,7 @@
     <Compile Include="WCFLibrary\Base\WorkTeamService.cs" />
     <Compile Include="WCFLibrary\Salary\LaborSalaryService.cs" />
     <Compile Include="WCFLibrary\Salary\SalaryBaseService.cs" />
+    <Compile Include="WCFLibrary\Salary\SalaryItemService.cs" />
     <Compile Include="WCFLibrary\Salary\StaffSalaryService.cs" />
     <Compile Include="WCFLibrary\Wp\CompletionListService.cs" />
     <Compile Include="WCFLibrary\Wp\ElectricMaintenanceManHoursService.cs" />

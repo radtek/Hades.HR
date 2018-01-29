@@ -237,6 +237,9 @@
     <Compile Include="..\Hades.HR.Caller\Facade\Salary\ISalaryBaseService.cs">
       <Link>Facade\Salary\ISalaryBaseService.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Caller\Facade\Salary\ISalaryItemService.cs">
+      <Link>Facade\Salary\ISalaryItemService.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Caller\Facade\Salary\IStaffSalaryService.cs">
       <Link>Facade\Salary\IStaffSalaryService.cs</Link>
     </Compile>
@@ -327,6 +330,9 @@
     <Compile Include="..\Hades.HR.Caller\ServiceCaller\Salary\SalaryBaseCaller.cs">
       <Link>Caller\ServiceCaller\Salary\SalaryBaseCaller.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Caller\ServiceCaller\Salary\SalaryItemCaller.cs">
+      <Link>Caller\ServiceCaller\Salary\SalaryItemCaller.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Caller\ServiceCaller\Salary\StaffSalaryCaller.cs">
       <Link>Caller\ServiceCaller\Salary\StaffSalaryCaller.cs</Link>
     </Compile>
@@ -413,6 +419,9 @@
     </Compile>
     <Compile Include="..\Hades.HR.Caller\WinformCaller\Salary\SalaryBaseCaller.cs">
       <Link>Caller\WinformCaller\Salary\SalaryBaseCaller.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Caller\WinformCaller\Salary\SalaryItemCaller.cs">
+      <Link>Caller\WinformCaller\Salary\SalaryItemCaller.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Caller\WinformCaller\Salary\StaffSalaryCaller.cs">
       <Link>Caller\WinformCaller\Salary\StaffSalaryCaller.cs</Link>
@@ -501,6 +510,9 @@
     <Compile Include="..\Hades.HR.Core\BLL\Salary\SalaryBase.cs">
       <Link>Biz\BLL\Salary\SalaryBase.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Core\BLL\Salary\SalaryItem.cs">
+      <Link>Biz\BLL\Salary\SalaryItem.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Core\BLL\Salary\StaffSalary.cs">
       <Link>Biz\BLL\Salary\StaffSalary.cs</Link>
     </Compile>
@@ -587,6 +599,9 @@
     </Compile>
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Salary\SalaryBase.cs">
       <Link>Biz\DAL\DALSQL\Salary\SalaryBase.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Salary\SalaryItem.cs">
+      <Link>Biz\DAL\DALSQL\Salary\SalaryItem.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Salary\StaffSalary.cs">
       <Link>Biz\DAL\DALSQL\Salary\StaffSalary.cs</Link>
@@ -675,6 +690,9 @@
     <Compile Include="..\Hades.HR.Core\Entity\Salary\SalaryBaseInfo.cs">
       <Link>Biz\Entity\Salary\SalaryBaseInfo.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Core\Entity\Salary\SalaryItemInfo.cs">
+      <Link>Biz\Entity\Salary\SalaryItemInfo.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Core\Entity\Salary\StaffSalaryInfo.cs">
       <Link>Biz\Entity\Salary\StaffSalaryInfo.cs</Link>
     </Compile>
@@ -761,6 +779,9 @@
     </Compile>
     <Compile Include="..\Hades.HR.Core\IDAL\Salary\ISalaryBase.cs">
       <Link>Biz\IDAL\Salary\ISalaryBase.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\IDAL\Salary\ISalaryItem.cs">
+      <Link>Biz\IDAL\Salary\ISalaryItem.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\IDAL\Salary\IStaffSalary.cs">
       <Link>Biz\IDAL\Salary\IStaffSalary.cs</Link>
@@ -1014,6 +1035,12 @@
     <Compile Include="Salary\FrmEditSalaryBase.Designer.cs">
       <DependentUpon>FrmEditSalaryBase.cs</DependentUpon>
     </Compile>
+    <Compile Include="Salary\FrmEditSalaryItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Salary\FrmEditSalaryItem.Designer.cs">
+      <DependentUpon>FrmEditSalaryItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Salary\FrmEditStaffSalary.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1031,6 +1058,12 @@
     </Compile>
     <Compile Include="Salary\FrmSalaryBase.Designer.cs">
       <DependentUpon>FrmSalaryBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Salary\FrmSalaryItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Salary\FrmSalaryItem.Designer.cs">
+      <DependentUpon>FrmSalaryItem.cs</DependentUpon>
     </Compile>
     <Compile Include="Salary\FrmStaffSalary.cs">
       <SubType>Form</SubType>
@@ -1233,6 +1266,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Salary\FrmEditSalaryBase.resx">
       <DependentUpon>FrmEditSalaryBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Salary\FrmEditSalaryItem.resx">
+      <DependentUpon>FrmEditSalaryItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Salary\FrmEditStaffSalary.resx">
       <DependentUpon>FrmEditStaffSalary.cs</DependentUpon>

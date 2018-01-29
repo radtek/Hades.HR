@@ -129,6 +129,7 @@
     <Compile Include="BLL\Salary\LaborSalary.cs" />
     <Compile Include="BLL\Base\WorkTeam.cs" />
     <Compile Include="BLL\Salary\SalaryBase.cs" />
+    <Compile Include="BLL\Salary\SalaryItem.cs" />
     <Compile Include="BLL\Salary\StaffSalary.cs" />
     <Compile Include="BLL\Wp\CompletionList.cs" />
     <Compile Include="BLL\Wp\ElectricMaintenanceManHours.cs" />
@@ -157,6 +158,7 @@
     <Compile Include="DAL\DALSQL\Salary\LaborSalary.cs" />
     <Compile Include="DAL\DALSQL\Base\WorkTeam.cs" />
     <Compile Include="DAL\DALSQL\Salary\SalaryBase.cs" />
+    <Compile Include="DAL\DALSQL\Salary\SalaryItem.cs" />
     <Compile Include="DAL\DALSQL\Salary\StaffSalary.cs" />
     <Compile Include="DAL\DALSQL\Wp\CompletionList.cs" />
     <Compile Include="DAL\DALSQL\Wp\ElectricMaintenanceManHours.cs" />
@@ -185,6 +187,7 @@
     <Compile Include="Entity\Base\StaffInfo.cs" />
     <Compile Include="Entity\Base\WorkTeamInfo.cs" />
     <Compile Include="Entity\Salary\SalaryBaseInfo.cs" />
+    <Compile Include="Entity\Salary\SalaryItemInfo.cs" />
     <Compile Include="Entity\Salary\StaffSalaryInfo.cs" />
     <Compile Include="Entity\Wp\CompletionListInfo.cs" />
     <Compile Include="Entity\Wp\ElectricMaintenanceManHoursInfo.cs" />
@@ -213,6 +216,7 @@
     <Compile Include="IDAL\Salary\ILaborSalary.cs" />
     <Compile Include="IDAL\Base\IWorkTeam.cs" />
     <Compile Include="IDAL\Salary\ISalaryBase.cs" />
+    <Compile Include="IDAL\Salary\ISalaryItem.cs" />
     <Compile Include="IDAL\Salary\IStaffSalary.cs" />
     <Compile Include="IDAL\Wp\ICompletionList.cs" />
     <Compile Include="IDAL\Wp\IElectricMaintenanceManHours.cs" />
