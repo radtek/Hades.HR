@@ -88,7 +88,8 @@ namespace Hades.HR.UI
         public override bool CheckInput()
         {
             bool result = true;//默认是可以通过
-           
+            
+            var comId = this.luCompany.GetSelectedId();
             if (this.txtNumber.Text.Trim().Length == 0)
             {
                 MessageDxUtil.ShowTips("请输入编码");
@@ -101,7 +102,7 @@ namespace Hades.HR.UI
                 this.txtName.Focus();
                 result = false;
             }
-            else if (string.IsNullOrEmpty(this.luCompany.GetSelectedId()))
+            else if (string.IsNullOrEmpty(comId) || comId == "-1")
             {
                 MessageDxUtil.ShowTips("请选择所属公司");
                 this.luCompany.Focus();

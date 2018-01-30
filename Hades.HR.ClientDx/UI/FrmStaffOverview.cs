@@ -25,6 +25,16 @@ namespace Hades.HR.UI
         /// 高级查询条件语句对象
         /// </summary>
         private SearchCondition advanceCondition;
+
+        /// <summary>
+        /// 缓存部门
+        /// </summary>
+        private List<DepartmentInfo> departmentList;
+
+        /// <summary>
+        /// 缓存岗位
+        /// </summary>
+        private List<PositionInfo> positionList;
         #endregion //Field
 
         #region Constructor
@@ -138,8 +148,10 @@ namespace Hades.HR.UI
         /// </summary>
         public override void FormOnLoad()
         {
-            this.depTree.DataSource = CallerFactory<IDepartmentService>.Instance.Find2("deleted=0", "ORDER BY SortCode");
-            this.depTree.Expand();
+            //this.depTree.DataSource = CallerFactory<IDepartmentService>.Instance.Find2("deleted=0", "ORDER BY SortCode");
+            //this.depTree.Expand();
+
+            this.depTree.Init(3);
 
             BindData();
         }
@@ -155,7 +167,6 @@ namespace Hades.HR.UI
         {
             BindData();
         }
-
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
@@ -182,26 +193,29 @@ namespace Hades.HR.UI
             }
             else if (columnName == "CompanyId" && !string.IsNullOrEmpty(e.Value.ToString()))
             {
-                if (e.Value != null)
+                if (e.Value != null && !string.IsNullOrEmpty(e.Value.ToString()))
                 {
-                    var company = CallerFactory<IDepartmentService>.Instance.FindByID(e.Value.ToString());
-                    e.DisplayText = company.Name;
+                    var company = this.departmentList.SingleOrDefault(r => r.Id == e.Value.ToString());
+                    if (company != null)
+                        e.DisplayText = company.Name;
                 }
             }
             else if (columnName == "DepartmentId" && !string.IsNullOrEmpty(e.Value.ToString()))
             {
-                if (e.Value != null)
+                if (e.Value != null && !string.IsNullOrEmpty(e.Value.ToString()))
                 {
-                    var dep = CallerFactory<IDepartmentService>.Instance.FindByID(e.Value.ToString());
-                    e.DisplayText = dep.Name;
+                    var dep = this.departmentList.SingleOrDefault(r => r.Id == e.Value.ToString());
+                    if (dep != null)
+                        e.DisplayText = dep.Name;
                 }
             }
             else if (columnName == "PositionId")
             {
                 if (e.Value != null && !string.IsNullOrEmpty(e.Value.ToString()))
                 {
-                    var pos = CallerFactory<IPositionService>.Instance.FindByID(e.Value.ToString());
-                    e.DisplayText = pos.Name;
+                    var pos = this.positionList.SingleOrDefault(r => r.Id == e.Value.ToString());
+                    if (pos != null)
+                        e.DisplayText = pos.Name;
                 }
             }
             else if (columnName == "Enabled")

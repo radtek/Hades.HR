@@ -125,7 +125,8 @@ namespace Hades.HR.UI
         {
             bool result = true;//默认是可以通过
 
-            if (string.IsNullOrEmpty(this.luDepartment.GetSelectedId()))
+            var depId = this.luDepartment.GetSelectedId();
+            if (string.IsNullOrEmpty(depId) || depId == "-1")
             {
                 MessageDxUtil.ShowTips("请选择所属部门");
                 this.luDepartment.Focus();

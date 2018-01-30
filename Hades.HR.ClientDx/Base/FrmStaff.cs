@@ -33,6 +33,11 @@ namespace Hades.HR.UI
         /// 缓存部门信息
         /// </summary>
         private List<DepartmentInfo> departmentList;
+
+        /// <summary>
+        /// 岗位列表
+        /// </summary>
+        private List<PositionInfo> positionList;
         #endregion //Field
 
         #region Constructor
@@ -136,6 +141,7 @@ namespace Hades.HR.UI
         public override void FormOnLoad()
         {
             this.departmentList = CallerFactory<IDepartmentService>.Instance.Find("");
+            this.positionList = CallerFactory<IPositionService>.Instance.Find("");
             BindData();
         }
         #endregion //Method
@@ -287,16 +293,18 @@ namespace Hades.HR.UI
             {
                 if (e.Value != null)
                 {
-                    var dep = CallerFactory<IDepartmentService>.Instance.FindByID(e.Value.ToString());
-                    e.DisplayText = dep.Name;
+                    var dep = this.departmentList.SingleOrDefault(r => r.Id == e.Value.ToString());
+                    if (dep != null)
+                        e.DisplayText = dep.Name;
                 }
             }
             else if (columnName == "PositionId")
             {
                 if (e.Value != null && !string.IsNullOrEmpty(e.Value.ToString()))
                 {
-                    var pos = CallerFactory<IPositionService>.Instance.FindByID(e.Value.ToString());
-                    e.DisplayText = pos.Name;
+                    var pos = this.positionList.SingleOrDefault(r => r.Id == e.Value.ToString());
+                    if (pos != null)
+                        e.DisplayText = pos.Name;
                 }
             }
             else if (columnName == "Enabled")

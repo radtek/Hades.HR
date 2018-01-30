@@ -108,7 +108,6 @@ namespace Hades.HR.UI
         /// </summary>
         public override void FormOnLoad()
         {
-            //this.luDepartment.Init();
             this.luCompany.Init();
 
             base.FormOnLoad();
@@ -193,6 +192,10 @@ namespace Hades.HR.UI
         {
             bool result = true;//默认是可以通过
 
+            var depId = this.luDepartment.GetSelectedId();
+            var comId = this.luCompany.GetSelectedId();
+            var dep = this.luDepartment.GetSelected();
+
             if (this.txtNumber.Text.Trim().Length == 0)
             {
                 MessageDxUtil.ShowTips("请输入工号");
@@ -205,24 +208,28 @@ namespace Hades.HR.UI
                 this.txtName.Focus();
                 result = false;
             }
-            else if (string.IsNullOrEmpty(this.luDepartment.GetSelectedId()))
+            else if (string.IsNullOrEmpty(depId) || depId == "-1")
             {
                 MessageDxUtil.ShowTips("请选择所属部门");
                 this.luDepartment.Focus();
                 result = false;
             }
-            else if (string.IsNullOrEmpty(this.luCompany.GetSelectedId()))
+            else if (string.IsNullOrEmpty(comId) || comId == "-1")
             {
                 MessageDxUtil.ShowTips("请选择所属公司");
-                this.luDepartment.Focus();
+                this.luCompany.Focus();
                 result = false;
             }
-
-            var dep = this.luDepartment.GetSelected();
-            if (dep.Type == (int)DepartmentType.Group || dep.Type == (int)DepartmentType.Company)
+            else if (dep.Type == (int)DepartmentType.Group || dep.Type == (int)DepartmentType.Company)
             {
                 MessageDxUtil.ShowTips("所属部门不能为集团或公司");
                 this.luDepartment.Focus();
+                result = false;
+            }
+            else if (this.cmbStaffType.SelectedIndex == -1)
+            {
+                MessageDxUtil.ShowTips("请选择职员类型");
+                this.cmbStaffType.Focus();
                 result = false;
             }
 

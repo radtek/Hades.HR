@@ -195,6 +195,7 @@ namespace Hades.HR.UI
             this.colAddress.Visible = !this.showNameOnly;
             this.colType.Visible = !this.showNameOnly;
             this.colPrincipal.Visible = !this.showNameOnly;
+            this.colQuota.Visible = !this.showNameOnly;
             this.colFax.Visible = !this.showNameOnly;
             this.colInnerPhone.Visible = !this.showNameOnly;
             this.colOuterPhone.Visible = !this.showNameOnly;

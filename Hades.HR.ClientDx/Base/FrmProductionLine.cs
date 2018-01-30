@@ -201,7 +201,6 @@ namespace Hades.HR.UI
             }
         }
 
-
         void workTeam_OnDataSaved(object sender, EventArgs e)
         {
             LoadWorkTeams();

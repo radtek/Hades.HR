@@ -34,7 +34,22 @@ namespace Hades.HR.UI
         /// <summary>
         /// 选择员工
         /// </summary>
-        private StaffInfo selectedStaff; 
+        private StaffInfo selectedStaff;
+
+        /// <summary>
+        /// 部门列表
+        /// </summary>
+        private List<DepartmentInfo> departmentList;
+
+        /// <summary>
+        /// 岗位列表
+        /// </summary>
+        private List<PositionInfo> positionList;
+
+        /// <summary>
+        /// 班组列表
+        /// </summary>
+        private List<WorkTeamInfo> workTeamList;
         #endregion //Field
 
         #region Constructor
@@ -69,7 +84,7 @@ namespace Hades.HR.UI
         {
             //如果存在高级查询对象信息，则使用高级查询条件，否则使用主表条件查询
             SearchCondition condition = new SearchCondition();
-            
+
             if (Convert.ToInt32(this.cmbType.EditValue) == 1)
                 condition.AddCondition("Number", this.txtFind.Text.Trim(), SqlOperator.Like);
             else
@@ -88,7 +103,7 @@ namespace Hades.HR.UI
         private void BindData()
         {
             //entity
-            this.wgvStaff.DisplayColumns = "Number,Name,StaffType,CompanyId,DepartmentId,PositionId,ProductionLineId,WorkTeamId,Gender,Birthday,IdentityCard,Phone,Titles,Duty,JobType,Enabled";
+            this.wgvStaff.DisplayColumns = "Number,Name,StaffType,CompanyId,DepartmentId,PositionId,WorkTeamId,Gender,Birthday,IdentityCard,Phone,Titles,Duty,JobType,Enabled";
             this.wgvStaff.ColumnNameAlias = CallerFactory<IStaffService>.Instance.GetColumnNameAlias();//字段列显示名称转义
 
             string where = GetConditionSql();
@@ -105,6 +120,9 @@ namespace Hades.HR.UI
         /// </summary>
         public override void FormOnLoad()
         {
+            this.departmentList = CallerFactory<IDepartmentService>.Instance.Find("");
+            this.positionList = CallerFactory<IPositionService>.Instance.Find("");
+            this.workTeamList = CallerFactory<IWorkTeamService>.Instance.Find("");
             //BindData();
         }
 
@@ -160,7 +178,7 @@ namespace Hades.HR.UI
             }
 
             int type = (int)this.cmbType.EditValue;
-            
+
             if (type == 1)
             {
                 if (this.txtFind.Text.Trim().Length < 2)
@@ -214,40 +232,36 @@ namespace Hades.HR.UI
             {
                 if (e.Value != null)
                 {
-                    var company = CallerFactory<IDepartmentService>.Instance.FindByID(e.Value.ToString());
-                    e.DisplayText = company.Name;
+                    var company = this.departmentList.SingleOrDefault(r => r.Id == e.Value.ToString());
+                    if (company != null)
+                        e.DisplayText = company.Name;
                 }
             }
             else if (columnName == "DepartmentId" && !string.IsNullOrEmpty(e.Value.ToString()))
             {
                 if (e.Value != null)
                 {
-                    var dep = CallerFactory<IDepartmentService>.Instance.FindByID(e.Value.ToString());
-                    e.DisplayText = dep.Name;
+                    var dep = this.departmentList.SingleOrDefault(r => r.Id == e.Value.ToString());
+                    if (dep != null)
+                        e.DisplayText = dep.Name;
                 }
             }
             else if (columnName == "PositionId")
             {
                 if (e.Value != null && !string.IsNullOrEmpty(e.Value.ToString()))
                 {
-                    var pos = CallerFactory<IPositionService>.Instance.FindByID(e.Value.ToString());
-                    e.DisplayText = pos.Name;
-                }
-            }
-            else if (columnName == "ProductionLineId")
-            {
-                if (e.Value != null && !string.IsNullOrEmpty(e.Value.ToString()))
-                {
-                    var pos = CallerFactory<IProductionLineService>.Instance.FindByID(e.Value.ToString());
-                    e.DisplayText = pos.Name;
+                    var pos = this.positionList.SingleOrDefault(r => r.Id == e.Value.ToString());
+                    if (pos != null)
+                        e.DisplayText = pos.Name;
                 }
             }
             else if (columnName == "WorkTeamId")
             {
                 if (e.Value != null && !string.IsNullOrEmpty(e.Value.ToString()))
                 {
-                    var pos = CallerFactory<IWorkTeamService>.Instance.FindByID(e.Value.ToString());
-                    e.DisplayText = pos.Name;
+                    var wt = this.workTeamList.SingleOrDefault(r => r.Id == e.Value.ToString());
+                    if (wt != null)
+                        e.DisplayText = wt.Name;
                 }
             }
             else if (columnName == "Enabled")

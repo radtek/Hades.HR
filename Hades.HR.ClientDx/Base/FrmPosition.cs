@@ -4,6 +4,7 @@ using System.Data;
 using System.Windows.Forms;
 using System.ComponentModel;
 using System.Collections.Generic;
+using System.Linq;
 
 using Hades.Pager.Entity;
 using Hades.Dictionary;
@@ -22,6 +23,10 @@ namespace Hades.HR.UI
     /// </summary>	
     public partial class FrmPosition : BaseDock
     {
+        #region Field
+        private List<DepartmentInfo> departmentList;
+        #endregion //Field
+
         #region Constructor
         public FrmPosition()
         {
@@ -45,8 +50,9 @@ namespace Hades.HR.UI
         /// </summary>
         private void LoadDepartments()
         {
-            var departments = CallerFactory<IDepartmentService>.Instance.Find2("deleted=0", "ORDER BY SortCode");
-            this.depTree.DataSource = departments;
+            //var departments = CallerFactory<IDepartmentService>.Instance.Find2("deleted=0", "ORDER BY SortCode");
+            //this.depTree.DataSource = departments;
+            this.depTree.Init(3);
         }
 
         /// <summary>
@@ -63,7 +69,7 @@ namespace Hades.HR.UI
             this.wgvPosition.DataSource = positions;
             this.wgvPosition.PrintTitle = "岗位报表";
         }
-      
+
 
         /// <summary>
         /// 载入公司包含仓库
@@ -110,6 +116,7 @@ namespace Hades.HR.UI
         /// </summary>
         public override void FormOnLoad()
         {
+            this.departmentList = CallerFactory<IDepartmentService>.Instance.Find("");
             LoadDepartments();
 
             this.depTree.Expand();
@@ -150,8 +157,8 @@ namespace Hades.HR.UI
                 this.txtDepartmentName.Text = department.Name;
                 this.txtDepartmentNumber.Text = department.Number;
 
-                LoadPositions(department);               
-               
+                LoadPositions(department);
+
                 LoadWarehouse(department);
             }
         }
@@ -230,138 +237,6 @@ namespace Hades.HR.UI
             CallerFactory<IPositionService>.Instance.MarkDelete(id);
             LoadDepartments();
         }
-
-        /// <summary>
-        /// 菜单 - 新增产线
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        //private void menuAddLine_Click(object sender, EventArgs e)
-        //{
-        //    FrmProductionLineEdit dlg = new FrmProductionLineEdit();
-        //    //dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
-        //    dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
-
-        //    if (DialogResult.OK == dlg.ShowDialog())
-        //    {
-        //        LoadDepartments();
-        //    }
-        //}
-
-        /// <summary>
-        /// 菜单 - 编辑产线
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        //private void menuEditLine_Click(object sender, EventArgs e)
-        //{
-        //    string ID = this.wgvProductionLine.gridView1.GetFocusedRowCellDisplayText("Id");
-        //    List<string> IDList = new List<string>();
-        //    for (int i = 0; i < this.wgvProductionLine.gridView1.RowCount; i++)
-        //    {
-        //        string strTemp = this.wgvProductionLine.GridView1.GetRowCellDisplayText(i, "Id");
-        //        IDList.Add(strTemp);
-        //    }
-
-        //    if (!string.IsNullOrEmpty(ID))
-        //    {
-        //        FrmProductionLineEdit dlg = new FrmProductionLineEdit();
-        //        dlg.ID = ID;
-        //        dlg.IDList = IDList;
-        //        dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
-
-        //        if (DialogResult.OK == dlg.ShowDialog())
-        //        {
-        //            LoadDepartments();
-        //        }
-        //    }
-        //}
-
-        /// <summary>
-        /// 菜单 - 删除产线
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        //private void menuDeleteLine_Click(object sender, EventArgs e)
-        //{
-        //    string id = this.wgvProductionLine.gridView1.GetFocusedRowCellDisplayText("Id");
-        //    if (string.IsNullOrEmpty(id))
-        //        return;
-
-        //    if (MessageDxUtil.ShowYesNoAndTips("您确定删除选定的产线么？") == DialogResult.No)
-        //    {
-        //        return;
-        //    }
-
-        //    CallerFactory<IProductionLineService>.Instance.MarkDelete(id);
-        //    LoadDepartments();
-        //}
-
-        /// <summary>
-        /// 菜单 - 新增班组
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        //private void menuAddTeam_Click(object sender, EventArgs e)
-        //{
-        //    FrmWorkTeamEdit dlg = new FrmWorkTeamEdit();
-        //    dlg.OnDataSaved += new EventHandler(dlg_OnDataSaved);
-        //    dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
-
-        //    if (DialogResult.OK == dlg.ShowDialog())
-        //    {
-        //        LoadDepartments();
-        //    }
-        //}
-
-        /// <summary>
-        /// 菜单 - 编辑班组
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        //private void menuEditTeam_Click(object sender, EventArgs e)
-        //{
-        //    string ID = this.wgvWorkTeam.gridView1.GetFocusedRowCellDisplayText("Id");
-        //    List<string> IDList = new List<string>();
-        //    for (int i = 0; i < this.wgvWorkTeam.gridView1.RowCount; i++)
-        //    {
-        //        string strTemp = this.wgvWorkTeam.GridView1.GetRowCellDisplayText(i, "Id");
-        //        IDList.Add(strTemp);
-        //    }
-
-        //    if (!string.IsNullOrEmpty(ID))
-        //    {
-        //        FrmWorkTeamEdit dlg = new FrmWorkTeamEdit();
-        //        dlg.ID = ID;
-        //        dlg.IDList = IDList;
-        //        dlg.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
-
-        //        if (DialogResult.OK == dlg.ShowDialog())
-        //        {
-        //            LoadDepartments();
-        //        }
-        //    }
-        //}
-
-        /// <summary>
-        /// 菜单 - 删除班组
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        //private void menuDeleteTeam_Click(object sender, EventArgs e)
-        //{
-        //    string id = this.wgvWorkTeam.gridView1.GetFocusedRowCellDisplayText("Id");
-        //    if (string.IsNullOrEmpty(id))
-        //        return;
-
-        //    if (MessageDxUtil.ShowYesNoAndTips("您确定删除选定的产线么？") == DialogResult.No)
-        //    {
-        //        return;
-        //    }
-
-        //    CallerFactory<IWorkTeamService>.Instance.MarkDelete(id);
-        //    LoadDepartments();
-        //}
 
         /// <summary>
         /// 菜单 - 查看仓库
@@ -456,8 +331,9 @@ namespace Hades.HR.UI
             {
                 if (e.Value != null)
                 {
-                    var dep = CallerFactory<IDepartmentService>.Instance.FindByID(e.Value.ToString());
-                    e.DisplayText = dep.Name;
+                    var dep = this.departmentList.SingleOrDefault(r => r.Id == e.Value.ToString());
+                    if (dep != null)
+                        e.DisplayText = dep.Name;
                 }
             }
             else if (columnName == "Enabled")
@@ -478,38 +354,9 @@ namespace Hades.HR.UI
             {
                 if (e.Value != null)
                 {
-                    var dep = CallerFactory<IDepartmentService>.Instance.FindByID(e.Value.ToString());
-                    e.DisplayText = dep.Name;
-                }
-            }
-            else if (columnName == "Enabled")
-            {
-                e.DisplayText = Convert.ToInt32(e.Value) == 1 ? "已启用" : "未启用";
-            }
-        }
-
-        /// <summary>
-        /// 格式化班组列表
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        void wgvWorkTeam_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
-        {
-            string columnName = e.Column.FieldName;
-            if (columnName == "CompanyId")
-            {
-                if (e.Value != null && !string.IsNullOrEmpty(e.Value.ToString()))
-                {
-                    var dep = CallerFactory<IDepartmentService>.Instance.FindByID(e.Value.ToString());
-                    e.DisplayText = dep.Name;
-                }
-            }
-            else if (columnName == "ProductionLineId")
-            {
-                if (e.Value != null && !string.IsNullOrEmpty(e.Value.ToString()))
-                {
-                    var line = CallerFactory<IProductionLineService>.Instance.FindByID(e.Value.ToString());
-                    e.DisplayText = line.Name;
+                    var dep = this.departmentList.SingleOrDefault(r => r.Id == e.Value.ToString());
+                    if (dep != null)
+                        e.DisplayText = dep.Name;
                 }
             }
             else if (columnName == "Enabled")
@@ -530,8 +377,9 @@ namespace Hades.HR.UI
             {
                 if (e.Value != null && !string.IsNullOrEmpty(e.Value.ToString()))
                 {
-                    var dep = CallerFactory<IDepartmentService>.Instance.FindByID(e.Value.ToString());
-                    e.DisplayText = dep.Name;
+                    var dep = this.departmentList.SingleOrDefault(r => r.Id == e.Value.ToString());
+                    if (dep != null)
+                        e.DisplayText = dep.Name;
                 }
             }
             else if (columnName == "Enabled")
@@ -539,7 +387,6 @@ namespace Hades.HR.UI
                 e.DisplayText = Convert.ToInt32(e.Value) == 1 ? "已启用" : "未启用";
             }
         }
-
         #endregion //Grid Event
 
         #endregion //Event
