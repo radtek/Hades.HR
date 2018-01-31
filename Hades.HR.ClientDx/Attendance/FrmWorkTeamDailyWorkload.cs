@@ -168,7 +168,6 @@ namespace Hades.HR.UI
             if (string.IsNullOrEmpty(teamId))
                 return;
 
-
             this.wgvAttendance.DisplayColumns = "WorkTeamId,AttendanceDate,StaffId,AbsentType,WorkHours,AbsentHours,IsWeekend,IsHoliday,Remark";
             this.wgvAttendance.ColumnNameAlias = CallerFactory<ILaborDailyAttendanceService>.Instance.GetColumnNameAlias();
 
@@ -266,6 +265,8 @@ namespace Hades.HR.UI
             FrmEditLaborDailyAttendance frm = new FrmEditLaborDailyAttendance(teamId, this.dpAttendance.DateTime);
             frm.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
             frm.ShowDialog();
+
+            LoadLaborAttendance();
         }
 
         /// <summary>

@@ -66,8 +66,7 @@ namespace Hades.HR.UI
             info.EditTime = DateTime.Now;
         }
         #endregion //Function
-
-
+        
         #region Method
         public override void ClearScreen()
         {
@@ -83,7 +82,8 @@ namespace Hades.HR.UI
         {
             bool result = true;//默认是可以通过
 
-            if (string.IsNullOrEmpty(this.luDepartment.GetSelectedId()))
+            var depId = this.luDepartment.GetSelectedId();
+            if (string.IsNullOrEmpty(depId) || depId == "-1")
             {
                 MessageDxUtil.ShowTips("请选择财务部门");
                 result = false;

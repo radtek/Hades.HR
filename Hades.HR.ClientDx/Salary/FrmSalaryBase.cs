@@ -107,10 +107,13 @@ namespace Hades.HR.UI
         {
             //entity
             this.winGridViewPager1.DisplayColumns = "Id,FinanceDepartmentId,CardNumber,StaffLevelId,BaseBonus,DepartmentBonus,ReserveFund,Insurance,HighTemp,Remark";
-            this.winGridViewPager1.ColumnNameAlias = BLLFactory<SalaryBase>.Instance.GetColumnNameAlias();//字段列显示名称转义
-            
+            this.winGridViewPager1.ColumnNameAlias = CallerFactory<ISalaryBaseService>.Instance.GetColumnNameAlias();//字段列显示名称转义
+
+
             string where = GetConditionSql();
-            List<SalaryBaseInfo> list = BLLFactory<SalaryBase>.Instance.FindWithPager(where, this.winGridViewPager1.PagerInfo);
+            PagerInfo pagerInfo = this.winGridViewPager1.PagerInfo;            
+            List<SalaryBaseInfo> list = CallerFactory<ISalaryBaseService>.Instance.FindWithPager(where, ref pagerInfo);
+            this.winGridViewPager1.PagerInfo.RecordCount = pagerInfo.RecordCount;
             this.winGridViewPager1.DataSource = list;//new Hades.Pager.WinControl.SortableBindingList<SalaryBaseInfo>(list);
             this.winGridViewPager1.PrintTitle = "SalaryBase报表";
         }
