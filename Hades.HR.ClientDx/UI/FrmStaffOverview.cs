@@ -153,6 +153,9 @@ namespace Hades.HR.UI
 
             this.depTree.Init(3);
 
+            this.departmentList = CallerFactory<IDepartmentService>.Instance.Find("");
+            this.positionList = CallerFactory<IPositionService>.Instance.Find("");
+
             BindData();
         }
         #endregion //Method
