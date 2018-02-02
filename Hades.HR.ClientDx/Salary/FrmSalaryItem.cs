@@ -38,7 +38,7 @@ namespace Hades.HR.UI
             this.winGridViewPager1.OnRefresh += new EventHandler(winGridViewPager1_OnRefresh);
             this.winGridViewPager1.AppendedMenu = this.contextMenuStrip1;
             this.winGridViewPager1.ShowLineNumber = true;
-            this.winGridViewPager1.BestFitColumnWith = false;//是否设置为自动调整宽度，false为不设置
+            this.winGridViewPager1.BestFitColumnWith = true;//是否设置为自动调整宽度，false为不设置
 			this.winGridViewPager1.gridView1.DataSourceChanged +=new EventHandler(gridView1_DataSourceChanged);
             this.winGridViewPager1.gridView1.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(gridView1_CustomColumnDisplayText);
             this.winGridViewPager1.gridView1.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(gridView1_RowCellStyle);

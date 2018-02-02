@@ -67,6 +67,7 @@ namespace Hades.HR.BLL
                 }
                 else
                 {
+                    info.FinanceDepartmentId = sb.FinanceDepartmentId;
                     info.StaffLevelId = sb.StaffLevelId;
 
                     var level = levels.Single(r => r.Id == info.StaffLevelId);

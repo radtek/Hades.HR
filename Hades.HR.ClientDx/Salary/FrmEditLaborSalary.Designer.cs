@@ -81,6 +81,7 @@ namespace Hades.HR.UI
             // btnAdd
             // 
             this.btnAdd.Location = new System.Drawing.Point(776, 504);
+            this.btnAdd.Visible = false;
             // 
             // dataNavigator1
             // 
@@ -90,6 +91,7 @@ namespace Hades.HR.UI
             // picPrint
             // 
             this.picPrint.Location = new System.Drawing.Point(202, 501);
+            this.picPrint.Visible = false;
             // 
             // groupControl1
             // 

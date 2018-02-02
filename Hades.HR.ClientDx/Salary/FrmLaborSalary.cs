@@ -44,6 +44,11 @@ namespace Hades.HR.UI
         /// 缓存职员级别
         /// </summary>
         private List<StaffLevelInfo> levelList;
+
+        /// <summary>
+        /// 缓存部门信息
+        /// </summary>
+        private List<DepartmentInfo> departmentList;
         #endregion //Field
 
         #region Constructor
@@ -70,6 +75,13 @@ namespace Hades.HR.UI
         #endregion //Constructor
 
         #region Function
+        /// <summary>
+        /// 初始化字典列表内容
+        /// </summary>
+        private void InitDictItem()
+        {
+            //初始化代码
+        }
 
         /// <summary>
         /// 根据查询条件构造查询语句
@@ -105,7 +117,7 @@ namespace Hades.HR.UI
                 return;
 
             //entity
-            this.winGridViewPager1.DisplayColumns = "StaffId,Year,Month,StaffLevelId,LevelSalary,BaseSalary,OverSalary,WeekendSalary,HolidaySalary,Estimation,Allowance,TotalSalary,ShiftAmount,Remark";
+            this.winGridViewPager1.DisplayColumns = "StaffId,Year,Month,FinanceDepartmentId,StaffLevelId,LevelSalary,BaseSalary,OverSalary,WeekendSalary,HolidaySalary,Estimation,Allowance,TotalSalary,ShiftAmount,Remark";
             this.winGridViewPager1.ColumnNameAlias = CallerFactory<ILaborSalaryService>.Instance.GetColumnNameAlias();//字段列显示名称转义
 
             string where = GetConditionSql();
@@ -125,6 +137,7 @@ namespace Hades.HR.UI
             this.workTeamList = CallerFactory<IWorkTeamService>.Instance.Find2("", "");
             this.staffList = CallerFactory<IStaffService>.Instance.Find("StaffType = 2");
             this.levelList = CallerFactory<IStaffLevelService>.Instance.Find("");
+            this.departmentList = CallerFactory<IDepartmentService>.Instance.Find("");
             this.wtTree.Init();
         }
         #endregion //Method
@@ -148,6 +161,7 @@ namespace Hades.HR.UI
             FrmEditLaborSalary frm = new FrmEditLaborSalary(this.dpMonth.DateTime.Year, this.dpMonth.DateTime.Month, teamId);
             frm.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
             frm.ShowDialog();
+            BindData();
         }
 
         private void dpMonth_EditValueChanged(object sender, EventArgs e)
@@ -225,6 +239,22 @@ namespace Hades.HR.UI
                     }
                 }
             }
+            else if (columnName == "FinanceDepartmentId")
+            {
+                if (e.Value != null && !string.IsNullOrEmpty(e.Value.ToString()))
+                {
+                    var dep = this.departmentList.SingleOrDefault(r => r.Id == e.Value.ToString());
+                    if (dep != null)
+                    {
+                        e.DisplayText = dep.Name;
+                    }
+                    else
+                    {
+                        var dep2 = CallerFactory<IDepartmentService>.Instance.FindByID(e.Value.ToString());
+                        e.DisplayText = dep2.Name;
+                    }
+                }
+            }
         }
         #endregion //Event
 
@@ -241,7 +271,7 @@ namespace Hades.HR.UI
             //        e.Appearance.BackColor2 = Color.LightCyan;
             //    }
             //}
-        }       
+        }
 
         /// <summary>
         /// 绑定数据后，分配各列的宽度
@@ -268,15 +298,6 @@ namespace Hades.HR.UI
             {
                 column.Width = width;
             }
-        }
-
-
-        /// <summary>
-        /// 初始化字典列表内容
-        /// </summary>
-        private void InitDictItem()
-        {
-            //初始化代码
         }
 
         /// <summary>
@@ -553,6 +574,5 @@ namespace Hades.HR.UI
             BindData();
         }
         #endregion //System
-            
     }
 }

@@ -48,6 +48,9 @@ namespace Hades.HR.Entity
         public virtual string WorkTeamId { get; set; }
 
         [DataMember]
+        public virtual string FinanceDepartmentId { get; set; }
+
+        [DataMember]
         public virtual string StaffLevelId { get; set; }
 
         [DataMember]

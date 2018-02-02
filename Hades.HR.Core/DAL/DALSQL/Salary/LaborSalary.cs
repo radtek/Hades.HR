@@ -48,6 +48,7 @@ namespace Hades.HR.DALSQL
             info.Month = reader.GetInt32("Month");
             info.StaffId = reader.GetString("StaffId");
             info.WorkTeamId = reader.GetString("WorkTeamId");
+            info.FinanceDepartmentId = reader.GetString("FinanceDepartmentId");
             info.StaffLevelId = reader.GetString("StaffLevelId");
             info.LevelSalary = reader.GetDecimal("LevelSalary");
             info.BaseSalary = reader.GetDecimal("BaseSalary");
@@ -81,6 +82,7 @@ namespace Hades.HR.DALSQL
             hash.Add("Month", info.Month);
             hash.Add("StaffId", info.StaffId);
             hash.Add("WorkTeamId", info.WorkTeamId);
+            hash.Add("FinanceDepartmentId", info.FinanceDepartmentId);
             hash.Add("StaffLevelId", info.StaffLevelId);
             hash.Add("LevelSalary", info.LevelSalary);
             hash.Add("BaseSalary", info.BaseSalary);
@@ -114,6 +116,7 @@ namespace Hades.HR.DALSQL
             dict.Add("Month", "月");
             dict.Add("StaffId", "职员姓名");
             dict.Add("WorkTeamId", "班组名称");
+            dict.Add("FinanceDepartmentId", "财务部门");
             dict.Add("StaffLevelId", "职员级别");
             dict.Add("LevelSalary", "级别工资");
             dict.Add("BaseSalary", "基本工资");

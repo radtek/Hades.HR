@@ -104,7 +104,7 @@ namespace Hades.HR.UI
         private void BindData()
         {
             //entity
-            this.winGridViewPager1.DisplayColumns = "StaffId,DepartmentId,StaffLevelId,LevelSalary,BaseBonus,DepartmentBonus,ReserveFund,Insurance,NormalOvertimeSalary,WeekendOvertimeSalary,HolidayOvertimeSalary,OvertimeSalarySum,TotalSalary,Remark";
+            this.winGridViewPager1.DisplayColumns = "StaffId,DepartmentId,FinanceDepartmentId,StaffLevelId,LevelSalary,BaseBonus,DepartmentBonus,ReserveFund,Insurance,NormalOvertimeSalary,WeekendOvertimeSalary,HolidayOvertimeSalary,OvertimeSalarySum,TotalSalary,Remark";
             this.winGridViewPager1.ColumnNameAlias = CallerFactory<IStaffSalaryService>.Instance.GetColumnNameAlias();//字段列显示名称转义
 
             string where = GetConditionSql();
@@ -155,6 +155,8 @@ namespace Hades.HR.UI
             FrmEditStaffSalary frm = new FrmEditStaffSalary(this.dpMonth.DateTime.Year, this.dpMonth.DateTime.Month, dep.Id);
             frm.InitFunction(LoginUserInfo, FunctionDict);//给子窗体赋值用户权限信息
             frm.ShowDialog();
+
+            BindData();
         }
 
         private void depTree_DepartmentSelect(object sender, EventArgs e)
@@ -229,6 +231,22 @@ namespace Hades.HR.UI
                     {
                         var level2 = CallerFactory<IStaffLevelService>.Instance.FindByID(e.Value.ToString());
                         e.DisplayText = level2.Name;
+                    }
+                }
+            }
+            else if (columnName == "FinanceDepartmentId")
+            {
+                if (e.Value != null && !string.IsNullOrEmpty(e.Value.ToString()))
+                {
+                    var dep = this.departmentList.SingleOrDefault(r => r.Id == e.Value.ToString());
+                    if (dep != null)
+                    {
+                        e.DisplayText = dep.Name;
+                    }
+                    else
+                    {
+                        var dep2 = CallerFactory<IDepartmentService>.Instance.FindByID(e.Value.ToString());
+                        e.DisplayText = dep2.Name;
                     }
                 }
             }

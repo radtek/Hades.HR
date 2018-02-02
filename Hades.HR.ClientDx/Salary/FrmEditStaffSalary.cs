@@ -67,7 +67,7 @@ namespace Hades.HR.UI
         public override bool CheckInput()
         {
             bool result = true;//默认是可以通过
-            
+
             return result;
         }
 
@@ -85,25 +85,7 @@ namespace Hades.HR.UI
         /// <param name="info"></param>
         private void SetInfo(StaffSalaryInfo info)
         {
-            //info.Year = Convert.ToInt32(txtYear.Value);
-            //       info.Month = Convert.ToInt32(txtMonth.Value);
-            //    info.StaffId = txtStaffId.Text;
-            //    info.DepartmentId = txtDepartmentId.Text;
-            //    info.StaffLevelId = txtStaffLevelId.Text;
-            //       info.LevelSalary = txtLevelSalary.Value;
-            //       info.BaseBonus = txtBaseBonus.Value;
-            //       info.DepartmentBonus = txtDepartmentBonus.Value;
-            //       info.ReserveFund = txtReserveFund.Value;
-            //       info.Insurance = txtInsurance.Value;
-            //       info.NormalOvertimeSalary = txtNormalOvertimeSalary.Value;
-            //       info.WeekendOvertimeSalary = txtWeekendOvertimeSalary.Value;
-            //       info.HolidayOvertimeSalary = txtHolidayOvertimeSalary.Value;
-            //       info.OvertimeSalarySum = txtOvertimeSalarySum.Value;
-            //       info.TotalSalary = txtTotalSalary.Value;
-            //    info.Remark = txtRemark.Text;
-            //    info.Editor = txtEditor.Text;
-            //    info.EditorId = txtEditorId.Text;
-            //   info.EditTime = txtEditTime.DateTime;
+
         }
         #endregion //Function
 
