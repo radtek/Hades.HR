@@ -143,12 +143,15 @@
     <Content Include="HR\Base\DepartmentService.svc" />
     <Content Include="HR\Base\PositionService.svc" />
     <Content Include="HR\Base\ProductionLineService.svc" />
+    <Content Include="HR\Salary\BonusItemService.svc" />
+    <Content Include="HR\Salary\LaborBonusService.svc" />
     <Content Include="HR\Salary\LaborSalaryRecordService.svc" />
     <Content Include="HR\Base\StaffService.svc" />
     <Content Include="HR\Base\WorkTeamService.svc" />
     <Content Include="HR\Salary\LaborSalaryService.svc" />
     <Content Include="HR\Salary\SalaryBaseService.svc" />
     <Content Include="HR\Salary\SalaryItemService.svc" />
+    <Content Include="HR\Salary\StaffBonusService.svc" />
     <Content Include="HR\Salary\StaffSalaryService.svc" />
     <Content Include="HR\Wp\CompletionListService.svc" />
     <Content Include="HR\Wp\ElectricMaintenanceManHoursService.svc" />

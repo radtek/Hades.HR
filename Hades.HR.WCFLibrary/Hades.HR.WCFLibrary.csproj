@@ -146,6 +146,12 @@
     <Compile Include="..\Hades.HR.Caller\Facade\Base\IWorkTeamService.cs">
       <Link>Facade\Base\IWorkTeamService.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Caller\Facade\Salary\IBonusItemService.cs">
+      <Link>Facade\Salary\IBonusItemService.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Caller\Facade\Salary\ILaborBonusService.cs">
+      <Link>Facade\Salary\ILaborBonusService.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Caller\Facade\Salary\ILaborSalaryService.cs">
       <Link>Facade\Salary\ILaborSalaryService.cs</Link>
     </Compile>
@@ -154,6 +160,9 @@
     </Compile>
     <Compile Include="..\Hades.HR.Caller\Facade\Salary\ISalaryItemService.cs">
       <Link>Facade\Salary\ISalaryItemService.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Caller\Facade\Salary\IStaffBonusService.cs">
+      <Link>Facade\Salary\IStaffBonusService.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Caller\Facade\Salary\IStaffSalaryService.cs">
       <Link>Facade\Salary\IStaffSalaryService.cs</Link>
@@ -236,6 +245,12 @@
     <Compile Include="..\Hades.HR.Core\BLL\Base\WorkTeam.cs">
       <Link>Biz\BLL\Base\WorkTeam.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Core\BLL\Salary\BonusItem.cs">
+      <Link>Biz\BLL\Salary\BonusItem.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\BLL\Salary\LaborBonus.cs">
+      <Link>Biz\BLL\Salary\LaborBonus.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Core\BLL\Salary\LaborSalary.cs">
       <Link>Biz\BLL\Salary\LaborSalary.cs</Link>
     </Compile>
@@ -244,6 +259,9 @@
     </Compile>
     <Compile Include="..\Hades.HR.Core\BLL\Salary\SalaryItem.cs">
       <Link>Biz\BLL\Salary\SalaryItem.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\BLL\Salary\StaffBonus.cs">
+      <Link>Biz\BLL\Salary\StaffBonus.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\BLL\Salary\StaffSalary.cs">
       <Link>Biz\BLL\Salary\StaffSalary.cs</Link>
@@ -326,6 +344,12 @@
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Base\WorkTeam.cs">
       <Link>Biz\DAL\DALSQL\Base\WorkTeam.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Salary\BonusItem.cs">
+      <Link>Biz\DAL\DALSQL\Salary\BonusItem.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Salary\LaborBonus.cs">
+      <Link>Biz\DAL\DALSQL\Salary\LaborBonus.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Salary\LaborSalary.cs">
       <Link>Biz\DAL\DALSQL\Salary\LaborSalary.cs</Link>
     </Compile>
@@ -334,6 +358,9 @@
     </Compile>
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Salary\SalaryItem.cs">
       <Link>Biz\DAL\DALSQL\Salary\SalaryItem.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Salary\StaffBonus.cs">
+      <Link>Biz\DAL\DALSQL\Salary\StaffBonus.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\DAL\DALSQL\Salary\StaffSalary.cs">
       <Link>Biz\DAL\DALSQL\Salary\StaffSalary.cs</Link>
@@ -416,6 +443,12 @@
     <Compile Include="..\Hades.HR.Core\Entity\Base\WorkTeamInfo.cs">
       <Link>Biz\Entity\Base\WorkTeamInfo.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Core\Entity\Salary\BonusItemInfo.cs">
+      <Link>Biz\Entity\Salary\BonusItemInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\Entity\Salary\LaborBonusInfo.cs">
+      <Link>Biz\Entity\Salary\LaborBonusInfo.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Core\Entity\Salary\LaborSalaryInfo.cs">
       <Link>Biz\Entity\Salary\LaborSalaryInfo.cs</Link>
     </Compile>
@@ -424,6 +457,9 @@
     </Compile>
     <Compile Include="..\Hades.HR.Core\Entity\Salary\SalaryItemInfo.cs">
       <Link>Biz\Entity\Salary\SalaryItemInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\Entity\Salary\StaffBonusInfo.cs">
+      <Link>Biz\Entity\Salary\StaffBonusInfo.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\Entity\Salary\StaffSalaryInfo.cs">
       <Link>Biz\Entity\Salary\StaffSalaryInfo.cs</Link>
@@ -506,6 +542,12 @@
     <Compile Include="..\Hades.HR.Core\IDAL\Base\IWorkTeam.cs">
       <Link>Biz\IDAL\Base\IWorkTeam.cs</Link>
     </Compile>
+    <Compile Include="..\Hades.HR.Core\IDAL\Salary\IBonusItem.cs">
+      <Link>Biz\IDAL\Salary\IBonusItem.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\IDAL\Salary\ILaborBonus.cs">
+      <Link>Biz\IDAL\Salary\ILaborBonus.cs</Link>
+    </Compile>
     <Compile Include="..\Hades.HR.Core\IDAL\Salary\ILaborSalary.cs">
       <Link>Biz\IDAL\Salary\ILaborSalary.cs</Link>
     </Compile>
@@ -514,6 +556,9 @@
     </Compile>
     <Compile Include="..\Hades.HR.Core\IDAL\Salary\ISalaryItem.cs">
       <Link>Biz\IDAL\Salary\ISalaryItem.cs</Link>
+    </Compile>
+    <Compile Include="..\Hades.HR.Core\IDAL\Salary\IStaffBonus.cs">
+      <Link>Biz\IDAL\Salary\IStaffBonus.cs</Link>
     </Compile>
     <Compile Include="..\Hades.HR.Core\IDAL\Salary\IStaffSalary.cs">
       <Link>Biz\IDAL\Salary\IStaffSalary.cs</Link>
@@ -560,9 +605,12 @@
     <Compile Include="WCFLibrary\Base\ProductionLineService.cs" />
     <Compile Include="WCFLibrary\Base\StaffService.cs" />
     <Compile Include="WCFLibrary\Base\WorkTeamService.cs" />
+    <Compile Include="WCFLibrary\Salary\BonusItemService.cs" />
+    <Compile Include="WCFLibrary\Salary\LaborBonusService.cs" />
     <Compile Include="WCFLibrary\Salary\LaborSalaryService.cs" />
     <Compile Include="WCFLibrary\Salary\SalaryBaseService.cs" />
     <Compile Include="WCFLibrary\Salary\SalaryItemService.cs" />
+    <Compile Include="WCFLibrary\Salary\StaffBonusService.cs" />
     <Compile Include="WCFLibrary\Salary\StaffSalaryService.cs" />
     <Compile Include="WCFLibrary\Wp\CompletionListService.cs" />
     <Compile Include="WCFLibrary\Wp\ElectricMaintenanceManHoursService.cs" />
