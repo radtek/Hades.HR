@@ -1360,6 +1360,12 @@
     <EmbeddedResource Include="Control\WorkTeamTree.resx">
       <DependentUpon>WorkTeamTree.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Salary\FrmBonusItem.resx">
+      <DependentUpon>FrmBonusItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Salary\FrmEditBonusItem.resx">
+      <DependentUpon>FrmEditBonusItem.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Salary\FrmEditLaborSalary.resx">
       <DependentUpon>FrmEditLaborSalary.cs</DependentUpon>
     </EmbeddedResource>

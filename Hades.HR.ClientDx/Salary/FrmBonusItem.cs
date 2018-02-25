@@ -23,6 +23,7 @@ namespace Hades.HR.UI
     /// </summary>	
     public partial class FrmBonusItem : BaseDock
     {
+        #region Constructor
         public FrmBonusItem()
         {
             InitializeComponent();
@@ -48,6 +49,29 @@ namespace Hades.HR.UI
                 control.KeyUp += new System.Windows.Forms.KeyEventHandler(this.SearchControl_KeyUp);
             }
         }
+        #endregion //Constructor
+
+        #region Function
+        /// <summary>
+        /// 初始化字典列表内容
+        /// </summary>
+        private void InitDictItem()
+        {
+            //初始化代码
+        }
+        #endregion //Function
+
+        #region Method
+        /// <summary>
+        /// 编写初始化窗体的实现，可以用于刷新
+        /// </summary>
+        public override void FormOnLoad()
+        {
+            BindData();
+        }
+        #endregion //Method
+
+        #region System
         void gridView1_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
         {
             //if (e.Column.FieldName == "OrderStatus")
@@ -118,21 +142,7 @@ namespace Hades.HR.UI
             }
         }
 
-        /// <summary>
-        /// 编写初始化窗体的实现，可以用于刷新
-        /// </summary>
-        public override void  FormOnLoad()
-        {   
-            BindData();
-        }
-        
-        /// <summary>
-        /// 初始化字典列表内容
-        /// </summary>
-        private void InitDictItem()
-        {
-			//初始化代码
-        }
+     
         
         /// <summary>
         /// 分页控件刷新操作
@@ -442,5 +452,6 @@ namespace Hades.HR.UI
             advanceCondition = condition;
             BindData();
         }
+        #endregion //System
     }
 }
