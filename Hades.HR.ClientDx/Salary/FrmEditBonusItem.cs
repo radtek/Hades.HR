@@ -20,16 +20,52 @@ namespace Hades.HR.UI
 {
     public partial class FrmEditBonusItem : BaseEditForm
     {
-    	/// <summary>
+        #region Field
+        /// <summary>
         /// 创建一个临时对象，方便在附件管理中获取存在的GUID
         /// </summary>
-    	private BonusItemInfo tempInfo = new BonusItemInfo();
-    	
+        private BonusItemInfo tempInfo = new BonusItemInfo();
+        #endregion //Field
+
+        #region Constructor
         public FrmEditBonusItem()
         {
             InitializeComponent();
         }
-                
+        #endregion //Constructor
+
+        #region Function
+        /// <summary>
+        /// 初始化数据字典
+        /// </summary>
+        private void InitDictItem()
+        {
+            //初始化代码
+        }
+
+        /// <summary>
+        /// 编辑或者保存状态下取值函数
+        /// </summary>
+        /// <param name="info"></param>
+        private void SetInfo(BonusItemInfo info)
+        {
+            info.Name = txtName.Text;
+            info.Code = txtCode.Text;
+            info.CalcType = Convert.ToInt32(txtCalcType.Value);
+            info.Cardinal = txtCardinal.Value;
+            info.Coefficient = txtCoefficient.Value;
+            info.Limit = txtLimit.Value;
+            info.Remark = txtRemark.Text;
+        }
+        #endregion //Function
+
+        #region Method
+        public override void ClearScreen()
+        {
+            this.tempInfo = new BonusItemInfo();
+            base.ClearScreen();
+        }
+
         /// <summary>
         /// 实现控件输入检查的函数
         /// </summary>
@@ -38,31 +74,21 @@ namespace Hades.HR.UI
         {
             bool result = true;//默认是可以通过
 
-            #region MyRegion
             if (this.txtName.Text.Trim().Length == 0)
             {
-                MessageDxUtil.ShowTips("请输入");
+                MessageDxUtil.ShowTips("请输入奖金名称");
                 this.txtName.Focus();
                 result = false;
             }
-             else if (this.txtCode.Text.Trim().Length == 0)
+            else if (this.txtCode.Text.Trim().Length == 0)
             {
-                MessageDxUtil.ShowTips("请输入");
+                MessageDxUtil.ShowTips("请输入奖金代码");
                 this.txtCode.Focus();
                 result = false;
             }
-            #endregion
 
             return result;
         }
-
-        /// <summary>
-        /// 初始化数据字典
-        /// </summary>
-        private void InitDictItem()
-        {
-			//初始化代码
-        }                        
 
         /// <summary>
         /// 数据显示的函数
@@ -77,63 +103,26 @@ namespace Hades.HR.UI
                 BonusItemInfo info = CallerFactory<IBonusItemService>.Instance.FindByID(ID);
                 if (info != null)
                 {
-                	tempInfo = info;//重新给临时对象赋值，使之指向存在的记录对象
-                	
-	                    txtName.Text = info.Name;
-           	                    txtCode.Text = info.Code;
-                                   txtCalcType.Value = info.CalcType;
-                               txtCardinal.Value = info.Cardinal;
-                               txtCoefficient.Value = info.Coefficient;
-                               txtLimit.Value = info.Limit;
-       	                    txtRemark.Text = info.Remark;
-                             } 
+                    tempInfo = info;//重新给临时对象赋值，使之指向存在的记录对象
+
+                    txtName.Text = info.Name;
+                    txtCode.Text = info.Code;
+                    txtCalcType.Value = info.CalcType;
+                    txtCardinal.Value = info.Cardinal;
+                    txtCoefficient.Value = info.Coefficient;
+                    txtLimit.Value = info.Limit;
+                    txtRemark.Text = info.Remark;
+                }
                 #endregion
                 //this.btnOK.Enabled = HasFunction("BonusItem/Edit");             
             }
             else
             {
-       
+
                 //this.btnOK.Enabled = Portal.gc.HasFunction("BonusItem/Add");  
             }
-            
-            //tempInfo在对象存在则为指定对象，新建则是全新的对象，但有一些初始化的GUID用于附件上传
-            //SetAttachInfo(tempInfo);
         }
 
-        //private void SetAttachInfo(BonusItemInfo info)
-        //{
-        //    this.attachmentGUID.AttachmentGUID = info.AttachGUID;
-        //    this.attachmentGUID.userId = LoginUserInfo.Name;
-
-        //    string name = txtName.Text;
-        //    if (!string.IsNullOrEmpty(name))
-        //    {
-        //        string dir = string.Format("{0}", name);
-        //        this.attachmentGUID.Init(dir, tempInfo.ID, LoginUserInfo.Name);
-        //    }
-        //}
-
-        public override void ClearScreen()
-        {
-            this.tempInfo = new BonusItemInfo();
-            base.ClearScreen();
-        }
-
-        /// <summary>
-        /// 编辑或者保存状态下取值函数
-        /// </summary>
-        /// <param name="info"></param>
-        private void SetInfo(BonusItemInfo info)
-        {
-	            info.Name = txtName.Text;
-       	            info.Code = txtCode.Text;
-                       info.CalcType = Convert.ToInt32(txtCalcType.Value);
-                       info.Cardinal = txtCardinal.Value;
-                       info.Coefficient = txtCoefficient.Value;
-                       info.Limit = txtLimit.Value;
-       	            info.Remark = txtRemark.Text;
-               }
-         
         /// <summary>
         /// 新增状态下的数据保存
         /// </summary>
@@ -162,7 +151,7 @@ namespace Hades.HR.UI
                 MessageDxUtil.ShowError(ex.Message);
             }
             return false;
-        }                 
+        }
 
         /// <summary>
         /// 编辑状态下的数据保存
@@ -183,7 +172,7 @@ namespace Hades.HR.UI
                     if (succeed)
                     {
                         //可添加其他关联操作
-                       
+
                         return true;
                     }
                     #endregion
@@ -194,7 +183,8 @@ namespace Hades.HR.UI
                     MessageDxUtil.ShowError(ex.Message);
                 }
             }
-           return false;
+            return false;
         }
+        #endregion //Method
     }
 }

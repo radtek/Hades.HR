@@ -29,39 +29,39 @@ namespace Hades.HR.UI
         private void InitializeComponent()
         {
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.txtName = new DevExpress.XtraEditors.TextEdit();
+            this.txtCode = new DevExpress.XtraEditors.TextEdit();
+            this.txtCalcType = new DevExpress.XtraEditors.SpinEdit();
+            this.txtCardinal = new DevExpress.XtraEditors.SpinEdit();
+            this.txtCoefficient = new DevExpress.XtraEditors.SpinEdit();
+            this.txtLimit = new DevExpress.XtraEditors.SpinEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtName = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtCode = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtCalcType = new DevExpress.XtraEditors.SpinEdit();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtCardinal = new DevExpress.XtraEditors.SpinEdit();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtCoefficient = new DevExpress.XtraEditors.SpinEdit();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtLimit = new DevExpress.XtraEditors.SpinEdit();
+            this.txtRemark = new DevExpress.XtraEditors.MemoEdit();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtRemark = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.picPrint)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCode.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCalcType.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCardinal.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCoefficient.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtLimit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCode.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCalcType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCardinal.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCoefficient.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtLimit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRemark.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             this.SuspendLayout();
             // 
             // btnOK
@@ -89,45 +89,19 @@ namespace Hades.HR.UI
             this.layoutControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.layoutControl1.Controls.Add(this.txtRemark);
             this.layoutControl1.Controls.Add(this.txtName);
             this.layoutControl1.Controls.Add(this.txtCode);
             this.layoutControl1.Controls.Add(this.txtCalcType);
             this.layoutControl1.Controls.Add(this.txtCardinal);
             this.layoutControl1.Controls.Add(this.txtCoefficient);
             this.layoutControl1.Controls.Add(this.txtLimit);
-            this.layoutControl1.Controls.Add(this.txtRemark);
             this.layoutControl1.Location = new System.Drawing.Point(12, 8);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.layoutControlGroup1;
             this.layoutControl1.Size = new System.Drawing.Size(605, 254);
             this.layoutControl1.TabIndex = 6;
             this.layoutControl1.Text = "layoutControl1";
-            // 
-            // layoutControlGroup1
-            // 
-            this.layoutControlGroup1.CustomizationFormText = "layoutControlGroup1";
-            this.layoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
-            this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem1,
-            this.layoutControlItem2,
-            this.layoutControlItem3,
-            this.layoutControlItem4,
-            this.layoutControlItem5,
-            this.layoutControlItem6,
-            this.layoutControlItem7});
-            this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(605, 363);
-            this.layoutControlGroup1.TextVisible = false;
-            // 
-            // layoutControlItem1
-            // 
-            this.layoutControlItem1.Control = this.txtName;
-            this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(585, 24);
-            this.layoutControlItem1.Text = "奖金名称";
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(48, 14);
             // 
             // txtName
             // 
@@ -137,15 +111,6 @@ namespace Hades.HR.UI
             this.txtName.StyleController = this.layoutControl1;
             this.txtName.TabIndex = 1;
             // 
-            // layoutControlItem2
-            // 
-            this.layoutControlItem2.Control = this.txtCode;
-            this.layoutControlItem2.Location = new System.Drawing.Point(0, 24);
-            this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(585, 24);
-            this.layoutControlItem2.Text = "奖金代码";
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(48, 14);
-            // 
             // txtCode
             // 
             this.txtCode.Location = new System.Drawing.Point(63, 36);
@@ -153,15 +118,6 @@ namespace Hades.HR.UI
             this.txtCode.Size = new System.Drawing.Size(530, 20);
             this.txtCode.StyleController = this.layoutControl1;
             this.txtCode.TabIndex = 2;
-            // 
-            // layoutControlItem3
-            // 
-            this.layoutControlItem3.Control = this.txtCalcType;
-            this.layoutControlItem3.Location = new System.Drawing.Point(0, 48);
-            this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(585, 24);
-            this.layoutControlItem3.Text = "计算方式";
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(48, 14);
             // 
             // txtCalcType
             // 
@@ -181,15 +137,6 @@ namespace Hades.HR.UI
             this.txtCalcType.StyleController = this.layoutControl1;
             this.txtCalcType.TabIndex = 3;
             // 
-            // layoutControlItem4
-            // 
-            this.layoutControlItem4.Control = this.txtCardinal;
-            this.layoutControlItem4.Location = new System.Drawing.Point(0, 72);
-            this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(585, 24);
-            this.layoutControlItem4.Text = "基数";
-            this.layoutControlItem4.TextSize = new System.Drawing.Size(48, 14);
-            // 
             // txtCardinal
             // 
             this.txtCardinal.EditValue = new decimal(new int[] {
@@ -207,15 +154,6 @@ namespace Hades.HR.UI
             this.txtCardinal.Size = new System.Drawing.Size(530, 20);
             this.txtCardinal.StyleController = this.layoutControl1;
             this.txtCardinal.TabIndex = 4;
-            // 
-            // layoutControlItem5
-            // 
-            this.layoutControlItem5.Control = this.txtCoefficient;
-            this.layoutControlItem5.Location = new System.Drawing.Point(0, 96);
-            this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(585, 24);
-            this.layoutControlItem5.Text = "系数";
-            this.layoutControlItem5.TextSize = new System.Drawing.Size(48, 14);
             // 
             // txtCoefficient
             // 
@@ -235,15 +173,6 @@ namespace Hades.HR.UI
             this.txtCoefficient.StyleController = this.layoutControl1;
             this.txtCoefficient.TabIndex = 5;
             // 
-            // layoutControlItem6
-            // 
-            this.layoutControlItem6.Control = this.txtLimit;
-            this.layoutControlItem6.Location = new System.Drawing.Point(0, 120);
-            this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(585, 24);
-            this.layoutControlItem6.Text = "上限";
-            this.layoutControlItem6.TextSize = new System.Drawing.Size(48, 14);
-            // 
             // txtLimit
             // 
             this.txtLimit.EditValue = new decimal(new int[] {
@@ -262,6 +191,85 @@ namespace Hades.HR.UI
             this.txtLimit.StyleController = this.layoutControl1;
             this.txtLimit.TabIndex = 6;
             // 
+            // layoutControlGroup1
+            // 
+            this.layoutControlGroup1.CustomizationFormText = "layoutControlGroup1";
+            this.layoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem1,
+            this.layoutControlItem2,
+            this.layoutControlItem3,
+            this.layoutControlItem4,
+            this.layoutControlItem5,
+            this.layoutControlItem6,
+            this.layoutControlItem7});
+            this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlGroup1.Name = "layoutControlGroup1";
+            this.layoutControlGroup1.Size = new System.Drawing.Size(605, 254);
+            this.layoutControlGroup1.TextVisible = false;
+            // 
+            // layoutControlItem1
+            // 
+            this.layoutControlItem1.Control = this.txtName;
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem1.Name = "layoutControlItem1";
+            this.layoutControlItem1.Size = new System.Drawing.Size(585, 24);
+            this.layoutControlItem1.Text = "奖金名称";
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(48, 14);
+            // 
+            // layoutControlItem2
+            // 
+            this.layoutControlItem2.Control = this.txtCode;
+            this.layoutControlItem2.Location = new System.Drawing.Point(0, 24);
+            this.layoutControlItem2.Name = "layoutControlItem2";
+            this.layoutControlItem2.Size = new System.Drawing.Size(585, 24);
+            this.layoutControlItem2.Text = "奖金代码";
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(48, 14);
+            // 
+            // layoutControlItem3
+            // 
+            this.layoutControlItem3.Control = this.txtCalcType;
+            this.layoutControlItem3.Location = new System.Drawing.Point(0, 48);
+            this.layoutControlItem3.Name = "layoutControlItem3";
+            this.layoutControlItem3.Size = new System.Drawing.Size(585, 24);
+            this.layoutControlItem3.Text = "计算方式";
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(48, 14);
+            // 
+            // layoutControlItem4
+            // 
+            this.layoutControlItem4.Control = this.txtCardinal;
+            this.layoutControlItem4.Location = new System.Drawing.Point(0, 72);
+            this.layoutControlItem4.Name = "layoutControlItem4";
+            this.layoutControlItem4.Size = new System.Drawing.Size(585, 24);
+            this.layoutControlItem4.Text = "基数";
+            this.layoutControlItem4.TextSize = new System.Drawing.Size(48, 14);
+            // 
+            // layoutControlItem5
+            // 
+            this.layoutControlItem5.Control = this.txtCoefficient;
+            this.layoutControlItem5.Location = new System.Drawing.Point(0, 96);
+            this.layoutControlItem5.Name = "layoutControlItem5";
+            this.layoutControlItem5.Size = new System.Drawing.Size(585, 24);
+            this.layoutControlItem5.Text = "系数";
+            this.layoutControlItem5.TextSize = new System.Drawing.Size(48, 14);
+            // 
+            // layoutControlItem6
+            // 
+            this.layoutControlItem6.Control = this.txtLimit;
+            this.layoutControlItem6.Location = new System.Drawing.Point(0, 120);
+            this.layoutControlItem6.Name = "layoutControlItem6";
+            this.layoutControlItem6.Size = new System.Drawing.Size(585, 24);
+            this.layoutControlItem6.Text = "上限";
+            this.layoutControlItem6.TextSize = new System.Drawing.Size(48, 14);
+            // 
+            // txtRemark
+            // 
+            this.txtRemark.Location = new System.Drawing.Point(63, 156);
+            this.txtRemark.Name = "txtRemark";
+            this.txtRemark.Size = new System.Drawing.Size(530, 86);
+            this.txtRemark.StyleController = this.layoutControl1;
+            this.txtRemark.TabIndex = 7;
+            // 
             // layoutControlItem7
             // 
             this.layoutControlItem7.Control = this.txtRemark;
@@ -270,14 +278,6 @@ namespace Hades.HR.UI
             this.layoutControlItem7.Size = new System.Drawing.Size(585, 90);
             this.layoutControlItem7.Text = "备注";
             this.layoutControlItem7.TextSize = new System.Drawing.Size(48, 14);
-            // 
-            // txtRemark
-            // 
-            this.txtRemark.Location = new System.Drawing.Point(63, 156);
-            this.txtRemark.Name = "txtRemark";
-            this.txtRemark.Size = new System.Drawing.Size(530, 20);
-            this.txtRemark.StyleController = this.layoutControl1;
-            this.txtRemark.TabIndex = 7;
             // 
             // FrmEditBonusItem
             // 
@@ -296,21 +296,21 @@ namespace Hades.HR.UI
             ((System.ComponentModel.ISupportInitialize)(this.picPrint)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCode.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCalcType.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCardinal.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCoefficient.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtLimit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCode.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCalcType.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCardinal.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCoefficient.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtLimit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRemark.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -327,7 +327,6 @@ namespace Hades.HR.UI
           private DevExpress.XtraEditors.SpinEdit txtCardinal;
           private DevExpress.XtraEditors.SpinEdit txtCoefficient;
           private DevExpress.XtraEditors.SpinEdit txtLimit;
-          private DevExpress.XtraEditors.TextEdit txtRemark;
   
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
          private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
@@ -335,7 +334,7 @@ namespace Hades.HR.UI
          private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
          private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
          private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
-         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
- 
+        private DevExpress.XtraEditors.MemoEdit txtRemark;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
     }
 }
