@@ -199,7 +199,7 @@ namespace Hades.HR.UI
             int[] rowSelected = this.winGridViewPager1.GridView1.GetSelectedRows();
             foreach (int iRow in rowSelected)
             {
-                string ID = this.winGridViewPager1.GridView1.GetRowCellDisplayText(iRow, "ID");
+                string ID = this.winGridViewPager1.GridView1.GetRowCellDisplayText(iRow, "Id");
                 CallerFactory<IBonusItemService>.Instance.Delete(ID);
             }
 
@@ -211,11 +211,11 @@ namespace Hades.HR.UI
         /// </summary>
         private void winGridViewPager1_OnEditSelected(object sender, EventArgs e)
         {
-            string ID = this.winGridViewPager1.gridView1.GetFocusedRowCellDisplayText("ID");
+            string ID = this.winGridViewPager1.gridView1.GetFocusedRowCellDisplayText("Id");
             List<string> IDList = new List<string>();
             for (int i = 0; i < this.winGridViewPager1.gridView1.RowCount; i++)
             {
-                string strTemp = this.winGridViewPager1.GridView1.GetRowCellDisplayText(i, "ID");
+                string strTemp = this.winGridViewPager1.GridView1.GetRowCellDisplayText(i, "Id");
                 IDList.Add(strTemp);
             }
 

@@ -51,7 +51,7 @@ namespace Hades.HR.UI
         {
             info.Name = txtName.Text;
             info.Code = txtCode.Text;
-            info.CalcType = Convert.ToInt32(txtCalcType.Value);
+            info.CalcType = Convert.ToInt32(cmbCalcType.EditValue);
             info.Cardinal = txtCardinal.Value;
             info.Coefficient = txtCoefficient.Value;
             info.Limit = txtLimit.Value;
@@ -86,6 +86,11 @@ namespace Hades.HR.UI
                 this.txtCode.Focus();
                 result = false;
             }
+            else if (this.cmbCalcType.EditValue == null)
+            {
+                MessageDxUtil.ShowTips("请选择计算方式");
+                result = false;
+            }
 
             return result;
         }
@@ -99,7 +104,7 @@ namespace Hades.HR.UI
 
             if (!string.IsNullOrEmpty(ID))
             {
-                #region 显示信息
+                this.Text = "编辑奖金项目";
                 BonusItemInfo info = CallerFactory<IBonusItemService>.Instance.FindByID(ID);
                 if (info != null)
                 {
@@ -107,18 +112,17 @@ namespace Hades.HR.UI
 
                     txtName.Text = info.Name;
                     txtCode.Text = info.Code;
-                    txtCalcType.Value = info.CalcType;
+                    cmbCalcType.EditValue = info.CalcType;
                     txtCardinal.Value = info.Cardinal;
                     txtCoefficient.Value = info.Coefficient;
                     txtLimit.Value = info.Limit;
                     txtRemark.Text = info.Remark;
                 }
-                #endregion
                 //this.btnOK.Enabled = HasFunction("BonusItem/Edit");             
             }
             else
             {
-
+                this.Text = "新增奖金项目";
                 //this.btnOK.Enabled = Portal.gc.HasFunction("BonusItem/Add");  
             }
         }
