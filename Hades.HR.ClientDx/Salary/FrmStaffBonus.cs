@@ -23,6 +23,7 @@ namespace Hades.HR.UI
     /// </summary>	
     public partial class FrmStaffBonus : BaseDock
     {
+        #region Constructor
         public FrmStaffBonus()
         {
             InitializeComponent();
@@ -41,13 +42,56 @@ namespace Hades.HR.UI
 			this.winGridViewPager1.gridView1.DataSourceChanged +=new EventHandler(gridView1_DataSourceChanged);
             this.winGridViewPager1.gridView1.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(gridView1_CustomColumnDisplayText);
             this.winGridViewPager1.gridView1.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(gridView1_RowCellStyle);
-
-            //关联回车键进行查询
-            foreach (Control control in this.layoutControl1.Controls)
-            {
-                control.KeyUp += new System.Windows.Forms.KeyEventHandler(this.SearchControl_KeyUp);
-            }
         }
+        #endregion //Constructor
+
+        #region Function
+        /// <summary>
+        /// 根据查询条件构造查询语句
+        /// </summary> 
+        private string GetConditionSql()
+        {
+            //如果存在高级查询对象信息，则使用高级查询条件，否则使用主表条件查询
+            SearchCondition condition = advanceCondition;
+            if (condition == null)
+            {
+                condition = new SearchCondition();
+
+            }
+            string where = condition.BuildConditionSql().Replace("Where", "");
+            return where;
+        }
+
+        /// <summary>
+        /// 绑定列表数据
+        /// </summary>
+        private void BindData()
+        {
+            //entity
+            this.winGridViewPager1.DisplayColumns = "Id,Year,Month,StaffId,DepartmentId,FinanceDepartmentId,BonusCode,Amount,TotalBonus,Remark,Editor,EditorId,EditTime";
+            this.winGridViewPager1.ColumnNameAlias = CallerFactory<IStaffBonusService>.Instance.GetColumnNameAlias();//字段列显示名称转义                       
+
+            string where = GetConditionSql();
+            PagerInfo pagerInfo = this.winGridViewPager1.PagerInfo;
+            List<StaffBonusInfo> list = CallerFactory<IStaffBonusService>.Instance.FindWithPager(where, ref pagerInfo);
+            this.winGridViewPager1.PagerInfo.RecordCount = pagerInfo.RecordCount;
+            this.winGridViewPager1.DataSource = new Hades.Pager.WinControl.SortableBindingList<StaffBonusInfo>(list);
+            this.winGridViewPager1.PrintTitle = "StaffBonus报表";
+        }
+        #endregion //Function
+
+        #region Method
+        /// <summary>
+        /// 编写初始化窗体的实现，可以用于刷新
+        /// </summary>
+        public override void FormOnLoad()
+        {
+            BindData();
+        }
+
+        #endregion //Method
+
+        #region System
         void gridView1_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
         {
             //if (e.Column.FieldName == "OrderStatus")
@@ -118,14 +162,6 @@ namespace Hades.HR.UI
             }
         }
 
-        /// <summary>
-        /// 编写初始化窗体的实现，可以用于刷新
-        /// </summary>
-        public override void  FormOnLoad()
-        {   
-            BindData();
-        }
-        
         /// <summary>
         /// 初始化字典列表内容
         /// </summary>
@@ -225,57 +261,7 @@ namespace Hades.HR.UI
         /// </summary>
         private SearchCondition advanceCondition;
         
-        /// <summary>
-        /// 根据查询条件构造查询语句
-        /// </summary> 
-        private string GetConditionSql()
-        {
-            //如果存在高级查询对象信息，则使用高级查询条件，否则使用主表条件查询
-            SearchCondition condition = advanceCondition;
-            if (condition == null)
-            {
-                condition = new SearchCondition();
-                condition.AddNumericCondition("Year", this.txtYear1, this.txtYear2); //数值类型
-                condition.AddNumericCondition("Month", this.txtMonth1, this.txtMonth2); //数值类型
-            }
-            string where = condition.BuildConditionSql().Replace("Where", "");
-            return where;
-        }
-        
-        /// <summary>
-        /// 绑定列表数据
-        /// </summary>
-        private void BindData()
-        {
-        	//entity
-            this.winGridViewPager1.DisplayColumns = "Id,Year,Month,StaffId,DepartmentId,FinanceDepartmentId,BonusCode,Amount,TotalBonus,Remark,Editor,EditorId,EditTime";
-            this.winGridViewPager1.ColumnNameAlias = CallerFactory<IStaffBonusService>.Instance.GetColumnNameAlias();//字段列显示名称转义
-
-            #region 添加别名解析
-
-            //this.winGridViewPager1.AddColumnAlias("Id", "Id");
-            //this.winGridViewPager1.AddColumnAlias("Year", "Year");
-            //this.winGridViewPager1.AddColumnAlias("Month", "Month");
-            //this.winGridViewPager1.AddColumnAlias("StaffId", "StaffId");
-            //this.winGridViewPager1.AddColumnAlias("DepartmentId", "DepartmentId");
-            //this.winGridViewPager1.AddColumnAlias("FinanceDepartmentId", "FinanceDepartmentId");
-            //this.winGridViewPager1.AddColumnAlias("BonusCode", "BonusCode");
-            //this.winGridViewPager1.AddColumnAlias("Amount", "Amount");
-            //this.winGridViewPager1.AddColumnAlias("TotalBonus", "TotalBonus");
-            //this.winGridViewPager1.AddColumnAlias("Remark", "Remark");
-            //this.winGridViewPager1.AddColumnAlias("Editor", "Editor");
-            //this.winGridViewPager1.AddColumnAlias("EditorId", "EditorId");
-            //this.winGridViewPager1.AddColumnAlias("EditTime", "EditTime");
-
-            #endregion
-
-            string where = GetConditionSql();
-            PagerInfo pagerInfo = this.winGridViewPager1.PagerInfo;
-               List<StaffBonusInfo> list = CallerFactory<IStaffBonusService>.Instance.FindWithPager(where, ref pagerInfo);
-            this.winGridViewPager1.PagerInfo.RecordCount = pagerInfo.RecordCount;
-            this.winGridViewPager1.DataSource = new Hades.Pager.WinControl.SortableBindingList<StaffBonusInfo>(list);
-               this.winGridViewPager1.PrintTitle = "StaffBonus报表";
-         }
+       
         
         /// <summary>
         /// 查询数据操作
@@ -454,5 +440,6 @@ namespace Hades.HR.UI
             advanceCondition = condition;
             BindData();
         }
+        #endregion //System
     }
 }
