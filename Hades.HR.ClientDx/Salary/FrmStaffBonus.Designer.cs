@@ -30,17 +30,19 @@ namespace Hades.HR.UI
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmStaffBonus));
-            this.btnAddNew = new DevExpress.XtraEditors.SimpleButton();
-            this.btnSearch = new DevExpress.XtraEditors.SimpleButton();
-            this.btnExport = new DevExpress.XtraEditors.SimpleButton();
-            this.btnImport = new DevExpress.XtraEditors.SimpleButton();
             this.winGridViewPager1 = new Hades.Pager.WinControl.WinGridViewPager();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
-            this.departmentTreeGrid1 = new Hades.HR.UI.DepartmentTreeGrid();
+            this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.dpMonth = new DevExpress.XtraEditors.DateEdit();
+            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.btnSet = new DevExpress.XtraEditors.SimpleButton();
+            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.depTree = new Hades.HR.UI.DepartmentTreeGrid();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
@@ -48,59 +50,24 @@ namespace Hades.HR.UI
             this.groupControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.groupControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
+            this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dpMonth.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dpMonth.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnAddNew
-            // 
-            this.btnAddNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddNew.Location = new System.Drawing.Point(5, 81);
-            this.btnAddNew.Name = "btnAddNew";
-            this.btnAddNew.Size = new System.Drawing.Size(69, 22);
-            this.btnAddNew.TabIndex = 15;
-            this.btnAddNew.Text = "新建";
-            this.btnAddNew.Click += new System.EventHandler(this.btnAddNew_Click);
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSearch.Location = new System.Drawing.Point(5, 35);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(69, 22);
-            this.btnSearch.TabIndex = 14;
-            this.btnSearch.Text = "查询";
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
-            // 
-            // btnExport
-            // 
-            this.btnExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExport.Location = new System.Drawing.Point(155, 81);
-            this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(69, 22);
-            this.btnExport.TabIndex = 15;
-            this.btnExport.Text = "导出";
-            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
-            // 
-            // btnImport
-            // 
-            this.btnImport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnImport.Location = new System.Drawing.Point(80, 81);
-            this.btnImport.Name = "btnImport";
-            this.btnImport.Size = new System.Drawing.Size(69, 22);
-            this.btnImport.TabIndex = 15;
-            this.btnImport.Text = "导入";
-            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
             // 
             // winGridViewPager1
             // 
-            this.winGridViewPager1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.winGridViewPager1.AppendedMenu = null;
             this.winGridViewPager1.ColumnNameAlias = ((System.Collections.Generic.Dictionary<string, string>)(resources.GetObject("winGridViewPager1.ColumnNameAlias")));
             this.winGridViewPager1.DataSource = null;
             this.winGridViewPager1.DisplayColumns = "";
+            this.winGridViewPager1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.winGridViewPager1.FixedColumns = null;
-            this.winGridViewPager1.Location = new System.Drawing.Point(-288, 24);
+            this.winGridViewPager1.Location = new System.Drawing.Point(2, 21);
             this.winGridViewPager1.MinimumSize = new System.Drawing.Size(540, 0);
             this.winGridViewPager1.Name = "winGridViewPager1";
             this.winGridViewPager1.PrintTitle = "";
@@ -109,7 +76,7 @@ namespace Hades.HR.UI
             this.winGridViewPager1.ShowDeleteMenu = true;
             this.winGridViewPager1.ShowEditMenu = true;
             this.winGridViewPager1.ShowExportButton = true;
-            this.winGridViewPager1.Size = new System.Drawing.Size(1061, 857);
+            this.winGridViewPager1.Size = new System.Drawing.Size(794, 451);
             this.winGridViewPager1.TabIndex = 11;
             // 
             // contextMenuStrip1
@@ -136,7 +103,7 @@ namespace Hades.HR.UI
             // 
             // groupControl1
             // 
-            this.groupControl1.Controls.Add(this.departmentTreeGrid1);
+            this.groupControl1.Controls.Add(this.depTree);
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(3, 3);
             this.groupControl1.Name = "groupControl1";
@@ -147,15 +114,12 @@ namespace Hades.HR.UI
             // 
             // groupControl2
             // 
-            this.groupControl2.Controls.Add(this.btnSearch);
-            this.groupControl2.Controls.Add(this.btnAddNew);
-            this.groupControl2.Controls.Add(this.btnImport);
-            this.groupControl2.Controls.Add(this.btnExport);
+            this.groupControl2.Controls.Add(this.layoutControl1);
             this.groupControl2.Location = new System.Drawing.Point(203, 3);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(200, 158);
+            this.groupControl2.Size = new System.Drawing.Size(614, 158);
             this.groupControl2.TabIndex = 1;
-            this.groupControl2.Text = "groupControl2";
+            this.groupControl2.Text = "操作";
             // 
             // groupControl3
             // 
@@ -167,21 +131,92 @@ namespace Hades.HR.UI
             this.groupControl3.TabIndex = 2;
             this.groupControl3.Text = "groupControl3";
             // 
-            // departmentTreeGrid1
+            // layoutControl1
             // 
-            this.departmentTreeGrid1.DataSource = null;
-            this.departmentTreeGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.departmentTreeGrid1.EnableFocusCellStyle = true;
-            this.departmentTreeGrid1.Location = new System.Drawing.Point(2, 21);
-            this.departmentTreeGrid1.Name = "departmentTreeGrid1";
-            this.departmentTreeGrid1.ShowContextMenu = false;
-            this.departmentTreeGrid1.ShowMenuCreate = false;
-            this.departmentTreeGrid1.ShowMenuDelete = false;
-            this.departmentTreeGrid1.ShowMenuEdit = false;
-            this.departmentTreeGrid1.ShowMenuView = false;
-            this.departmentTreeGrid1.ShowNameOnly = true;
-            this.departmentTreeGrid1.Size = new System.Drawing.Size(190, 651);
-            this.departmentTreeGrid1.TabIndex = 0;
+            this.layoutControl1.Controls.Add(this.btnSet);
+            this.layoutControl1.Controls.Add(this.dpMonth);
+            this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layoutControl1.Location = new System.Drawing.Point(2, 21);
+            this.layoutControl1.Name = "layoutControl1";
+            this.layoutControl1.Root = this.layoutControlGroup1;
+            this.layoutControl1.Size = new System.Drawing.Size(610, 135);
+            this.layoutControl1.TabIndex = 0;
+            this.layoutControl1.Text = "layoutControl1";
+            // 
+            // layoutControlGroup1
+            // 
+            this.layoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.layoutControlGroup1.GroupBordersVisible = false;
+            this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem1,
+            this.layoutControlItem2});
+            this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlGroup1.Name = "layoutControlGroup1";
+            this.layoutControlGroup1.Size = new System.Drawing.Size(610, 135);
+            this.layoutControlGroup1.TextVisible = false;
+            // 
+            // dpMonth
+            // 
+            this.dpMonth.EditValue = null;
+            this.dpMonth.Location = new System.Drawing.Point(64, 12);
+            this.dpMonth.Name = "dpMonth";
+            this.dpMonth.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
+            this.dpMonth.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dpMonth.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dpMonth.Properties.DisplayFormat.FormatString = "yyyy-MM";
+            this.dpMonth.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.dpMonth.Properties.VistaCalendarInitialViewStyle = DevExpress.XtraEditors.VistaCalendarInitialViewStyle.YearView;
+            this.dpMonth.Properties.VistaCalendarViewStyle = ((DevExpress.XtraEditors.VistaCalendarViewStyle)(((DevExpress.XtraEditors.VistaCalendarViewStyle.YearView | DevExpress.XtraEditors.VistaCalendarViewStyle.YearsGroupView) 
+            | DevExpress.XtraEditors.VistaCalendarViewStyle.CenturyView)));
+            this.dpMonth.Size = new System.Drawing.Size(374, 20);
+            this.dpMonth.StyleController = this.layoutControl1;
+            this.dpMonth.TabIndex = 4;
+            // 
+            // layoutControlItem1
+            // 
+            this.layoutControlItem1.Control = this.dpMonth;
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem1.Name = "layoutControlItem1";
+            this.layoutControlItem1.Size = new System.Drawing.Size(430, 115);
+            this.layoutControlItem1.Text = "月份选择";
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(48, 14);
+            // 
+            // btnSet
+            // 
+            this.btnSet.Location = new System.Drawing.Point(442, 12);
+            this.btnSet.Name = "btnSet";
+            this.btnSet.Size = new System.Drawing.Size(156, 22);
+            this.btnSet.StyleController = this.layoutControl1;
+            this.btnSet.TabIndex = 5;
+            this.btnSet.Text = "设置奖金";
+            this.btnSet.Click += new System.EventHandler(this.btnSet_Click);
+            // 
+            // layoutControlItem2
+            // 
+            this.layoutControlItem2.Control = this.btnSet;
+            this.layoutControlItem2.Location = new System.Drawing.Point(430, 0);
+            this.layoutControlItem2.Name = "layoutControlItem2";
+            this.layoutControlItem2.Size = new System.Drawing.Size(160, 115);
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem2.TextVisible = false;
+            // 
+            // depTree
+            // 
+            this.depTree.DataSource = null;
+            this.depTree.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.depTree.EnableFocusCellStyle = true;
+            this.depTree.Location = new System.Drawing.Point(2, 21);
+            this.depTree.Name = "depTree";
+            this.depTree.ShowContextMenu = false;
+            this.depTree.ShowMenuCreate = false;
+            this.depTree.ShowMenuDelete = false;
+            this.depTree.ShowMenuEdit = false;
+            this.depTree.ShowMenuView = false;
+            this.depTree.ShowNameOnly = true;
+            this.depTree.Size = new System.Drawing.Size(190, 651);
+            this.depTree.TabIndex = 0;
             // 
             // FrmStaffBonus
             // 
@@ -198,22 +233,30 @@ namespace Hades.HR.UI
             this.groupControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
             this.groupControl3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
+            this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dpMonth.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dpMonth.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private DevExpress.XtraEditors.SimpleButton btnSearch;
-        private DevExpress.XtraEditors.SimpleButton btnAddNew;
-        private DevExpress.XtraEditors.SimpleButton btnImport;
-        private DevExpress.XtraEditors.SimpleButton btnExport;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private Hades.Pager.WinControl.WinGridViewPager winGridViewPager1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private DevExpress.XtraEditors.GroupControl groupControl1;
         private DevExpress.XtraEditors.GroupControl groupControl2;
         private DevExpress.XtraEditors.GroupControl groupControl3;
-        private DepartmentTreeGrid departmentTreeGrid1;
+        private DepartmentTreeGrid depTree;
+        private DevExpress.XtraLayout.LayoutControl layoutControl1;
+        private DevExpress.XtraEditors.DateEdit dpMonth;
+        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
+        private DevExpress.XtraEditors.SimpleButton btnSet;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
     }
 }

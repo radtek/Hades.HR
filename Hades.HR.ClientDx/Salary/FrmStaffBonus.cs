@@ -86,10 +86,18 @@ namespace Hades.HR.UI
         /// </summary>
         public override void FormOnLoad()
         {
+            this.depTree.Init(3);
+
             BindData();
         }
-
         #endregion //Method
+
+        #region Event
+        private void btnSet_Click(object sender, EventArgs e)
+        {
+
+        }
+        #endregion //Event
 
         #region System
         void gridView1_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
@@ -441,5 +449,6 @@ namespace Hades.HR.UI
             BindData();
         }
         #endregion //System
+
     }
 }
