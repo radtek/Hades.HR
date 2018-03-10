@@ -104,54 +104,70 @@
     <Reference Include="DevExpress.XtraNavBar.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraPrinting.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="Hades.Attachment.ClientDx, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Reference\Hades.Attachment.ClientDx.dll</HintPath>
+      <HintPath>..\packages\attachment.clientdx.1.0.0\lib\Hades.Attachment.ClientDx.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Hades.BaseData.ClientDx, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Reference\Hades.BaseData.ClientDx.dll</HintPath>
+      <HintPath>..\packages\basedata.clientdx.1.0.1\lib\Hades.BaseData.ClientDx.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Hades.BaseData.ClientDx.1, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Reference\Hades.BaseData.ClientDx.1.dll</HintPath>
+    <Reference Include="Hades.BaseDataEx.ClientDx, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <HintPath>..\packages\basedataex.clientdx.1.0.0\lib\Hades.BaseDataEx.ClientDx.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Hades.Dictionary.ClientDx, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Reference\Hades.Dictionary.ClientDx.dll</HintPath>
+      <HintPath>..\packages\dictionary.clientdx.1.0.0\lib\Hades.Dictionary.ClientDx.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Hades.Framework.BaseUIDx, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Reference\Hades.Framework.BaseUIDx.dll</HintPath>
+      <HintPath>..\packages\Hades.Framework.BaseUIDx.1.0.0\lib\Hades.Framework.BaseUIDx.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Hades.Framework.Commons, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Reference\Hades.Framework.Commons.dll</HintPath>
+      <HintPath>..\packages\Hades.Framework.Commons.1.0.0\lib\Hades.Framework.Commons.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Hades.Framework.ControlUtil, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Reference\Hades.Framework.ControlUtil.dll</HintPath>
+    <Reference Include="Hades.Framework.ControlUtil, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hades.Framework.ControlUtil.1.0.0.1\lib\Hades.Framework.ControlUtil.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Hades.Pager.Entity, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Reference\Hades.Pager.Entity.dll</HintPath>
+      <HintPath>..\packages\Hades.Pager.Entity.1.0.0\lib\Hades.Pager.Entity.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Hades.Pager.WinControlDx, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Reference\Hades.Pager.WinControlDx.dll</HintPath>
+      <HintPath>..\packages\Hades.Pager.WinControl.1.0.0\lib\Hades.Pager.WinControlDx.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Hades.Security.ClientDx, Version=3.0.0.0, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Reference\Hades.Security.ClientDx.dll</HintPath>
+      <HintPath>..\packages\security.clientdx.1.0.0\lib\Hades.Security.ClientDx.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Hades.Workflow.ClientDx, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Reference\Hades.Workflow.ClientDx.dll</HintPath>
+      <HintPath>..\packages\workflow.clientdx.1.0.0\lib\Hades.Workflow.ClientDx.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="HtmlAgilityPack">
       <HintPath>..\..\Reference\HtmlAgilityPack.dll</HintPath>
     </Reference>
     <Reference Include="HttpServer">
       <HintPath>..\..\Reference\HttpServer.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.9.0, Culture=neutral, PublicKeyToken=b32731d11ce58905">
+      <HintPath>..\packages\Hades.Framework.ControlUtil.1.0.0.1\lib\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=3.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hades.Framework.ControlUtil.1.0.0.1\lib\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=3.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hades.Framework.ControlUtil.1.0.0.1\lib\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ObjectBuilder, Version=1.0.51206.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hades.Framework.ControlUtil.1.0.0.1\lib\Microsoft.Practices.ObjectBuilder.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
@@ -163,6 +179,10 @@
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop, Version=1.0.168.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hades.Framework.ControlUtil.1.0.0.1\lib\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="SettingsProviderNet">
@@ -196,11 +216,9 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="Updater">
-      <HintPath>..\..\Reference\Updater.exe</HintPath>
-    </Reference>
-    <Reference Include="Updater.Core">
-      <HintPath>..\..\Reference\Updater.Core.dll</HintPath>
+    <Reference Include="Updater.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <HintPath>..\packages\Updater.1.0.0\lib\Updater.Core.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="WindowsLive.Writer.Interop.Mshtml">
       <HintPath>..\..\Reference\WindowsLive.Writer.Interop.Mshtml.dll</HintPath>

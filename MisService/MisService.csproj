@@ -48,25 +48,51 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Hades.Attachment.WCFLibrary">
-      <HintPath>..\..\Reference\Hades.Attachment.WCFLibrary.dll</HintPath>
+    <Reference Include="Hades.Attachment.WCFLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <HintPath>..\packages\attachment.wcflibrary.1.0.0\lib\Hades.Attachment.WCFLibrary.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Hades.Dictionary.WCFLibrary">
-      <HintPath>..\..\Reference\Hades.Dictionary.WCFLibrary.dll</HintPath>
+    <Reference Include="Hades.Dictionary.WCFLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <HintPath>..\packages\dictionary.wcflibrary.1.0.0\lib\Hades.Dictionary.WCFLibrary.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Hades.Framework.Commons">
-      <HintPath>..\..\Reference\Hades.Framework.Commons.dll</HintPath>
+    <Reference Include="Hades.Framework.Commons, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <HintPath>..\packages\Hades.Framework.Commons.1.0.0\lib\Hades.Framework.Commons.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Hades.Framework.ControlUtil">
-      <HintPath>..\..\Reference\Hades.Framework.ControlUtil.dll</HintPath>
+    <Reference Include="Hades.Framework.ControlUtil, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hades.Framework.ControlUtil.1.0.0.1\lib\Hades.Framework.ControlUtil.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Hades.Pager.Entity">
-      <HintPath>..\..\Reference\Hades.Pager.Entity.dll</HintPath>
+    <Reference Include="Hades.Pager.Entity, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <HintPath>..\packages\Hades.Pager.Entity.1.0.0\lib\Hades.Pager.Entity.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Hades.Security.WCFLibrary">
-      <HintPath>..\..\Reference\Hades.Security.WCFLibrary.dll</HintPath>
+    <Reference Include="Hades.Security.WCFLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <HintPath>..\packages\security.wcflibrary.1.0.0\lib\Hades.Security.WCFLibrary.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.9.0, Culture=neutral, PublicKeyToken=b32731d11ce58905">
+      <HintPath>..\packages\Hades.Framework.ControlUtil.1.0.0.1\lib\log4net.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=3.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hades.Framework.ControlUtil.1.0.0.1\lib\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=3.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hades.Framework.ControlUtil.1.0.0.1\lib\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ObjectBuilder, Version=1.0.51206.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hades.Framework.ControlUtil.1.0.0.1\lib\Microsoft.Practices.ObjectBuilder.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hades.Framework.ControlUtil.1.0.0.1\lib\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -116,6 +142,7 @@
     <Content Include="Base\DataDict\DictTypeService.svc" />
     <Content Include="Base\DataDict\DistrictService.svc" />
     <Content Include="Base\DataDict\ProvinceService.svc" />
+    <Content Include="Base\DataDict\RefDictNameService.svc" />
     <Content Include="Base\DataDict\UserParameterService.svc" />
     <Content Include="Base\Mail\MailAttachService.svc" />
     <Content Include="Base\Mail\MailConfigService.svc" />
@@ -207,6 +234,10 @@
   <ItemGroup>
     <Content Include="Base\Web.config" />
     <Content Include="BaseData\Web.config" />
+    <Content Include="packages.config" />
+    <Content Include="Base\BS\Web.config" />
+    <Content Include="Base\DataDict\Web.config" />
+    <Content Include="Base\ACL\Web.config" />
     <None Include="Properties\PublishProfiles\MisService.pubxml" />
     <Content Include="WorkFlow\Web.config" />
   </ItemGroup>

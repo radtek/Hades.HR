@@ -56,23 +56,40 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Hades.Framework.Commons">
-      <HintPath>..\..\Reference\Hades.Framework.Commons.dll</HintPath>
+    <Reference Include="Hades.Framework.Commons, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <HintPath>..\packages\Hades.Framework.Commons.1.0.0\lib\Hades.Framework.Commons.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Hades.Framework.ControlUtil">
-      <HintPath>..\..\Reference\Hades.Framework.ControlUtil.dll</HintPath>
+    <Reference Include="Hades.Framework.ControlUtil, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hades.Framework.ControlUtil.1.0.0.1\lib\Hades.Framework.ControlUtil.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Hades.Pager.Entity">
-      <HintPath>..\..\Reference\Hades.Pager.Entity.dll</HintPath>
+    <Reference Include="Hades.Pager.Entity, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <HintPath>..\packages\Hades.Pager.Entity.1.0.0\lib\Hades.Pager.Entity.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common">
-      <HintPath>..\..\Reference\EnterpriseLibrary\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    <Reference Include="log4net, Version=1.2.9.0, Culture=neutral, PublicKeyToken=b32731d11ce58905">
+      <HintPath>..\packages\Hades.Framework.ControlUtil.1.0.0.1\lib\log4net.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data">
-      <HintPath>..\..\Reference\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=3.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hades.Framework.ControlUtil.1.0.0.1\lib\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=3.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hades.Framework.ControlUtil.1.0.0.1\lib\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ObjectBuilder, Version=1.0.51206.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hades.Framework.ControlUtil.1.0.0.1\lib\Microsoft.Practices.ObjectBuilder.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Practices.ObjectBuilder2">
       <HintPath>..\..\Reference\EnterpriseLibrary\Microsoft.Practices.ObjectBuilder2.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hades.Framework.ControlUtil.1.0.0.1\lib\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -626,6 +643,9 @@
     <Folder Include="Biz\IDAL\View\" />
     <Folder Include="Facade\View\" />
     <Folder Include="WCFLibrary\View\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

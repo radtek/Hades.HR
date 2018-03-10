@@ -1,0 +1,2 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="Hades.Dictionary.WCFLibrary.RefDictNameService" %>
+<%@ Assembly Name="Hades.Dictionary.WCFLibrary" %>
